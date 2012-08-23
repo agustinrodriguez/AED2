@@ -1,0 +1,3 @@
+Para instalar los paquetes, copiar la carpeta de este directorio al home y luego ejecutar (desde el path del home)
+
+texhash texmf/
