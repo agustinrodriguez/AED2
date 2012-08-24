@@ -1,0 +1,56 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[paper=a4paper, left=1.5cm, right=1.5cm, bottom=1.5cm, top=1.5cm]{geometry}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+\usepackage{latexsym}
+\usepackage{lastpage}
+\usepackage{aed2-symb,aed2-itef,aed2-tad,caratula}
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage{calc}
+
+\titulo{Trabajo Pr\'actico de Especificaci\'on}
+
+\materia{Algoritmos y Estructuras de Datos II}
+\grupo{Grupo 1}
+\integrante{B\'alsamo, Facundo}{874/10}{facundobalsamo@gmail.com}
+\integrante{Lasso, Nicol\'as}{892/10}{lasso.nico@gmail.com}	
+\integrante{Rodr\'iguez, Agust\'in}{120/10}{agustinrodriguez90@hotmail.com}
+\integrante{Tripodi, Guido}{120/10}{guido.tripodi@hotmail.com}
+\parskip=5pt % 10pt es el tama�o de fuente
+
+\begin{document}
+\maketitle
+
+
+\section{TAD \tadNombre{LinkLinkIT}}
+
+\begin{tad}{\tadNombre{LinkLinkIT}}
+\tadGeneros{linkLinkIT}
+\tadExporta{linkLinkIT, generadores, observadores}
+\tadUsa{\tadNombre{ArbolCategorias}}
+
+\tadIgualdadObservacional{l}{l'}{linklinkIT}{}
+\tadAlinearFunciones{\argumento = 0?}{}
+\tadObservadores
+
+\tadOperacion{\argumento = 0?}{nat}{bool}{}
+
+\tadGeneradores
+
+\tadOperacion{0}{}{nat}{}
+
+\tadOtrasOperaciones
+
+\tadOperacion{\argumento $+$ \argumento}{nat,nat}{nat}{}
+
+\tadAxiomas[\paratodo{nat}{n, m}]
+\tadAlinearAxiomas{pred(suc($n$))}
+\tadAxioma{$0=0?$}{true}
+
+\end{tad}
+
+
+\end{document}
