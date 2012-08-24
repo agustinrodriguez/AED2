@@ -17,16 +17,16 @@
 \sloppy
 
 \hypersetup{%
- % Para que el PDF se abra a página completa.
+ % Para que el PDF se abra a pï¿½gina completa.
  pdfstartview= {FitH \hypercalcbp{\paperheight-\topmargin-1in-\headheight}},
- pdfauthor={Cátedra de Algoritmos y Estructuras de Datos II - DC - UBA},
- pdfkeywords={TADs básicos},
- pdfsubject={Tipos abstractos de datos básicos}
+ pdfauthor={Cï¿½tedra de Algoritmos y Estructuras de Datos II - DC - UBA},
+ pdfkeywords={TADs bï¿½sicos},
+ pdfsubject={Tipos abstractos de datos bï¿½sicos}
 }
 
-\parskip=5pt % 10pt es el tamaño de fuente
+\parskip=5pt % 10pt es el tamaï¿½o de fuente
 
-% Pongo en 0 la distancia extra entre ítemes.
+% Pongo en 0 la distancia extra entre ï¿½temes.
 \let\olditemize\itemize
 \def\itemize{\olditemize\itemsep=0pt}
 
@@ -41,7 +41,7 @@
 
 \author{Algoritmos y Estructuras de Datos II, DC, UBA.}
 \date{}
-\title{Tipos abstractos de datos básicos}
+\title{Tipos abstractos de datos bï¿½sicos}
 
 \begin{document}
 
@@ -149,7 +149,7 @@
 \tadIgualdadObservacional{t}{t'}{tupla($\alpha_1, \ldots, \alpha_n$)}{$\Pi_1(t) \igobs \Pi_1(t') \land \ldots \land \Pi_n(t) \igobs \Pi_n(t')$}
 
 \tadParametrosFormales{
-    \tadEncabezadoInline{géneros}{$\alpha_1$, \ldots, $\alpha_n$}
+    \tadEncabezadoInline{gï¿½neros}{$\alpha_1$, \ldots, $\alpha_n$}
 }
 
 \tadGeneros{tupla($\alpha_1, \ldots, \alpha_n$)}
@@ -177,22 +177,22 @@
 \section{TAD \tadNombre{Secuencia($\alpha$)}}
 
 \begin{tad}{\tadNombre{Secuencia($\alpha$)}}
-\tadIgualdadObservacional{s}{s'}{secu($\alpha$)}{vacía?($s$) $\igobs$ vacía?($s'$) $\land$ \\($\neg$ vacía?($s$) $\implies$ (prim($s$) $\igobs$ prim($s'$) $\land$ fin($s$) $\igobs$ fin($s'$))}
+\tadIgualdadObservacional{s}{s'}{secu($\alpha$)}{vacï¿½a?($s$) $\igobs$ vacï¿½a?($s'$) $\land$ \\($\neg$ vacï¿½a?($s$) $\implies$ (prim($s$) $\igobs$ prim($s'$) $\land$ fin($s$) $\igobs$ fin($s'$))}
 
 \tadParametrosFormales{
-    \tadEncabezadoInline{géneros}{$\alpha$}
+    \tadEncabezadoInline{gï¿½neros}{$\alpha$}
 }
 
 \tadGeneros{secu($\alpha$)}
-\tadExporta{secu($\alpha$), generadores, observadores, \&, \circulito, ult, com, long, está?}
+\tadExporta{secu($\alpha$), generadores, observadores, \&, \circulito, ult, com, long, estï¿½?}
 \tadUsa{\tadNombre{Bool, Nat}}
 
-\tadAlinearFunciones{vacía?~}{secu($\alpha$),secu($\alpha$)}
+\tadAlinearFunciones{vacï¿½a?~}{secu($\alpha$),secu($\alpha$)}
 
 \tadObservadores
-\tadOperacion{vacía?}{secu($\alpha$)}{bool}{}
-\tadOperacion{prim}{secu($\alpha$)/s}{$\alpha$}{$\neg$ vacía?($s$)}
-\tadOperacion{fin}{secu($\alpha$)/s}{secu($\alpha$)}{$\neg$ vacía?($s$)}
+\tadOperacion{vacï¿½a?}{secu($\alpha$)}{bool}{}
+\tadOperacion{prim}{secu($\alpha$)/s}{$\alpha$}{$\neg$ vacï¿½a?($s$)}
+\tadOperacion{fin}{secu($\alpha$)/s}{secu($\alpha$)}{$\neg$ vacï¿½a?($s$)}
 
 \tadGeneradores
 \tadOperacion{\secuencia{}}{}{secu($\alpha$)}{}
@@ -201,32 +201,32 @@
 \tadOtrasOperaciones
 \tadOperacion{\argumento \circulito \argumento}{secu($\alpha$),$\alpha$}{secu($\alpha$)}{}
 \tadOperacion{\argumento \& \argumento}{secu($\alpha$),secu($\alpha$)}{secu($\alpha$)}{}
-\tadOperacion{ult}{secu($\alpha$)/s}{$\alpha$}{$\neg$ vacía?($s$)}
-\tadOperacion{com}{secu($\alpha$)/s}{secu($\alpha$)}{$\neg$ vacía?($s$)}
+\tadOperacion{ult}{secu($\alpha$)/s}{$\alpha$}{$\neg$ vacï¿½a?($s$)}
+\tadOperacion{com}{secu($\alpha$)/s}{secu($\alpha$)}{$\neg$ vacï¿½a?($s$)}
 \tadOperacion{long}{secu($\alpha$)}{nat}{}
-\tadOperacion{está?}{$\alpha$,secu($\alpha$)}{bool}{}
+\tadOperacion{estï¿½?}{$\alpha$,secu($\alpha$)}{bool}{}
 
 \tadAxiomas[\paratodo{secu($\alpha$)}{s, t}, \paratodo{$\alpha$}{e}]
 \tadAlinearAxiomas{vacia?(\secuencia{e}[$s$]}{}
 
-\tadAxioma{vacía?(\secuencia{})}{true}
-\tadAxioma{vacía?(\secuencia{e}[$s$])}{false}
+\tadAxioma{vacï¿½a?(\secuencia{})}{true}
+\tadAxioma{vacï¿½a?(\secuencia{e}[$s$])}{false}
 
 \tadAxioma{prim(\secuencia{e}[$s$])}{$e$}
 
 \tadAxioma{fin(\secuencia{e}[$s$])}{$s$}
 
-\tadAxioma{$s$ \circulito $e$}{\IF vacía?($s$) THEN \secuencia{e} ELSE prim($s$) \puntito (fin($s$) \circulito $e$) FI}
+\tadAxioma{$s$ \circulito $e$}{\IF vacï¿½a?($s$) THEN \secuencia{e} ELSE prim($s$) \puntito (fin($s$) \circulito $e$) FI}
 
-\tadAxioma{$s$ \& $t$}{\IF vacía?($s$) THEN $t$ ELSE prim($s$) \puntito (fin($s$) \& $t$) FI}
+\tadAxioma{$s$ \& $t$}{\IF vacï¿½a?($s$) THEN $t$ ELSE prim($s$) \puntito (fin($s$) \& $t$) FI}
 
-\tadAxioma{ult($s$)}{\IF vacía?(fin($s$)) THEN prim($s$) ELSE ult(fin($s$)) FI} 
+\tadAxioma{ult($s$)}{\IF vacï¿½a?(fin($s$)) THEN prim($s$) ELSE ult(fin($s$)) FI} 
 
-\tadAxioma{com($s$)}{\IF vacía?(fin($s$)) THEN \secuvacia ELSE prim($s$) \puntito com(fin($s$)) FI}
+\tadAxioma{com($s$)}{\IF vacï¿½a?(fin($s$)) THEN \secuvacia ELSE prim($s$) \puntito com(fin($s$)) FI}
 
-\tadAxioma{long($s$)}{\IF vacía?($s$) THEN 0 ELSE 1 + long(fin($s$)) FI} 
+\tadAxioma{long($s$)}{\IF vacï¿½a?($s$) THEN 0 ELSE 1 + long(fin($s$)) FI} 
 
-\tadAxioma{está?($e$, $s$)}{$\neg$ vacía?($s$) $\land$\ ($e =$ prim($s$) $\lor$ está?($e$, fin($s$))}
+\tadAxioma{estï¿½?($e$, $s$)}{$\neg$ vacï¿½a?($s$) $\land$\ ($e =$ prim($s$) $\lor$ estï¿½?($e$, fin($s$))}
 
 \end{tad}
 
@@ -236,7 +236,7 @@
 \tadIgualdadObservacional{c}{c'}{conj($\alpha$)}{$(\forall a: \alpha)(a \in c \igobs a \in c')$}
 
 \tadParametrosFormales{
-    \tadEncabezadoInline{géneros}{$\alpha$}
+    \tadEncabezadoInline{gï¿½neros}{$\alpha$}
 }
 
 \tadGeneros{conj($\alpha$)}
@@ -300,7 +300,7 @@
 \tadIgualdadObservacional{c}{c'}{multiconj($\alpha$)}{$(\forall a: \alpha)(\text{\#}(a,c) \igobs \text{\#}(a,c'))$}
 
 \tadParametrosFormales{
-    \tadEncabezadoInline{géneros}{$\alpha$}
+    \tadEncabezadoInline{gï¿½neros}{$\alpha$}
 }
 
 \tadGeneros{multiconj($\alpha$)}
@@ -362,7 +362,7 @@
 \tadIgualdadObservacional{a}{a'}{ad($\alpha$)}{tam($a$) $\igobs$ tam($a'$) $\land$ \\ $(\forall n:\text{nat})$(definido?($a, n$) $\igobs$ definido?($a', n$) $\land$ \\ (definido?($a,n$) $\implies$ $a[n] \igobs a'[n]$))}
 
 \tadParametrosFormales{
-    \tadEncabezadoInline{géneros}{$\alpha$}
+    \tadEncabezadoInline{gï¿½neros}{$\alpha$}
 }
 
 \tadGeneros{ad($\alpha$)}
@@ -397,98 +397,98 @@
 \section{TAD \tadNombre{Pila($\alpha$)}}
 
 \begin{tad}{\tadNombre{Pila($\alpha$)}}
-\tadIgualdadObservacional{p}{p'}{pila($\alpha$)}{vacía?($p$) $\igobs$ vacía?($p'$)) $\land$ ($\neg$ vacía?($p$) $\implies$\\ (tope($p$) $\igobs$ tope($p'$) $\land$ desapilar($p$) $\igobs$ desapilar($p'$))}
+\tadIgualdadObservacional{p}{p'}{pila($\alpha$)}{vacï¿½a?($p$) $\igobs$ vacï¿½a?($p'$)) $\land$ ($\neg$ vacï¿½a?($p$) $\implies$\\ (tope($p$) $\igobs$ tope($p'$) $\land$ desapilar($p$) $\igobs$ desapilar($p'$))}
 
 \tadParametrosFormales{
-    \tadEncabezadoInline{géneros}{$\alpha$}
+    \tadEncabezadoInline{gï¿½neros}{$\alpha$}
 }
 
 \tadGeneros{pila($\alpha$)}
-\tadExporta{pila($\alpha$), generadores, observadores, tamaño}
+\tadExporta{pila($\alpha$), generadores, observadores, tamaï¿½o}
 \tadUsa{\tadNombre{Bool, Nat}}
 
 \tadAlinearFunciones{desapilar}{$\alpha$,pila($\alpha$)}
 
 \tadObservadores
-\tadOperacion{vacía?}{pila($\alpha$)}{bool}{}
-\tadOperacion{tope}{pila($\alpha$)/p}{$\alpha$}{$\neg$ vacía?($p$)}
-\tadOperacion{desapilar}{pila($\alpha$)/p}{pila($\alpha$)}{$\neg$ vacía?($p$)}
+\tadOperacion{vacï¿½a?}{pila($\alpha$)}{bool}{}
+\tadOperacion{tope}{pila($\alpha$)/p}{$\alpha$}{$\neg$ vacï¿½a?($p$)}
+\tadOperacion{desapilar}{pila($\alpha$)/p}{pila($\alpha$)}{$\neg$ vacï¿½a?($p$)}
 
 \tadGeneradores
-\tadOperacion{vacía}{}{pila($\alpha$)}{}
+\tadOperacion{vacï¿½a}{}{pila($\alpha$)}{}
 \tadOperacion{apilar}{$\alpha$,pila($\alpha$)}{pila($\alpha$)}{}
 
 \tadOtrasOperaciones
-\tadOperacion{tamaño}{pila($\alpha$)}{nat}{}
+\tadOperacion{tamaï¿½o}{pila($\alpha$)}{nat}{}
 
 \tadAxiomas[\paratodo{pila($\alpha$)}{p}, \paratodo{$\alpha$}{e}]
 \tadAlinearAxiomas{desapilar(apilar($e$, $p$))~}{}
 
-\tadAxioma{vacía?(vacía)}{true}
-\tadAxioma{vacía?(apilar($e$,$p$))}{false}
+\tadAxioma{vacï¿½a?(vacï¿½a)}{true}
+\tadAxioma{vacï¿½a?(apilar($e$,$p$))}{false}
 
 \tadAxioma{tope(apilar($e$,$p$))}{$e$}
 
 \tadAxioma{desapilar(apilar($e$,$p$))}{$p$}
 
-\tadAxioma{tamaño($p$)}{\IF vacía?($p$) THEN 0 ELSE 1 + tamaño(desapilar($p$)) FI}
+\tadAxioma{tamaï¿½o($p$)}{\IF vacï¿½a?($p$) THEN 0 ELSE 1 + tamaï¿½o(desapilar($p$)) FI}
 
 \end{tad}
 
 \section{TAD \tadNombre{Cola($\alpha$)}}
 
 \begin{tad}{\tadNombre{Cola($\alpha$)}}
-\tadIgualdadObservacional{c}{c'}{cola($\alpha$)}{vacía?($c$) $\igobs$ vacía?($c'$) $\land$ \\ 
-                                                 ($\neg$vacía?($c$) $\implies$ (próximo($c$) $\igobs$ próximo($c'$) $\land$ \\
-                                        \phantom{($\neg$vacía?($c$) $\implies$ (}desencolar($c$) $\igobs$ desencolar($c'$))}
+\tadIgualdadObservacional{c}{c'}{cola($\alpha$)}{vacï¿½a?($c$) $\igobs$ vacï¿½a?($c'$) $\land$ \\ 
+                                                 ($\neg$vacï¿½a?($c$) $\implies$ (prï¿½ximo($c$) $\igobs$ prï¿½ximo($c'$) $\land$ \\
+                                        \phantom{($\neg$vacï¿½a?($c$) $\implies$ (}desencolar($c$) $\igobs$ desencolar($c'$))}
 
 \tadParametrosFormales{
-    \tadEncabezadoInline{géneros}{$\alpha$}
+    \tadEncabezadoInline{gï¿½neros}{$\alpha$}
 }
 
 \tadGeneros{cola($\alpha$)}
-\tadExporta{cola($\alpha$), generadores, observadores, tamaño}
+\tadExporta{cola($\alpha$), generadores, observadores, tamaï¿½o}
 \tadUsa{\tadNombre{Bool, Nat}}
 
 \tadAlinearFunciones{desencolar}{$\alpha$,cola($\alpha$)}
 
 \tadObservadores
-\tadOperacion{vacía?}{cola($\alpha$)}{bool}{}
-\tadOperacion{próximo}{cola($\alpha$)/c}{$\alpha$}{$\neg$ vacía?($c$)}
-\tadOperacion{desencolar}{cola($\alpha$)/c}{cola($\alpha$)}{$\neg$ vacía?($c$)}
+\tadOperacion{vacï¿½a?}{cola($\alpha$)}{bool}{}
+\tadOperacion{prï¿½ximo}{cola($\alpha$)/c}{$\alpha$}{$\neg$ vacï¿½a?($c$)}
+\tadOperacion{desencolar}{cola($\alpha$)/c}{cola($\alpha$)}{$\neg$ vacï¿½a?($c$)}
 
 \tadGeneradores
-\tadOperacion{vacía}{}{cola($\alpha$)}{}
+\tadOperacion{vacï¿½a}{}{cola($\alpha$)}{}
 \tadOperacion{encolar}{$\alpha$,cola($\alpha$)}{cola($\alpha$)}{}
 
 \tadOtrasOperaciones
-\tadOperacion{tamaño}{cola($\alpha$)}{nat}{}
+\tadOperacion{tamaï¿½o}{cola($\alpha$)}{nat}{}
 
 \tadAxiomas[\paratodo{cola($\alpha$)}{c}, \paratodo{$\alpha$}{e}]
 \tadAlinearAxiomas{desencolar(encolar($e$, $c$))~}
 
-\tadAxioma{vacía?(vacía)}{true}
-\tadAxioma{vacía?(encolar($e$,$c$))}{false}
+\tadAxioma{vacï¿½a?(vacï¿½a)}{true}
+\tadAxioma{vacï¿½a?(encolar($e$,$c$))}{false}
 
-\tadAxioma{próximo(encolar($e$,$c$))}{\IF vacia?($c$) THEN $e$ ELSE próximo($c$) FI}
+\tadAxioma{prï¿½ximo(encolar($e$,$c$))}{\IF vacia?($c$) THEN $e$ ELSE prï¿½ximo($c$) FI}
 
-\tadAxioma{desencolar(encolar($e$,$c$))}{\IF vacía?($c$) THEN vacía ELSE encolar($e$, desencolar($c$)) FI}
+\tadAxioma{desencolar(encolar($e$,$c$))}{\IF vacï¿½a?($c$) THEN vacï¿½a ELSE encolar($e$, desencolar($c$)) FI}
 
-\tadAxioma{tamaño($c$)}{\IF vacía?($c$) THEN 0 ELSE 1 + tamaño(desencolar($c$)) FI}
+\tadAxioma{tamaï¿½o($c$)}{\IF vacï¿½a?($c$) THEN 0 ELSE 1 + tamaï¿½o(desencolar($c$)) FI}
 
 \end{tad}
 
-\section{TAD \tadNombre{Árbol binario($\alpha$)}}
+\section{TAD \tadNombre{ï¿½rbol binario($\alpha$)}}
 
-\begin{tad}{\tadNombre{Árbol binario($\alpha$)}}
+\begin{tad}{\tadNombre{ï¿½rbol binario($\alpha$)}}
 \tadIgualdadObservacional{a}{a'}{ab($\alpha$)}{nil?($a$) $\igobs$ nil?($a'$) $\land$ ($\neg$ nil?($a$) $\implies$ (raiz($a$) $\igobs$ raiz($a'$) $\land$ izq($a$) $\igobs$ izq($a'$) $\land$ der($a$) $\igobs$ der($a'$))}
 
 \tadParametrosFormales{
-    \tadEncabezadoInline{géneros}{$\alpha$}
+    \tadEncabezadoInline{gï¿½neros}{$\alpha$}
 }
 
 \tadGeneros{ab($\alpha$)}
-\tadExporta{ab($\alpha$), generadores, observadores, tamaño, altura, tamaño, inorder, preorder, postorder}
+\tadExporta{ab($\alpha$), generadores, observadores, tamaï¿½o, altura, tamaï¿½o, inorder, preorder, postorder}
 \tadUsa{\tadNombre{Bool, Nat, Secuencia($\alpha$)}}
 
 \tadAlinearFunciones{postorder}{ab($\alpha$),$\alpha$,ab($\alpha$)}
@@ -505,13 +505,13 @@
 
 \tadOtrasOperaciones
 \tadOperacion{altura}{ab($\alpha$)}{nat}{}
-\tadOperacion{tamaño}{ab($\alpha$)}{nat}{}
+\tadOperacion{tamaï¿½o}{ab($\alpha$)}{nat}{}
 \tadOperacion{inorder}{ab($\alpha$)}{secu($\alpha$)}{}
 \tadOperacion{preorder}{ab($\alpha$)}{secu($\alpha$)}{}
 \tadOperacion{postorder}{ab($\alpha$)}{secu($\alpha$)}{}
 
 \tadAxiomas[\paratodo{ab($\alpha$)}{a, b}, \paratodo{$\alpha$}{e}]
-\tadAlinearAxiomas{raíz(bin($a$, $e$, $b$))~}{}
+\tadAlinearAxiomas{raï¿½z(bin($a$, $e$, $b$))~}{}
 
 \tadAxioma{nil?(nil)}{true}
 \tadAxioma{nil?(bin($a$,$e$,$b$))}{false}
@@ -522,7 +522,7 @@
 
 \tadAxioma{altura($a$)}{\IF nil?($a$) THEN 0 ELSE 1 + $\max$(altura(izq($a$)), altura(der($a$))) FI}
 
-\tadAxioma{tamaño($a$)}{\IF nil?($a$) THEN 0 ELSE 1 + tamaño(izq($a$)) + tamaño(der($a$)) FI}
+\tadAxioma{tamaï¿½o($a$)}{\IF nil?($a$) THEN 0 ELSE 1 + tamaï¿½o(izq($a$)) + tamaï¿½o(der($a$)) FI}
 
 \tadAxioma{inorder($a$)}{\IF nil?($a$) THEN \secuvacia  ELSE inorder(izq(a)) \& (raiz($a$) \puntito inorder(der($a$))) FI}
 
@@ -538,7 +538,7 @@
 \tadIgualdadObservacional{d}{d'}{dicc($\kappa,\sigma$)}{$(\forall c:\kappa)$(def?($c, d$) $\igobs$ def?($c, d'$) $\land$\\ (def?($c, d$) $\implies$ obtener($c, d$) $\igobs$ obtener($c, d'$)))}
 
 \tadParametrosFormales{
-    \tadEncabezadoInline{géneros}{clave, significado}
+    \tadEncabezadoInline{gï¿½neros}{clave, significado}
 }
 
 \tadGeneros{dicc(clave, significado)}
@@ -553,7 +553,7 @@
 \tadOperacion{obtener}{clave/c,{dicc(clave, significado)}/d}{significado}{def?($c$, $d$)}
 
 \tadGeneradores
-\tadOperacion{vacío}{}{dicc(clave, significado)}{}
+\tadOperacion{vacï¿½o}{}{dicc(clave, significado)}{}
 \tadOperacion{definir}{clave,significado,{dicc(clave, significado)}}{dicc(clave, significado)}{}
 
 \tadOtrasOperaciones
@@ -563,7 +563,7 @@
 \tadAxiomas[\paratodo{dicc(clave, significado)}{d}, \paratodo{clave}{c, k}, \paratodo{significado}{s}]
 \tadAlinearAxiomas{obtener($c$, definir($k$, $s$, $d$))}
 
-\tadAxioma{def?($c$,vacío)}{false}
+\tadAxioma{def?($c$,vacï¿½o)}{false}
 \tadAxioma{def?($c$, definir($k$, $s$, $d$)}{$c = k$ $\lor$ def?($c$, $d$)}
 
 \tadAxioma{obtener($c$, definir($k$, $s$, $d$))}{\IF $c = k$ THEN $s$ ELSE obtener($c$, $d$) FI}
@@ -571,7 +571,7 @@
 \tadAxioma{borrar($c$, definir($k$, $s$, $d$))}{\IF $c = k$ THEN {\IF def?($c$,$d$) THEN borrar($c$,$d$) ELSE $d$ FI} ELSE
 definir($k$, $s$, borrar($c$, $d$)) FI}
 
-\tadAxioma{claves(vacío)}{$\emptyset$}
+\tadAxioma{claves(vacï¿½o)}{$\emptyset$}
 \tadAxioma{claves(definir($c$,$s$,$d$)}{Ag($c$, claves($d$))}
 
 \end{tad}
@@ -579,21 +579,21 @@ definir($k$, $s$, borrar($c$, $d$)) FI}
 \section{TAD \tadNombre{Cola de prioridad($\alpha$)}}
 
 \begin{tad}{\tadNombre{Cola de prioridad($\alpha$)}}
-\tadIgualdadObservacional{c}{c'}{colaPrior($\alpha$)}{vacía?($c$) $\igobs$ vacía?($c'$) $\land$ \\ 
-                                                 ($\neg$vacía?($c$) $\implies$ (próximo($c$) $\igobs$ próximo($c'$) $\land$ \\
-                                        \phantom{($\neg$vacía?($c$) $\implies$ (}desencolar($c$) $\igobs$ desencolar($c'$))}
+\tadIgualdadObservacional{c}{c'}{colaPrior($\alpha$)}{vacï¿½a?($c$) $\igobs$ vacï¿½a?($c'$) $\land$ \\ 
+                                                 ($\neg$vacï¿½a?($c$) $\implies$ (prï¿½ximo($c$) $\igobs$ prï¿½ximo($c'$) $\land$ \\
+                                        \phantom{($\neg$vacï¿½a?($c$) $\implies$ (}desencolar($c$) $\igobs$ desencolar($c'$))}
 
 \tadParametrosFormales{
-    \tadEncabezadoInline{géneros}{$\alpha$}\\
+    \tadEncabezadoInline{gï¿½neros}{$\alpha$}\\
     \tadEncabezadoInline{operaciones}{
-        \tadOperacionInline{\argumento $<$ \argumento}{$\alpha$, $\alpha$}{bool} \hfill Relación de orden total estricto\footnotemark
+        \tadOperacionInline{\argumento $<$ \argumento}{$\alpha$, $\alpha$}{bool} \hfill Relaciï¿½n de orden total estricto\footnotemark
     }
 }
 
-\footnotetext{\noindent Una relación es un orden total estricto cuando se cumple:
+\footnotetext{\noindent Una relaciï¿½n es un orden total estricto cuando se cumple:
 \begin{description}
  \item[Antirreflexividad:] $\neg$ $a < a$ para todo $a: \alpha$
- \item[Antisimetría:] $(a < b \implies \neg\ b < a)$ para todo $a, b: \alpha$
+ \item[Antisimetrï¿½a:] $(a < b \implies \neg\ b < a)$ para todo $a, b: \alpha$
  \item[Transitividad:] $((a < b \land b < c) \implies a < c)$ para todo $a, b, c: \alpha$
  \item[Totalidad:] $(a < b \lor b < a)$ para todo $a, b: \alpha$
 \end{description}
@@ -606,23 +606,23 @@ definir($k$, $s$, borrar($c$, $d$)) FI}
 \tadAlinearFunciones{desencolar}{$\alpha$,colaPrior($\alpha$)}
 
 \tadObservadores
-\tadOperacion{vacía?}{colaPrior($\alpha$)}{bool}{}
-\tadOperacion{próximo}{colaPrior($\alpha$)/c}{$\alpha$}{($\neg$ vacía?($c$))}
-\tadOperacion{desencolar}{colaPrior($\alpha$)/c}{colaPrior($\alpha$)}{($\neg$ vacía?($c$))}
+\tadOperacion{vacï¿½a?}{colaPrior($\alpha$)}{bool}{}
+\tadOperacion{prï¿½ximo}{colaPrior($\alpha$)/c}{$\alpha$}{($\neg$ vacï¿½a?($c$))}
+\tadOperacion{desencolar}{colaPrior($\alpha$)/c}{colaPrior($\alpha$)}{($\neg$ vacï¿½a?($c$))}
 
 \tadGeneradores
-\tadOperacion{vacía}{}{colaPrior($\alpha$)}{}
+\tadOperacion{vacï¿½a}{}{colaPrior($\alpha$)}{}
 \tadOperacion{encolar}{$\alpha$,colaPrior($\alpha$)}{colaPrior($\alpha$)}{}
 
 \tadAxiomas[\paratodo{colaPrior($\alpha$)}{c}, \paratodo{$\alpha$}{e}]
 \tadAlinearAxiomas{desencolar(encolar($e$, $c$))}{}
 
-\tadAxioma{vacía?(vacía)}{true}
-\tadAxioma{vacía?(encolar($e$, $c$))}{false}
+\tadAxioma{vacï¿½a?(vacï¿½a)}{true}
+\tadAxioma{vacï¿½a?(encolar($e$, $c$))}{false}
 
-\tadAxioma{próximo(encolar($e$, $c$))}{\IF vacía?($c$) $\lor$\ proximo($c$) $< e$ THEN $e$ ELSE próximo($c$) FI}
+\tadAxioma{prï¿½ximo(encolar($e$, $c$))}{\IF vacï¿½a?($c$) $\lor$\ proximo($c$) $< e$ THEN $e$ ELSE prï¿½ximo($c$) FI}
 
-\tadAxioma{desencolar(encolar($e$, $c$))}{\IF vacía?($c$) $\lor$\ proximo($c$) $< e$ THEN $c$ ELSE encolar($e$, desencolar($c$)) FI}
+\tadAxioma{desencolar(encolar($e$, $c$))}{\IF vacï¿½a?($c$) $\lor$\ proximo($c$) $< e$ THEN $c$ ELSE encolar($e$, desencolar($c$)) FI}
 
 \end{tad}
 
