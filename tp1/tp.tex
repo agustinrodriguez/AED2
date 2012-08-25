@@ -28,28 +28,36 @@
 \section{TAD \tadNombre{LinkLinkIT}}
 
 \begin{tad}{\tadNombre{LinkLinkIT}}
-\tadGeneros{linkLinkIT}
-\tadExporta{linkLinkIT, generadores, observadores}
+\tadGeneros{LinkLinkIT}
+\tadExporta{LinkLinkIT, generadores, observadores}
 \tadUsa{\tadNombre{ArbolCategorias}}
-\tadIgualdadObservacional{l}{l'}{linklinkIT}{}
-\tadAlinearFunciones{\argumento $\implies$ \argumento}{bool,bool}
+\tadIgualdadObservacional{l}{l'}{LinklinkIT}{}
+\tadAlinearFunciones{categorias}{LinkLinkIT}
+\tadAlinearFunciones{accesos}{LinkLinkIT/it,Link/l}
+\tadAlinearFunciones{linksXCategoria}{LinkLinkIT/it,categoria/c}{}{}
+\tadAlinearFunciones{agregarLink}{LinkLinkIT/it,Link/l,categoria/c}{}{}
+\tadAlinearFunciones{$\#$LinksXCategoria}{LinkLinkIT/it,categoria/c}{}{}
 
 \tadObservadores
 
-\tadOperacion{categorias}{LinkLinkIT}{arbolDeCategorias}{}
-\tadOperacion{accesos}{LinkLinkIT $/IT$,Link $/L$ }{tupla($Fecha,Nat$)}{ANDAPEROSINELCOMANDO Y NO LO ALINEA}
-
-
-
-
+\tadOperacion{categorias}{LinkLinkIT}{ArbolDeCategorias}{}
+\tadOperacion{accesos}{LinkLinkIT/it,Link/l}{tupla($Fecha,Nat$)}{$l \in LinkLinkIT(it)$}
+\tadOperacion{linksXCategoria}{LinkLinkIT/it,categoria/c}{conj(Link)}{$c \in dameTodos(categorias(it)$}
 
 \tadGeneradores
 
-\tadOperacion{0}{}{nat}{}
+\tadOperacion{iniciar}{ArbolCategorias}{LinkLinkIT}{}
+\tadOperacion{agregarLink}{LinkLinkIT/it,Link/l,categoria/c}{LinkLinkIT}{$\neg( l \in links(it))$ $ \&\&    $ $ c \in dameTodos(categorias(it))$}
+\tadOperacion{accederLink}{LinkLinkIT/it,Link/l,fecha/f}{LinkLinkIT}{$l \in links(it)$ $ \&\&    $ $ f >= ultimoAcceso(it)$}
 
 \tadOtrasOperaciones
 
-\tadOperacion{\argumento $+$ \argumento}{nat,nat}{nat}{}
+\tadOperacion{links}{LinkLinkIT}{conj(Link)}{} %//Devuelve todos los links agregados a un LinkLinkIT
+\tadOperacion{accesos3Dias}{LinkLinkIT/it,Link/l}{nat}{$l \in links(it)$} %//Dado un link existente devuelve la cantidad de accesos en los ultimos 3 dias
+\tadOperacion{$\#$LinksXCategoria}{LinkLinkIT/it,categoria/c}{nat}{$c \in dameTodos(categorias(it))$} %Devuelve la cantidad de links que hay en la familia de la categoria dada
+\tadOperacion{ultimoAcceso}{LinkLinkIT}{Fecha}{} %Devuelve la ultima fecha en la que se realizo un acceso
+	
+
 
 \tadAxiomas[\paratodo{nat}{n, m}]
 \tadAlinearAxiomas{pred(suc($n$))}
@@ -57,5 +65,42 @@
 
 \end{tad}
 
+\section{TAD \tadNombre{ArbolDeCategorias}}
+
+\begin{tad}{\tadNombre{ArbolDeCategorias}}
+\tadGeneros{ArbolDeCategorias}
+\tadExporta{ArbolDeCategorias, generadores, observadores}
+\tadUsa{\tadNombre{ArbolCategorias}}
+\tadIgualdadObservacional{ac}{ac'}{ArbolDeCategorias}{}
+\tadAlinearFunciones{raiz}{ArbolDeCategorias}{}{}
+\tadAlinearFunciones{hijos}{ArbolDeCategorias}{}{}
+\tadAlinearFunciones{AC}{conj(ArbolDeCategorias)/a,categoria/c}{}{}
+\tadAlinearFunciones{dameTodos}{ArbolDeCategorias}{}{}
+\tadAlinearFunciones{losFamiliares}{categoria/c,ArbolDeCategorias/ac}{}{}
+\tadAlinearFunciones{estaEnAlguno}{categoria,conj(ArbolDeCategorias)}{}{}
+
+\tadObservadores
+
+\tadOperacion{raiz}{ArbolDeCategorias}{categoria}{}
+\tadOperacion{hijos}{ArbolDeCategorias}{conj(ArbolDeCategorias)}{}
+
+
+\tadGeneradores
+
+\tadOperacion{AC}{conj(ArbolDeCategorias)/a,categoria/c}{ArbolDeCategorias}{$\neg estaEnAlguno(c,a)$}
+
+\tadOtrasOperaciones
+
+
+\tadOperacion{dameTodos}{ArbolDeCategorias}{conj(categoria)}{} %Conjunto de todas las categorías del arbol
+\tadOperacion{losFamiliares}{categoria/c,ArbolDeCategorias/ac}{conj(categoria)}{$c \in dameTodos(ac)$} %Dada una categoria en particular de un arbol, devuelve un conjunto con ella y todas las categorias que son familia
+\tadOperacion{estaEnAlguno}{categoria,conj(ArbolDeCategoria)}{bool}{} %Dado un conjunto de arboles, se fija si la categoria dada esta en alguno de esos
+
+
+\tadAxiomas[\paratodo{nat}{n, m}]
+\tadAlinearAxiomas{pred(suc($n$))}
+\tadAxioma{$0=0?$}{true}
+
+\end{tad}
 
 \end{document}
