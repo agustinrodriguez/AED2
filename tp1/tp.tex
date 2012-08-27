@@ -31,12 +31,13 @@
 \tadGeneros{LinkLinkIT}
 \tadExporta{LinkLinkIT, generadores, observadores}
 \tadUsa{\tadNombre{ArbolCategorias}}
-\tadIgualdadObservacional{l}{l'}{LinklinkIT}{}
+\tadIgualdadObservacional{l}{l'}{LinklinkIT}{$categorias(l) \igobs categorias(l') \land $ \\ $  accesos(l) \igobs accesos(l') \land $ \\ $ linksXCategoria(l) \igobs linksXCategoria(l')$}
 \tadAlinearFunciones{categorias}{LinkLinkIT}
 \tadAlinearFunciones{accesos}{LinkLinkIT/it,Link/l}
 \tadAlinearFunciones{linksXCategoria}{LinkLinkIT/it,categoria/c}{}{}
 \tadAlinearFunciones{agregarLink}{LinkLinkIT/it,Link/l,categoria/c}{}{}
 \tadAlinearFunciones{$\#$LinksXCategoria}{LinkLinkIT/it,categoria/c}{}{}
+
 
 \tadObservadores
 
@@ -71,7 +72,7 @@
 \tadGeneros{ArbolDeCategorias}
 \tadExporta{ArbolDeCategorias, generadores, observadores}
 \tadUsa{\tadNombre{ArbolCategorias}}
-\tadIgualdadObservacional{ac}{ac'}{ArbolDeCategorias}{}
+\tadIgualdadObservacional{ac}{ac'}{ArbolDeCategorias}{$ raiz(ac) \igobs raiz(ac') \land $ \\ $ hijos(ac) \igobs hijos(ac') $}
 \tadAlinearFunciones{raiz}{ArbolDeCategorias}{}{}
 \tadAlinearFunciones{hijos}{ArbolDeCategorias}{}{}
 \tadAlinearFunciones{AC}{conj(ArbolDeCategorias)/a,categoria/c}{}{}
