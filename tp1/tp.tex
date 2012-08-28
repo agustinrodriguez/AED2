@@ -128,8 +128,10 @@ $\\$
 
 
 \tadAxiomas[\paratodo{arbolDeCategorias}{a} \\ \paratodo{categoria}{c} \\]
-\tadAlinearAxiomas{pred(suc($n$))}
-\tadAxioma{$0=0?$}{true}
+\tadAlinearAxiomas{raiz(AC(a,c))}
+\tadAlinearAxiomas{hijos(AC(a,c))}
+\tadAxioma{raiz(AC(a,c))}{c} 
+\tadAxioma{hijos(AC(a,c))}{a}
 
 \end{tad}
 
