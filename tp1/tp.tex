@@ -85,7 +85,7 @@ $\\$
 \tadAlinearFunciones{hijos}{ArbolDeCategorias}{}{}
 \tadAlinearFunciones{AC}{conj(ArbolDeCategorias)/a,categoria/c}{}{}
 \tadAlinearFunciones{dameTodos}{ArbolDeCategorias}{}{}
-\tadAlinearFunciones{losFamiliares}{categoria/c,ArbolDeCategorias/ac}{}{}
+\tadAlinearFunciones{losFamiliares}{categoria/c,ArbolDeCategorias/a}{}{}
 \tadAlinearFunciones{estaEnAlguno}{categoria,conj(ArbolDeCategorias)}{}{}
 
 \tadObservadores
@@ -106,7 +106,7 @@ $\\$
 \tadOperacion{estaEnAlguno}{categoria,conj(ArbolDeCategoria)}{bool}{} %Dado un conjunto de arboles, se fija si la categoria dada esta en alguno de esos
 
 
-\tadAxiomas[\paratodo{nat}{n, m}]
+\tadAxiomas[\paratodo{ArbolDeCategorias}{a} \\ \paratodo{categoria}{c} \\]
 \tadAlinearAxiomas{pred(suc($n$))}
 \tadAxioma{$0=0?$}{true}
 
