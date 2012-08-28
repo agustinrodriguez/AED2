@@ -64,13 +64,34 @@
 \tadAlinearAxiomas{categorias(iniciar(a))}
 \tadAlinearAxiomas{categorias(agregarLink(it, l, c))}
 \tadAlinearAxiomas{categorias(accederLink(it, l, f))}
+\tadAlinearAxiomas{linksXCategoria(iniciar(a), c)}
+\tadAlinearAxiomas{linksXCategoria(agregarLink(it, l, c),c')}
+\tadAlinearAxiomas{linksXCategoria(accederLink(it, l, f),c')}
+\tadAlinearAxiomas{links(iniciar(a))}
+\tadAlinearAxiomas{links(agregarLink(it, l, c))}
+\tadAlinearAxiomas{links(accederLink(it,l,f))}
+\tadAlinearAxiomas{$\#$LinksXCategoria(iniciar(a),c)}
+\tadAlinearAxiomas{$\#$LinksXCategoria(agregarLink(it,l,c),c')}
+\tadAlinearAxiomas{$\#$linksXCategoria(accederLink(it, l, f), c)}
+
 $\\$
 \tadAxioma{categorias(iniciar(a))}{a}
 \tadAxioma{categorias(agregarLink(it, l, c))}{categorias(it)}
 \tadAxioma{categorias(accederLink(it, l, f))}{categorias(it)}
 $\\$
-
-\tadAxioma{pruebadeunif(h)}{\IF\ h = 0 THEN laconchadetumadreallboys ELSE accesos(h) FI}
+\tadAxioma{linksXCategoria(iniciar(a), c)}{$\emptyset$}
+\tadAxioma{linksXCategoria(agregarLink(it, l, c),c')}{\IF\ c = c' THEN Ag(l, linksXCategoria(it,c)) ELSE linksXCategoria(it,c') FI}
+\tadAxioma{linksXCategoria(accederLink(it, l, f),c')}{linksXCategoria(it,c')}
+$\\$
+$\\$
+\tadAxioma{links(iniciar(a))}{$\emptyset$}
+\tadAxioma{links(agregarLink(it, l, c))}{Ag(l,links(it)}
+\tadAxioma{links(accederLink(it,l,f))}{links(it)}
+$\\$
+\tadAxioma{$\#$LinksXCategoria(iniciar(a),c)}{0}
+\tadAxioma{$\#$LinksXCategoria(agregarLink(it,l,c),c')}{\IF\ c = c' THEN 1 + $\#$linksXCategoria(it,c) ELSE $\#$linksXCategoria(it,c') FI}
+\tadAxioma{$\#$linksXCategoria(accederLink(it, l, f), c)}{$\#$linksXCategoria(it, c)}
+$\\$
 
 \end{tad}
 
