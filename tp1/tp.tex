@@ -60,9 +60,17 @@
 	
 
 
-\tadAxiomas[\paratodo{nat}{n, m}]
-\tadAlinearAxiomas{pred(suc($n$))}
-\tadAxioma{$0=0?$}{true}
+\tadAxiomas[\paratodo{LinklinkIT}{it, it'} \\ \paratodo{ArbolDeCategorias}{a} \\ \paratodo{categoria}{c} \\ \paratodo{Link}{l} \\ \paratodo{Fecha}{f}]
+\tadAlinearAxiomas{categorias(iniciar(a))}
+\tadAlinearAxiomas{categorias(agregarLink(it,l,c))}
+\tadAlinearAxiomas{categorias(accederLink(it,l,f))}
+$\\$
+\tadAxioma{categorias(iniciar(a))}{a}
+\tadAxioma{categorias(agregarLink(it,l,c))}{categorias(it)}
+\tadAxioma{categorias(accederLink(it,l,f))}{categorias(it)}
+$\\$
+
+\tadAxioma{pruebadeunif(h)}{\IF\ h = 0 THEN laconchadetumadreallboys ELSE accesos(h) FI}
 
 \end{tad}
 
