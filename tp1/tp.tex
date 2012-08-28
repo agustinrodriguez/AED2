@@ -28,46 +28,46 @@
 \section{TAD \tadNombre{LinkLinkIT}}
 
 \begin{tad}{\tadNombre{LinkLinkIT}}
-\tadGeneros{LinkLinkIT}
-\tadExporta{LinkLinkIT, generadores, observadores}
-\tadUsa{\tadNombre{ArbolCategorias}}
-\tadIgualdadObservacional{l}{l'}{LinklinkIT}{$categorias(l) \igobs categorias(l') \land $ \\ $  accesos(l) \igobs accesos(l') \land $ \\ $ linksXCategoria(l) \igobs linksXCategoria(l')$}
-\tadAlinearFunciones{categorias}{LinkLinkIT}
-\tadAlinearFunciones{accesos}{LinkLinkIT/it,Link/l}
-\tadAlinearFunciones{linksXCategoria}{LinkLinkIT/it,categoria/c}{}{}
-\tadAlinearFunciones{agregarLink}{LinkLinkIT/it,Link/l,categoria/c}{}{}
-\tadAlinearFunciones{$\#$LinksXCategoria}{LinkLinkIT/it,categoria/c}{}{}
+\tadGeneros{linkLinkIT}
+\tadExporta{linkLinkIT, generadores, observadores}
+\tadUsa{\tadNombre{ArbolCategorias, Link, Categoria, Fecha}}
+\tadIgualdadObservacional{l}{l'}{linkLinkIT}{$categorias(l) \igobs categorias(l') \land $ \\ $  accesos(l) \igobs accesos(l') \land $ \\ $ linksXCategoria(l) \igobs linksXCategoria(l')$}
+\tadAlinearFunciones{categorias}{linkLinkIT}
+\tadAlinearFunciones{accesos}{linkLinkIT/it, link/l}
+\tadAlinearFunciones{linksXCategoria}{linkLinkIT/it, categoria/c}{}{}
+\tadAlinearFunciones{agregarLink}{linkLinkIT/it, link/l, categoria/c}{}{}
+\tadAlinearFunciones{$\#$LinksXCategoria}{linkLinkIT/it, categoria/c}{}{}
 
 
 \tadObservadores
 
-\tadOperacion{categorias}{LinkLinkIT}{ArbolDeCategorias}{}
-\tadOperacion{accesos}{LinkLinkIT/it,Link/l}{tupla($Fecha,Nat$)}{$l \in LinkLinkIT(it)$}
-\tadOperacion{linksXCategoria}{LinkLinkIT/it,categoria/c}{conj(Link)}{$c \in dameTodos(categorias(it)$}
+\tadOperacion{categorias}{linkLinkIT}{arbolDeCategorias}{}
+\tadOperacion{accesos}{linkLinkIT/it, link/l}{tupla($fecha, nat$)}{$l \in LinkLinkIT(it)$}
+\tadOperacion{linksXCategoria}{linkLinkIT/it, categoria/c}{conj(link)}{$c \in dameTodos(categorias(it)$}
 
 \tadGeneradores
 
-\tadOperacion{iniciar}{ArbolCategorias}{LinkLinkIT}{}
-\tadOperacion{agregarLink}{LinkLinkIT/it,Link/l,categoria/c}{LinkLinkIT}{$\neg( l \in links(it))$ $ \&\&    $ $ c \in dameTodos(categorias(it))$}
-\tadOperacion{accederLink}{LinkLinkIT/it,Link/l,fecha/f}{LinkLinkIT}{$l \in links(it)$ $ \&\&    $ $ f >= ultimoAcceso(it)$}
+\tadOperacion{iniciar}{arbolCategorias}{linkLinkIT}{}
+\tadOperacion{agregarLink}{linkLinkIT/it, link/l, categoria/c}{linkLinkIT}{$\neg( l \in links(it))$ $ \&\&    $ $ c \in dameTodos(categorias(it))$}
+\tadOperacion{accederLink}{linkLinkIT/it, link/l, fecha/f}{linkLinkIT}{$l \in links(it)$ $ \&\&    $ $ f >= ultimoAcceso(it)$}
 
 \tadOtrasOperaciones
 
-\tadOperacion{links}{LinkLinkIT}{conj(Link)}{} %//Devuelve todos los links agregados a un LinkLinkIT
-\tadOperacion{accesos3Dias}{LinkLinkIT/it,Link/l}{nat}{$l \in links(it)$} %//Dado un link existente devuelve la cantidad de accesos en los ultimos 3 dias
-\tadOperacion{$\#$LinksXCategoria}{LinkLinkIT/it,categoria/c}{nat}{$c \in dameTodos(categorias(it))$} %Devuelve la cantidad de links que hay en la familia de la categoria dada
-\tadOperacion{ultimoAcceso}{LinkLinkIT}{Fecha}{} %Devuelve la ultima fecha en la que se realizo un acceso
+\tadOperacion{links}{linkLinkIT}{conj(link)}{} %//Devuelve todos los links agregados a un linkLinkIT
+\tadOperacion{accesos3Dias}{linkLinkIT/it, link/l}{nat}{$l \in links(it)$} %//Dado un link existente devuelve la cantidad de accesos en los ultimos 3 dias
+\tadOperacion{$\#$LinksXCategoria}{linkLinkIT/it, categoria/c}{nat}{$c \in dameTodos(categorias(it))$} %Devuelve la cantidad de links que hay en la familia de la categoria dada
+\tadOperacion{ultimoAcceso}{linkLinkIT}{fecha}{} %Devuelve la ultima fecha en la que se realizo un acceso
 	
 
 
-\tadAxiomas[\paratodo{LinklinkIT}{it, it'} \\ \paratodo{ArbolDeCategorias}{a} \\ \paratodo{categoria}{c} \\ \paratodo{Link}{l} \\ \paratodo{Fecha}{f}]
+\tadAxiomas[\paratodo{linklinkIT}{it, it'} \\ \paratodo{arbolDeCategorias}{a} \\ \paratodo{categoria}{c} \\ \paratodo{link}{l} \\ \paratodo{fecha}{f}]
 \tadAlinearAxiomas{categorias(iniciar(a))}
-\tadAlinearAxiomas{categorias(agregarLink(it,l,c))}
-\tadAlinearAxiomas{categorias(accederLink(it,l,f))}
+\tadAlinearAxiomas{categorias(agregarLink(it, l, c))}
+\tadAlinearAxiomas{categorias(accederLink(it, l, f))}
 $\\$
 \tadAxioma{categorias(iniciar(a))}{a}
-\tadAxioma{categorias(agregarLink(it,l,c))}{categorias(it)}
-\tadAxioma{categorias(accederLink(it,l,f))}{categorias(it)}
+\tadAxioma{categorias(agregarLink(it, l, c))}{categorias(it)}
+\tadAxioma{categorias(accederLink(it, l, f))}{categorias(it)}
 $\\$
 
 \tadAxioma{pruebadeunif(h)}{\IF\ h = 0 THEN laconchadetumadreallboys ELSE accesos(h) FI}
@@ -77,39 +77,51 @@ $\\$
 \section{TAD \tadNombre{ArbolDeCategorias}}
 
 \begin{tad}{\tadNombre{ArbolDeCategorias}}
-\tadGeneros{ArbolDeCategorias}
-\tadExporta{ArbolDeCategorias, generadores, observadores}
-\tadUsa{\tadNombre{ArbolCategorias}}
-\tadIgualdadObservacional{ac}{ac'}{ArbolDeCategorias}{$ raiz(ac) \igobs raiz(ac') \land $ \\ $ hijos(ac) \igobs hijos(ac') $}
-\tadAlinearFunciones{raiz}{ArbolDeCategorias}{}{}
-\tadAlinearFunciones{hijos}{ArbolDeCategorias}{}{}
-\tadAlinearFunciones{AC}{conj(ArbolDeCategorias)/a,categoria/c}{}{}
-\tadAlinearFunciones{dameTodos}{ArbolDeCategorias}{}{}
-\tadAlinearFunciones{losFamiliares}{categoria/c,ArbolDeCategorias/a}{}{}
-\tadAlinearFunciones{estaEnAlguno}{categoria,conj(ArbolDeCategorias)}{}{}
+\tadGeneros{arbolDeCategorias}
+\tadExporta{arbolDeCategorias, generadores, observadores}
+\tadUsa{\tadNombre{Categoria}}
+\tadIgualdadObservacional{ac}{ac'}{arbolDeCategorias}{$ raiz(ac) \igobs raiz(ac') \land $ \\ $ hijos(ac) \igobs hijos(ac') $}
+\tadAlinearFunciones{raiz}{arbolDeCategorias}{}{}
+\tadAlinearFunciones{hijos}{arbolDeCategorias}{}{}
+\tadAlinearFunciones{AC}{conj(arbolDeCategorias)/a, categoria/c}{}{}
+\tadAlinearFunciones{dameTodos}{arbolDeCategorias}{}{}
+\tadAlinearFunciones{losFamiliares}{categoria/c, arbolDeCategorias/a}{}{}
+\tadAlinearFunciones{estaEnAlguno}{categoria, conj(arbolDeCategorias)}{}{}
 
 \tadObservadores
 
-\tadOperacion{raiz}{ArbolDeCategorias}{categoria}{}
-\tadOperacion{hijos}{ArbolDeCategorias}{conj(ArbolDeCategorias)}{}
+\tadOperacion{raiz}{arbolDeCategorias}{categoria}{}
+\tadOperacion{hijos}{arbolDeCategorias}{conj(arbolDeCategorias)}{}
 
 
 \tadGeneradores
 
-\tadOperacion{AC}{conj(ArbolDeCategorias)/a,categoria/c}{ArbolDeCategorias}{$\neg estaEnAlguno(c,a)$}
+\tadOperacion{AC}{conj(arbolDeCategorias)/a, categoria/c}{arbolDeCategorias}{$\neg estaEnAlguno(c,a)$}
 
 \tadOtrasOperaciones
 
 
-\tadOperacion{dameTodos}{ArbolDeCategorias}{conj(categoria)}{} %Conjunto de todas las categorías del arbol
-\tadOperacion{losFamiliares}{categoria/c,ArbolDeCategorias/ac}{conj(categoria)}{$c \in dameTodos(ac)$} %Dada una categoria en particular de un arbol, devuelve un conjunto con ella y todas las categorias que son familia
-\tadOperacion{estaEnAlguno}{categoria,conj(ArbolDeCategoria)}{bool}{} %Dado un conjunto de arboles, se fija si la categoria dada esta en alguno de esos
+\tadOperacion{dameTodos}{arbolDeCategorias}{conj(categoria)}{} %Conjunto de todas las categorías del arbol
+\tadOperacion{losFamiliares}{categoria/c, arbolDeCategorias/ac}{conj(categoria)}{$c \in dameTodos(ac)$} %Dada una categoria en particular de un arbol, devuelve un conjunto con ella y todas las categorias que son familia
+\tadOperacion{estaEnAlguno}{categoria, conj(arbolDeCategoria)}{bool}{} %Dado un conjunto de arboles, se fija si la categoria dada esta en alguno de esos
 
 
-\tadAxiomas[\paratodo{ArbolDeCategorias}{a} \\ \paratodo{categoria}{c} \\]
+\tadAxiomas[\paratodo{arbolDeCategorias}{a} \\ \paratodo{categoria}{c} \\]
 \tadAlinearAxiomas{pred(suc($n$))}
 \tadAxioma{$0=0?$}{true}
 
+\end{tad}
+
+
+\section{Renombres}
+\begin{tad}{\tadNombre{Categoria}} es String
+\end{tad}
+
+
+\begin{tad}{\tadNombre{Link}} es String
+\end{tad}
+
+\begin{tad}{\tadNombre{Fecha}} es Nat
 \end{tad}
 
 \end{document}
