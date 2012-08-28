@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.3.16)  28 AUG 2012 12:53
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.18)  28 AUG 2012 13:50
 entering extended mode
  %&-line parsing enabled.
 **tp.tex
@@ -110,7 +110,7 @@ LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 Package: lastpage 1994/06/25 v0.1b LaTeX2e package for refs to last page number
  (JPG)
 )
-(/home/agustin/texmf/tex/latex/aed2-symb/aed2-symb.sty
+(/home/guido/texmf/tex/latex/aed2-symb/aed2-symb.sty
 Package: aed2-symb 2004/04/17 - Para componer simbolitos frecuentemente usados 
 en AED2
 
@@ -202,7 +202,7 @@ File: xkeyval.tex 2008/08/13 v2.6a key=value parser (HA)
 \xargs@toksa=\toks26
 \xargs@toksb=\toks27
 ))
-(/home/agustin/texmf/tex/latex/aed2-itef/aed2-itef.sty
+(/home/guido/texmf/tex/latex/aed2-itef/aed2-itef.sty
 Package: aed2-itef 2010/03/16 - if-then-else-fi en lenguaje de TADs.
 
 (/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
@@ -212,7 +212,7 @@ Cargando package 'itef' (2010/03/16)
 \itefIndentacion=\skip55
 \itef@widthUnaLinea=\skip56
 \itef@linewidth=\skip57
-) (/home/agustin/texmf/tex/latex/aed2-tad/aed2-tad.sty
+) (/home/guido/texmf/tex/latex/aed2-tad/aed2-tad.sty
 Package: aed2-tad 2011/04/04 - Para especificar TADs en formato AED2
 
 (/usr/share/texmf-texlive/tex/latex/tools/calc.sty
@@ -228,7 +228,7 @@ LaTeX Info: Redefining \addtolength on input line 77.
 \calc@Ccount=\count109
 \calc@Cskip=\skip60
 )
-(/home/agustin/texmf/tex/latex/aed2-tokenizer/aed2-tokenizer.sty
+(/home/guido/texmf/tex/latex/aed2-tokenizer/aed2-tokenizer.sty
 Package: aed2-tokenizer 2010/03/12
 )
 Package aed2-tad Info: Cargando package 'tad' (04/04/2011) on input line 26.
@@ -252,7 +252,7 @@ Package aed2-tad Info: Cargando package 'tad' (04/04/2011) on input line 26.
 \tadAxioma@lenEquiv=\skip77
 \tadAxioma@lenDerecha=\skip78
 )
-(/home/agustin/texmf/tex/latex/caratula/caratula.sty
+(/home/guido/texmf/tex/latex/caratula/caratula.sty
 Package: caratula 2003/4/13 v0.1 Para componer caratulas de TPs del DC
 
 Cargando package 'caratula' v0.2 (21/4/2003)
@@ -500,26 +500,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 109--109
 AED: lastpage setting LastPage [3] (./tp.aux) ) 
 Here is how much of TeX's memory you used:
  6825 strings out of 495061
- 94188 string characters out of 1182621
+ 94158 string characters out of 1182621
  186195 words of memory out of 3000000
  9849 multiletter control sequences out of 15000+50000
  14258 words of font info for 37 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,16n,43p,313b,395s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home/agustin/.texmf-var/fonts
-/pk/ljfour/jknappen/ec/eccc1000.600pk> </home/agustin/.texmf-var/fonts/pk/ljfou
-r/jknappen/ec/ecxc1440.600pk> </home/agustin/.texmf-var/fonts/pk/ljfour/jknappe
-n/ec/ectt1000.600pk> </home/agustin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm
-1000.600pk> </home/agustin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600p
-k> </home/agustin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home
-/agustin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/agustin/
-.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texmf-texlive
-/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type
-1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/am
-sfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
-r7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
-r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on tp.pdf (3 pages, 145468 bytes).
+ </home/guido/.texmf-var/fonts/p
+k/ljfour/jknappen/ec/eccc1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jk
+nappen/ec/ecxc1440.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/e
+ctt1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600
+pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/
+guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/guido/.texm
+f-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/guido/.texmf-var/fonts
+/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.
+pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on tp.pdf (3 pages, 145472 bytes).
 PDF statistics:
  313 PDF objects out of 1000 (max. 8388607)
  7 named destinations out of 1000 (max. 500000)
