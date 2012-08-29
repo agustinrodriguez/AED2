@@ -89,23 +89,11 @@ $\\$
 \tadAxioma{links(agregarLink(it, l, c))}{Ag(l,links(it)}
 \tadAxioma{links(accederLink(it,l,f))}{links(it)}
 $\\$
-%con generador
-\tadAxioma{$\#$LinksXCategoria(iniciar(a),c)}{0}
-\tadAxioma{$\#$LinksXCategoria(agregarLink(it,l,c),c')}{\IF\ c = c' THEN 1 + $\#$linksXCategoria(it,c) ELSE $\#$linksXCategoria(it,c') FI}
-\tadAxioma{$\#$linksXCategoria(accederLink(it, l, f), c)}{$\#$linksXCategoria(it, c)}
-$\\$
-
-%sin generadores
 \tadAxioma{$\#$LinksXCategoria(it,c)}{$\#$LinksXCategoria(it,c)}
 
-\tadAxioma{$\#$accesos3Dias(agregarLink(it,l,c),l')}{$\#$accesos3Dias(it,l')} % agregarlink es acceder?
-\tadAxioma{$\#$accesos3Dias(accederLink(it,l,f),l')}{\IF\ l = l' THEN {\IF\ ultimoAccesoASist(it) - f $\leq$ 3 THEN 1+$\#$accesos3Dias(it,l') ELSE $\#$accesos3Dias(it,l') FI} ELSE $\#$accesos3Dias(it,l') FI}
-
-%sin generadores
 $\\$
 \tadAxioma{$\#$accesos3Dias(it,l)}{contarAccesos3Dias(accesos(it,l),ultimoAccesoASist(it))}
 \tadAxioma{contarAccesos3Dias(ls, f)}{\IF\ vacia?(ls) THEN 0 ELSE {\IF\ f - $\prod_1$(prim(ls)) $\leq$ 3 THEN $\prod_2$(prim(ls))+contarAccesos3Dias(fin(ls), f) ELSE 0 FI } FI}
-
 
 $\\$
 
