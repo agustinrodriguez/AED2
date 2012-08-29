@@ -54,7 +54,7 @@
 \tadOtrasOperaciones
 
 \tadOperacion{links}{linkLinkIT}{conj(link)}{} %//Devuelve todos los links agregados a un linkLinkIT
-\tadOperacion{accesos3Dias}{linkLinkIT/it, link/l}{nat}{$l \in links(it)$} %//Dado un link existente devuelve la cantidad de accesos en los ultimos 3 dias
+\tadOperacion{$\#$accesos3Dias}{linkLinkIT/it, link/l}{nat}{$l \in links(it)$} %//Dado un link existente devuelve la cantidad de accesos en los ultimos 3 dias
 \tadOperacion{$\#$LinksXCategoria}{linkLinkIT/it, categoria/c}{nat}{$c \in dameTodos(categorias(it))$} %Devuelve la cantidad de links que hay en la familia de la categoria dada
 \tadOperacion{ultimoAcceso}{linkLinkIT}{fecha}{} %Devuelve la ultima fecha en la que se realizo un acceso
 	
@@ -73,6 +73,7 @@
 \tadAlinearAxiomas{$\#$LinksXCategoria(iniciar(a),c)}
 \tadAlinearAxiomas{$\#$LinksXCategoria(agregarLink(it,l,c),c')}
 \tadAlinearAxiomas{$\#$linksXCategoria(accederLink(it, l, f), c)}
+%\tadAlinearAxiomas{contarAccesos3Dias(ls,f)}
 
 $\\$
 \tadAxioma{categorias(iniciar(a))}{a}
@@ -88,10 +89,27 @@ $\\$
 \tadAxioma{links(agregarLink(it, l, c))}{Ag(l,links(it)}
 \tadAxioma{links(accederLink(it,l,f))}{links(it)}
 $\\$
+%con generador
 \tadAxioma{$\#$LinksXCategoria(iniciar(a),c)}{0}
 \tadAxioma{$\#$LinksXCategoria(agregarLink(it,l,c),c')}{\IF\ c = c' THEN 1 + $\#$linksXCategoria(it,c) ELSE $\#$linksXCategoria(it,c') FI}
 \tadAxioma{$\#$linksXCategoria(accederLink(it, l, f), c)}{$\#$linksXCategoria(it, c)}
 $\\$
+
+%sin generadores
+\tadAxioma{$\#$LinksXCategoria(it,c)}{$\#$LinksXCategoria(it,c)}
+
+\tadAxioma{$\#$accesos3Dias(agregarLink(it,l,c),l')}{$\#$accesos3Dias(it,l')} % agregarlink es acceder?
+\tadAxioma{$\#$accesos3Dias(accederLink(it,l,f),l')}{\IF\ l = l' THEN {\IF\ ultimoAccesoASist(it) - f $\leq$ 3 THEN 1+$\#$accesos3Dias(it,l') ELSE $\#$accesos3Dias(it,l') FI} ELSE $\#$accesos3Dias(it,l') FI}
+
+%sin generadores
+$\\$
+\tadAxioma{$\#$accesos3Dias(it,l)}{contarAccesos3Dias(accesos(it,l),ultimoAccesoASist(it))}
+\tadAxioma{contarAccesos3Dias(ls, f)}{\IF\ vacia?(ls) THEN 0 ELSE {\IF\ f - $\prod_1$(prim(ls)) $\leq$ 3 THEN $\prod_2$(prim(ls))+contarAccesos3Dias(fin(ls), f) ELSE 0 FI } FI}
+
+
+$\\$
+
+
 
 \end{tad}
 
@@ -107,7 +125,7 @@ $\\$
 \tadAlinearFunciones{AC}{conj(arbolDeCategorias)/a, categoria/c}{}{}
 \tadAlinearFunciones{dameTodos}{arbolDeCategorias}{}{}
 \tadAlinearFunciones{losFamiliares}{categoria/c, arbolDeCategorias/a}{}{}
-\tadAlinearFunciones{estaEnAlguno}{categoria, conj(arbolDeCategorias)}{}{}
+\tadAlinearFunciones{estaEnAlguno}{arbolDeCategorias,categoria}{}{}
 
 \tadObservadores
 
@@ -124,14 +142,17 @@ $\\$
 
 \tadOperacion{dameTodos}{arbolDeCategorias}{conj(categoria)}{} %Conjunto de todas las categorías del arbol
 \tadOperacion{losFamiliares}{categoria/c, arbolDeCategorias/ac}{conj(categoria)}{$c \in dameTodos(ac)$} %Dada una categoria en particular de un arbol, devuelve un conjunto con ella y todas las categorias que son familia
-\tadOperacion{estaEnAlguno}{categoria, conj(arbolDeCategoria)}{bool}{} %Dado un conjunto de arboles, se fija si la categoria dada esta en alguno de esos
+\tadOperacion{estaEnAlguno}{arbolDeCategorias,categoria}{bool}{} %Dado un conjunto de arboles, se fija si la categoria dada esta en alguno de esos
 
 
 \tadAxiomas[\paratodo{arbolDeCategorias}{a} \\ \paratodo{categoria}{c} \\]
 \tadAlinearAxiomas{raiz(AC(a,c))}
 \tadAlinearAxiomas{hijos(AC(a,c))}
+\tadAlinearAxiomas{estaEnAlguno(AC(a,c),c')}
 \tadAxioma{raiz(AC(a,c))}{c} 
 \tadAxioma{hijos(AC(a,c))}{a}
+
+\tadAxioma{estaEnAlguno(AC(a,c),c')}{\IF\ c = c' || c' $\in$ a THEN true ELSE false FI}
 
 \end{tad}
 
