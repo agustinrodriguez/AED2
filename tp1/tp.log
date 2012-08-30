@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.18)  29 AUG 2012 17:37
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.18)  29 AUG 2012 21:03
 entering extended mode
  %&-line parsing enabled.
 **tp.tex
@@ -493,7 +493,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--83
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--88
+Underfull \hbox (badness 10000) in paragraph at lines 85--88
 
  []
 
@@ -503,7 +503,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--92
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+[]\T1/cmr/m/n/10 linksXCategoria(it,dameUno(c)) $\OMS/cmsy/m/n/10 [$ \T1/cmr/m/
+n/10 linksX-Cat-e-go-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
  []
 
@@ -513,46 +529,51 @@ Underfull \hbox (badness 10000) in paragraph at lines 100--101
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 105--106
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
 
  []
 
 [3]
-Underfull \hbox (badness 4303) in paragraph at lines 133--133
+Underfull \hbox (badness 4303) in paragraph at lines 129--129
 []\T1/cmr/m/n/10 conj(arbolDeCategorias) $\OML/cmm/m/it/10 a[]$ $\OMS/cmsy/m/n/
 10 ^^B$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--143
+Underfull \hbox (badness 10000) in paragraph at lines 139--139
 
  []
 
-AED: lastpage setting LastPage [4] (./tp.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
+
+ []
+
+[4] AED: lastpage setting LastPage [5] (./tp.aux) ) 
 Here is how much of TeX's memory you used:
- 6826 strings out of 495061
- 94164 string characters out of 1182621
+ 6827 strings out of 495061
+ 94170 string characters out of 1182621
  187195 words of memory out of 3000000
  9849 multiletter control sequences out of 15000+50000
  14258 words of font info for 37 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,16n,43p,313b,420s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home/guido/.texmf-var/fonts/p
-k/ljfour/jknappen/ec/eccc1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jk
-nappen/ec/ecxc1440.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/e
-ctt1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600
-pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/
-guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/guido/.texm
-f-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/guido/.texmf-var/fonts
-/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
-s/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.
-pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on tp.pdf (4 pages, 149017 bytes).
+ </home/guido/.texmf-var/fon
+ts/pk/ljfour/jknappen/ec/eccc1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfou
+r/jknappen/ec/ecxc1440.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/
+ec/ectt1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000
+.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </h
+ome/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/guido/.
+texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/guido/.texmf-var/f
+onts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texmf-texlive/fonts/type1
+/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
+fonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
+r10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr
+/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texm
+f-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on tp.pdf (5 pages, 150495 bytes).
 PDF statistics:
- 321 PDF objects out of 1000 (max. 8388607)
- 8 named destinations out of 1000 (max. 500000)
+ 326 PDF objects out of 1000 (max. 8388607)
+ 9 named destinations out of 1000 (max. 500000)
  25 words of extra memory for PDF output out of 10000 (max. 10000000)
 

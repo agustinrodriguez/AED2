@@ -80,36 +80,27 @@ $\\$
 \tadAxioma{categorias(agregarLink(it, l, c))}{categorias(it)}
 \tadAxioma{categorias(accederLink(it, l, f))}{categorias(it)}
 $\\$
+\tadAxioma{accesos(agregarLink(it, l, c),l')}{$\emptyset$}
+\tadAxioma{accesos(accederLink(it, l, f),l')}{\IF\ l = l' THEN agregarAcceso(accesos(it, l'), f) ELSE accesos(it,l') FI}
+$\\$
+$\\$
+$\\$
 \tadAxioma{linksXCategoria(iniciar(a), c)}{$\emptyset$}
 \tadAxioma{linksXCategoria(agregarLink(it, l, c),c')}{\IF\ c = c' THEN Ag(l, linksXCategoria(it,c)) ELSE linksXCategoria(it,c') FI}
 \tadAxioma{linksXCategoria(accederLink(it, l, f),c')}{linksXCategoria(it,c')}
 $\\$
+\tadAxioma{links(it)}{todosLosLinks((dameTodos(categorias(it))),it)}
+\tadAxioma{todosLosLinks(c,it)}{\IF\ $\emptyset$?(c) THEN $\emptyset$ ELSE  linksXCategoria(it,dameUno(c)) $\cup$ linksXCategoria(it,sinUno(c)) FI}
 $\\$
-\tadAxioma{links(iniciar(a))}{$\emptyset$}
-\tadAxioma{links(agregarLink(it, l, c))}{Ag(l,links(it)}
-\tadAxioma{links(accederLink(it,l,f))}{links(it)}
-$\\$
-%con generador
-\tadAxioma{$\#$LinksXCategoria(iniciar(a),c)}{0}
-\tadAxioma{$\#$LinksXCategoria(agregarLink(it,l,c),c')}{\IF\ c = c' THEN 1 + $\#$linksXCategoria(it,c) ELSE $\#$linksXCategoria(it,c') FI}
-\tadAxioma{$\#$linksXCategoria(accederLink(it, l, f), c)}{$\#$linksXCategoria(it, c)}
-$\\$
-
-%sin generadores
 \tadAxioma{$\#$LinksXCategoria(it,c)}{$\#$LinksXCategoria(it,c)}
-
-\tadAxioma{$\#$accesos3Dias(agregarLink(it,l,c),l')}{$\#$accesos3Dias(it,l')} % agregarlink es acceder?
-\tadAxioma{$\#$accesos3Dias(accederLink(it,l,f),l')}{\IF\ l = l' THEN {\IF\ ultimoAccesoASist(it) - f $\leq$ 3 THEN 1+$\#$accesos3Dias(it,l') ELSE $\#$accesos3Dias(it,l') FI} ELSE $\#$accesos3Dias(it,l') FI}
-
-%sin generadores
 $\\$
-\tadAxioma{$\#$accesos3Dias(it,l)}{contarAccesos3Dias(accesos(it,l),ultimoAccesoASist(it))}
+\tadAxioma{$\#$accesos3Dias(it,l)}{contarAccesos3Dias(accesos(it,l),ultimoAcceso(it))}
+$\\$
 \tadAxioma{contarAccesos3Dias(ls, f)}{\IF\ vacia?(ls) THEN 0 ELSE {\IF\ f - $\prod_1$(prim(ls)) $\leq$ 3 THEN $\prod_2$(prim(ls))+contarAccesos3Dias(fin(ls), f) ELSE 0 FI } FI}
-
-
 $\\$
-
-
+\tadAxioma{ultimoAcceso(it)}{accesoFinal(links(it))}
+\tadAxioma{accesoFinal(ls)}{\IF\ $\prod_1$(prim(accesos(dameUno(ls)))) $\leq$ accesoFinal(sinUno(ls)) THEN $\prod_1$(prim(accesos(dameUno(ls)))) ELSE accesoFinal(sinUno(ls)) FI}
+$\\$
 
 \end{tad}
 
@@ -153,6 +144,12 @@ $\\$
 \tadAxioma{hijos(AC(a,c))}{a}
 
 \tadAxioma{estaEnAlguno(AC(a,c),c')}{\IF\ c = c' || c' $\in$ a THEN true ELSE false FI}
+\tadAxioma{losFamiliares(c,ac)}{\IF\ c = raiz(ac) THEN dameTodos(ac) ELSE losParientes(c,hijos(ac)) FI}
+\tadAxioma{losParientes(c,conj)}{\IF\ $\emptyset$(conj) THEN $\emptyset$ ELSE {\IF\ estaEnAlguno(dameUno(conj),c) THEN losFamiliares(c,dameUno(conj)) ELSE losParientes(c,sinUno(conj)) FI} FI}
+\tadAxioma{dameTodos(a)}{Ag(raiz(ac),todosLosDeAbajo(hijos(a)))}
+\tadAxioma{todosLosDeAbajo(ac)}{\IF\ $\emptyset$(ac) THEN $\emptyset$ ELSE dameTodos(dameUno(ac)) $\cup$ todosLosDeAbajo(sinUno(ac)) FI}
+\tadAxioma{estaEnAlguno(ac,c)}{\IF\ c $\in$ dameTodos(ac) THEN true ELSE false FI}
+$\\$
 
 \end{tad}
 
