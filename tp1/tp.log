@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.24)  29 AUG 2012 18:17
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.3.16)  31 AUG 2012 14:26
 entering extended mode
  %&-line parsing enabled.
 **tp.tex
@@ -493,7 +493,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--83
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--88
+Underfull \hbox (badness 10000) in paragraph at lines 85--88
 
  []
 
@@ -503,7 +503,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--92
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+[]\T1/cmr/m/n/10 linksXCategoria(it,dameUno(c)) $\OMS/cmsy/m/n/10 [$ \T1/cmr/m/
+n/10 linksX-Cat-e-go-
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 94--95
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
 
  []
 
@@ -513,20 +524,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 98--99
  []
 
 
-Underfull \hbox (badness 4303) in paragraph at lines 126--126
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+
+ []
+
+[3]
+Underfull \hbox (badness 4303) in paragraph at lines 129--129
 []\T1/cmr/m/n/10 conj(arbolDeCategorias) $\OML/cmm/m/it/10 a[]$ $\OMS/cmsy/m/n/
 10 ^^B$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--136
+Underfull \hbox (badness 10000) in paragraph at lines 139--139
 
  []
 
-[3] AED: lastpage setting LastPage [4] (./tp.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
+
+ []
+
+[4] AED: lastpage setting LastPage [5] (./tp.aux) ) 
 Here is how much of TeX's memory you used:
- 6826 strings out of 495061
- 94194 string characters out of 1182621
+ 6827 strings out of 495061
+ 94200 string characters out of 1182621
  187195 words of memory out of 3000000
  9849 multiletter control sequences out of 15000+50000
  14258 words of font info for 37 fonts, out of 3000000 for 9000
@@ -545,9 +571,9 @@ type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/publi
 c/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
 m/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on tp.pdf (4 pages, 148680 bytes).
+Output written on tp.pdf (5 pages, 150495 bytes).
 PDF statistics:
- 321 PDF objects out of 1000 (max. 8388607)
- 8 named destinations out of 1000 (max. 500000)
+ 326 PDF objects out of 1000 (max. 8388607)
+ 9 named destinations out of 1000 (max. 500000)
  25 words of extra memory for PDF output out of 10000 (max. 10000000)
 
