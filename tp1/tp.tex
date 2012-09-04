@@ -33,7 +33,7 @@
 \tadUsa{\tadNombre{ArbolCategorias, Link, Categoria, Fecha}}
 \tadIgualdadObservacional{l}{l'}{linkLinkIT}{$categorias(l) \igobs categorias(l') \land $ \\ $  accesos(l) \igobs accesos(l') \land $ \\ $ linksXCategoria(l) \igobs linksXCategoria(l')$}
 \tadAlinearFunciones{categorias}{linkLinkIT}
-\tadAlinearFunciones{accesos}{linkLinkIT/it, link/l}
+\tadAlinearFunciones{accesosXDia}{linkLinkIT/it, link/l, fecha/f}
 \tadAlinearFunciones{linksXCategoria}{linkLinkIT/it, categoria/c}{}{}
 \tadAlinearFunciones{agregarLink}{linkLinkIT/it, link/l, categoria/c}{}{}
 \tadAlinearFunciones{$\#$LinksXCategoria}{linkLinkIT/it, categoria/c}{}{}
@@ -42,8 +42,9 @@
 \tadObservadores
 
 \tadOperacion{categorias}{linkLinkIT}{arbolDeCategorias}{}
-\tadOperacion{accesos}{linkLinkIT/it, link/l}{secu(tupla($fecha, nat$))}{$l \in LinkLinkIT(it)$}
+\tadOperacion{accesosXDia}{linkLinkIT/it, link/l, fecha/f}{secu(nat)}{$l \in LinkLinkIT(it)$ $ \&\& $ $fechaAct(it) - f \leq 2$}
 \tadOperacion{linksXCategoria}{linkLinkIT/it, categoria/c}{conj(link)}{$c \in dameTodos(categorias(it)$}
+\tadOperacion{fechaAct}{linkLinkIT/it}{fecha}{}
 
 \tadGeneradores
 
@@ -54,10 +55,10 @@
 \tadOtrasOperaciones
 
 \tadOperacion{links}{linkLinkIT}{conj(link)}{} %//Devuelve todos los links agregados a un linkLinkIT
-\tadOperacion{$\#$accesos3Dias}{linkLinkIT/it, link/l}{nat}{$l \in links(it)$} %//Dado un link existente devuelve la cantidad de accesos en los ultimos 3 dias
+%\tadOperacion{$\#$accesos3Dias}{linkLinkIT/it, link/l}{nat}{$l \in links(it)$} %//Dado un link existente devuelve la cantidad de accesos en los ultimos 3 dias
 \tadOperacion{$\#$LinksXCategoria}{linkLinkIT/it, categoria/c}{nat}{$c \in dameTodos(categorias(it))$} %Devuelve la cantidad de links que hay en la familia de la categoria dada
-\tadOperacion{ultimoAcceso}{linkLinkIT}{fecha}{} %Devuelve la ultima fecha en la que se realizo un acceso
-	
+%\tadOperacion{ultimoAcceso}{linkLinkIT}{fecha}{} %Devuelve la ultima fecha en la que se realizo un acceso
+\tadOperacion{accesosUlt3Dias}{linkLinkIT/it, link/l}{nat}{}
 
 
 \tadAxiomas[\paratodo{linklinkIT}{it, it'} \\ \paratodo{arbolDeCategorias}{a} \\ \paratodo{categoria}{c} \\ \paratodo{link}{l} \\ \paratodo{fecha}{f}]
@@ -80,27 +81,32 @@ $\\$
 \tadAxioma{categorias(agregarLink(it, l, c))}{categorias(it)}
 \tadAxioma{categorias(accederLink(it, l, f))}{categorias(it)}
 $\\$
-\tadAxioma{accesos(agregarLink(it, l, c),l')}{$\emptyset$}
-\tadAxioma{accesos(accederLink(it, l, f),l')}{\IF\ l = l' THEN agregarAcceso(accesos(it, l'), f) ELSE accesos(it,l') FI}
-$\\$
-$\\$
+\tadAxioma{accesosXDia(iniciar(a),l,f)}{$\emptyset$}
+\tadAxioma{accesosXDia(agregarLink(it, l, c),l',f)}{accesos(it)}
+\tadAxioma{accesosXDia(accederLink(it, l, f),l',f')}{\IF\ l = l' THEN {\IF\ f = f' THEN 1 + accesosXDia(it,l',f') ELSE accesosXDia(it,l',f') FI} ELSE accesosXDia(it,l',f') FI}
 $\\$
 \tadAxioma{linksXCategoria(iniciar(a), c)}{$\emptyset$}
 \tadAxioma{linksXCategoria(agregarLink(it, l, c),c')}{\IF\ c = c' THEN Ag(l, linksXCategoria(it,c)) ELSE linksXCategoria(it,c') FI}
 \tadAxioma{linksXCategoria(accederLink(it, l, f),c')}{linksXCategoria(it,c')}
+$\\$
+\tadAxioma{fechaAct(iniciar(a)}{0}
+\tadAxioma{fechaAct(agregarLink(it,l,c))}{fechaAct(it)}
+\tadAxioma{fechaAct(accederLink(it,l,f))}{f}
 $\\$
 \tadAxioma{links(it)}{todosLosLinks((dameTodos(categorias(it))),it)}
 \tadAxioma{todosLosLinks(c,it)}{\IF\ $\emptyset$?(c) THEN $\emptyset$ ELSE  linksXCategoria(it,dameUno(c)) $\cup$ linksXCategoria(it,sinUno(c)) FI}
 $\\$
 \tadAxioma{$\#$LinksXCategoria(it,c)}{$\#$LinksXCategoria(it,c)}
 $\\$
-\tadAxioma{$\#$accesos3Dias(it,l)}{contarAccesos3Dias(accesos(it,l),ultimoAcceso(it))}
+%\tadAxioma{$\#$accesos3Dias(it,l)}{contarAccesos3Dias(accesos(it,l),ultimoAcceso(it))}
 $\\$
-\tadAxioma{contarAccesos3Dias(ls, f)}{\IF\ vacia?(ls) THEN 0 ELSE {\IF\ f - $\prod_1$(prim(ls)) $\leq$ 3 THEN $\prod_2$(prim(ls))+contarAccesos3Dias(fin(ls), f) ELSE 0 FI } FI}
+%\tadAxioma{contarAccesos3Dias(ls, f)}{\IF\ vacia?(ls) THEN 0 ELSE {\IF\ f - $\prod_1$(prim(ls)) $\leq$ 3 THEN $\prod_2$(prim(ls))+contarAccesos3Dias(fin(ls), f) ELSE 0 FI } FI}
 $\\$
-\tadAxioma{ultimoAcceso(it)}{accesoFinal(links(it))}
-\tadAxioma{accesoFinal(ls)}{\IF\ $\prod_1$(prim(accesos(dameUno(ls)))) $\leq$ accesoFinal(sinUno(ls)) THEN $\prod_1$(prim(accesos(dameUno(ls)))) ELSE accesoFinal(sinUno(ls)) FI}
+\tadAxioma{accesosUlt3Dias(it,l)}{actualizandoAccesos(fechaAct(it),it,l)}
 $\\$
+\tadAxioma{actualizandoAccesos(f,it,l)}{\IF\ f = 0 THEN accesosXDia(it,l,f)+actualizandoAccesos(f,it,l) ELSE {\IF\ fechaAct(it) - f $\leq$ 2 THEN accesosXDia(it,l,f) + actualizandoAccesos(f-1,it,l) ELSE actualizandoAccesos(f,it,l) FI} FI}
+
+
 
 \end{tad}
 
