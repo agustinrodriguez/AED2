@@ -31,7 +31,7 @@
 \tadGeneros{linkLinkIT}
 \tadExporta{linkLinkIT, generadores, observadores}
 \tadUsa{\tadNombre{ArbolCategorias, Link, Categoria, Fecha}}
-\tadIgualdadObservacional{l}{l'}{linkLinkIT}{$categorias(l) \igobs categorias(l') \land $ \\ $  accesos(l) \igobs accesos(l') \land $ \\ $ linksXCategoria(l) \igobs linksXCategoria(l')$}
+\tadIgualdadObservacional{it}{it'}{linkLinkIT}{$categorias(it) \igobs categorias(it') \land $ \\ $  accesosXDia(it) \igobs accesosXDia(it') \land $ \\ $ linksXCategoria(it) \igobs linksXCategoria(it')$ \\ $ fechaAct(it) \igobs fechaAct(it')$}
 \tadAlinearFunciones{categorias}{linkLinkIT}
 \tadAlinearFunciones{accesosXDia}{linkLinkIT/it, link/l, fecha/f}
 \tadAlinearFunciones{linksXCategoria}{linkLinkIT/it, categoria/c}{}{}
@@ -42,13 +42,13 @@
 \tadObservadores
 
 \tadOperacion{categorias}{linkLinkIT}{arbolDeCategorias}{}
-\tadOperacion{accesosXDia}{linkLinkIT/it, link/l, fecha/f}{secu(nat)}{$l \in LinkLinkIT(it)$ $ \&\& $ $fechaAct(it) - f \leq 2$}
+\tadOperacion{accesosXDia}{linkLinkIT/it, link/l, fecha/f}{nat}{$l \in LinkLinkIT(it)$ $ \&\& $ $fechaAct(it) - f \leq 2$}
 \tadOperacion{linksXCategoria}{linkLinkIT/it, categoria/c}{conj(link)}{$c \in dameTodos(categorias(it)$}
 \tadOperacion{fechaAct}{linkLinkIT/it}{fecha}{}
 
 \tadGeneradores
 
-\tadOperacion{iniciar}{arbolCategorias}{linkLinkIT}{}
+\tadOperacion{iniciar}{arbolCategorias}{linkLinkIT}{$\neg \emptyset ?DameTodos(a))$}
 \tadOperacion{agregarLink}{linkLinkIT/it, link/l, categoria/c}{linkLinkIT}{$\neg( l \in links(it))$ $ \&\&    $ $ c \in dameTodos(categorias(it))$}
 \tadOperacion{accederLink}{linkLinkIT/it, link/l, fecha/f}{linkLinkIT}{$l \in links(it)$ $ \&\&    $ $ f >= ultimoAcceso(it)$}
 
@@ -58,7 +58,10 @@
 %\tadOperacion{$\#$accesos3Dias}{linkLinkIT/it, link/l}{nat}{$l \in links(it)$} %//Dado un link existente devuelve la cantidad de accesos en los ultimos 3 dias
 \tadOperacion{$\#$LinksXCategoria}{linkLinkIT/it, categoria/c}{nat}{$c \in dameTodos(categorias(it))$} %Devuelve la cantidad de links que hay en la familia de la categoria dada
 %\tadOperacion{ultimoAcceso}{linkLinkIT}{fecha}{} %Devuelve la ultima fecha en la que se realizo un acceso
-\tadOperacion{accesosUlt3Dias}{linkLinkIT/it, link/l}{nat}{}
+\tadOperacion{accesosUlt3Dias}{linkLinkIT, link}{nat}{}
+\tadOperacion{todosLosLinks}{conj(categoria),linkLinkIT}{conj(link)}{}
+\tadOperacion{actualizandoAccesos}{fecha,linkLinkIT,link}{nat}{}
+
 
 
 \tadAxiomas[\paratodo{linklinkIT}{it, it'} \\ \paratodo{arbolDeCategorias}{a} \\ \paratodo{categoria}{c} \\ \paratodo{link}{l} \\ \paratodo{fecha}{f}]
@@ -138,9 +141,10 @@ $\\$
 
 
 \tadOperacion{dameTodos}{arbolDeCategorias}{conj(categoria)}{} %Conjunto de todas las categorías del arbol
-\tadOperacion{losFamiliares}{categoria/c, arbolDeCategorias/ac}{conj(categoria)}{$c \in dameTodos(ac)$} %Dada una categoria en particular de un arbol, devuelve un conjunto con ella y todas las categorias que son familia
+\tadOperacion{losFamiliares}{categoria/c, arbolDeCategorias/a}{conj(categoria)}{$c \in dameTodos(ac)$} %Dada una categoria en particular de un arbol, devuelve un conjunto con ella y todas las categorias que son familia
 \tadOperacion{estaEnAlguno}{arbolDeCategorias,categoria}{bool}{} %Dado un conjunto de arboles, se fija si la categoria dada esta en alguno de esos
-
+\tadOperacion{losParientes}{categoria,conj(arbolDeCategorias)}{conj(categoria)}{}
+\tadOperacion{todosLosDeAbajo}{arbolDeCategorias}{conj(categoria)}{}
 
 \tadAxiomas[\paratodo{arbolDeCategorias}{a} \\ \paratodo{categoria}{c} \\]
 \tadAlinearAxiomas{raiz(AC(a,c))}
@@ -150,11 +154,11 @@ $\\$
 \tadAxioma{hijos(AC(a,c))}{a}
 
 \tadAxioma{estaEnAlguno(AC(a,c),c')}{\IF\ c = c' || c' $\in$ a THEN true ELSE false FI}
-\tadAxioma{losFamiliares(c,ac)}{\IF\ c = raiz(ac) THEN dameTodos(ac) ELSE losParientes(c,hijos(ac)) FI}
-\tadAxioma{losParientes(c,conj)}{\IF\ $\emptyset$(conj) THEN $\emptyset$ ELSE {\IF\ estaEnAlguno(dameUno(conj),c) THEN losFamiliares(c,dameUno(conj)) ELSE losParientes(c,sinUno(conj)) FI} FI}
+\tadAxioma{losFamiliares(c,a)}{\IF\ c = raiz(a) THEN dameTodos(a) ELSE losParientes(c,hijos(a)) FI}
+\tadAxioma{losParientes(c,conj)}{\IF\ $\emptyset$?(conj) THEN $\emptyset$ ELSE {\IF\ estaEnAlguno(dameUno(conj),c) THEN losFamiliares(c,dameUno(conj)) ELSE losParientes(c,sinUno(conj)) FI} FI}
 \tadAxioma{dameTodos(a)}{Ag(raiz(ac),todosLosDeAbajo(hijos(a)))}
-\tadAxioma{todosLosDeAbajo(ac)}{\IF\ $\emptyset$(ac) THEN $\emptyset$ ELSE dameTodos(dameUno(ac)) $\cup$ todosLosDeAbajo(sinUno(ac)) FI}
-\tadAxioma{estaEnAlguno(ac,c)}{\IF\ c $\in$ dameTodos(ac) THEN true ELSE false FI}
+\tadAxioma{todosLosDeAbajo(a)}{\IF\ $\emptyset$?(a) THEN $\emptyset$ ELSE dameTodos(dameUno(a)) $\cup$ todosLosDeAbajo(sinUno(a)) FI}
+\tadAxioma{estaEnAlguno(a,c)}{\IF\ c $\in$ dameTodos(a) THEN true ELSE false FI}
 $\\$
 
 \end{tad}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.18)  4 SEP 2012 20:09
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.18)  6 SEP 2012 20:41
 entering extended mode
  %&-line parsing enabled.
 **tp.tex
@@ -483,34 +483,33 @@ File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 79--80
+Underfull \hbox (badness 10000) in paragraph at lines 62--62
+[]\T1/cmr/m/n/10 conj(categoria) $\OMS/cmsy/m/n/10 ^^B$ \T1/cmr/m/n/10 lin-
+ []
+
+
+Overfull \hbox (6.82959pt too wide) in paragraph at lines 63--63
+[]\T1/cmr/m/n/10 actualizandoAccesos 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--84
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 87--88
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 91--92
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 97--97
-[]\T1/cmr/m/n/10 linksXCategoria(it,dameUno(c)) $\OMS/cmsy/m/n/10 [$ \T1/cmr/m/
-n/10 linksX-Cat-e-go-
  []
 
 
@@ -519,28 +518,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 98--99
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--105
+Underfull \hbox (badness 10000) in paragraph at lines 100--100
+[]\T1/cmr/m/n/10 linksXCategoria(it,dameUno(c)) $\OMS/cmsy/m/n/10 [$ \T1/cmr/m/
+n/10 linksX-Cat-e-go-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--107
+Underfull \hbox (badness 10000) in paragraph at lines 103--108
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
 
  []
 
 [3]
-Underfull \hbox (badness 4303) in paragraph at lines 135--135
+Underfull \hbox (badness 4303) in paragraph at lines 138--138
 []\T1/cmr/m/n/10 conj(arbolDeCategorias) $\OML/cmm/m/it/10 a[]$ $\OMS/cmsy/m/n/
 10 ^^B$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--145
+Underfull \hbox (badness 10000) in paragraph at lines 146--146
+[]\T1/cmr/m/n/10 categoria $\OMS/cmsy/m/n/10 ^^B$
+ []
+
+
+Overfull \hbox (16.57927pt too wide) in paragraph at lines 147--147
+[]\T1/cmr/m/n/10 todosLosDeAbajo 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--159
+Underfull \hbox (badness 10000) in paragraph at lines 162--163
 
  []
 
@@ -548,11 +568,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 158--159
 Here is how much of TeX's memory you used:
  6827 strings out of 495061
  94170 string characters out of 1182621
- 187195 words of memory out of 3000000
+ 188195 words of memory out of 3000000
  9849 multiletter control sequences out of 15000+50000
  14258 words of font info for 37 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,16n,43p,313b,420s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,16n,43p,369b,420s stack positions out of 5000i,500n,10000p,200000b,50000s
  </home/guido/.texmf-var/fon
 ts/pk/ljfour/jknappen/ec/eccc1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfou
 r/jknappen/ec/ecxc1440.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/
@@ -566,7 +586,7 @@ fonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
 r10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr
 /share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texm
 f-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on tp.pdf (5 pages, 149407 bytes).
+Output written on tp.pdf (5 pages, 150300 bytes).
 PDF statistics:
  325 PDF objects out of 1000 (max. 8388607)
  9 named destinations out of 1000 (max. 500000)
