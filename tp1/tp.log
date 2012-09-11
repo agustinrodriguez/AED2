@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.18)  6 SEP 2012 20:41
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.18)  10 SEP 2012 23:17
 entering extended mode
  %&-line parsing enabled.
 **tp.tex
@@ -483,53 +483,75 @@ File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 62--62
-[]\T1/cmr/m/n/10 conj(categoria) $\OMS/cmsy/m/n/10 ^^B$ \T1/cmr/m/n/10 lin-
+Underfull \hbox (badness 10000) in paragraph at lines 60--60
+[]\T1/cmr/m/n/10 linkLinkIT $\OML/cmm/m/it/10 it[]$ $\OMS/cmsy/m/n/10 ^^B$
  []
 
 
-Overfull \hbox (6.82959pt too wide) in paragraph at lines 63--63
+Underfull \hbox (badness 3396) in paragraph at lines 64--64
+[]\T1/cmr/m/n/10 conj(categoria) $\OML/cmm/m/it/10 cc[]$ $\OMS/cmsy/m/n/10 ^^B$
+ \T1/cmr/m/n/10 lin-
+ []
+
+
+Overfull \hbox (3.88586pt too wide) in paragraph at lines 65--65
 []\T1/cmr/m/n/10 actualizandoAccesos 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 82--83
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--87
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 90--91
+Underfull \hbox (badness 10000) in paragraph at lines 92--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--95
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--100
+Underfull \hbox (badness 10000) in paragraph at lines 102--102
 []\T1/cmr/m/n/10 linksXCategoria(it,dameUno(c)) $\OMS/cmsy/m/n/10 [$ \T1/cmr/m/
-n/10 linksX-Cat-e-go-
+n/10 to-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--102
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--108
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
+
+ []
+
+
+Overfull \hbox (38.67897pt too wide) in paragraph at lines 106--106
+[]$\OT1/cmr/m/n/10 #$\T1/cmr/m/n/10 (linksXCategoria(it,dameUno(cc)))+$\OT1/cmr
+/m/n/10 #$\T1/cmr/m/n/10 linksDelArbol(it,sinUno(cc)) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
 
  []
 
@@ -539,28 +561,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 109--110
  []
 
 [3]
-Underfull \hbox (badness 4303) in paragraph at lines 138--138
-[]\T1/cmr/m/n/10 conj(arbolDeCategorias) $\OML/cmm/m/it/10 a[]$ $\OMS/cmsy/m/n/
-10 ^^B$
+Overfull \hbox (22.49449pt too wide) in paragraph at lines 139--139
+[]\T1/cmr/m/n/10 conj(arbolDeCategorias)
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 146--146
-[]\T1/cmr/m/n/10 categoria $\OMS/cmsy/m/n/10 ^^B$
+[]\T1/cmr/m/n/10 arbolDeCategorias
  []
 
 
-Overfull \hbox (16.57927pt too wide) in paragraph at lines 147--147
-[]\T1/cmr/m/n/10 todosLosDeAbajo 
+Underfull \hbox (badness 10000) in paragraph at lines 147--147
+[]\T1/cmr/m/n/10 categoria $\OML/cmm/m/it/10 c[]$ $\OMS/cmsy/m/n/10 ^^B$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--149
+Overfull \hbox (22.49449pt too wide) in paragraph at lines 147--147
+\T1/cmr/m/n/10 conj(arbolDeCategorias)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--150
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--163
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
 
  []
 
@@ -568,7 +594,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 162--163
 Here is how much of TeX's memory you used:
  6827 strings out of 495061
  94170 string characters out of 1182621
- 188195 words of memory out of 3000000
+ 189195 words of memory out of 3000000
  9849 multiletter control sequences out of 15000+50000
  14258 words of font info for 37 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
@@ -586,7 +612,7 @@ fonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
 r10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr
 /share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texm
 f-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on tp.pdf (5 pages, 150300 bytes).
+Output written on tp.pdf (5 pages, 150697 bytes).
 PDF statistics:
  325 PDF objects out of 1000 (max. 8388607)
  9 named destinations out of 1000 (max. 500000)
