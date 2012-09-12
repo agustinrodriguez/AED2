@@ -126,7 +126,9 @@ $\\$
 \tadAlinearFunciones{dameTodos}{arbolDeCategorias}{}{}
 \tadAlinearFunciones{losFamiliares}{categoria/c, arbolDeCategorias/a}{}{}
 \tadAlinearFunciones{estaEnAlguno}{arbolDeCategorias,categoria}{}{}
+\tadAlinearFunciones{losParientes}{categoria/c,conj(arbolDeCategorias)/ca}{}{}
 \tadAlinearFunciones{todosLosDeAbajo}{arbolDeCategorias}{}{}
+
 
 \tadObservadores
 
@@ -151,6 +153,7 @@ $\\$
 \tadAlinearAxiomas{raiz(AC(ca,c))}
 \tadAlinearAxiomas{hijos(AC(ca,c))}
 \tadAlinearAxiomas{estaEnAlguno(a,c)}
+\tadAlinearAxiomas{todosLosDeAbajo(a)}
 \tadAxioma{raiz(AC(ca,c))}{c} 
 \tadAxioma{hijos(AC(ca,c))}{ca}
 

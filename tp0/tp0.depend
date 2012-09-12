@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1347475446 source:/home/guido/AED2/tp0/main.cpp
+	<iostream>
+
+1347479172 source:/home/guido/AED2/tp0/tests.cpp
+	"anillo.h"
+	"aed2_tests.h"
+
+1347493122 /home/guido/AED2/tp0/anillo.h
+	<iostream>
+	<cassert>
+
+1347475446 /home/guido/AED2/tp0/aed2_tests.h
+	<iostream>
+	<sstream>
+

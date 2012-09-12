@@ -34,7 +34,6 @@
 		</Compiler>
 		<Unit filename="aed2_tests.h" />
 		<Unit filename="anillo.h" />
-		<Unit filename="main.cpp" />
 		<Unit filename="tests.cpp" />
 		<Extensions>
 			<code_completion />

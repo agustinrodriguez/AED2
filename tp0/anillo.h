@@ -36,6 +36,7 @@ public:
 	/*
 	 * Dice si el anillo es vac’o.
 	 */
+
 	bool esVacio() const;
 
 	/*
@@ -59,7 +60,7 @@ public:
 	 * PRE: no es vac’o el anillo.
 	 */
 	const T& siguiente();
-	
+
 	/*
 	 * Agrega el elemento al anillo. Recordar que el œltimo agregado es el
 	 * actual
@@ -88,7 +89,7 @@ public:
 	 *
 	 * PRE: hayMarcado
 	 */
-	const T& marcado() const;
+    const T& marcado() const;
 
 	/*
 	 * Vuelve hacia atr‡s un elemento.
@@ -115,8 +116,18 @@ private:
 
 	//Aca va la implementacion del nodo.
 	struct Nodo {
+	    Nodo * siguiente;
+	    Nodo * anterior;
+	    T * valor;
+        Nodo() {
+            valor = NULL;
+            siguiente = NULL;
+            anterior = NULL;
+        };
 	};
 
+	int _longitud;
+    Nodo * _actual;
 };
 
 template<class T>
@@ -125,6 +136,128 @@ ostream& operator<<(ostream& out, const Anillo<T>& a) {
 }
 
 // implementaci—n a hacer por los alumnos
+template<class T>
+Anillo<T>::Anillo()
+{
+    _longitud = 0;
+    _actual = NULL;
+}
+template<class T>
+Anillo<T>::~Anillo()
+{
+
+}
+
+template<class T>
+bool Anillo<T>::esVacio() const
+{
+    return _longitud == 0;
+}
+
+template<class T>
+int Anillo<T>::tamanio() const
+{
+    return _longitud;
+}
+template<class T>
+Anillo<T>::Anillo(const Anillo<T>& a)
+{
+
+}
+
+template<class T>
+const T& Anillo<T>::actual() const
+{
+    return _actual;
+}
+
+template<class T>
+const T& Anillo<T>::siguiente()
+{
+    const T resultado = (*(*_actual).valor);
+    _actual = (*_actual).siguiente;
+
+    return resultado;
+}
+
+template<class T>
+void Anillo<T>::agregar(const T& e)
+{
+    Nodo * nuevoNodo = new Nodo;
+    (*nuevoNodo).valor = new T(e);
+    if (esVacio()) {
+        (*nuevoNodo).siguiente = nuevoNodo;
+        (*nuevoNodo).anterior = nuevoNodo;
+    } else {
+        (*nuevoNodo).siguiente = (*_actual).siguiente;
+        (*nuevoNodo).anterior = _actual;
+        (*_actual).siguiente = nuevoNodo;
+    }
+
+    _actual = nuevoNodo;
+    _longitud++;
+}
+
+template<class T>
+void Anillo<T>::eliminar(const T& e)
+{
+    if (!esVacio()) {
+        bool founded = false;
+        int i = 0;
+        Nodo * recorroActual = _actual;
+        while (i < _longitud && !founded) {
+            if ( (*(*recorroActual).valor) == e ) {
+                (*(*recorroActual).anterior).siguiente = (*recorroActual).siguiente;
+                (*(*recorroActual).siguiente).anterior = (*recorroActual).anterior;
+                founded = true;
+                _longitud--;
+                if (esVacio()) {
+                    delete _actual;
+                    _actual = NULL;
+                } else {
+                    Nodo * nodoTemp = recorroActual;
+                    if (recorroActual == _actual) {
+                        _actual = (*_actual).siguiente;
+                    }
+                    delete nodoTemp;
+                }
+            }
+            recorroActual = (*recorroActual).siguiente;
+            i++;
+        }
+    }
+
+}
+
+template<class T>
+void Anillo<T>::marcar()
+{
+
+}
+
+template<class T>
+bool Anillo<T>::hayMarcado() const
+{
+    return false;
+}
+
+template<class T>
+const T& Anillo<T>::marcado() const
+{
+
+}
+
+template<class T>
+void Anillo<T>::retroceder()
+{
+
+}
+
+template<class T>
+ostream& Anillo<T>::mostrarAnillo(ostream&) const
+{
+
+}
 
 
 #endif //ANILLO_H_
