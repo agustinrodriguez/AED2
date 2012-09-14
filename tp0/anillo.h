@@ -250,12 +250,29 @@ const T& Anillo<T>::marcado() const
 template<class T>
 void Anillo<T>::retroceder()
 {
+    if(!esVacio()){
+    _actual = (*_actual).anterior;
+    }
 
 }
 
 template<class T>
 ostream& Anillo<T>::mostrarAnillo(ostream&) const
 {
+    os << "[";
+    Nodo * loQueSeMuestra = _actual;
+    int i = 0;
+    while (i<_longitud)
+    {
+        os << (*loQueSeMuestra).valor;
+        loQueSeMuestra = (*loQueSeMuestra).siguiente;
+        i++;
+        if(i<_longitud)
+        {
+            os << ",";
+        }
+    }
+    os << "]";
 
 }
 

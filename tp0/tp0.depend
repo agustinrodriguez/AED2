@@ -2,12 +2,13 @@
 1347475446 source:/home/guido/AED2/tp0/main.cpp
 	<iostream>
 
-1347479172 source:/home/guido/AED2/tp0/tests.cpp
+1347493450 source:/home/guido/AED2/tp0/tests.cpp
 	"anillo.h"
 	"aed2_tests.h"
 
-1347493122 /home/guido/AED2/tp0/anillo.h
+1347592120 /home/guido/AED2/tp0/anillo.h
 	<iostream>
+	<ostream>
 	<cassert>
 
 1347475446 /home/guido/AED2/tp0/aed2_tests.h
