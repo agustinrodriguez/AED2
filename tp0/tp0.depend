@@ -6,9 +6,8 @@
 	"anillo.h"
 	"aed2_tests.h"
 
-1347592120 /home/guido/AED2/tp0/anillo.h
+1347660419 /home/guido/AED2/tp0/anillo.h
 	<iostream>
-	<ostream>
 	<cassert>
 
 1347475446 /home/guido/AED2/tp0/aed2_tests.h

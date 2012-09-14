@@ -257,7 +257,7 @@ void Anillo<T>::retroceder()
 }
 
 template<class T>
-ostream& Anillo<T>::mostrarAnillo(ostream&) const
+ostream& Anillo<T>::mostrarAnillo(ostream& os) const
 {
     os << "[";
     Nodo * loQueSeMuestra = _actual;
