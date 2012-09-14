@@ -15,11 +15,11 @@
 	<iostream>
 	<sstream>
 
-1347661877 source:/home/agustin/facu/aed2/tp0/tests.cpp
+1347665678 source:/home/agustin/facu/aed2/tp0/tests.cpp
 	"anillo.h"
 	"aed2_tests.h"
 
-1347663780 /home/agustin/facu/aed2/tp0/anillo.h
+1347665773 /home/agustin/facu/aed2/tp0/anillo.h
 	<iostream>
 	<cassert>
 
