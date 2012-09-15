@@ -128,6 +128,7 @@ private:
 
 	int _longitud;
     Nodo * _actual;
+    Nodo * _marcado;
 };
 
 template<class T>
@@ -191,6 +192,7 @@ void Anillo<T>::agregar(const T& e)
     } else {
         (*nuevoNodo).siguiente = (*_actual).siguiente;
         (*nuevoNodo).anterior = _actual;
+        (*(*_actual).siguiente).anterior = nuevoNodo;
         (*_actual).siguiente = nuevoNodo;
     }
 
@@ -205,78 +207,54 @@ void Anillo<T>::eliminar(const T& e)
         bool founded = false;
         int i = 0;
         Nodo * recorroActual = _actual;
-        cout << "\n" << *this << "\n";
+
         while (i < _longitud && !founded) {
+
             if ( *((*recorroActual).valor) == e ) {
                 founded = true;
-                cout << "\n" << "encontro, i=" << i << "valor=" << *((*recorroActual).valor) << "\n";
-                //(*(*recorroActual).anterior).siguiente = (*recorroActual).anterior;
-                (*(*recorroActual).siguiente).anterior = (*recorroActual).siguiente;
-
-                cout << "\n" << *this << "\n";
-
+                (*(*recorroActual).anterior).siguiente = (*recorroActual).siguiente;
+                (*(*recorroActual).siguiente).anterior = (*recorroActual).anterior;
+                _longitud--;
                 if (esVacio()) {
                     delete _actual;
                     _actual = NULL;
                 } else {
-                    //Nodo * nodoTemp = recorroActual;
+                    Nodo * nodoTemp = recorroActual;
                     if (recorroActual == _actual) {
                         _actual = (*_actual).siguiente;
                     }
-            //        delete nodoTemp;
+                    delete nodoTemp;
                 }
-                _longitud--;
+
             }
             recorroActual = (*recorroActual).siguiente;
             i++;
         }
     }
 }
-/*
-    if(!esVacio()){
-        bool firstElement = true; //sirve para checker si tengo que borrar o cambiar el puntero _actual
-        bool found = false;
-        int x = 0;
-        Nodo * nodoActual = _actual;
-        while(x<_longitud && !found){
-            if(e == (*(*nodoActual).valor)){
-                found = true;
-                _longitud--;
-                (*(*nodoActual).anterior).siguiente = (*nodoActual).siguiente;
-                (*(*nodoActual).siguiente).anterior = (*nodoActual).anterior;
-                cout << "\n" << *this << "\n";
 
-                if (esVacio()){ //si habia un solo elemento, borra el puntero
-                    delete _actual;
-                    _actual = NULL;
-                }else{//si habia mas de un elemento, pero es la primer pasada, borra first element
-                    Nodo * temp = nodoActual;
-                    if (firstElement){ //si es el primero, mover el punero y borrarlos
-                        temp = (_actual);
-                        _actual = (*_actual).siguiente;
-                    }
-                    delete (temp);
-                }
-
-
-            }
-            firstElement = false;
-            nodoActual =  (*nodoActual).siguiente;
-            x++;
-        }
-    }
-}
-*/
 template<class T>
 void Anillo<T>::marcar()
 {
+    _marcado = _actual;
+    (*_marcado).anterior = (*_marcado).anterior;
+    (*_marcado).siguiente = (*_marcado).siguiente;
 
 }
 
 template<class T>
 bool Anillo<T>::hayMarcado() const
 {
-    return false;
+    int i=0;
+    bool encontrado = false;
+    Nodo * buscandoElMarcado = _actual;
+    while(i < _longitud && !encontrado ){
+        if( (*buscandoElMarcado).valor == (*_marcado).valor){
+            encontrado = true;
+            }
+        i++;
+        }
+    return encontrado;
 }
 
 template<class T>

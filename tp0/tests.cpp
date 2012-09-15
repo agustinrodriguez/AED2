@@ -55,11 +55,11 @@ void EliminarNodo(){
     a->eliminar(42);
     ASSERT_EQ(to_s(a),"[100,32]");
 
-    //a->eliminar(100);
-    //ASSERT_EQ(to_s(a),"[32]");
+    a->eliminar(100);
+    ASSERT_EQ(to_s(a),"[32]");
 
-    //a->eliminar(32);
-    //ASSERT_EQ(to_s(a),"[]");
+    a->eliminar(32);
+    ASSERT_EQ(to_s(a),"[]");
 
     delete a;
 }
