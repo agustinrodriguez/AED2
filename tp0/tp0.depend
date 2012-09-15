@@ -2,15 +2,27 @@
 1347475446 source:/home/guido/AED2/tp0/main.cpp
 	<iostream>
 
-1347493450 source:/home/guido/AED2/tp0/tests.cpp
+1347664144 source:/home/guido/AED2/tp0/tests.cpp
 	"anillo.h"
 	"aed2_tests.h"
 
-1347660419 /home/guido/AED2/tp0/anillo.h
+1347664615 /home/guido/AED2/tp0/anillo.h
 	<iostream>
 	<cassert>
 
 1347475446 /home/guido/AED2/tp0/aed2_tests.h
+	<iostream>
+	<sstream>
+
+1347661877 source:/home/agustin/facu/aed2/tp0/tests.cpp
+	"anillo.h"
+	"aed2_tests.h"
+
+1347663780 /home/agustin/facu/aed2/tp0/anillo.h
+	<iostream>
+	<cassert>
+
+1347649360 /home/agustin/facu/aed2/tp0/aed2_tests.h
 	<iostream>
 	<sstream>
 
