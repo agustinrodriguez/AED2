@@ -77,7 +77,6 @@ void AnilloSacaNoSiguiente() {
         delete a;
 }
 
-//estos no dan
 void UltimoEnAgregarEsElSiguiente() {
         Anillo<int>* a = new Anillo<int>();
         a->agregar(42);
@@ -133,24 +132,23 @@ void RetrocederAnillo(){
     Anillo<int>* a = new Anillo<int>();
 
 	a->agregar(42);
+	a->retroceder();
+	ASSERT_EQ(to_s(a),"[42]");
 
-	//a->retroceder();
-//	ASSERT_EQ(to_s(a),"[42]");
+	a->agregar(32);
+    a->agregar(100);
+    ASSERT_EQ(to_s(a),"[100,32,42]");
 
-//	a->agregar(32);
- //   a->agregar(100);
-//    ASSERT_EQ(to_s(a),"[100,32,42]");
-
-//    a->marcar();
-//    a->siguiente();
-//    ASSERT_EQ(to_s(a),"[32,42,100*]");
-//    a->retroceder();
-//    ASSERT_EQ(to_s(a),"[100*,32,42]");
+    a->marcar();
+    a->siguiente();
+    ASSERT_EQ(to_s(a),"[32,42,100*]");
+    a->retroceder();
+    ASSERT_EQ(to_s(a),"[100*,32,42]");
     delete a;
 }
 
 
-void ClonarConAnterior(){
+void ClonarConMarcado(){
     Anillo<int>* a = new Anillo<int>();
 	a->agregar(42);
 	a->agregar(32);
@@ -165,7 +163,7 @@ void ClonarConAnterior(){
     delete a2;
 }
 
-/*void AnillosIguales(){
+void AnillosIguales(){
     Anillo<int>* a = new Anillo<int>();
     Anillo<int>* b = new Anillo<int>();
     ASSERT(*a==*b);
@@ -180,7 +178,7 @@ void ClonarConAnterior(){
     ASSERT(*a==*b);
     delete a;
     delete b;
-}*/
+}
 
 void AnilloPuedeRotarVariasVeces() {
     Anillo<int>* a = new Anillo<int>();
@@ -212,11 +210,11 @@ int main(void) {
     RUN_TEST(AnilloSacaNoSiguiente);
     RUN_TEST(MostrarAnillo);
     RUN_TEST(AnillosClonadoPreservaMarcado);
-    //RUN_TEST(RetrocederUnaVezRepite);
+    RUN_TEST(RetrocederUnaVezRepite);
 
-    //RUN_TEST(RetrocederAnillo);
-    RUN_TEST(ClonarConAnterior);
-//    RUN_TEST(AnillosIguales);
+    RUN_TEST(RetrocederAnillo);
+    RUN_TEST(ClonarConMarcado);
+    RUN_TEST(AnillosIguales);
     RUN_TEST(AnilloPuedeRotarVariasVeces);
 
 

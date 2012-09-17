@@ -142,7 +142,9 @@ Anillo<T>::Anillo()
 {
     _longitud = 0;
     _actual = NULL;
+    _marcado = NULL;
 }
+
 template<class T>
 Anillo<T>::~Anillo()
 {
@@ -159,6 +161,24 @@ Anillo<T>::~Anillo()
         }
         i++;
     }
+}
+
+template<class T>
+bool Anillo<T>::operator==(const Anillo<T>& anillo) const
+{
+    Nodo * thisAnilloNodo = _actual;
+    Nodo * otroAnilloNodo = anillo._actual;
+    int i = 0;
+    bool iguales = tamanio() == anillo.tamanio();
+
+    while (i<_longitud && iguales) {
+        iguales = *((*thisAnilloNodo).valor) == *((*otroAnilloNodo).valor);
+        thisAnilloNodo = (*thisAnilloNodo).siguiente;
+        otroAnilloNodo = (*otroAnilloNodo).siguiente;
+        i++;
+    }
+
+    return iguales;
 }
 
 template<class T>
@@ -245,7 +265,7 @@ void Anillo<T>::eliminar(const T& e)
                     _actual = NULL;
                 } else {
                     Nodo * nodoTemp = recorroActual;
-                    if (recorroActual == _actual) {
+                    if ((*recorroActual).valor == (*_actual).valor) {
                         _actual = (*_actual).siguiente;
                     }
                     delete nodoTemp;
