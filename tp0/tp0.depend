@@ -26,15 +26,15 @@
 	<iostream>
 	<sstream>
 
-1347902291 source:/home/agustin/stuffs/Algo2/aed2/tp0/tests.cpp
+1347988774 source:/home/agustin/stuffs/Algo2/aed2/tp0/tests.cpp
 	"anillo.h"
 	"aed2_tests.h"
 
-1347902466 /home/agustin/stuffs/Algo2/aed2/tp0/anillo.h
+1347988715 /home/agustin/stuffs/Algo2/aed2/tp0/anillo.h
 	<iostream>
 	<cassert>
 
-1347900565 /home/agustin/stuffs/Algo2/aed2/tp0/aed2_tests.h
+1347987032 /home/agustin/stuffs/Algo2/aed2/tp0/aed2_tests.h
 	<iostream>
 	<sstream>
 

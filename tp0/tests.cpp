@@ -1,6 +1,5 @@
 #include "anillo.h"
 #include "aed2_tests.h"
-//#include "anillo.cpp"
 
 template<typename T>
 string to_s(const Anillo<T>* a) {
@@ -216,8 +215,6 @@ int main(void) {
     RUN_TEST(ClonarConMarcado);
     RUN_TEST(AnillosIguales);
     RUN_TEST(AnilloPuedeRotarVariasVeces);
-
-
 
 	return 0;
 }

@@ -151,7 +151,7 @@ Anillo<T>::Anillo()
 template<class T>
 Anillo<T>::~Anillo()
 {
-    if(_marcado != NULL) delete _marcado;
+    _marcado = NULL;
     int i = 0;
     while(i<_longitud){
         if (_longitud-1 == i){
@@ -217,7 +217,7 @@ Anillo<T>::Anillo(const Anillo<T>& anillo)
 template<class T>
 const T& Anillo<T>::actual() const
 {
-    return _actual;
+    return *((*_actual).valor);
 }
 
 template<class T>
@@ -270,6 +270,9 @@ void Anillo<T>::eliminar(const T& e)
                     if ((*recorroActual).valor == (*_actual).valor) {
                         _actual = (*_actual).siguiente;
                     }
+                    if ((*recorroActual).valor == _marcado) {
+                        _marcado = NULL;
+                    }
                     delete nodoTemp;
                 }
 
@@ -284,7 +287,7 @@ void Anillo<T>::eliminar(const T& e)
 template<class T>
 void Anillo<T>::marcar()
 {
-    _marcado = (*_actual).valor;
+    if (!esVacio()) _marcado = (*_actual).valor;
 }
 
 template<class T>
