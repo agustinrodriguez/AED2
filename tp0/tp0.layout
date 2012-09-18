@@ -2,9 +2,9 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="anillo.h" open="1" top="1" tabpos="2">
-		<Cursor position="3840" topLine="277" />
+		<Cursor position="2661" topLine="117" />
 	</File>
 	<File name="tests.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="1048" topLine="39" />
+		<Cursor position="1947" topLine="201" />
 	</File>
 </CodeBlocks_layout_file>

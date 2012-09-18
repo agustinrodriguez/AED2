@@ -124,6 +124,9 @@ private:
             siguiente = NULL;
             anterior = NULL;
         };
+        ~Nodo() {
+            delete valor;
+        };
 	};
 
 	int _longitud;
@@ -230,7 +233,7 @@ template<class T>
 void Anillo<T>::agregar(const T& e)
 {
     Nodo * nuevoNodo = new Nodo;
-    (*nuevoNodo).valor = new T(e);
+    (*nuevoNodo).valor =  new T(e);
     if (esVacio()) {
         (*nuevoNodo).siguiente = nuevoNodo;
         (*nuevoNodo).anterior = nuevoNodo;
@@ -254,7 +257,6 @@ void Anillo<T>::eliminar(const T& e)
         Nodo * recorroActual = _actual;
 
         while (i < _longitud && !founded) {
-
             if ( *((*recorroActual).valor) == e ) {
                 founded = true;
                 (*(*recorroActual).anterior).siguiente = (*recorroActual).siguiente;
@@ -271,8 +273,9 @@ void Anillo<T>::eliminar(const T& e)
                     delete nodoTemp;
                 }
 
+            } else {
+                recorroActual = (*recorroActual).siguiente;
             }
-            recorroActual = (*recorroActual).siguiente;
             i++;
         }
     }
@@ -282,25 +285,11 @@ template<class T>
 void Anillo<T>::marcar()
 {
     _marcado = (*_actual).valor;
-    //(*_marcado).anterior = (*_marcado).anterior;
-    //(*_marcado).siguiente = (*_marcado).siguiente;
-
 }
 
 template<class T>
 bool Anillo<T>::hayMarcado() const
 {
-    /*int i=0;
-    bool encontrado = false;
-    Nodo * buscandoElMarcado = _actual;
-    while(i < _longitud && !encontrado ){
-        if( (*buscandoElMarcado).valor == (*_marcado).valor){
-            encontrado = true;
-            }
-        i++;
-        }
-    return encontrado;
-    */
     return _marcado != NULL;
 }
 
