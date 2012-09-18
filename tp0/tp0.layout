@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="anillo.h" open="1" top="1" tabpos="2">
-		<Cursor position="2661" topLine="117" />
+	<File name="anillo.h" open="1" top="0" tabpos="2">
+		<Cursor position="3312" topLine="305" />
 	</File>
-	<File name="tests.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="1947" topLine="201" />
+	<File name="tests.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="1449" topLine="57" />
 	</File>
 </CodeBlocks_layout_file>

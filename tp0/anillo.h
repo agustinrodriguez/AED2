@@ -223,10 +223,9 @@ const T& Anillo<T>::actual() const
 template<class T>
 const T& Anillo<T>::siguiente()
 {
-    const T &resultado = (*(*_actual).valor);
     _actual = (*_actual).siguiente;
 
-    return resultado;
+    return *((*_actual).valor);
 }
 
 template<class T>

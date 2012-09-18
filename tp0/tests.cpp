@@ -76,12 +76,12 @@ void AnilloSacaNoSiguiente() {
         delete a;
 }
 
-void UltimoEnAgregarEsElSiguiente() {
+void UltimoEnAgregarEsElActual() {
         Anillo<int>* a = new Anillo<int>();
         a->agregar(42);
-        ASSERT_EQ(a->siguiente(), 42);
+        ASSERT_EQ(a->actual(), 42);
         a->agregar(20);
-        ASSERT_EQ(a->siguiente(), 20);
+        ASSERT_EQ(a->actual(), 20);
         delete a;
 }
 
@@ -215,7 +215,7 @@ int main(void) {
 	RUN_TEST(AnilloUnitarioDaSiguiente);
 	RUN_TEST(EliminarNodo);
     RUN_TEST(MostrarAnilloVacio);
-    RUN_TEST(UltimoEnAgregarEsElSiguiente);
+    RUN_TEST(UltimoEnAgregarEsElActual);
     RUN_TEST(AnilloSacaNoSiguiente);
     RUN_TEST(MostrarAnillo);
     RUN_TEST(AnillosClonadoPreservaMarcado);
