@@ -197,7 +197,17 @@ void AnilloPuedeRotarVariasVeces() {
     delete a;
 }
 
-
+//test pasado por mail
+void MasNuevosQuedanPrimeros() {
+   Anillo<int>* a = new Anillo<int>();
+   a->agregar(42);
+   a->agregar(20);
+   a->agregar(10);
+   ASSERT_EQ(a->actual(), 10);
+   ASSERT_EQ(a->siguiente(), 20);
+   ASSERT_EQ(a->siguiente(), 42);
+   delete a;
+}
 
 int main(void) {
 	RUN_TEST(AnilloNuevoEsVacio);
@@ -215,7 +225,7 @@ int main(void) {
     RUN_TEST(ClonarConMarcado);
     RUN_TEST(AnillosIguales);
     RUN_TEST(AnilloPuedeRotarVariasVeces);
-
+    RUN_TEST(MasNuevosQuedanPrimeros);
 	return 0;
 }
 
