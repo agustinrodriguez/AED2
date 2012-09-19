@@ -176,6 +176,10 @@ bool Anillo<T>::operator==(const Anillo<T>& anillo) const
 
     while (i<_longitud && iguales) {
         iguales = *((*thisAnilloNodo).valor) == *((*otroAnilloNodo).valor);
+        if (hayMarcado() && thisAnilloNodo->valor == _marcado) {
+            iguales = iguales && anillo.hayMarcado() && otroAnilloNodo->valor == anillo._marcado;
+        }
+
         thisAnilloNodo = (*thisAnilloNodo).siguiente;
         otroAnilloNodo = (*otroAnilloNodo).siguiente;
         i++;
@@ -319,7 +323,7 @@ ostream& Anillo<T>::mostrarAnillo(ostream& os) const
     while (i<_longitud)
     {
         if (i != 0) {
-            os << ",";
+            os << ", ";
         }
         os << *((*loQueSeMuestra).valor);
         if (hayMarcado() && _marcado == (*loQueSeMuestra).valor) {
