@@ -1,0 +1,202 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[paper=a4paper, left=1.5cm, right=1.5cm, bottom=1.5cm, top=1.5cm]{geometry}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+\usepackage{latexsym}
+\usepackage{lastpage}
+\usepackage{aed2-symb,aed2-itef,aed2-tad,caratula}
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage{calc}
+
+\titulo{Trabajo Pr\'actico de Especificaci\'on}
+
+\materia{Algoritmos y Estructuras de Datos II}
+\grupo{Grupo 1}
+\integrante{B\'alsamo, Facundo}{874/10}{facundobalsamo@gmail.com}
+\integrante{Lasso, Nicol\'as}{892/10}{lasso.nico@gmail.com}	
+\integrante{Rodr\'iguez, Agust\'in}{120/10}{agustinrodriguez90@hotmail.com}
+\integrante{Tripodi, Guido}{843/10}{guido.tripodi@hotmail.com}
+\parskip=5pt % 10pt es el tama�o de fuente
+
+\begin{document}
+\maketitle
+
+
+\section{TAD \tadNombre{LinkLinkIT}}
+
+\begin{tad}{\tadNombre{LinkLinkIT}}
+\tadGeneros{$\bf{lli}$}
+\tadExporta{generadores, categorias, links, categoriaLink, fechaActual, fechaUltimoAcceso, accesosRecientesDia, esReciente?, accesosRecientes, linksOrdenadosPorAccesos, cantLinks
+}
+\tadUsa{\tadNombre{bool, nat, conjunto, secuencia, arbolCategorias
+}}
+%%\tadIgualdadObservacional{it}{it'}{linkLinkIT}{$categorias(it) \igobs categorias(it') \land $ \\ $  accesosXDia(it) \igobs accesosXDia(it') \land $ \\ $ linksXCategoria(it) \igobs linksXCategoria(it')$ \\ $ fechaAct(it) \igobs fechaAct(it')$}
+\tadAlinearFunciones{accesosRecientes}{lli/s, categoria/c, link/l}{}{}
+\tadAlinearFunciones{linksOrdenadosPorAccesos}{lli/s, categoria/c}{}{}
+%\tadAlinearFunciones{linksCategoriasOHijos}{lli/s, categoria/c}{}{}
+\tadAlinearFunciones{filtrarLinksCategoriaOHijos}{lli/s, categoria/c, conj(link)/ls}{}{}
+\tadAlinearFunciones{diasRecientesParaCategoria}{lli/s, categoria/c}{}{}
+\tadAlinearFunciones{linkConUltimoAcceso}{lli/s, categoria/c, conj(link)/ls}{}{}
+\tadAlinearFunciones{sumarAccesosRecientes}{lli/s, link/l, conj(fecha)/fs}{}{}
+\tadAlinearFunciones{linksOrdenadosPorAccesosAux}{lli/s, categoria/c, conj(link)/ls}{}{}
+\tadAlinearFunciones{linkConUltimoAcceso}{lli/s, categoria/c, conj(link)/ls}{}{}
+
+
+\tadObservadores
+
+\tadOperacion{categorias}{lli/s}{acat}{}
+\tadOperacion{links}{lli/s}{conj(link)}{}
+\tadOperacion{categoriaLink}{lli,link}{categoria}{}
+\tadOperacion{fechaActual}{lli}{fecha}{}
+\tadOperacion{fechaUltimoAcceso}{lli/s,link/l}{fecha}{$l \exists links(s)$}
+\tadOperacion{accesosRecientesDia}{lli/s,link/l,fecha/f}{nat}{}
+
+
+
+\tadGeneradores
+
+\tadOperacion{iniciar}{acat/ac}{$\bf{lli}$}{}
+\tadOperacion{nuevoLink}{lli/s, link/l, categoria/c}{$\bf{lli}$}{$¬ (l \exists links(s)) \wedge esta?(c,categorias(s))$}
+\tadOperacion{acceso}{lli/s, link/l, fecha/f}{$\bf{lli}$}{$ l \exists links(s) \wedge f \geq fechaActual(s)$}
+
+\tadOtrasOperaciones
+
+\tadOperacion{esReciente?}{lli/s, link/l, fecha/f}{bool}{$l \exists links(s)$}
+\tadOperacion{accesosRecientes}{lli/s, categoria/c, link/l}{nat}{$esta?(c,categorias(s)) \wedge l \exists links(s) \wedge esSubCategoria(categorias(s), c, categoriaLink(s,l)) $}
+\tadOperacion{linksOrdenadosPorAccesos}{lli/s, categoria/c}{secu(link)}{$esta?(c,categorias(s))$}
+\tadOperacion{cantLinks}{lli/s, categoria/c}{nat}{$esta?(c,categorias(s))$}
+\tadOperacion{menorReciente}{lli/s, link/l}{fecha}{$l \exists links(s)$}
+\tadOperacion{diasRecientes}{lli/s, link/l}{fecha}{$l \exists links(s)$}
+\tadOperacion{diasRecientesDesde}{lli/s, link/l}{fecha}{$l \exists links(s)$}
+\tadOperacion{linksCategoriasOHijos}{lli/s, categoria/c}{conj(link)}{$esta?(c,categorias(s))$}
+\tadOperacion{filtrarLinksCategoriaOHijos}{lli/s, categoria/c, conj(link)/ls}{conj(link)}{$esta?(c,categorias(s)) \wedge ls \subseteq links(s)$}
+\tadOperacion{diasRecientesParaCategoria}{lli/s, categoria/c}{conj(fecha)}{$esta?(c,categorias(s))$}
+\tadOperacion{linkConUltimoAcceso}{lli/s, categoria/c, conj(link)/ls}{link}{$esta?(c,categorias(s)) \wedge ¬ \emptyset?(ls) \wedge ls \subseteq linksCategoriasOHijos(s,c)$}
+\tadOperacion{sumarAccesosRecientes}{lli/s, link/l, conj(fecha)/fs}{nat}{$l \exists links(s) \wedge fs \subseteq diasRecientes(s,l)$}
+\tadOperacion{linksOrdenadosPorAccesosAux}{lli/s, categoria/c, conj(link)/ls}{secu(link)}{$esta?(c,categorias(s)) \wedge ls \subseteq linksCategoriasOHijos(s,c) $}
+\tadOperacion{linkConMasAccesos}{lli/s, categoria/c, conj(link)/ls}{link}{$esta?(c,categorias(s)) \wedge ls \subseteq linksCategoriasOHijos(s,c) $}
+\tadOperacion{$\beta$}{bool/b}{nat}{}
+
+
+\tadAxiomas[\paratodo{linklinkIT}{it, it'} \\ \paratodo{arbolDeCategorias}{a} \\ \paratodo{categoria}{c} \\ \paratodo{link}{l} \\ \paratodo{fecha}{f} \\ \paratodo{conj(categoria)}{cc} \\]
+%\tadAlinearAxiomas{categoriaLink(nuevoLink(s,l,c),l')}
+%\tadAlinearAxiomas{fechaUltimoAcceso(nuevoLink(s,l,c),l')}
+%\tadAlinearAxiomas{accesoRecienteDia(nuevoLink(s,l,c),l',f)}
+%\tadAlinearAxiomas{accesoRecienteDia(acceso(s,l,f),l',f')}
+$\\$
+\tadAxioma{categorias(iniciar(ac))}{ac}
+\tadAxioma{categorias(nuevoLink(s,l,c))}{categorias(ac)}
+\tadAxioma{categorias(acceso(s,l,f))}{categorias(ac)}
+$\\$
+
+\tadAxioma{links(iniciar(ac))}{$\emptyset$}
+\tadAxioma{links(nuevoLink(s,l,c))}{Ag(l,links(s))}
+\tadAxioma{links(acceso(s,l,f))}{links(s)}
+$\\$
+\tadAxioma{categoriaLink(nuevoLink(s,l,c),l')}{$\IF l==l' THEN c ELSE categoriaLink(s,l') FI$}
+\tadAxioma{categoriaLink(acceso(s,l,f),l')}{categoriaLink(s,l')}
+$\\$
+\tadAxioma{fechaActual(iniciar(ac))}{0}
+\tadAxioma{fechaActual(nuevoLink(s,l,c))}{fechaActual(s)}
+\tadAxioma{fechaActual(acceso(s,l,f))}{f}
+$\\$
+\tadAxioma{fechaUltimoAcceso(nuevoLink(s,l,c),l')}{\IF\ l==l' THEN fechaActual(s) ELSE fechaUltimoAcceso(s,l') FI}
+\tadAxioma{fechaUltimoAcceso(acceso(s,l,f),l')}{fechaUltimoAcceso(s,l')}
+$\\$
+\tadAxioma{menorReciente(s,l)}{max(fechaUltimoAcceso(s, l) + 1,diasRecientes)  - diasRecientes}
+\tadAxioma{esReciente?(s,l,f)}{menorReciente(s,l) $\leq$ f $\wedge$ f $\leq$ fechaUltimoAcceso(s,l)}
+\tadAxioma{accesoRecienteDia(nuevoLink(s,l,c),l',f)}{\IF\ l==l' THEN 0 ELSE accesoRecienteDia(s,l',f) FI}
+\tadAxioma{accesoRecienteDia(acceso(s,l,f),l',f')}{$\beta (l==l' \wedge f==f')$ + \IF\ esReciente?(s,l,f') THEN accesoRecienteDia(s,l',f') ELSE 0 FI}
+\tadAxioma{accesosRecientes(s, c, l)}{sumarAccesosRecientes(s, l, diasRecientesParaCategoria(s, c) $\cap$ diasRecientes(s, l))}
+\tadAxioma{linksOrdenadosPorAccesos(s, c)}{linksOrdernadosPorAccesosAux(s, c, linksCategoriaOHijos(s, c))}
+\tadAxioma{linksOrdenadosPorAccesosAux(s,c,ls)}{\IF\ $\emptyset$?(ls) THEN $\emptyset$ ELSE linkConMasAccesos(s, c, ls) $\bullet$ linksOrdernadosPorAccesosAux(s, c, ls - {linkConMasAccesos(s, c, ls)}) FI}
+\tadAxioma{linkConMasAccesos(s, c, ls)}{\IF\ $\#$ls==1 THEN dameUno(ls) ELSE {\IF\ accesosRecientes(s,c,dameUno(ls)) $>$ accesosRecientes(s,c,linkConMasAccesos(s,c,sinUno(ls)))
+THEN dameUno(ls) ELSE linkConMasAccesos(s,c,sinUno(ls)) FI} FI }
+\tadAxioma{cantLinks(s, c)}{$\#$linksCategoriaOHijos(s, c)}
+\tadAxioma{diasRecientes(s, l)}{diasRecientesDesde(s, l, menorReciente(s, l))}
+\tadAxioma{diasRecientesDesde(s, l, f )}{\IF\ esReciente?(s, l, f ) THEN Ag(f, diasRecientesDesde(s, l, f+1)) ELSE $\emptyset$ FI}
+\tadAxioma{linksCategoriaOHijos(s, c)}{filtrarLinksCategoriaOHijos(s, c, links(s))}
+\tadAxioma{filtrarLinksCategoriaOHijos(s, c, ls)}{\IF\ $\emptyset$?(ls) THEN $\emptyset$ ELSE {(\IF\ esSubCategoria(categorias(s),c,categoriaLink(s,dameUno(ls))) THEN dameUno(ls) ELSE $\emptyset$ FI)} $\cup$ filtrarLinksCategoriaOHijos(s, c, siunUno(ls)) FI}
+\tadAxioma{diasRecientesParaCategoria(s, c)}{\IF\ $\emptyset$?(linksCategoriaOHijos(s,c)) THEN $\emptyset$ ELSE diasRecientes(s, linkConUltimoAcceso(s, c, linksCategoriaOHijos(s,c))) FI}
+\tadAxioma{sumarAccesosRecientes(s, l, fs)}{\IF\ $\emptyset$?(fs) THEN 0 ELSE accesosRecientesDia(s, l, dameUno(f )) + sumarAccesosRecientes(s, l, sinUno(fs)) FI}
+\tadAxioma{$\beta$(b)}{\IF\ b THEN 1 ELSE 0 FI}
+
+\end{tad}
+
+\section{TAD \tadNombre{ArbolDeCategorias}}
+
+\begin{tad}{\tadNombre{ArbolDeCategorias}}
+\tadGeneros{acat}
+\tadExporta{generadores, categorias, raíz, padre, id, altura, está?, esSubCategoria, alturaCategoria, hijos}
+\tadUsa{\tadNombre{bool, nat, conjunto}}
+%\tadIgualdadObservacional{ac}{ac'}{arbolDeCategorias}{$ raiz(ac) \igobs raiz(ac') \land $ \\ $ hijos(ac) \igobs hijos(ac') $}
+
+\tadObservadores
+
+\tadOperacion{categorias}{acat/ac}{conj(categoria)}{}
+\tadOperacion{raiz}{acat/ac}{categoria}{}
+\tadOperacion{padre}{acat/ac,categoria/h}{categoria}{$esta?(h, ac) \wedge raiz(ac) \neq h$ }
+\tadOperacion{id}{acat/ac,categoria/c}{nat}{$esta?(c,ac)$}
+
+
+\tadGeneradores
+
+\tadOperacion{nuevo}{categoria/c}{acat}{$\neg vacia?(c)$}
+\tadOperacion{agregar}{acat/ac, categoria/c, categoria/h}{acat}{$esta?(c,ac) \wedge ¬vacia?(h) \wedge ¬esta?(h, ac)$}
+
+\tadOtrasOperaciones
+
+
+\tadOperacion{altura}{acat/ac}{nat}{}
+\tadOperacion{esta?}{categoria/c,acat/ac}{bool}{}
+\tadOperacion{esSubCategoria}{acat/ac,categoria/c,categoria/h}{bool}{$esta?(c,ac) \wedge esta?(h,ac)$}
+\tadOperacion{alturaCategoria}{acat/ac,categoria/c}{nat}{$esta?(c,ac)$}
+\tadOperacion{hijos}{acat/ac,categoria/c}{conj(categoria)}{$esta?(c,ac)$}
+
+
+
+
+\tadAxiomas[\paratodo{arbolDeCategorias}{a} \\ \paratodo{categoria}{c} \\ \paratodo{conj(arbolDeCategoria)}{ca} \\ \paratodo{conj(categoria)}{cc} \\]
+\tadAxioma{categorias(nuevo(c))}{c}
+\tadAxioma{categorias(agregar(ac,c,h))}{Ag(h, categorias(ac))}
+$\\$
+\tadAxioma{raiz(nuevo(c))}{c}
+\tadAxioma{raiz(agregar(ac,c,h))}{raiz(ac)}
+$\\$
+\tadAxioma{padre(agregar(ac,c,h ),h' )}{\IF\ h == h' THEN c ELSE padre(ac,c,h') FI}
+$\\$
+\tadAxioma{id(nuevo(c), c')}{1}
+\tadAxioma{id(agregar(ac,c,h), h')}{\IF\ h==h' THEN $\#$categorias(ac) + 1 ELSE id(ac,h2) FI}
+$\\$
+\tadAxioma{altura(nuevo(c))}{alturaCategoria(nuevo(c), c)}
+\tadAxioma{altura(agregar(ac,c,h))}{max(altura(ac), alturaCategoria(agregar(ac,c,h), h))}
+\tadAxioma{alturaCategoria(ac, c)}{\IF\ c == raiz(ac) THEN 1 ELSE 1 + alturaCategoria(ac, padre(ac, c)) FI}
+$\\$
+\tadAxioma{esta?(c,ac)}{c $\exists$ categorias(ac)}
+$\\$
+\tadAxioma{esSubCategoria(ac,c,h)}{c == h $\vee$L (h = raiz(ac) $\wedge$L esSubCategoria(ac, c, padre(ac, h)))}
+$\\$
+\tadAxioma{hijos(nuevo(c1 ), c2 )}{$\emptyset$}
+\tadAxioma{hijos(agregar(ac,c,h), c')}{\IF\ h == c' THEN $\emptyset$ ELSE {(\IF\ c==c' THEN h ELSE $\emptyset$ FI)} $\cup$ hijos(ac,c,c') FI}
+
+
+
+
+\end{tad}
+
+
+\section{Renombres}
+\begin{tad}{\tadNombre{Categoria}} es String
+\end{tad}
+
+
+\begin{tad}{\tadNombre{Link}} es String
+\end{tad}
+
+\begin{tad}{\tadNombre{Fecha}} es Nat
+\end{tad}
+
+\end{document}
