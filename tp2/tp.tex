@@ -91,7 +91,6 @@ $\\$
 \tadAxioma{categorias(nuevoLink(s,l,c))}{categorias(ac)}
 \tadAxioma{categorias(acceso(s,l,f))}{categorias(ac)}
 $\\$
-
 \tadAxioma{links(iniciar(ac))}{$\emptyset$}
 \tadAxioma{links(nuevoLink(s,l,c))}{Ag(l,links(s))}
 \tadAxioma{links(acceso(s,l,f))}{links(s)}
@@ -125,6 +124,159 @@ THEN dameUno(ls) ELSE linkConMasAccesos(s,c,sinUno(ls)) FI} FI }
 \tadAxioma{$\beta$(b)}{\IF\ b THEN 1 ELSE 0 FI}
 
 \end{tad}
+
+\subsubsection{\Large Modulo de linkLinkIT\\}
+	\textbf{generos}: \textit{lli}\\
+	\textbf{usa}: bool, nat, conjunto, secuencia, arbolCategorias \\
+		\textbf{se explica con}: TAD linkLinkIT\\
+		\textbf{g\'eneros}: lli\\
+
+\subsubsection{\Large Operaciones B\'asicas}
+	\textbf{categorias} (\textbf{in} s: lli) $\longrightarrow$ res: acat\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ categorias(s)}\\
+	Complejidad : O($\#$categorias(s))\\
+	Descripci\'{o}n : Devuelve el arbol de categorias con todas las categorias del sistema\\\\
+
+	\textbf{links} (\textbf{in} s: lli) $\longrightarrow$ res: conj(link)\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ links(s)}\\
+	Complejidad : O($\#$links(s))\\
+	Descripci\'{o}n : Devuelve todos los links del sistema\\\\
+	
+	\textbf{categoriaLink} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: categoria\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ categoriaLink(s,l)}\\
+	Complejidad : O(cuanto seria esto? todos los links?)\\
+	Descripci\'{o}n : Devuelve la categoria del link ingresado\\\\
+
+	\textbf{fechaActual} (\textbf{in} s: lli) $\longrightarrow$ res: fecha\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ fechaActual(s)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve la fecha actual\\\\
+	
+	\textbf{fechaUltimoAcceso} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
+	Pre $\equiv$ {l $\in$ links(s)}\\
+	Post $\equiv$ {res$\igobs$ fechaUltimoAcceso(s,l)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve la fecha de ultimo acceso al link\\\\
+	
+	\textbf{accesosRecientesDia} (\textbf{in} s: lli, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: nat\\\\
+	Pre $\equiv$ {l $\in$ links(s)}\\
+	Post $\equiv$ {res$\igobs$ accesosRecientesDia(s,l,f)}\\
+	Complejidad : O($\#$accesosRecientesDia(s,l,f))\\
+	Descripci\'{o}n : Devuelve la cantidad de accesos a un link un cierto dia\\\\
+	
+	\textbf{inicar} (\textbf{in} ac: acat) $\longrightarrow$ res: lli\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ iniciar(ac)}\\
+	Complejidad : O($\#$categorias(ac))\\
+	Descripci\'{o}n : crea un sistema dado un arbol ac de categorias\\\\
+	
+	\textbf{nuevoLink} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} c: categoria) \\\\
+	Pre $\equiv$ {c $\in$ categorias(s) $\wedge$ s${_0}$ $\igobs$ s}\\
+	Post $\equiv$ {s$\igobs$ nuevoLink(s${_0}$,l,c)}\\
+	Complejidad : O(|l|+|c|+h)\\
+	Descripci\'{o}n : Agregar un link al sistema\\\\
+	
+	\textbf{acceso} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) \\\\
+	Pre $\equiv$ {l $\in$ links(s) $\wedge$ f $\geq$ fechaActual(s) $\wedge$ s${_0}$ $\igobs$ s}\\
+	Post $\equiv$ {s$\igobs$ acceso(s${_0}$,l,f)}\\
+	Complejidad : O(|l|)\\
+	Descripci\'{o}n : Acceder a un link del sistema\\\\
+		
+	\textbf{esReciente?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool\\\\
+	Pre $\equiv$ {l $\in$ links(s)}\\
+	Post $\equiv$ {res$\igobs$ esReciente?(s,l,f)}\\
+	Complejidad : O(y esto q es??)\\
+	Descripci\'{o}n : Chequea si el acceso fue reciente\\\\
+	
+	\textbf{accesosRecientes} (\textbf{in} s: lli, \textbf{in} c: categoria \textbf{in} l: link) $\longrightarrow$ res: nat\\\\
+	Pre $\equiv$ {c $\in$ categorias(s) $\wedge$ l $\in$ links(s)}\\
+	Post $\equiv$ {res$\igobs$ accesosRecientes(s,c,l)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve la cantidad de accesos recientes del link ingresado\\\\
+	
+	\textbf{linksOrdenadosPorAccesos} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: secu(link)\\\\
+	Pre $\equiv$ {c $\in$ categorias(s)}\\
+	Post $\equiv$ {res$\igobs$ linksOrdenadosPorAccesos(s,c)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve la cantidad de accesos recientes del link ingresado\\\\
+	
+	\textbf{cantlinks} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: nat\\\\
+	Pre $\equiv$ {c $\in$ categorias(s)}\\
+	Post $\equiv$ {res$\igobs$ cantlinks(s,c)}\\
+	Complejidad : O(|c|)\\
+	Descripci\'{o}n : Devuelve la cantidad de links de la categoria c\\\\
+	
+	\textbf{menorReciente} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
+	Pre $\equiv$ {l $\in$ links(s)}\\
+	Post $\equiv$ {res$\igobs$ menorReciente(s,l)}\\
+	Complejidad : O(no tengo idea)\\
+	Descripci\'{o}n : Devuelve la fecha menor mas reciente\\\\
+	
+	\textbf{diasRecientes} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
+	Pre $\equiv$ {l $\in$ links(s)}\\
+	Post $\equiv$ {res$\igobs$ diasRecientes(s,l)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve la fecha reciente del link\\\\
+	
+	\textbf{diasRecientesDesde} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
+	Pre $\equiv$ {l $\in$ links(s)}\\
+	Post $\equiv$ {res$\igobs$ diasRecientesDesde(s,l)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve la fecha reciente del link\\\\
+	
+	
+	\textbf{linksCategoriasOHijos} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(link)\\\\
+	Pre $\equiv$ {c $\in$ categorias(s)}\\
+	Post $\equiv$ {res$\igobs$ linksCategoriasOHijos(s,c)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve el conjunto de links de la categoria c y sus hijos\\\\
+	
+	
+	\textbf{filtrarLinksCategoriasOHijos} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: conj(link)\\\\
+	Pre $\equiv$ {c $\in$ categorias(s) $\wedge$ ls $\subseteq$ links(s)}\\
+	Post $\equiv$ {res$\igobs$ filtrarLinsCategoriasOHijos(s,c,ls)}\\
+	Complejidad : O(no tengo idea)\\
+	Descripci\'{o}n : Devuelve el conjunto de links de la categoria c y sus hijos\\\\
+
+	\textbf{diasRecientesParaCategorias} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha)\\\\
+	Pre $\equiv$ {c $\in$ categorias(s)}\\
+	Post $\equiv$ {res$\igobs$ diasRecientesParaCategorias(s,c)}\\
+	Complejidad : O(es la cantidad de accesos recientes esto??)\\
+	Descripci\'{o}n : Devuelve el conjunto de fechas recientes de la categoria c\\\\
+	
+	\textbf{linkConUltimoAcceso} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: link\\\\
+	Pre $\equiv$ {c $\in$ categorias(s) $\wedge$ $\emptyset$?(ls) $\wedge$ ls $\subseteq$ linksCategoriasOHijos(s,c)}\\
+	Post $\equiv$ {res$\igobs$ linkConUltimoAcceso(s,c,ls)}\\
+	Complejidad : O($\#$ls??)\\
+	Descripci\'{o}n : Devuelve el link que se accedio por ultima vez del conjunto ls\\\\
+	
+	\textbf{sumarAccesosRecientes} (\textbf{in} s: lli, \textbf{in} l: link,\textbf{in} fs: conj(fecha) ) $\longrightarrow$ res: nat\\\\
+	Pre $\equiv$ {l $\in$ links(s)  $\wedge$ fs $\subseteq$ diasRecientes(s,l)}\\
+	Post $\equiv$ {res$\igobs$ sumarAccesosRecientes(s,l,fs)}\\
+	Complejidad : O(1?)\\
+	Descripci\'{o}n : Devuelve la suma de todos los accesos recientes del link l\\\\
+
+	\textbf{linksOrdenadosPorAccesosAux} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: secu(link)\\\\
+	Pre $\equiv$ {c $\in$ categorias(s)  $\wedge$ ls $\subseteq$ linksCategoriasOHijos(s,c)}\\
+	Post $\equiv$ {res$\igobs$ linksOrdenadosPorAccesosAux(s,c,ls)}\\
+	Complejidad : O(1?)\\
+	Descripci\'{o}n : Devuelve la secuencia de links ordenados por accesos de mas recientes a menos recientes\\\\
+	
+	\textbf{linkConMasAccesos} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) )$\longrightarrow$ res: link\\\\
+	Pre $\equiv$ {c $\in$ categorias(s)  $\wedge$ ls $\subseteq$ linksCategoriasOHijos(s,c)}\\
+	Post $\equiv$ {res$\igobs$ linksOrdenadosPorAccesosAux(s,c,ls)}\\
+	Complejidad : O(1?)\\
+	Descripci\'{o}n : Devuelve al link con mas accesos\\\\
+	
+	\textbf{$\beta$} (\textbf{in} b: bool) $\longrightarrow$ res: nat\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ $\beta$(b)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve 1 o 0 dependiendo el valor de verdad de b\\\\
 
 \section{TAD \tadNombre{ArbolDeCategorias}}
 
