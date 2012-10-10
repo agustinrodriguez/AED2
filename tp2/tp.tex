@@ -339,6 +339,79 @@ $\\$
 
 \end{tad}
 
+\subsubsection{\Large Modulo de Arbol de Categorias\\}
+	\textbf{generos}: \textit{acat}\\
+	\textbf{usa}: bool, nat, conjunto\\
+		\textbf{se explica con}: TAD ArbolDeCategorias\\
+		\textbf{g\'eneros}: acat\\
+
+\subsubsection{\Large Operaciones B\'asicas}
+	\textbf{categorias} (\textbf{in} ac: acat) $\longrightarrow$ res: conj(categoria)\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ categorias(ac)}\\
+	Complejidad : O($\#$categorias(ac))\\
+	Descripci\'{o}n : Devuelve el conjunto de categorias de un ac\\\\
+	
+	\textbf{raiz} (\textbf{in} ac: acat) $\longrightarrow$ res: categoria\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ raiz(ac)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve la raiz del arbol ac\\\\
+	
+	\textbf{padre} (\textbf{in} ac: acat, \textbf{in} h: categoria) $\longrightarrow$ res: categoria\\\\
+	Pre $\equiv$ {h $\in$ ac $\wedge$ raiz(ac) $\neq$ h}\\
+	Post $\equiv$ {res$\igobs$ padre(ac,h)}\\
+	Complejidad : O(ni idea)\\
+	Descripci\'{o}n : Devuelve el padre de una categoria\\\\
+		
+	\textbf{id} (\textbf{in} ac: acat, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\\\
+	Pre $\equiv$ {h $\in$ ac}\\
+	Post $\equiv$ {res$\igobs$ id(ac,c)}\\
+	Complejidad : O(|c|)\\
+	Descripci\'{o}n : Devuelve el id de una categoria c en el arbol ac\\\\	
+	
+	\textbf{nuevo} (\textbf{in} c: categoria) $\longrightarrow$ res:acat\\\\
+	Pre $\equiv$ {$¬$vacia?(c)}\\
+	Post $\equiv$ {res$\igobs$ nuevo(c)}\\
+	Complejidad : O(|c|)\\
+	Descripci\'{o}n : Crea un arbol\\\\	
+	
+	\textbf{agregar} (\textbf{in/out} ac: acat,\textbf{in} c: categoria, \textbf{in} h: categoria )\\\\
+	Pre $\equiv$ {c $\in$ ac $\wedge$ $¬$vacia?(h) $\wedge$ ac${_0}$ $\igobs$ ac}\\
+	Post $\equiv$ {ac$\igobs$ agregar(ac${_0}$,c,h)}\\
+	Complejidad : O(|c|+|h|)\\
+	Descripci\'{o}n : Agrega una categoria hija a una padre\\\\
+	
+	\textbf{altura} (\textbf{in} ac: acat) $\longrightarrow$ res:nat\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ altura(ac)}\\
+	Complejidad : O(|ac|)\\
+	Descripci\'{o}n : Devuelve la altura del arbol ac\\\\	
+	
+	\textbf{esta?} (\textbf{in} c: categoria,\textbf{in} ac: acat) $\longrightarrow$ res:bool\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ esta?(c,ac)}\\
+	Complejidad : O(|ac|)\\
+	Descripci\'{o}n : Devuelve si esta o no en el arbol la categoria c\\\\	
+	
+	\textbf{esSubCategoria} (\textbf{in} ac: acat, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\\\
+	Pre $\equiv$ {esta?(c,ac) $\wedge$ esta?(h,ac)}\\
+	Post $\equiv$ {res$\igobs$ esSubCategoria(ac,c,h)}\\
+	Complejidad : O(no tengo idea)\\
+	Descripci\'{o}n : Devuelve si c es descendiente de h\\\\	
+	
+	\textbf{alturaCategoria} (\textbf{in} ac: acat, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\\\
+	Pre $\equiv$ {esta?(c,ac)}\\
+	Post $\equiv$ {res$\igobs$ alturaCategoria(ac,c)}\\
+	Complejidad : O(no tengo idea)\\
+	Descripci\'{o}n : Devuelve la altura de la categoria c\\\\	
+	
+	\textbf{hijos} (\textbf{in} ac: acat, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\\\
+	Pre $\equiv$ {esta?(c,ac)}\\
+	Post $\equiv$ {res$\igobs$ hijos(ac,c)}\\
+	Complejidad : O(|c|)\\
+	Descripci\'{o}n : Devuelve el conjunto de categorias hijos de c\\\\	
+
 
 \section{Renombres}
 \begin{tad}{\tadNombre{Categoria}} es String

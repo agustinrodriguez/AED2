@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.21)  10 OCT 2012 16:03
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.21)  10 OCT 2012 16:34
 entering extended mode
  %&-line parsing enabled.
 **tp.tex
@@ -1039,32 +1039,224 @@ Underfull \hbox (badness 10000) in paragraph at lines 333--334
 
  []
 
-AED: lastpage setting LastPage [9] (./tp.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
+
+ []
+
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 342.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\\' on input line 342.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 343--347
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 349--354
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 349--354
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 349--354
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--360
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--360
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--360
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 361--366
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 361--366
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 361--366
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 367--372
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 367--372
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 367--372
+
+ []
+
+
+LaTeX Warning: Command \^ invalid in math mode on input line 374.
+
+Missing character: There is no Â in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 373--378
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 373--378
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 373--378
+
+ []
+
+[9]
+
+LaTeX Warning: Command \^ invalid in math mode on input line 380.
+
+Missing character: There is no Â in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 379--384
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 379--384
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 379--384
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 385--390
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 385--390
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 385--390
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 391--396
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 391--396
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 391--396
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 397--402
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 397--402
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 397--402
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 403--408
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 403--408
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 403--408
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 409--414
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 409--414
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 409--414
+
+ []
+
+[10] AED: lastpage setting LastPage [11] (./tp.aux) ) 
 Here is how much of TeX's memory you used:
- 6846 strings out of 495061
- 94369 string characters out of 1182621
- 197195 words of memory out of 3000000
- 9856 multiletter control sequences out of 15000+50000
+ 6852 strings out of 495061
+ 94463 string characters out of 1182621
+ 197197 words of memory out of 3000000
+ 9858 multiletter control sequences out of 15000+50000
  17431 words of font info for 43 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,13n,43p,288b,416s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home/guido/.texmf-var/fonts/p
-k/ljfour/jknappen/ec/ecti1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jk
-nappen/ec/eccc1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/e
-cxc1440.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600
-pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/
-guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/guido/.texm
-f-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/guido/.texmf-var/fonts
-/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/
-jknappen/ec/ecbx1728.600pk></usr/share/texmf-texlive/fonts/type1/public/amsfont
-s/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10
-.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/s
-hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on tp.pdf (9 pages, 171559 bytes).
+ </home/guido/.texmf-var/f
+onts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/guido/.texmf-var/fonts/pk/ljf
+our/jknappen/ec/eccc1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappe
+n/ec/ecxc1440.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt10
+00.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> <
+/home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/guido
+/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/guido/.texmf-var
+/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/guido/.texmf-var/fonts/pk/l
+jfour/jknappen/ec/ecbx1728.600pk></usr/share/texmf-texlive/fonts/type1/public/a
+msfonts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
+cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb><
+/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive
+/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on tp.pdf (11 pages, 178717 bytes).
 PDF statistics:
- 390 PDF objects out of 1000 (max. 8388607)
- 15 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 416 PDF objects out of 1000 (max. 8388607)
+ 19 named destinations out of 1000 (max. 500000)
+ 57 words of extra memory for PDF output out of 10000 (max. 10000000)
 
