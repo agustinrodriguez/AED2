@@ -28,146 +28,435 @@
 \section{TAD \tadNombre{LinkLinkIT}}
 
 \begin{tad}{\tadNombre{LinkLinkIT}}
-\tadGeneros{linkLinkIT}
-\tadExporta{linkLinkIT, generadores, observadores}
-\tadUsa{\tadNombre{ArbolCategorias, Link, Categoria, Fecha}}
-\tadIgualdadObservacional{it}{it'}{linkLinkIT}{$categorias(it) \igobs categorias(it') \land $ \\ $  accesosXDia(it) \igobs accesosXDia(it') \land $ \\ $ linksXCategoria(it) \igobs linksXCategoria(it')$ \\ $ fechaAct(it) \igobs fechaAct(it')$}
-\tadAlinearFunciones{categorias}{linkLinkIT}
-\tadAlinearFunciones{accesosXDia}{linkLinkIT/it, link/l, fecha/f}
-\tadAlinearFunciones{linksXCategoria}{linkLinkIT/it, categoria/c}{}{}
-\tadAlinearFunciones{agregarLink}{linkLinkIT/it, link/l, categoria/c}{}{}
-\tadAlinearFunciones{$\#$LinksXCatEHijos}{linkLinkIT/it, categoria/c}{}{}
+\tadGeneros{$\bf{lli}$}
+\tadExporta{generadores, categorias, links, categoriaLink, fechaActual, fechaUltimoAcceso, accesosRecientesDia, esReciente?, accesosRecientes, linksOrdenadosPorAccesos, cantLinks
+}
+\tadUsa{\tadNombre{bool, nat, conjunto, secuencia, arbolCategorias
+}}
+%%\tadIgualdadObservacional{it}{it'}{linkLinkIT}{$categorias(it) \igobs categorias(it') \land $ \\ $  accesosXDia(it) \igobs accesosXDia(it') \land $ \\ $ linksXCategoria(it) \igobs linksXCategoria(it')$ \\ $ fechaAct(it) \igobs fechaAct(it')$}
+\tadAlinearFunciones{accesosRecientes}{lli/s, categoria/c, link/l}{}{}
+\tadAlinearFunciones{linksOrdenadosPorAccesos}{lli/s, categoria/c}{}{}
+%\tadAlinearFunciones{linksCategoriasOHijos}{lli/s, categoria/c}{}{}
+\tadAlinearFunciones{filtrarLinksCategoriaOHijos}{lli/s, categoria/c, conj(link)/ls}{}{}
+\tadAlinearFunciones{diasRecientesParaCategoria}{lli/s, categoria/c}{}{}
+\tadAlinearFunciones{linkConUltimoAcceso}{lli/s, categoria/c, conj(link)/ls}{}{}
+\tadAlinearFunciones{sumarAccesosRecientes}{lli/s, link/l, conj(fecha)/fs}{}{}
+\tadAlinearFunciones{linksOrdenadosPorAccesosAux}{lli/s, categoria/c, conj(link)/ls}{}{}
+\tadAlinearFunciones{linkConUltimoAcceso}{lli/s, categoria/c, conj(link)/ls}{}{}
 
 
 \tadObservadores
 
-\tadOperacion{categorias}{linkLinkIT}{arbolDeCategorias}{}
-\tadOperacion{accesosXDia}{linkLinkIT/it, link/l, fecha/f}{nat}{$l \in LinkLinkIT(it)$ $ \wedge $ $fechaAct(it) - f \leq 2$}
-\tadOperacion{linksXCategoria}{linkLinkIT/it, categoria/c}{conj(link)}{$c \in dameTodos(categorias(it)$}
-\tadOperacion{fechaAct}{linkLinkIT}{fecha}{}
+\tadOperacion{categorias}{lli/s}{acat}{}
+\tadOperacion{links}{lli/s}{conj(link)}{}
+\tadOperacion{categoriaLink}{lli,link}{categoria}{}
+\tadOperacion{fechaActual}{lli}{fecha}{}
+\tadOperacion{fechaUltimoAcceso}{lli/s,link/l}{fecha}{$l \exists links(s)$}
+\tadOperacion{accesosRecientesDia}{lli/s,link/l,fecha/f}{nat}{}
+
+
 
 \tadGeneradores
 
-\tadOperacion{iniciar}{arbolCategorias}{linkLinkIT}{$\neg \emptyset ?DameTodos(a))$}
-\tadOperacion{agregarLink}{linkLinkIT/it, link/l, categoria/c}{linkLinkIT}{$\neg( l \in links(it))$ $ \wedge    $ $ c \in dameTodos(categorias(it))$}
-\tadOperacion{accederLink}{linkLinkIT/it, link/l, fecha/f}{linkLinkIT}{$l \in links(it)$ $ \&\&    $ $ f >= fechaAct(it)$}
+\tadOperacion{iniciar}{acat/ac}{$\bf{lli}$}{}
+\tadOperacion{nuevoLink}{lli/s, link/l, categoria/c}{$\bf{lli}$}{$¬ (l \exists links(s)) \wedge esta?(c,categorias(s))$}
+\tadOperacion{acceso}{lli/s, link/l, fecha/f}{$\bf{lli}$}{$ l \exists links(s) \wedge f \geq fechaActual(s)$}
 
 \tadOtrasOperaciones
 
-\tadOperacion{links}{linkLinkIT}{conj(link)}{} %//Devuelve todos los links agregados a un linkLinkIT
-%\tadOperacion{$\#$accesos3Dias}{linkLinkIT/it, link/l}{nat}{$l \in links(it)$} %//Dado un link existente devuelve la cantidad de accesos en los ultimos 3 dias
-\tadOperacion{$\#$LinksXCatEHijos}{linkLinkIT/it, categoria/c}{nat}{$c \in dameTodos(categorias(it))$}
-\tadOperacion{$\#$linksDelArbol}{linkLinkIT/it,conj(categoria)/cc}{nat}{}
- %Devuelve la cantidad de links que hay en la familia de la categoria dada
-%\tadOperacion{ultimoAcceso}{linkLinkIT}{fecha}{} %Devuelve la ultima fecha en la que se realizo un acceso
-\tadOperacion{accesosUlt3Dias}{linkLinkIT/it, link/l}{nat}{$l \exists links(it)$}
-\tadOperacion{todosLosLinks}{conj(categoria)/cc,linkLinkIT/it}{conj(link)}{$c \in dameTodos(categorias(it))$}
-\tadOperacion{actualizandoAccesos}{fecha,linkLinkIT,link}{nat}{}
-
+\tadOperacion{esReciente?}{lli/s, link/l, fecha/f}{bool}{$l \exists links(s)$}
+\tadOperacion{accesosRecientes}{lli/s, categoria/c, link/l}{nat}{$esta?(c,categorias(s)) \wedge l \exists links(s) \wedge esSubCategoria(categorias(s), c, categoriaLink(s,l)) $}
+\tadOperacion{linksOrdenadosPorAccesos}{lli/s, categoria/c}{secu(link)}{$esta?(c,categorias(s))$}
+\tadOperacion{cantLinks}{lli/s, categoria/c}{nat}{$esta?(c,categorias(s))$}
+\tadOperacion{menorReciente}{lli/s, link/l}{fecha}{$l \exists links(s)$}
+\tadOperacion{diasRecientes}{lli/s, link/l}{fecha}{$l \exists links(s)$}
+\tadOperacion{diasRecientesDesde}{lli/s, link/l}{fecha}{$l \exists links(s)$}
+\tadOperacion{linksCategoriasOHijos}{lli/s, categoria/c}{conj(link)}{$esta?(c,categorias(s))$}
+\tadOperacion{filtrarLinksCategoriaOHijos}{lli/s, categoria/c, conj(link)/ls}{conj(link)}{$esta?(c,categorias(s)) \wedge ls \subseteq links(s)$}
+\tadOperacion{diasRecientesParaCategoria}{lli/s, categoria/c}{conj(fecha)}{$esta?(c,categorias(s))$}
+\tadOperacion{linkConUltimoAcceso}{lli/s, categoria/c, conj(link)/ls}{link}{$esta?(c,categorias(s)) \wedge ¬ \emptyset?(ls) \wedge ls \subseteq linksCategoriasOHijos(s,c)$}
+\tadOperacion{sumarAccesosRecientes}{lli/s, link/l, conj(fecha)/fs}{nat}{$l \exists links(s) \wedge fs \subseteq diasRecientes(s,l)$}
+\tadOperacion{linksOrdenadosPorAccesosAux}{lli/s, categoria/c, conj(link)/ls}{secu(link)}{$esta?(c,categorias(s)) \wedge ls \subseteq linksCategoriasOHijos(s,c) $}
+\tadOperacion{linkConMasAccesos}{lli/s, categoria/c, conj(link)/ls}{link}{$esta?(c,categorias(s)) \wedge ls \subseteq linksCategoriasOHijos(s,c) $}
+\tadOperacion{$\beta$}{bool/b}{nat}{}
 
 
 \tadAxiomas[\paratodo{linklinkIT}{it, it'} \\ \paratodo{arbolDeCategorias}{a} \\ \paratodo{categoria}{c} \\ \paratodo{link}{l} \\ \paratodo{fecha}{f} \\ \paratodo{conj(categoria)}{cc} \\]
-\tadAlinearAxiomas{categorias(iniciar(a))}
-\tadAlinearAxiomas{categorias(agregarLink(it, l, c))}
-\tadAlinearAxiomas{categorias(accederLink(it, l, f))}
-\tadAlinearAxiomas{linksXCategoria(iniciar(a), c)}
-\tadAlinearAxiomas{linksXCategoria(agregarLink(it, l, c),c')}
-\tadAlinearAxiomas{linksXCategoria(accederLink(it, l, f),c')}
-\tadAlinearAxiomas{links(iniciar(a))}
-\tadAlinearAxiomas{links(agregarLink(it, l, c))}
-\tadAlinearAxiomas{links(accederLink(it,l,f))}
-\tadAlinearAxiomas{$\#$LinksXCategoria(iniciar(a),c)}
-\tadAlinearAxiomas{$\#$LinksXCategoria(agregarLink(it,l,c),c')}
-\tadAlinearAxiomas{$\#$linksXCategoria(accederLink(it, l, f), c)}
-%\tadAlinearAxiomas{contarAccesos3Dias(ls,f)}
-
+%\tadAlinearAxiomas{categoriaLink(nuevoLink(s,l,c),l')}
+%\tadAlinearAxiomas{fechaUltimoAcceso(nuevoLink(s,l,c),l')}
+%\tadAlinearAxiomas{accesoRecienteDia(nuevoLink(s,l,c),l',f)}
+%\tadAlinearAxiomas{accesoRecienteDia(acceso(s,l,f),l',f')}
 $\\$
-\tadAxioma{categorias(iniciar(a))}{a}
-\tadAxioma{categorias(agregarLink(it, l, c))}{categorias(it)}
-\tadAxioma{categorias(accederLink(it, l, f))}{categorias(it)}
+\tadAxioma{categorias(iniciar(ac))}{ac}
+\tadAxioma{categorias(nuevoLink(s,l,c))}{categorias(ac)}
+\tadAxioma{categorias(acceso(s,l,f))}{categorias(ac)}
 $\\$
-\tadAxioma{accesosXDia(iniciar(a),l,f)}{0}
-\tadAxioma{accesosXDia(agregarLink(it, l, c),l',f)}{accesos(it)}
-\tadAxioma{accesosXDia(accederLink(it, l, f),l',f')}{\IF\ l = l' THEN {\IF\ f = f' THEN 1 + accesosXDia(it,l',f') ELSE accesosXDia(it,l',f') FI} ELSE accesosXDia(it,l',f') FI}
+\tadAxioma{links(iniciar(ac))}{$\emptyset$}
+\tadAxioma{links(nuevoLink(s,l,c))}{Ag(l,links(s))}
+\tadAxioma{links(acceso(s,l,f))}{links(s)}
 $\\$
-\tadAxioma{linksXCategoria(iniciar(a), c)}{$\emptyset$}
-\tadAxioma{linksXCategoria(agregarLink(it, l, c),c')}{\IF\ c = c' THEN Ag(l, linksXCategoria(it,c')) ELSE linksXCategoria(it,c') FI}
-\tadAxioma{linksXCategoria(accederLink(it, l, f),c')}{linksXCategoria(it,c')}
+\tadAxioma{categoriaLink(nuevoLink(s,l,c),l')}{$\IF l==l' THEN c ELSE categoriaLink(s,l') FI$}
+\tadAxioma{categoriaLink(acceso(s,l,f),l')}{categoriaLink(s,l')}
 $\\$
-\tadAxioma{fechaAct(iniciar(a)}{0}
-\tadAxioma{fechaAct(agregarLink(it,l,c))}{fechaAct(it)}
-\tadAxioma{fechaAct(accederLink(it,l,f))}{f}
+\tadAxioma{fechaActual(iniciar(ac))}{0}
+\tadAxioma{fechaActual(nuevoLink(s,l,c))}{fechaActual(s)}
+\tadAxioma{fechaActual(acceso(s,l,f))}{f}
 $\\$
-\tadAxioma{links(it)}{todosLosLinks((dameTodos(categorias(it))),it)}
-\tadAxioma{todosLosLinks(cc,it)}{\IF\ $\emptyset$?(c) THEN $\emptyset$ ELSE  linksXCategoria(it,dameUno(c)) $\cup$ todosLosLinks(sinUno(c),it) FI}
+\tadAxioma{fechaUltimoAcceso(nuevoLink(s,l,c),l')}{\IF\ l==l' THEN fechaActual(s) ELSE fechaUltimoAcceso(s,l') FI}
+\tadAxioma{fechaUltimoAcceso(acceso(s,l,f),l')}{fechaUltimoAcceso(s,l')}
 $\\$
-\tadAxioma{$\#$linksXCatEHijos(it,c)}{$\#$linksDelArbol(it,losFamiliares(c,categorias(it)))}
-$\\$
-\tadAxioma{$\#$linksDelArbol(it,cc)}{\IF\ $\emptyset?$(cc) THEN 0 ELSE $\#$(linksXCategoria(it,dameUno(cc)))+$\#$linksDelArbol(it,sinUno(cc)) FI}
-$\\$
-\tadAxioma{accesosUlt3Dias(it,l)}{actualizandoAccesos(fechaAct(it),it,l)}
-$\\$
-\tadAxioma{actualizandoAccesos(f,it,l)}{\IF\ f = 0 THEN accesosXDia(it,l,f) ELSE {\IF\ fechaAct(it) - f $\leq$ 2 THEN accesosXDia(it,l,f) + actualizandoAccesos(f-1,it,l) ELSE actualizandoAccesos(f,it,l) FI} FI}
-
-
+\tadAxioma{menorReciente(s,l)}{max(fechaUltimoAcceso(s, l) + 1,diasRecientes)  - diasRecientes}
+\tadAxioma{esReciente?(s,l,f)}{menorReciente(s,l) $\leq$ f $\wedge$ f $\leq$ fechaUltimoAcceso(s,l)}
+\tadAxioma{accesoRecienteDia(nuevoLink(s,l,c),l',f)}{\IF\ l==l' THEN 0 ELSE accesoRecienteDia(s,l',f) FI}
+\tadAxioma{accesoRecienteDia(acceso(s,l,f),l',f')}{$\beta (l==l' \wedge f==f')$ + \IF\ esReciente?(s,l,f') THEN accesoRecienteDia(s,l',f') ELSE 0 FI}
+\tadAxioma{accesosRecientes(s, c, l)}{sumarAccesosRecientes(s, l, diasRecientesParaCategoria(s, c) $\cap$ diasRecientes(s, l))}
+\tadAxioma{linksOrdenadosPorAccesos(s, c)}{linksOrdernadosPorAccesosAux(s, c, linksCategoriaOHijos(s, c))}
+\tadAxioma{linksOrdenadosPorAccesosAux(s,c,ls)}{\IF\ $\emptyset$?(ls) THEN $\emptyset$ ELSE linkConMasAccesos(s, c, ls) $\bullet$ linksOrdernadosPorAccesosAux(s, c, ls - {linkConMasAccesos(s, c, ls)}) FI}
+\tadAxioma{linkConMasAccesos(s, c, ls)}{\IF\ $\#$ls==1 THEN dameUno(ls) ELSE {\IF\ accesosRecientes(s,c,dameUno(ls)) $>$ accesosRecientes(s,c,linkConMasAccesos(s,c,sinUno(ls)))
+THEN dameUno(ls) ELSE linkConMasAccesos(s,c,sinUno(ls)) FI} FI }
+\tadAxioma{cantLinks(s, c)}{$\#$linksCategoriaOHijos(s, c)}
+\tadAxioma{diasRecientes(s, l)}{diasRecientesDesde(s, l, menorReciente(s, l))}
+\tadAxioma{diasRecientesDesde(s, l, f )}{\IF\ esReciente?(s, l, f ) THEN Ag(f, diasRecientesDesde(s, l, f+1)) ELSE $\emptyset$ FI}
+\tadAxioma{linksCategoriaOHijos(s, c)}{filtrarLinksCategoriaOHijos(s, c, links(s))}
+\tadAxioma{filtrarLinksCategoriaOHijos(s, c, ls)}{\IF\ $\emptyset$?(ls) THEN $\emptyset$ ELSE {(\IF\ esSubCategoria(categorias(s),c,categoriaLink(s,dameUno(ls))) THEN dameUno(ls) ELSE $\emptyset$ FI)} $\cup$ filtrarLinksCategoriaOHijos(s, c, siunUno(ls)) FI}
+\tadAxioma{diasRecientesParaCategoria(s, c)}{\IF\ $\emptyset$?(linksCategoriaOHijos(s,c)) THEN $\emptyset$ ELSE diasRecientes(s, linkConUltimoAcceso(s, c, linksCategoriaOHijos(s,c))) FI}
+\tadAxioma{sumarAccesosRecientes(s, l, fs)}{\IF\ $\emptyset$?(fs) THEN 0 ELSE accesosRecientesDia(s, l, dameUno(f )) + sumarAccesosRecientes(s, l, sinUno(fs)) FI}
+\tadAxioma{$\beta$(b)}{\IF\ b THEN 1 ELSE 0 FI}
 
 \end{tad}
+
+\subsubsection{\Large Modulo de linkLinkIT\\}
+	\textbf{generos}: \textit{lli}\\
+	\textbf{usa}: bool, nat, conjunto, secuencia, arbolCategorias \\
+		\textbf{se explica con}: TAD linkLinkIT\\
+		\textbf{g\'eneros}: lli\\
+
+\subsubsection{\Large Operaciones B\'asicas}
+	\textbf{categorias} (\textbf{in} s: lli) $\longrightarrow$ res: acat\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ categorias(s)}\\
+	Complejidad : O($\#$categorias(s))\\
+	Descripci\'{o}n : Devuelve el arbol de categorias con todas las categorias del sistema\\\\
+
+	\textbf{links} (\textbf{in} s: lli) $\longrightarrow$ res: conj(link)\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ links(s)}\\
+	Complejidad : O($\#$links(s))\\
+	Descripci\'{o}n : Devuelve todos los links del sistema\\\\
+	
+	\textbf{categoriaLink} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: categoria\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ categoriaLink(s,l)}\\
+	Complejidad : O(cuanto seria esto? todos los links?)\\
+	Descripci\'{o}n : Devuelve la categoria del link ingresado\\\\
+
+	\textbf{fechaActual} (\textbf{in} s: lli) $\longrightarrow$ res: fecha\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ fechaActual(s)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve la fecha actual\\\\
+	
+	\textbf{fechaUltimoAcceso} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
+	Pre $\equiv$ {l $\in$ links(s)}\\
+	Post $\equiv$ {res$\igobs$ fechaUltimoAcceso(s,l)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve la fecha de ultimo acceso al link\\\\
+	
+	\textbf{accesosRecientesDia} (\textbf{in} s: lli, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: nat\\\\
+	Pre $\equiv$ {l $\in$ links(s)}\\
+	Post $\equiv$ {res$\igobs$ accesosRecientesDia(s,l,f)}\\
+	Complejidad : O($\#$accesosRecientesDia(s,l,f))\\
+	Descripci\'{o}n : Devuelve la cantidad de accesos a un link un cierto dia\\\\
+	
+	\textbf{inicar} (\textbf{in} ac: acat) $\longrightarrow$ res: lli\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ iniciar(ac)}\\
+	Complejidad : O($\#$categorias(ac))\\
+	Descripci\'{o}n : crea un sistema dado un arbol ac de categorias\\\\
+	
+	\textbf{nuevoLink} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} c: categoria) \\\\
+	Pre $\equiv$ {c $\in$ categorias(s) $\wedge$ s${_0}$ $\igobs$ s}\\
+	Post $\equiv$ {s$\igobs$ nuevoLink(s${_0}$,l,c)}\\
+	Complejidad : O(|l|+|c|+h)\\
+	Descripci\'{o}n : Agregar un link al sistema\\\\
+	
+	\textbf{acceso} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) \\\\
+	Pre $\equiv$ {l $\in$ links(s) $\wedge$ f $\geq$ fechaActual(s) $\wedge$ s${_0}$ $\igobs$ s}\\
+	Post $\equiv$ {s$\igobs$ acceso(s${_0}$,l,f)}\\
+	Complejidad : O(|l|)\\
+	Descripci\'{o}n : Acceder a un link del sistema\\\\
+		
+	\textbf{esReciente?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool\\\\
+	Pre $\equiv$ {l $\in$ links(s)}\\
+	Post $\equiv$ {res$\igobs$ esReciente?(s,l,f)}\\
+	Complejidad : O(y esto q es??)\\
+	Descripci\'{o}n : Chequea si el acceso fue reciente\\\\
+	
+	\textbf{accesosRecientes} (\textbf{in} s: lli, \textbf{in} c: categoria \textbf{in} l: link) $\longrightarrow$ res: nat\\\\
+	Pre $\equiv$ {c $\in$ categorias(s) $\wedge$ l $\in$ links(s)}\\
+	Post $\equiv$ {res$\igobs$ accesosRecientes(s,c,l)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve la cantidad de accesos recientes del link ingresado\\\\
+	
+	\textbf{linksOrdenadosPorAccesos} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: secu(link)\\\\
+	Pre $\equiv$ {c $\in$ categorias(s)}\\
+	Post $\equiv$ {res$\igobs$ linksOrdenadosPorAccesos(s,c)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve la cantidad de accesos recientes del link ingresado\\\\
+	
+	\textbf{cantlinks} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: nat\\\\
+	Pre $\equiv$ {c $\in$ categorias(s)}\\
+	Post $\equiv$ {res$\igobs$ cantlinks(s,c)}\\
+	Complejidad : O(|c|)\\
+	Descripci\'{o}n : Devuelve la cantidad de links de la categoria c\\\\
+	
+	\textbf{menorReciente} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
+	Pre $\equiv$ {l $\in$ links(s)}\\
+	Post $\equiv$ {res$\igobs$ menorReciente(s,l)}\\
+	Complejidad : O(no tengo idea)\\
+	Descripci\'{o}n : Devuelve la fecha menor mas reciente\\\\
+	
+	\textbf{diasRecientes} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
+	Pre $\equiv$ {l $\in$ links(s)}\\
+	Post $\equiv$ {res$\igobs$ diasRecientes(s,l)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve la fecha reciente del link\\\\
+	
+	\textbf{diasRecientesDesde} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
+	Pre $\equiv$ {l $\in$ links(s)}\\
+	Post $\equiv$ {res$\igobs$ diasRecientesDesde(s,l)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve la fecha reciente del link\\\\
+	
+	
+	\textbf{linksCategoriasOHijos} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(link)\\\\
+	Pre $\equiv$ {c $\in$ categorias(s)}\\
+	Post $\equiv$ {res$\igobs$ linksCategoriasOHijos(s,c)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve el conjunto de links de la categoria c y sus hijos\\\\
+	
+	
+	\textbf{filtrarLinksCategoriasOHijos} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: conj(link)\\\\
+	Pre $\equiv$ {c $\in$ categorias(s) $\wedge$ ls $\subseteq$ links(s)}\\
+	Post $\equiv$ {res$\igobs$ filtrarLinsCategoriasOHijos(s,c,ls)}\\
+	Complejidad : O(no tengo idea)\\
+	Descripci\'{o}n : Devuelve el conjunto de links de la categoria c y sus hijos\\\\
+
+	\textbf{diasRecientesParaCategorias} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha)\\\\
+	Pre $\equiv$ {c $\in$ categorias(s)}\\
+	Post $\equiv$ {res$\igobs$ diasRecientesParaCategorias(s,c)}\\
+	Complejidad : O(es la cantidad de accesos recientes esto??)\\
+	Descripci\'{o}n : Devuelve el conjunto de fechas recientes de la categoria c\\\\
+	
+	\textbf{linkConUltimoAcceso} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: link\\\\
+	Pre $\equiv$ {c $\in$ categorias(s) $\wedge$ $\emptyset$?(ls) $\wedge$ ls $\subseteq$ linksCategoriasOHijos(s,c)}\\
+	Post $\equiv$ {res$\igobs$ linkConUltimoAcceso(s,c,ls)}\\
+	Complejidad : O($\#$ls??)\\
+	Descripci\'{o}n : Devuelve el link que se accedio por ultima vez del conjunto ls\\\\
+	
+	\textbf{sumarAccesosRecientes} (\textbf{in} s: lli, \textbf{in} l: link,\textbf{in} fs: conj(fecha) ) $\longrightarrow$ res: nat\\\\
+	Pre $\equiv$ {l $\in$ links(s)  $\wedge$ fs $\subseteq$ diasRecientes(s,l)}\\
+	Post $\equiv$ {res$\igobs$ sumarAccesosRecientes(s,l,fs)}\\
+	Complejidad : O(1?)\\
+	Descripci\'{o}n : Devuelve la suma de todos los accesos recientes del link l\\\\
+
+	\textbf{linksOrdenadosPorAccesosAux} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: secu(link)\\\\
+	Pre $\equiv$ {c $\in$ categorias(s)  $\wedge$ ls $\subseteq$ linksCategoriasOHijos(s,c)}\\
+	Post $\equiv$ {res$\igobs$ linksOrdenadosPorAccesosAux(s,c,ls)}\\
+	Complejidad : O(1?)\\
+	Descripci\'{o}n : Devuelve la secuencia de links ordenados por accesos de mas recientes a menos recientes\\\\
+	
+	\textbf{linkConMasAccesos} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) )$\longrightarrow$ res: link\\\\
+	Pre $\equiv$ {c $\in$ categorias(s)  $\wedge$ ls $\subseteq$ linksCategoriasOHijos(s,c)}\\
+	Post $\equiv$ {res$\igobs$ linksOrdenadosPorAccesosAux(s,c,ls)}\\
+	Complejidad : O(1?)\\
+	Descripci\'{o}n : Devuelve al link con mas accesos\\\\
+	
+	\textbf{$\beta$} (\textbf{in} b: bool) $\longrightarrow$ res: nat\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ $\beta$(b)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve 1 o 0 dependiendo el valor de verdad de b\\\\
 
 \section{TAD \tadNombre{ArbolDeCategorias}}
 
 \begin{tad}{\tadNombre{ArbolDeCategorias}}
-\tadGeneros{arbolDeCategorias}
-\tadExporta{arbolDeCategorias, generadores, observadores}
-\tadUsa{\tadNombre{Categoria}}
-\tadIgualdadObservacional{ac}{ac'}{arbolDeCategorias}{$ raiz(ac) \igobs raiz(ac') \land $ \\ $ hijos(ac) \igobs hijos(ac') $}
-\tadAlinearFunciones{raiz}{arbolDeCategorias}{}{}
-\tadAlinearFunciones{hijos}{arbolDeCategorias}{}{}
-\tadAlinearFunciones{AC}{conj(arbolDeCategorias)/a, categoria/c}{}{}
-\tadAlinearFunciones{dameTodos}{arbolDeCategorias}{}{}
-\tadAlinearFunciones{losFamiliares}{categoria/c, arbolDeCategorias/a}{}{}
-\tadAlinearFunciones{estaEnAlguno}{arbolDeCategorias,categoria}{}{}
-\tadAlinearFunciones{losParientes}{categoria/c,conj(arbolDeCategorias)/ca}{}{}
-\tadAlinearFunciones{todosLosDeAbajo}{arbolDeCategorias}{}{}
-
+\tadGeneros{acat}
+\tadExporta{generadores, categorias, raíz, padre, id, altura, está?, esSubCategoria, alturaCategoria, hijos}
+\tadUsa{\tadNombre{bool, nat, conjunto}}
+%\tadIgualdadObservacional{ac}{ac'}{arbolDeCategorias}{$ raiz(ac) \igobs raiz(ac') \land $ \\ $ hijos(ac) \igobs hijos(ac') $}
 
 \tadObservadores
 
-\tadOperacion{raiz}{arbolDeCategorias}{categoria}{}
-\tadOperacion{hijos}{arbolDeCategorias}{conj(arbolDeCategorias)}{}
+\tadOperacion{categorias}{acat/ac}{conj(categoria)}{}
+\tadOperacion{raiz}{acat/ac}{categoria}{}
+\tadOperacion{padre}{acat/ac,categoria/h}{categoria}{$esta?(h, ac) \wedge raiz(ac) \neq h$ }
+\tadOperacion{id}{acat/ac,categoria/c}{nat}{$esta?(c,ac)$}
 
 
 \tadGeneradores
 
-\tadOperacion{AC}{conj(arbolDeCategorias)/a, categoria/c}{arbolDeCategorias}{$\neg estaEnAlguno(c,a)$}
+\tadOperacion{nuevo}{categoria/c}{acat}{$\neg vacia?(c)$}
+\tadOperacion{agregar}{acat/ac, categoria/c, categoria/h}{acat}{$esta?(c,ac) \wedge ¬vacia?(h) \wedge ¬esta?(h, ac)$}
 
 \tadOtrasOperaciones
 
 
-\tadOperacion{dameTodos}{arbolDeCategorias}{conj(categoria)}{} %Conjunto de todas las categorías del arbol
-\tadOperacion{losFamiliares}{categoria/c, arbolDeCategorias/a}{conj(categoria)}{$c \in dameTodos(a)$} %Dada una categoria en particular de un arbol, devuelve un conjunto con ella y todas las categorias que son familia
-\tadOperacion{estaEnAlguno}{arbolDeCategorias,categoria}{bool}{} %Dado un conjunto de arboles, se fija si la categoria dada esta en alguno de esos
-\tadOperacion{losParientes}{categoria/c,conj(arbolDeCategorias)/ca}{conj(categoria)}{}
-\tadOperacion{todosLosDeAbajo}{arbolDeCategorias}{conj(categoria)}{}
+\tadOperacion{altura}{acat/ac}{nat}{}
+\tadOperacion{esta?}{categoria/c,acat/ac}{bool}{}
+\tadOperacion{esSubCategoria}{acat/ac,categoria/c,categoria/h}{bool}{$esta?(c,ac) \wedge esta?(h,ac)$}
+\tadOperacion{alturaCategoria}{acat/ac,categoria/c}{nat}{$esta?(c,ac)$}
+\tadOperacion{hijos}{acat/ac,categoria/c}{conj(categoria)}{$esta?(c,ac)$}
+
+
+
 
 \tadAxiomas[\paratodo{arbolDeCategorias}{a} \\ \paratodo{categoria}{c} \\ \paratodo{conj(arbolDeCategoria)}{ca} \\ \paratodo{conj(categoria)}{cc} \\]
-\tadAlinearAxiomas{raiz(AC(ca,c))}
-\tadAlinearAxiomas{hijos(AC(ca,c))}
-\tadAlinearAxiomas{estaEnAlguno(a,c)}
-\tadAlinearAxiomas{todosLosDeAbajo(a)}
-\tadAxioma{raiz(AC(ca,c))}{c} 
-\tadAxioma{hijos(AC(ca,c))}{ca}
-
-\tadAxioma{estaEnAlguno(a,c)}{\IF\ c $\in$ dameTodos(a) THEN true ELSE false FI}
-\tadAxioma{losFamiliares(c,a)}{\IF\ c = raiz(a) THEN dameTodos(a) ELSE losParientes(c,hijos(a)) FI}
-\tadAxioma{losParientes(c,ca)}{\IF\ $\emptyset$?(ca) THEN $\emptyset$ ELSE {\IF\ estaEnAlguno(dameUno(ca),c) THEN losFamiliares(c,dameUno(ca)) ELSE losParientes(c,sinUno(ca)) FI} FI}
-\tadAxioma{dameTodos(a)}{Ag(raiz(ac),todosLosDeAbajo(hijos(a)))}
-\tadAxioma{todosLosDeAbajo(a)}{\IF\ $\emptyset$?(a) THEN $\emptyset$ ELSE dameTodos(dameUno(a)) $\cup$ todosLosDeAbajo(sinUno(a)) FI}
-\tadAxioma{estaEnAlguno(a,c)}{\IF\ c $\in$ dameTodos(a) THEN true ELSE false FI}
+\tadAxioma{categorias(nuevo(c))}{c}
+\tadAxioma{categorias(agregar(ac,c,h))}{Ag(h, categorias(ac))}
 $\\$
+\tadAxioma{raiz(nuevo(c))}{c}
+\tadAxioma{raiz(agregar(ac,c,h))}{raiz(ac)}
+$\\$
+\tadAxioma{padre(agregar(ac,c,h ),h' )}{\IF\ h == h' THEN c ELSE padre(ac,c,h') FI}
+$\\$
+\tadAxioma{id(nuevo(c), c')}{1}
+\tadAxioma{id(agregar(ac,c,h), h')}{\IF\ h==h' THEN $\#$categorias(ac) + 1 ELSE id(ac,h2) FI}
+$\\$
+\tadAxioma{altura(nuevo(c))}{alturaCategoria(nuevo(c), c)}
+\tadAxioma{altura(agregar(ac,c,h))}{max(altura(ac), alturaCategoria(agregar(ac,c,h), h))}
+\tadAxioma{alturaCategoria(ac, c)}{\IF\ c == raiz(ac) THEN 1 ELSE 1 + alturaCategoria(ac, padre(ac, c)) FI}
+$\\$
+\tadAxioma{esta?(c,ac)}{c $\exists$ categorias(ac)}
+$\\$
+\tadAxioma{esSubCategoria(ac,c,h)}{c == h $\vee$L (h = raiz(ac) $\wedge$L esSubCategoria(ac, c, padre(ac, h)))}
+$\\$
+\tadAxioma{hijos(nuevo(c1 ), c2 )}{$\emptyset$}
+\tadAxioma{hijos(agregar(ac,c,h), c')}{\IF\ h == c' THEN $\emptyset$ ELSE {(\IF\ c==c' THEN h ELSE $\emptyset$ FI)} $\cup$ hijos(ac,c,c') FI}
+
+
+
 
 \end{tad}
 
+\subsubsection{\Large Modulo de Arbol de Categorias\\}
+	\textbf{generos}: \textit{acat}\\
+	\textbf{usa}: bool, nat, conjunto\\
+		\textbf{se explica con}: TAD ArbolDeCategorias\\
+		\textbf{g\'eneros}: acat\\
 
+\subsubsection{\Large Operaciones B\'asicas}
+	\textbf{categorias} (\textbf{in} ac: acat) $\longrightarrow$ res: conj(categoria)\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ categorias(ac)}\\
+	Complejidad : O($\#$categorias(ac))\\
+	Descripci\'{o}n : Devuelve el conjunto de categorias de un ac\\\\
+	
+	\textbf{raiz} (\textbf{in} ac: acat) $\longrightarrow$ res: categoria\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ raiz(ac)}\\
+	Complejidad : O(1)\\
+	Descripci\'{o}n : Devuelve la raiz del arbol ac\\\\
+	
+	\textbf{padre} (\textbf{in} ac: acat, \textbf{in} h: categoria) $\longrightarrow$ res: categoria\\\\
+	Pre $\equiv$ {h $\in$ ac $\wedge$ raiz(ac) $\neq$ h}\\
+	Post $\equiv$ {res$\igobs$ padre(ac,h)}\\
+	Complejidad : O(ni idea)\\
+	Descripci\'{o}n : Devuelve el padre de una categoria\\\\
+		
+	\textbf{id} (\textbf{in} ac: acat, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\\\
+	Pre $\equiv$ {h $\in$ ac}\\
+	Post $\equiv$ {res$\igobs$ id(ac,c)}\\
+	Complejidad : O(|c|)\\
+	Descripci\'{o}n : Devuelve el id de una categoria c en el arbol ac\\\\	
+	
+	\textbf{nuevo} (\textbf{in} c: categoria) $\longrightarrow$ res:acat\\\\
+	Pre $\equiv$ {$¬$vacia?(c)}\\
+	Post $\equiv$ {res$\igobs$ nuevo(c)}\\
+	Complejidad : O(|c|)\\
+	Descripci\'{o}n : Crea un arbol\\\\	
+	
+	\textbf{agregar} (\textbf{in/out} ac: acat,\textbf{in} c: categoria, \textbf{in} h: categoria )\\\\
+	Pre $\equiv$ {c $\in$ ac $\wedge$ $¬$vacia?(h) $\wedge$ ac${_0}$ $\igobs$ ac}\\
+	Post $\equiv$ {ac$\igobs$ agregar(ac${_0}$,c,h)}\\
+	Complejidad : O(|c|+|h|)\\
+	Descripci\'{o}n : Agrega una categoria hija a una padre\\\\
+	
+	\textbf{altura} (\textbf{in} ac: acat) $\longrightarrow$ res:nat\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ altura(ac)}\\
+	Complejidad : O(|ac|)\\
+	Descripci\'{o}n : Devuelve la altura del arbol ac\\\\	
+	
+	\textbf{esta?} (\textbf{in} c: categoria,\textbf{in} ac: acat) $\longrightarrow$ res:bool\\\\
+	Pre $\equiv$ {true}\\
+	Post $\equiv$ {res$\igobs$ esta?(c,ac)}\\
+	Complejidad : O(|ac|)\\
+	Descripci\'{o}n : Devuelve si esta o no en el arbol la categoria c\\\\	
+	
+	\textbf{esSubCategoria} (\textbf{in} ac: acat, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\\\
+	Pre $\equiv$ {esta?(c,ac) $\wedge$ esta?(h,ac)}\\
+	Post $\equiv$ {res$\igobs$ esSubCategoria(ac,c,h)}\\
+	Complejidad : O(no tengo idea)\\
+	Descripci\'{o}n : Devuelve si c es descendiente de h\\\\	
+	
+	\textbf{alturaCategoria} (\textbf{in} ac: acat, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\\\
+	Pre $\equiv$ {esta?(c,ac)}\\
+	Post $\equiv$ {res$\igobs$ alturaCategoria(ac,c)}\\
+	Complejidad : O(no tengo idea)\\
+	Descripci\'{o}n : Devuelve la altura de la categoria c\\\\	
+	
+	\textbf{hijos} (\textbf{in} ac: acat, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\\\
+	Pre $\equiv$ {esta?(c,ac)}\\
+	Post $\equiv$ {res$\igobs$ hijos(ac,c)}\\
+	Complejidad : O(|c|)\\
+	Descripci\'{o}n : Devuelve el conjunto de categorias hijos de c\\\\	
+
+    \subsection{\huge Pautas de Implementaci\'{o}n}	
+
+        \subsubsection{\Large Estructura de Representaci\'{o}n} 
+	
+        arbolDeCategorias \textbf{se representa con} acat \textbf{donde} acat \textbf{es}:\\
+	tupla (\\
+$\hspace*{10mm}$\textit{raiz}: string,\\
+$\hspace*{10mm}$\textit{cantidad}: nat,\\
+$\hspace*{10mm}$\textit{descendientes}:dicc(\textit{padre}:string,tupla(\textit{abuelo}:string,\textit{losDeAbajo}:conj(string),\textit{id}:nat)),\\)\\
+
+	\subsubsection{\Large Invariante de Representaci\'{o}n}
+	
+	  \begin{enumerate}
+
+		\item Si la clave '\textit{padre}' de '\textit{descendientes}' es igual a '\textit{raiz}', '\textit{losDeAbajo}' sumado a '\textit{padre}' es igual al conjunto de todas las claves del dicc '\textit{descendientes}'.
+		
+		\item '\textit{cantidad}' sera igual a la cantidad de elementos del conjunto de todas las claves del dicc '\textit{descendientes}'.
+
+		\item Todos los '\textit{id}' de significado de cada clave deberan ser menor o igual a '\textit{cant}'.
+		
+	  \end{enumerate}
+	 
+	
+	   \textbf{Rep} : acat $\longrightarrow$ bool\\
+	        Rep(s) $\equiv$ true $\Longleftrightarrow$\\
+	
+	   \begin{enumerate}
+
+	    \item LA CONCHA DE TU MADRE ALL BOYS.
+
+\end{enumerate}
+
+\subsubsection{\Large Funci\'{o}n de Abstraccion}
+
+	    \textbf{Abs}: estr e $\rightarrow$ arbolDeCategorias \\
+   	    Abs(e) $\igobs$ ac: arbolDeCategorias | \\
+   	   \begin{flushright}
+ categorias(ac) = claves(e.descendientes) $\wedge{_L}$ \\
+   	    raiz(ac) = e.raiz $\wedge{_L}$ \\
+   	    (\paratodo {categoria}{c}) esta?(c,ac) $\wedge$ c $\neq$ raiz(ac) $\Rightarrow{_L}$
+   	    padre(ac,c) = $\Pi{_1}$(obtener(c,e.descendientes)) $\wedge{_L}$ \\
+   	    (\paratodo {categoria}{c}) esta?(c,ac) $\Rightarrow{_L}$ id(ac,c) = 		$\Pi{_3}$(obtener(c,e.descendientes))
+\end{flushright}
+		
+		
 \section{Renombres}
 \begin{tad}{\tadNombre{Categoria}} es String
 \end{tad}
@@ -180,3 +469,6 @@ $\\$
 \end{tad}
 
 \end{document}
+\begin{flushright}
+
+\end{flushright}

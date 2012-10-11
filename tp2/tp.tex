@@ -420,15 +420,15 @@ $\\$
 	tupla (\\
 $\hspace*{10mm}$\textit{raiz}: string,\\
 $\hspace*{10mm}$\textit{cantidad}: nat,\\
-$\hspace*{10mm}$\textit{descendientes}:dicc(\textit{padre}:string,tupla(\textit{abuelo}:string,\textit{losDeAbajo}:conj(string),\textit{id}:nat)),\\)\\
+$\hspace*{10mm}$\textit{familia}:dicc(\textit{padre}:string,tupla(\textit{abuelo}:string,\textit{hijos}:conj(string),\textit{id}:nat)),\\)\\
 
 	\subsubsection{\Large Invariante de Representaci\'{o}n}
 	
 	  \begin{enumerate}
-
-		\item Si la clave '\textit{padre}' de '\textit{descendientes}' es igual a '\textit{raiz}', '\textit{losDeAbajo}' sumado a '\textit{padre}' es igual al conjunto de todas las claves del dicc '\textit{descendientes}'.
+	
+		\item todos los elementos de '\textbf{hijos} de una clave '\textbf{padre}', cada uno de estos hijos tendran como '\textbf{abuelo}' a ese '\textbf{padre}' cuando sean clave.
 		
-		\item '\textit{cantidad}' sera igual a la cantidad de elementos del conjunto de todas las claves del dicc '\textit{descendientes}'.
+		\item '\textit{cantidad}' sera igual a la cantidad de elementos del conjunto de todas las claves del dicc '\textit{familia}'.
 
 		\item Todos los '\textit{id}' de significado de cada clave deberan ser menor o igual a '\textit{cant}'.
 		
@@ -449,11 +449,11 @@ $\hspace*{10mm}$\textit{descendientes}:dicc(\textit{padre}:string,tupla(\textit{
 	    \textbf{Abs}: estr e $\rightarrow$ arbolDeCategorias \\
    	    Abs(e) $\igobs$ ac: arbolDeCategorias | \\
    	   \begin{flushright}
- categorias(ac) = claves(e.descendientes) $\wedge{_L}$ \\
+ categorias(ac) = claves(e.familia) $\wedge{_L}$ \\
    	    raiz(ac) = e.raiz $\wedge{_L}$ \\
    	    (\paratodo {categoria}{c}) esta?(c,ac) $\wedge$ c $\neq$ raiz(ac) $\Rightarrow{_L}$
-   	    padre(ac,c) = $\Pi{_1}$(obtener(c,e.descendientes)) $\wedge{_L}$ \\
-   	    (\paratodo {categoria}{c}) esta?(c,ac) $\Rightarrow{_L}$ id(ac,c) = 		$\Pi{_3}$(obtener(c,e.descendientes))
+   	    padre(ac,c) = (obtener(c,e.familia)).abuelo $\wedge{_L}$ \\
+   	    (\paratodo {categoria}{c}) esta?(c,ac) $\Rightarrow{_L}$ id(ac,c) = 		(obtener(c,e.familia)).id
 \end{flushright}
 		
 		
