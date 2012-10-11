@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.21)  10 OCT 2012 23:28
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.21)  11 OCT 2012 15:52
 entering extended mode
  %&-line parsing enabled.
 **tp.tex
@@ -1241,6 +1241,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 438--440
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 449--451
+
+ []
+
 AED: lastpage setting LastPage [11] (./tp.aux) ) 
 Here is how much of TeX's memory you used:
  6869 strings out of 495061
@@ -1262,13 +1267,14 @@ s/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfour
 c/ecrm1200.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.
 600pk></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr
 /share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texm
-f-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fo
-nts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
-s/cm/cmsy7.pfb>
-Output written on tp.pdf (11 pages, 196170 bytes).
+f-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.p
+fb>
+Output written on tp.pdf (11 pages, 204866 bytes).
 PDF statistics:
- 481 PDF objects out of 1000 (max. 8388607)
+ 485 PDF objects out of 1000 (max. 8388607)
  27 named destinations out of 1000 (max. 500000)
  89 words of extra memory for PDF output out of 10000 (max. 10000000)
 

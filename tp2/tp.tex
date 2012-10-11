@@ -446,7 +446,15 @@ $\hspace*{10mm}$\textit{descendientes}:dicc(\textit{padre}:string,tupla(\textit{
 
 \subsubsection{\Large Funci\'{o}n de Abstraccion}
 
-	    \textbf{Abs}: acat e $\rightarrow$ arbolDeCategorias
+	    \textbf{Abs}: estr e $\rightarrow$ arbolDeCategorias \\
+   	    Abs(e) $\igobs$ ac: arbolDeCategorias | \\
+   	   \begin{flushright}
+ categorias(ac) = claves(e.descendientes) $\wedge{_L}$ \\
+   	    raiz(ac) = e.raiz $\wedge{_L}$ \\
+   	    (\paratodo {categoria}{c}) esta?(c,ac) $\wedge$ c $\neq$ raiz(ac) $\Rightarrow{_L}$
+   	    padre(ac,c) = $\Pi{_1}$(obtener(c,e.descendientes)) $\wedge{_L}$ \\
+   	    (\paratodo {categoria}{c}) esta?(c,ac) $\Rightarrow{_L}$ id(ac,c) = 		$\Pi{_3}$(obtener(c,e.descendientes))
+\end{flushright}
 		
 		
 \section{Renombres}
@@ -461,3 +469,6 @@ $\hspace*{10mm}$\textit{descendientes}:dicc(\textit{padre}:string,tupla(\textit{
 \end{tad}
 
 \end{document}
+\begin{flushright}
+
+\end{flushright}
