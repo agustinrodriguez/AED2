@@ -416,32 +416,42 @@ $\\$
 
         \subsubsection{\Large Estructura de Representaci\'{o}n} 
 	
-        arbolDeCategorias \textbf{se representa con} acat \textbf{donde} acat \textbf{es}:\\
+        arbolDeCategorias \textbf{se representa con} estrAC \textbf{donde} estrAC \textbf{es}:\\
 	tupla (\\
 $\hspace*{10mm}$\textit{raiz}: string,\\
 $\hspace*{10mm}$\textit{cantidad}: nat,\\
-$\hspace*{10mm}$\textit{familia}:dicc(\textit{padre}:string,tupla(\textit{abuelo}:string,\textit{hijos}:conj(string),\textit{id}:nat)),\\)\\
+$\hspace*{10mm}$\textit{alturaMax}: nat,\\
+$\hspace*{10mm}$\textit{familia}:diccTrie(\textit{padre}:string,tupla(\textit{abuelo}:string,\textit{hijos}:conj(string),\textit{id}:nat,\textit{altura}:nat)),\\)\\
 
 	\subsubsection{\Large Invariante de Representaci\'{o}n}
 	
 	  \begin{enumerate}
 	
+		\item Para todo '\textbf{padre}' que exista en '\textbf{familia}' debera ser o raiz o pertenecer a algun conjunto de hijos de alguna clave '\textbf{padre}'
+	  
 		\item todos los elementos de '\textbf{hijos} de una clave '\textbf{padre}', cada uno de estos hijos tendran como '\textbf{abuelo}' a ese '\textbf{padre}' cuando sean clave.
 		
 		\item '\textit{cantidad}' sera igual a la cantidad de elementos del conjunto de todas las claves del dicc '\textit{familia}'.
 
 		\item Todos los '\textit{id}' de significado de cada clave deberan ser menor o igual a '\textit{cant}'.
 		
+		\item No hay '\textit{id}' repetidos en el '\textit{familia} y son todos consecutivos.
+		
 	  \end{enumerate}
 	 
 	
 	   \textbf{Rep} : acat $\longrightarrow$ bool\\
-	        Rep(s) $\equiv$ true $\Longleftrightarrow$\\
+	        Rep(e) $\equiv$ true $\Longleftrightarrow$\\
 	
 	   \begin{enumerate}
 
-	    \item LA CONCHA DE TU MADRE ALL BOYS.
+	   
+	       
+	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\Rightarrow{_L}$ y $\in$ (obtener(x,e.familia)).hijos $\Leftrightarrow$ (obtener(y,e.familia))).abuelo = x
 
+	    \item e.cantidad  = $\#$(claves(e.familia))  
+	    
+	    
 \end{enumerate}
 
 \subsubsection{\Large Funci\'{o}n de Abstraccion}
@@ -455,6 +465,39 @@ $\hspace*{10mm}$\textit{familia}:dicc(\textit{padre}:string,tupla(\textit{abuelo
    	    padre(ac,c) = (obtener(c,e.familia)).abuelo $\wedge{_L}$ \\
    	    (\paratodo {categoria}{c}) esta?(c,ac) $\Rightarrow{_L}$ id(ac,c) = 		(obtener(c,e.familia)).id
 \end{flushright}
+		
+
+	\subsubsection{Algoritmos}
+		
+		\textbf{ICATEGORIAS} (\textbf{in} ac: acat) $\longrightarrow$ res: conj(categoria)\\
+		res $\leftarrow$ claves(ac.familia)   // O(ALGO) 
+		
+		\textbf{IRAIZ} (\textbf{in} ac: acat) $\longrightarrow$ res: categoria\\
+		res $\leftarrow$ ac.raiz // O(1)
+		
+		\textbf{IPADRE} (\textbf{in} ac: acat, \textbf{in} h: categoria) $\longrightarrow$ res: categoria\\
+		res $\leftarrow$ (obtener(h,ac.familia)).abuelo // O(ALGO)
+		
+		\textbf{IID} (\textbf{in} ac: acat, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
+		res $\leftarrow$ (obtener(c,ac.familia)).id // O(ALGO)
+		
+		\textbf{INUEVO} (\textbf{in} c: categoria) $\longrightarrow$ res:acat\\\\
+		
+		\textbf{IAGREGAR} (\textbf{in/out} ac: acat,\textbf{in} c: categoria, \textbf{in} h: categoria )\\\\
+		
+		\textbf{IALTURA} (\textbf{in} ac: acat) $\longrightarrow$ res:nat\\
+		res $\leftarrow$ ac.alturaMax // O(ALGO)
+		                                                                  
+		\textbf{IESTA?} (\textbf{in} c: categoria,\textbf{in} ac: acat) $\longrightarrow$ res:bool\\\\
+		res $\leftarrow$ def?(c,ac.familia) // O(ALGO)
+		
+		\textbf{IESSUBCATEGORIA} (\textbf{in} ac: acat, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\
+		
+		\textbf{IALTURACATEGORIA} (\textbf{in} ac: acat, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
+		res $\leftarrow$ (obtener(c,ac.familia)).altura // O(ALGO)
+		
+		\textbf{IHIJOS} (\textbf{in} ac: acat, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\
+		res $\leftarrow$ (obtener(c,ac.familia)).hijos // O(ALGO) PREGUNTAR!!!
 		
 		
 \section{Renombres}
