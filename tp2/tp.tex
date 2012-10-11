@@ -412,7 +412,43 @@ $\\$
 	Complejidad : O(|c|)\\
 	Descripci\'{o}n : Devuelve el conjunto de categorias hijos de c\\\\	
 
+    \subsection{\huge Pautas de Implementaci\'{o}n}	
 
+        \subsubsection{\Large Estructura de Representaci\'{o}n} 
+	
+        arbolDeCategorias \textbf{se representa con} acat \textbf{donde} acat \textbf{es}:\\
+	tupla (\\
+$\hspace*{10mm}$\textit{raiz}: string,\\
+$\hspace*{10mm}$\textit{cantidad}: nat,\\
+$\hspace*{10mm}$\textit{descendientes}:dicc(\textit{padre}:string,tupla(\textit{abuelo}:string,\textit{losDeAbajo}:conj(string),\textit{id}:nat)),\\)\\
+
+	\subsubsection{\Large Invariante de Representaci\'{o}n}
+	
+	  \begin{enumerate}
+
+		\item Si la clave '\textit{padre}' de '\textit{descendientes}' es igual a '\textit{raiz}', '\textit{losDeAbajo}' sumado a '\textit{padre}' es igual al conjunto de todas las claves del dicc '\textit{descendientes}'.
+		
+		\item '\textit{cantidad}' sera igual a la cantidad de elementos del conjunto de todas las claves del dicc '\textit{descendientes}'.
+
+		\item Todos los '\textit{id}' de significado de cada clave deberan ser menor o igual a '\textit{cant}'.
+		
+	  \end{enumerate}
+	 
+	
+	   \textbf{Rep} : acat $\longrightarrow$ bool\\
+	        Rep(s) $\equiv$ true $\Longleftrightarrow$\\
+	
+	   \begin{enumerate}
+
+	    \item LA CONCHA DE TU MADRE ALL BOYS.
+
+\end{enumerate}
+
+\subsubsection{\Large Funci\'{o}n de Abstraccion}
+
+	    \textbf{Abs}: acat e $\rightarrow$ arbolDeCategorias
+		
+		
 \section{Renombres}
 \begin{tad}{\tadNombre{Categoria}} es String
 \end{tad}
