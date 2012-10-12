@@ -132,7 +132,7 @@ THEN dameUno(ls) ELSE linkConMasAccesos(s,c,sinUno(ls)) FI} FI }
 		\textbf{g\'eneros}: lli\\
 
 \subsubsection{\Large Operaciones B\'asicas}
-	\textbf{categorias} (\textbf{in} s: lli) $\longrightarrow$ res: acat\\\\
+	\textbf{categorias} (\textbf{in} s: lli) $\longrightarrow$ res: estrAC\\\\
 	Pre $\equiv$ {true}\\
 	Post $\equiv$ {res$\igobs$ categorias(s)}\\
 	Complejidad : O($\#$categorias(s))\\
@@ -168,7 +168,7 @@ THEN dameUno(ls) ELSE linkConMasAccesos(s,c,sinUno(ls)) FI} FI }
 	Complejidad : O($\#$accesosRecientesDia(s,l,f))\\
 	Descripci\'{o}n : Devuelve la cantidad de accesos a un link un cierto dia\\\\
 	
-	\textbf{inicar} (\textbf{in} ac: acat) $\longrightarrow$ res: lli\\\\
+	\textbf{inicar} (\textbf{in} ac: estrAC) $\longrightarrow$ res: lli\\\\
 	Pre $\equiv$ {true}\\
 	Post $\equiv$ {res$\igobs$ iniciar(ac)}\\
 	Complejidad : O($\#$categorias(ac))\\
@@ -242,7 +242,7 @@ THEN dameUno(ls) ELSE linkConMasAccesos(s,c,sinUno(ls)) FI} FI }
 	Complejidad : O(no tengo idea)\\
 	Descripci\'{o}n : Devuelve el conjunto de links de la categoria c y sus hijos\\\\
 
-	\textbf{diasRecientesParaCategorias} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha)\\\\
+	\textbf{diasRecientesParestrACegorias} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha)\\\\
 	Pre $\equiv$ {c $\in$ categorias(s)}\\
 	Post $\equiv$ {res$\igobs$ diasRecientesParaCategorias(s,c)}\\
 	Complejidad : O(es la cantidad de accesos recientes esto??)\\
@@ -358,55 +358,55 @@ $\\$
 	Complejidad : O(1)\\
 	Descripci\'{o}n : Devuelve la raiz del arbol ac\\\\
 	
-	\textbf{padre} (\textbf{in} ac: acat, \textbf{in} h: categoria) $\longrightarrow$ res: categoria\\\\
+	\textbf{padre} (\textbf{in} ac: estrAC, \textbf{in} h: categoria) $\longrightarrow$ res: categoria\\\\
 	Pre $\equiv$ {h $\in$ ac $\wedge$ raiz(ac) $\neq$ h}\\
 	Post $\equiv$ {res$\igobs$ padre(ac,h)}\\
 	Complejidad : O(ni idea)\\
 	Descripci\'{o}n : Devuelve el padre de una categoria\\\\
 		
-	\textbf{id} (\textbf{in} ac: acat, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\\\
+	\textbf{id} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\\\
 	Pre $\equiv$ {h $\in$ ac}\\
 	Post $\equiv$ {res$\igobs$ id(ac,c)}\\
 	Complejidad : O(|c|)\\
 	Descripci\'{o}n : Devuelve el id de una categoria c en el arbol ac\\\\	
 	
-	\textbf{nuevo} (\textbf{in} c: categoria) $\longrightarrow$ res:acat\\\\
+	\textbf{nuevo} (\textbf{in} c: categoria) $\longrightarrow$ res:estrAC\\\\
 	Pre $\equiv$ {$¬$vacia?(c)}\\
 	Post $\equiv$ {res$\igobs$ nuevo(c)}\\
 	Complejidad : O(|c|)\\
 	Descripci\'{o}n : Crea un arbol\\\\	
 	
-	\textbf{agregar} (\textbf{in/out} ac: acat,\textbf{in} c: categoria, \textbf{in} h: categoria )\\\\
+	\textbf{agregar} (\textbf{in/out} ac: estrAC,\textbf{in} c: categoria, \textbf{in} h: categoria )\\\\
 	Pre $\equiv$ {c $\in$ ac $\wedge$ $¬$vacia?(h) $\wedge$ ac${_0}$ $\igobs$ ac}\\
 	Post $\equiv$ {ac$\igobs$ agregar(ac${_0}$,c,h)}\\
 	Complejidad : O(|c|+|h|)\\
 	Descripci\'{o}n : Agrega una categoria hija a una padre\\\\
 	
-	\textbf{altura} (\textbf{in} ac: acat) $\longrightarrow$ res:nat\\\\
+	\textbf{altura} (\textbf{in} ac: estrAC) $\longrightarrow$ res:nat\\\\
 	Pre $\equiv$ {true}\\
 	Post $\equiv$ {res$\igobs$ altura(ac)}\\
 	Complejidad : O(|ac|)\\
 	Descripci\'{o}n : Devuelve la altura del arbol ac\\\\	
 	
-	\textbf{esta?} (\textbf{in} c: categoria,\textbf{in} ac: acat) $\longrightarrow$ res:bool\\\\
+	\textbf{esta?} (\textbf{in} c: categoria,\textbf{in} ac: estrAC) $\longrightarrow$ res:bool\\\\
 	Pre $\equiv$ {true}\\
 	Post $\equiv$ {res$\igobs$ esta?(c,ac)}\\
 	Complejidad : O(|ac|)\\
 	Descripci\'{o}n : Devuelve si esta o no en el arbol la categoria c\\\\	
 	
-	\textbf{esSubCategoria} (\textbf{in} ac: acat, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\\\
+	\textbf{esSubCategoria} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\\\
 	Pre $\equiv$ {esta?(c,ac) $\wedge$ esta?(h,ac)}\\
 	Post $\equiv$ {res$\igobs$ esSubCategoria(ac,c,h)}\\
 	Complejidad : O(no tengo idea)\\
 	Descripci\'{o}n : Devuelve si c es descendiente de h\\\\	
 	
-	\textbf{alturaCategoria} (\textbf{in} ac: acat, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\\\
+	\textbf{alturaCategoria} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\\\
 	Pre $\equiv$ {esta?(c,ac)}\\
 	Post $\equiv$ {res$\igobs$ alturaCategoria(ac,c)}\\
 	Complejidad : O(no tengo idea)\\
 	Descripci\'{o}n : Devuelve la altura de la categoria c\\\\	
 	
-	\textbf{hijos} (\textbf{in} ac: acat, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\\\
+	\textbf{hijos} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\\\
 	Pre $\equiv$ {esta?(c,ac)}\\
 	Post $\equiv$ {res$\igobs$ hijos(ac,c)}\\
 	Complejidad : O(|c|)\\
@@ -420,37 +420,60 @@ $\\$
 	tupla (\\
 $\hspace*{10mm}$\textit{raiz}: string,\\
 $\hspace*{10mm}$\textit{cantidad}: nat,\\
-$\hspace*{10mm}$\textit{altura}: nat,\\
-$\hspace*{10mm}$\textit{familia}:diccTrie(\textit{padre}:string,tupla(\textit{abuelo}:string,\textit{hijos}:conj(string),\textit{id}:nat,\textit{alturapadre}:nat)),\\)\\
+$\hspace*{10mm}$\textit{alturaMax}: nat,\\
+$\hspace*{10mm}$\textit{familia}:diccTrie(\textit{padre}:string,tupla(\textit{abuelo}:string,\textit{hijos}:conj(string),\textit{id}:nat,\textit{altura}:nat)),\\)\\
 
 	\subsubsection{\Large Invariante de Representaci\'{o}n}
 	
 	  \begin{enumerate}
 	
-		\item Para todo '\textbf{padre}' que exista en '\textbf{familia}' debera ser o raiz o pertenecer a algun conjunto de hijos de alguna clave '\textbf{padre}'
+		\item Para todo '\textit{padre}' que exista en '\textit{familia}' debera ser o raiz o pertenecer a algun conjunto de hijos de alguna clave '\textit{padre}'
 	  
-		\item todos los elementos de '\textbf{hijos} de una clave '\textbf{padre}', cada uno de estos hijos tendran como '\textbf{abuelo}' a ese '\textbf{padre}' cuando sean clave.
+		\item Todos los elementos de '\textit{hijos} de una clave '\textit{padre}', cada uno de estos hijos tendran como '\textit{abuelo}' a ese '\textit{padre}' cuando sean clave.
 		
 		\item '\textit{cantidad}' sera igual a la cantidad de elementos del conjunto de todas las claves del dicc '\textit{familia}'.
+		
+		\item Cuando la clave es igual a '\textit{raiz}' la '\textit{altura} es 1.
+		
+		\item La '\textit{altura}' de cada clave es menor o igual a '\textit{alturaMax}'.
+		
+		\item Existe una clave en la cual su '\textit{altura}' es igual a '\textit{alturaMax}'.
+		
+		\item Los '\textit{hijos}' de una clave tienen '\textit{altura}' igual a 1 + '\textit{altura} de la clave.
 
 		\item Todos los '\textit{id}' de significado de cada clave deberan ser menor o igual a '\textit{cant}'.
 		
-		\item No hay '\textit{id}' repetidos en el '\textit{familia} y son todos consecutivos.
+		\item No hay '\textit{id}' repetidos en el '\textit{familia}.
+		
+		\item Todos los '\textit{id}' son consecutivos.
 		
 	  \end{enumerate}
 	 
 	
-	   \textbf{Rep} : acat $\longrightarrow$ bool\\
+	   \textbf{Rep} : estrAC $\longrightarrow$ bool\\
 	        Rep(e) $\equiv$ true $\Longleftrightarrow$\\
 	
 	   \begin{enumerate}
 
-	   
+	   \item(\paratodo{string}{x,y}) (def?(x,e.familia)) $\Longleftrightarrow$ (x == e.raiz) $\vee$ (def?(y,e.familia)) $\wedge{_L}$ x $\in$ (obtener(y,e.familia)).hijos
 	       
-	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\Rightarrow{_L}$ y $\in$ (obtener(x,e.familia)).hijos $\Leftrightarrow$ (obtener(y,e.familia))).abuelo = x
+	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\Rightarrow{_L}$ y $\in$ (obtener(x,e.familia)).hijos $\Leftrightarrow$ \\ (obtener(y,e.familia))).abuelo = x
 
 	    \item e.cantidad  = $\#$(claves(e.familia))  
 	    
+	    \item (\paratodo{string}{x}) (def?(x,e.familia)) $\wedge$ x = e.raiz $\Rightarrow{_L}$ (obtener(x,e.familia)).altura = 1
+	    
+	    \item (\paratodo{string}{x}) (def?(x,e.familia)) $\Rightarrow{_L}$ (obtener(x,e.familia)).altura $\leq$ e.alturaMax
+	    
+	    \item ($\exists$x: string) (def?(x,e.familia)) $\wedge{_L}$ (obtener(x,e.familia)).altura $=$ e.alturaMax
+	    
+	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\wedge{_L}$ y $\in$ (obtener(x,e.familia)).hijos $\Rightarrow$ \\ (obtener(y,e.familia)).altura = 1 + (obtener(x,e.familia)).altura
+	    
+	    \item (\paratodo{string}{x}) (def?(x,e.familia)) $\Rightarrow{_L}$ (obtener(x,e.familia)).id $\leq$ e.cant
+	    
+	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\Rightarrow{_L}$ (obtener(x,e.familia)).id $\neq$ (obtener(y,e.familia)).id
+	    
+	    \item (\paratodo{string}{x}) (def?(x,e.familia)) ($\exists$ y: string) (def?(y,e.familia)) $\Leftrightarrow$ \\ (obtener(y,e.familia)).id $\leq$ e.cantidad $\wedge$ (obtener(x,e.familia)).id $<$ e.cantidad $\wedge{_L}$ \\(obtener(y,e.familia)).id = 1 + (obtener(x,e.familia)).id
 	    
 \end{enumerate}
 
@@ -469,35 +492,47 @@ $\hspace*{10mm}$\textit{familia}:diccTrie(\textit{padre}:string,tupla(\textit{ab
 
 	\subsubsection{Algoritmos}
 		
-		\textbf{ICATEGORIAS} (\textbf{in} ac: acat) $\longrightarrow$ res: conj(categoria)\\
-		res $\leftarrow$ claves(e.familia)   // O(ALGO) 
+		\textbf{ICATEGORIAS} (\textbf{in} ac: estrAC) $\longrightarrow$ res: conj(categoria)\\
+$\hspace*{6mm}$res $\leftarrow$ claves(ac.familia)   // O(ALGO) 
 		
-		\textbf{IRAIZ} (\textbf{in} ac: acat) $\longrightarrow$ res: categoria\\
-		res $\leftarrow$ e.raiz // O(1)
+		\textbf{IRAIZ} (\textbf{in} ac: estrAC) $\longrightarrow$ res: categoria\\
+$\hspace*{6mm}$res $\leftarrow$ ac.raiz // O(1)
 		
-		\textbf{IPADRE} (\textbf{in} ac: acat, \textbf{in} h: categoria) $\longrightarrow$ res: categoria\\
-		res $\leftarrow$ (obtener(h,e.familia)).abuelo // O(ALGO)
+		\textbf{IPADRE} (\textbf{in} ac: estrAC, \textbf{in} h: categoria) $\longrightarrow$ res: categoria\\
+$\hspace*{6mm}$res $\leftarrow$ (obtener(h,ac.familia)).abuelo // O(ALGO)
 		
-		\textbf{IID} (\textbf{in} ac: acat, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
-		res $\leftarrow$ (obtener(h,e.familia)).id // O(ALGO)
+		\textbf{IID} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
+$\hspace*{6mm}$res $\leftarrow$ (obtener(c,ac.familia)).id // O(ALGO)
 		
-		\textbf{INUEVO} (\textbf{in} c: categoria) $\longrightarrow$ res:acat\\\\
+		\textbf{INUEVO} (\textbf{in} c: categoria) $\longrightarrow$ res:estrAC\\
+$\hspace*{6mm}$		res.cantidad = 1 // O(ALGO)\\
+$\hspace*{6mm}$		res.raiz = categoria // O(ALGO)\\
+$\hspace*{6mm}$		res.alturaMax = 1 // O(ALGO)\\
+$\hspace*{6mm}$		padre = c // O(ALGO)\\
+$\hspace*{6mm}$		abuelo = c // O(ALGO)\\
+$\hspace*{6mm}$		hijos = $\emptyset$ // O(ALGO)\\
+$\hspace*{6mm}$		res.familia = definir(padre, (abuelo,hijos,1,1), vacio) // O(ALGO)\\
+
+	\textbf{IAGREGAR} (\textbf{in/out} ac: estrAC,\textbf{in} c: categoria, \textbf{in} h: categoria )\\
+
+$\hspace*{6mm}$\IF\ {(obtener(c,ac${_0}$.familia).altura) == ac${_0}$.alturaMax} THEN {ac.alturaMax = ac${_0}$.alturaMax + 1} ELSE{ ac.alturaMax = ac${_0}$.alturaMax }FI \\
+$\hspace*{6mm}$ (obtener(c,ac.familia)).hijos = Ag(h,(obtener(c,ac${_0}$.familia)).hijos) // O(ALGO)\\
+$\hspace*{6mm}$ ac.familia = definir(h,(c,$\emptyset$,ac${_0}$.cantidad +1,(obtener(c,ac${_0}$.familia)).altura +1), ac${_0}$.familia) //O(ALGO)\\
+$\hspace*{6mm}$ ac.cantidad = ac${_0}$.cantidad + 1 //O(ALGO)\\
+
+		\textbf{IALTURA} (\textbf{in} ac: estrAC) $\longrightarrow$ res:nat\\
+$\hspace*{6mm}$res $\leftarrow$ ac.alturaMax // O(ALGO)		                                                                 \\
+$\hspace*{6mm}$\textbf{IESTA?} (\textbf{in} c: categoria,\textbf{in} ac: estrAC) $\longrightarrow$ res:bool\\
+$\hspace*{6mm}$res $\leftarrow$ def?(c,ac.familia) // O(ALGO)
 		
-		\textbf{IAGREGAR} (\textbf{in/out} ac: acat,\textbf{in} c: categoria, \textbf{in} h: categoria )\\\\
-		
-		\textbf{IALTURA} (\textbf{in} ac: acat) $\longrightarrow$ res:nat\\
-		res $\leftarrow$ e.altura // O(ALGO)
-		                                                                  
-		\textbf{IESTA?} (\textbf{in} c: categoria,\textbf{in} ac: acat) $\longrightarrow$ res:bool\\\\
-		res $\leftarrow$ def?(c,e.familia) // O(ALGO)
-		
-		\textbf{IESSUBCATEGORIA} (\textbf{in} ac: acat, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\
-		
-		\textbf{IALTURACATEGORIA} (\textbf{in} ac: acat, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
-		res $\leftarrow$ (obtener(c,e.familia)).alturapadre // O(ALGO)
-		
-		\textbf{IHIJOS} (\textbf{in} ac: acat, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\
-		res $\leftarrow$ (obtener(c,e.familia)).hijos // O(ALGO)
+		\textbf{IESSUBCATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\\\	
+$\hspace*{6mm}$ res = false
+$\hspace*{6mm}$ res = \IF\ c = ac.raiz THEN true ELSE {\IF\ h $\in$ (obtener(c,ac.familia)).hijos THEN true ELSE {\IF\ (obtener(h,ac.familia)).abuelo $\in$ (obtener(c,ac.familia)).hijos THEN true ELSE COMO HAGO RECURSION ACA? FI } FI } FI
+
+$\hspace*{6mm}$\textbf{IALTURACATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
+$\hspace*{6mm}$res $\leftarrow$ (obtener(c,ac.familia)).altura // O(ALGO)\\
+$\hspace*{6mm}$\textbf{IHIJOS} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\
+$\hspace*{6mm}$res $\leftarrow$ (obtener(c,ac.familia)).hijos // O(ALGO) PREGUNTAR!!!
 		
 		
 \section{Renombres}

@@ -526,6 +526,9 @@ $\hspace*{6mm}$\textbf{IESTA?} (\textbf{in} c: categoria,\textbf{in} ac: estrAC)
 $\hspace*{6mm}$res $\leftarrow$ def?(c,ac.familia) // O(ALGO)
 		
 		\textbf{IESSUBCATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\\\	
+$\hspace*{6mm}$ res = false // O(ALGO) \\
+$\hspace*{6mm}$ res = \IF\ c = ac.raiz THEN true ELSE {\IF\ h $\in$ (obtener(c,ac.familia)).hijos THEN true ELSE {\IF\ (obtener(h,ac.familia)).abuelo $\in$ (obtener(c,ac.familia)).hijos THEN true ELSE COMO HAGO RECURSION ACA? FI } FI } FI
+
 $\hspace*{6mm}$\textbf{IALTURACATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
 $\hspace*{6mm}$res $\leftarrow$ (obtener(c,ac.familia)).altura // O(ALGO)\\
 $\hspace*{6mm}$\textbf{IHIJOS} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\
