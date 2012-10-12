@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.16)  11 OCT 2012 19:04
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.21)  12 OCT 2012 11:14
 entering extended mode
  %&-line parsing enabled.
 **tp.tex
 (./tp.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, spanish, galician, catalan, loaded.
+yphenation, loaded.
 (/usr/share/texmf-texlive/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texmf-texlive/tex/latex/base/size10.clo
@@ -46,8 +46,7 @@ Package ifvtex Info: VTeX not detected.
 \Gm@odd@mp=\dimen105
 \Gm@even@mp=\dimen106
 \Gm@dimlist=\toks15
-
-(/usr/share/texmf-texlive/tex/xelatex/xetexconfig/geometry.cfg))
+)
 (/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks16
@@ -74,6 +73,12 @@ File: babel.def 2008/07/06 v3.8l Babel common definitions
 \babel@savecnt=\count90
 \U@D=\dimen107
 )
+
+Package babel Warning: No hyphenation patterns were loaded for
+(babel)                the language `Spanish'
+(babel)                I will use the patterns loaded for \language=0 instead.
+
+\l@spanish = a dialect from \language0
 \es@datefmt=\count91
 \es@quottoks=\toks18
 \es@quotdepth=\count92
@@ -81,8 +86,7 @@ Package babel Info: Making " an active character on input line 492.
 Package babel Info: Making . an active character on input line 585.
 Package babel Info: Making < an active character on input line 630.
 Package babel Info: Making > an active character on input line 630.
-))
-(/usr/share/texmf-texlive/tex/latex/tools/indentfirst.sty
+)) (/usr/share/texmf-texlive/tex/latex/tools/indentfirst.sty
 Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 )
 (/usr/share/texmf-texlive/tex/latex/fancyhdr/fancyhdr.sty
@@ -106,7 +110,7 @@ LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 Package: lastpage 1994/06/25 v0.1b LaTeX2e package for refs to last page number
  (JPG)
 )
-(/home/agusrodriguez/texmf/tex/latex/aed2-symb/aed2-symb.sty
+(/home/guido/texmf/tex/latex/aed2-symb/aed2-symb.sty
 Package: aed2-symb 2004/04/17 - Para componer simbolitos frecuentemente usados 
 en AED2
 
@@ -198,7 +202,7 @@ File: xkeyval.tex 2008/08/13 v2.6a key=value parser (HA)
 \xargs@toksa=\toks26
 \xargs@toksb=\toks27
 ))
-(/home/agusrodriguez/texmf/tex/latex/aed2-itef/aed2-itef.sty
+(/home/guido/texmf/tex/latex/aed2-itef/aed2-itef.sty
 Package: aed2-itef 2010/03/16 - if-then-else-fi en lenguaje de TADs.
 
 (/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
@@ -208,7 +212,7 @@ Cargando package 'itef' (2010/03/16)
 \itefIndentacion=\skip55
 \itef@widthUnaLinea=\skip56
 \itef@linewidth=\skip57
-) (/home/agusrodriguez/texmf/tex/latex/aed2-tad/aed2-tad.sty
+) (/home/guido/texmf/tex/latex/aed2-tad/aed2-tad.sty
 Package: aed2-tad 2011/04/04 - Para especificar TADs en formato AED2
 
 (/usr/share/texmf-texlive/tex/latex/tools/calc.sty
@@ -224,7 +228,7 @@ LaTeX Info: Redefining \addtolength on input line 77.
 \calc@Ccount=\count109
 \calc@Cskip=\skip60
 )
-(/home/agusrodriguez/texmf/tex/latex/aed2-tokenizer/aed2-tokenizer.sty
+(/home/guido/texmf/tex/latex/aed2-tokenizer/aed2-tokenizer.sty
 Package: aed2-tokenizer 2010/03/12
 )
 Package aed2-tad Info: Cargando package 'tad' (04/04/2011) on input line 26.
@@ -248,7 +252,7 @@ Package aed2-tad Info: Cargando package 'tad' (04/04/2011) on input line 26.
 \tadAxioma@lenEquiv=\skip77
 \tadAxioma@lenDerecha=\skip78
 )
-(/home/agusrodriguez/texmf/tex/latex/caratula/caratula.sty
+(/home/guido/texmf/tex/latex/caratula/caratula.sty
 Package: caratula 2003/4/13 v0.1 Para componer caratulas de TPs del DC
 
 Cargando package 'caratula' v0.2 (21/4/2003)
@@ -582,14 +586,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 107--108
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 116--116
-[]\T1/cmr/bx/n/10 if  \T1/cmr/m/n/10 ac-ce-sos-Re-cien-tes(s,c,dameUno(ls)) $\O
-ML/cmm/m/it/10 >$ \T1/cmr/m/n/10 ac-ce-sos-Re-cien-
+[]\T1/cmr/bx/n/10 if  \T1/cmr/m/n/10 ac-ce-sos-Re-cientes(s,c,dameUno(ls)) $\OM
+L/cmm/m/it/10 >$ \T1/cmr/m/n/10 ac-ce-sos-Re-
  []
 
 [3]
 Underfull \hbox (badness 10000) in paragraph at lines 122--122
-[]\T1/cmr/m/n/10 diasRecientes(s, link-Co-nUl-ti-moAc-ce-so(s, c, links-Ca-te-g
-o-riaOHi-
+[]\T1/cmr/m/n/10 diasRecientes(s, linkConUl-ti-moAc-ce-so(s, c, linksCat-e-go-r
+iaO-Hi-
  []
 
 
@@ -1233,82 +1237,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 419--425
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 443--445
+Underfull \hbox (badness 10000) in paragraph at lines 453--455
 
  []
 
 
-Overfull \hbox (40.34221pt too wide) in paragraph at lines 450--451
-[]\T1/cmr/m/n/10 ($\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 x; y$\T1/cmr/m/n/10 : str
-ing) (def?(x,e.familia)) $\OMS/cmsy/m/n/10 ^$ \T1/cmr/m/n/10 (def?(y,e.familia)
-) $\OMS/cmsy/m/n/10 ) []$ \T1/cmr/m/n/10 y $\OMS/cmsy/m/n/10 2$ \T1/cmr/m/n/10 
-(ob-te-ner(x,e.familia)).hijos $\OMS/cmsy/m/n/10 ,$ \T1/cmr/m/n/10 (ob-te-ner(y
-,e.familia))).abuelo
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 459--461
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 484--485
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 484--485
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 486--487
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 486--487
+Underfull \hbox (badness 10000) in paragraph at lines 482--484
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 491--493
+Underfull \hbox (badness 10000) in paragraph at lines 507--513
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 494--495
+Underfull \hbox (badness 10000) in paragraph at lines 507--513
 
  []
 
 AED: lastpage setting LastPage [12] (./tp.aux) ) 
 Here is how much of TeX's memory you used:
- 6876 strings out of 494999
- 95019 string characters out of 1180816
- 197249 words of memory out of 3000000
- 9872 multiletter control sequences out of 15000+50000
+ 6888 strings out of 495061
+ 94843 string characters out of 1182621
+ 197197 words of memory out of 3000000
+ 9866 multiletter control sequences out of 15000+50000
  18985 words of font info for 45 fonts, out of 3000000 for 9000
- 54 hyphenation exceptions out of 8191
- 38i,13n,43p,288b,416s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf/fonts/enc/dvi
-ps/cm-super/cm-super-t1.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfon
-ts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi1
-0.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
-share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-
-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/publ
-ic/amsfonts/cm/cmsy7.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000
-.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/tex
-mf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/publi
-c/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.
-pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1000.pfb></usr/share/texm
-f/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public
-/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.p
-fb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texmf
-/fonts/type1/public/cm-super/sfxc1440.pfb>
-Output written on tp.pdf (12 pages, 289504 bytes).
+ 28 hyphenation exceptions out of 8191
+ 38i,13n,43p,305b,416s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </home/guido/.texmf-var/fonts/
+pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/j
+knappen/ec/ecbx1200.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/
+ecti1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1000.60
+0pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecxc1440.600pk> </home
+/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/guido/.tex
+mf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/guido/.texmf-var/font
+s/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfour
+/jknappen/ec/ecbx1440.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/e
+c/ecrm1200.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.
+600pk></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr
+/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texm
+f-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.p
+fb>
+Output written on tp.pdf (12 pages, 213270 bytes).
 PDF statistics:
- 192 PDF objects out of 1000 (max. 8388607)
- 32 named destinations out of 1000 (max. 500000)
+ 524 PDF objects out of 1000 (max. 8388607)
+ 45 named destinations out of 1000 (max. 500000)
  97 words of extra memory for PDF output out of 10000 (max. 10000000)
 
