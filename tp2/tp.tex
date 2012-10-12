@@ -504,22 +504,31 @@ $\hspace*{6mm}$res $\leftarrow$ (obtener(h,ac.familia)).abuelo // O(ALGO)
 		\textbf{IID} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
 $\hspace*{6mm}$res $\leftarrow$ (obtener(c,ac.familia)).id // O(ALGO)
 		
-		\textbf{INUEVO} (\textbf{in} c: categoria) $\longrightarrow$ res:estrAC\\\\
-$\hspace*{6mm}$		
-		\textbf{IAGREGAR} (\textbf{in/out} ac: estrAC,\textbf{in} c: categoria, \textbf{in} h: categoria )\\\\
-$\hspace*{6mm}$		
+		\textbf{INUEVO} (\textbf{in} c: categoria) $\longrightarrow$ res:estrAC\\
+$\hspace*{6mm}$		res.cantidad = 1 // O(ALGO)\\
+$\hspace*{6mm}$		res.raiz = categoria // O(ALGO)\\
+$\hspace*{6mm}$		res.alturaMax = 1 // O(ALGO)\\
+$\hspace*{6mm}$		padre = c // O(ALGO)\\
+$\hspace*{6mm}$		abuelo = c // O(ALGO)\\
+$\hspace*{6mm}$		hijos = $\emptyset$ // O(ALGO)\\
+$\hspace*{6mm}$		res.familia = definir(padre, (abuelo,hijos,1,1), vacio) // O(ALGO)\\
+
+	\textbf{IAGREGAR} (\textbf{in/out} ac: estrAC,\textbf{in} c: categoria, \textbf{in} h: categoria )\\
+
+$\hspace*{6mm}$\IF\ {(obtener(c,ac${_0}$.familia).altura) == ac${_0}$.alturaMax} THEN {ac.alturaMax = ac${_0}$.alturaMax + 1} ELSE{ ac.alturaMax = ac${_0}$.alturaMax }FI \\
+$\hspace*{6mm}$ (obtener(c,ac.familia)).hijos = Ag(h,(obtener(c,ac${_0}$.familia)).hijos) // O(ALGO)\\
+$\hspace*{6mm}$ ac.familia = definir(h,(c,$\emptyset$,ac${_0}$.cantidad +1,(obtener(c,ac${_0}$.familia)).altura +1), ac${_0}$.familia) //O(ALGO)\\
+$\hspace*{6mm}$ ac.cantidad = ac${_0}$.cantidad + 1 //O(ALGO)\\
+
 		\textbf{IALTURA} (\textbf{in} ac: estrAC) $\longrightarrow$ res:nat\\
-$\hspace*{6mm}$res $\leftarrow$ ac.alturaMax // O(ALGO)
-		                                                                  
-		\textbf{IESTA?} (\textbf{in} c: categoria,\textbf{in} ac: estrAC) $\longrightarrow$ res:bool\\
+$\hspace*{6mm}$res $\leftarrow$ ac.alturaMax // O(ALGO)		                                                                 \\
+$\hspace*{6mm}$\textbf{IESTA?} (\textbf{in} c: categoria,\textbf{in} ac: estrAC) $\longrightarrow$ res:bool\\
 $\hspace*{6mm}$res $\leftarrow$ def?(c,ac.familia) // O(ALGO)
 		
-		\textbf{IESSUBCATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\
-$\hspace*{6mm}$		
-		\textbf{IALTURACATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
-$\hspace*{6mm}$res $\leftarrow$ (obtener(c,ac.familia)).altura // O(ALGO)
-		
-		\textbf{IHIJOS} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\
+		\textbf{IESSUBCATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\\\	
+$\hspace*{6mm}$\textbf{IALTURACATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
+$\hspace*{6mm}$res $\leftarrow$ (obtener(c,ac.familia)).altura // O(ALGO)\\
+$\hspace*{6mm}$\textbf{IHIJOS} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\
 $\hspace*{6mm}$res $\leftarrow$ (obtener(c,ac.familia)).hijos // O(ALGO) PREGUNTAR!!!
 		
 		
