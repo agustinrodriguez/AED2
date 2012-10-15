@@ -278,6 +278,56 @@ THEN dameUno(ls) ELSE linkConMasAccesos(s,c,sinUno(ls)) FI} FI }
 	Complejidad : O(1)\\
 	Descripci\'{o}n : Devuelve 1 o 0 dependiendo el valor de verdad de b\\\\
 
+    \subsection{\huge Pautas de Implementaci\'{o}n}	
+
+        \subsubsection{\Large Estructura de Representaci\'{o}n} 
+	
+        linkLinkIT \textbf{se representa con} estrILL \textbf{donde} estrILL \textbf{es}:\\
+	tupla (\\
+$\hspace*{10mm}$\textit{linksXCat}: dicc (\textit{categoria}: string, \textit{links}: conj(link)),\\
+$\hspace*{10mm}$\textit{actual}:nat, \\
+$\hspace*{10mm}$\textit{accesosXLink}: dicc(\textit{link}:string,(\textit{catDLink}:string, \textit{accesos}secu((tupla(\textit{dia}:nat, \textit{cantidadAcceso})))))\\
+
+
+	\subsubsection{\Large Invariante de Representaci\'{o}n}
+	
+	  \begin{enumerate}
+	
+		\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}' debera existir en algun '\textit{links}' de una clave \textit{'categoria'} de \textit{'linksXCat'}
+	  
+		\item Todos los \textit{dia}' deberan ser menor o igual a \textit{actual}
+		
+		\item Para todos los link que existan en 'links' de una categoria de 'linksXCat', esa categoria debera aparecer como 'catDLink' cuando se consulte por algun link del conjunto como clave en 'accesosXLink'		
+	  
+	  \end{enumerate}
+	 
+	
+	   \textbf{Rep} : estrLLI $\longrightarrow$ bool\\
+	        Rep(e) $\equiv$ true $\Longleftrightarrow$\\
+	
+	   \begin{enumerate}
+
+	   \item
+ 
+\end{enumerate}
+
+\subsubsection{\Large Funci\'{o}n de Abstraccion}
+
+	    \textbf{Abs}: estrLLI e $\rightarrow$ linkLinkIT \\
+   	    Abs(e) $\igobs$ s: linkLinkIT | \\
+   	   \begin{flushright}
+ categorias(s) = CHEQUEAR LA ESTRUCTURA $\wedge$ \\
+ links(s)= claves(e.accesosXLink) $\wedge$ \\
+\paratodo{link}{l} categoriaLink(s,l) = (obtener(l,e.accesosXLink)).catDLink $\wedge$ \\
+fechaActual(s) = e.actual $\wedge$ \\
+\paratodo{link}{l} l $\in$ links(l) $\wedge{_L}$ fechaUltimoAcceso(s,l) = prim(((obtener(s,e.accesosXLink)).accesos).dia) $\wedge$ \\
+\paratodo{link}{l}\paratodo{nat}{f} accesoRecienteDia(s,l,f) = cantidadPorDia(f,(obtener(s,e.accesosXLink)).accesos)
+\end{flushright}
+		
+
+	\subsubsection{Algoritmos}
+
+
 \section{TAD \tadNombre{ArbolDeCategorias}}
 
 \begin{tad}{\tadNombre{ArbolDeCategorias}}
@@ -526,6 +576,9 @@ $\hspace*{6mm}$\textbf{IESTA?} (\textbf{in} c: categoria,\textbf{in} ac: estrAC)
 $\hspace*{6mm}$res $\leftarrow$ def?(c,ac.familia) // O(ALGO)
 		
 		\textbf{IESSUBCATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\\\	
+$\hspace*{6mm}$ res = false // O(ALGO) \\
+$\hspace*{6mm}$ {\IF\ c = ac.raiz THEN  res = true ELSE actual = h \\ while(res $\neq$ true $\wedge$ actual $\neq$ ac.raiz) \\ {\IF\ actual $\in$ (obtener(c,ac.familia)).hijos THEN true ELSE actual = (obtener(actual,ac.familia)).abuelo FI} FI}
+
 $\hspace*{6mm}$\textbf{IALTURACATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
 $\hspace*{6mm}$res $\leftarrow$ (obtener(c,ac.familia)).altura // O(ALGO)\\
 $\hspace*{6mm}$\textbf{IHIJOS} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\

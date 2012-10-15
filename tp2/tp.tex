@@ -132,31 +132,31 @@ THEN dameUno(ls) ELSE linkConMasAccesos(s,c,sinUno(ls)) FI} FI }
 		\textbf{g\'eneros}: lli\\
 
 \subsubsection{\Large Operaciones B\'asicas}
-	\textbf{categorias} (\textbf{in} s: lli) $\longrightarrow$ res: estrAC\\\\
+	\textbf{categorias} (\textbf{in} s: lli) $\longrightarrow$ res: ac\\\\
 	Pre $\equiv$ {true}\\
 	Post $\equiv$ {res$\igobs$ categorias(s)}\\
 	Complejidad : O($\#$categorias(s))\\
 	Descripci\'{o}n : Devuelve el arbol de categorias con todas las categorias del sistema\\\\
 
-	\textbf{links} (\textbf{in} s: lli) $\longrightarrow$ res: conj(link)\\\\
+	\textbf{links} (\textbf{in} s: estrLLI) $\longrightarrow$ res: conj(link)\\\\
 	Pre $\equiv$ {true}\\
 	Post $\equiv$ {res$\igobs$ links(s)}\\
 	Complejidad : O($\#$links(s))\\
 	Descripci\'{o}n : Devuelve todos los links del sistema\\\\
 	
-	\textbf{categoriaLink} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: categoria\\\\
+	\textbf{categoriaLink} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: categoria\\\\
 	Pre $\equiv$ {true}\\
 	Post $\equiv$ {res$\igobs$ categoriaLink(s,l)}\\
 	Complejidad : O(cuanto seria esto? todos los links?)\\
 	Descripci\'{o}n : Devuelve la categoria del link ingresado\\\\
 
-	\textbf{fechaActual} (\textbf{in} s: lli) $\longrightarrow$ res: fecha\\\\
+	\textbf{fechaActual} (\textbf{in} s: estrLLI) $\longrightarrow$ res: fecha\\\\
 	Pre $\equiv$ {true}\\
 	Post $\equiv$ {res$\igobs$ fechaActual(s)}\\
 	Complejidad : O(1)\\
 	Descripci\'{o}n : Devuelve la fecha actual\\\\
 	
-	\textbf{fechaUltimoAcceso} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
+	\textbf{fechaUltimoAcceso} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
 	Pre $\equiv$ {l $\in$ links(s)}\\
 	Post $\equiv$ {res$\igobs$ fechaUltimoAcceso(s,l)}\\
 	Complejidad : O(1)\\
@@ -277,6 +277,72 @@ THEN dameUno(ls) ELSE linkConMasAccesos(s,c,sinUno(ls)) FI} FI }
 	Post $\equiv$ {res$\igobs$ $\beta$(b)}\\
 	Complejidad : O(1)\\
 	Descripci\'{o}n : Devuelve 1 o 0 dependiendo el valor de verdad de b\\\\
+
+    \subsection{\huge Pautas de Implementaci\'{o}n}	
+
+        \subsubsection{\Large Estructura de Representaci\'{o}n} 
+	
+        linkLinkIT \textbf{se representa con} estrILL \textbf{donde} estrILL \textbf{es}:\\
+	tupla (\\
+$\hspace*{10mm}$\textit{linksXCat}: dicc (\textit{categoria}: string, \textit{links}: conj(link)),\\
+$\hspace*{10mm}$\textit{actual}:nat, \\
+$\hspace*{10mm}$\textit{accesosXLink}: dicc(\textit{link}:string,(\textit{catDLink}:string, \textit{accesos}secu((tupla(\textit{dia}:nat, \textit{cantidadAcceso})))))\\
+
+
+	\subsubsection{\Large Invariante de Representaci\'{o}n}
+	
+	  \begin{enumerate}
+	
+		\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}' debera existir en algun '\textit{links}' de una clave \textit{'categoria'} de \textit{'linksXCat'}
+	  
+		\item Todos los \textit{dia}' deberan ser menor o igual a \textit{actual}
+		
+		\item Para todos los link que existan en 'links' de una categoria de 'linksXCat', esa categoria debera aparecer como 'catDLink' cuando se consulte por algun link del conjunto como clave en 'accesosXLink'		
+	  
+	  \end{enumerate}
+	 
+	
+	   \textbf{Rep} : estrLLI $\longrightarrow$ bool\\
+	        Rep(e) $\equiv$ true $\Longleftrightarrow$\\
+	
+	   \begin{enumerate}
+
+	   \item
+ 
+\end{enumerate}
+
+\subsubsection{\Large Funci\'{o}n de Abstraccion}
+
+	    \textbf{Abs}: estrLLI e $\rightarrow$ linkLinkIT \\
+   	    Abs(e) $\igobs$ s: linkLinkIT | \\
+   	   \begin{flushright}
+ categorias(s) = CHEQUEAR LA ESTRUCTURA $\wedge$ \\
+ links(s)= claves(e.accesosXLink) $\wedge$ \\
+\paratodo{link}{l} categoriaLink(s,l) = (obtener(l,e.accesosXLink)).catDLink $\wedge$ \\
+fechaActual(s) = e.actual $\wedge$ \\
+\paratodo{link}{l} l $\in$ links(l) $\wedge{_L}$ fechaUltimoAcceso(s,l) = prim(((obtener(s,e.accesosXLink)).accesos).dia) $\wedge$ \\
+\paratodo{link}{l}\paratodo{nat}{f} accesoRecienteDia(s,l,f) = cantidadPorDia(f,(obtener(s,e.accesosXLink)).accesos)
+\end{flushright}
+		
+
+	\subsubsection{Algoritmos}
+
+  \textbf{ICATEGORIAS} (\textbf{in} s: lli) $\longrightarrow$ res: ac\\\\
+    // O(ALGO)\\
+
+  \textbf{links} (\textbf{in} s: estrLLI) $\longrightarrow$ res: conj(link)\\\\
+  $\hspace*{6mm}$res = claves(s.accesosXLink) // O(ALGO)\\
+
+  \textbf{categoriaLink} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: categoria\\
+  $\hspace*{6mm}$res = (obtener(l,s.accesosXLink)).catDLink // O(ALGO)\\ 
+
+  \textbf{fechaActual} (\textbf{in} s: estrLLI) $\longrightarrow$ res: fecha\\
+  $\hspace*{6mm}$res = s.actual // O(ALGO)\\
+
+  \textbf{fechaUltimoAcceso} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: fecha\\
+  $\hspace*{6mm}$res = (prim(obtener(l,s.accesosXLink))).dia //O(ALGO) \\
+
+  
 
 \section{TAD \tadNombre{ArbolDeCategorias}}
 
@@ -527,7 +593,7 @@ $\hspace*{6mm}$res $\leftarrow$ def?(c,ac.familia) // O(ALGO)
 		
 		\textbf{IESSUBCATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\\\	
 $\hspace*{6mm}$ res = false // O(ALGO) \\
-$\hspace*{6mm}$ res = \IF\ c = ac.raiz THEN true ELSE {\IF\ h $\in$ (obtener(c,ac.familia)).hijos THEN true ELSE {\IF\ (obtener(h,ac.familia)).abuelo $\in$ (obtener(c,ac.familia)).hijos THEN true ELSE COMO HAGO RECURSION ACA? FI } FI } FI
+$\hspace*{6mm}$ {\IF\ c = ac.raiz THEN  res = true ELSE actual = h \\ while(res $\neq$ true $\wedge$ actual $\neq$ ac.raiz) \\ {\IF\ actual $\in$ (obtener(c,ac.familia)).hijos THEN true ELSE actual = (obtener(actual,ac.familia)).abuelo FI} FI}
 
 $\hspace*{6mm}$\textbf{IALTURACATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
 $\hspace*{6mm}$res $\leftarrow$ (obtener(c,ac.familia)).altura // O(ALGO)\\
