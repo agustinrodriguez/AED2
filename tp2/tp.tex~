@@ -132,31 +132,31 @@ THEN dameUno(ls) ELSE linkConMasAccesos(s,c,sinUno(ls)) FI} FI }
 		\textbf{g\'eneros}: lli\\
 
 \subsubsection{\Large Operaciones B\'asicas}
-	\textbf{categorias} (\textbf{in} s: lli) $\longrightarrow$ res: estrAC\\\\
+	\textbf{categorias} (\textbf{in} s: lli) $\longrightarrow$ res: ac\\\\
 	Pre $\equiv$ {true}\\
 	Post $\equiv$ {res$\igobs$ categorias(s)}\\
 	Complejidad : O($\#$categorias(s))\\
 	Descripci\'{o}n : Devuelve el arbol de categorias con todas las categorias del sistema\\\\
 
-	\textbf{links} (\textbf{in} s: lli) $\longrightarrow$ res: conj(link)\\\\
+	\textbf{links} (\textbf{in} s: estrLLI) $\longrightarrow$ res: conj(link)\\\\
 	Pre $\equiv$ {true}\\
 	Post $\equiv$ {res$\igobs$ links(s)}\\
 	Complejidad : O($\#$links(s))\\
 	Descripci\'{o}n : Devuelve todos los links del sistema\\\\
 	
-	\textbf{categoriaLink} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: categoria\\\\
+	\textbf{categoriaLink} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: categoria\\\\
 	Pre $\equiv$ {true}\\
 	Post $\equiv$ {res$\igobs$ categoriaLink(s,l)}\\
 	Complejidad : O(cuanto seria esto? todos los links?)\\
 	Descripci\'{o}n : Devuelve la categoria del link ingresado\\\\
 
-	\textbf{fechaActual} (\textbf{in} s: lli) $\longrightarrow$ res: fecha\\\\
+	\textbf{fechaActual} (\textbf{in} s: estrLLI) $\longrightarrow$ res: fecha\\\\
 	Pre $\equiv$ {true}\\
 	Post $\equiv$ {res$\igobs$ fechaActual(s)}\\
 	Complejidad : O(1)\\
 	Descripci\'{o}n : Devuelve la fecha actual\\\\
 	
-	\textbf{fechaUltimoAcceso} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
+	\textbf{fechaUltimoAcceso} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
 	Pre $\equiv$ {l $\in$ links(s)}\\
 	Post $\equiv$ {res$\igobs$ fechaUltimoAcceso(s,l)}\\
 	Complejidad : O(1)\\
@@ -326,6 +326,32 @@ fechaActual(s) = e.actual $\wedge$ \\
 		
 
 	\subsubsection{Algoritmos}
+
+  \textbf{ICATEGORIAS} (\textbf{in} s: lli) $\longrightarrow$ res: ac\\\\
+    // O(ALGO)\\
+
+  \textbf{ILINKS} (\textbf{in} s: estrLLI) $\longrightarrow$ res: conj(link)\\\\
+  $\hspace*{6mm}$res = claves(s.accesosXLink) // O(ALGO)\\
+
+  \textbf{ICATEGORIALINK} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: categoria\\
+  $\hspace*{6mm}$res = (obtener(l,s.accesosXLink)).catDLink // O(ALGO)\\\\ 
+
+  \textbf{IFECHAACTUAL} (\textbf{in} s: estrLLI) $\longrightarrow$ res: fecha\\
+  $\hspace*{6mm}$res = s.actual // O(ALGO)\\\\
+
+  \textbf{IFECHAULTIMOACCESO} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: fecha\\
+  $\hspace*{6mm}$res = (prim(obtener(l,s.accesosXLink))).dia //O(ALGO) \\\\
+
+  \textbf{IACCESOSRECIENTESDIA} (\textbf{in} s: estrLLI, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: nat\\
+  $\hspace*{6mm}$accesos = (obtener(l,s.accesosXLink)).accesos \\
+  $\hspace*{6mm}$while($¬\emptyset?$(accesos) $\wedge$ $\Pi{_1}$(prim(accesos)) $\neq$ f ) \\
+  $\hspace*{6mm}${\IF\ $\Pi{_1}$(prim(accesos)) == f THEN res = $\Pi{_2}$(prim(accesos)) ELSE accesos = fin(accesos) FI }\\\\
+  
+  \textbf{IINICIAR} (\textbf{in} ac: acat) $\longrightarrow$ res: estrLLI\\\\
+
+  \textbf{INUEVOLINK} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} c: categoria) \\
+
+
 
 
 \section{TAD \tadNombre{ArbolDeCategorias}}

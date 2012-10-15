@@ -330,19 +330,33 @@ fechaActual(s) = e.actual $\wedge$ \\
   \textbf{ICATEGORIAS} (\textbf{in} s: lli) $\longrightarrow$ res: ac\\\\
     // O(ALGO)\\
 
-  \textbf{links} (\textbf{in} s: estrLLI) $\longrightarrow$ res: conj(link)\\\\
+  \textbf{ILINKS} (\textbf{in} s: estrLLI) $\longrightarrow$ res: conj(link)\\\\
   $\hspace*{6mm}$res = claves(s.accesosXLink) // O(ALGO)\\
 
-  \textbf{categoriaLink} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: categoria\\
-  $\hspace*{6mm}$res = (obtener(l,s.accesosXLink)).catDLink // O(ALGO)\\ 
+  \textbf{ICATEGORIALINK} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: categoria\\
+  $\hspace*{6mm}$res = (obtener(l,s.accesosXLink)).catDLink // O(ALGO)\\\\ 
 
-  \textbf{fechaActual} (\textbf{in} s: estrLLI) $\longrightarrow$ res: fecha\\
-  $\hspace*{6mm}$res = s.actual // O(ALGO)\\
+  \textbf{IFECHAACTUAL} (\textbf{in} s: estrLLI) $\longrightarrow$ res: fecha\\
+  $\hspace*{6mm}$res = s.actual // O(ALGO)\\\\
 
-  \textbf{fechaUltimoAcceso} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: fecha\\
-  $\hspace*{6mm}$res = (prim(obtener(l,s.accesosXLink))).dia //O(ALGO) \\
+  \textbf{IFECHAULTIMOACCESO} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: fecha\\
+  $\hspace*{6mm}$res = (prim(obtener(l,s.accesosXLink))).dia //O(ALGO) \\\\
 
+  \textbf{IACCESOSRECIENTESDIA} (\textbf{in} s: estrLLI, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: nat\\
+  $\hspace*{6mm}$accesos = (obtener(l,s.accesosXLink)).accesos O(ALGO)\\
+  $\hspace*{6mm}$while($¬\emptyset?$(accesos) $\wedge$ $\Pi{_1}$(prim(accesos)) $\neq$ f ) O(ALGO)\\
+  $\hspace*{6mm}${\IF\ $\Pi{_1}$(prim(accesos)) == f THEN res = $\Pi{_2}$(prim(accesos)) ELSE accesos = fin(accesos) FI }O(ALGO)\\\\
   
+  \textbf{IINICIAR} (\textbf{in} ac: acat) $\longrightarrow$ res: estrLLI\\\\
+
+  \textbf{INUEVOLINK} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} c: categoria) O(ALGO) \\
+  $\hspace*{6mm}$s.accesosXLink = definir(l,(c,$\emptyset$),s${_0}$.accesosXlink) O(ALGO)\\
+  $\hspace*{6mm}$obtener(c,s.linksXCat) = Ag(l,obtener(c,s${_0}$.linksXCat)) O(ALGO)\\\\
+
+  \textbf{acceso} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) \\\\
+  $\hspace*{6mm}$ \IF\ s.actual == f THEN s.actual = s${_0}$.actual ELSE s.actual = f FI O(ALGO) \\
+  $\hspace*{6mm}$ 
+
 
 \section{TAD \tadNombre{ArbolDeCategorias}}
 
