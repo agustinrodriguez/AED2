@@ -359,13 +359,49 @@ fechaActual(s) = e.actual $\wedge$ \\
   $\hspace*{6mm}$s.accesosXLink = definir(l,(c,$\emptyset$),s${_0}$.accesosXlink) O(ALGO)\\
   $\hspace*{6mm}$obtener(c,s.linksXCat) = Ag(l,obtener(c,s${_0}$.linksXCat)) O(ALGO)\\\\
 
-  \textbf{acceso} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) \\
+  \textbf{IACCESO} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) \\
   $\hspace*{6mm}$ \IF\ s.actual == f THEN s.actual = s${_0}$.actual ELSE s.actual = f FI O(ALGO) \\
-  $\hspace*{6mm}$ \IF\ f = (prim(obtener(l,s${_0}$.accesosXLink)).accesos).dia 
+  $\hspace*{6mm}$ \IF\ f = (prim(obtener(l,s${_0}$.accesosXLink)).accesos).dia \\
 THEN (prim(obtener(l,s.accesosXLink)).accesos).dia = (prim(obtener(l,s${_0}$.accesosXLink)).accesos).dia + 1 
 ELSE {\IF\ long((obtener(l,s${_0}$.accesosXLink)).accesos) < 3 
 THEN (obtener(l,s.accesosXLink)).accesos = (f,1) $\textbullet$ (obtener(l,s${_0}$.accesosXLink)).accesos 
 ELSE (obtener(l,s.accesosXLink)).accesos =  (obtener(l,s${_0}$.accesosXLink)).accesos -  ult((obtener(l,s${_0}$.accesosXLink)).accesos) FI} FI \\\\
+
+  \textbf{IESRECIENTE?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool\\\\
+
+	\textbf{IACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} c: categoria \textbf{in} l: link) $\longrightarrow$ res: nat\\\\
+		
+	\textbf{ILINKSORDENADOSPORACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: secu(link)\\\\
+	$\hspace*{6mm}$ res = linksOrdernadosPorAccesosAux(s, c, linksCategoriaOHijos(s, c))
+	
+	\textbf{ICANTLINKS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: nat\\\\
+		
+	\textbf{IMENORRECIENTE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
+		
+	\textbf{IDIASRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
+		
+	\textbf{IDIASRECIENTESDESDE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
+		
+	\textbf{ILINKSCATEGORIAOHIJOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(link)\\\\
+		
+	\textbf{IFILTRARLINKSCATEGORIASOHIJOS} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: conj(link)\\\\
+	
+	\textbf{IDIASRECIENTESPARACATEGORIAS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha)\\\\
+		
+	\textbf{ILINKCONULTIMOACCESO} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: link\\\\
+		
+	\textbf{ISUMARACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link,\textbf{in} fs: conj(fecha) ) $\longrightarrow$ res: nat\\\\
+	
+	\textbf{ILINKSORDENADOSPORACCESOSAUX} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: secu(link)\\\\
+		
+	\textbf{ILINKCONMASACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) )$\longrightarrow$ res: link\\\\
+		
+	\textbf{$\beta$} (\textbf{in} b: bool) $\longrightarrow$ res: nat\\\\
+	  
+
+
+
+
 
 \section{TAD \tadNombre{ArbolDeCategorias}}
 
