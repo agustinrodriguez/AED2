@@ -285,9 +285,16 @@ THEN dameUno(ls) ELSE linkConMasAccesos(s,c,sinUno(ls)) FI} FI }
         linkLinkIT \textbf{se representa con} estrILL \textbf{donde} estrILL \textbf{es}:\\
 	tupla (\\
 $\hspace*{10mm}$\textit{arbolCategorias}: acat, \\
-$\hspace*{10mm}$\textit{linksXCat}: dicc (\textit{categoria}: string, \textit{links}: conj(link)), \textit{alturaAC}: nat),\\
+$\hspace*{10mm}$\textit{linksXCat}: dicc (\textit{categoria}: string, \textit{links}: conj(link)),\\
 $\hspace*{10mm}$\textit{actual}:nat, \\
-$\hspace*{10mm}$\textit{accesosXLink}: dicc(\textit{link}:string,(\textit{catDLink}:string, \textit{accesos}secu((tupla(\textit{dia}:nat, \textit{cantidadAcceso})))))\\
+$\hspace*{10mm}$\textit{accesosXLink}: dicc(\textit{link}:string,puntero(datosLink)),\\
+$\hspace*{10mm}$\textit{listaLinks}:Lista(datosLink))\\\\
+
+	\textbf{Donde} datosLink \textbf{es}: \\
+	tupla <\textit{link}:link, \textit{catDLink}:string,\textit{accesos}:Lista(acceso)> \\\\
+
+	\textbf{Donde} accesos \textbf{es}: \\
+	tupla <\textit{dia}:nat, \textit{cantAccesos}:nat> \\\\
 
 
 	\subsubsection{\Large Invariante de Representaci\'{o}n}
@@ -319,10 +326,10 @@ $\hspace*{10mm}$\textit{accesosXLink}: dicc(\textit{link}:string,(\textit{catDLi
    	   \begin{flushright}
  categorias(s) = e.arbolCategorias $\wedge$ \\
  links(s)= claves(e.accesosXLink) $\wedge$ \\
-\paratodo{link}{l} categoriaLink(s,l) = (obtener(l,e.accesosXLink)).catDLink $\wedge$ \\
+\paratodo{link}{l} categoriaLink(s,l) = *((obtener(l,e.accesosXLink)).datosLink).catDLink $\wedge$ \\
 fechaActual(s) = e.actual $\wedge$ \\
-\paratodo{link}{l} l $\in$ links(l) $\wedge{_L}$ fechaUltimoAcceso(s,l) = prim(((obtener(s,e.accesosXLink)).accesos).dia) $\wedge$ \\
-\paratodo{link}{l}\paratodo{nat}{f} accesoRecienteDia(s,l,f) = cantidadPorDia(f,(obtener(s,e.accesosXLink)).accesos)
+\paratodo{link}{l} l $\in$ links(l) $\wedge{_L}$ fechaUltimoAcceso(s,l) = prim((*((obtener(s,e.accesosXLink)).datosLink).accesos).dia) $\wedge$ \\
+\paratodo{link}{l}\paratodo{nat}{f} accesoRecienteDia(s,l,f) = cantidadPorDia(f,*((obtener(s,e.accesosXLink)).datosLink).accesos)
 \end{flushright}
 		
 
@@ -335,38 +342,35 @@ fechaActual(s) = e.actual $\wedge$ \\
   $\hspace*{6mm}$res $\leftarrow$ claves(s.accesosXLink) // O(ALGO)\\
 
   \textbf{ICATEGORIALINK} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: categoria\\
-  $\hspace*{6mm}$res $\leftarrow$ (obtener(l,s.accesosXLink)).catDLink // O(ALGO)\\\\ 
+  $\hspace*{6mm}$res $\leftarrow$ *((obtener(l,s.accesosXLink)).datosLink).catDLink // O(ALGO)\\\\ 
 
   \textbf{IFECHAACTUAL} (\textbf{in} s: estrLLI) $\longrightarrow$ res: fecha\\
   $\hspace*{6mm}$res $\leftarrow$ s.actual // O(ALGO)\\\\
 
   \textbf{IFECHAULTIMOACCESO} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: fecha\\
-  $\hspace*{6mm}$res $\leftarrow$ (prim(obtener(l,s.accesosXLink))).dia //O(ALGO) \\\\
+  $\hspace*{6mm}$res $\leftarrow$ prim(*((obtener(l,s.accesosXLink)).datosLink).accesos).dia //O(ALGO) \\\\
 
   \textbf{IACCESOSRECIENTESDIA} (\textbf{in} s: estrLLI, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: nat\\
-  $\hspace*{6mm}$accesos $\leftarrow$ (obtener(l,s.accesosXLink)).accesos O(ALGO)\\
+  $\hspace*{6mm}$accesos $\leftarrow$ *((obtener(l,s.accesosXLink)).datosLink).accesos O(ALGO)\\
   $\hspace*{6mm}$while($¬\emptyset?$(accesos) $\wedge$ $\Pi{_1}$(prim(accesos)) $\neq$ f ) O(ALGO)\\
   $\hspace*{6mm}${\IF\ $\Pi{_1}$(prim(accesos)) == f THEN res = $\Pi{_2}$(prim(accesos)) ELSE accesos = fin(accesos) FI }O(ALGO)\\\\
   
   \textbf{IINICIAR} (\textbf{in} ac: acat) $\longrightarrow$ res: estrLLI\\
-  $\hspace*{6mm}$var todas: conj(categoria) \\
-  $\hspace*{6mm}$todas $\leftarrow$ categorias(ac) // O(ALGO) \\
-  $\hspace*{6mm}$while($¬\emptyset?$(todas)) \\
-  $\hspace*{6mm}$res.linksXCat $\leftarrow$ definir(dameUno(todas),$\emptyset$,res.linksXCat) // O(ALGO) \\
-  $\hspace*{6mm}$todas = sinUno(todas) // O(ALGO) \\
+  $\hspace*{6mm}$res.actual $\leftarrow$ 1 // O(ALGO) \\
   $\hspace*{6mm}$res.arbolCategorias $\leftarrow$ ac // O(ALGO) \\\\
 
   \textbf{INUEVOLINK} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} c: categoria) O(ALGO) \\
-  $\hspace*{6mm}$s.accesosXLink = definir(l,(c,$\emptyset$),s${_0}$.accesosXlink) O(ALGO)\\
-  $\hspace*{6mm}$obtener(c,s.linksXCat) = Ag(l,obtener(c,s${_0}$.linksXCat)) O(ALGO)\\\\
+  $\hspace*{6mm}$\IF\ def?(c,s.linksXCat) THEN obtener(c,s.linksXCat).links  $\leftarrow$ ifdsjfkldsf FI
+  $\hspace*{6mm}$s.accesosXLink $\leftarrow$ definir(l,(c,$\emptyset$),s${_0}$.accesosXlink) O(ALGO)\\
+  $\hspace*{6mm}$obtener(c,s.linksXCat) $\leftarrow$ Ag(l,obtener(c,s${_0}$.linksXCat)) O(ALGO)\\\\
 
   \textbf{IACCESO} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) \\
-  $\hspace*{6mm}$ \IF\ s.actual == f THEN s.actual = s${_0}$.actual ELSE s.actual = f FI O(ALGO) \\
-  $\hspace*{6mm}$ \IF\ f = (prim(obtener(l,s${_0}$.accesosXLink)).accesos).dia \\
-THEN (prim(obtener(l,s.accesosXLink)).accesos).dia = (prim(obtener(l,s${_0}$.accesosXLink)).accesos).dia + 1 
-ELSE {\IF\ long((obtener(l,s${_0}$.accesosXLink)).accesos) < 3 
-THEN (obtener(l,s.accesosXLink)).accesos = (f,1) $\textbullet$ (obtener(l,s${_0}$.accesosXLink)).accesos 
-ELSE (obtener(l,s.accesosXLink)).accesos =  (obtener(l,s${_0}$.accesosXLink)).accesos -  ult((obtener(l,s${_0}$.accesosXLink)).accesos) FI} FI \\\\
+%  $\hspace*{6mm}$ \IF\ s.actual == f THEN s.actual $\leftarrow$ s${_0}$.actual ELSE s.actual $\leftarrow$ f FI O(ALGO) \\
+  $\hspace*{6mm}$ \IF\ f = (prim*((obtener(l,s${_0}$.accesosXLink)).accesos).dia \\
+THEN (prim*((obtener(l,s.accesosXLink)).accesos).dia $\leftarrow$ (prim*((obtener(l,s${_0}$.accesosXLink)).accesos).dia + 1 
+ELSE {\IF\ long(*((obtener(l,s${_0}$.accesosXLink)).accesos) < 3 
+THEN *((obtener(l,s.accesosXLink)).accesos $\leftarrow$ (f,1) $\textbullet$ *((obtener(l,s${_0}$.accesosXLink)).accesos 
+ELSE *((obtener(l,s.accesosXLink)).accesos $\leftarrow$  *((obtener(l,s${_0}$.accesosXLink)).accesos -  ult(*((obtener(l,s${_0}$.accesosXLink)).accesos) FI} FI \\\\
 
   \textbf{IESRECIENTE?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool\\\\
 
@@ -604,25 +608,25 @@ $\hspace*{10mm}$\textit{abuelo}:string>\\
 	
 	   \begin{enumerate}
 
-	   \item(\paratodo{string}{x,y}) (def?(x,e.familia)) $\Longleftrightarrow$ (x == e.raiz) $\vee$ (def?(y,e.familia)) $\wedge{_L}$ x $\in$ (obtener(y,e.familia)).hijos
+	   \item(\paratodo{string}{x,y}) (def?(x,e.familia)) $\Longleftrightarrow$ (x == e.raiz) $\vee$ (def?(y,e.familia)) $\wedge{_L}$ x $\in$ *((obtener(y,e.familia)).datosCat).hijos
 	       
-	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\Rightarrow{_L}$ y $\in$ (obtener(x,e.familia)).hijos $\Leftrightarrow$ \\ (obtener(y,e.familia))).abuelo = x
+	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\Rightarrow{_L}$ y $\in$ *((obtener(x,e.familia)).datosCat).hijos $\Leftrightarrow$ \\ *((obtener(y,e.familia)).datosCat).abuelo = x
 
 	    \item e.cantidad  = $\#$(claves(e.familia))  
 	    
-	    \item (\paratodo{string}{x}) (def?(x,e.familia)) $\wedge$ x = e.raiz $\Rightarrow{_L}$ (obtener(x,e.familia)).altura = 1
+	    \item (\paratodo{string}{x}) (def?(x,e.familia)) $\wedge$ x = e.raiz $\Rightarrow{_L}$ *((obtener(x,e.familia)).datosCat).altura = 1
 	    
-	    \item (\paratodo{string}{x}) (def?(x,e.familia)) $\Rightarrow{_L}$ (obtener(x,e.familia)).altura $\leq$ e.alturaMax
+	    \item (\paratodo{string}{x}) (def?(x,e.familia)) $\Rightarrow{_L}$ *((obtener(x,e.familia)).datosCat).altura $\leq$ e.alturaMax
 	    
-	    \item ($\exists$x: string) (def?(x,e.familia)) $\wedge{_L}$ (obtener(x,e.familia)).altura $=$ e.alturaMax
+	    \item ($\exists$x: string) (def?(x,e.familia)) $\wedge{_L}$ *((obtener(x,e.familia)).datosCat).altura $=$ e.alturaMax
 	    
-	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\wedge{_L}$ y $\in$ (obtener(x,e.familia)).hijos $\Rightarrow$ \\ (obtener(y,e.familia)).altura = 1 + (obtener(x,e.familia)).altura
+	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\wedge{_L}$ y $\in$ *((obtener(x,e.familia)).datosCat).hijos $\Rightarrow$ \\ *((obtener(y,e.familia)).datosCat).altura = 1 + *((obtener(x,e.familia)).datosCat).altura
 	    
-	    \item (\paratodo{string}{x}) (def?(x,e.familia)) $\Rightarrow{_L}$ (obtener(x,e.familia)).id $\leq$ e.cant
+	    \item (\paratodo{string}{x}) (def?(x,e.familia)) $\Rightarrow{_L}$ *((obtener(x,e.familia)).datosCat).id $\leq$ e.cant
 	    
-	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\Rightarrow{_L}$ (obtener(x,e.familia)).id $\neq$ (obtener(y,e.familia)).id
+	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\Rightarrow{_L}$ *((obtener(x,e.familia)).datosCat).id $\neq$ *((obtener(y,e.familia)).datosCat).id
 	    
-	    \item (\paratodo{string}{x}) (def?(x,e.familia)) ($\exists$ y: string) (def?(y,e.familia)) $\Leftrightarrow$ \\ (obtener(y,e.familia)).id $\leq$ e.cantidad $\wedge$ (obtener(x,e.familia)).id $<$ e.cantidad $\wedge{_L}$ \\(obtener(y,e.familia)).id = 1 + (obtener(x,e.familia)).id
+	    \item (\paratodo{string}{x}) (def?(x,e.familia)) ($\exists$ y: string) (def?(y,e.familia)) $\Leftrightarrow$ \\ *((obtener(y,e.familia)).datosCat).id $\leq$ e.cantidad $\wedge$ *((obtener(x,e.familia)).datosCat).id $<$ e.cantidad $\wedge{_L}$ \\*((obtener(y,e.familia)).datosCat).id = 1 + *((obtener(x,e.familia)).datosCat).id
 	    
 \end{enumerate}
 
@@ -634,56 +638,61 @@ $\hspace*{10mm}$\textit{abuelo}:string>\\
  categorias(ac) = claves(e.familia) $\wedge{_L}$ \\
    	    raiz(ac) = e.raiz $\wedge{_L}$ \\
    	    (\paratodo {categoria}{c}) esta?(c,ac) $\wedge$ c $\neq$ raiz(ac) $\Rightarrow{_L}$
-   	    padre(ac,c) = (obtener(c,e.familia)).abuelo $\wedge{_L}$ \\
-   	    (\paratodo {categoria}{c}) esta?(c,ac) $\Rightarrow{_L}$ id(ac,c) = (obtener(c,e.familia)).id
+   	    padre(ac,c) = *((obtener(c,e.familia)).datosCat).abuelo $\wedge{_L}$ \\
+   	    (\paratodo {categoria}{c}) esta?(c,ac) $\Rightarrow{_L}$ id(ac,c) = (*(obtener(c,e.familia)).datosCat).id)
 \end{flushright}
 		
 
 	\subsubsection{Algoritmos}
 		
 		\textbf{ICATEGORIAS} (\textbf{in} ac: estrAC) $\longrightarrow$ res: conj(categoria)\\
-$\hspace*{6mm}$res $\leftarrow$ claves(ac.familia)   // O(ALGO) 
+$\hspace*{6mm}$res $\leftarrow$ claves(ac.familia)   // O(ALGO) \\\\
 		
 		\textbf{IRAIZ} (\textbf{in} ac: estrAC) $\longrightarrow$ res: categoria\\
-$\hspace*{6mm}$res $\leftarrow$ ac.raiz // O(1)
+$\hspace*{6mm}$res $\leftarrow$ ac.raiz // O(1)\\\\
 		
 		\textbf{IPADRE} (\textbf{in} ac: estrAC, \textbf{in} h: categoria) $\longrightarrow$ res: puntero(categoria)\\
-$\hspace*{6mm}$res $\leftarrow$ *(obtener(h,ac.familia)).abuelo // O(ALGO)
+$\hspace*{6mm}$res $\leftarrow$ (*(obtener(h,ac.familia)).datosCat).abuelo // O(ALGO)\\\\
 		
 		\textbf{IID} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:puntero(nat)\\
-$\hspace*{6mm}$res $\leftarrow$ *(obtener(c,ac.familia)).id // O(ALGO)
+$\hspace*{6mm}$res $\leftarrow$ (*(obtener(c,ac.familia)).datosCat).id // O(ALGO)\\\\
 		
 		\textbf{INUEVO} (\textbf{in} c: categoria) $\longrightarrow$ res:estrAC\\
 $\hspace*{6mm}$		res.cantidad $\leftarrow$ 1 // O(ALGO)\\
 $\hspace*{6mm}$		res.raiz = c // O(ALGO)\\
 $\hspace*{6mm}$		res.alturaMax = 1 // O(ALGO)\\
-$\hspace*{6mm}$		var padre: categoria // O(ALGO)\\
-$\hspace*{6mm}$		var abuelo: categoria // O(ALGO)\\
-$\hspace*{6mm}$		padre = c // O(ALGO)\\
-$\hspace*{6mm}$		abuelo = c // O(ALGO)\\
-$\hspace*{6mm}$		hijos = $\emptyset$ // O(ALGO)\\
-$\hspace*{6mm}$		res.familia = definir(padre, (abuelo,hijos,1,1), res.familia) // O(ALGO)\\
+$\hspace*{6mm}$		var tuplaA : tupla\\
+$\hspace*{6mm}$		var punt : puntero(tupla)\\
+$\hspace*{6mm}$		tuplaA $\leftarrow$ (c,1,1,$\emptyset$,c)\\
+$\hspace*{6mm}$		punt $\leftarrow$ puntero(tuplaA)\\
+$\hspace*{6mm}$		res.familia = definir(padre, punt, res.familia) // O(ALGO)\\\\
 
 	\textbf{IAGREGAR} (\textbf{in/out} ac: estrAC,\textbf{in} c: categoria, \textbf{in} h: categoria )\\
 
-$\hspace*{6mm}$\IF\ {(obtener(c,ac${_0}$.familia).altura) == ac${_0}$.alturaMax} THEN {ac.alturaMax = ac${_0}$.alturaMax + 1} ELSE{ ac.alturaMax = ac${_0}$.alturaMax }FI \\
-$\hspace*{6mm}$ (obtener(c,ac.familia)).hijos = Ag(h,(obtener(c,ac${_0}$.familia)).hijos) // O(ALGO)\\
-$\hspace*{6mm}$ ac.familia = definir(h,(c,$\emptyset$,ac${_0}$.cantidad +1,(obtener(c,ac${_0}$.familia)).altura +1), ac${_0}$.familia) //O(ALGO)\\
-$\hspace*{6mm}$ ac.cantidad = ac${_0}$.cantidad + 1 //O(ALGO)\\
+$\hspace*{6mm}$\IF\ {(*(obtener(c,ac${_0}$.familia)).datosCat).altura) == ac${_0}$.alturaMax} THEN {ac.alturaMax = ac${_0}$.alturaMax + 1} ELSE{ ac.alturaMax = ac${_0}$.alturaMax }FI \\
+$\hspace*{6mm}$ (*(obtener(c,ac.familia)).datosCat).hijos = Ag(h,(*(obtener(c,ac${_0}$.familia)).datosCat).hijos) // O(ALGO)\\
+$\hspace*{6mm}$		var tuplaA : tupla\\
+$\hspace*{6mm}$		var punt : puntero(tupla)\\
+$\hspace*{6mm}$		tuplaA $\leftarrow$ (h,ac${_0}$.cantidad +1,(*(obtener(c,ac${_0}$.familia)).datosCat).altura +1),$\emptyset$,c)\\
+$\hspace*{6mm}$		punt $\leftarrow$ puntero(tuplaA)\\
+$\hspace*{6mm}$ ac.familia = definir(h,(c,punt,ac${_0}$.familia) //O(ALGO)\\
+$\hspace*{6mm}$ ac.cantidad = ac${_0}$.cantidad + 1 //O(ALGO)\\\\
 
 		\textbf{IALTURA} (\textbf{in} ac: estrAC) $\longrightarrow$ res:nat\\
-$\hspace*{6mm}$res $\leftarrow$ ac.alturaMax // O(ALGO)		                                                                 \\
+$\hspace*{6mm}$res $\leftarrow$ ac.alturaMax $\hspace*{125mm}$// O(ALGO)   \\\\
+
 $\hspace*{6mm}$\textbf{IESTA?} (\textbf{in} c: categoria,\textbf{in} ac: estrAC) $\longrightarrow$ res:bool\\
-$\hspace*{6mm}$res $\leftarrow$ def?(c,ac.familia) // O(ALGO)
+$\hspace*{6mm}$res $\leftarrow$ def?(c,ac.familia) $\hspace*{120mm}$ // O(ALGO) \\\\
 		
 		\textbf{IESSUBCATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\\\	
 $\hspace*{6mm}$ res $\leftarrow$ false // O(ALGO) \\
-$\hspace*{6mm}$ {\IF\ c = ac.raiz THEN  res $\leftarrow$ true ELSE actual $\leftarrow$ h \\ while(res $\neq$ true $\wedge$ actual $\neq$ ac.raiz) \\ {\IF\ actual $\in$ (obtener(c,ac.familia)).hijos THEN res $\leftarrow$ true ELSE actual $\leftarrow$ (obtener(actual,ac.familia)).abuelo FI} FI}
+$\hspace*{6mm}$ {\IF\ c = ac.raiz THEN  res $\leftarrow$ true ELSE actual $\leftarrow$ h \\ while(res $\neq$ true $\wedge$ actual $\neq$ ac.raiz) \\ {\IF\ actual $\in$ (*(obtener(c,ac.familia)).datosCat).hijos THEN res $\leftarrow$ true ELSE actual $\leftarrow$ (*(obtener(actual,ac.familia)).datosCat).abuelo FI} FI}
 
 $\hspace*{6mm}$\textbf{IALTURACATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
-$\hspace*{6mm}$res $\leftarrow$ (obtener(c,ac.familia)).altura // O(ALGO)\\
+$\hspace*{6mm}$res $\leftarrow$ (*(obtener(c,ac.familia)).datosCat).altura // O(ALGO)\\\\
+
 $\hspace*{6mm}$\textbf{IHIJOS} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\
-$\hspace*{6mm}$res $\leftarrow$ (obtener(c,ac.familia)).hijos // O(ALGO) PREGUNTAR!!!
+$\hspace*{6mm}$res $\leftarrow$ (obtener(c,ac.familia)).hijos // O(ALGO) PREGUNTAR!!! EN ESTE LA COMPLEJIDAD ES EL ITERADOR DEVOLVEMOS EL PUNTERO?
 		
 		
 \section{Renombres}
