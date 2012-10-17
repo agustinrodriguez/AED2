@@ -329,31 +329,32 @@ fechaActual(s) = e.actual $\wedge$ \\
 	\subsubsection{Algoritmos}
 
   \textbf{ICATEGORIAS} (\textbf{in} s: lli) $\longrightarrow$ res: ac\\\\
-    res = s.arbolCategorias// O(ALGO)\\
+    res $\leftarrow$ s.arbolCategorias// O(ALGO)\\
 
   \textbf{ILINKS} (\textbf{in} s: estrLLI) $\longrightarrow$ res: conj(link)\\\\
-  $\hspace*{6mm}$res = claves(s.accesosXLink) // O(ALGO)\\
+  $\hspace*{6mm}$res $\leftarrow$ claves(s.accesosXLink) // O(ALGO)\\
 
   \textbf{ICATEGORIALINK} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: categoria\\
-  $\hspace*{6mm}$res = (obtener(l,s.accesosXLink)).catDLink // O(ALGO)\\\\ 
+  $\hspace*{6mm}$res $\leftarrow$ (obtener(l,s.accesosXLink)).catDLink // O(ALGO)\\\\ 
 
   \textbf{IFECHAACTUAL} (\textbf{in} s: estrLLI) $\longrightarrow$ res: fecha\\
-  $\hspace*{6mm}$res = s.actual // O(ALGO)\\\\
+  $\hspace*{6mm}$res $\leftarrow$ s.actual // O(ALGO)\\\\
 
   \textbf{IFECHAULTIMOACCESO} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: fecha\\
-  $\hspace*{6mm}$res = (prim(obtener(l,s.accesosXLink))).dia //O(ALGO) \\\\
+  $\hspace*{6mm}$res $\leftarrow$ (prim(obtener(l,s.accesosXLink))).dia //O(ALGO) \\\\
 
   \textbf{IACCESOSRECIENTESDIA} (\textbf{in} s: estrLLI, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: nat\\
-  $\hspace*{6mm}$accesos = (obtener(l,s.accesosXLink)).accesos O(ALGO)\\
+  $\hspace*{6mm}$accesos $\leftarrow$ (obtener(l,s.accesosXLink)).accesos O(ALGO)\\
   $\hspace*{6mm}$while($¬\emptyset?$(accesos) $\wedge$ $\Pi{_1}$(prim(accesos)) $\neq$ f ) O(ALGO)\\
   $\hspace*{6mm}${\IF\ $\Pi{_1}$(prim(accesos)) == f THEN res = $\Pi{_2}$(prim(accesos)) ELSE accesos = fin(accesos) FI }O(ALGO)\\\\
   
   \textbf{IINICIAR} (\textbf{in} ac: acat) $\longrightarrow$ res: estrLLI\\
-  $\hspace*{6mm}$todas = categorias(ac) // O(ALGO) \\
+  $\hspace*{6mm}$var todas: conj(categoria) \\
+  $\hspace*{6mm}$todas $\leftarrow$ categorias(ac) // O(ALGO) \\
   $\hspace*{6mm}$while($¬\emptyset?$(todas)) \\
-  $\hspace*{6mm}$res.linksXCat = definir(dameUno(todas),$\emptyset$,res.linksXCat) // O(ALGO) \\
+  $\hspace*{6mm}$res.linksXCat $\leftarrow$ definir(dameUno(todas),$\emptyset$,res.linksXCat) // O(ALGO) \\
   $\hspace*{6mm}$todas = sinUno(todas) // O(ALGO) \\
-  $\hspace*{6mm}$res.arbolCategorias = ac // O(ALGO) \\\\
+  $\hspace*{6mm}$res.arbolCategorias $\leftarrow$ ac // O(ALGO) \\\\
 
   \textbf{INUEVOLINK} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} c: categoria) O(ALGO) \\
   $\hspace*{6mm}$s.accesosXLink = definir(l,(c,$\emptyset$),s${_0}$.accesosXlink) O(ALGO)\\
@@ -369,10 +370,11 @@ ELSE (obtener(l,s.accesosXLink)).accesos =  (obtener(l,s${_0}$.accesosXLink)).ac
 
   \textbf{IESRECIENTE?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool\\\\
 
-	\textbf{IACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} c: categoria \textbf{in} l: link) $\longrightarrow$ res: nat\\\\
+	\textbf{IACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} c: categoria \textbf{in} l: link) $\longrightarrow$ res: nat\\
 		
-	\textbf{ILINKSORDENADOSPORACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: secu(link)\\\\
-		
+	\textbf{ILINKSORDENADOSPORACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: secu(link)\\
+	$\hspace*{6mm}$ res $\leftarrow$ linksOrdernadosPorAccesosAux(s, c, linksCategoriaOHijos(s, c)) // O(ALGO) \\\\
+	
 	\textbf{ICANTLINKS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: nat\\\\
 		
 	\textbf{IMENORRECIENTE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
@@ -381,10 +383,16 @@ ELSE (obtener(l,s.accesosXLink)).accesos =  (obtener(l,s${_0}$.accesosXLink)).ac
 		
 	\textbf{IDIASRECIENTESDESDE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
 		
-	\textbf{ILINKSCATEGORIAOHIJOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(link)\\\\
-		
+	\textbf{ILINKSCATEGORIAOHIJOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(link)\\
+	$\hspace*{6mm}$res $\leftarrow$ filtrarLinksCategoriaOHijos(s, c, links(s)) //O(ALGO)\\\\
+
 	\textbf{IFILTRARLINKSCATEGORIASOHIJOS} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: conj(link)\\\\
-	
+	$\hspace*{6mm}$ var todoElConjunto: conj(link) //O(ALGO) \\
+	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ ls //O(ALGO) \\
+	$\hspace*{6mm}$while($¬\emptyset$?(todoElConjunto) $\wedge$ $¬\emptyset$(ls))\\
+	$\hspace*{6mm}$\IF\ esSubCategoria(categorias(s),c,categoriaLink(s,dameUno(todoElConjunto))) THEN res $\leftarrow$  Ag(dameUno(todoElConjunto),res) ELSE res $\leftarrow$ res FI \\
+	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ sinUno(todoElConjunto) //O(ALGO) \\
+	$\hspace*{6mm}$ end while \\\\
 	\textbf{IDIASRECIENTESPARACATEGORIAS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha)\\\\
 		
 	\textbf{ILINKCONULTIMOACCESO} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: link\\\\
@@ -392,9 +400,18 @@ ELSE (obtener(l,s.accesosXLink)).accesos =  (obtener(l,s${_0}$.accesosXLink)).ac
 	\textbf{ISUMARACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link,\textbf{in} fs: conj(fecha) ) $\longrightarrow$ res: nat\\\\
 	
 	\textbf{ILINKSORDENADOSPORACCESOSAUX} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: secu(link)\\\\
-		
+	$\hspace*{6mm}$var todoElConjunto: conj(link) //O(ALGO) \\
+	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ ls //O(ALGO) \\
+	$\hspace*{6mm}$while($¬\emptyset$?(todoElConjunto) $\wedge$ $¬\emptyset$(ls)) \\
+	$\hspace*{6mm}$ res $\leftarrow$ linkConMasAccesos(s,c,todoElConjunto) $\textbullet$ res // O(ALGO)\\
+	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ todoElConjunto - linkConMasAccesos(s,c,todoElConjunto) // O(ALGO) \\
+	$\hspace*{6mm}$ endwhile \\\\
+
 	\textbf{ILINKCONMASACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) )$\longrightarrow$ res: link\\\\
-		
+	 $\hspace*{6mm}$var todoElConjunto: conj(link) //O(ALGO) \\
+	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ ls //O(ALGO) \\
+	$\hspace*{6mm}$while((todoElConjunto) > 1) \\
+
 	\textbf{$\beta$} (\textbf{in} b: bool) $\longrightarrow$ res: nat\\\\
 	  
 
@@ -541,12 +558,20 @@ $\\$
         \subsubsection{\Large Estructura de Representaci\'{o}n} 
 	
         arbolDeCategorias \textbf{se representa con} estrAC \textbf{donde} estrAC \textbf{es}:\\
-	tupla (\\
+	tupla <\\
 $\hspace*{10mm}$\textit{raiz}: string,\\
 $\hspace*{10mm}$\textit{cantidad}: nat,\\
 $\hspace*{10mm}$\textit{alturaMax}: nat,\\
-$\hspace*{10mm}$\textit{familia}:diccTrie(\textit{padre}:string,tupla(\textit{abuelo}:string,\textit{hijos}:conj(string),\textit{id}:nat,\textit{altura}:nat)),\\)\\
+$\hspace*{10mm}$\textit{familia}:diccTrie(\textit{padre}:string,puntero(datosCat)),\\
+$\hspace*{10mm}$\textit{categorias}: Lista(datosCat)>\\
 
+	\textbf{Donde} datosCat \textbf{es}:\\
+	tupla <\\
+$\hspace*{10mm}$\textit{categoria}:string,\\
+$\hspace*{10mm}$\textit{id}:nat,\\
+$\hspace*{10mm}$\textit{altura}:nat,\\
+$\hspace*{10mm}$\textit{hijos}:conj(puntero(datosCat)),\\
+$\hspace*{10mm}$\textit{abuelo}:string>\\
 	\subsubsection{\Large Invariante de Representaci\'{o}n}
 	
 	  \begin{enumerate}
@@ -610,7 +635,7 @@ $\hspace*{10mm}$\textit{familia}:diccTrie(\textit{padre}:string,tupla(\textit{ab
    	    raiz(ac) = e.raiz $\wedge{_L}$ \\
    	    (\paratodo {categoria}{c}) esta?(c,ac) $\wedge$ c $\neq$ raiz(ac) $\Rightarrow{_L}$
    	    padre(ac,c) = (obtener(c,e.familia)).abuelo $\wedge{_L}$ \\
-   	    (\paratodo {categoria}{c}) esta?(c,ac) $\Rightarrow{_L}$ id(ac,c) = 		(obtener(c,e.familia)).id
+   	    (\paratodo {categoria}{c}) esta?(c,ac) $\Rightarrow{_L}$ id(ac,c) = (obtener(c,e.familia)).id
 \end{flushright}
 		
 
@@ -622,20 +647,22 @@ $\hspace*{6mm}$res $\leftarrow$ claves(ac.familia)   // O(ALGO)
 		\textbf{IRAIZ} (\textbf{in} ac: estrAC) $\longrightarrow$ res: categoria\\
 $\hspace*{6mm}$res $\leftarrow$ ac.raiz // O(1)
 		
-		\textbf{IPADRE} (\textbf{in} ac: estrAC, \textbf{in} h: categoria) $\longrightarrow$ res: categoria\\
-$\hspace*{6mm}$res $\leftarrow$ (obtener(h,ac.familia)).abuelo // O(ALGO)
+		\textbf{IPADRE} (\textbf{in} ac: estrAC, \textbf{in} h: categoria) $\longrightarrow$ res: puntero(categoria)\\
+$\hspace*{6mm}$res $\leftarrow$ *(obtener(h,ac.familia)).abuelo // O(ALGO)
 		
-		\textbf{IID} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
-$\hspace*{6mm}$res $\leftarrow$ (obtener(c,ac.familia)).id // O(ALGO)
+		\textbf{IID} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:puntero(nat)\\
+$\hspace*{6mm}$res $\leftarrow$ *(obtener(c,ac.familia)).id // O(ALGO)
 		
 		\textbf{INUEVO} (\textbf{in} c: categoria) $\longrightarrow$ res:estrAC\\
-$\hspace*{6mm}$		res.cantidad = 1 // O(ALGO)\\
-$\hspace*{6mm}$		res.raiz = categoria // O(ALGO)\\
+$\hspace*{6mm}$		res.cantidad $\leftarrow$ 1 // O(ALGO)\\
+$\hspace*{6mm}$		res.raiz = c // O(ALGO)\\
 $\hspace*{6mm}$		res.alturaMax = 1 // O(ALGO)\\
+$\hspace*{6mm}$		var padre: categoria // O(ALGO)\\
+$\hspace*{6mm}$		var abuelo: categoria // O(ALGO)\\
 $\hspace*{6mm}$		padre = c // O(ALGO)\\
 $\hspace*{6mm}$		abuelo = c // O(ALGO)\\
 $\hspace*{6mm}$		hijos = $\emptyset$ // O(ALGO)\\
-$\hspace*{6mm}$		res.familia = definir(padre, (abuelo,hijos,1,1), vacio) // O(ALGO)\\
+$\hspace*{6mm}$		res.familia = definir(padre, (abuelo,hijos,1,1), res.familia) // O(ALGO)\\
 
 	\textbf{IAGREGAR} (\textbf{in/out} ac: estrAC,\textbf{in} c: categoria, \textbf{in} h: categoria )\\
 
@@ -650,8 +677,8 @@ $\hspace*{6mm}$\textbf{IESTA?} (\textbf{in} c: categoria,\textbf{in} ac: estrAC)
 $\hspace*{6mm}$res $\leftarrow$ def?(c,ac.familia) // O(ALGO)
 		
 		\textbf{IESSUBCATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\\\	
-$\hspace*{6mm}$ res = false // O(ALGO) \\
-$\hspace*{6mm}$ {\IF\ c = ac.raiz THEN  res = true ELSE actual = h \\ while(res $\neq$ true $\wedge$ actual $\neq$ ac.raiz) \\ {\IF\ actual $\in$ (obtener(c,ac.familia)).hijos THEN true ELSE actual = (obtener(actual,ac.familia)).abuelo FI} FI}
+$\hspace*{6mm}$ res $\leftarrow$ false // O(ALGO) \\
+$\hspace*{6mm}$ {\IF\ c = ac.raiz THEN  res $\leftarrow$ true ELSE actual $\leftarrow$ h \\ while(res $\neq$ true $\wedge$ actual $\neq$ ac.raiz) \\ {\IF\ actual $\in$ (obtener(c,ac.familia)).hijos THEN res $\leftarrow$ true ELSE actual $\leftarrow$ (obtener(actual,ac.familia)).abuelo FI} FI}
 
 $\hspace*{6mm}$\textbf{IALTURACATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
 $\hspace*{6mm}$res $\leftarrow$ (obtener(c,ac.familia)).altura // O(ALGO)\\
