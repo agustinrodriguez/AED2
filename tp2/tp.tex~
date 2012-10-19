@@ -249,7 +249,7 @@ THEN dameUno(ls) ELSE linkConMasAccesos(s,c,sinUno(ls)) FI} FI }
 	Descripci\'{o}n : Devuelve el conjunto de fechas recientes de la categoria c\\\\
 	
 	\textbf{linkConUltimoAcceso} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: link\\\\
-	Pre $\equiv$ {c $\in$ categorias(s) $\wedge$ $\emptyset$?(ls) $\wedge$ ls $\subseteq$ linksCategoriasOHijos(s,c)}\\
+	Pre $\equiv$ {c $\in$ categorias(s) $\wedge$ esVacia??(ls) $\wedge$ ls $\subseteq$ linksCategoriasOHijos(s,c)}\\
 	Post $\equiv$ {res$\igobs$ linkConUltimoAcceso(s,c,ls)}\\
 	Complejidad : O($\#$ls??)\\
 	Descripci\'{o}n : Devuelve el link que se accedio por ultima vez del conjunto ls\\\\
@@ -286,12 +286,12 @@ THEN dameUno(ls) ELSE linkConMasAccesos(s,c,sinUno(ls)) FI} FI }
 	tupla (\\
 $\hspace*{10mm}$\textit{arbolCategorias}: acat, \\
 $\hspace*{10mm}$\textit{actual}:nat, \\
-$\hspace*{10mm}$\textit{accesosXLink}: dicc(\textit{link}:string,puntero(datosLink)),\\
+$\hspace*{10mm}$\textit{accesosXLink}: diccTrie(\textit{link}:string,puntero(datosLink)),\\
 $\hspace*{10mm}$\textit{listaLinks}:Lista(datosLink),
-$\hspace*{10mm}$\textit{arrayCantLinks}:arreglo-dimen(linksFamilia) )\\\\
+$\hspace*{10mm}$\textit{arrayCatLinks}:arreglo-dimen(linksFamilia) )\\\\
 
 	\textbf{Donde} datosLink \textbf{es}: \\
-	tupla <\textit{link}:link, \textit{catDLink}:string,\textit{accesos}:Lista(acceso)> \\\\
+	tupla <\textit{link}:link, \textit{catDLink}puntero(datosCat),\textit{accesosRecientes}:Lista(acceso)> \\\\
 
 	\textbf{Donde} acceso \textbf{es}: \\
 	tupla <\textit{dia}:nat, \textit{cantAccesos}:nat> \\\\
@@ -351,29 +351,42 @@ fechaActual(s) = e.actual $\wedge$ \\
   $\hspace*{6mm}$res $\leftarrow$ s.actual // O(1)\\\\
 
   \textbf{IFECHAULTIMOACCESO} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: fecha\\
-  $\hspace*{6mm}$res $\leftarrow$ prim(*((obtener(l,s.accesosXLink))).accesos).dia //O(|l|) \\\\
+  $\hspace*{6mm}$res $\leftarrow$ prim(*((obtener(l,s.accesosXLink))).accesosRecientes).dia //O(|l|) \\\\
 
   \textbf{IACCESOSRECIENTESDIA} (\textbf{in} s: estrLLI, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: nat\\
   $\hspace*{6mm}$lista(acceso) accesos $\leftarrow$ vacia() //O(1) \\
-  $\hspace*{6mm}$accesos $\leftarrow$ *((obtener(l,s.accesosXLink))).accesos O(|l|)\\
-  $\hspace*{6mm}$while(¬esVacia?(accesos) $\wedge$ (prim(accesos)).dia $\neq$ f)\\
-  $\hspace*{6mm}${\IF\ (prim(accesos)).dia == f THEN res = (prim(accesos)).cantAccesos ELSE accesos = fin(accesos) FI }O(ALGO)\\
+  $\hspace*{6mm}$res $\leftarrow$ 0 //O(1) \\
+  $\hspace*{6mm}$accesos $\leftarrow$ *((obtener(l,s.accesosXLink))).accesosRecientes // O(|l|)\\
+  $\hspace*{6mm}$while($¬$esVacia?(accesos) $\wedge$ (prim(accesos)).dia $\neq$ f)\\
+  $\hspace*{6mm}${\IF\ (prim(accesos)).dia == f //O(1)\\THEN res = (prim(accesos)).cantAccesos //O(1)\\ ELSE accesos = fin(accesos) FI //O(1) }O(ALGO) \\
   $\hspace*{6mm}$end while \\
   
   \textbf{IINICIAR} (\textbf{in} ac: acat) $\longrightarrow$ res: estrLLI\\
-  $\hspace*{6mm}$res.actual $\leftarrow$ 1 // O(ALGO) \\
-  $\hspace*{6mm}$res.arbolCategorias $\leftarrow$ ac // O(ALGO) \\
+  $\hspace*{6mm}$res.actual $\leftarrow$ 1 // O(1) \\
+  $\hspace*{6mm}$res.arbolCategorias $\leftarrow$ ac // O(1) \\
   $\hspace*{6mm}$var c: nat //O(1) \\
   $\hspace*{6mm}$c $\leftarrow$ 1 //O(1) \\
   $\hspace*{6mm}$res.arrayCantLinks $\leftarrow$ crearArreglo($\#$categorias(ac)) // O(1) \\
+  $\hspace*{6mm}$res.listaLinks $\leftarrow$ vacia() //O(1) \\
+  $\hspace*{6mm}$ res.accesosXLink $\leftarrow$ vacio() //O(1) \\
   $\hspace*{6mm}$while (c $\leq$ $\#$categorias(ac)) \\
-  $\hspace*{6mm}$res.arrayCantLinks[c] $\leftarrow$ 0 //O(1) \\
+  $\hspace*{6mm}$linksFamilia llist $\leftarrow$ vacia() //O(1) \\
+  $\hspace*{6mm}$res.arrayCatLinks[c] $\leftarrow$ llist //O(1) \\
   $\hspace*{6mm}$c ++ //O(1) \\
-  $\hspace*{6mm}$end while
+  $\hspace*{6mm}$end while \\\\
 
   \textbf{INUEVOLINK} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} c: categoria) O(ALGO) \\
-  $\hspace*{6mm}$s.accesosXLink $\leftarrow$ definir(l,(c,$\emptyset$),s.accesosXlink) O(ALGO)\\
-  $\hspace*{6mm}$obtener(c,s.linksXCat) $\leftarrow$ Ag(l,obtener(c,s.linksXCat)) O(ALGO)\\\\
+  $\hspace*{6mm}$puntero(datosCat) cat $\leftarrow$ obtener(c,s.arbolCategorias) O(|c|) \\
+  $\hspace*{6mm}$lista(acceso) accesoDeNuevoLink $\leftarrow$ vacia() //O(1) \\
+  $\hspace*{6mm}$datosLink nuevoLink $\leftarrow$ <l,cat,accesoDeNuevoLink> //O(1) \\
+  $\hspace*{6mm}$puntero(datosLink) puntLink $\leftarrow$ nuevoLink //O(1) \\ 
+  $\hspace*{6mm}$definir(l,puntLink,s.accesosXLink) //O(|l|) \\
+  $\hspace*{6mm}$agregarAtras(s.listaLinks,puntLink) //O(1) \\
+  $\hspace*{6mm}$while(cat $\neq$ puntRaiz(s.arbolCategorias))\\
+  $\hspace*{6mm}$agregarAtras(s.arrayCatLinks[(*cat).id],puntLink) //O(1)  \\
+  $\hspace*{6mm}$cat $\leftarrow$ cat.padre //O(1) \\
+  $\hspace*{6mm}$end while \\
+  $\hspace*{6mm}$agregarAtras(s.arrayCatLinks[(*cat).id],puntLink) //O(1)  \\
 
   \textbf{IACCESO} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) \\
   $\hspace*{6mm}$ \IF\ s.actual == f THEN s.actual $\leftarrow$ s.actual ELSE s.actual $\leftarrow$ f FI O(ALGO) \\
@@ -386,18 +399,28 @@ ELSE *((obtener(l,s.accesosXLink)).datosLink).accesos $\leftarrow$  *((obtener(l
   \textbf{IESRECIENTE?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool\\\\
 
 	\textbf{IACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} c: categoria \textbf{in} l: link) $\longrightarrow$ res: nat\\
-		
+	$\hspace*{6mm}$res $\longleftarrow$ sumarAccesosRecientes(s, l, diasRecientesParaCategoria(s, c) $\cap$ diasRecientes(s, l)) //O(ALGO) \\\\
+
 	\textbf{ILINKSORDENADOSPORACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: secu(link)\\
 	$\hspace*{6mm}$ res $\leftarrow$ linksOrdernadosPorAccesosAux(s, c, linksCategoriaOHijos(s, c)) // O(ALGO) \\\\
 	
 	\textbf{ICANTLINKS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: nat\\\\
 		
 	\textbf{IMENORRECIENTE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-		
+	$\hspace*{6mm}$res $\longleftarrow$ max(fechaUltimoAcceso(s,l)+1,diasRecientes) - diasRecientes //O(ALGO)\\\\
+
 	\textbf{IDIASRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-		
+	   $\hspace*{6mm}$res $\longleftarrow$ diasRecientesDesde(s,l,menorReciente(s,l)) \\\\
+	
 	\textbf{IDIASRECIENTESDESDE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-		
+	$\hspace*{6mm}$ conj $\longleftarrow$ $\emptyset$ //O(1)\\
+	$\hspace*{6mm}$ fecha $\longleftarrow$ f //O(1)\\
+	$\hspace*{6mm}$ while(esReciente?(s,l,fecha))\\
+	$\hspace*{6mm}$ Ag(fecha,conj)\\
+	$\hspace*{6mm}$ fecha $\longleftarrow$ fecha + 1 //O(1)\\
+	$\hspace*{6mm}$ endwhile\\
+	$\hspace*{6mm}$ res $\longleftarrow$ conj\\\\
+
 	\textbf{ILINKSCATEGORIAOHIJOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(link)\\
 	$\hspace*{6mm}$res $\leftarrow$ filtrarLinksCategoriaOHijos(s, c, links(s)) //O(ALGO)\\\\
 
@@ -408,11 +431,20 @@ ELSE *((obtener(l,s.accesosXLink)).datosLink).accesos $\leftarrow$  *((obtener(l
 	$\hspace*{6mm}$\IF\ esSubCategoria(categorias(s),c,categoriaLink(s,dameUno(todoElConjunto))) THEN res $\leftarrow$  Ag(dameUno(todoElConjunto),res) ELSE res $\leftarrow$ res FI \\
 	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ sinUno(todoElConjunto) //O(ALGO) \\
 	$\hspace*{6mm}$ end while \\\\
+	
 	\textbf{IDIASRECIENTESPARACATEGORIAS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha)\\\\
-		
+	$\hspace*{6mm}$res $\longleftarrow$ \IF\ $\emptyset$?(linksCategoriaOHijos(s,c)) THEN
+	$\emptyset$ ELSE diasRecientes(s,linkConUltimoAcceso(s,c,linksCategoriaOHijos(s,c)))
+	FI //O(ALGO) \\
+	
 	\textbf{ILINKCONULTIMOACCESO} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: link\\\\
 		
 	\textbf{ISUMARACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link,\textbf{in} fs: conj(fecha) ) $\longrightarrow$ res: nat\\\\
+	$\hspace*{6mm}$ conjFecha $\longleftarrow$ fs\\
+	$\hspace*{6mm}$ while(!$\emptyset$?(conjFecha))\\
+	$\hspace*{6mm}$ res $\longleftarrow$ accesosRecientesDia(s,l,dameUno(conjFecha))\\
+	$\hspace*{6mm}$ conjFecha $\longleftarrow$ sinUno(conjFecha)\\
+	$\hspace*{6mm}$ endWhile\\
 	
 	\textbf{ILINKSORDENADOSPORACCESOSAUX} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: secu(link)\\\\
 	$\hspace*{6mm}$var todoElConjunto: conj(link) //O(ALGO) \\
@@ -423,7 +455,7 @@ ELSE *((obtener(l,s.accesosXLink)).datosLink).accesos $\leftarrow$  *((obtener(l
 	$\hspace*{6mm}$ endwhile \\\\
 
 	\textbf{ILINKCONMASACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) )$\longrightarrow$ res: link\\\\
-	 $\hspace*{6mm}$var todoElConjunto: conj(link) //O(ALGO) \\
+	$\hspace*{6mm}$var todoElConjunto: conj(link) //O(ALGO) \\
 	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ ls //O(ALGO) \\
 	$\hspace*{6mm}$while((todoElConjunto) > 1) \\
 
@@ -674,7 +706,7 @@ $\hspace*{6mm}$		res.raiz = c // O(ALGO)\\
 $\hspace*{6mm}$		res.alturaMax = 1 // O(ALGO)\\
 $\hspace*{6mm}$		var tuplaA : datosCat\\
 $\hspace*{6mm}$		var punt : puntero(datosCat)\\
-$\hspace*{6mm}$		tuplaA $\leftarrow$ (c,1,1,$\emptyset$,punt)\\
+$\hspace*{6mm}$		tuplaA $\leftarrow$ (c,1,1,esVacia?,punt)\\
 $\hspace*{6mm}$		punt $\leftarrow$ puntero(tuplaA)\\
 $\hspace*{6mm}$		res.familia = definir(padre, punt, res.familia) // O(ALGO)\\
 $\hspace*{6mm}$		res.categorias $\leftarrow$ agregarAtras(tuplaA,res.categorias) \\\\
@@ -688,7 +720,7 @@ $\hspace*{6mm}$		THEN {ac.alturaMax = ac.alturaMax + 1} //O(1)\\
 $\hspace*{6mm}$		ELSE{ ac.alturaMax = ac.alturaMax }FI //O(1)\\
 $\hspace*{6mm}$		var tuplaA : datosCat //O(1)\\
 $\hspace*{6mm}$		var punt : puntero(datosCat) //O(1)\\
-$\hspace*{6mm}$		tuplaA $\leftarrow$ (h,ac.cantidad +1,(*puntPadre).altura +1,$\emptyset$,puntPadre) //O(|h|) \\
+$\hspace*{6mm}$		tuplaA $\leftarrow$ (h,ac.cantidad +1,(*puntPadre).altura +1,esVacia?,puntPadre) //O(|h|) \\
 $\hspace*{6mm}$		punt $\leftarrow$ puntero(tuplaA) //O(1)\\
 $\hspace*{6mm}$ 	Agregar((*puntPadre).hijos,punt) // O(1)\\
 $\hspace*{6mm}$ 	definir(h,punt,ac.familia) //O(|h|)\\
