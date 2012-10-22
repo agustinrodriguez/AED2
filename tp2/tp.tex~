@@ -396,30 +396,35 @@ ELSE {\IF\ long(*((obtener(l,s.accesosXLink)).datosLink).accesos) < 3
 THEN *((obtener(l,s.accesosXLink)).datosLink).accesos $\leftarrow$ (f,1) $\textbullet$ *((obtener(l,s.accesosXLink)).datosLink).accesos 
 ELSE *((obtener(l,s.accesosXLink)).datosLink).accesos $\leftarrow$  *((obtener(l,s.accesosXLink)).datosLink).accesos -  ult(*((obtener(l,s.accesosXLink)).datosLink).accesos) FI} FI \\\\
 
-  \textbf{IESRECIENTE?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool\\\\
+	\textbf{IESRECIENTE?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool\\
+	$\hspace*{6mm}$res $\leftarrow$ menorReciente(s,l) $\leq$ f $\wedge$ f $\leq$ fechaUltimoAcceso(s,l) O(ALGO)\\\\
 
 	\textbf{IACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} c: categoria \textbf{in} l: link) $\longrightarrow$ res: nat\\
-	$\hspace*{6mm}$res $\longleftarrow$ sumarAccesosRecientes(s, l, diasRecientesParaCategoria(s, c) $\cap$ diasRecientes(s, l)) //O(ALGO) \\\\
+	$\hspace*{6mm}$res $\leftarrow$ sumarAccesosRecientes(s, l, diasRecientesParaCategoria(s, c) $\cap$ diasRecientes(s, l)) //O(ALGO) \\\\
 
 	\textbf{ILINKSORDENADOSPORACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: secu(link)\\
 	$\hspace*{6mm}$ res $\leftarrow$ linksOrdernadosPorAccesosAux(s, c, linksCategoriaOHijos(s, c)) // O(ALGO) \\\\
 	
 	\textbf{ICANTLINKS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: nat\\\\
-		
+	$\hspace*{6mm}$puntero(datosCat) cat $\leftarrow$ obtener(c,s.arbolCategorias) // O(|c|) \\
+	$\hspace*{6mm}$while(cat $\neq$ puntRaiz(s.arbolCategorias)) \\
+	$\hspace*{6mm}$res = res + longitud(arrayCantLinks[(*cat).id]) // O(1) \\
+	$\hspace*{6mm}$
+
 	\textbf{IMENORRECIENTE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-	$\hspace*{6mm}$res $\longleftarrow$ max(fechaUltimoAcceso(s,l)+1,diasRecientes) - diasRecientes //O(ALGO)\\\\
+	$\hspace*{6mm}$res $\leftarrow$ max(fechaUltimoAcceso(s,l)+1,diasRecientes) - diasRecientes //O(ALGO)\\\\
 
 	\textbf{IDIASRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-	   $\hspace*{6mm}$res $\longleftarrow$ diasRecientesDesde(s,l,menorReciente(s,l)) \\\\
+	$\hspace*{6mm}$res $\leftarrow$ diasRecientesDesde(s,l,menorReciente(s,l)) \\\\
 	
 	\textbf{IDIASRECIENTESDESDE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-	$\hspace*{6mm}$ conj $\longleftarrow$ $\emptyset$ //O(1)\\
-	$\hspace*{6mm}$ fecha $\longleftarrow$ f //O(1)\\
+	$\hspace*{6mm}$ conj $\leftarrow$ $\emptyset$ //O(1)\\
+	$\hspace*{6mm}$ fecha $\leftarrow$ f //O(1)\\
 	$\hspace*{6mm}$ while(esReciente?(s,l,fecha))\\
 	$\hspace*{6mm}$ Ag(fecha,conj)\\
-	$\hspace*{6mm}$ fecha $\longleftarrow$ fecha + 1 //O(1)\\
+	$\hspace*{6mm}$ fecha $\leftarrow$ fecha + 1 //O(1)\\
 	$\hspace*{6mm}$ endwhile\\
-	$\hspace*{6mm}$ res $\longleftarrow$ conj\\\\
+	$\hspace*{6mm}$ res $\leftarrow$ conj\\\\
 
 	\textbf{ILINKSCATEGORIAOHIJOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(link)\\
 	$\hspace*{6mm}$res $\leftarrow$ filtrarLinksCategoriaOHijos(s, c, links(s)) //O(ALGO)\\\\
@@ -606,7 +611,7 @@ $\\$
 	
         arbolDeCategorias \textbf{se representa con} estrAC \textbf{donde} estrAC \textbf{es}:\\
 	tupla <\\
-$\hspace*{10mm}$\textit{raiz}: string,\\
+$\hspace*{10mm}$\textit{raiz}: puntero(datosCat),\\
 $\hspace*{10mm}$\textit{cantidad}: nat,\\
 $\hspace*{10mm}$\textit{alturaMax}: nat,\\
 $\hspace*{10mm}$\textit{familia}:diccTrie(\textit{padre}:string,puntero(datosCat)),\\
@@ -692,7 +697,7 @@ $\hspace*{10mm}$\textit{abuelo}:string>\\
 $\hspace*{6mm}$res $\leftarrow$ claves(ac.familia)   // O(ALGO) \\\\
 		
 		\textbf{IRAIZ} (\textbf{in} ac: estrAC) $\longrightarrow$ res: categoria\\
-$\hspace*{6mm}$res $\leftarrow$ ac.raiz // O(1)\\\\
+$\hspace*{6mm}$res $\leftarrow$ (*ac.raiz).categoria // O(1)\\\\
 		
 		\textbf{IPADRE} (\textbf{in} ac: estrAC, \textbf{in} h: categoria) $\longrightarrow$ res: puntero(categoria)\\
 $\hspace*{6mm}$res $\leftarrow$ (*(obtener(h,ac.familia)) ).abuelo // O(ALGO)\\\\

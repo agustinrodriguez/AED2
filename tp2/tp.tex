@@ -390,36 +390,35 @@ fechaActual(s) = e.actual $\wedge$ \\
 
   \textbf{IACCESO} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) \\
   $\hspace*{6mm}$ \IF\ s.actual == f THEN s.actual $\leftarrow$ s.actual ELSE s.actual $\leftarrow$ f FI O(ALGO) \\
-  $\hspace*{6mm}$ \IF\ f = (prim*((obtener(l,s.accesosXLink)).datosLink).accesos).dia \\
-THEN (prim*((obtener(l,s.accesosXLink)).datosLink).accesos).dia $\leftarrow$ (prim*((obtener(l,s.accesosXLink)).datosLink).accesos).dia + 1 
-ELSE {\IF\ long(*((obtener(l,s.accesosXLink)).datosLink).accesos) < 3 
-THEN *((obtener(l,s.accesosXLink)).datosLink).accesos $\leftarrow$ (f,1) $\textbullet$ *((obtener(l,s.accesosXLink)).datosLink).accesos 
-ELSE *((obtener(l,s.accesosXLink)).datosLink).accesos $\leftarrow$  *((obtener(l,s.accesosXLink)).datosLink).accesos -  ult(*((obtener(l,s.accesosXLink)).datosLink).accesos) FI} FI \\\\
+  
 
-  \textbf{IESRECIENTE?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool\\\\
+	\textbf{IESRECIENTE?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool\\
+	$\hspace*{6mm}$res $\leftarrow$ menorReciente(s,l) $\leq$ f $\wedge$ f $\leq$ fechaUltimoAcceso(s,l) O(ALGO)\\\\
 
 	\textbf{IACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} c: categoria \textbf{in} l: link) $\longrightarrow$ res: nat\\
-	$\hspace*{6mm}$res $\longleftarrow$ sumarAccesosRecientes(s, l, diasRecientesParaCategoria(s, c) $\cap$ diasRecientes(s, l)) //O(ALGO) \\\\
+	$\hspace*{6mm}$res $\leftarrow$ sumarAccesosRecientes(s, l, diasRecientesParaCategoria(s, c) $\cap$ diasRecientes(s, l)) //O(ALGO) \\\\
 
 	\textbf{ILINKSORDENADOSPORACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: secu(link)\\
 	$\hspace*{6mm}$ res $\leftarrow$ linksOrdernadosPorAccesosAux(s, c, linksCategoriaOHijos(s, c)) // O(ALGO) \\\\
 	
 	\textbf{ICANTLINKS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: nat\\\\
-		
+	$\hspace*{6mm}$puntero(datosCat) cat $\leftarrow$ obtener(c,s.arbolCategorias) // O(|c|) \\
+	$\hspace*{6mm}$res = longitud(arrayCantLinks[(*cat).id]) // O(1) \\\\
+
 	\textbf{IMENORRECIENTE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-	$\hspace*{6mm}$res $\longleftarrow$ max(fechaUltimoAcceso(s,l)+1,diasRecientes) - diasRecientes //O(ALGO)\\\\
+	$\hspace*{6mm}$res $\leftarrow$ max(fechaUltimoAcceso(s,l)+1,diasRecientes) - diasRecientes //O(ALGO)\\\\
 
 	\textbf{IDIASRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-	   $\hspace*{6mm}$res $\longleftarrow$ diasRecientesDesde(s,l,menorReciente(s,l)) \\\\
+	$\hspace*{6mm}$res $\leftarrow$ diasRecientesDesde(s,l,menorReciente(s,l)) \\\\
 	
 	\textbf{IDIASRECIENTESDESDE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-	$\hspace*{6mm}$ conj $\longleftarrow$ $\emptyset$ //O(1)\\
-	$\hspace*{6mm}$ fecha $\longleftarrow$ f //O(1)\\
+	$\hspace*{6mm}$ conj $\leftarrow$ $\emptyset$ //O(1)\\
+	$\hspace*{6mm}$ fecha $\leftarrow$ f //O(1)\\
 	$\hspace*{6mm}$ while(esReciente?(s,l,fecha))\\
 	$\hspace*{6mm}$ Ag(fecha,conj)\\
-	$\hspace*{6mm}$ fecha $\longleftarrow$ fecha + 1 //O(1)\\
+	$\hspace*{6mm}$ fecha $\leftarrow$ fecha + 1 //O(1)\\
 	$\hspace*{6mm}$ endwhile\\
-	$\hspace*{6mm}$ res $\longleftarrow$ conj\\\\
+	$\hspace*{6mm}$ res $\leftarrow$ conj\\\\
 
 	\textbf{ILINKSCATEGORIAOHIJOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(link)\\
 	$\hspace*{6mm}$res $\leftarrow$ filtrarLinksCategoriaOHijos(s, c, links(s)) //O(ALGO)\\\\
