@@ -328,13 +328,24 @@ $\hspace*{10mm}$\textit{arrayCatLinks}:arreglo-dimen(linksFamilia) )\\\\
    	    Abs(e) $\igobs$ s: linkLinkIT | \\
    	   \begin{flushright}
  categorias(s) = e.arbolCategorias $\wedge$ \\
- links(s)= claves(e.accesosXLink) $\wedge$ \\
-\paratodo{link}{l} categoriaLink(s,l) = *((obtener(l,e.accesosXLink)).datosLink).catDLink $\wedge$ \\
+ links(s)= todosLosLinks(s.listaLinks) $\wedge$ \\
+\paratodo{link}{l} categoriaLink(s,l) = *((obtener(l,e.accesosXLink))).catDLink $\wedge$ \\
 fechaActual(s) = e.actual $\wedge$ \\
-\paratodo{link}{l} l $\in$ links(l) $\wedge{_L}$ fechaUltimoAcceso(s,l) = prim((*((obtener(s,e.accesosXLink)).datosLink).accesos).dia) $\wedge$ \\
-\paratodo{link}{l}\paratodo{nat}{f} accesoRecienteDia(s,l,f) = cantidadPorDia(f,*((obtener(s,e.accesosXLink)).datosLink).accesos)
+\paratodo{link}{l} l $\in$ links(l) $\wedge{_L}$ fechaUltimoAcceso(s,l) = ultimo((*((obtener(s,e.accesosXLink))).accesos).dia) $\wedge$ \\
+\paratodo{link}{l}\paratodo{nat}{f} accesoRecienteDia(s,l,f) = cantidadPorDia(f,*((obtener(s,e.accesosXLink))).accesos)
 \end{flushright}
-		
+	
+Auxiliares\\
+
+\tadOperacion{cantidadPorDia}{fecha, lista(acceso)}{nat}{}
+
+\tadAxioma{cantidadPorDia(f,ls)}{\IF\ f == (prim(ls)).dia THEN cantAccesos ELSE cantidadPorDia(f,fin(ls)) FI}
+
+\tadOperacion{listaLinks}{secu(datosLink)}{conj(link)}{}
+
+\tadAxioma{listaLinks(ls)}{Ag((prim(ls)).link,fin(ls))}
+
+
 
 	\subsubsection{Algoritmos}
 
@@ -386,15 +397,15 @@ fechaActual(s) = e.actual $\wedge$ \\
   $\hspace*{6mm}$agregarAtras(s.arrayCatLinks[(*cat).id],puntLink) //O(1)  \\
   $\hspace*{6mm}$cat $\leftarrow$ cat.padre //O(1) \\
   $\hspace*{6mm}$end while \\
-  $\hspace*{6mm}$agregarAtras(s.arrayCatLinks[(*cat).id],puntLink) //O(1)  \\
+  $\hspace*{6mm}$agregarAtras(s.arrayCatLinks[(*cat).id],puntLink) //O(1)  \\\\
 
   \textbf{IACCESO} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) \\
-  $\hspace*{6mm}$ \IF\ s.actual == f THEN s.actual $\leftarrow$ s.actual ELSE s.actual $\leftarrow$ f FI O(ALGO) \\
-  $\hspace*{6mm}$ \IF\ f = (prim*((obtener(l,s.accesosXLink)).datosLink).accesos).dia \\
-THEN (prim*((obtener(l,s.accesosXLink)).datosLink).accesos).dia $\leftarrow$ (prim*((obtener(l,s.accesosXLink)).datosLink).accesos).dia + 1 
-ELSE {\IF\ long(*((obtener(l,s.accesosXLink)).datosLink).accesos) < 3 
-THEN *((obtener(l,s.accesosXLink)).datosLink).accesos $\leftarrow$ (f,1) $\textbullet$ *((obtener(l,s.accesosXLink)).datosLink).accesos 
-ELSE *((obtener(l,s.accesosXLink)).datosLink).accesos $\leftarrow$  *((obtener(l,s.accesosXLink)).datosLink).accesos -  ult(*((obtener(l,s.accesosXLink)).datosLink).accesos) FI} FI \\\\
+  $\hspace*{6mm}$ \IF\ s.actual == f THEN s.actual $\leftarrow$ s.actual ELSE s.actual $\leftarrow$ f FI // O(1) \\
+  $\hspace*{6mm}$var puntero(datosLink) puntLink $\leftarrow$ obtener(l,s.accesosXLink)  //O(|l|) \\
+  $\hspace*{6mm}$\IF\ (ultimo((*puntLink).accesos)).dia == f //O(1) \\
+  $\hspace*{6mm}$THEN  (ultimo((*puntLink).accesos)).cantAccesos++ //O(1)\\
+  $\hspace*{6mm}$ELSE agregarAtras((*puntLink).accesos), f) FI //O(1) \\
+  $\hspace*{6mm}$if longitud((*puntLink).accesos) == 4 then fin((*puntLink).accesos) //O(1) fi \\ 
 
 	\textbf{IESRECIENTE?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool\\
 	$\hspace*{6mm}$res $\leftarrow$ menorReciente(s,l) $\leq$ f $\wedge$ f $\leq$ fechaUltimoAcceso(s,l) O(ALGO)\\\\
@@ -402,14 +413,47 @@ ELSE *((obtener(l,s.accesosXLink)).datosLink).accesos $\leftarrow$  *((obtener(l
 	\textbf{IACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} c: categoria \textbf{in} l: link) $\longrightarrow$ res: nat\\
 	$\hspace*{6mm}$res $\leftarrow$ sumarAccesosRecientes(s, l, diasRecientesParaCategoria(s, c) $\cap$ diasRecientes(s, l)) //O(ALGO) \\\\
 
-	\textbf{ILINKSORDENADOSPORACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: secu(link)\\
-	$\hspace*{6mm}$ res $\leftarrow$ linksOrdernadosPorAccesosAux(s, c, linksCategoriaOHijos(s, c)) // O(ALGO) \\\\
-	
+	\textbf{ILINKSORDENADOSPORACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: lista(link)\\
+	$\hspace*{6mm}$nat id $\leftarrow$ id(s.arbolCategorias,c) //O(1) \\
+	$\hspace*{6mm}$lista(puntero(datosLink)) listaOrdenada $\leftarrow$ vacia() //O(1) \\
+	$\hspace*{6mm}$itLista(puntero(datosLink)) itMax $\leftarrow$ crearIt(s.arrayCantLinks[id]) //O(1) \\
+	$\hspace*{6mm}$if $¬$iestaOrdenada?(s.arrayCantLinks[id]) \\ 
+	$\hspace*{6mm}$then \\
+	$\hspace*{6mm}$itMax $\leftarrow$ iBuscarMax(s.arrayCantLinks[id]) //O(n) \\
+	$\hspace*{6mm}$agregarAtras(listaOrdenada,siguiente(itMax)) //O(1) \\
+	$\hspace*{6mm}$eliminarSiguiente(itMax) //O(1) \\
+	$\hspace*{6mm}$fi \\
+	$\hspace*{6mm}$end while \\
+
+	\textbf{IBUSCARMAX} (\textbf{in} ls: lista(puntero(datosLink))) $\longrightarrow$ res: itLista(puntero(datosLink))\\
+	 $\hspace*{6mm}$res $\leftarrow$ crearIt(ls) //O(1) \\
+	 $\hspace*{6mm}$itLista(puntero(datosLink)) itRecorre $\leftarrow$ crearIt(ls) //O(1) \\
+	 $\hspace*{6mm}$ nat max $\leftarrow$ (*siguiente(itRecorre)).cantAccesosRecientes //O(1) \\
+	 $\hspace*{6mm}$while(haySiguiente(itRecorre))
+	 $\hspace*{6mm}$if max < (*siguiente(itRecorre)).cantAccesosRecientes \\
+	 $\hspace*{6mm}$then \\
+	 $\hspace*{6mm}$max $\leftarrow$ (*siguiente(itRecorre)).cantAccesosRecientes //O(1) \\
+	 $\hspace*{6mm}$res $\leftarrow$ itRecorre //O(1) \\
+	 $\hspace*{6mm}$fi\\
+	 $\hspace*{6mm}$avanzar(itRecorre) \\
+	 $\hspace*{6mm}$end while \\
+
+	 \textbf{IESTAORDENADA} (\textbf{in} ls: lista(puntero(datosLink))) $\longrightarrow$ res: bool\\
+	 $\hspace*{6mm}$res $\leftarrow$ true //O(1) \\
+	 $\hspace*{6mm}$itLista(puntero(datosLink)) itRecorre $\leftarrow$ crearIt(ls) //O(1) \\
+	 $\hspace*{6mm}$ nat aux $\leftarrow$ (*siguiente(itRecorre)).cantAccesosRecientes //O(1) \\
+	 $\hspace*{6mm}$while(haySiguiente(itRecorre) $\wedge$ res == true)
+	 $\hspace*{6mm}$avanzar(itRecorre) \\
+	 $\hspace*{6mm}$if aux < (*siguiente(itRecorre)).cantAccesosRecientes \\
+	 $\hspace*{6mm}$then \\
+	 $\hspace*{6mm}$res $\leftarrow$ false //O(1) \\
+	 $\hspace*{6mm}$fi \\
+	 $\hspace*{6mm}$aux $\leftarrow$ (*siguiente(itRecorre)).cantAccesosRecientes //O(1) \\
+	 $\hspace*{6mm}$end while \\\\
+
 	\textbf{ICANTLINKS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: nat\\\\
 	$\hspace*{6mm}$puntero(datosCat) cat $\leftarrow$ obtener(c,s.arbolCategorias) // O(|c|) \\
-	$\hspace*{6mm}$while(cat $\neq$ puntRaiz(s.arbolCategorias)) \\
-	$\hspace*{6mm}$res = res + longitud(arrayCantLinks[(*cat).id]) // O(1) \\
-	$\hspace*{6mm}$
+	$\hspace*{6mm}$res = longitud(arrayCantLinks[(*cat).id]) // O(1) \\\\
 
 	\textbf{IMENORRECIENTE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
 	$\hspace*{6mm}$res $\leftarrow$ max(fechaUltimoAcceso(s,l)+1,diasRecientes) - diasRecientes //O(ALGO)\\\\
@@ -437,12 +481,14 @@ ELSE *((obtener(l,s.accesosXLink)).datosLink).accesos $\leftarrow$  *((obtener(l
 	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ sinUno(todoElConjunto) //O(ALGO) \\
 	$\hspace*{6mm}$ end while \\\\
 	
-	\textbf{IDIASRECIENTESPARACATEGORIAS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha)\\\\
-	$\hspace*{6mm}$res $\longleftarrow$ \IF\ $\emptyset$?(linksCategoriaOHijos(s,c)) THEN
-	$\emptyset$ ELSE diasRecientes(s,linkConUltimoAcceso(s,c,linksCategoriaOHijos(s,c)))
-	FI //O(ALGO) \\
+  
 	
-	\textbf{ILINKCONULTIMOACCESO} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: link\\\\
+	\textbf{IDIASRECIENTESPARACATEGORIAS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha)\\\\
+	$\hspace*{6mm}$res $\longleftarrow$ IF $\emptyset$?(linksCategoriaOHijos(s,c)) THEN \\
+	$\emptyset$ ELSE diasRecientes(s,linkConUltimoAcceso(s,c,linksCategoriaOHijos(s,c))) \\
+	FI //O(ALGO) \\\\
+	
+%	\textbf{ILINKCONULTIMOACCESO} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: link\\\\
 		
 	\textbf{ISUMARACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link,\textbf{in} fs: conj(fecha) ) $\longrightarrow$ res: nat\\\\
 	$\hspace*{6mm}$ conjFecha $\longleftarrow$ fs\\
@@ -451,13 +497,13 @@ ELSE *((obtener(l,s.accesosXLink)).datosLink).accesos $\leftarrow$  *((obtener(l
 	$\hspace*{6mm}$ conjFecha $\longleftarrow$ sinUno(conjFecha)\\
 	$\hspace*{6mm}$ endWhile\\
 	
-	\textbf{ILINKSORDENADOSPORACCESOSAUX} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: secu(link)\\\\
-	$\hspace*{6mm}$var todoElConjunto: conj(link) //O(ALGO) \\
-	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ ls //O(ALGO) \\
-	$\hspace*{6mm}$while($¬\emptyset$?(todoElConjunto) $\wedge$ $¬\emptyset$(ls)) \\
-	$\hspace*{6mm}$ res $\leftarrow$ linkConMasAccesos(s,c,todoElConjunto) $\textbullet$ res // O(ALGO)\\
-	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ todoElConjunto - linkConMasAccesos(s,c,todoElConjunto) // O(ALGO) \\
-	$\hspace*{6mm}$ endwhile \\\\
+%	\textbf{ILINKSORDENADOSPORACCESOSAUX} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: secu(link)\\\\
+%	$\hspace*{6mm}$var todoElConjunto: conj(link) //O(ALGO) \\
+%	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ ls //O(ALGO) \\
+%	$\hspace*{6mm}$while($¬\emptyset$?(todoElConjunto) $\wedge$ $¬\emptyset$(ls)) \\
+%	$\hspace*{6mm}$ res $\leftarrow$ linkConMasAccesos(s,c,todoElConjunto) $\textbullet$ res // O(ALGO)\\
+%	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ todoElConjunto - linkConMasAccesos(s,c,todoElConjunto) // O(ALGO) \\
+%	$\hspace*{6mm}$ endwhile \\\\
 
 	\textbf{ILINKCONMASACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) )$\longrightarrow$ res: link\\\\
 	$\hspace*{6mm}$var todoElConjunto: conj(link) //O(ALGO) \\
@@ -683,13 +729,18 @@ $\hspace*{10mm}$\textit{abuelo}:string>\\
 	    \textbf{Abs}: estr e $\rightarrow$ arbolDeCategorias \\
    	    Abs(e) $\igobs$ ac: arbolDeCategorias | \\
    	   \begin{flushright}
- categorias(ac) = claves(e.familia) $\wedge{_L}$ \\
+ categorias(ac) = todasLasCategorias(e.categorias) $\wedge{_L}$ \\
    	    raiz(ac) = e.raiz $\wedge{_L}$ \\
    	    (\paratodo {categoria}{c}) esta?(c,ac) $\wedge$ c $\neq$ raiz(ac) $\Rightarrow{_L}$
-   	    padre(ac,c) = *((obtener(c,e.familia)) ).abuelo $\wedge{_L}$ \\
-   	    (\paratodo {categoria}{c}) esta?(c,ac) $\Rightarrow{_L}$ id(ac,c) = (*(obtener(c,e.familia)) ).id)
+   	    padre(ac,c) = (*(obtener(c,e.familia))).abuelo $\wedge{_L}$ \\
+   	    (\paratodo {categoria}{c}) esta?(c,ac) $\Rightarrow{_L}$ id(ac,c) = (*(obtener(c,e.familia))).id
 \end{flushright}
 		
+Auxiliares\\
+
+\tadOperacion{todasLasCategorias}{secu(datosCat)}{conj(categoria)}{}
+
+\tadAxioma{Ag((prim(cs)).categoria,fin(cs))}
 
 	\subsubsection{Algoritmos}
 		
