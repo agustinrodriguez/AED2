@@ -304,11 +304,19 @@ $\hspace*{10mm}$\textit{arrayCatLinks}:arreglo-dimen(linksFamilia) )\\\\
 	
 	  \begin{enumerate}
 	
-		\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}' debera existir en algun '\textit{links}' de una clave \textit{'categoria'} de \textit{'linksXCat'}
+		\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}' la '\textit{catDLink}' de la tupla apuntada en el significado debera existir en \textit{'arbolCategorias'}.
 	  
-		\item Todos los \textit{dia}' deberan ser menor o igual a \textit{actual}
+		\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}', todos los \textit{dia}' de la lista '\textit{accesosRecientes}' deberan ser menor o igual a \textit{actual}.
 		
-		\item Para todos los link que existan en 'links' de una categoria de 'linksXCat', esa categoria debera aparecer como 'catDLink' cuando se consulte por algun link del conjunto como clave en 'accesosXLink'		
+		\item \textit{actual}' será igual a la fecha mas grande de  \textit{accesosRecientes} de todas las claves \textit{accesosXLink}.
+
+		\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}' su significado deberá existir en '\textit{listaLinks}' 
+
+		\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}' su significado deberá aparecer en '\textit{arrayCantLinks}' en la posicion igual al id de '\textit{catDLink}' y en todas las posiciones menores a esta.
+
+		\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}', la '\textit{accesosRecientes}' apuntada en el significado debera tener una longitud menor o igual a 3.
+
+		\item 
 	  
 	  \end{enumerate}
 	 
@@ -318,8 +326,18 @@ $\hspace*{10mm}$\textit{arrayCatLinks}:arreglo-dimen(linksFamilia) )\\\\
 	
 	   \begin{enumerate}
 
-	   \item
+	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\leftrightarrow$ (*obtener(x,e.accesosXLink)).catDLink $\exists$ todasLasCategorias(e.arbolCategorias.categorias)
+
+	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\rightarrow$ (ultimo((*obtener(x,e.accesosXLink)).accesosRecientes)).dia $\leq$ e.actual
+
+	   \item 
+
+	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\rightarrow$ (*obtener(x,e.accesosXLink)) $\exists$ todosLosLinks(listaLinks)
+
+	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\rightarrow$ (*obtener(x,e.accesosXLink)) $\exists$ linksDeCat(e.arrayCantLinks[id(e.arbolCategorias,(*obtener(x,e.accesosXLink)).catDLink)])
  
+	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\rightarrow$ longitud((*obtener(x,e.accesosXLink)).accesosRecientes) $\leq$ 3
+
 \end{enumerate}
 
 \subsubsection{\Large Funci\'{o}n de Abstraccion}
@@ -349,29 +367,55 @@ Auxiliares\\
 
 	\subsubsection{Algoritmos}
 
-  \textbf{ICATEGORIAS} (\textbf{in} s: lli) $\longrightarrow$ res: ac\\\\
+\textbf{------------------------------------------------------------------------------\\}
+  \textbf{Algoritmo}\\
+  	\textbf{ICATEGORIAS} (\textbf{in} s: lli) $\longrightarrow$ res: ac\\\\
     res $\leftarrow$ s.arbolCategorias// O(1)\\
-
-  \textbf{ILINKS} (\textbf{in} s: estrLLI) $\longrightarrow$ res: conj(link)\\\\
-  $\hspace*{6mm}$res $\leftarrow$ claves(s.accesosXLink) // O($\sum_{i=1}^{longitud(s.listaLinks)}$)\\
-
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
+  
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\
+  \textbf{ILINKS} (\textbf{in} s: estrLLI) $\longrightarrow$ res: conj(link)\\
+  $\hspace*{6mm}$res $\leftarrow$ claves(s.accesosXLink) //O($\sum_{i=1}^{longitud(s.listaLinks)}$)\\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
+ 
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\
   \textbf{ICATEGORIALINK} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: categoria\\
-  $\hspace*{6mm}$res $\leftarrow$ *((obtener(l,s.accesosXLink))).catDLink // O(|l|)\\\\ 
-
+  $\hspace*{6mm}$res $\leftarrow$ *((obtener(l,s.accesosXLink))).catDLink // O(|l|)\\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
+ 
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\
   \textbf{IFECHAACTUAL} (\textbf{in} s: estrLLI) $\longrightarrow$ res: fecha\\
-  $\hspace*{6mm}$res $\leftarrow$ s.actual // O(1)\\\\
-
+  $\hspace*{6mm}$res $\leftarrow$ s.actual // O(1)\\
+    \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
+ 
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\
   \textbf{IFECHAULTIMOACCESO} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: fecha\\
-  $\hspace*{6mm}$res $\leftarrow$ prim(*((obtener(l,s.accesosXLink))).accesosRecientes).dia //O(|l|) \\\\
-
+  $\hspace*{6mm}$res $\leftarrow$ prim(*((obtener(l,s.accesosXLink))).accesosRecientes).dia //O(|l|) \\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
+ 
+\textbf{------------------------------------------------------------------------------\\}  
+\textbf{Algoritmo}\\
   \textbf{IACCESOSRECIENTESDIA} (\textbf{in} s: estrLLI, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: nat\\
   $\hspace*{6mm}$lista(acceso) accesos $\leftarrow$ vacia() //O(1) \\
   $\hspace*{6mm}$res $\leftarrow$ 0 //O(1) \\
   $\hspace*{6mm}$accesos $\leftarrow$ *((obtener(l,s.accesosXLink))).accesosRecientes // O(|l|)\\
   $\hspace*{6mm}$while($¬$esVacia?(accesos) $\wedge$ (prim(accesos)).dia $\neq$ f)\\
-  $\hspace*{6mm}${\IF\ (prim(accesos)).dia == f //O(1)\\THEN res = (prim(accesos)).cantAccesos //O(1)\\ ELSE accesos = fin(accesos) FI //O(1) }O(ALGO) \\
-  $\hspace*{6mm}$end while \\
-  
+  $\hspace*{6mm}${\textbf{if} (prim(accesos)).dia == f //O(1)\\\textbf{then} res = (prim(accesos)).cantAccesos //O(1)\\ ELSE accesos = fin(accesos) FI //O(1) }O(ALGO) \\
+  $\hspace*{6mm}$\textbf{end while} \\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
+ 
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\  
   \textbf{IINICIAR} (\textbf{in} ac: acat) $\longrightarrow$ res: estrLLI\\
   $\hspace*{6mm}$res.actual $\leftarrow$ 1 // O(1) \\
   $\hspace*{6mm}$res.arbolCategorias $\leftarrow$ ac // O(1) \\
@@ -384,8 +428,12 @@ Auxiliares\\
   $\hspace*{6mm}$linksFamilia llist $\leftarrow$ vacia() //O(1) \\
   $\hspace*{6mm}$res.arrayCatLinks[c] $\leftarrow$ llist //O(1) \\
   $\hspace*{6mm}$c ++ //O(1) \\
-  $\hspace*{6mm}$end while \\\\
+  $\hspace*{6mm}$\textbf{end while} \\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
 
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\
   \textbf{INUEVOLINK} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} c: categoria) O(ALGO) \\
   $\hspace*{6mm}$puntero(datosCat) cat $\leftarrow$ obtener(c,s.arbolCategorias) O(|c|) \\
   $\hspace*{6mm}$lista(acceso) accesoDeNuevoLink $\leftarrow$ vacia() //O(1) \\
@@ -396,123 +444,161 @@ Auxiliares\\
   $\hspace*{6mm}$while(cat $\neq$ puntRaiz(s.arbolCategorias))\\
   $\hspace*{6mm}$agregarAtras(s.arrayCatLinks[(*cat).id],puntLink) //O(1)  \\
   $\hspace*{6mm}$cat $\leftarrow$ cat.padre //O(1) \\
-  $\hspace*{6mm}$end while \\
-  $\hspace*{6mm}$agregarAtras(s.arrayCatLinks[(*cat).id],puntLink) //O(1)  \\\\
+  $\hspace*{6mm}$\textbf{end while} \\
+  $\hspace*{6mm}$agregarAtras(s.arrayCatLinks[(*cat).id],puntLink) //O(1)  \\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
 
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\
   \textbf{IACCESO} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) \\
-  $\hspace*{6mm}$ \IF\ s.actual == f THEN s.actual $\leftarrow$ s.actual ELSE s.actual $\leftarrow$ f FI // O(1) \\
+  $\hspace*{6mm}$ \textbf{if} s.actual == f \textbf{then} s.actual $\leftarrow$ s.actual ELSE s.actual $\leftarrow$ f FI // O(1) \\
   $\hspace*{6mm}$var puntero(datosLink) puntLink $\leftarrow$ obtener(l,s.accesosXLink)  //O(|l|) \\
-  $\hspace*{6mm}$\IF\ (ultimo((*puntLink).accesos)).dia == f //O(1) \\
-  $\hspace*{6mm}$THEN  (ultimo((*puntLink).accesos)).cantAccesos++ //O(1)\\
+  $\hspace*{6mm}$\textbf{if} (ultimo((*puntLink).accesos)).dia == f //O(1) \\
+  $\hspace*{6mm}$\textbf{then}  (ultimo((*puntLink).accesos)).cantAccesos++ //O(1)\\
   $\hspace*{6mm}$ELSE agregarAtras((*puntLink).accesos), f) FI //O(1) \\
-  $\hspace*{6mm}$if longitud((*puntLink).accesos) == 4 then fin((*puntLink).accesos) //O(1) fi \\ 
-
+  $\hspace*{6mm}$if longitud((*puntLink).accesos) == 4 \textbf{then} fin((*puntLink).accesos) //O(1) fi \\ 
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
+ 
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\
 	\textbf{IESRECIENTE?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool\\
-	$\hspace*{6mm}$res $\leftarrow$ menorReciente(s,l) $\leq$ f $\wedge$ f $\leq$ fechaUltimoAcceso(s,l) O(ALGO)\\\\
-
+	$\hspace*{6mm}$res $\leftarrow$ menorReciente(s,l) $\leq$ f $\wedge$ f $\leq$ fechaUltimoAcceso(s,l) O(ALGO)\\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
+ 
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\
 	\textbf{IACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} c: categoria \textbf{in} l: link) $\longrightarrow$ res: nat\\
-	$\hspace*{6mm}$res $\leftarrow$ sumarAccesosRecientes(s, l, diasRecientesParaCategoria(s, c) $\cap$ diasRecientes(s, l)) //O(ALGO) \\\\
-
+	$\hspace*{6mm}$res $\leftarrow$ sumarAccesosRecientes(s, l, diasRecientesParaCategoria(s, c) $\cap$ diasRecientes(s, l)) //O(ALGO) \\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
+ 
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\
 	\textbf{ILINKSORDENADOSPORACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: lista(link)\\
 	$\hspace*{6mm}$nat id $\leftarrow$ id(s.arbolCategorias,c) //O(1) \\
 	$\hspace*{6mm}$lista(puntero(datosLink)) listaOrdenada $\leftarrow$ vacia() //O(1) \\
 	$\hspace*{6mm}$itLista(puntero(datosLink)) itMax $\leftarrow$ crearIt(s.arrayCantLinks[id]) //O(1) \\
-	$\hspace*{6mm}$if $¬$iestaOrdenada?(s.arrayCantLinks[id]) \\ 
-	$\hspace*{6mm}$then \\
+	$\hspace*{6mm}$\textbf{if} $¬$iestaOrdenada?(s.arrayCantLinks[id]) \\ 
+	$\hspace*{6mm}$\textbf{\textbf{then}} \\
+	$\hspace*{6mm}$\textbf{while}(haySiguiente?(s.arrayCantLinks[id]))\\
 	$\hspace*{6mm}$itMax $\leftarrow$ iBuscarMax(s.arrayCantLinks[id]) //O(n) \\
 	$\hspace*{6mm}$agregarAtras(listaOrdenada,siguiente(itMax)) //O(1) \\
 	$\hspace*{6mm}$eliminarSiguiente(itMax) //O(1) \\
-	$\hspace*{6mm}$fi \\
-	$\hspace*{6mm}$end while \\
+	$\hspace*{6mm}$\textbf{fi} \\
+	$\hspace*{6mm}$\textbf{end while} \\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
 
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\
 	\textbf{IBUSCARMAX} (\textbf{in} ls: lista(puntero(datosLink))) $\longrightarrow$ res: itLista(puntero(datosLink))\\
 	 $\hspace*{6mm}$res $\leftarrow$ crearIt(ls) //O(1) \\
 	 $\hspace*{6mm}$itLista(puntero(datosLink)) itRecorre $\leftarrow$ crearIt(ls) //O(1) \\
 	 $\hspace*{6mm}$ nat max $\leftarrow$ (*siguiente(itRecorre)).cantAccesosRecientes //O(1) \\
-	 $\hspace*{6mm}$while(haySiguiente(itRecorre))
+	 $\hspace*{6mm}$\textbf{while}(haySiguiente(itRecorre))\\
 	 $\hspace*{6mm}$if max < (*siguiente(itRecorre)).cantAccesosRecientes \\
-	 $\hspace*{6mm}$then \\
+	 $\hspace*{6mm}$\textbf{then} \\
 	 $\hspace*{6mm}$max $\leftarrow$ (*siguiente(itRecorre)).cantAccesosRecientes //O(1) \\
 	 $\hspace*{6mm}$res $\leftarrow$ itRecorre //O(1) \\
 	 $\hspace*{6mm}$fi\\
 	 $\hspace*{6mm}$avanzar(itRecorre) \\
-	 $\hspace*{6mm}$end while \\
+	 $\hspace*{6mm}$\textbf{end while} \\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
 
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\
 	 \textbf{IESTAORDENADA} (\textbf{in} ls: lista(puntero(datosLink))) $\longrightarrow$ res: bool\\
 	 $\hspace*{6mm}$res $\leftarrow$ true //O(1) \\
 	 $\hspace*{6mm}$itLista(puntero(datosLink)) itRecorre $\leftarrow$ crearIt(ls) //O(1) \\
 	 $\hspace*{6mm}$ nat aux $\leftarrow$ (*siguiente(itRecorre)).cantAccesosRecientes //O(1) \\
-	 $\hspace*{6mm}$while(haySiguiente(itRecorre) $\wedge$ res == true)
+	 $\hspace*{6mm}$\textbf{while}(haySiguiente(itRecorre) $\wedge$ res == true)
 	 $\hspace*{6mm}$avanzar(itRecorre) \\
 	 $\hspace*{6mm}$if aux < (*siguiente(itRecorre)).cantAccesosRecientes \\
-	 $\hspace*{6mm}$then \\
+	 $\hspace*{6mm}$\textbf{then} \\
 	 $\hspace*{6mm}$res $\leftarrow$ false //O(1) \\
 	 $\hspace*{6mm}$fi \\
 	 $\hspace*{6mm}$aux $\leftarrow$ (*siguiente(itRecorre)).cantAccesosRecientes //O(1) \\
-	 $\hspace*{6mm}$end while \\\\
+	 $\hspace*{6mm}$\textbf{end while} \\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
 
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\
 	\textbf{ICANTLINKS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: nat\\\\
 	$\hspace*{6mm}$puntero(datosCat) cat $\leftarrow$ obtener(c,s.arbolCategorias) // O(|c|) \\
-	$\hspace*{6mm}$res = longitud(arrayCantLinks[(*cat).id]) // O(1) \\\\
+	$\hspace*{6mm}$res = longitud(arrayCantLinks[(*cat).id]) // O(1) \\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
 
-	\textbf{IMENORRECIENTE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-	$\hspace*{6mm}$res $\leftarrow$ max(fechaUltimoAcceso(s,l)+1,diasRecientes) - diasRecientes //O(ALGO)\\\\
-
-	\textbf{IDIASRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-	$\hspace*{6mm}$res $\leftarrow$ diasRecientesDesde(s,l,menorReciente(s,l)) \\\\
-	
-	\textbf{IDIASRECIENTESDESDE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\
+	\textbf{IMENORRECIENTE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\
+	$\hspace*{6mm}$res $\leftarrow$ max(fechaUltimoAcceso(s,l)+1,diasRecientes) - diasRecientes //O(ALGO)\\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
+ 
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\
+	\textbf{IDIASRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\
+	$\hspace*{6mm}$res $\leftarrow$ diasRecientesDesde(s,l,menorReciente(s,l)) \\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
+ 
+\textbf{------------------------------------------------------------------------------\\} 
+ \textbf{Algoritmo}\\
+	\textbf{IDIASRECIENTESDESDE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\
 	$\hspace*{6mm}$ conj $\leftarrow$ $\emptyset$ //O(1)\\
 	$\hspace*{6mm}$ fecha $\leftarrow$ f //O(1)\\
-	$\hspace*{6mm}$ while(esReciente?(s,l,fecha))\\
+	$\hspace*{6mm}$ \textbf{while}(esReciente?(s,l,fecha))\\
 	$\hspace*{6mm}$ Ag(fecha,conj)\\
 	$\hspace*{6mm}$ fecha $\leftarrow$ fecha + 1 //O(1)\\
-	$\hspace*{6mm}$ endwhile\\
-	$\hspace*{6mm}$ res $\leftarrow$ conj\\\\
-
+	$\hspace*{6mm}$ \textbf{end while}\\
+	$\hspace*{6mm}$ res $\leftarrow$ conj\\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
+ 
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\
 	\textbf{ILINKSCATEGORIAOHIJOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(link)\\
-	$\hspace*{6mm}$res $\leftarrow$ filtrarLinksCategoriaOHijos(s, c, links(s)) //O(ALGO)\\\\
+	$\hspace*{6mm}$res $\leftarrow$ filtrarLinksCategoriaOHijos(s, c, links(s)) //O(ALGO)\\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
 
-	\textbf{IFILTRARLINKSCATEGORIASOHIJOS} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: conj(link)\\\\
+\textbf{------------------------------------------------------------------------------\\}
+\textbf{Algoritmo}\\
+	\textbf{IFILTRARLINKSCATEGORIASOHIJOS} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: conj(link)\\
 	$\hspace*{6mm}$ var todoElConjunto: conj(link) //O(ALGO) \\
 	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ ls //O(ALGO) \\
-	$\hspace*{6mm}$while($¬\emptyset$?(todoElConjunto) $\wedge$ $¬\emptyset$(ls))\\
-	$\hspace*{6mm}$\IF\ esSubCategoria(categorias(s),c,categoriaLink(s,dameUno(todoElConjunto))) THEN res $\leftarrow$  Ag(dameUno(todoElConjunto),res) ELSE res $\leftarrow$ res FI \\
+	$\hspace*{6mm}$\textbf{while}($¬\emptyset$?(todoElConjunto) $\wedge$ $¬\emptyset$(ls))\\
+	$\hspace*{6mm}$\textbf{if} esSubCategoria(categorias(s),c,categoriaLink(s,dameUno(todoElConjunto))) \textbf{then} res $\leftarrow$  Ag(dameUno(todoElConjunto),res) ELSE res $\leftarrow$ res FI \\
 	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ sinUno(todoElConjunto) //O(ALGO) \\
-	$\hspace*{6mm}$ end while \\\\
-	
-  
-	
-	\textbf{IDIASRECIENTESPARACATEGORIAS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha)\\\\
-	$\hspace*{6mm}$res $\longleftarrow$ IF $\emptyset$?(linksCategoriaOHijos(s,c)) THEN \\
+	$\hspace*{6mm}$ \textbf{end while} \\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}
+
+\textbf{------------------------------------------------------------------------------\\}	
+\textbf{Algoritmo}\\	
+	\textbf{IDIASRECIENTESPARACATEGORIAS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha)\\
+	$\hspace*{6mm}$res $\longleftarrow$ IF $\emptyset$?(linksCategoriaOHijos(s,c)) \textbf{then} \\
 	$\emptyset$ ELSE diasRecientes(s,linkConUltimoAcceso(s,c,linksCategoriaOHijos(s,c))) \\
-	FI //O(ALGO) \\\\
+	FI //O(ALGO) \\
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}	
 	
-%	\textbf{ILINKCONULTIMOACCESO} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: link\\\\
-		
-	\textbf{ISUMARACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link,\textbf{in} fs: conj(fecha) ) $\longrightarrow$ res: nat\\\\
+\textbf{------------------------------------------------------------------------------\\}	
+\textbf{Algoritmo}\\	
+	\textbf{ISUMARACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link,\textbf{in} fs: conj(fecha) ) $\longrightarrow$ res: nat\\
 	$\hspace*{6mm}$ conjFecha $\longleftarrow$ fs\\
-	$\hspace*{6mm}$ while(!$\emptyset$?(conjFecha))\\
+	$\hspace*{6mm}$ \textbf{while}(!$\emptyset$?(conjFecha))\\
 	$\hspace*{6mm}$ res $\longleftarrow$ accesosRecientesDia(s,l,dameUno(conjFecha))\\
 	$\hspace*{6mm}$ conjFecha $\longleftarrow$ sinUno(conjFecha)\\
-	$\hspace*{6mm}$ endWhile\\
-	
-%	\textbf{ILINKSORDENADOSPORACCESOSAUX} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: secu(link)\\\\
-%	$\hspace*{6mm}$var todoElConjunto: conj(link) //O(ALGO) \\
-%	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ ls //O(ALGO) \\
-%	$\hspace*{6mm}$while($¬\emptyset$?(todoElConjunto) $\wedge$ $¬\emptyset$(ls)) \\
-%	$\hspace*{6mm}$ res $\leftarrow$ linkConMasAccesos(s,c,todoElConjunto) $\textbullet$ res // O(ALGO)\\
-%	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ todoElConjunto - linkConMasAccesos(s,c,todoElConjunto) // O(ALGO) \\
-%	$\hspace*{6mm}$ endwhile \\\\
-
-	\textbf{ILINKCONMASACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) )$\longrightarrow$ res: link\\\\
-	$\hspace*{6mm}$var todoElConjunto: conj(link) //O(ALGO) \\
-	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ ls //O(ALGO) \\
-	$\hspace*{6mm}$while((todoElConjunto) > 1) \\
-
-	\textbf{$\beta$} (\textbf{in} b: bool) $\longrightarrow$ res: nat\\\\
-	  
-
+	$\hspace*{6mm}$ \textbf{end while}\\ 
+  \textbf{end Algoritmo}\\
+\textbf{------------------------------------------------------------------------------\\}	
 
 
 
@@ -585,7 +671,7 @@ $\\$
 		\textbf{g\'eneros}: acat\\
 
 \subsubsection{\Large Operaciones B\'asicas}
-	\textbf{categorias} (\textbf{in} ac: acat) $\longrightarrow$ res: conj(categoria)\\\\
+	\textbf{categorias} (\textbf{in} ac: acat) $\longrightarrow$ res: conj(categoria)\\
 	Pre $\equiv$ {true}\\
 	Post $\equiv$ {res$\igobs$ categorias(ac)}\\
 	Complejidad : O($\#$categorias(ac))\\
@@ -669,22 +755,24 @@ $\hspace*{10mm}$\textit{categoria}:string,\\
 $\hspace*{10mm}$\textit{id}:nat,\\
 $\hspace*{10mm}$\textit{altura}:nat,\\
 $\hspace*{10mm}$\textit{hijos}:conj(puntero(datosCat)),\\
-$\hspace*{10mm}$\textit{abuelo}:string>\\
+$\hspace*{10mm}$\textit{abuelo}:v>\\
 	\subsubsection{\Large Invariante de Representaci\'{o}n}
 	
 	  \begin{enumerate}
+	  
+		\item Para cada '\textit{padre} obtener el significado devolvera un puntero(datosCat) donde '\textit{categoria}' es igual a la clave
 	
-		\item Para todo '\textit{padre}' que exista en '\textit{familia}' debera ser o raiz o pertenecer a algun conjunto de hijos de alguna clave '\textit{padre}'
+		\item Para toda clave '\textit{padre}' que exista en '\textit{familia}' debera ser o raiz o pertenecer a algun conjunto de punteros de '\textit{hijos}' de alguna clave '\textit{padre}'
 	  
 		\item Todos los elementos de '\textit{hijos} de una clave '\textit{padre}', cada uno de estos hijos tendran como '\textit{abuelo}' a ese '\textit{padre}' cuando sean clave.
 		
-		\item '\textit{cantidad}' sera igual a la cantidad de elementos del conjunto de todas las claves del dicc '\textit{familia}'.
+		\item '\textit{cantidad}' sera igual a la longitud de la lista '\textit{categorias}'.
 		
 		\item Cuando la clave es igual a '\textit{raiz}' la '\textit{altura} es 1.
 		
-		\item La '\textit{altura}' de cada clave es menor o igual a '\textit{alturaMax}'.
+		\item La '\textit{altura}' del puntero a datosCat de cada clave es menor o igual a '\textit{alturaMax}'.
 		
-		\item Existe una clave en la cual su '\textit{altura}' es igual a '\textit{alturaMax}'.
+		\item Existe una clave en la cual, la '\textit{altura}' del significado de esta es igual a '\textit{alturaMax}'.
 		
 		\item Los '\textit{hijos}' de una clave tienen '\textit{altura}' igual a 1 + '\textit{altura} de la clave.
 
@@ -693,6 +781,7 @@ $\hspace*{10mm}$\textit{abuelo}:string>\\
 		\item No hay '\textit{id}' repetidos en el '\textit{familia}.
 		
 		\item Todos los '\textit{id}' son consecutivos.
+
 		
 	  \end{enumerate}
 	 
@@ -702,25 +791,27 @@ $\hspace*{10mm}$\textit{abuelo}:string>\\
 	
 	   \begin{enumerate}
 
-	   \item(\paratodo{string}{x,y}) (def?(x,e.familia)) $\Longleftrightarrow$ (x == e.raiz) $\vee$ (def?(y,e.familia)) $\wedge{_L}$ x $\in$ *((obtener(y,e.familia)) ).hijos
+	    \item(\paratodo{string}{x}) (def?(x,e.familia)) $\leftrightarrow$ (*obtener(x,e.familia)).categoria = x  
+	  
+	    \item(\paratodo{string}{x,y}) (def?(x,e.familia)) $\leftrightarrow$ (x == e.raiz) $\vee$ (def?(y,e.familia)) $\wedge{_L}$ x $\in$ hijosDe(*((obtener(y,e.familia))).hijos)
 	       
-	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\Rightarrow{_L}$ y $\in$ *((obtener(x,e.familia)) ).hijos $\Leftrightarrow$ \\ *((obtener(y,e.familia)) ).abuelo = x
+	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\Rightarrow{_L}$ y $\in$ *((obtener(x,e.familia)) ).hijos $\Leftrightarrow$ \\ (*(*(obtener(y,e.familia))).abuelo).categoria = x
 
-	    \item e.cantidad  = $\#$(claves(e.familia))  
+	    \item e.cantidad  = longitud(e.categorias)
 	    
 	    \item (\paratodo{string}{x}) (def?(x,e.familia)) $\wedge$ x = e.raiz $\Rightarrow{_L}$ *((obtener(x,e.familia)) ).altura = 1
 	    
-	    \item (\paratodo{string}{x}) (def?(x,e.familia)) $\Rightarrow{_L}$ *((obtener(x,e.familia)) ).altura $\leq$ e.alturaMax
+	    \item (\paratodo{string}{x}) (def?(x,e.familia)) $\Rightarrow{_L}$ (*obtener(x,e.familia)).altura $\leq$ e.alturaMax
 	    
 	    \item ($\exists$x: string) (def?(x,e.familia)) $\wedge{_L}$ *((obtener(x,e.familia)) ).altura $=$ e.alturaMax
 	    
-	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\wedge{_L}$ y $\in$ *((obtener(x,e.familia)) ).hijos $\Rightarrow$ \\ *((obtener(y,e.familia)) ).altura = 1 + *((obtener(x,e.familia)) ).altura
+	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\wedge{_L}$ y $\in$ hijosDe((*(obtener(x,e.familia))).hijos) $\Rightarrow$ \\ (*(obtener(y,e.familia))).altura = 1 + (*(obtener(x,e.familia))).altura
 	    
-	    \item (\paratodo{string}{x}) (def?(x,e.familia)) $\Rightarrow{_L}$ *((obtener(x,e.familia)) ).id $\leq$ e.cant
+	    \item (\paratodo{string}{x}) (def?(x,e.familia)) $\Rightarrow{_L}$ (*(obtener(x,e.familia))).id $\leq$ e.cant
 	    
-	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\Rightarrow{_L}$ *((obtener(x,e.familia)) ).id $\neq$ *((obtener(y,e.familia)) ).id
+	    \item (\paratodo{string}{x,y}) (def?(x,e.familia)) $\wedge$ (def?(y,e.familia)) $\Rightarrow{_L}$ (*(obtener(x,e.familia))).id $\neq$ (*(obtener(y,e.familia))).id
 	    
-	    \item (\paratodo{string}{x}) (def?(x,e.familia)) ($\exists$ y: string) (def?(y,e.familia)) $\Leftrightarrow$ \\ *((obtener(y,e.familia)) ).id $\leq$ e.cantidad $\wedge$ *((obtener(x,e.familia)) ).id $<$ e.cantidad $\wedge{_L}$ \\*((obtener(y,e.familia)) ).id = 1 + *((obtener(x,e.familia)) ).id
+	    \item (\paratodo{string}{x}) (def?(x,e.familia)) ($\exists$ y: string) (def?(y,e.familia)) $\Leftrightarrow$ \\ (*(obtener(y,e.familia))).id $\leq$ e.cantidad $\wedge$ (*(obtener(x,e.familia))).id $<$ e.cantidad $\wedge{_L}$ \\(*(obtener(y,e.familia))).id = 1 + (*(obtener(x,e.familia))).id
 	    
 \end{enumerate}
 
@@ -730,9 +821,9 @@ $\hspace*{10mm}$\textit{abuelo}:string>\\
    	    Abs(e) $\igobs$ ac: arbolDeCategorias | \\
    	   \begin{flushright}
  categorias(ac) = todasLasCategorias(e.categorias) $\wedge{_L}$ \\
-   	    raiz(ac) = e.raiz $\wedge{_L}$ \\
+   	    raiz(ac) = (*e.raiz).categoria $\wedge{_L}$ \\
    	    (\paratodo {categoria}{c}) esta?(c,ac) $\wedge$ c $\neq$ raiz(ac) $\Rightarrow{_L}$
-   	    padre(ac,c) = (*(obtener(c,e.familia))).abuelo $\wedge{_L}$ \\
+   	    padre(ac,c) = (*(*(obtener(c,e.familia))).abuelo).categoria $\wedge{_L}$ \\
    	    (\paratodo {categoria}{c}) esta?(c,ac) $\Rightarrow{_L}$ id(ac,c) = (*(obtener(c,e.familia))).id
 \end{flushright}
 		
@@ -743,19 +834,28 @@ Auxiliares\\
 \tadAxioma{Ag((prim(cs)).categoria,fin(cs))}
 
 	\subsubsection{Algoritmos}
-		
+
+\textbf{Algoritmo}\\		
 		\textbf{ICATEGORIAS} (\textbf{in} ac: estrAC) $\longrightarrow$ res: conj(categoria)\\
 $\hspace*{6mm}$res $\leftarrow$ claves(ac.familia)   // O(ALGO) \\\\
-		
+  \textbf{end Algoritmo}\\\\
+
+\textbf{Algoritmo}\\		
 		\textbf{IRAIZ} (\textbf{in} ac: estrAC) $\longrightarrow$ res: categoria\\
-$\hspace*{6mm}$res $\leftarrow$ (*ac.raiz).categoria // O(1)\\\\
-		
+$\hspace*{6mm}$res $\leftarrow$ (*ac.raiz).categoria // O(1)\\
+  \textbf{end Algoritmo}\\\\
+
+\textbf{Algoritmo}\\		
 		\textbf{IPADRE} (\textbf{in} ac: estrAC, \textbf{in} h: categoria) $\longrightarrow$ res: puntero(categoria)\\
-$\hspace*{6mm}$res $\leftarrow$ (*(obtener(h,ac.familia)) ).abuelo // O(ALGO)\\\\
-		
+$\hspace*{6mm}$res $\leftarrow$ (*(*(obtener(h,ac.familia))).abuelo).categoria // O(ALGO)\\
+  \textbf{end Algoritmo}\\\\
+
+\textbf{Algoritmo}\\		
 		\textbf{IID} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:puntero(nat)\\
-$\hspace*{6mm}$res $\leftarrow$ (*(obtener(c,ac.familia)) ).id // O(ALGO)\\\\
+$\hspace*{6mm}$res $\leftarrow$ (*(obtener(c,ac.familia)) ).id // O(ALGO)\\
+  \textbf{end Algoritmo}\\\\
 		
+\textbf{Algoritmo}\\
 		\textbf{INUEVO} (\textbf{in} c: categoria) $\longrightarrow$ res:estrAC\\
 $\hspace*{6mm}$		res.cantidad $\leftarrow$ 1 // O(ALGO)\\
 $\hspace*{6mm}$		res.raiz = c // O(ALGO)\\
@@ -765,14 +865,15 @@ $\hspace*{6mm}$		var punt : puntero(datosCat)\\
 $\hspace*{6mm}$		tuplaA $\leftarrow$ (c,1,1,esVacia?,punt)\\
 $\hspace*{6mm}$		punt $\leftarrow$ puntero(tuplaA)\\
 $\hspace*{6mm}$		res.familia = definir(padre, punt, res.familia) // O(ALGO)\\
-$\hspace*{6mm}$		res.categorias $\leftarrow$ agregarAtras(tuplaA,res.categorias) \\\\
+$\hspace*{6mm}$		res.categorias $\leftarrow$ agregarAtras(tuplaA,res.categorias) \\
+  \textbf{end Algoritmo}\\\\
 
-
+\textbf{Algoritmo}\\
 	\textbf{IAGREGAR} (\textbf{in/out} ac: estrAC,\textbf{in} c: categoria, \textbf{in} h: categoria )\\
 $\hspace*{6mm}$		var puntPadre : puntero(datosCat) //O(1)\\
 $\hspace*{6mm}$		puntPadre $\leftarrow$ (obtener(c,ac.familia)) //O(|c|) \\
-$\hspace*{6mm}$		\IF\ {(*puntPadre).altura == ac.alturaMax} //O(1) \\
-$\hspace*{6mm}$		THEN {ac.alturaMax = ac.alturaMax + 1} //O(1)\\
+$\hspace*{6mm}$		\textbf{if} {(*puntPadre).altura == ac.alturaMax} //O(1) \\
+$\hspace*{6mm}$		\textbf{then} {ac.alturaMax = ac.alturaMax + 1} //O(1)\\
 $\hspace*{6mm}$		ELSE{ ac.alturaMax = ac.alturaMax }FI //O(1)\\
 $\hspace*{6mm}$		var tuplaA : datosCat //O(1)\\
 $\hspace*{6mm}$		var punt : puntero(datosCat) //O(1)\\
@@ -781,32 +882,52 @@ $\hspace*{6mm}$		punt $\leftarrow$ puntero(tuplaA) //O(1)\\
 $\hspace*{6mm}$ 	Agregar((*puntPadre).hijos,punt) // O(1)\\
 $\hspace*{6mm}$ 	definir(h,punt,ac.familia) //O(|h|)\\
 $\hspace*{6mm}$ 	ac.cantidad ++ //O(1)\\
-$\hspace*{6mm}$		agregarAtras(tuplaA,res.categorias) //O(1)\\\\
-
+$\hspace*{6mm}$		agregarAtras(tuplaA,res.categorias) //O(1)\\
+  \textbf{end Algoritmo}\\\\
+  
+\textbf{Algoritmo}\\
 		\textbf{IALTURA} (\textbf{in} ac: estrAC) $\longrightarrow$ res:nat\\
-$\hspace*{6mm}$		res $\leftarrow$ ac.alturaMax $\hspace*{125mm}$ //O(1)   \\\\
-
-$\hspace*{6mm}$\textbf{IESTA?} (\textbf{in} c: categoria,\textbf{in} ac: estrAC) $\longrightarrow$ res:bool\\
-$\hspace*{6mm}$		res $\leftarrow$ def?(c,ac.familia) $\hspace*{120mm}$ //O(|c|) \\\\
+$\hspace*{6mm}$		res $\leftarrow$ ac.alturaMax $\hspace*{125mm}$ //O(1)   \\
+  \textbf{end Algoritmo}\\\\
+  
+\textbf{Algoritmo}\\
+\textbf{IESTA?} (\textbf{in} c: categoria,\textbf{in} ac: estrAC) $\longrightarrow$ res:bool\\
+$\hspace*{6mm}$		res $\leftarrow$ def?(c,ac.familia) $\hspace*{120mm}$ //O(|c|) \\
+  \textbf{end Algoritmo}\\\\
 		
-		\textbf{IESSUBCATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\\\	
+		\textbf{Algoritmo}\\
+		\textbf{IESSUBCATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\	
 $\hspace*{6mm}$		var puntPadre : puntero(datosCat) //O(1)\\
 $\hspace*{6mm}$		puntPadre $\leftarrow$ (obtener(c,ac.familia)) //O(|c|) \\
 $\hspace*{6mm}$ 	res $\leftarrow$ false // O(1) \\
-$\hspace*{6mm}$ 	{\IF\ c == ac.raiz O(|c|) \\ 
-$\hspace*{6mm}$	 	THEN  res $\leftarrow$ true // O(1) \\
+$\hspace*{6mm}$ 	{\textbf{if} c == ac.raiz O(|c|) \\ 
+$\hspace*{6mm}$	 	\textbf{then}  res $\leftarrow$ true // O(1) \\
 $\hspace*{6mm}$	 	ELSE actual $\leftarrow$ h // O(1) \\ 
-$\hspace*{6mm}$	 	while(res $\neq$ true $\wedge$ actual $\neq$ ac.raiz) \\ 
-$\hspace*{6mm}$ 	{\IF\ actual $\in$ (*puntPadre).hijos  \\
-$\hspace*{6mm}$ 	THEN res $\leftarrow$ true \\
-$\hspace*{6mm}$ 	ELSE actual $\leftarrow$ (*(obtener(actual,ac.familia)) ).abuelo FI} FI} \\\\
+$\hspace*{6mm}$	 	\textbf{while}(res $\neq$ true $\wedge$ actual $\neq$ ac.raiz) \\ 
+$\hspace*{6mm}$ 	{\textbf{if} actual $\in$ (*puntPadre).hijos  \\
+$\hspace*{6mm}$ 	\textbf{then} res $\leftarrow$ true \\
+$\hspace*{6mm}$ 	ELSE actual $\leftarrow$ (*(obtener(actual,ac.familia)) ).abuelo FI} FI} \\
+  \textbf{end Algoritmo}\\\\
 
-$\hspace*{6mm}$\textbf{IALTURACATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
-$\hspace*{6mm}$		res $\leftarrow$ (*(obtener(c,ac.familia)) ).altura // O(ALGO)\\\\
+\textbf{Algoritmo}\\
+\textbf{IALTURACATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
+$\hspace*{6mm}$		res $\leftarrow$ (*(obtener(c,ac.familia))).altura // O(ALGO)\\
+  \textbf{end Algoritmo}\\\\
 
-$\hspace*{6mm}$\textbf{IHIJOS} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\
-$\hspace*{6mm}$res $\leftarrow$ (obtener(c,ac.familia)).hijos // O(ALGO) PREGUNTAR!!! EN ESTE LA COMPLEJIDAD ES EL ITERADOR DEVOLVEMOS EL PUNTERO?
-		
+\textbf{Algoritmo}\\
+\textbf{IHIJOS} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\
+$\hspace*{6mm}$res $\leftarrow$ (*obtener(c,ac.familia)).hijos // O(ALGO) PREGUNTAR!!! EN ESTE LA COMPLEJIDAD ES EL ITERADOR DEVOLVEMOS EL PUNTERO?
+  \textbf{end Algoritmo}\\\\
+  
+\textbf{Algoritmo}\\
+\textbf{IOBTENER} (\textbf{in} c: categoria, \textbf{in} ac: estrAC) $\longrightarrow$ res:puntero(datosCat)\\
+$\hspace*{6mm}$res $\leftarrow$ obtener(c,ac.familia) // O(|c|) \\
+  \textbf{end Algoritmo}\\\\
+
+\textbf{Algoritmo}\\
+\textbf{IPUNTRAIZ} (\textbf{in} ac: estrAC) $\longrightarrow$ res:puntero(datosCat)\\
+$\hspace*{6mm}$res $\leftarrow$ ac.raiz // O(1) \\
+  \textbf{end Algoritmo}\\\\
 		
 \section{Renombres}
 \begin{tad}{\tadNombre{Categoria}} es String

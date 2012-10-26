@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.15)  23 OCT 2012 19:15
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.15)  26 OCT 2012 16:55
 entering extended mode
  %&-line parsing enabled.
 **tp.tex
@@ -1015,712 +1015,603 @@ Underfull \hbox (badness 10000) in paragraph at lines 299--301
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 316--318
+Underfull \hbox (badness 10000) in paragraph at lines 324--326
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 327--329
-
+Overfull \hbox (73.60533pt too wide) in paragraph at lines 329--330
+[]\T1/cmr/m/n/10 ($\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 x$\T1/cmr/m/n/10 : link) 
+(def?(x,e.accesosXLink)) $\OMS/cmsy/m/n/10 $$ \T1/cmr/m/n/10 (*obten-er(x,e.acc
+esosXLink)).catDLink $\OMS/cmsy/m/n/10 9$ \T1/cmr/m/n/10 to-dasLas-Cat-e-go-ria
+s(e.arbolCategorias.categorias) 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 338--339
-
+Overfull \hbox (217.76457pt too wide) in paragraph at lines 337--338
+[]\T1/cmr/m/n/10 ($\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 x$\T1/cmr/m/n/10 : link) 
+(def?(x,e.accesosXLink)) $\OMS/cmsy/m/n/10 !$ \T1/cmr/m/n/10 (*obten-er(x,e.acc
+esosXLink)) $\OMS/cmsy/m/n/10 9$ \T1/cmr/m/n/10 links-De-Cat(e.arrayCantLinks[i
+d(e.arbolCategorias,(*obtener(x,e.accesosXLink)).catDLink)]) 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 342--342
-[]\T1/cmr/m/n/10 cantidadPorDia(f,ls)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
- []
-
-
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 346--346
-[]\T1/cmr/m/n/10 listaLinks(ls)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 352--354
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 352--354
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 355--357
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 355--357
+Underfull \hbox (badness 10000) in paragraph at lines 345--347
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 358--360
+Underfull \hbox (badness 10000) in paragraph at lines 356--357
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--360
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 360--360
+[]\T1/cmr/m/n/10 cantidadPorDia(f,ls)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 364--364
+[]\T1/cmr/m/n/10 listaLinks(ls)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 370--376
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 361--363
+Underfull \hbox (badness 10000) in paragraph at lines 370--376
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 361--363
+Underfull \hbox (badness 10000) in paragraph at lines 377--383
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--366
+Underfull \hbox (badness 10000) in paragraph at lines 384--390
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--366
+Underfull \hbox (badness 10000) in paragraph at lines 391--397
 
  []
 
 
-LaTeX Warning: Command \^ invalid in math mode on input line 371.
+Underfull \hbox (badness 10000) in paragraph at lines 398--404
+
+ []
+
+
+LaTeX Warning: Command \^ invalid in math mode on input line 411.
 
 Missing character: There is no Â in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 367--374
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 375--388
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 375--388
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 389--401
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 389--401
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 402--409
+Underfull \hbox (badness 10000) in paragraph at lines 405--416
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 410--412
+Underfull \hbox (badness 10000) in paragraph at lines 417--434
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--412
+Underfull \hbox (badness 10000) in paragraph at lines 435--451
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 413--415
+Underfull \hbox (badness 10000) in paragraph at lines 452--463
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 413--415
+Underfull \hbox (badness 10000) in paragraph at lines 464--470
 
  []
 
 
-LaTeX Warning: Command \^ invalid in math mode on input line 420.
-
-Missing character: There is no Â in font cmr10!
-
-Underfull \hbox (badness 10000) in paragraph at lines 416--427
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 428--440
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 441--453
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 441--453
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 454--457
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 454--457
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 454--457
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 458--460
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 458--460
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 458--460
+Underfull \hbox (badness 10000) in paragraph at lines 471--477
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 461--463
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 461--463
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 461--463
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 464--472
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 464--472
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 464--472
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 473--475
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 473--475
-
- []
-
-
-LaTeX Warning: Command \^ invalid in math mode on input line 479.
+LaTeX Warning: Command \^ invalid in math mode on input line 484.
 
 Missing character: There is no Â in font cmr10!
 
-LaTeX Warning: Command \^ invalid in math mode on input line 479.
-
-Missing character: There is no Â in font cmr10!
-
-Underfull \hbox (badness 10000) in paragraph at lines 476--483
+Underfull \hbox (badness 10000) in paragraph at lines 478--494
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 476--483
+Underfull \hbox (badness 10000) in paragraph at lines 495--511
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 476--483
+Underfull \hbox (badness 10000) in paragraph at lines 512--528
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 486--490
+Underfull \hbox (badness 10000) in paragraph at lines 529--536
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 486--490
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 486--490
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 493--499
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 493--499
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 508--512
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 508--512
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 513--514
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 513--514
+Underfull \hbox (badness 10000) in paragraph at lines 529--536
 
  []
 
 [11]
-
-LaTeX Warning: Command \^ invalid in math mode on input line 539.
-
-
-LaTeX Warning: Command \^ invalid in math mode on input line 539.
-
-Missing character: There is no Â in font cmr10!
-Missing character: There is no Â in font cmr10!
-
-LaTeX Warning: Command \^ invalid in math mode on input line 539.
-
-
-LaTeX Warning: Command \^ invalid in math mode on input line 539.
-
-Missing character: There is no Â in font cmr10!
-Missing character: There is no Â in font cmr10!
-
-LaTeX Warning: Command \^ invalid in math mode on input line 539.
-
-
-LaTeX Warning: Command \^ invalid in math mode on input line 539.
-
-Missing character: There is no Â in font cmr10!
-Missing character: There is no Â in font cmr10!
-
-Underfull \hbox (badness 10000) in paragraph at lines 553--553
+Underfull \hbox (badness 10000) in paragraph at lines 537--543
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 556--557
+Underfull \hbox (badness 10000) in paragraph at lines 544--550
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 559--560
+Underfull \hbox (badness 10000) in paragraph at lines 551--563
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 561--562
+Underfull \hbox (badness 10000) in paragraph at lines 582--590
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 564--565
+Underfull \hbox (badness 10000) in paragraph at lines 591--601
 
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 568--569
+
+LaTeX Warning: Command \^ invalid in math mode on input line 624.
+
+
+LaTeX Warning: Command \^ invalid in math mode on input line 624.
+
+Missing character: There is no Â in font cmr10!
+Missing character: There is no Â in font cmr10!
+
+LaTeX Warning: Command \^ invalid in math mode on input line 624.
+
+
+LaTeX Warning: Command \^ invalid in math mode on input line 624.
+
+Missing character: There is no Â in font cmr10!
+Missing character: There is no Â in font cmr10!
+
+LaTeX Warning: Command \^ invalid in math mode on input line 624.
+
+
+LaTeX Warning: Command \^ invalid in math mode on input line 624.
+
+Missing character: There is no Â in font cmr10!
+Missing character: There is no Â in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 638--638
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--571
+Underfull \hbox (badness 10000) in paragraph at lines 641--642
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 572--573
+Underfull \hbox (badness 10000) in paragraph at lines 644--645
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 581--581
+Underfull \hbox (badness 10000) in paragraph at lines 646--647
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 649--650
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 653--654
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--656
+
+ []
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 657--658
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 666--666
 
  []
 
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 581.
+(hyperref)                than one, level fixed on input line 666.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 581.
+(hyperref)                removing `\\' on input line 666.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 582--586
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 588--593
+Underfull \hbox (badness 10000) in paragraph at lines 667--671
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 588--593
+Underfull \hbox (badness 10000) in paragraph at lines 673--678
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 588--593
+Underfull \hbox (badness 10000) in paragraph at lines 673--678
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 594--599
+Underfull \hbox (badness 10000) in paragraph at lines 679--684
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 594--599
+Underfull \hbox (badness 10000) in paragraph at lines 679--684
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 594--599
+Underfull \hbox (badness 10000) in paragraph at lines 679--684
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 600--605
+Underfull \hbox (badness 10000) in paragraph at lines 685--690
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 600--605
+Underfull \hbox (badness 10000) in paragraph at lines 685--690
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 600--605
+Underfull \hbox (badness 10000) in paragraph at lines 685--690
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 606--611
+Underfull \hbox (badness 10000) in paragraph at lines 691--696
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 606--611
+Underfull \hbox (badness 10000) in paragraph at lines 691--696
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 606--611
+Underfull \hbox (badness 10000) in paragraph at lines 691--696
 
  []
 
-[13]
 
-LaTeX Warning: Command \^ invalid in math mode on input line 613.
+LaTeX Warning: Command \^ invalid in math mode on input line 698.
 
 Missing character: There is no Â in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 612--617
+Underfull \hbox (badness 10000) in paragraph at lines 697--702
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 612--617
+Underfull \hbox (badness 10000) in paragraph at lines 697--702
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 612--617
-
- []
-
-
-LaTeX Warning: Command \^ invalid in math mode on input line 619.
-
-Missing character: There is no Â in font cmr10!
-
-Underfull \hbox (badness 10000) in paragraph at lines 618--623
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 618--623
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 618--623
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 624--629
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 624--629
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 624--629
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 630--635
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 630--635
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 630--635
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 636--641
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 636--641
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 636--641
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 642--647
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 642--647
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 642--647
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 648--653
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 648--653
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 648--653
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 658--665
+Underfull \hbox (badness 10000) in paragraph at lines 697--702
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 666--673
+
+LaTeX Warning: Command \^ invalid in math mode on input line 704.
+
+Missing character: There is no Â in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 703--708
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 700--702
+Underfull \hbox (badness 10000) in paragraph at lines 703--708
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 703--708
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 709--714
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 709--714
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 709--714
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 715--720
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 715--720
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 715--720
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 721--726
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 721--726
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 721--726
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 727--732
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 727--732
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 727--732
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 733--738
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 733--738
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 733--738
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 743--750
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 729--731
+Underfull \hbox (badness 10000) in paragraph at lines 751--758
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 739--740
+Underfull \hbox (badness 10000) in paragraph at lines 788--790
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 747--749
-
+Overfull \hbox (15.26358pt too wide) in paragraph at lines 795--796
+[]\T1/cmr/m/n/10 ($\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 x; y$\T1/cmr/m/n/10 : str
+ing) (def?(x,e.familia)) $\OMS/cmsy/m/n/10 $$ \T1/cmr/m/n/10 (x == e.raiz) $\OM
+S/cmsy/m/n/10 _$ \T1/cmr/m/n/10 (def?(y,e.familia)) $\OMS/cmsy/m/n/10 ^[]$ \T1/
+cmr/m/n/10 x $\OMS/cmsy/m/n/10 2$ \T1/cmr/m/n/10 hi-jos-De(*((obtener(y,e.famil
+ia))).hijos) 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 747--749
-
+Overfull \hbox (11.40265pt too wide) in paragraph at lines 811--812
+[]\T1/cmr/m/n/10 ($\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 x; y$\T1/cmr/m/n/10 : str
+ing) (def?(x,e.familia)) $\OMS/cmsy/m/n/10 ^$ \T1/cmr/m/n/10 (def?(y,e.familia)
+) $\OMS/cmsy/m/n/10 ) []$ \T1/cmr/m/n/10 (*(obten-er(x,e.familia))).id $\OMS/cm
+sy/m/n/10 6\OT1/cmr/m/n/10 =$ \T1/cmr/m/n/10 (*(obten-er(y,e.familia))).id 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 750--752
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 750--752
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 753--755
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 753--755
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 756--758
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 756--758
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 759--769
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 759--769
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 771--785
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 771--785
+Underfull \hbox (badness 10000) in paragraph at lines 819--821
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 786--788
+Underfull \hbox (badness 10000) in paragraph at lines 829--830
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 786--788
+Underfull \hbox (badness 10000) in paragraph at lines 837--841
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 789--791
+Underfull \hbox (badness 10000) in paragraph at lines 837--841
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 789--791
+Underfull \hbox (badness 10000) in paragraph at lines 837--841
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 792--803
+Underfull \hbox (badness 10000) in paragraph at lines 842--846
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 792--803
+Underfull \hbox (badness 10000) in paragraph at lines 842--846
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 792--803
+Underfull \hbox (badness 10000) in paragraph at lines 847--851
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 804--806
+Underfull \hbox (badness 10000) in paragraph at lines 847--851
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 804--806
+Underfull \hbox (badness 10000) in paragraph at lines 852--856
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 810--812
+Underfull \hbox (badness 10000) in paragraph at lines 852--856
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 810--812
+Underfull \hbox (badness 10000) in paragraph at lines 857--869
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 813--815
+Underfull \hbox (badness 10000) in paragraph at lines 857--869
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 813--815
+Underfull \hbox (badness 10000) in paragraph at lines 870--886
 
  []
 
-[17] AED: lastpage setting LastPage [18] (./tp.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 870--886
+
+ []
+
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 887--891
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 887--891
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--896
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--896
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 897--910
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 897--910
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 911--915
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 911--915
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 916--920
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 916--920
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 921--925
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 921--925
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 926--930
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 926--930
+
+ []
+
+[18] AED: lastpage setting LastPage [19] (./tp.aux) ) 
 Here is how much of TeX's memory you used:
- 6925 strings out of 495061
- 95339 string characters out of 1182620
+ 6936 strings out of 495061
+ 95408 string characters out of 1182620
  197197 words of memory out of 3000000
- 9888 multiletter control sequences out of 15000+50000
+ 9887 multiletter control sequences out of 15000+50000
  18985 words of font info for 45 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,13n,43p,321b,417s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,13n,43p,317b,416s stack positions out of 5000i,500n,10000p,200000b,50000s
  </home/guido/.texmf-var/f
 onts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/guido/.texmf-var/fonts/pk/ljf
 our/jknappen/ec/ecbx1200.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappe
@@ -1738,9 +1629,9 @@ ive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/ty
 pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/a
 msfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
 sy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on tp.pdf (18 pages, 246855 bytes).
+Output written on tp.pdf (19 pages, 253061 bytes).
 PDF statistics:
- 603 PDF objects out of 1000 (max. 8388607)
- 60 named destinations out of 1000 (max. 500000)
+ 630 PDF objects out of 1000 (max. 8388607)
+ 72 named destinations out of 1000 (max. 500000)
  137 words of extra memory for PDF output out of 10000 (max. 10000000)
 
