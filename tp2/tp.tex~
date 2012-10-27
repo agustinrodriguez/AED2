@@ -133,151 +133,146 @@ THEN dameUno(ls) ELSE linkConMasAccesos(s,c,sinUno(ls)) FI} FI }
 
 \subsubsection{\Large Operaciones B\'asicas}
 	\textbf{categorias} (\textbf{in} s: lli) $\longrightarrow$ res: ac\\\\
-	Pre $\equiv$ {true}\\
-	Post $\equiv$ {res$\igobs$ categorias(s)}\\
-	Complejidad : O($\#$categorias(s))\\
-	Descripci\'{o}n : Devuelve el arbol de categorias con todas las categorias del sistema\\\\
+	\textbf{Pre} $\equiv$ {true}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ categorias(s)}\\
+	\textbf{Complejidad} : O($\#$categorias(s))\\
+	\textbf{Descripci\'{o}n} : Devuelve el arbol de categorias con todas las categorias del sistema\\
+	\textbf{Aliasing:}ALGO \\
+
 
 	\textbf{links} (\textbf{in} s: estrLLI) $\longrightarrow$ res: conj(link)\\\\
-	Pre $\equiv$ {true}\\
-	Post $\equiv$ {res$\igobs$ links(s)}\\
-	Complejidad : O($\#$links(s))\\
-	Descripci\'{o}n : Devuelve todos los links del sistema\\\\
+	\textbf{Pre} $\equiv$ {true}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ links(s)}\\
+	\textbf{Complejidad} : O($\#$links(s))\\
+	\textbf{Descripci\'{o}n} : Devuelve todos los links del sistema\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{categoriaLink} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: categoria\\\\
-	Pre $\equiv$ {true}\\
-	Post $\equiv$ {res$\igobs$ categoriaLink(s,l)}\\
-	Complejidad : O(cuanto seria esto? todos los links?)\\
-	Descripci\'{o}n : Devuelve la categoria del link ingresado\\\\
+	\textbf{Pre} $\equiv$ {true}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ categoriaLink(s,l)}\\
+	\textbf{Complejidad} : O(cuanto seria esto? todos los links?)\\
+	\textbf{Descripci\'{o}n} : Devuelve la categoria del link ingresado\\
+	\textbf{Aliasing:}ALGO \\
 
 	\textbf{fechaActual} (\textbf{in} s: estrLLI) $\longrightarrow$ res: fecha\\\\
-	Pre $\equiv$ {true}\\
-	Post $\equiv$ {res$\igobs$ fechaActual(s)}\\
-	Complejidad : O(1)\\
-	Descripci\'{o}n : Devuelve la fecha actual\\\\
+	\textbf{Pre} $\equiv$ {true}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ fechaActual(s)}\\
+	\textbf{Complejidad} : O(1)\\
+	\textbf{Descripci\'{o}n} : Devuelve la fecha actual\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{fechaUltimoAcceso} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-	Pre $\equiv$ {l $\in$ links(s)}\\
-	Post $\equiv$ {res$\igobs$ fechaUltimoAcceso(s,l)}\\
-	Complejidad : O(1)\\
-	Descripci\'{o}n : Devuelve la fecha de ultimo acceso al link\\\\
+	\textbf{Pre} $\equiv$ {l $\in$ links(s)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ fechaUltimoAcceso(s,l)}\\
+	\textbf{Complejidad} : O(1)\\
+	\textbf{Descripci\'{o}n} : Devuelve la fecha de ultimo acceso al link\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{accesosRecientesDia} (\textbf{in} s: lli, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: nat\\\\
-	Pre $\equiv$ {l $\in$ links(s)}\\
-	Post $\equiv$ {res$\igobs$ accesosRecientesDia(s,l,f)}\\
-	Complejidad : O($\#$accesosRecientesDia(s,l,f))\\
-	Descripci\'{o}n : Devuelve la cantidad de accesos a un link un cierto dia\\\\
+	\textbf{Pre} $\equiv$ {l $\in$ links(s)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ accesosRecientesDia(s,l,f)}\\
+	\textbf{Complejidad} : O($\#$accesosRecientesDia(s,l,f))\\
+	\textbf{Descripci\'{o}n} : Devuelve la cantidad de accesos a un link un cierto dia\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{inicar} (\textbf{in} ac: estrAC) $\longrightarrow$ res: lli\\\\
-	Pre $\equiv$ {true}\\
-	Post $\equiv$ {res$\igobs$ iniciar(ac)}\\
-	Complejidad : O($\#$categorias(ac))\\
-	Descripci\'{o}n : crea un sistema dado un arbol ac de categorias\\\\
+	\textbf{Pre} $\equiv$ {true}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ iniciar(ac)}\\
+	\textbf{Complejidad} : O($\#$categorias(ac))\\
+	\textbf{Descripci\'{o}n} : crea un sistema dado un arbol ac de categorias\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{nuevoLink} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} c: categoria) \\\\
-	Pre $\equiv$ {c $\in$ categorias(s) $\wedge$ s${_0}$ $\igobs$ s}\\
-	Post $\equiv$ {s$\igobs$ nuevoLink(s${_0}$,l,c)}\\
-	Complejidad : O(|l|+|c|+h)\\
-	Descripci\'{o}n : Agregar un link al sistema\\\\
+	\textbf{Pre} $\equiv$ {c $\in$ categorias(s) $\wedge$ s${_0}$ $\igobs$ s}\\
+	\textbf{Post} $\equiv$ {s$\igobs$ nuevoLink(s${_0}$,l,c)}\\
+	\textbf{Complejidad} : O(|l|+|c|+h)\\
+	\textbf{Descripci\'{o}n} : Agregar un link al sistema\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{acceso} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) \\\\
-	Pre $\equiv$ {l $\in$ links(s) $\wedge$ f $\geq$ fechaActual(s) $\wedge$ s${_0}$ $\igobs$ s}\\
-	Post $\equiv$ {s$\igobs$ acceso(s${_0}$,l,f)}\\
-	Complejidad : O(|l|)\\
-	Descripci\'{o}n : Acceder a un link del sistema\\\\
+	\textbf{Pre} $\equiv$ {l $\in$ links(s) $\wedge$ f $\geq$ fechaActual(s) $\wedge$ s${_0}$ $\igobs$ s}\\
+	\textbf{Post} $\equiv$ {s$\igobs$ acceso(s${_0}$,l,f)}\\
+	\textbf{Complejidad} : O(|l|)\\
+	\textbf{Descripci\'{o}n} : Acceder a un link del sistema\\
+	\textbf{Aliasing:}ALGO \\
 		
 	\textbf{esReciente?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool\\\\
-	Pre $\equiv$ {l $\in$ links(s)}\\
-	Post $\equiv$ {res$\igobs$ esReciente?(s,l,f)}\\
-	Complejidad : O(y esto q es??)\\
-	Descripci\'{o}n : Chequea si el acceso fue reciente\\\\
+	\textbf{Pre} $\equiv$ {l $\in$ links(s)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ esReciente?(s,l,f)}\\
+	\textbf{Complejidad} : O(y esto q es??)\\
+	\textbf{Descripci\'{o}n} : Chequea si el acceso fue reciente\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{accesosRecientes} (\textbf{in} s: lli, \textbf{in} c: categoria \textbf{in} l: link) $\longrightarrow$ res: nat\\\\
-	Pre $\equiv$ {c $\in$ categorias(s) $\wedge$ l $\in$ links(s)}\\
-	Post $\equiv$ {res$\igobs$ accesosRecientes(s,c,l)}\\
-	Complejidad : O(1)\\
-	Descripci\'{o}n : Devuelve la cantidad de accesos recientes del link ingresado\\\\
+	\textbf{Pre} $\equiv$ {c $\in$ categorias(s) $\wedge$ l $\in$ links(s)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ accesosRecientes(s,c,l)}\\
+	\textbf{Complejidad} : O(1)\\
+	\textbf{Descripci\'{o}n} : Devuelve la cantidad de accesos recientes del link ingresado\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{linksOrdenadosPorAccesos} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: secu(link)\\\\
-	Pre $\equiv$ {c $\in$ categorias(s)}\\
-	Post $\equiv$ {res$\igobs$ linksOrdenadosPorAccesos(s,c)}\\
-	Complejidad : O(1)\\
-	Descripci\'{o}n : Devuelve la cantidad de accesos recientes del link ingresado\\\\
+	\textbf{Pre} $\equiv$ {c $\in$ categorias(s)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ linksOrdenadosPorAccesos(s,c)}\\
+	\textbf{Complejidad} : O(n${^2}$)\\
+	\textbf{Descripci\'{o}n} : Devuelve la cantidad de accesos recientes del link ingresado\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{cantlinks} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: nat\\\\
-	Pre $\equiv$ {c $\in$ categorias(s)}\\
-	Post $\equiv$ {res$\igobs$ cantlinks(s,c)}\\
-	Complejidad : O(|c|)\\
-	Descripci\'{o}n : Devuelve la cantidad de links de la categoria c\\\\
+	\textbf{Pre} $\equiv$ {c $\in$ categorias(s)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ cantlinks(s,c)}\\
+	\textbf{Complejidad} : O(|c|)\\
+	\textbf{Descripci\'{o}n} : Devuelve la cantidad de links de la categoria c\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{menorReciente} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-	Pre $\equiv$ {l $\in$ links(s)}\\
-	Post $\equiv$ {res$\igobs$ menorReciente(s,l)}\\
-	Complejidad : O(no tengo idea)\\
-	Descripci\'{o}n : Devuelve la fecha menor mas reciente\\\\
+	\textbf{Pre} $\equiv$ {l $\in$ links(s)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ menorReciente(s,l)}\\
+	\textbf{Complejidad} : O(no tengo idea)\\
+	\textbf{Descripci\'{o}n} : Devuelve la fecha menor mas reciente\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{diasRecientes} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-	Pre $\equiv$ {l $\in$ links(s)}\\
-	Post $\equiv$ {res$\igobs$ diasRecientes(s,l)}\\
-	Complejidad : O(1)\\
-	Descripci\'{o}n : Devuelve la fecha reciente del link\\\\
+	\textbf{Pre} $\equiv$ {l $\in$ links(s)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ diasRecientes(s,l)}\\
+	\textbf{Complejidad} : O(1)\\
+	\textbf{Descripci\'{o}n} : Devuelve la fecha reciente del link\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{diasRecientesDesde} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-	Pre $\equiv$ {l $\in$ links(s)}\\
-	Post $\equiv$ {res$\igobs$ diasRecientesDesde(s,l)}\\
-	Complejidad : O(1)\\
-	Descripci\'{o}n : Devuelve la fecha reciente del link\\\\
+	\textbf{Pre} $\equiv$ {l $\in$ links(s)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ diasRecientesDesde(s,l)}\\
+	\textbf{Complejidad} : O(1)\\
+	\textbf{Descripci\'{o}n} : Devuelve la fecha reciente del link\\
+	\textbf{Aliasing:}ALGO \\
 	
-	
-	\textbf{linksCategoriasOHijos} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(link)\\\\
-	Pre $\equiv$ {c $\in$ categorias(s)}\\
-	Post $\equiv$ {res$\igobs$ linksCategoriasOHijos(s,c)}\\
-	Complejidad : O(1)\\
-	Descripci\'{o}n : Devuelve el conjunto de links de la categoria c y sus hijos\\\\
-	
-	
-	\textbf{filtrarLinksCategoriasOHijos} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: conj(link)\\\\
-	Pre $\equiv$ {c $\in$ categorias(s) $\wedge$ ls $\subseteq$ links(s)}\\
-	Post $\equiv$ {res$\igobs$ filtrarLinsCategoriasOHijos(s,c,ls)}\\
-	Complejidad : O(no tengo idea)\\
-	Descripci\'{o}n : Devuelve el conjunto de links de la categoria c y sus hijos\\\\
-
 	\textbf{diasRecientesParestrACegorias} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha)\\\\
-	Pre $\equiv$ {c $\in$ categorias(s)}\\
-	Post $\equiv$ {res$\igobs$ diasRecientesParaCategorias(s,c)}\\
-	Complejidad : O(es la cantidad de accesos recientes esto??)\\
-	Descripci\'{o}n : Devuelve el conjunto de fechas recientes de la categoria c\\\\
+	\textbf{Pre} $\equiv$ {c $\in$ categorias(s)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ diasRecientesParaCategorias(s,c)}\\
+	\textbf{Complejidad} : O(es la cantidad de accesos recientes esto??)\\
+	\textbf{Descripci\'{o}n} : Devuelve el conjunto de fechas recientes de la categoria c\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{linkConUltimoAcceso} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: link\\\\
-	Pre $\equiv$ {c $\in$ categorias(s) $\wedge$ esVacia??(ls) $\wedge$ ls $\subseteq$ linksCategoriasOHijos(s,c)}\\
-	Post $\equiv$ {res$\igobs$ linkConUltimoAcceso(s,c,ls)}\\
-	Complejidad : O($\#$ls??)\\
-	Descripci\'{o}n : Devuelve el link que se accedio por ultima vez del conjunto ls\\\\
+	\textbf{Pre} $\equiv$ {c $\in$ categorias(s) $\wedge$ esVacia??(ls) $\wedge$ ls $\subseteq$ linksCategoriasOHijos(s,c)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ linkConUltimoAcceso(s,c,ls)}\\
+	\textbf{Complejidad} : O($\#$ls??)\\
+	\textbf{Descripci\'{o}n} : Devuelve el link que se accedio por ultima vez del conjunto ls\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{sumarAccesosRecientes} (\textbf{in} s: lli, \textbf{in} l: link,\textbf{in} fs: conj(fecha) ) $\longrightarrow$ res: nat\\\\
-	Pre $\equiv$ {l $\in$ links(s)  $\wedge$ fs $\subseteq$ diasRecientes(s,l)}\\
-	Post $\equiv$ {res$\igobs$ sumarAccesosRecientes(s,l,fs)}\\
-	Complejidad : O(1?)\\
-	Descripci\'{o}n : Devuelve la suma de todos los accesos recientes del link l\\\\
+	\textbf{Pre} $\equiv$ {l $\in$ links(s)  $\wedge$ fs $\subseteq$ diasRecientes(s,l)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ sumarAccesosRecientes(s,l,fs)}\\
+	\textbf{Complejidad} : O(1?)\\
+	\textbf{Descripci\'{o}n} : Devuelve la suma de todos los accesos recientes del link l\\
+	\textbf{Aliasing:}ALGO \\
 
-	\textbf{linksOrdenadosPorAccesosAux} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: secu(link)\\\\
-	Pre $\equiv$ {c $\in$ categorias(s)  $\wedge$ ls $\subseteq$ linksCategoriasOHijos(s,c)}\\
-	Post $\equiv$ {res$\igobs$ linksOrdenadosPorAccesosAux(s,c,ls)}\\
-	Complejidad : O(1?)\\
-	Descripci\'{o}n : Devuelve la secuencia de links ordenados por accesos de mas recientes a menos recientes\\\\
-	
 	\textbf{linkConMasAccesos} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) )$\longrightarrow$ res: link\\\\
-	Pre $\equiv$ {c $\in$ categorias(s)  $\wedge$ ls $\subseteq$ linksCategoriasOHijos(s,c)}\\
-	Post $\equiv$ {res$\igobs$ linksOrdenadosPorAccesosAux(s,c,ls)}\\
-	Complejidad : O(1?)\\
-	Descripci\'{o}n : Devuelve al link con mas accesos\\\\
+	\textbf{Pre} $\equiv$ {c $\in$ categorias(s)  $\wedge$ ls $\subseteq$ linksCategoriasOHijos(s,c)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ linksOrdenadosPorAccesosAux(s,c,ls)}\\
+	\textbf{Complejidad} : O(1?)\\
+	\textbf{Descripci\'{o}n} : Devuelve al link con mas accesos\\
+	\textbf{Aliasing:}ALGO \\
 	
-	\textbf{$\beta$} (\textbf{in} b: bool) $\longrightarrow$ res: nat\\\\
-	Pre $\equiv$ {true}\\
-	Post $\equiv$ {res$\igobs$ $\beta$(b)}\\
-	Complejidad : O(1)\\
-	Descripci\'{o}n : Devuelve 1 o 0 dependiendo el valor de verdad de b\\\\
-
     \subsection{\huge Pautas de Implementaci\'{o}n}	
 
         \subsubsection{\Large Estructura de Representaci\'{o}n} 
@@ -382,7 +377,7 @@ Auxiliares\\
   	\textbf{ICATEGORIAS} (\textbf{in} s: lli) $\longrightarrow$ res: ac $\vspace*{-9mm}$\begin{flushright}\end{flushright}
     res $\leftarrow$ s.arbolCategorias $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(1)}\\
+  \textbf{\textbf{Complejidad}: O(1)}\\
 \textbf{------------------------------------------------------------------------------\\}
   
 \textbf{------------------------------------------------------------------------------\\}
@@ -390,7 +385,7 @@ Auxiliares\\
   \textbf{ILINKS} (\textbf{in} s: estrLLI) $\longrightarrow$ res: conj(link)$\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$res $\leftarrow$ claves(s.accesosXLink) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O($\sum_{i=1}^{longitud(s.listaLinks)}$)}\\
+  \textbf{\textbf{Complejidad}: O($\sum_{i=1}^{longitud(s.listaLinks)}$)}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 \textbf{------------------------------------------------------------------------------\\}
@@ -398,7 +393,7 @@ Auxiliares\\
   \textbf{ICATEGORIALINK} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: categoria$\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$res $\leftarrow$ *((obtener(l,s.accesosXLink))).catDLink $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(|l|)}\\
+  \textbf{\textbf{Complejidad}: O(|l|)}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 \textbf{------------------------------------------------------------------------------\\}
@@ -406,7 +401,7 @@ Auxiliares\\
   \textbf{IFECHAACTUAL} (\textbf{in} s: estrLLI) $\longrightarrow$ res: fecha$\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$res $\leftarrow$ s.actual $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-    \textbf{Complejidad: O(1)}\\
+    \textbf{\textbf{Complejidad}: O(1)}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 \textbf{------------------------------------------------------------------------------\\}
@@ -414,7 +409,7 @@ Auxiliares\\
   \textbf{IFECHAULTIMOACCESO} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: fecha$\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$res $\leftarrow$ ultimo(*((obtener(l,s.accesosXLink))).accesosRecientes).dia $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(|l|)}\\
+  \textbf{\textbf{Complejidad}: O(|l|)}\\
 \textbf{------------------------------------------------------------------------------\\}
 \\\\
 \\\\ 
@@ -430,7 +425,7 @@ Auxiliares\\
   $\hspace*{6mm}$\textbf{else} accesos = fin(accesos) FI //O(1) }$\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
   $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad:}\\
+  \textbf{\textbf{Complejidad}:}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 \textbf{------------------------------------------------------------------------------\\}
@@ -449,7 +444,7 @@ Auxiliares\\
   $\hspace*{6mm}$c ++ $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: ($\#$categorias(ac))}\\
+  \textbf{\textbf{Complejidad}: ($\#$categorias(ac))}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
@@ -467,7 +462,7 @@ Auxiliares\\
   $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$agregarAtras(s.arrayCatLinks[(*cat).id],puntLink) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(|c|+|l|+h)}\\
+  \textbf{\textbf{Complejidad}: O(|c|+|l|+h)}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
@@ -484,27 +479,30 @@ Auxiliares\\
   $\hspace*{6mm}$\textbf{then} fin((*puntLink).accesos) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$\textbf{fi} \\ 
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(|l|)}\\
+  \textbf{\textbf{Complejidad}: O(|l|)}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 10}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{IESRECIENTE?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$res $\leftarrow$ menorReciente(s,l) $\leq$ f $\wedge$ f $\leq$ fechaUltimoAcceso(s,l) $\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(ALGO)}\\
+  \textbf{\textbf{Complejidad}: O(ALGO)}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 11}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{IACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} c: categoria \textbf{in} l: link) $\longrightarrow$ res: nat$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$res $\leftarrow$ sumarAccesosRecientes(s, l, diasRecientesParaCategoria(s, c) $\cap$ diasRecientes(s, l)) $\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(ALGO)}\\
+  \textbf{\textbf{Complejidad}: O(ALGO)}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 12}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{ILINKSORDENADOSPORACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: lista(link)$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$nat id $\leftarrow$ id(s.arbolCategorias,c)$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$lista(puntero(datosLink)) listaOrdenada $\leftarrow$ vacia()  $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -518,11 +516,12 @@ Auxiliares\\
 	$\hspace*{6mm}$\textbf{fi} $\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$\textbf{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(n${^2}$)}\\
+  \textbf{\textbf{Complejidad}: O(n${^2}$)}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 13}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{IBUSCARMAX} (\textbf{in} ls: lista(puntero(datosLink))) $\longrightarrow$ res: itLista(puntero(datosLink))$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	 $\hspace*{6mm}$res $\leftarrow$ crearIt(ls) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$itLista(puntero(datosLink)) itRecorre $\leftarrow$ crearIt(ls) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -536,11 +535,12 @@ Auxiliares\\
 	 $\hspace*{6mm}$avanzar(itRecorre) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright} 
 	 $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(n)}\\
+  \textbf{\textbf{Complejidad}: O(n)}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 14}\\
+\textbf{------------------------------------------------------------------------------\\}
 	 \textbf{IESTAORDENADA} (\textbf{in} ls: lista(puntero(datosLink))) $\longrightarrow$ res: bool$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	 $\hspace*{6mm}$res $\leftarrow$ true $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$itLista(puntero(datosLink)) itRecorre $\leftarrow$ crearIt(ls) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -554,50 +554,54 @@ Auxiliares\\
 	 $\hspace*{6mm}$aux $\leftarrow$ (*siguiente(itRecorre)).cantAccesosRecientes $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(n)}\\
+  \textbf{\textbf{Complejidad}: O(n)}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 15}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{ICANTLINKS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: nat$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$puntero(datosCat) cat $\leftarrow$ obtener(c,s.arbolCategorias) // $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 	$\hspace*{6mm}$res = longitud(arrayCantLinks[(*cat).id]) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(|c|)}\\
+  \textbf{\textbf{Complejidad}: O(|c|)}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 16}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{IMENORRECIENTE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$res $\leftarrow$ max(fechaUltimoAcceso(s,l)+1,diasRecientes) - diasRecientes $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(1)}\\
+  \textbf{\textbf{Complejidad}: O(1)}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 17}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{IDIASRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: conj(fecha){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$res $\leftarrow$ diasRecientesDesde(s,l,menorReciente(s,l)) $\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad:O(ALGO)}\\
+  \textbf{\textbf{Complejidad}:O(ALGO)}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 \textbf{------------------------------------------------------------------------------\\} 
  \textbf{Algoritmo: 18}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{IDIASRECIENTESDESDE} (\textbf{in} s: lli, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: conj(fecha){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$ \textbf{while}(esReciente?(s,l,f))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ Agregar(f,res) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ fecha++ $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ \textbf{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-	  \textbf{Complejidad: O($\star$1)}\\
+	  \textbf{\textbf{Complejidad}: O($\star$1)}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 %\textbf{------------------------------------------------------------------------------\\}
 %\textbf{Algoritmo}\\
 	%\textbf{ILINKSCATEGORIAOHIJOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(link)\\
 	%$\hspace*{6mm}$res $\leftarrow$ filtrarLinksCategoriaOHijos(s, c, links(s)) //$\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
-  %\textbf{Complejidad:}\\
+  %\textbf{\textbf{Complejidad}:}\\
 %\textbf{------------------------------------------------------------------------------\\}
 
 %\textbf{------------------------------------------------------------------------------\\}
@@ -608,20 +612,22 @@ Auxiliares\\
 %	$\hspace*{6mm}$\textbf{if} esSubCategoria(categorias(s),c,categoriaLink(s,dameUno(todoElConjunto))) \textbf{then} res $\leftarrow$  Ag(dameUno(todoElConjunto),res) ELSE res $\leftarrow$ res FI \\
 %	$\hspace*{6mm}$ todoElConjunto $\leftarrow$ sinUno(todoElConjunto) //$\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
 %	$\hspace*{6mm}$ \textbf{end while} \\
-%  \textbf{Complejidad:}\\
+%  \textbf{\textbf{Complejidad}:}\\
 %\textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}	
 \textbf{Algoritmo: 19}\\	
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{IDIASRECIENTESPARACATEGORIAS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$ itLista(puntero(datosLink)) links $\leftarrow$ crearIt(arrayCatLinks[id(s.arbolCategorias,c)] $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ diasRecientes(s,linkConUltimoAcceso(s,c,links)) //O(VER COMO ESCRIBIR O DE LA LONGITUD DE UN LINK) \\
 \textbf{------------------------------------------------------------------------------\\}
-	\textbf{Complejidad: O(ALGO)}\\
+	\textbf{\textbf{Complejidad}: O(ALGO)}\\
 \textbf{------------------------------------------------------------------------------\\}	
 	
 \textbf{------------------------------------------------------------------------------\\}	
 \textbf{Algoritmo: 20}\\	
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{ISUMARACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link,\textbf{in} fs: conj(fecha) ) $\longrightarrow$ res: nat{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$ conjFecha $\longleftarrow$ fs$\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
 	$\hspace*{6mm}$ \textbf{while}(!$\emptyset$?(conjFecha))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -629,12 +635,13 @@ Auxiliares\\
 	$\hspace*{6mm}$ conjFecha $\longleftarrow$ sinUno(conjFecha)$\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
 	$\hspace*{6mm}$ \textbf{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(ALGO)}\\
+  \textbf{\textbf{Complejidad}: O(ALGO)}\\
 \textbf{------------------------------------------------------------------------------\\}	
 
 \textbf{------------------------------------------------------------------------------\\}	
 \textbf{Algoritmo: 21}\\	
-	\textbf{ILINKCONULTIMOACCESO} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: itLista(puntero(datosLink)) $\longrightarrow$ res: link\\
+\textbf{------------------------------------------------------------------------------\\}
+	\textbf{ILINKCONULTIMOACCESO} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: itLista(puntero(datosLink)) $\longrightarrow$ res: link{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$puntero(datosLink) max $\leftarrow$ (siguiente(ls)) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ \textbf{while}(!haySiguiente(ls))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ avanzar(ls) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -644,9 +651,56 @@ Auxiliares\\
 	$\hspace*{6mm}$ \textbf{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$ res $\leftarrow$ (*max).link $\vspace*{-9mm}$\begin{flushright}//O(|(*max).link|)\end{flushright} 
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(|(*max).link|)}\\
+  \textbf{\textbf{Complejidad}: O(|(*max).link|)}\\
 \textbf{------------------------------------------------------------------------------\\}	
 
+\subsection{\huge Descripcion de Complejidades de Algoritmos}	
+  
+    \begin{enumerate}
+     \item 
+      
+     \item 
+
+     \item 
+
+      \item 
+      
+     \item 
+
+     \item 
+
+      \item 
+      
+     \item 
+
+     \item 
+
+\item 
+      
+     \item 
+
+     \item 
+
+\item 
+      
+     \item 
+
+     \item 
+
+      \item 
+      
+     \item 
+
+     \item 
+
+      \item 
+      
+     \item 
+
+     \item 
+      
+
+    \end{enumerate}
 
 
 
@@ -720,70 +774,81 @@ $\\$
 
 \subsubsection{\Large Operaciones B\'asicas}
 	\textbf{categorias} (\textbf{in} ac: acat) $\longrightarrow$ res: conj(categoria)\\
-	Pre $\equiv$ {true}\\
-	Post $\equiv$ {res$\igobs$ categorias(ac)}\\
-	Complejidad : O($\#$categorias(ac))\\
-	Descripci\'{o}n : Devuelve el conjunto de categorias de un ac\\\\
+	\textbf{Pre} $\equiv$ {true}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ categorias(ac)}\\
+	\textbf{Complejidad} : O($\#$categorias(ac))\\
+	\textbf{Descripci\'{o}n} : Devuelve el conjunto de categorias de un ac\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{raiz} (\textbf{in} ac: acat) $\longrightarrow$ res: categoria\\\\
-	Pre $\equiv$ {true}\\
-	Post $\equiv$ {res$\igobs$ raiz(ac)}\\
-	Complejidad : O(1)\\
-	Descripci\'{o}n : Devuelve la raiz del arbol ac\\\\
+	\textbf{Pre} $\equiv$ {true}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ raiz(ac)}\\
+	\textbf{Complejidad} : O(1)\\
+	\textbf{Descripci\'{o}n} : Devuelve la raiz del arbol ac\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{padre} (\textbf{in} ac: estrAC, \textbf{in} h: categoria) $\longrightarrow$ res: categoria\\\\
-	Pre $\equiv$ {h $\in$ ac $\wedge$ raiz(ac) $\neq$ h}\\
-	Post $\equiv$ {res$\igobs$ padre(ac,h)}\\
-	Complejidad : O(ni idea)\\
-	Descripci\'{o}n : Devuelve el padre de una categoria\\\\
+	\textbf{Pre} $\equiv$ {h $\in$ ac $\wedge$ raiz(ac) $\neq$ h}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ padre(ac,h)}\\
+	\textbf{Complejidad} : O(ni idea)\\
+	\textbf{Descripci\'{o}n} : Devuelve el padre de una categoria\\
+	\textbf{Aliasing:}ALGO \\
 		
 	\textbf{id} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\\\
-	Pre $\equiv$ {h $\in$ ac}\\
-	Post $\equiv$ {res$\igobs$ id(ac,c)}\\
-	Complejidad : O(|c|)\\
-	Descripci\'{o}n : Devuelve el id de una categoria c en el arbol ac\\\\	
+	\textbf{Pre} $\equiv$ {h $\in$ ac}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ id(ac,c)}\\
+	\textbf{Complejidad} : O(|c|)\\
+	\textbf{Descripci\'{o}n} : Devuelve el id de una categoria c en el arbol ac\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{nuevo} (\textbf{in} c: categoria) $\longrightarrow$ res:estrAC\\\\
-	Pre $\equiv$ {$¬$vacia?(c)}\\
-	Post $\equiv$ {res$\igobs$ nuevo(c)}\\
-	Complejidad : O(|c|)\\
-	Descripci\'{o}n : Crea un arbol\\\\	
+	\textbf{Pre} $\equiv$ {$¬$vacia?(c)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ nuevo(c)}\\
+	\textbf{Complejidad} : O(|c|)\\
+	\textbf{Descripci\'{o}n} : Crea un arbol\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{agregar} (\textbf{in/out} ac: estrAC,\textbf{in} c: categoria, \textbf{in} h: categoria )\\\\
-	Pre $\equiv$ {c $\in$ ac $\wedge$ $¬$vacia?(h) $\wedge$ ac${_0}$ $\igobs$ ac}\\
-	Post $\equiv$ {ac$\igobs$ agregar(ac${_0}$,c,h)}\\
-	Complejidad : O(|c|+|h|)\\
-	Descripci\'{o}n : Agrega una categoria hija a una padre\\\\
+	\textbf{Pre} $\equiv$ {c $\in$ ac $\wedge$ $¬$vacia?(h) $\wedge$ ac${_0}$ $\igobs$ ac}\\
+	\textbf{Post} $\equiv$ {ac$\igobs$ agregar(ac${_0}$,c,h)}\\
+	\textbf{Complejidad} : O(|c|+|h|)\\
+	\textbf{Descripci\'{o}n} : Agrega una categoria hija a una padre\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{altura} (\textbf{in} ac: estrAC) $\longrightarrow$ res:nat\\\\
-	Pre $\equiv$ {true}\\
-	Post $\equiv$ {res$\igobs$ altura(ac)}\\
-	Complejidad : O(|ac|)\\
-	Descripci\'{o}n : Devuelve la altura del arbol ac\\\\	
+	\textbf{Pre} $\equiv$ {true}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ altura(ac)}\\
+	\textbf{Complejidad} : O(|ac|)\\
+	\textbf{Descripci\'{o}n} : Devuelve la altura del arbol ac\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{esta?} (\textbf{in} c: categoria,\textbf{in} ac: estrAC) $\longrightarrow$ res:bool\\\\
-	Pre $\equiv$ {true}\\
-	Post $\equiv$ {res$\igobs$ esta?(c,ac)}\\
-	Complejidad : O(|ac|)\\
-	Descripci\'{o}n : Devuelve si esta o no en el arbol la categoria c\\\\	
+	\textbf{Pre} $\equiv$ {true}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ esta?(c,ac)}\\
+	\textbf{Complejidad} : O(|ac|)\\
+	\textbf{Descripci\'{o}n} : Devuelve si esta o no en el arbol la categoria c\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{esSubCategoria} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\\\
-	Pre $\equiv$ {esta?(c,ac) $\wedge$ esta?(h,ac)}\\
-	Post $\equiv$ {res$\igobs$ esSubCategoria(ac,c,h)}\\
-	Complejidad : O(no tengo idea)\\
-	Descripci\'{o}n : Devuelve si c es descendiente de h\\\\	
+	\textbf{Pre} $\equiv$ {esta?(c,ac) $\wedge$ esta?(h,ac)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ esSubCategoria(ac,c,h)}\\
+	\textbf{Complejidad} : O(no tengo idea)\\
+	\textbf{Descripci\'{o}n} : Devuelve si c es descendiente de h\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{alturaCategoria} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\\\
-	Pre $\equiv$ {esta?(c,ac)}\\
-	Post $\equiv$ {res$\igobs$ alturaCategoria(ac,c)}\\
-	Complejidad : O(no tengo idea)\\
-	Descripci\'{o}n : Devuelve la altura de la categoria c\\\\	
+	\textbf{Pre} $\equiv$ {esta?(c,ac)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ alturaCategoria(ac,c)}\\
+	\textbf{Complejidad} : O(no tengo idea)\\
+	\textbf{Descripci\'{o}n} : Devuelve la altura de la categoria c\\
+	\textbf{Aliasing:}ALGO \\
 	
 	\textbf{hijos} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\\\
-	Pre $\equiv$ {esta?(c,ac)}\\
-	Post $\equiv$ {res$\igobs$ hijos(ac,c)}\\
-	Complejidad : O(|c|)\\
-	Descripci\'{o}n : Devuelve el conjunto de categorias hijos de c\\\\	
+	\textbf{Pre} $\equiv$ {esta?(c,ac)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ hijos(ac,c)}\\
+	\textbf{Complejidad} : O(|c|)\\
+	\textbf{Descripci\'{o}n} : Devuelve el conjunto de categorias hijos de c\\
+	\textbf{Aliasing:}ALGO \\
 
     \subsection{\huge Pautas de Implementaci\'{o}n}	
 
@@ -898,39 +963,39 @@ Auxiliares\\
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 1}\\		
-\textbf{ICATEGORIAS} (\textbf{in} ac: estrAC) $\longrightarrow$ res: conj(categoria)\\
+\textbf{ICATEGORIAS} (\textbf{in} ac: estrAC) $\longrightarrow$ res: conj(categoria){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ claves(ac.familia)   $\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad:}\\
+  \textbf{\textbf{Complejidad}:}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 2}\\		
-\textbf{IRAIZ} (\textbf{in} ac: estrAC) $\longrightarrow$ res: categoria\\
+\textbf{IRAIZ} (\textbf{in} ac: estrAC) $\longrightarrow$ res: categoria{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ (*ac.raiz).categoria $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(1)}\\
+  \textbf{\textbf{Complejidad}: O(1)}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 3}\\		
-\textbf{IPADRE} (\textbf{in} ac: estrAC, \textbf{in} h: categoria) $\longrightarrow$ res: puntero(categoria)\\
+\textbf{IPADRE} (\textbf{in} ac: estrAC, \textbf{in} h: categoria) $\longrightarrow$ res: puntero(categoria){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ (*(*(obtener(h,ac.familia))).abuelo).categoria // $\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad:}\\
+  \textbf{\textbf{Complejidad}:}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 4}\\		
-\textbf{IID} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
+\textbf{IID} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ (*(obtener(c,ac.familia)) ).id $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(|c|)}\\
+  \textbf{\textbf{Complejidad}: O(|c|)}\\
 \textbf{------------------------------------------------------------------------------\\}
 		
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 5}\\
-		\textbf{INUEVO} (\textbf{in} c: categoria) $\longrightarrow$ res:estrAC\\
+		\textbf{INUEVO} (\textbf{in} c: categoria) $\longrightarrow$ res:estrAC{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$		res.cantidad $\leftarrow$ 1 $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$		res.raiz = c $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$		res.alturaMax = 1 $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -941,12 +1006,12 @@ $\hspace*{6mm}$		punt $\leftarrow$ puntero(tuplaA)$\vspace*{-9mm}$\begin{flushri
 $\hspace*{6mm}$		res.familia = definir(padre, punt, res.familia) $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 $\hspace*{6mm}$		res.categorias $\leftarrow$ agregarAtras(tuplaA,res.categorias) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(|c|)}\\
+  \textbf{\textbf{Complejidad}: O(|c|)}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 6}\\
-	\textbf{IAGREGAR} (\textbf{in/out} ac: estrAC,\textbf{in} c: categoria, \textbf{in} h: categoria )\\
+	\textbf{IAGREGAR} (\textbf{in/out} ac: estrAC,\textbf{in} c: categoria, \textbf{in} h: categoria ){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$		var puntPadre : puntero(datosCat) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$		puntPadre $\leftarrow$ (obtener(c,ac.familia)) $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 $\hspace*{6mm}$		\textbf{if} {(*puntPadre).altura == ac.alturaMax} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -961,28 +1026,28 @@ $\hspace*{6mm}$ 	definir(h,punt,ac.familia) $\vspace*{-9mm}$\begin{flushright}//
 $\hspace*{6mm}$ 	ac.cantidad ++ $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$		agregarAtras(tuplaA,res.categorias) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(|c|+|h|)}\\
+  \textbf{\textbf{Complejidad}: O(|c|+|h|)}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 7}\\
-		\textbf{IALTURA} (\textbf{in} ac: estrAC) $\longrightarrow$ res:nat\\
+		\textbf{IALTURA} (\textbf{in} ac: estrAC) $\longrightarrow$ res:nat{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$	res $\leftarrow$ ac.alturaMax $\hspace*{125mm}$ $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(1)}\\
+  \textbf{\textbf{Complejidad}: O(1)}\\
 \textbf{------------------------------------------------------------------------------\\}
   
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 8}\\
-\textbf{IESTA?} (\textbf{in} c: categoria,\textbf{in} ac: estrAC) $\longrightarrow$ res:bool\\
+\textbf{IESTA?} (\textbf{in} c: categoria,\textbf{in} ac: estrAC) $\longrightarrow$ res:bool{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$	res $\leftarrow$ def?(c,ac.familia) $\hspace*{120mm}$ $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(|c|)}\\
+  \textbf{\textbf{Complejidad}: O(|c|)}\\
 \textbf{------------------------------------------------------------------------------\\}
 		
 \textbf{------------------------------------------------------------------------------\\}
 		\textbf{Algoritmo: 9}\\
-		\textbf{IESSUBCATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\	
+		\textbf{IESSUBCATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}	
 $\hspace*{6mm}$		var puntPadre : puntero(datosCat) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$		puntPadre $\leftarrow$ (obtener(c,ac.familia)) $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 $\hspace*{6mm}$ 	res $\leftarrow$ false $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -994,38 +1059,38 @@ $\hspace*{6mm}$ 	{\textbf{if} actual $\in$ (*puntPadre).hijos  $\vspace*{-9mm}$\
 $\hspace*{6mm}$ 	\textbf{then} res $\leftarrow$ true $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$ 	ELSE actual $\leftarrow$ (*(obtener(actual,ac.familia)) ).abuelo FI} FI} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad:}\\
+  \textbf{\textbf{Complejidad}:}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 10}\\
-\textbf{IALTURACATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\
+\textbf{IALTURACATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$		res $\leftarrow$ (*(obtener(c,ac.familia))).altura $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(|c|)}\\
+  \textbf{\textbf{Complejidad}: O(|c|)}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 11}\\
-\textbf{IHIJOS} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\
+\textbf{IHIJOS} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ (*obtener(c,ac.familia)).hijos // O(ALGO) PREGUNTAR!!! EN ESTE LA COMPLEJIDAD ES EL ITERADOR DEVOLVEMOS EL PUNTERO?
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad:}\\
+  \textbf{\textbf{Complejidad}:}\\
 \textbf{------------------------------------------------------------------------------\\}
   
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo 12}\\
-\textbf{IOBTENER} (\textbf{in} c: categoria, \textbf{in} ac: estrAC) $\longrightarrow$ res:puntero(datosCat)\\
+\textbf{IOBTENER} (\textbf{in} c: categoria, \textbf{in} ac: estrAC) $\longrightarrow$ res:puntero(datosCat){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ obtener(c,ac.familia) // $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{Complejidad: O(|c|)}\\
+  \textbf{\textbf{Complejidad}: O(|c|)}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 13}\\
-\textbf{IPUNTRAIZ} (\textbf{in} ac: estrAC) $\longrightarrow$ res:puntero(datosCat)\\
+\textbf{IPUNTRAIZ} (\textbf{in} ac: estrAC) $\longrightarrow$ res:puntero(datosCat){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ ac.raiz $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-  \textbf{Complejidad: O(1)}\\
+  \textbf{\textbf{Complejidad}: O(1)}\\
 \textbf{------------------------------------------------------------------------------\\}
 		
 \begin{center}
