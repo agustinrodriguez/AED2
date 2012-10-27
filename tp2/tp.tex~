@@ -489,7 +489,7 @@ Auxiliares\\
 	$\hspace*{6mm}$eliminarSiguiente(itMax) //O(1) \\
 	$\hspace*{6mm}$\textbf{fi} \\
 	$\hspace*{6mm}$\textbf{end while} \\
-  \textbf{Complejidad: O(n{^2})}\\
+  \textbf{Complejidad: O(n${^2}$)}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
@@ -550,12 +550,10 @@ Auxiliares\\
  
 \textbf{------------------------------------------------------------------------------\\} 
  \textbf{Algoritmo: 18}\\
-	\textbf{IDIASRECIENTESDESDE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\
-	$\hspace*{6mm}$ conj $\leftarrow$ $\emptyset$ //O(1)\\
-	$\hspace*{6mm}$ fecha $\leftarrow$ f //O(1)\\
-	$\hspace*{6mm}$ \textbf{while}(esReciente?(s,l,fecha))\\
-	$\hspace*{6mm}$ Ag(fecha,conj)\\
-	$\hspace*{6mm}$ fecha $\leftarrow$ fecha + 1 //O(1)\\
+	\textbf{IDIASRECIENTESDESDE} (\textbf{in} s: lli, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: conj(fecha)\\
+	$\hspace*{6mm}$ \textbf{while}(esReciente?(s,l,f))\\
+	$\hspace*{6mm}$ Ag(f,conj)\\
+	$\hspace*{6mm}$ fecha++ //O(1)\\
 	$\hspace*{6mm}$ \textbf{end while}\\
 	$\hspace*{6mm}$ res $\leftarrow$ conj\\
   \textbf{Complejidad: O(ALGO)}\\
@@ -582,10 +580,9 @@ Auxiliares\\
 \textbf{------------------------------------------------------------------------------\\}	
 \textbf{Algoritmo: 19}\\	
 	\textbf{IDIASRECIENTESPARACATEGORIAS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha)\\
-	$\hspace*{6mm}$res $\longleftarrow$ IF $\emptyset$?(linksCategoriaOHijos(s,c)) \textbf{then} \\
-	$\emptyset$ ELSE diasRecientes(s,linkConUltimoAcceso(s,c,linksCategoriaOHijos(s,c))) \\
-	FI //O(ALGO) \\
-  \textbf{Complejidad: O(ALGO)}\\
+	$\hspace*{6mm}$ itLista(puntero(datosLink)) links $\leftarrow$ crearIt(arrayCatLinks[id(s.arbolCategorias,c)] //O(1)) \\
+	$\hspace*{6mm}$ diasRecientes(s,linkConUltimoAcceso(s,c,links)) //O(VER COMO ESCRIBIR O DE LA LONGITUD DE UN LINK) \\\\
+	\textbf{Complejidad: O(ALGO)}\\
 \textbf{------------------------------------------------------------------------------\\}	
 	
 \textbf{------------------------------------------------------------------------------\\}	
@@ -598,6 +595,21 @@ Auxiliares\\
 	$\hspace*{6mm}$ \textbf{end while}\\ 
   \textbf{Complejidad: O(ALGO)}\\
 \textbf{------------------------------------------------------------------------------\\}	
+
+\textbf{------------------------------------------------------------------------------\\}	
+\textbf{Algoritmo: 21}\\	
+	\textbf{ILINKCONULTIMOACCESO} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: itLista(puntero(datosLink)) $\longrightarrow$ res: link\\
+	$\hspace*{6mm}$puntero(datosLink) max $\leftarrow$ (siguiente(ls)) //O(1) \\
+	$\hspace*{6mm}$ \textbf{while}(!haySiguiente(ls))\\
+	$\hspace*{6mm}$ avanzar(ls) //O(1)\\
+	$\hspace*{6mm}$ \textbf{if} (ultimo((*max).accesosRecientes)).dia < (ultimo((*siguiente(ls)).accesosRecientes)).dia \\
+	$\hspace*{6mm}$ \textbf{then} max $\leftarrow$ (siguiente(ls))  //O(1) \\
+	$\hspace*{6mm}$ \textbf{fi} \\
+	$\hspace*{6mm}$ \textbf{end while}\\ 
+	$\hspace*{6mm}$ res $\leftarrow$ (*max).link //O(|(*max).link|) \\
+  \textbf{Complejidad: O(|(*max).link|)}\\
+\textbf{------------------------------------------------------------------------------\\}	
+
 
 
 
