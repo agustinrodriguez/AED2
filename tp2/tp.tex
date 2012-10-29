@@ -425,7 +425,7 @@ Auxiliares\\
   $\hspace*{6mm}$lista(acceso) accesos $\leftarrow$ vacia() $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$res $\leftarrow$ 0 $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$accesos $\leftarrow$ *((obtener(l,s.accesosXLink))).accesosRecientes $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
-  $\hspace*{6mm}$while($¬$esVacia?(accesos) $\wedge$ (prim(accesos)).dia $\neq$ f)$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+  $\hspace*{6mm}$while($¬$esVacia?(accesos))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}${\textbf{if} (prim(accesos)).dia == f $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$\textbf{then} res = (prim(accesos)).cantAccesos $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright} 
   $\hspace*{6mm}$\textbf{else} accesos = fin(accesos) FI //O(1) }$\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
@@ -666,17 +666,26 @@ Auxiliares\\
 \subsection{\huge Descripcion de Complejidades de Algoritmos}	
   
     \begin{enumerate}
-     \item 
-      
-     \item 
+     \item \textbf{ICATEGORIAS}: Devuelve el arbol de categorias del sistema, esto cuesta O(1). \\
+      \textbf{Orden Total:}O(1)=\textbf{O(1)}
 
-     \item 
+     \item \textbf{ILINKS}: Se crea un conjunto vacio, esto tarda O(1). Se crea un itLista, esto tarda O(1). \\ Se ingresa a un ciclo preguntando si haySiguiente, esto cuesta O(1), se le agrega link apuntado de cada tupla de datosLink de la lista listaLinks, esto tarda O(|l|), luego se avanza el it, esto cuesta O(1).\\ Al salir del ciclo, se devuelve el conjunto. \\
+	\textbf{Orden Total:}O(1)+O(1)+O(1)+(suma O(|l|))+O(1)=\textbf{O(suma O(|l|))}
 
-      \item 
-      
-     \item 
+     \item \textbf{ICATEGORIALINK}: Se utiliza la operacion obtener del diccionario accesosXLink, la cual devuelve un puntero a datosLink,\\ se devuelve lo apuntado a catDLink, esto cuesta O(|l|). \\
+	  \textbf{Orden Total:}O(|l|)=\textbf{O(|l|)}
 
-     \item 
+      \item \textbf{IFECHAACTUAL}: Devuelve la fecha actual del sistema, esto cuesta O(1). \\
+	  \textbf{Orden Total:}O(1)=\textbf{O(1)}
+
+     \item \textbf{IFECHAULTIMOACCESO}: Se utiliza la operacion obtener del diccionario accesosXLink, la cual devuelve un puntero a datosLink,\\ se accede a la lista accesosRecientes dentro de la tupla, se devuelve dia del ultimo elemento, esto cuesta O(|l|). \\
+	  \textbf{Orden Total:}O(|l|)=\textbf{O(|l|)}
+
+     \item \textbf{IACCESOSRECIENTESDIA}: Se crea una lista de acceso vacia, esto cuesta O(1). Se le guarda a la lista, la lista de accesosRecientes,
+ la cual se obtiene con la operacion obtener del diccionario accesosXLink consultando por el link dado, esto cuesta O(|l|). \\
+Se ingresa a un ciclo, preguntando si no es vacia la lista, esto cuesta O(1).\\
+Se pregunta si dia del primer elemento de la lista es igual a f, esto cuesta O(1), en caso verdadero se devuelve cantAccesos de esa tupla, esto cuesta O(1), en caso falso se modifica la lista sacando el primer elemento, esto cuesta O(1). Se sale del ciclo. 
+      \textbf{Orden Total:}O(1)+O(|l|)+O()=\textbf{O(|l|)}
 
       \item 
       

@@ -374,6 +374,7 @@ Auxiliares\\
 
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{Algoritmo: 1}\\
+\textbf{------------------------------------------------------------------------------\\}
   	\textbf{ICATEGORIAS} (\textbf{in} s: lli) $\longrightarrow$ res: ac $\vspace*{-9mm}$\begin{flushright}\end{flushright}
     res $\leftarrow$ s.arbolCategorias $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -382,6 +383,7 @@ Auxiliares\\
   
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 2}\\
+\textbf{------------------------------------------------------------------------------\\}
   \textbf{ILINKS} (\textbf{in} s: estrLLI) $\longrightarrow$ res: conj(link)$\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$res $\leftarrow$ claves(s.accesosXLink) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -390,6 +392,7 @@ Auxiliares\\
  
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 3}\\
+\textbf{------------------------------------------------------------------------------\\}
   \textbf{ICATEGORIALINK} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: categoria$\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$res $\leftarrow$ *((obtener(l,s.accesosXLink))).catDLink $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -398,6 +401,7 @@ Auxiliares\\
  
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 4}\\
+\textbf{------------------------------------------------------------------------------\\}
   \textbf{IFECHAACTUAL} (\textbf{in} s: estrLLI) $\longrightarrow$ res: fecha$\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$res $\leftarrow$ s.actual $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -406,6 +410,7 @@ Auxiliares\\
  
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 5}\\
+\textbf{------------------------------------------------------------------------------\\}
   \textbf{IFECHAULTIMOACCESO} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: fecha$\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$res $\leftarrow$ ultimo(*((obtener(l,s.accesosXLink))).accesosRecientes).dia $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -415,11 +420,12 @@ Auxiliares\\
 \\\\ 
 \textbf{------------------------------------------------------------------------------\\}  
 \textbf{Algoritmo: 6}\\
+\textbf{------------------------------------------------------------------------------\\}
   \textbf{IACCESOSRECIENTESDIA} (\textbf{in} s: estrLLI, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: nat$\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$lista(acceso) accesos $\leftarrow$ vacia() $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$res $\leftarrow$ 0 $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$accesos $\leftarrow$ *((obtener(l,s.accesosXLink))).accesosRecientes $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
-  $\hspace*{6mm}$while($¬$esVacia?(accesos) $\wedge$ (prim(accesos)).dia $\neq$ f)$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+  $\hspace*{6mm}$while($¬$esVacia?(accesos))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}${\textbf{if} (prim(accesos)).dia == f $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$\textbf{then} res = (prim(accesos)).cantAccesos $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright} 
   $\hspace*{6mm}$\textbf{else} accesos = fin(accesos) FI //O(1) }$\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
@@ -430,6 +436,7 @@ Auxiliares\\
  
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 7}\\  
+\textbf{------------------------------------------------------------------------------\\}
   \textbf{IINICIAR} (\textbf{in} ac: acat) $\longrightarrow$ res: estrLLI$\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$res.actual $\leftarrow$ 1 $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$res.arbolCategorias $\leftarrow$ ac $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -449,6 +456,7 @@ Auxiliares\\
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 8}\\
+\textbf{------------------------------------------------------------------------------\\}
   \textbf{INUEVOLINK} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} c: categoria) $\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$puntero(datosCat) cat $\leftarrow$ obtener(c,s.arbolCategorias) $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
   $\hspace*{6mm}$lista(acceso) accesoDeNuevoLink $\leftarrow$ vacia() $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -467,6 +475,7 @@ Auxiliares\\
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 9}\\
+\textbf{------------------------------------------------------------------------------\\}
   \textbf{IACCESO} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$ \textbf{if} s.actual == f $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$\textbf{then} s.actual $\leftarrow$ s.actual $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -484,6 +493,7 @@ Auxiliares\\
  
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 10}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{IESRECIENTE?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$res $\leftarrow$ menorReciente(s,l) $\leq$ f $\wedge$ f $\leq$ fechaUltimoAcceso(s,l) $\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -492,6 +502,7 @@ Auxiliares\\
  
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 11}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{IACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} c: categoria \textbf{in} l: link) $\longrightarrow$ res: nat$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$res $\leftarrow$ sumarAccesosRecientes(s, l, diasRecientesParaCategoria(s, c) $\cap$ diasRecientes(s, l)) $\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -500,6 +511,7 @@ Auxiliares\\
  
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 12}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{ILINKSORDENADOSPORACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: lista(link)$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$nat id $\leftarrow$ id(s.arbolCategorias,c)$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$lista(puntero(datosLink)) listaOrdenada $\leftarrow$ vacia()  $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -518,6 +530,7 @@ Auxiliares\\
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 13}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{IBUSCARMAX} (\textbf{in} ls: lista(puntero(datosLink))) $\longrightarrow$ res: itLista(puntero(datosLink))$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	 $\hspace*{6mm}$res $\leftarrow$ crearIt(ls) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$itLista(puntero(datosLink)) itRecorre $\leftarrow$ crearIt(ls) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -536,6 +549,7 @@ Auxiliares\\
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 14}\\
+\textbf{------------------------------------------------------------------------------\\}
 	 \textbf{IESTAORDENADA} (\textbf{in} ls: lista(puntero(datosLink))) $\longrightarrow$ res: bool$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	 $\hspace*{6mm}$res $\leftarrow$ true $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$itLista(puntero(datosLink)) itRecorre $\leftarrow$ crearIt(ls) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -554,6 +568,7 @@ Auxiliares\\
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 15}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{ICANTLINKS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: nat$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$puntero(datosCat) cat $\leftarrow$ obtener(c,s.arbolCategorias) // $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 	$\hspace*{6mm}$res = longitud(arrayCantLinks[(*cat).id]) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -563,6 +578,7 @@ Auxiliares\\
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 16}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{IMENORRECIENTE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$res $\leftarrow$ max(fechaUltimoAcceso(s,l)+1,diasRecientes) - diasRecientes $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -571,6 +587,7 @@ Auxiliares\\
  
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 17}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{IDIASRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: conj(fecha){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$res $\leftarrow$ diasRecientesDesde(s,l,menorReciente(s,l)) $\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -579,6 +596,7 @@ Auxiliares\\
  
 \textbf{------------------------------------------------------------------------------\\} 
  \textbf{Algoritmo: 18}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{IDIASRECIENTESDESDE} (\textbf{in} s: lli, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: conj(fecha){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$ \textbf{while}(esReciente?(s,l,f))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ Agregar(f,res) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -608,6 +626,7 @@ Auxiliares\\
 
 \textbf{------------------------------------------------------------------------------\\}	
 \textbf{Algoritmo: 19}\\	
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{IDIASRECIENTESPARACATEGORIAS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$ itLista(puntero(datosLink)) links $\leftarrow$ crearIt(arrayCatLinks[id(s.arbolCategorias,c)] $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ diasRecientes(s,linkConUltimoAcceso(s,c,links)) //O(VER COMO ESCRIBIR O DE LA LONGITUD DE UN LINK) \\
@@ -617,6 +636,7 @@ Auxiliares\\
 	
 \textbf{------------------------------------------------------------------------------\\}	
 \textbf{Algoritmo: 20}\\	
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{ISUMARACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link,\textbf{in} fs: conj(fecha) ) $\longrightarrow$ res: nat{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$ conjFecha $\longleftarrow$ fs$\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
 	$\hspace*{6mm}$ \textbf{while}(!$\emptyset$?(conjFecha))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -629,6 +649,7 @@ Auxiliares\\
 
 \textbf{------------------------------------------------------------------------------\\}	
 \textbf{Algoritmo: 21}\\	
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{ILINKCONULTIMOACCESO} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: itLista(puntero(datosLink)) $\longrightarrow$ res: link{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$puntero(datosLink) max $\leftarrow$ (siguiente(ls)) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ \textbf{while}(!haySiguiente(ls))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -645,17 +666,26 @@ Auxiliares\\
 \subsection{\huge Descripcion de Complejidades de Algoritmos}	
   
     \begin{enumerate}
-     \item 
-      
-     \item 
+     \item \textbf{ICATEGORIAS}: Devuelve el arbol de categorias del sistema, esto cuesta O(1). \\
+      \textbf{Orden Total:}O(1)=\textbf{O(1)}
 
-     \item 
+     \item \textbf{ILINKS}: Se crea un conjunto vacio, esto tarda O(1). Se crea un itLista, esto tarda O(1). \\ Se ingresa a un ciclo preguntando si haySiguiente, esto cuesta O(1), se le agrega link apuntado de cada tupla de datosLink de la lista listaLinks, esto tarda O(|l|), luego se avanza el it, esto cuesta O(1).\\ Al salir del ciclo, se devuelve el conjunto. \\
+	\textbf{Orden Total:}O(1)+O(1)+O(1)+(suma O(|l|))+O(1)=\textbf{O(suma O(|l|))}
 
-      \item 
-      
-     \item 
+     \item \textbf{ICATEGORIALINK}: Se utiliza la operacion obtener del diccionario accesosXLink, la cual devuelve un puntero a datosLink,\\ se devuelve lo apuntado a catDLink, esto cuesta O(|l|). \\
+	  \textbf{Orden Total:}O(|l|)=\textbf{O(|l|)}
 
-     \item 
+      \item \textbf{IFECHAACTUAL}: Devuelve la fecha actual del sistema, esto cuesta O(1). \\
+	  \textbf{Orden Total:}O(1)=\textbf{O(1)}
+
+     \item \textbf{IFECHAULTIMOACCESO}: Se utiliza la operacion obtener del diccionario accesosXLink, la cual devuelve un puntero a datosLink,\\ se accede a la lista accesosRecientes dentro de la tupla, se devuelve dia del ultimo elemento, esto cuesta O(|l|). \\
+	  \textbf{Orden Total:}O(|l|)=\textbf{O(|l|)}
+
+     \item \textbf{IACCESOSRECIENTESDIA}: Se crea una lista de acceso vacia, esto cuesta O(1). Se le guarda a la lista, la lista de accesosRecientes,
+ la cual se obtiene con la operacion obtener del diccionario accesosXLink consultando por el link dado, esto cuesta O(|l|). \\
+Se ingresa a un ciclo, preguntando si no es vacia la lista, esto cuesta O(1).\\
+Se pregunta si dia del primer elemento de la lista es igual a f, esto cuesta O(1), en caso verdadero se devuelve cantAccesos de esa tupla, esto cuesta O(1), en caso falso se modifica la lista sacando el primer elemento, esto cuesta O(1). Se sale del ciclo. 
+      \textbf{Orden Total:}O(1)+O(|l|)+=\textbf{O(|l|)}
 
       \item 
       
@@ -951,6 +981,7 @@ Auxiliares\\
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 1}\\		
+\textbf{------------------------------------------------------------------------------\\}
 \textbf{ICATEGORIAS} (\textbf{in} ac: estrAC) $\longrightarrow$ res: conj(categoria){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ claves(ac.familia)   $\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -959,6 +990,7 @@ $\hspace*{6mm}$res $\leftarrow$ claves(ac.familia)   $\vspace*{-9mm}$\begin{flus
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 2}\\		
+\textbf{------------------------------------------------------------------------------\\}
 \textbf{IRAIZ} (\textbf{in} ac: estrAC) $\longrightarrow$ res: categoria{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ (*ac.raiz).categoria $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -967,6 +999,7 @@ $\hspace*{6mm}$res $\leftarrow$ (*ac.raiz).categoria $\vspace*{-9mm}$\begin{flus
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 3}\\		
+\textbf{------------------------------------------------------------------------------\\}
 \textbf{IPADRE} (\textbf{in} ac: estrAC, \textbf{in} h: categoria) $\longrightarrow$ res: puntero(categoria){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ (*(*(obtener(h,ac.familia))).abuelo).categoria // $\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -975,6 +1008,7 @@ $\hspace*{6mm}$res $\leftarrow$ (*(*(obtener(h,ac.familia))).abuelo).categoria /
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 4}\\		
+\textbf{------------------------------------------------------------------------------\\}
 \textbf{IID} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ (*(obtener(c,ac.familia)) ).id $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -983,6 +1017,7 @@ $\hspace*{6mm}$res $\leftarrow$ (*(obtener(c,ac.familia)) ).id $\vspace*{-9mm}$\
 		
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 5}\\
+\textbf{------------------------------------------------------------------------------\\}
 		\textbf{INUEVO} (\textbf{in} c: categoria) $\longrightarrow$ res:estrAC{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$		res.cantidad $\leftarrow$ 1 $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$		res.raiz = c $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -999,6 +1034,7 @@ $\hspace*{6mm}$		res.categorias $\leftarrow$ agregarAtras(tuplaA,res.categorias)
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 6}\\
+\textbf{------------------------------------------------------------------------------\\}
 	\textbf{IAGREGAR} (\textbf{in/out} ac: estrAC,\textbf{in} c: categoria, \textbf{in} h: categoria ){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$		var puntPadre : puntero(datosCat) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$		puntPadre $\leftarrow$ (obtener(c,ac.familia)) $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
@@ -1019,6 +1055,7 @@ $\hspace*{6mm}$		agregarAtras(tuplaA,res.categorias) $\vspace*{-9mm}$\begin{flus
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 7}\\
+\textbf{------------------------------------------------------------------------------\\}
 		\textbf{IALTURA} (\textbf{in} ac: estrAC) $\longrightarrow$ res:nat{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$	res $\leftarrow$ ac.alturaMax $\hspace*{125mm}$ $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -1027,6 +1064,7 @@ $\hspace*{6mm}$	res $\leftarrow$ ac.alturaMax $\hspace*{125mm}$ $\vspace*{-9mm}$
   
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 8}\\
+\textbf{------------------------------------------------------------------------------\\}
 \textbf{IESTA?} (\textbf{in} c: categoria,\textbf{in} ac: estrAC) $\longrightarrow$ res:bool{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$	res $\leftarrow$ def?(c,ac.familia) $\hspace*{120mm}$ $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -1035,6 +1073,7 @@ $\hspace*{6mm}$	res $\leftarrow$ def?(c,ac.familia) $\hspace*{120mm}$ $\vspace*{
 		
 \textbf{------------------------------------------------------------------------------\\}
 		\textbf{Algoritmo: 9}\\
+\textbf{------------------------------------------------------------------------------\\}
 		\textbf{IESSUBCATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}	
 $\hspace*{6mm}$		var puntPadre : puntero(datosCat) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$		puntPadre $\leftarrow$ (obtener(c,ac.familia)) $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
@@ -1052,6 +1091,7 @@ $\hspace*{6mm}$ 	ELSE actual $\leftarrow$ (*(obtener(actual,ac.familia)) ).abuel
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 10}\\
+\textbf{------------------------------------------------------------------------------\\}
 \textbf{IALTURACATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$		res $\leftarrow$ (*(obtener(c,ac.familia))).altura $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -1060,6 +1100,7 @@ $\hspace*{6mm}$		res $\leftarrow$ (*(obtener(c,ac.familia))).altura $\vspace*{-9
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 11}\\
+\textbf{------------------------------------------------------------------------------\\}
 \textbf{IHIJOS} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ (*obtener(c,ac.familia)).hijos // O(ALGO) PREGUNTAR!!! EN ESTE LA COMPLEJIDAD ES EL ITERADOR DEVOLVEMOS EL PUNTERO?
 \textbf{------------------------------------------------------------------------------\\}
@@ -1068,6 +1109,7 @@ $\hspace*{6mm}$res $\leftarrow$ (*obtener(c,ac.familia)).hijos // O(ALGO) PREGUN
   
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo 12}\\
+\textbf{------------------------------------------------------------------------------\\}
 \textbf{IOBTENER} (\textbf{in} c: categoria, \textbf{in} ac: estrAC) $\longrightarrow$ res:puntero(datosCat){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ obtener(c,ac.familia) // $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -1076,10 +1118,45 @@ $\hspace*{6mm}$res $\leftarrow$ obtener(c,ac.familia) // $\vspace*{-9mm}$\begin{
 
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 13}\\
+\textbf{------------------------------------------------------------------------------\\}
 \textbf{IPUNTRAIZ} (\textbf{in} ac: estrAC) $\longrightarrow$ res:puntero(datosCat){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ ac.raiz $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   \textbf{\textbf{Complejidad}: O(1)}\\
 \textbf{------------------------------------------------------------------------------\\}
+
+
+\subsection{\huge Descripcion de Complejidades de Algoritmos}	
+  
+    \begin{enumerate}
+     \item 
+      
+     \item 
+
+     \item 
+
+      \item 
+      
+     \item 
+
+     \item 
+
+      \item 
+      
+     \item 
+
+     \item 
+
+\item 
+      
+     \item 
+
+     \item 
+
+\item 
+      
+     \item       
+
+    \end{enumerate}
 		
 \begin{center}
 \begin{tabular}{|l|} 
