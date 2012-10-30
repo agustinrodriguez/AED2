@@ -509,9 +509,9 @@ Auxiliares\\
 \textbf{Algoritmo: 11}\\
 \textbf{------------------------------------------------------------------------------\\}
 	\textbf{IACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} c: categoria \textbf{in} l: link) $\longrightarrow$ res: nat$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-	$\hspace*{6mm}$res $\leftarrow$ sumarAccesosRecientes(s, l, diasRecientesParaCategoria(s, c) $\cap$ diasRecientes(s, l)) $\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
+	$\hspace*{6mm}$res $\leftarrow$ sumarAccesosRecientes(s, l, diasRecientesParaCategoria(s, c) $\cap$ diasRecientes(s, l)) $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{\textbf{Complejidad}: O(ALGO)}\\
+  \textbf{\textbf{Complejidad}: O(|l|)}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 \textbf{------------------------------------------------------------------------------\\}
@@ -596,7 +596,7 @@ Auxiliares\\
 	\textbf{IDIASRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: conj(fecha){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$res $\leftarrow$ diasRecientesDesde(s,l,menorReciente(s,l)) $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{\textbf{Complejidad}:O(ALGO)}\\
+  \textbf{\textbf{Complejidad}:O(|l|)}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 \textbf{------------------------------------------------------------------------------\\} 
@@ -643,13 +643,13 @@ Auxiliares\\
 \textbf{Algoritmo: 20}\\	
 \textbf{------------------------------------------------------------------------------\\}
 	\textbf{ISUMARACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link,\textbf{in} fs: conj(fecha) ) $\longrightarrow$ res: nat{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-	$\hspace*{6mm}$ conjFecha $\longleftarrow$ fs$\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
-	$\hspace*{6mm}$ \textbf{while}(!$\emptyset$?(conjFecha))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-	$\hspace*{6mm}$ res $\longleftarrow$ accesosRecientesDia(s,l,dameUno(conjFecha))$\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
-	$\hspace*{6mm}$ conjFecha $\longleftarrow$ sinUno(conjFecha)$\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
+	$\hspace*{6mm}$ itConj iterador $\longleftarrow$ crearIt(fs)$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	$\hspace*{6mm}$ \textbf{while}(!haySiguiente(iterador))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	$\hspace*{6mm}$ res $\longleftarrow$ accesosRecientesDia(s,l,siguiente(iterador))$\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
+	$\hspace*{6mm}$ avanzar(iterador)$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ \textbf{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{\textbf{Complejidad}: O(ALGO)}\\
+  \textbf{\textbf{Complejidad}: O(|l|)}\\
 \textbf{------------------------------------------------------------------------------\\}	
 
 \textbf{------------------------------------------------------------------------------\\}	
@@ -706,31 +706,58 @@ Se modifica el puntero a datosCat y se guarda cat.padre, lo cual tarda O(1) . Se
 \textbf{Orden Total:}O(|c|)+O(1)+O(|l|)+O(1)+O(1)+O(1)+O(h*(O(1)+O(1)))+O(1)=\textbf{O(|l|+|c|+h)}
 
 
-     \item 
+     \item \textbf{IACCESO}:\\ Se pregunta si la fecha actual del sistema es igual a f, esto demora O(1), en caso verdadero se deja actual como esta, en caso negativo se modifica a y se guarda f como fecha actual, esto tarda O(1).\\
+Se crea un puntero a datosLink puntLink que se le pasa un puntero obtenido por medio de la operacion obtener del diccionario accesosXLink dando el link que se quiere ingresar al sistema, esto demora O(|l). \\
+Se pregunta si el dia de la tupla del ultimo elemento de la lista accesosRecientes de la tupla apuntada por el puntero puntLink es igual al f dado, esto cuesta O(1), en caso positivo, se modifica cantAccesos de la misma tupla del elemento sumandole uno, esto demora O(1) \\
+en caso negativo se utiliza la operacion agregarAtras y se agrega una tupla acceso con la fecha f y cantAccesos igual a 1 a la lista de accesosRecientes, lo cual demora O(1). \\
+Por ultimo, se consulta por la longitud de la lista accesosRecientes, consultando si la nueva longitud es igual a 4, esto demora O(1), en caso positivo se modificara la lista sacando el primer elemento de la misma. Esto demora O(1).\\
+\textbf{Orden Total:}O(1)+O(1)+O(1)+O(|l|)+O(1)+O(1)+O(1)+O(1)+O(1)=\textbf{O(|l|)}
 
-\item 
+\item \textbf{IESRECIENTE}:\\ Devuelve un bool dependiendo si el f pasado es mayor o igual a la fecha obtenida por la operacion menorReciente(s,l) la cual tarda O(|l|) y si es menor o igual a la fechaUltimoAcceso(s,l) la cual tambien tarda O(l). Tanto menorReciente como fechaUltimoAcceso son operaciones del modulo LinkLinkIT y se les pasa el sistema y un link.\\
+\textbf{Orden Total:}O(|l|)+O(|l|)=\textbf{O(|l|)}
       
-     \item 
+     \item \textbf{IACCESOSRECIENTES}:\\ Devuelve un nat, el cual proviene de la operacion sumarAccesosRecientes que se le pasa el sistema, el link y la interseccion que demora O(1) de la operacion diasRecientesParaCategoria(s,c), que demora O(|$\star$l|) con la operacion diasRecientes(s,l) que demora O(|l|).\\
+Aclaracion: $\star$l es el link obtenido de la operacion linkConMasAccesos el cual pertenece al conjunto de links de la categoria c. \\
+\textbf{Orden Total:}O(|l|)+(O(1)*(O(|l|)+O(|l|)))=\textbf{O(|l|)}
 
-     \item 
+     \item \textbf{ILINKSORDENADOSPORACCESOS}:\\ 
 
-\item 
+\textbf{Orden Total:}O(|l|)+O(|l|)+O(|l|)+O(1)=\textbf{O(|l|)}
+
+\item \textbf{IBUSCARMAX}:\\ 
       
-     \item 
+     \item \textbf{IESTAORDENADA}:\\ Se inicializa res con true, esto demanda O(1). Se crea un itLista de puntero a datosLink itRecorre al cual se lo inicializa con una lista ls que pasan como parametro, esto cuesta O(1). \\
+Se crea un nat aux el cual es inicializado con el valor de cantAccesosRecientes apuntado en la posicion actual del iterador. Esto cuesta O(1). Se ingresa con la condicion de que haySiguiente del iterador sea verdadera y que res sea igual a true, esto cuesta O(1). \\
 
-     \item 
 
-      \item 
+     \item \textbf{ICANTLINKS}:\\ Se crea un puntero a datosCat cat al cual se le guarda el puntero obtenido por la operacion obtener del modulo arbolCategorias, lo cual tarda O(|c|). \\
+Se devuelve la longitud de la lista del arreglo arrayCantLinks[(*cat).id], lo que demora O(1) \\
+\textbf{Orden Total:}O(|c|)+O(1)=\textbf{O(|c|)}
+
+      \item \textbf{IMENORRECIENTE}:\\  Se devuelve la resta la cual demora O(1), del maximo que tarda O(1), de la operacion fechaUltimoAcceso(s,l) que demora O(|l|) + 1, con el valor constante diasRecientes. \\
+      \textbf{Orden Total:}O(|l|)+O(1)+O(1)=\textbf{O(|l|)}
+
+     \item \textbf{IDIASRECIENTES}:\\ Devuelve un conjunto de fechas dado por la operacion diasRecientesDesde que demora O(|l|), a la cual se le pasa el sistema, un link y la operacion menorReciente que tambien demora O(|l|). \\
+\textbf{Orden Total:}O(|l|)+O(|l|)=\textbf{O(|l|)}
+
+     \item \textbf{IDIASRECIENTESDESDE}:\\ Se ingresa a un ciclo consultando por la operacion esReciente chequeando si la fecha es reciente, esta operacion tarda O(|l|), dentro del ciclo, se utiliza la operacion Agregar que agrega por copia la fecha al conjunto, esto demora O(1).\\
+Se modifica f y se le suma uno, esto demora tambien O(1).Se sale del ciclo. \\
+    \textbf{Orden Total:}O(|l|)+O(1)+O(1)=\textbf{O(|l|)}
+
+      \item \textbf{IDIASRECIENTESPARACATEGORIAS}:\\ Se crea un iterador itLista de puntero a datosLink links el cual se inicializa con arrayCatLinks[id(s.arbolCategorias,c)], o sea la lista listaLinks de la posicion id(s.arbolCategorias,c) del arreglo  arrayCatLinks, esto demora O(1). \\
+Se devuelve un conjunto de fechas dado por la operacion diasRecientes que demora O($\star$|l|) a la cual se le pasan el sistema, y la operacion linkConMasAccesos que demora O($\star$|l|) a la cual se le pasan, el sistema, la categoria c y el itLista links.\\
+Aclaracion: $\star$l es el link obtenido de la operacion linkConMasAccesos el cual pertenece al conjunto de links de la categoria c. \\
+\textbf{Orden Total:}O(1)+O($\star$|l|)+O($\star$|l|)=\textbf{O($\star$|l|)}
       
-     \item 
+     \item \textbf{ISUMARACCESOSRECIENTES}:\\ Se crea un itConj iterador al cual se le pasa un conjunto de fechas, lo que demora O(1). Se ingresa a un ciclo consultando por si haySiguiente del itConj, esto demora O(1).\\
+Se modifica res sumandole, la cual demora O(1), al valor anterior que tenia, el valor de la operacion accesosRecientesDia que demora O(|l|), pasandole el sistema, el link, y el valor de la posicion actual del iterador.\\ 
+Luego se avanza el iterador que demora O(1). Se sale del ciclo \\
+\textbf{Orden Total:}O(|l|)+O(1)+O(1)=\textbf{O(|l|)}
 
-     \item 
-
-      \item 
-      
-     \item 
-
-     \item 
+     \item \textbf{ILINKCONULTIMOACCESO}:\\ Se crea un puntero a datosLink nombrado max que se le pasa la posicion actual el itLista que se ingresa, esto demora O(1), se ingresa a un ciclo consultando si hay siguiente del itLista, lo que demora O(1). \\
+Se avanza el iterador, lo que cuesta O(1). Se pregunta si el dia de la tupla del ultimo elemento de la lista de acceso de accesosRecientes de la tupla apuntada en el puntero max es menor a el dia de la tupla del ultimo elemento de la lista de acceso de accesosRecientes de la tupla apuntada en la posicion actual del iterador, esto demora O(1). \\
+En caso afirmativo, se modifica max guardando la posicion actual del iterador, esto demora O(1). Se sale del ciclo. Se devuelve el link de la tupla apuntada por max. Esto demora O(|l|). \\
+\textbf{Orden Total:}O(1)+O(1)+O(1)+O(1)+O(1)+O(1)+O(|l|)=\textbf{O(|l|)}
       
 
     \end{enumerate}
