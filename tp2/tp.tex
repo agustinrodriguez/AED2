@@ -471,7 +471,7 @@ Auxiliares\\
   $\hspace*{6mm}$agregarAtras(s.listaLinks,puntLink) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$\textbf{while}(cat $\neq$ puntRaiz(s.arbolCategorias))$\vspace*{-9mm}$\begin{flushright}//O(h)\end{flushright}
   $\hspace*{6mm}$agregarAtras(s.arrayCatLinks[(*cat).id],puntLink) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-  $\hspace*{6mm}$cat $\leftarrow$ cat.padre $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+  $\hspace*{6mm}$cat $\leftarrow$ cat.abuelo $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$agregarAtras(s.arrayCatLinks[(*cat).id],puntLink) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
@@ -517,8 +517,8 @@ Auxiliares\\
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 12}\\
 \textbf{------------------------------------------------------------------------------\\}
-	\textbf{ILINKSORDENADOSPORACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: lista(link)$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-	$\hspace*{6mm}$nat id $\leftarrow$ id(s.arbolCategorias,c)$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	\textbf{ILINKSORDENADOSPORACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: itUniL(lista(link))$\vspace*{-9mm}$\begin{flushright}\end{flushright}
+	$\hspace*{6mm}$nat id $\leftarrow$ id(s.arbolCategorias,c)$\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 	$\hspace*{6mm}$lista(puntero(datosLink)) listaOrdenada $\leftarrow$ vacia()  $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$itLista(puntero(datosLink)) itMax $\leftarrow$ crearIt(s.arrayCantLinks[id]) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$\textbf{if} $¬$iestaOrdenada?(s.arrayCantLinks[id]) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -1162,7 +1162,7 @@ $\hspace*{6mm}$res $\leftarrow$ crearIt((*obtener(c,ac.familia)).hijos)$\vspace*
 \textbf{Algoritmo 12}\\
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{IOBTENER} (\textbf{in} c: categoria, \textbf{in} ac: estrAC) $\longrightarrow$ res:puntero(datosCat)$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-$\hspace*{6mm}$res $\leftarrow$ obtener(c,ac.familia) // $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
+$\hspace*{6mm}$res $\leftarrow$ obtener(c,ac.familia) $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}: O(|c|)}\\
 \textbf{------------------------------------------------------------------------------\\}
