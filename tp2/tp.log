@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.15)  30 OCT 2012 01:30
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.24)  30 OCT 2012 02:25
 entering extended mode
  %&-line parsing enabled.
 **tp.tex
@@ -110,7 +110,7 @@ LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 Package: lastpage 1994/06/25 v0.1b LaTeX2e package for refs to last page number
  (JPG)
 )
-(/home/guido/texmf/tex/latex/aed2-symb/aed2-symb.sty
+(/home/agustin/texmf/tex/latex/aed2-symb/aed2-symb.sty
 Package: aed2-symb 2004/04/17 - Para componer simbolitos frecuentemente usados 
 en AED2
 
@@ -202,7 +202,7 @@ File: xkeyval.tex 2008/08/13 v2.6a key=value parser (HA)
 \xargs@toksa=\toks26
 \xargs@toksb=\toks27
 ))
-(/home/guido/texmf/tex/latex/aed2-itef/aed2-itef.sty
+(/home/agustin/texmf/tex/latex/aed2-itef/aed2-itef.sty
 Package: aed2-itef 2010/03/16 - if-then-else-fi en lenguaje de TADs.
 
 (/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
@@ -212,7 +212,7 @@ Cargando package 'itef' (2010/03/16)
 \itefIndentacion=\skip55
 \itef@widthUnaLinea=\skip56
 \itef@linewidth=\skip57
-) (/home/guido/texmf/tex/latex/aed2-tad/aed2-tad.sty
+) (/home/agustin/texmf/tex/latex/aed2-tad/aed2-tad.sty
 Package: aed2-tad 2011/04/04 - Para especificar TADs en formato AED2
 
 (/usr/share/texmf-texlive/tex/latex/tools/calc.sty
@@ -228,7 +228,7 @@ LaTeX Info: Redefining \addtolength on input line 77.
 \calc@Ccount=\count109
 \calc@Cskip=\skip60
 )
-(/home/guido/texmf/tex/latex/aed2-tokenizer/aed2-tokenizer.sty
+(/home/agustin/texmf/tex/latex/aed2-tokenizer/aed2-tokenizer.sty
 Package: aed2-tokenizer 2010/03/12
 )
 Package aed2-tad Info: Cargando package 'tad' (04/04/2011) on input line 26.
@@ -252,7 +252,7 @@ Package aed2-tad Info: Cargando package 'tad' (04/04/2011) on input line 26.
 \tadAxioma@lenEquiv=\skip77
 \tadAxioma@lenDerecha=\skip78
 )
-(/home/guido/texmf/tex/latex/caratula/caratula.sty
+(/home/agustin/texmf/tex/latex/caratula/caratula.sty
 Package: caratula 2003/4/13 v0.1 Para componer caratulas de TPs del DC
 
 Cargando package 'caratula' v0.2 (21/4/2003)
@@ -1233,11 +1233,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 1018--1019
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1031--1034
-
- []
-
 [21]
 Underfull \hbox (badness 10000) in paragraph at lines 1040--1043
 
@@ -1254,159 +1249,165 @@ Underfull \hbox (badness 10000) in paragraph at lines 1058--1061
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1075--1078
+Underfull \hbox (badness 10000) in paragraph at lines 1067--1070
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1084--1087
 
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 1096--1099
+Underfull \hbox (badness 10000) in paragraph at lines 1103--1106
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1105--1108
+Underfull \hbox (badness 10000) in paragraph at lines 1112--1115
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1114--1117
+Underfull \hbox (badness 10000) in paragraph at lines 1121--1124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1139--1142
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 1132--1135
+Underfull \hbox (badness 10000) in paragraph at lines 1148--1151
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1141--1144
+Underfull \hbox (badness 10000) in paragraph at lines 1156--1160
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1149--1153
+Underfull \hbox (badness 10000) in paragraph at lines 1166--1169
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1159--1162
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1168--1170
+Underfull \hbox (badness 10000) in paragraph at lines 1175--1177
 
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 1229--1231
+Underfull \hbox (badness 10000) in paragraph at lines 1236--1238
 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1242--1242
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1249--1249
 []\T1/cmr/m/n/10 EncAEstrDTEnNMov(buscado,actual,n)| $\OMS/cmsy/m/n/10 ^^Q$| []
  
  []
 
 [25]
-Underfull \hbox (badness 3471) in paragraph at lines 1246--1246
+Underfull \hbox (badness 3471) in paragraph at lines 1253--1253
 []\T1/cmr/m/n/10 ((*actual).Arreglo[n] = bus-ca-do) $\OMS/cmsy/m/n/10 _$ \T1/cm
 r/m/n/10 (Es-taEnElAr-regloAc-tu-al?
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1246--1246
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1253--1253
 []\T1/cmr/m/n/10 EstaEnElArregloActual?(buscado,actual,n)| $\OMS/cmsy/m/n/10 ^^
 Q$| [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1250--1250
+Underfull \hbox (badness 10000) in paragraph at lines 1257--1257
 []\T1/cmr/m/n/10 EncAEstrDTEnNMov(buscado, (*ac-tu-al).Arreglo[i],n) $\OMS/cmsy
 /m/n/10 _$
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1250--1250
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1257--1257
 []\T1/cmr/m/n/10 RecurrenciaConLosHijos(buscado,actual,n,i)| $\OMS/cmsy/m/n/10 
 ^^Q$| [] 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1254--1254
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1261--1261
 []\T1/cmr/m/n/10 SonTodosNullOLosHijosLoSon(e)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1257--1257
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1264--1264
 []\T1/cmr/m/n/10 Los27SonNull(e,i)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1261--1261
+Underfull \hbox (badness 10000) in paragraph at lines 1268--1268
 []\T1/cmr/m/n/10 (((*e).Arreglo[i] = null) $\OMS/cmsy/m/n/10 _$ \T1/cmr/m/n/10 
 SonTo-dos-Nul-lOLosHi-josLo-Son((*e).Arreglo[i])) $\OMS/cmsy/m/n/10 ^$
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1261--1261
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1268--1268
 []\T1/cmr/m/n/10 BuscarHijosNull(e,i)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1265--1266
+Underfull \hbox (badness 10000) in paragraph at lines 1272--1273
 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1275--1275
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1282--1282
 []\T1/cmr/m/n/10 estaDefinido?(c,e)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 [26]
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1278--1278
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1285--1285
 []\T1/cmr/m/n/10 NodoDef?(c,n)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1281--1281
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1288--1288
 []\T1/cmr/m/n/10 numero(char)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1284--1284
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1291--1291
 []\T1/cmr/m/n/10 ObtenerS(c,n)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 AED: lastpage setting LastPage [27] (./tp.aux) ) 
 Here is how much of TeX's memory you used:
  7000 strings out of 495061
- 95961 string characters out of 1182620
+ 95991 string characters out of 1182621
  197197 words of memory out of 3000000
  9891 multiletter control sequences out of 15000+50000
  18985 words of font info for 45 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,13n,43p,394b,417s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home/guido/.texmf-var/fonts/
-pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/j
-knappen/ec/ecbx1200.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/
-ecti1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1000.60
-0pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecxc1440.600pk> </home
-/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/guido/.tex
-mf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/guido/.texmf-var/font
-s/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfour
-/jknappen/ec/ecbx1440.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/e
-c/ecrm1200.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.
-600pk></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr
-/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texm
-f-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/f
-onts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/p
-ublic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
-ts/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pf
-b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on tp.pdf (27 pages, 291081 bytes).
+ </home/agustin/.texmf-var/font
+s/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/agustin/.texmf-var/fonts/pk/ljfo
+ur/jknappen/ec/ecbx1200.600pk> </home/agustin/.texmf-var/fonts/pk/ljfour/jknapp
+en/ec/ecti1000.600pk> </home/agustin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecc
+c1000.600pk> </home/agustin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecxc1440.600
+pk> </home/agustin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </hom
+e/agustin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/agustin
+/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/agustin/.texmf-v
+ar/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/agustin/.texmf-var/fonts/
+pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/agustin/.texmf-var/fonts/pk/ljfour
+/jknappen/ec/ecbx1728.600pk></usr/share/texmf-texlive/fonts/type1/public/amsfon
+ts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex1
+0.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
+/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf
+-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fon
+ts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb
+>
+Output written on tp.pdf (27 pages, 291194 bytes).
 PDF statistics:
  753 PDF objects out of 1000 (max. 8388607)
  132 named destinations out of 1000 (max. 500000)
