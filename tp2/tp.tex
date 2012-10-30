@@ -385,7 +385,12 @@ Auxiliares\\
 \textbf{Algoritmo: 2}\\
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{ILINKS} (\textbf{in} s: estrLLI) $\longrightarrow$ res: conj(link)$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-  $\hspace*{6mm}$res $\leftarrow$ claves(s.accesosXLink) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+  $\hspace*{6mm}$itLista iterador $\leftarrow$ crearIt(s.listaLinks) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+  $\hspace*{6mm}$\textbf{while}(haySiguiente(iterador)) $\vspace*{-9mm}$\begin{flushright}//O(|s.listaLinks|)\end{flushright}
+  $\hspace*{6mm}$agregar(res,(*siguiente(iterador).link)) $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
+  $\hspace*{6mm}$avanzar(iterador) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+  $\hspace*{6mm}$\textbf{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
+  
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}: O($\sum_{i=1}^{longitud(s.listaLinks)}$)}\\
 \textbf{------------------------------------------------------------------------------\\}
@@ -425,13 +430,13 @@ Auxiliares\\
   $\hspace*{6mm}$lista(acceso) accesos $\leftarrow$ vacia() $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$res $\leftarrow$ 0 $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$accesos $\leftarrow$ *((obtener(l,s.accesosXLink))).accesosRecientes $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
-  $\hspace*{6mm}$while($¬$esVacia?(accesos))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-  $\hspace*{6mm}${\textbf{if} (prim(accesos)).dia == f $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-  $\hspace*{6mm}$\textbf{then} res = (prim(accesos)).cantAccesos $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright} 
-  $\hspace*{6mm}$\textbf{else} accesos = fin(accesos) FI //O(1) }$\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
-  $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+  $\hspace*{6mm}$while($¬$esVacia?(accesos) $\wedge$ res = 0)$\vspace*{-9mm}$\begin{flushright}//O(|accesos|)\end{flushright}
+  $\hspace*{6mm}${\textbf{if} (ultimo(accesos)).dia == f $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+  $\hspace*{6mm}$\textbf{then} res $\leftarrow$ (ultimo(accesos)).cantAccesos $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright} 
+  $\hspace*{6mm}$\textbf{else} accesos $\leftarrow$ fin(accesos) FI  }$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+  $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{\textbf{Complejidad}:}\\
+  \textbf{\textbf{Complejidad}:O(|l|)}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 \textbf{------------------------------------------------------------------------------\\}
@@ -439,13 +444,13 @@ Auxiliares\\
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{IINICIAR} (\textbf{in} ac: acat) $\longrightarrow$ res: estrLLI$\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$res.actual $\leftarrow$ 1 $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-  $\hspace*{6mm}$res.arbolCategorias $\leftarrow$ ac $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+  $\hspace*{6mm}$res.arbolCategorias $\leftarrow$ $\&$ac $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$var c: nat $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$c $\leftarrow$ 1 $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$res.arrayCantLinks $\leftarrow$ crearArreglo($\#$categorias(ac)) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$res.listaLinks $\leftarrow$ vacia() $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$ res.accesosXLink $\leftarrow$ vacio() $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-  $\hspace*{6mm}$\textbf{while} (c $\leq$ $\#$categorias(ac)) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+  $\hspace*{6mm}$\textbf{while} (c $\leq$ $\#$categorias(ac)) $\vspace*{-9mm}$\begin{flushright}//O($\#$categorias(ac))\end{flushright}
   $\hspace*{6mm}$linksFamilia llist $\leftarrow$ vacia() $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$res.arrayCatLinks[c] $\leftarrow$ llist $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$c ++ $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -460,11 +465,11 @@ Auxiliares\\
   \textbf{INUEVOLINK} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} c: categoria) $\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$puntero(datosCat) cat $\leftarrow$ obtener(c,s.arbolCategorias) $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
   $\hspace*{6mm}$lista(acceso) accesoDeNuevoLink $\leftarrow$ vacia() $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-  $\hspace*{6mm}$datosLink nuevoLink $\leftarrow$ <l,cat,accesoDeNuevoLink> $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+  $\hspace*{6mm}$datosLink nuevoLink $\leftarrow$ <l,cat,accesoDeNuevoLink> $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
   $\hspace*{6mm}$puntero(datosLink) puntLink $\leftarrow$ nuevoLink $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright} 
   $\hspace*{6mm}$definir(l,puntLink,s.accesosXLink) $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
   $\hspace*{6mm}$agregarAtras(s.listaLinks,puntLink) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-  $\hspace*{6mm}$\textbf{while}(cat $\neq$ puntRaiz(s.arbolCategorias))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+  $\hspace*{6mm}$\textbf{while}(cat $\neq$ puntRaiz(s.arbolCategorias))$\vspace*{-9mm}$\begin{flushright}//O(h)\end{flushright}
   $\hspace*{6mm}$agregarAtras(s.arrayCatLinks[(*cat).id],puntLink) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$cat $\leftarrow$ cat.padre $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}\end{flushright}
@@ -495,18 +500,18 @@ Auxiliares\\
 \textbf{Algoritmo: 10}\\
 \textbf{------------------------------------------------------------------------------\\}
 	\textbf{IESRECIENTE?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-	$\hspace*{6mm}$res $\leftarrow$ menorReciente(s,l) $\leq$ f $\wedge$ f $\leq$ fechaUltimoAcceso(s,l) $\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
+	$\hspace*{6mm}$res $\leftarrow$ menorReciente(s,l) $\leq$ f $\wedge$ f $\leq$ fechaUltimoAcceso(s,l) $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{\textbf{Complejidad}: O(ALGO)}\\
+  \textbf{\textbf{Complejidad}: O(|l|)}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 11}\\
 \textbf{------------------------------------------------------------------------------\\}
 	\textbf{IACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} c: categoria \textbf{in} l: link) $\longrightarrow$ res: nat$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-	$\hspace*{6mm}$res $\leftarrow$ sumarAccesosRecientes(s, l, diasRecientesParaCategoria(s, c) $\cap$ diasRecientes(s, l)) $\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
+	$\hspace*{6mm}$res $\leftarrow$ sumarAccesosRecientes(s, l, diasRecientesParaCategoria(s, c) $\cap$ diasRecientes(s, l)) $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{\textbf{Complejidad}: O(ALGO)}\\
+  \textbf{\textbf{Complejidad}: O(|l|)}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 \textbf{------------------------------------------------------------------------------\\}
@@ -580,7 +585,7 @@ Auxiliares\\
 \textbf{Algoritmo: 16}\\
 \textbf{------------------------------------------------------------------------------\\}
 	\textbf{IMENORRECIENTE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-	$\hspace*{6mm}$res $\leftarrow$ max(fechaUltimoAcceso(s,l)+1,diasRecientes) - diasRecientes $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	$\hspace*{6mm}$res $\leftarrow$ max(fechaUltimoAcceso(s,l)+1,diasRecientes) - diasRecientes $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}: O(1)}\\
 \textbf{------------------------------------------------------------------------------\\}
@@ -589,21 +594,21 @@ Auxiliares\\
 \textbf{Algoritmo: 17}\\
 \textbf{------------------------------------------------------------------------------\\}
 	\textbf{IDIASRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: conj(fecha){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-	$\hspace*{6mm}$res $\leftarrow$ diasRecientesDesde(s,l,menorReciente(s,l)) $\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
+	$\hspace*{6mm}$res $\leftarrow$ diasRecientesDesde(s,l,menorReciente(s,l)) $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{\textbf{Complejidad}:O(ALGO)}\\
+  \textbf{\textbf{Complejidad}:O(|l|)}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 \textbf{------------------------------------------------------------------------------\\} 
  \textbf{Algoritmo: 18}\\
 \textbf{------------------------------------------------------------------------------\\}
 	\textbf{IDIASRECIENTESDESDE} (\textbf{in} s: lli, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: conj(fecha){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-	$\hspace*{6mm}$ \textbf{while}(esReciente?(s,l,f))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	$\hspace*{6mm}$ \textbf{while}(esReciente?(s,l,f))$\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
 	$\hspace*{6mm}$ Agregar(f,res) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ fecha++ $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ \textbf{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-	  \textbf{\textbf{Complejidad}: O($\star$1)}\\
+	  \textbf{\textbf{Complejidad}: O(|l|)}\\
 \textbf{------------------------------------------------------------------------------\\}
  
 %\textbf{------------------------------------------------------------------------------\\}
@@ -629,22 +634,22 @@ Auxiliares\\
 \textbf{------------------------------------------------------------------------------\\}
 	\textbf{IDIASRECIENTESPARACATEGORIAS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$ itLista(puntero(datosLink)) links $\leftarrow$ crearIt(arrayCatLinks[id(s.arbolCategorias,c)] $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-	$\hspace*{6mm}$ diasRecientes(s,linkConUltimoAcceso(s,c,links)) //O(VER COMO ESCRIBIR O DE LA LONGITUD DE UN LINK) \\
+	$\hspace*{6mm}$ diasRecientes(s,linkConUltimoAcceso(s,c,links)) //O($\star$|l|) \\
 \textbf{------------------------------------------------------------------------------\\}
-	\textbf{\textbf{Complejidad}: O(ALGO)}\\
+	\textbf{\textbf{Complejidad}: O($\star$|l|)}\\
 \textbf{------------------------------------------------------------------------------\\}	
 	
 \textbf{------------------------------------------------------------------------------\\}	
 \textbf{Algoritmo: 20}\\	
 \textbf{------------------------------------------------------------------------------\\}
 	\textbf{ISUMARACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link,\textbf{in} fs: conj(fecha) ) $\longrightarrow$ res: nat{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-	$\hspace*{6mm}$ conjFecha $\longleftarrow$ fs$\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
-	$\hspace*{6mm}$ \textbf{while}(!$\emptyset$?(conjFecha))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-	$\hspace*{6mm}$ res $\longleftarrow$ accesosRecientesDia(s,l,dameUno(conjFecha))$\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
-	$\hspace*{6mm}$ conjFecha $\longleftarrow$ sinUno(conjFecha)$\vspace*{-9mm}$\begin{flushright}//O(ALGO)\end{flushright}
+	$\hspace*{6mm}$ itConj iterador $\longleftarrow$ crearIt(fs)$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	$\hspace*{6mm}$ \textbf{while}(!haySiguiente(iterador))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	$\hspace*{6mm}$ res $\longleftarrow$ accesosRecientesDia(s,l,siguiente(iterador))$\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
+	$\hspace*{6mm}$ avanzar(iterador)$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ \textbf{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{\textbf{Complejidad}: O(ALGO)}\\
+  \textbf{\textbf{Complejidad}: O(|l|)}\\
 \textbf{------------------------------------------------------------------------------\\}	
 
 \textbf{------------------------------------------------------------------------------\\}	
@@ -666,30 +671,40 @@ Auxiliares\\
 \subsection{\huge Descripcion de Complejidades de Algoritmos}	
   
     \begin{enumerate}
-     \item \textbf{ICATEGORIAS}: Devuelve el arbol de categorias del sistema, esto cuesta O(1). \\
+     \item \textbf{ICATEGORIAS}: \\ Devuelve el arbol de categorias del sistema, esto cuesta O(1). \\
       \textbf{Orden Total:}O(1)=\textbf{O(1)}
 
-     \item \textbf{ILINKS}: Se crea un conjunto vacio, esto tarda O(1). Se crea un itLista, esto tarda O(1). \\ Se ingresa a un ciclo preguntando si haySiguiente, esto cuesta O(1), se le agrega link apuntado de cada tupla de datosLink de la lista listaLinks, esto tarda O(|l|), luego se avanza el it, esto cuesta O(1).\\ Al salir del ciclo, se devuelve el conjunto. \\
+     \item \textbf{ILINKS}:\\ Se crea un conjunto vacio, esto tarda O(1). Se crea un itLista, esto tarda O(1). \\ Se ingresa a un ciclo preguntando si haySiguiente, esto cuesta O(1), se le agrega link apuntado de cada tupla de datosLink de la lista listaLinks, esto tarda O(|l|), luego se avanza el it, esto cuesta O(1).\\ Al salir del ciclo, se devuelve el conjunto. \\
 	\textbf{Orden Total:}O(1)+O(1)+O(1)+(suma O(|l|))+O(1)=\textbf{O(suma O(|l|))}
 
-     \item \textbf{ICATEGORIALINK}: Se utiliza la operacion obtener del diccionario accesosXLink, la cual devuelve un puntero a datosLink,\\ se devuelve lo apuntado a catDLink, esto cuesta O(|l|). \\
+     \item \textbf{ICATEGORIALINK}:\\ Se utiliza la operacion obtener del diccionario accesosXLink, la cual devuelve un puntero a datosLink,\\ se devuelve lo apuntado a catDLink, esto cuesta O(|l|). \\
 	  \textbf{Orden Total:}O(|l|)=\textbf{O(|l|)}
 
-      \item \textbf{IFECHAACTUAL}: Devuelve la fecha actual del sistema, esto cuesta O(1). \\
+      \item \textbf{IFECHAACTUAL}:\\ Devuelve la fecha actual del sistema, esto cuesta O(1). \\
 	  \textbf{Orden Total:}O(1)=\textbf{O(1)}
 
-     \item \textbf{IFECHAULTIMOACCESO}: Se utiliza la operacion obtener del diccionario accesosXLink, la cual devuelve un puntero a datosLink,\\ se accede a la lista accesosRecientes dentro de la tupla, se devuelve dia del ultimo elemento, esto cuesta O(|l|). \\
+     \item \textbf{IFECHAULTIMOACCESO}:\\ Se utiliza la operacion obtener del diccionario accesosXLink, la cual devuelve un puntero a datosLink,\\ se accede a la lista accesosRecientes dentro de la tupla, se devuelve dia del ultimo elemento, esto cuesta O(|l|). \\
 	  \textbf{Orden Total:}O(|l|)=\textbf{O(|l|)}
 
-     \item \textbf{IACCESOSRECIENTESDIA}: Se crea una lista de acceso vacia, esto cuesta O(1). Se le guarda a la lista, la lista de accesosRecientes,
+     \item \textbf{IACCESOSRECIENTESDIA}:\\ Se crea una lista de acceso vacia, esto cuesta O(1). Se le guarda a la lista, la lista de accesosRecientes,
  la cual se obtiene con la operacion obtener del diccionario accesosXLink consultando por el link dado, esto cuesta O(|l|). \\
 Se ingresa a un ciclo, preguntando si no es vacia la lista, esto cuesta O(1).\\
-Se pregunta si dia del primer elemento de la lista es igual a f, esto cuesta O(1), en caso verdadero se devuelve cantAccesos de esa tupla, esto cuesta O(1), en caso falso se modifica la lista sacando el primer elemento, esto cuesta O(1). Se sale del ciclo. 
+Se pregunta si dia del primer elemento de la lista es igual a f, esto cuesta O(1), en caso verdadero se devuelve cantAccesos de esa tupla, esto cuesta O(1), en caso falso se modifica la lista sacando el primer elemento, esto cuesta O(1). Se sale del ciclo. \\
       \textbf{Orden Total:}O(1)+O(|l|)+O()=\textbf{O(|l|)}
 
-      \item 
-      
-     \item 
+      \item \textbf{IINICIAR}:\\ Se guarda en res.actual la fecha igual a 1, esto cuesta O(1). Se pasa por referencia el arbol dado y se lo guarda en res.arbolCategorias, estoy cuesta O(1).
+Se crea una variable del tipo nat, cuesta O(1) , se inicializa esta variable con 1, esto cuesta O(1), se crea un arreglo con tama\'no  igual a $\#$categorias(ac) y se lo guarda en res.arrayCatLinks, esto cuesta O(1),\\
+ se inicializa res.listaLinks como vacia, esto cuesta O(1), se inicializa con vacio el diccionario res.accesosXLink. \\
+Se ingresa a un ciclo consultando si c es menor o igual a la cantidad de categorias de ac, esto cuesta O(1). Se crea una lista linksFamilia inicializada con vacio, esto cuesta O(1). \\
+Se guarda en res.arrayCatLinks[c] la lista linksFamilia, esto cuesta O(1), se le suma 1 a c, esto cuesta O(1). Se sale del ciclo, esto cuesta O(1). \\
+	 \textbf{Orden Total:}O(1)+O(1)+O(1)+O(1)+O(1)+O(1)+O(1)+O(1)+\\O($\#$categorias(ac)*(O(1)+O(1)+O(1)))=\textbf{O($\#$categorias(ac))}
+
+     \item \textbf{INUEVOLINK}:\\Se crea un puntero a datosCat cat donde se le pasa el puntero obtenido por la operacion obtener del modulo arbolCategorias, esto cuesta O(|c|). Se crea una lista de acceso  inicializada vacia, que cuesta O(1).\\
+Se crea una tupla datosLink, a la cual se le pasa una tupla con el link dado, el puntero a datosCat y la lista de acceso, la cual tarda O(|l|). Se crea un puntero a datosLink y se le pasa la tupla datosLink, esto cuesta O(1).  Se utiliza la operacion definir del diccTrie en la cual se agrega el link dado al diccionario accesosXLink, lo cual tarda O(|l|).\\
+Se utiliza la operacion agregarAtras que agrega el puntero a datosLink a la lista listaLinks, esto demora O(1).  Se ingresa a un ciclo si cat es distinto de la operacion puntRaiz de arbolCategorias, esto tarda O(1). Se utiliza la operacion agregarAtras que agrega el puntero a datosLink a la lista que esta en la posicion (*cat).id del arreglo arrayCatLinks, lo cual tarda O(1).\\
+Se modifica el puntero a datosCat y se guarda cat.padre, lo cual tarda O(1) . Se sale del ciclo tardando O(1). Se utiliza la operacion agregarAtras que agrega el puntero a datosLink a la lista que esta en la posicion (*cat).id del arreglo arrayCatLinks, lo cual tarda O(1).\\
+\textbf{Orden Total:}O(|c|)+O(1)+O(|l|)+O(1)+O(1)+O(1)+O(h*(O(1)+O(1)))+O(1)=\textbf{O(|l|+|c|+h)}
+
 
      \item 
 
