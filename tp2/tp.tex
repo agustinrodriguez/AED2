@@ -1030,15 +1030,14 @@ Auxiliares\\
 $\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ vacio() $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$itLista iterador $\leftarrow$ crearIt(ac.categorias) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-
-$\hspace*{6mm}$\textbf{while}(haySiguiente(iterador)) $\vspace*{-9mm}$\begin{flushright}//O(longitud(ac.categorias))\end{flushright}
+$\hspace*{6mm}$\textbf{while}(haySiguiente(iterador))$\vspace*{-9mm}$\begin{flushright}//O(longitud(ac.categorias))\end{flushright}
 $\hspace*{6mm}$agregar(res, siguiente(iterador).categoria) $\vspace*{-9mm}$\begin{flushright}
 //O(|c|)\end{flushright}
 $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 
 
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{\textbf{Complejidad}:}\\
+  \textbf{\textbf{Complejidad}: sumatoria}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
@@ -1073,14 +1072,14 @@ $\hspace*{6mm}$res $\leftarrow$ (*(obtener(c,ac.familia)) ).id $\vspace*{-9mm}$\
 \textbf{------------------------------------------------------------------------------\\}
 		\textbf{INUEVO} (\textbf{in} c: categoria) $\longrightarrow$ res:estrAC$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$	res.cantidad $\leftarrow$ 1 $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-$\hspace*{6mm}$	datosCat tuplaA $\leftarrow$ tupla(c,1,1,vacio(), null)$\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
-$\hspace*{6mm}$	puntero(datosCat) punt $\leftarrow$ $\&$tuplaA $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-
+$\hspace*{6mm}$	datosCat tuplaA$\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
+$\hspace*{6mm}$	puntero(datosCat) punt $\leftarrow$ $\&$tuplaA$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+$\hspace*{6mm}$	tuplaA $\leftarrow$ tupla(c,1,1,vacio(), punt)$\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 $\hspace*{6mm}$	res.raiz $\leftarrow$ punt $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$	res.alturaMax $\leftarrow$ 1 $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-
-$\hspace*{6mm}$	res.familia = definir(c, punt, res.familia) $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
-$\hspace*{6mm}$		res.categorias $\leftarrow$ agregarAtras(tuplaA,res.categorias) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+$\hspace*{6mm}$	res.familia $\leftarrow$ definir(c, punt, res.familia)$\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
+$\\$
+$\hspace*{6mm}$	res.categorias $\leftarrow$agregarAtras(tuplaA,res.categorias)$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}: O(|c|)}\\
 \textbf{------------------------------------------------------------------------------\\}
@@ -1090,16 +1089,16 @@ $\hspace*{6mm}$		res.categorias $\leftarrow$ agregarAtras(tuplaA,res.categorias)
 \textbf{------------------------------------------------------------------------------\\}
 	\textbf{IAGREGAR} (\textbf{in/out} ac: estrAC,\textbf{in} c: categoria, \textbf{in} h: categoria )
 $\vspace*{-9mm}$\begin{flushright}\end{flushright}
-$\hspace*{6mm}$	puntero(datosCat) puntPadre $\leftarrow$ obtener(c,ac.familia) $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
-$\hspace*{6mm}$		\textbf{if} {(*puntPadre).altura == ac.alturaMax} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-$\hspace*{6mm}$		\textbf{then} {ac.alturaMax $\leftarrow$ ac.alturaMax + 1} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-$\hspace*{6mm}$		ELSE{ ac.alturaMax $\leftarrow$ ac.alturaMax }FI $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-$\hspace*{6mm}$	datosCat tuplaA $\leftarrow$ (h,ac.cantidad +1,(*puntPadre).altura +1,vacio(),puntPadre) $\vspace*{-9mm}$\begin{flushright}//O(|h|)\end{flushright}
-$\hspace*{6mm}$	puntero(datosCat) punt $\leftarrow$ $\&$ tuplaA $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+$\hspace*{6mm}$	puntero(datosCat) puntPadre $\leftarrow$ obtener(c,ac.familia)$\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
+$\hspace*{6mm}$	\textbf{if} {(*puntPadre).altura == ac.alturaMax}$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+$\hspace*{6mm}$	\textbf{then} {ac.alturaMax $\leftarrow$ ac.alturaMax + 1}$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+$\hspace*{6mm}$	ELSE{ ac.alturaMax $\leftarrow$ ac.alturaMax }FI$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+$\hspace*{6mm}$	datosCat tuplaA $\leftarrow$ (h,ac.cantidad +1,(*puntPadre).altura +1,vacio(),puntPadre)$\vspace*{-9mm}$\begin{flushright}//O(|h|)\end{flushright}
+$\hspace*{6mm}$	puntero(datosCat) punt $\leftarrow$ $\&$ tuplaA$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$ 	Agregar((*puntPadre).hijos,punt) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$ 	definir(h,punt,ac.familia) $\vspace*{-9mm}$\begin{flushright}//O(|h|)\end{flushright}
 $\hspace*{6mm}$ 	ac.cantidad ++ $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-$\hspace*{6mm}$		agregarAtras(tuplaA,res.categorias) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+$\hspace*{6mm}$	agregarAtras(tuplaA,res.categorias) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}: O(|c|+|h|)}\\
 \textbf{------------------------------------------------------------------------------\\}
@@ -1121,23 +1120,24 @@ $\hspace*{6mm}$	res $\leftarrow$ def?(c,ac.familia) $\hspace*{120mm}$ $\vspace*{
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}: O(|c|)}\\
 \textbf{------------------------------------------------------------------------------\\}
-		
+
 \textbf{------------------------------------------------------------------------------\\}
 		\textbf{Algoritmo: 9}\\
 \textbf{------------------------------------------------------------------------------\\}
 		\textbf{IESSUBCATEGORIA} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-
-$\hspace*{6mm}$	puntero(datosCat) puntPadre $\leftarrow$ (obtener(c,ac.familia)) $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
+$\\$$\\$
+$\hspace*{6mm}$	puntero(datosCat) puntPadre $\leftarrow$ (obtener(c,ac.familia))$\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 $\hspace*{6mm}$ 	res $\leftarrow$ false $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+$\hspace*{6mm}$ puntero(datosCat) actual $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright} 
 $\hspace*{6mm}$ 	{\textbf{if} c == ac.raiz $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright} 
 $\hspace*{6mm}$	 	\textbf{then}  res $\leftarrow$ true $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-$\hspace*{6mm}$	 	ELSE actual $\leftarrow$ h $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright} 
-$\hspace*{6mm}$	 	\textbf{while}(res $\neq$ true $\wedge$ actual $\neq$ ac.raiz) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-$\hspace*{6mm}$ 	{\textbf{if} actual $\in$ (*puntPadre).hijos  $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+$\hspace*{6mm}$	 	ELSE actual $\leftarrow$ (obtener(h,ac.familia))$\vspace*{-9mm}$\begin{flushright}//O(|h|)\end{flushright} 
+$\hspace*{6mm}$	 	\textbf{while}(res $\neq$ true $\wedge$ actual $\neq$ ac.raiz) $\vspace*{-9mm}$\begin{flushright}//O($\star$(h))\end{flushright}
+$\hspace*{6mm}$ 	{\textbf{if} PERTENECE?((*puntPadre).hijos,actual)$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$ 	\textbf{then} res $\leftarrow$ true $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$ 	ELSE actual $\leftarrow$ (*(obtener(actual,ac.familia)) ).abuelo FI} FI} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{\textbf{Complejidad}:}\\
+  \textbf{\textbf{Complejidad}:O(|c|+|h|+$\star$(h))}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
@@ -1152,16 +1152,16 @@ $\hspace*{6mm}$		res $\leftarrow$ (*(obtener(c,ac.familia))).altura $\vspace*{-9
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 11}\\
 \textbf{------------------------------------------------------------------------------\\}
-\textbf{IHIJOS} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-$\hspace*{6mm}$res $\leftarrow$ (*obtener(c,ac.familia)).hijos // O(ALGO) PREGUNTAR!!! EN ESTE LA COMPLEJIDAD ES EL ITERADOR DEVOLVEMOS EL PUNTERO?
+\textbf{IHIJOS} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:itConj(puntero(datosCat))$\vspace*{-9mm}$\begin{flushright}\end{flushright}
+$\hspace*{6mm}$res $\leftarrow$ crearIt((*obtener(c,ac.familia)).hijos)$\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright} 
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{\textbf{Complejidad}:}\\
+  \textbf{\textbf{Complejidad}:O(|c|)}\\
 \textbf{------------------------------------------------------------------------------\\}
   
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo 12}\\
 \textbf{------------------------------------------------------------------------------\\}
-\textbf{IOBTENER} (\textbf{in} c: categoria, \textbf{in} ac: estrAC) $\longrightarrow$ res:puntero(datosCat){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
+\textbf{IOBTENER} (\textbf{in} c: categoria, \textbf{in} ac: estrAC) $\longrightarrow$ res:puntero(datosCat)$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ obtener(c,ac.familia) // $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}: O(|c|)}\\
@@ -1170,7 +1170,7 @@ $\hspace*{6mm}$res $\leftarrow$ obtener(c,ac.familia) // $\vspace*{-9mm}$\begin{
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 13}\\
 \textbf{------------------------------------------------------------------------------\\}
-\textbf{IPUNTRAIZ} (\textbf{in} ac: estrAC) $\longrightarrow$ res:puntero(datosCat){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
+\textbf{IPUNTRAIZ} (\textbf{in} ac: estrAC) $\longrightarrow$ res:puntero(datosCat)$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ ac.raiz $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   \textbf{\textbf{Complejidad}: O(1)}\\
 \textbf{------------------------------------------------------------------------------\\}
