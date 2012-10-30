@@ -517,8 +517,8 @@ Auxiliares\\
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 12}\\
 \textbf{------------------------------------------------------------------------------\\}
-	\textbf{ILINKSORDENADOSPORACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: lista(link)$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-	$\hspace*{6mm}$nat id $\leftarrow$ id(s.arbolCategorias,c)$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	\textbf{ILINKSORDENADOSPORACCESOS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: itListaUni(lista(link))$\vspace*{-9mm}$\begin{flushright}\end{flushright}
+	$\hspace*{6mm}$nat id $\leftarrow$ id(s.arbolCategorias,c)$\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 	$\hspace*{6mm}$lista(puntero(datosLink)) listaOrdenada $\leftarrow$ vacia()  $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$itLista(puntero(datosLink)) itMax $\leftarrow$ crearIt(s.arrayCantLinks[id]) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$\textbf{if} $¬$iestaOrdenada?(s.arrayCantLinks[id]) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -527,8 +527,12 @@ Auxiliares\\
 	$\hspace*{6mm}$itMax $\leftarrow$ iBuscarMax(s.arrayCantLinks[id]) $\vspace*{-9mm}$\begin{flushright}//O(n)\end{flushright}
 	$\hspace*{6mm}$agregarAtras(listaOrdenada,siguiente(itMax)) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$eliminarSiguiente(itMax) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-	$\hspace*{6mm}$\textbf{fi} $\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$\textbf{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
+	$\hspace*{6mm}$res $\leftarrow$ crearIt(listaOrdenada)$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	$\hspace*{6mm}$s.arrayCatLinks[id] $\leftarrow$ listaOrdenada $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	$\hspace*{6mm}$\textbf{else} $\vspace*{-9mm}$\begin{flushright}\end{flushright}
+	$\hspace*{6mm}$res $\leftarrow$ crearIt(s.arrayCantLinks[id])$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	$\hspace*{6mm}$\textbf{fi} $\vspace*{-9mm}$\begin{flushright}\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}: O(n${^2}$)}\\
 \textbf{------------------------------------------------------------------------------\\}
@@ -575,8 +579,8 @@ Auxiliares\\
 \textbf{Algoritmo: 15}\\
 \textbf{------------------------------------------------------------------------------\\}
 	\textbf{ICANTLINKS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: nat$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-	$\hspace*{6mm}$puntero(datosCat) cat $\leftarrow$ obtener(c,s.arbolCategorias) // $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
-	$\hspace*{6mm}$res = longitud(arrayCantLinks[(*cat).id]) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	$\hspace*{6mm}$puntero(datosCat) cat $\leftarrow$ obtener(c,s.arbolCategorias) $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
+	$\hspace*{6mm}$res $\leftarrow$ longitud(arrayCantLinks[(*cat).id]) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}: O(|c|)}\\
 \textbf{------------------------------------------------------------------------------\\}
@@ -584,7 +588,7 @@ Auxiliares\\
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 16}\\
 \textbf{------------------------------------------------------------------------------\\}
-	\textbf{IMENORRECIENTE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
+	\textbf{IMENORRECIENTE} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$res $\leftarrow$ max(fechaUltimoAcceso(s,l)+1,diasRecientes) - diasRecientes $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}: O(1)}\\
@@ -593,7 +597,7 @@ Auxiliares\\
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 17}\\
 \textbf{------------------------------------------------------------------------------\\}
-	\textbf{IDIASRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: conj(fecha){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
+	\textbf{IDIASRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: conj(fecha)$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$res $\leftarrow$ diasRecientesDesde(s,l,menorReciente(s,l)) $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}:O(|l|)}\\
@@ -602,7 +606,7 @@ Auxiliares\\
 \textbf{------------------------------------------------------------------------------\\} 
  \textbf{Algoritmo: 18}\\
 \textbf{------------------------------------------------------------------------------\\}
-	\textbf{IDIASRECIENTESDESDE} (\textbf{in} s: lli, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: conj(fecha){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
+	\textbf{IDIASRECIENTESDESDE} (\textbf{in} s: lli, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: conj(fecha)$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$ \textbf{while}(esReciente?(s,l,f))$\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
 	$\hspace*{6mm}$ Agregar(f,res) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ fecha++ $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -632,7 +636,7 @@ Auxiliares\\
 \textbf{------------------------------------------------------------------------------\\}	
 \textbf{Algoritmo: 19}\\	
 \textbf{------------------------------------------------------------------------------\\}
-	\textbf{IDIASRECIENTESPARACATEGORIAS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha){end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
+	\textbf{IDIASRECIENTESPARACATEGORIAS} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha)$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$ itLista(puntero(datosLink)) links $\leftarrow$ crearIt(arrayCatLinks[id(s.arbolCategorias,c)] $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ diasRecientes(s,linkConUltimoAcceso(s,c,links)) //O($\star$|l|) \\
 \textbf{------------------------------------------------------------------------------\\}
@@ -644,7 +648,7 @@ Auxiliares\\
 \textbf{------------------------------------------------------------------------------\\}
 	\textbf{ISUMARACCESOSRECIENTES} (\textbf{in} s: lli, \textbf{in} l: link,\textbf{in} fs: conj(fecha) ) $\longrightarrow$ res: nat{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	$\hspace*{6mm}$ itConj iterador $\longleftarrow$ crearIt(fs)$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-	$\hspace*{6mm}$ \textbf{while}(!haySiguiente(iterador))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	$\hspace*{6mm}$ \textbf{while}(haySiguiente(iterador))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ res $\longleftarrow$ accesosRecientesDia(s,l,siguiente(iterador))$\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
 	$\hspace*{6mm}$ avanzar(iterador)$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ \textbf{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
