@@ -291,7 +291,7 @@ $\hspace*{10mm}$\textit{listaLinks}:Lista(datosLink),
 $\hspace*{10mm}$\textit{arrayCatLinks}:arreglo-dimen(linksFamilia) )\\\\
 
 	\textbf{Donde} datosLink \textbf{es}: \\
-	tupla <\textit{link}:link, \textit{catDLink}puntero(datosCat),\textit{accesosRecientes}:Lista(acceso)> \\\\
+	tupla <\textit{link}:link, \textit{catDLink}puntero(datosCat),\textit{accesosRecientes}:Lista(acceso),\textit{cantAccesosRecientes}:nat> \\\\
 
 	\textbf{Donde} acceso \textbf{es}: \\
 	tupla <\textit{dia}:nat, \textit{cantAccesos}:nat> \\\\
@@ -334,7 +334,7 @@ $\hspace*{10mm}$\textit{arrayCatLinks}:arreglo-dimen(linksFamilia) )\\\\
 	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\rightarrow{_L}$\\ (*obtener(x,e.accesosXLink)).catDLink $\in$ todasLasCategorias(e.arbolCategorias.categorias)
 
 	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\rightarrow{_L}$ \\ long((*obtener(l,e.accesosXLink)).accesosRecientes) $\leq$ 3 $\wedge$ \\ 
-	    estaOrdenadoAcceso((*obtener(l,e.accesosXLink)).accesosRecientes) $\wedge$ noHayDiasRepetidos((*obtener(l,e.accesosXLink)).accesosRecientes) $\wedge$\\
+	    accesoOrdenadoNoRepetido((*obtener(l,e.accesosXLink)).accesosRecientes) $\wedge{_L}$\\
 	    fechasCorrectas(e.actual,((*obtener(l,e.accesosXLink)).accesosRecientes))
 
 	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\leftrightarrow$ (*obtener(x,e.accesosXLink)) $\in$ todosLosLinks(listaLinks)
@@ -342,9 +342,11 @@ $\hspace*{10mm}$\textit{arrayCatLinks}:arreglo-dimen(linksFamilia) )\\\\
 	    \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\rightarrow{_L}$ \\ ((\paratodo{categoria}{c}) c $\in$ todasLasCategorias(e.arbolCategorias.categorias) $\rightarrow{_L}$ \\
 (esta?((obtener(l,e.accesosXLink)),arrayCatLinks[id(c,e.arbolCategorias)]) $\leftrightarrow$ esPredecesor(c,(*obtener(l,e.accesosXLink)).categoria,e.arbolCategorias)))
 
-	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\rightarrow$ (*obtener(x,e.accesosXLink)) $\exists$ linksDeCat(e.arrayCantLinks[id(e.arbolCategorias,(*obtener(x,e.accesosXLink)).catDLink)])
+	   \item (\paratodo{link}{x,x'} l $\neq$ l') $\wedge$ (def?(x,e.accesosXLink)) $\wedge$ (def?(x,e.accesosXLink)) $\rightarrow{_L}$ (*obtener(x,e.accesosXLink)) $\neq$ (*obtener(x',e.accesosXLink))
  
-	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\rightarrow$ longitud((*obtener(x,e.accesosXLink)).accesosRecientes) $\leq$ 3
+	   \item (\paratodo{nat}{i,i'}) i < long(e.listaLinks) $\wedge$ i' < long(e.listaLinks) $\rightarrow{_L}$ e.listaLinks${_i}$.link = e.listaLinks${_i'}$.link $leftrightarrow$ i = i'
+
+	   \item (\paratodo{nat}{i}) i < tam(arrayCatLinks) $\rightarrow{_L}$ sinRepetidos(linksFamilia${_i}$)
 
 \end{enumerate}
 
@@ -371,6 +373,21 @@ Auxiliares\\
 
 \tadAxioma{listaLinks(ls)}{Ag((prim(ls)).link,fin(ls))}
 
+\tadOperacion{sinRepetidos}{secu($\alpha$)}{bool}{}
+
+\tadAxioma{sinRepetidos(ls)}{\IF\ vacia?(ls) THEN true ELSE {\IF\ hayOtro(prim(ls),fin(ls)) THEN false ELSE sinRepetidos(fin(ls)) FI} FI}
+
+\tadOperacion{hayOtro}{$\alpha$,secu($\alpha$)}{bool}{}
+
+\tadAxioma{hayOtro(x,ls)}{\IF\ vacia?(ls) THEN false ELSE {\IF\ x == prim(ls) THEN true ELSE hayOtro(x,fin(ls)) FI} FI}
+
+\tadOperacion{fechasCorrectas}{nat,secu(acceso)}{bool}{}
+
+\tadAxioma{fechasCorrectas(x,ls)}{\IF\ vacia?(ls) THEN true ELSE {\IF\ prim(ls).dia > f THEN false ELSE fechasCorrectas(x,fin(ls)) FI} FI}
+
+\tadOperacion{accesoOrdenadoNoRepetido}{secu(acceso)}{bool}{}
+
+\tadAxioma{accesoOrdenadoNoRepetido(ls)}{\IF\ long(ls) $\leq$ 1 THEN true ELSE {\IF\ prim(ls).dia $\geq$ prim(fin(ls)).dia THEN false ELSE accesoOrdenadoNoRepetido(fin(ls)) FI} FI}
 
 
 	\subsubsection{Algoritmos}
@@ -457,7 +474,7 @@ Auxiliares\\
   $\hspace*{6mm}$linksFamilia llist $\leftarrow$ vacia() $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$res.arrayCatLinks[c] $\leftarrow$ llist $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$c ++ $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-  $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+  $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}: ($\#$categorias(ac))}\\
 \textbf{------------------------------------------------------------------------------\\}
@@ -468,7 +485,7 @@ Auxiliares\\
   \textbf{INUEVOLINK} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} c: categoria) $\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$puntero(datosCat) cat $\leftarrow$ obtener(c,s.arbolCategorias) $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
   $\hspace*{6mm}$lista(acceso) accesoDeNuevoLink $\leftarrow$ vacia() $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-  $\hspace*{6mm}$datosLink nuevoLink $\leftarrow$ <l,cat,accesoDeNuevoLink> $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
+  $\hspace*{6mm}$datosLink nuevoLink $\leftarrow$ <l,cat,accesoDeNuevoLink,0> $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
   $\hspace*{6mm}$puntero(datosLink) puntLink $\leftarrow$ nuevoLink $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright} 
   $\hspace*{6mm}$definir(l,puntLink,s.accesosXLink) $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
   $\hspace*{6mm}$agregarAtras(s.listaLinks,puntLink) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -487,14 +504,15 @@ Auxiliares\\
   \textbf{IACCESO} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\vspace*{-9mm}$\begin{flushright}\end{flushright}
   $\hspace*{6mm}$ \textbf{if} s.actual == f $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$\textbf{then} s.actual $\leftarrow$ s.actual $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-  $\hspace*{6mm}$\textbf{else} s.actual $\leftarrow$ f FI $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+  $\hspace*{6mm}$\textbf{else} s.actual $\leftarrow$ f \textbf{fi} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$var puntero(datosLink) puntLink $\leftarrow$ obtener(l,s.accesosXLink)  $\vspace*{-9mm}$\begin{flushright}//O(|l|)\end{flushright}
   $\hspace*{6mm}$\textbf{if} (ultimo((*puntLink).accesos)).dia == f $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$\textbf{then}  (ultimo((*puntLink).accesos)).cantAccesos++ $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-  $\hspace*{6mm}$\textbf{else} agregarAtras((*puntLink).accesos), f) FI $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+  $\hspace*{6mm}$\textbf{else} agregarAtras((*puntLink).accesos), f) \textbf{fi} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$\textbf{if} longitud((*puntLink).accesos) == 4 $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
   $\hspace*{6mm}$\textbf{then} fin((*puntLink).accesos) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-  $\hspace*{6mm}$\textbf{fi} \\ 
+  $\hspace*{6mm}$\textbf{fi} $\vspace*{-9mm}$\begin{flushright}\end{flushright}
+  $\hspace*{6mm}$(*puntLink).cantAccesosRecientes++ $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}: O(|l|)}\\
 \textbf{------------------------------------------------------------------------------\\}
@@ -526,7 +544,7 @@ Auxiliares\\
 	$\hspace*{6mm}$itLista(puntero(datosLink)) itMax $\leftarrow$ crearIt(s.arrayCantLinks[id]) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$\textbf{if} $¬$iestaOrdenada?(s.arrayCantLinks[id]) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$\textbf{\textbf{then}} $\vspace*{-9mm}$\begin{flushright}\end{flushright}
-	$\hspace*{6mm}$\textbf{while}(haySiguiente?(s.arrayCantLinks[id]))$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	$\hspace*{6mm}$\textbf{while}(haySiguiente?(s.arrayCantLinks[id]))$\vspace*{-9mm}$\begin{flushright}//O(n)\end{flushright}
 	$\hspace*{6mm}$itMax $\leftarrow$ iBuscarMax(s.arrayCantLinks[id]) $\vspace*{-9mm}$\begin{flushright}//O(n)\end{flushright}
 	$\hspace*{6mm}$agregarAtras(listaOrdenada,siguiente(itMax)) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$eliminarSiguiente(itMax) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -547,14 +565,14 @@ Auxiliares\\
 	 $\hspace*{6mm}$res $\leftarrow$ crearIt(ls) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$itLista(puntero(datosLink)) itRecorre $\leftarrow$ crearIt(ls) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$ nat max $\leftarrow$ (*siguiente(itRecorre)).cantAccesosRecientes $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-	 $\hspace*{6mm}$\textbf{while}(haySiguiente(itRecorre)) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	 $\hspace*{6mm}$\textbf{while}(haySiguiente(itRecorre)) $\vspace*{-9mm}$\begin{flushright}//O(n)\end{flushright}
 	 $\hspace*{6mm}$\textbf{if} max < (*siguiente(itRecorre)).cantAccesosRecientes $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$\textbf{then} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$max $\leftarrow$ (*siguiente(itRecorre)).cantAccesosRecientes $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$res $\leftarrow$ itRecorre $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$\textbf{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 	 $\hspace*{6mm}$avanzar(itRecorre) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright} 
-	 $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	 $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}: O(n)}\\
 \textbf{------------------------------------------------------------------------------\\}
@@ -566,14 +584,14 @@ Auxiliares\\
 	 $\hspace*{6mm}$res $\leftarrow$ true $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$itLista(puntero(datosLink)) itRecorre $\leftarrow$ crearIt(ls) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$ nat aux $\leftarrow$ (*siguiente(itRecorre)).cantAccesosRecientes $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-	 $\hspace*{6mm}$\textbf{while}(haySiguiente(itRecorre) $\wedge$ res == true) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	 $\hspace*{6mm}$\textbf{while}(haySiguiente(itRecorre) $\wedge$ res == true) $\vspace*{-9mm}$\begin{flushright}//O(n)\end{flushright}
 	 $\hspace*{6mm}$avanzar(itRecorre) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$if aux < (*siguiente(itRecorre)).cantAccesosRecientes $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$\textbf{then} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$res $\leftarrow$ false $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$fi $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	 $\hspace*{6mm}$aux $\leftarrow$ (*siguiente(itRecorre)).cantAccesosRecientes $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-	 $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	 $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}: O(n)}\\
 \textbf{------------------------------------------------------------------------------\\}
@@ -681,7 +699,7 @@ Auxiliares\\
      \item \textbf{ICATEGORIAS}: \\ Devuelve el arbol de categorias del sistema, esto cuesta O(1). \\
       \textbf{Orden Total:}O(1)=\textbf{O(1)}
 
-     \item \textbf{ILINKS}:\\ Se crea un conjunto vacio, esto tarda O(1). Se crea un itLista, esto tarda O(1). \\ Se ingresa a un ciclo preguntando si haySiguiente, esto cuesta O(1), se le agrega link apuntado de cada tupla de datosLink de la lista listaLinks, esto tarda O(|l|), luego se avanza el it, esto cuesta O(1).\\ Al salir del ciclo, se devuelve el conjunto. \\
+     \item \textbf{ILINKS}:\\ Se crea un conjunto vacio, esto tarda O(1). Se crea un itLista, esto tarda O(1). \\ Se ingresa a un ciclo preguntando si haySiguiente, esto cuesta O(1), se le agrega link apuntado de cada tupla de datosLink de la lista listaLinks, esto tarda O(|l|), luego se avanza el it, esto cuesta O(1).\\ Luego de recorrer toda la lista se sale del ciclo habiendo demorado finalmente O(|lista|), se devuelve el conjunto. \\
 	\textbf{Orden Total:}O(1)+O(1)+O(1)+(suma O(|l|))+O(1)=\textbf{O(suma O(|l|))}
 
      \item \textbf{ICATEGORIALINK}:\\ Se utiliza la operacion obtener del diccionario accesosXLink, la cual devuelve un puntero a datosLink,\\ se devuelve lo apuntado a catDLink, esto cuesta O(|l|). \\
@@ -696,20 +714,21 @@ Auxiliares\\
      \item \textbf{IACCESOSRECIENTESDIA}:\\ Se crea una lista de acceso vacia, esto cuesta O(1). Se le guarda a la lista, la lista de accesosRecientes,
  la cual se obtiene con la operacion obtener del diccionario accesosXLink consultando por el link dado, esto cuesta O(|l|). \\
 Se ingresa a un ciclo, preguntando si no es vacia la lista, esto cuesta O(1).\\
-Se pregunta si dia del primer elemento de la lista es igual a f, esto cuesta O(1), en caso verdadero se devuelve cantAccesos de esa tupla, esto cuesta O(1), en caso falso se modifica la lista sacando el primer elemento, esto cuesta O(1). Se sale del ciclo. \\
+Se pregunta si dia del primer elemento de la lista es igual a f, esto cuesta O(1), en caso verdadero se devuelve cantAccesos de esa tupla, esto cuesta O(1), en caso falso se modifica la lista sacando el primer elemento, esto cuesta O(1). Una vez recorrida toda la lista se sale del ciclo demorando O(|lista|) \\
       \textbf{Orden Total:}O(1)+O(|l|)+O()=\textbf{O(|l|)}
 
       \item \textbf{IINICIAR}:\\ Se guarda en res.actual la fecha igual a 1, esto cuesta O(1). Se pasa por referencia el arbol dado y se lo guarda en res.arbolCategorias, estoy cuesta O(1).
 Se crea una variable del tipo nat, cuesta O(1) , se inicializa esta variable con 1, esto cuesta O(1), se crea un arreglo con tama\'no  igual a $\#$categorias(ac) y se lo guarda en res.arrayCatLinks, esto cuesta O(1),\\
  se inicializa res.listaLinks como vacia, esto cuesta O(1), se inicializa con vacio el diccionario res.accesosXLink. \\
 Se ingresa a un ciclo consultando si c es menor o igual a la cantidad de categorias de ac, esto cuesta O(1). Se crea una lista linksFamilia inicializada con vacio, esto cuesta O(1). \\
-Se guarda en res.arrayCatLinks[c] la lista linksFamilia, esto cuesta O(1), se le suma 1 a c, esto cuesta O(1). Se sale del ciclo, esto cuesta O(1). \\
+Se guarda en res.arrayCatLinks[c] la lista linksFamilia, esto cuesta O(1), se le suma 1 a c, esto cuesta O(1).Una vez que no se cumple la condicion del ciclo se sale del mismo habiendo demorado finalmente O(($\#$categorias(ac)). \\
 	 \textbf{Orden Total:}O(1)+O(1)+O(1)+O(1)+O(1)+O(1)+O(1)+O(1)+\\O($\#$categorias(ac)*(O(1)+O(1)+O(1)))=\textbf{O($\#$categorias(ac))}
 
      \item \textbf{INUEVOLINK}:\\Se crea un puntero a datosCat cat donde se le pasa el puntero obtenido por la operacion obtener del modulo arbolCategorias, esto cuesta O(|c|). Se crea una lista de acceso  inicializada vacia, que cuesta O(1).\\
 Se crea una tupla datosLink, a la cual se le pasa una tupla con el link dado, el puntero a datosCat y la lista de acceso, la cual tarda O(|l|). Se crea un puntero a datosLink y se le pasa la tupla datosLink, esto cuesta O(1).  Se utiliza la operacion definir del diccTrie en la cual se agrega el link dado al diccionario accesosXLink, lo cual tarda O(|l|).\\
 Se utiliza la operacion agregarAtras que agrega el puntero a datosLink a la lista listaLinks, esto demora O(1).  Se ingresa a un ciclo si cat es distinto de la operacion puntRaiz de arbolCategorias, esto tarda O(1). Se utiliza la operacion agregarAtras que agrega el puntero a datosLink a la lista que esta en la posicion (*cat).id del arreglo arrayCatLinks, lo cual tarda O(1).\\
-Se modifica el puntero a datosCat y se guarda cat.padre, lo cual tarda O(1) . Se sale del ciclo tardando O(1). Se utiliza la operacion agregarAtras que agrega el puntero a datosLink a la lista que esta en la posicion (*cat).id del arreglo arrayCatLinks, lo cual tarda O(1).\\
+Se modifica el puntero a datosCat y se guarda cat.padre, lo cual tarda O(1). Una vez que no se cumple la condicion del ciclo se del mismo habiendo tardado O(h). Se utiliza la operacion agregarAtras que agrega el puntero a datosLink a la lista que esta en la posicion (*cat).id del arreglo arrayCatLinks, lo cual tarda O(1).\\
+Aclaracion h es igual a la altura de la categoria c.
 \textbf{Orden Total:}O(|c|)+O(1)+O(|l|)+O(1)+O(1)+O(1)+O(h*(O(1)+O(1)))+O(1)=\textbf{O(|l|+|c|+h)}
 
 
@@ -727,17 +746,28 @@ Por ultimo, se consulta por la longitud de la lista accesosRecientes, consultand
 Aclaracion: $\star$l es el link obtenido de la operacion linkConMasAccesos el cual pertenece al conjunto de links de la categoria c. \\
 \textbf{Orden Total:}O(|l|)+(O(1)*(O(|l|)+O(|l|)))=\textbf{O(|l|)}
 
-     \item \textbf{ILINKSORDENADOSPORACCESOS}:\\ 
+     \item \textbf{ILINKSORDENADOSPORACCESOS}:\\ Se crea un nat id al cual se le pasa el id de la categoria que ingresan por medio de la operacion del modulo de arbolCategorias, lo cual demora O(|c|). Se crea una lista de puntero a datosLink llamada listaOrdenada la cual se la inicializa en vacio, esto cuesta O(1).\\
+Se crea un itLista de puntero a datosLink nombrado itMax al cual se le pasa por referencia la lista del arreglo arrayCatLinks en la posicion del id de la categoria, esto demora O(1).
+Se pregunta por si la lista del arreglo arrayCatLinks en la posicion del id de la categoria no esta ordenada, esto cuesta O(n). En caso verdadero se ingresa a un ciclo, con la condicion de que haySiguiente? arrayCatLinks[id] sea verdadero, esto demora O(1).
+Se le pasa a itMax un iterador de la operacion BuscarMax a la cual se le pasa arrayCatLinks[id], esto demora O(n). Luego se utiliza la operacion agregarAtras demorando O(1), la cual agrega la posicion actual del iterador itMax en la lista listaOrdenada.\\
+Se usa la operacion eliminarSiguiente con la cual se elimina la posicion actual del iterador itMax, demorando O(1). Una vez recorrido todo el itLista de puntero a datosLink y que haySiguiente? sea false se sale del ciclo tardando O(n${^2}$). Se le pasa a res un iterador unidireccional con la listaOrdenada en O(1).\\
+Se modifica arrayCatLinks[id] pasandole la listaOrdenada, esto demora O(1). Luego en la parte falsa del IF en el caso de que si este ordenada la arrayCatLinks[id] se le pasa a res un iterador unidireccional con arrayCatLinks[id] demorando O(1). \\
+Aclaracion: n es igual a la cantidad de elementos de la lista.
+\textbf{Orden Total:}O(|c|)+O(1)+O(1)+O(n)+[n*(O(n)+O(1)+O(1))]+O(1)+O(1)=\textbf{O(|c|+n${^2}$)}
 
-\textbf{Orden Total:}O(|l|)+O(|l|)+O(|l|)+O(1)=\textbf{O(|l|)}
+\item \textbf{IBUSCARMAX}:\\ Se inicializa res pasandole un itLista de puntero a datosLink demorando O(1). Se crea un itLista de puntero a datosLink llamad itRecorre pasandole la lista que nos ingresa, demorando O(1). \\
+Se crea un nat llamado max el cual es inicializado pasandole el valor de cantAccesosRecientes de la tupla apuntada por la posicion actual del itRecorre, esto tarda O(1). Se ingresa a un ciclo con la condicion de que haySiguiente de itRecorre sea true, esto demora O(1). 
+Se pregunta si max es menor al valor cantAccesosrecientes de la tupla apuntada por la posicion actual del itRecorre, esto demora O(1). En caso verdadero se guarda en max el valor cantAccesosrecientes de la tupla apuntada por la posicion actual del itRecorre, esto demora O(1).\\
+Se guarda en res el iterador itRecorre demorando O(1). No hay parte falsa. Se ultiza la operacion avanzar a la cual se le pasa itRecorre demorando O(1). Una vez recorrido toda la lista, y haySiguiente?(itRecorre) sea falso, se sale del ciclo habiendo demorado O(n).
+Aclaracion: n es igual a la cantidad de elementos de la lista.
+\textbf{Orden Total:}O(1)+O(1)+O(1)+[n*(O(1)+O(1)+O(1)+O(1))]=\textbf{O(n)}
 
-\item \textbf{IBUSCARMAX}:\\ 
-      
      \item \textbf{IESTAORDENADA}:\\ Se inicializa res con true, esto demanda O(1). Se crea un itLista de puntero a datosLink itRecorre al cual se lo inicializa con una lista ls que pasan como parametro, esto cuesta O(1). \\
 Se crea un nat aux el cual es inicializado con el valor de cantAccesosRecientes apuntado en la posicion actual del iterador. Esto cuesta O(1). Se ingresa con la condicion de que haySiguiente del iterador sea verdadera y que res sea igual a true, esto cuesta O(1). \\
 Se avanza el iterador, lo que cuesta O(1). Se pregunta si el valor de aux es menor a el valor de cantAccesosRecientes apuntado en la posicion actual del iterador, esto demanda O(1), en caso afirmativo se modifica res por false, tardando O(1). \\
-Se modifica aux pasandole el valor de cantAccesosRecientes apuntado en la posicion actual del iterador. Luego de las iteraciones correspondientes, se sale del ciclo. 
-\textbf{Orden Total:}O(1)+O(1)+O(1)+[O(|ls|)*O(1)+O(1)+O(1)+O(1)]=\textbf{O(|ls|)}
+Se modifica aux pasandole el valor de cantAccesosRecientes apuntado en la posicion actual del iterador. Luego de las iteraciones correspondientes, se sale del ciclo habiendo demorado en el peor de los casos O(n). 
+Aclaracion: n es igual a la cantidad de elementos de la lista.
+\textbf{Orden Total:}O(1)+O(1)+O(1)+[n*(O(1)+O(1)+O(1)+O(1))]=\textbf{O(n)}
 
      \item \textbf{ICANTLINKS}:\\ Se crea un puntero a datosCat cat al cual se le guarda el puntero obtenido por la operacion obtener del modulo arbolCategorias, lo cual tarda O(|c|). \\
 Se devuelve la longitud de la lista del arreglo arrayCantLinks[(*cat).id], lo que demora O(1) \\
@@ -760,8 +790,8 @@ Aclaracion: $\star$l es el link obtenido de la operacion linkConMasAccesos el cu
       
      \item \textbf{ISUMARACCESOSRECIENTES}:\\ Se crea un itConj iterador al cual se le pasa un conjunto de fechas, lo que demora O(1). Se ingresa a un ciclo consultando por si haySiguiente del itConj, esto demora O(1).\\
 Se modifica res sumandole, la cual demora O(1), al valor anterior que tenia, el valor de la operacion accesosRecientesDia que demora O(|l|), pasandole el sistema, el link, y el valor de la posicion actual del iterador.\\ 
-Luego se avanza el iterador que demora O(1). Se sale del ciclo \\
-\textbf{Orden Total:}O(|l|)+O(1)+O(1)=\textbf{O(|l|)}
+Luego se avanza el iterador que demora O(1). Una vez que la condicion del ciclo es falsa, se sale del ciclo habiendo demorado O(|fs|). \\
+\textbf{Orden Total:}O(1)+O(1)+O(1)=\textbf{O(|l|)}
 
      \item \textbf{ILINKCONULTIMOACCESO}:\\ Se crea un puntero a datosLink nombrado max que se le pasa la posicion actual el itLista que se ingresa, esto demora O(1), se ingresa a un ciclo consultando si hay siguiente del itLista, lo que demora O(1). \\
 Se avanza el iterador, lo que cuesta O(1). Se pregunta si el dia de la tupla del ultimo elemento de la lista de acceso de accesosRecientes de la tupla apuntada en el puntero max es menor a el dia de la tupla del ultimo elemento de la lista de acceso de accesosRecientes de la tupla apuntada en la posicion actual del iterador, esto demora O(1). \\
