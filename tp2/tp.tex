@@ -689,15 +689,13 @@ Auxiliares\\
 \textbf{Algoritmo: 21}\\	
 \textbf{------------------------------------------------------------------------------\\}
 	\textbf{ILINKCONULTIMOACCESO} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: itLista(puntero(datosLink)) $\longrightarrow$ res: link$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-	$\hspace*{6mm}$puntero(datosLink) max $\leftarrow$ (siguiente(ls)) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ \textbf{while}(haySiguiente(ls))$\vspace*{-9mm}$\begin{flushright}//O(|ls|)\end{flushright}
-	$\hspace*{6mm}$ avanzar(ls) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ \textbf{if} s.actual == (ultimo((*siguiente(ls)).accesosRecientes)).dia $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-	$\hspace*{6mm}$ \textbf{then} max $\leftarrow$ (siguiente(ls))  $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	$\hspace*{6mm}$ \textbf{then} res $\leftarrow$ (siguiente(ls))  $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ \textbf{fi} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+	$\hspace*{6mm}$ avanzar(ls) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 	$\hspace*{6mm}$ \textbf{end while}$\vspace*{-9mm}$\begin{flushright}\end{flushright}
-	$\hspace*{6mm}$ res $\leftarrow$ (*max).link $\vspace*{-9mm}$\begin{flushright}//O(|(*max).link|)\end{flushright} 
-\textbf{------------------------------------------------------------------------------\\}
+	\textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}: O(|(*max).link|)}\\
 \textbf{------------------------------------------------------------------------------\\}	
 
@@ -801,10 +799,10 @@ Se modifica res sumandole, la cual demora O(1), al valor anterior que tenia, el 
 Luego se avanza el iterador que demora O(1). Una vez que la condicion del ciclo es falsa, se sale del ciclo habiendo demorado O(|fs|). \\
 \textbf{Orden Total:}O(1)+O(1)+O(1)=\textbf{O(|l|)}
 
-     \item \textbf{ILINKCONULTIMOACCESO}:\\ Se crea un puntero a datosLink nombrado max que se le pasa la posicion actual el itLista que se ingresa, esto demora O(1), se ingresa a un ciclo consultando si hay siguiente del itLista, lo que demora O(1). \\
-Se avanza el iterador, lo que cuesta O(1). Se pregunta si el dia de la tupla del ultimo elemento de la lista de acceso de accesosRecientes de la tupla apuntada en el puntero max es menor a el dia de la tupla del ultimo elemento de la lista de acceso de accesosRecientes de la tupla apuntada en la posicion actual del iterador, esto demora O(1). \\
-En caso afirmativo, se modifica max guardando la posicion actual del iterador, esto demora O(1). Se sale del ciclo. Se devuelve el link de la tupla apuntada por max. Esto demora O(|l|). \\
-\textbf{Orden Total:}O(1)+O(1)+O(1)+O(1)+O(1)+O(1)+O(|l|)=\textbf{O(|l|)}
+     \item \textbf{ILINKCONULTIMOACCESO}:\\ Se ingresa a un ciclo consultando si hay siguiente del itLista, lo que demora O(1). \\
+ Se pregunta si el dia de la tupla del ultimo elemento de la lista de acceso de accesosRecientes de la tupla apuntada en la posicion del it es igual a la del sistema, esto demora O(1). \\
+En caso afirmativo, se modifica res guardando la posicion actual del iterador, esto demora O(1).Se avanza el iterador, lo que cuesta O(1). Una vez recorrida toda la lista se sale del ciclo habiendo demorado O(|ls|). Se devuelve el link de la tupla apuntada por max. Esto demora O(|l|). \\
+\textbf{Orden Total:}|ls|*(O(1)+O(1)+O(1))=\textbf{O(|ls|)}
       
 
     \end{enumerate}
