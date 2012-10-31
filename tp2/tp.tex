@@ -311,18 +311,18 @@ $\hspace*{10mm}$\textit{arrayCatLinks}:arreglo-dimen(linksFamilia) )\\\\
 	
 		\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}' la '\textit{catDLink}' de la tupla apuntada en el significado debera existir en \textit{'arbolCategorias'}.
 	  
-		\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}', todos los \textit{dia}' de la lista '\textit{accesosRecientes}' deberan ser menor o igual a \textit{actual}.
+		\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}', todos los \textit{dia}' de la lista '\textit{accesosRecientes}' deberan ser menor o igual a \textit{actual}, estan ordenados,no hay dias repetidos y la longitud de la lista es menor o igual a 3.
 		
-		\item \textit{actual}' será igual a la fecha mas grande de  \textit{accesosRecientes} de todas las claves \textit{accesosXLink}.
+		\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}' su significado deberá existir en '\textit{listaLinks}' y viceversa.
 
-		\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}' su significado deberá existir en '\textit{listaLinks}' 
+		\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}' su significado deberá aparecer en '\textit{arrayCantLinks}' en la posicion igual al id de '\textit{catDLink}' y en las posiciones de los predecesores de esa categoria y en ninguna otra.
 
-		\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}' su significado deberá aparecer en '\textit{arrayCantLinks}' en la posicion igual al id de '\textit{catDLink}' y en todas las posiciones menores a esta.
+		\item No hay 2 claves que existan en '\textit{accesosXLink}' y devuelvan el mismo significado.
 
-		\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}', la '\textit{accesosRecientes}' apuntada en el significado debera tener una longitud menor o igual a 3.
+		\item No existen '\textit{link}' repetidos en las tuplas de  '\textit{listaLinks}'.
 
-		\item 
-	  
+		\item No hay elementos repetidos en ninguna lista '\textit{linksFamilia}'.
+
 	  \end{enumerate}
 	 
 	
@@ -331,17 +331,22 @@ $\hspace*{10mm}$\textit{arrayCatLinks}:arreglo-dimen(linksFamilia) )\\\\
 	
 	   \begin{enumerate}
 
-	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\leftrightarrow$ (*obtener(x,e.accesosXLink)).catDLink $\exists$ todasLasCategorias(e.arbolCategorias.categorias)
+	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\rightarrow{_L}$\\ (*obtener(x,e.accesosXLink)).catDLink $\in$ todasLasCategorias(e.arbolCategorias.categorias)
 
-	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\rightarrow$ (ultimo((*obtener(x,e.accesosXLink)).accesosRecientes)).dia $\leq$ e.actual
+	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\rightarrow{_L}$ \\ long((*obtener(l,e.accesosXLink)).accesosRecientes) $\leq$ 3 $\wedge$ \\ 
+	    estaOrdenadoAcceso((*obtener(l,e.accesosXLink)).accesosRecientes) $\wedge$ noHayDiasRepetidos((*obtener(l,e.accesosXLink)).accesosRecientes) $\wedge$\\
+	    fechasCorrectas(e.actual,((*obtener(l,e.accesosXLink)).accesosRecientes))
 
-	   \item 
+	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\leftrightarrow$ (*obtener(x,e.accesosXLink)) $\in$ todosLosLinks(listaLinks)
 
-	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\rightarrow$ (*obtener(x,e.accesosXLink)) $\exists$ todosLosLinks(listaLinks)
+	    \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\rightarrow{_L}$ \\ ((\paratodo{categoria}{c}) c $\in$ todasLasCategorias(e.arbolCategorias.categorias) $\rightarrow{_L}$ \\
+(esta?((obtener(l,e.accesosXLink)),arrayCatLinks[id(c,e.arbolCategorias)]) $\leftrightarrow$ esPredecesor(c,(*obtener(l,e.accesosXLink)).categoria,e.arbolCategorias)))
 
-	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\rightarrow$ (*obtener(x,e.accesosXLink)) $\exists$ linksDeCat(e.arrayCantLinks[id(e.arbolCategorias,(*obtener(x,e.accesosXLink)).catDLink)])
+	   \item (\paratodo{link}{x,x'} l $\neq$ l') $\wedge$ (def?(x,e.accesosXLink)) $\wedge$ (def?(x,e.accesosXLink)) $\rightarrow{_L}$ (*obtener(x,e.accesosXLink)) $\neq$ (*obtener(x',e.accesosXLink))
  
-	   \item (\paratodo{link}{x}) (def?(x,e.accesosXLink)) $\rightarrow$ longitud((*obtener(x,e.accesosXLink)).accesosRecientes) $\leq$ 3
+	   \item (\paratodo{nat}{i,i'}) i < long(e.listaLinks) $\wedge$ i' < long(e.listaLinks) $\rightarrow{_L}$ e.listaLinks${_i}$.link = e.listaLinks${_i'}$.link $leftrightarrow$ i = i'
+
+	   \item (\paratodo{nat}{i}) i < tam(arrayCatLinks) $\rightarrow{_L}$ sinRepetidos(linksFamilia${_i}$)
 
 \end{enumerate}
 
@@ -1213,6 +1218,8 @@ $\hspace*{6mm}$res $\leftarrow$ ac.raiz $\vspace*{-9mm}$\begin{flushright}//O(1)
 
     \end{enumerate}
 		
+
+
 \begin{center}
 \begin{tabular}{|l|} 
 \hline
