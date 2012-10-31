@@ -1076,6 +1076,8 @@ $\hspace*{6mm}$itLista iterador $\leftarrow$ crearIt(ac.categorias) $\vspace*{-9
 $\hspace*{6mm}$\textbf{while}(haySiguiente(iterador))$\vspace*{-9mm}$\begin{flushright}//O(longitud(ac.categorias))\end{flushright}
 $\hspace*{6mm}$agregar(res, siguiente(iterador).categoria) $\vspace*{-9mm}$\begin{flushright}
 //O(|c|)\end{flushright}
+$\hspace*{6mm}$avanzar(iterador) $\vspace*{-9mm}$\begin{flushright}
+//O(1)\end{flushright}
 $\hspace*{6mm}$\textbf{end while} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 
 
@@ -1115,7 +1117,7 @@ $\hspace*{6mm}$res $\leftarrow$ (*(obtener(c,ac.familia)) ).id $\vspace*{-9mm}$\
 \textbf{------------------------------------------------------------------------------\\}
 		\textbf{INUEVO} (\textbf{in} c: categoria) $\longrightarrow$ res:estrAC$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$	res.cantidad $\leftarrow$ 1 $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-$\hspace*{6mm}$	datosCat tuplaA$\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
+$\hspace*{6mm}$	datosCat tuplaA$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$	puntero(datosCat) punt $\leftarrow$ $\&$tuplaA$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$	tuplaA $\leftarrow$ tupla(c,1,1,vacio(), punt)$\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright}
 $\hspace*{6mm}$	res.raiz $\leftarrow$ punt $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
@@ -1141,7 +1143,7 @@ $\hspace*{6mm}$	puntero(datosCat) punt $\leftarrow$ $\&$ tuplaA$\vspace*{-9mm}$\
 $\hspace*{6mm}$ 	Agregar((*puntPadre).hijos,punt) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$ 	definir(h,punt,ac.familia) $\vspace*{-9mm}$\begin{flushright}//O(|h|)\end{flushright}
 $\hspace*{6mm}$ 	ac.cantidad ++ $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-$\hspace*{6mm}$	agregarAtras(tuplaA,res.categorias) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+$\hspace*{6mm}$	agregarAtras(tuplaA,ac.categorias) $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}: O(|c|+|h|)}\\
 \textbf{------------------------------------------------------------------------------\\}
@@ -1175,12 +1177,12 @@ $\hspace*{6mm}$ puntero(datosCat) actual $\vspace*{-9mm}$\begin{flushright}//O(1
 $\hspace*{6mm}$ 	{\textbf{if} c == ac.raiz $\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright} 
 $\hspace*{6mm}$	 	\textbf{then}  res $\leftarrow$ true $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 $\hspace*{6mm}$	 	ELSE actual $\leftarrow$ (obtener(h,ac.familia))$\vspace*{-9mm}$\begin{flushright}//O(|h|)\end{flushright} 
-$\hspace*{6mm}$	 	\textbf{while}(res $\neq$ true $\wedge$ actual $\neq$ ac.raiz) $\vspace*{-9mm}$\begin{flushright}//O($\star$(h))\end{flushright}
-$\hspace*{6mm}$ 	{\textbf{if} PERTENECE?((*puntPadre).hijos,actual)$\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+$\hspace*{6mm}$	 	\textbf{while}(res $\neq$ true $\wedge$ actual $\neq$ ac.raiz) $\vspace*{-9mm}$\begin{flushright}//O(altura de h)\end{flushright}
+$\hspace*{6mm}$ 	{\textbf{if} PERTENECE?((*puntPadre).hijos,actual)$\vspace*{-9mm}$\begin{flushright}//O(cantidad((*puntPadre).hijos))\end{flushright}
 $\hspace*{6mm}$ 	\textbf{then} res $\leftarrow$ true $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
-$\hspace*{6mm}$ 	ELSE actual $\leftarrow$ (*(obtener(actual,ac.familia)) ).abuelo FI} FI} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
+$\hspace*{6mm}$ 	ELSE actual $\leftarrow$ (*actual).abuelo FI} FI} $\vspace*{-9mm}$\begin{flushright}//O(1)\end{flushright}
 \textbf{------------------------------------------------------------------------------\\}
-  \textbf{\textbf{Complejidad}:O(|c|+|h|+$\star$(h))}\\
+  \textbf{\textbf{Complejidad}:O(|c|+|h|+ sumatoria hasta la altura de h de cantidad de hijos que tenga c)}\\
 \textbf{------------------------------------------------------------------------------\\}
 
 \textbf{------------------------------------------------------------------------------\\}
@@ -1195,7 +1197,7 @@ $\hspace*{6mm}$		res $\leftarrow$ (*(obtener(c,ac.familia))).altura $\vspace*{-9
 \textbf{------------------------------------------------------------------------------\\}
 \textbf{Algoritmo: 11}\\
 \textbf{------------------------------------------------------------------------------\\}
-\textbf{IHIJOS} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:itConj(puntero(datosCat))$\vspace*{-9mm}$\begin{flushright}\end{flushright}
+\textbf{IHIJOS} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:itConjUni(puntero(datosCat))$\vspace*{-9mm}$\begin{flushright}\end{flushright}
 $\hspace*{6mm}$res $\leftarrow$ crearIt((*obtener(c,ac.familia)).hijos)$\vspace*{-9mm}$\begin{flushright}//O(|c|)\end{flushright} 
 \textbf{------------------------------------------------------------------------------\\}
   \textbf{\textbf{Complejidad}:O(|c|)}\\
@@ -1222,33 +1224,44 @@ $\hspace*{6mm}$res $\leftarrow$ ac.raiz $\vspace*{-9mm}$\begin{flushright}//O(1)
 \subsection{\huge Descripcion de Complejidades de Algoritmos}	
   
     \begin{enumerate}
-     \item 
+     \item \textbf{ICATEGORIAS}:\\ Se crea un conjunto vacio, esto tarda O(1). Se crea un itLista, esto tarda O(1). \\ Se ingresa a un ciclo preguntando si haySiguiente a un iterador, esto cuesta O(1), se le agrega la categoria de cada tupla de datosCat de la lista ac.categorias, esto tarda O(|c|), luego se avanza el iterador, esto cuesta O(1).\\ Salir del ciclo cuesta O(longitud(ac.caterorias)) \\
+	\textbf{Orden Total:}O(1)+O(1)+O(1)+(suma O(|c|))+O(1)=\textbf{O(suma O(|c|))} donde suma es una sumatoria hasta longitud(ac.caterorias) de O(|c|)
       
-     \item 
+     \item \textbf{IRAIZ}:\\ Para que res sea la raiz necesitamos acceder a lo que apunta ac.raiz, que tarda O(1), y es una tupla que tiene el string categoria.\\ Y copiar el string cuesta O(|c|) donde c es un string. \\
+	\textbf{Orden Total:}\textbf{O(|c|)}
 
-     \item 
+     \item \textbf{IPADRE}:\\ Para que res sea el padre, que es un puntero a categoria, necesitamos obtener el puntero de datosCat que lleva la clave h. Esto tarda O(|h|). \\ Luego obtenemos lo que apunta, que nos da una tupla, para poder acceder a abuelo, que tambien es un puntero a datosCat. Obtenemos lo que apunta y accedemos a categoria para que sea copiada a res. \\ Y copiar el string cuesta O(|c|) donde c es un string. \\
+	\textbf{Orden Total:}\textbf{O(|h| + |c|)}
 
-      \item 
+     \item \textbf{IID}:\\ Para que res sea el id necesitamos obtener la categoria c del diccTrie ac.familia, que tarda O(|c|) y como significado da un puntero a datosCat. \\ Finalmente accedemos a lo apuntado para poder asignar a res el id de la tupla de datosCat\\
+	\textbf{Orden Total:}\textbf{O(|c|)}
       
-     \item 
+     \item \textbf{INUEVO}:\\ Res tiene que ser la tupla de la estructura.\\ A res.cantidad le asignamos 1, que tarda O(1). Creamos una nueva variable tuplaA, que es datosCat. Esto tarda O(1). \\ Creamos la variable punt, que es un puntero a datosCat y le asignamos la referencia de tuplaA. Y esto tarda O(1). A tuplaA le asignamos una nueva tupla datosCat, que en uno de sus componentes es el string c, y copiarse tarda O(|c|). Los demas componentes de la tupla tardan en copiarse O(1). \\ A res.raiz le asignamos punt, y tarda O(1). A res.alturaMax le asignamos 1, y tarda O(1). A res.familia le asignamos el diccTrie que nos da la operacion definir, a la cual le pasamos como clave el string c. Entonces definir tarda O(|c|). \\ A res.categorias le asignamos la lista que nos da la operacion AgregarAtras, que tarda O(1)\\
+	\textbf{Orden Total:} O(1)+O(1)+O(1)+O(|c|)+O(1)+O(1)+O(|c|)+O(1) =\textbf{O(|c|)}
 
-     \item 
+     \item \textbf{IAGREGAR}:\\ Obtenemos un puntero de datosCat de la categoria c usando la operacion obtener del diccTrie ac.familia, y lo asginamos a la variable puntPadre. Esto tarda O(|c|).\\ Comparamos la altura de la tupla que apunta puntPadre con ac.alturaMax, y esto tarda O(1). En caso que valga la guarda del if hacemos una suma y una asignacion, que cuesta O(1). En el caso contrario de la guarda, tambien hacemos una asignacion de nats, que tarda O(1).\\ Luego creamos y asignamos una tupla de datosCat tuplaA, que se le asigna una tupla con valores que tardan O(1) en copiarse, excepto por la categoria h que es string. Entonces la asignacion y creacion de esa tupla tarda O(|h|).\\ Creamos la variable punt que es un puntero a datosCat, y le asignamos la referencia de tuplaA. Esto tarda O(1). Agregamos al conjunto de punteros hijos que apunta puntPadre, el puntero punt, que tarda O(1). Definimos la clave h, con el significado punt al diccTrie ac.familia. Esto tarda O(|h|).\\ Incrementamos ac.cantidad, tardando O(1). Finalmente agregamos atras tuplaA a la lista ac.categorias. Esto tarda O(1)\\
+	\textbf{Orden Total:} O(|c|)+O(1)+O(1)+O(|h|)+O(1)+O(1)+O(|h|)+O(1)+O(1)=\textbf{O(|c| + |h|)}
 
-      \item 
+     \item \textbf{IALTURA}:\\ Para que res sea la altura, le asignamos ac.alturaMax, y al ser nat tarda O(1)\\
+	\textbf{Orden Total:}\textbf{O(1)}
       
-     \item 
+     \item \textbf{IESTA?}:\\ Para ver si una categoria c esta en nuestro arbolCategorias, vemos si esta definida la clave c en el diccTrie ac.familia. Y esto tarda O(|c|)\\
+	\textbf{Orden Total:}\textbf{O(|c|)} 
 
-     \item 
+     \item \textbf{IESSUBCATEGORIA?}:\\ Para ver si una categoria h es subcategoria de c en nuestra estructura ac, creamos un puntero de datosCat puntPadre, al cual le asignamos lo que nos da la operacion obtener, de la clave c en el diccTrie ac.familia. Esto tarda O(|c|). Luego inicializamos en falso res. \\ Creamos la variable actual que es un puntero de datosCat. Esto tarda O(1). Luego comparamos el string c con la categoria que apunta ac.raiz. Esto tarda O(|c|). En caso que valga la guarda ponesmos res en true, que tarda O(1), en caso contrario asignamos a el puntero actual lo que nos da obtener la categoria h en ac.familia. Y esto tarda O(|h|). \\ Seguimos con un ciclo en el que la guarda tarda O(1). Dentro preguntamos si actual pertenece al conjunto de punteros dado por los hijos de lo que apunta puntPadre. Esto tarda O(cantidad(hijos)). Si pertenece hacemos una asignacion que tarda O(1), sino asignamos a actual el abuelo de lo apuntado por el mismo puntero actual. Esto tarda O(1).\\ El ciclo se ejecuta tantas veces como la altura de h. Quedando asi la complejidad del ciclo como la sumatoria hasta altura de h de la cantidad de hijos que tenga c, y eso es O(altura(h) * cantidad(hijos de c))\\
+	\textbf{Orden Total:}\textbf{O(|c| + |h| + (altura(h) * cantidad(hijos de c)))} 
 
-\item 
+     \item \textbf{IALTURACATEGORIA?}:\\ Para que res sea la altura de la categoria c en el arbolCategorias ac, le asignamos la altura de la tupla apuntada por el obtener de una categoria c en un diccTrie ac.familia. Y esto tarda O(|C|)\\
+	\textbf{Orden Total:}\textbf{O(|c|)}
       
-     \item 
+     \item \textbf{IHIJOS}:\\ Le asignamos a res un iterador de conjunto, creado por la operacion crearIt, que tarda O(1), pero se le pasa el conjunto de punteros dado por hijos de la tupla que apunta el obtener de una categoria c en un diccTrie ac.familia. Y esto tarda O(|c|)\\
+	\textbf{Orden Total:}\textbf{O(|c|)}
 
-     \item 
+     \item \textbf{IOBTENER}:\\ Le asignamos a res el conjunto de punteros datosCat que nos da la operacion de obtener de una categoria c en un diccTrie ac.familia. Y esto tarda O(|c|)\\
+	\textbf{Orden Total:}\textbf{O(|c|)}
 
-\item 
-      
-     \item       
+     \item \textbf{IPUNTRAIZ}:\\ Le asignamos a res el puntero de datosCat dado por nuestra estructura ac en ac.raiz. Esto tarda O(1)\\
+	\textbf{Orden Total:}\textbf{O(1)}       
 
     \end{enumerate}
 		

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.15)  31 OCT 2012 02:10
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.24)  31 OCT 2012 02:28
 entering extended mode
  %&-line parsing enabled.
 **tp.tex
@@ -1258,181 +1258,182 @@ Underfull \hbox (badness 10000) in paragraph at lines 1061--1062
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 1082--1085
+Underfull \hbox (badness 10000) in paragraph at lines 1084--1087
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1091--1094
+Underfull \hbox (badness 10000) in paragraph at lines 1093--1096
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1100--1103
+Underfull \hbox (badness 10000) in paragraph at lines 1102--1105
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1109--1112
+Underfull \hbox (badness 10000) in paragraph at lines 1111--1114
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 1126--1129
+Underfull \hbox (badness 10000) in paragraph at lines 1128--1131
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1145--1148
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1150
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1154--1157
+Underfull \hbox (badness 10000) in paragraph at lines 1156--1159
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1163--1166
+Underfull \hbox (badness 10000) in paragraph at lines 1165--1168
 
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 1182--1185
+Underfull \hbox (badness 10000) in paragraph at lines 1184--1187
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1191--1194
+Underfull \hbox (badness 10000) in paragraph at lines 1193--1196
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1200--1203
+Underfull \hbox (badness 10000) in paragraph at lines 1202--1205
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1209--1212
+Underfull \hbox (badness 10000) in paragraph at lines 1211--1214
 
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 1218--1220
+Underfull \hbox (badness 10000) in paragraph at lines 1220--1222
+
+ []
+
+[26] [27]
+Underfull \hbox (badness 10000) in paragraph at lines 1294--1296
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1281--1283
-
- []
-
-[26]
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1294--1294
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1307--1307
 []\T1/cmr/m/n/10 EncAEstrDTEnNMov(buscado,actual,n)| $\OMS/cmsy/m/n/10 ^^Q$| []
  
  []
 
 
-Underfull \hbox (badness 3471) in paragraph at lines 1298--1298
+Underfull \hbox (badness 3471) in paragraph at lines 1311--1311
 []\T1/cmr/m/n/10 ((*actual).Arreglo[n] = bus-ca-do) $\OMS/cmsy/m/n/10 _$ \T1/cm
 r/m/n/10 (Es-taEnElAr-regloAc-tu-al?
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1298--1298
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1311--1311
 []\T1/cmr/m/n/10 EstaEnElArregloActual?(buscado,actual,n)| $\OMS/cmsy/m/n/10 ^^
 Q$| [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1302--1302
+Underfull \hbox (badness 10000) in paragraph at lines 1315--1315
 []\T1/cmr/m/n/10 EncAEstrDTEnNMov(buscado, (*ac-tu-al).Arreglo[i],n) $\OMS/cmsy
 /m/n/10 _$
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1302--1302
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1315--1315
 []\T1/cmr/m/n/10 RecurrenciaConLosHijos(buscado,actual,n,i)| $\OMS/cmsy/m/n/10 
 ^^Q$| [] 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1306--1306
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1319--1319
 []\T1/cmr/m/n/10 SonTodosNullOLosHijosLoSon(e)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1309--1309
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1322--1322
 []\T1/cmr/m/n/10 Los27SonNull(e,i)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1313--1313
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 1326--1326
 []\T1/cmr/m/n/10 (((*e).Arreglo[i] = null) $\OMS/cmsy/m/n/10 _$ \T1/cmr/m/n/10 
 SonTo-dos-Nul-lOLosHi-josLo-Son((*e).Arreglo[i])) $\OMS/cmsy/m/n/10 ^$
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1313--1313
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1326--1326
 []\T1/cmr/m/n/10 BuscarHijosNull(e,i)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1317--1318
+Underfull \hbox (badness 10000) in paragraph at lines 1330--1331
 
  []
 
-[27]
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1327--1327
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1340--1340
 []\T1/cmr/m/n/10 estaDefinido?(c,e)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1330--1330
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1343--1343
 []\T1/cmr/m/n/10 NodoDef?(c,n)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1333--1333
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1346--1346
 []\T1/cmr/m/n/10 numero(char)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1336--1336
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 1349--1349
 []\T1/cmr/m/n/10 ObtenerS(c,n)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
-AED: lastpage setting LastPage [28] (./tp.aux) ) 
+[29] AED: lastpage setting LastPage [30] (./tp.aux) ) 
 Here is how much of TeX's memory you used:
- 7001 strings out of 495061
- 95450 string characters out of 1182620
+ 7002 strings out of 495061
+ 95457 string characters out of 1182621
  197198 words of memory out of 3000000
  9893 multiletter control sequences out of 15000+50000
  18985 words of font info for 45 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,13n,43p,465b,417s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home/guido/.texmf-var/fonts/
-pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/j
-knappen/ec/ecbx1200.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/
-ecti1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1000.60
-0pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecxc1440.600pk> </home
-/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/guido/.tex
-mf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/guido/.texmf-var/font
-s/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/guido/.texmf-var/fonts/pk/ljfour
-/jknappen/ec/ecbx1440.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/e
-c/ecrm1200.600pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.
-600pk></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr
-/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texm
-f-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/f
-onts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/p
-ublic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
-ts/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pf
-b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on tp.pdf (28 pages, 296998 bytes).
+ 38i,13n,43p,1240b,417s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </home/agustin/.texmf-var
+/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/agustin/.texmf-var/fonts/pk
+/ljfour/jknappen/ec/ecbx1200.600pk> </home/agustin/.texmf-var/fonts/pk/ljfour/j
+knappen/ec/ecti1000.600pk> </home/agustin/.texmf-var/fonts/pk/ljfour/jknappen/e
+c/eccc1000.600pk> </home/agustin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecxc144
+0.600pk> </home/agustin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> 
+</home/agustin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/ag
+ustin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/agustin/.te
+xmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/agustin/.texmf-var/f
+onts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/agustin/.texmf-var/fonts/pk/l
+jfour/jknappen/ec/ecbx1728.600pk></usr/share/texmf-texlive/fonts/type1/public/a
+msfonts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
+cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/
+texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texliv
+e/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1
+/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy
+7.pfb>
+Output written on tp.pdf (30 pages, 303378 bytes).
 PDF statistics:
- 762 PDF objects out of 1000 (max. 8388607)
- 136 named destinations out of 1000 (max. 500000)
+ 772 PDF objects out of 1000 (max. 8388607)
+ 137 named destinations out of 1000 (max. 500000)
  169 words of extra memory for PDF output out of 10000 (max. 10000000)
 
