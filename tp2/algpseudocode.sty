@@ -37,7 +37,7 @@
 \algnewcommand\algorithmicrepeat{\textbf{repeat}}
 \algnewcommand\algorithmicuntil{\textbf{until}}
 \algnewcommand\algorithmicprocedure{\textbf{procedure}}
-\algnewcommand\algorithmicfunction{\textbf{}}
+\algnewcommand\algorithmicFunction{\textbf{}}
 \algnewcommand\algorithmicif{\textbf{if}}
 \algnewcommand\algorithmicthen{\textbf{then}}
 \algnewcommand\algorithmicelse{\textbf{else}}
@@ -59,9 +59,9 @@
 \algdef{SE}[PROCEDURE]{Procedure}{EndProcedure}%
    [2]{\algorithmicprocedure\ \textproc{#1}\ifthenelse{\equal{#2}{}}{}{(#2)}}%
    {\algorithmicend\ \algorithmicprocedure}%
-\algdef{SE}[FUNCTION]{Function}{EndFunction}%
-   [2]{\algorithmicfunction\ \textproc{#1}\ifthenelse{\equal{#2}{}}{}{(#2)}}%
-   {\algorithmicend\ \algorithmicfunction}%
+\algdef{SE}[Function]{Function}{End}%
+   [2]{\algorithmicFunction\ \textproc{#1}\ifthenelse{\equal{#2}{}}{}{(#2)}}%
+   {\algorithmicend\ \algorithmicFunction}%
 %
 \ifthenelse{\equal{\ALG@noend}{t}}%
    {%
@@ -70,7 +70,7 @@
    \algtext*{EndLoop}%
    \algtext*{EndIf}%
    \algtext*{EndProcedure}%
-   \algtext*{EndFunction}%
+   \algtext*{End}%
    }{}%
 %
 %      ***      OTHER DECLARATIONS      ***

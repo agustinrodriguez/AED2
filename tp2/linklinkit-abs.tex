@@ -1,0 +1,20 @@
+	    \textbf{Abs}: estrLLI e $\rightarrow$ linkLinkIT \\
+   	    Abs(e) $\igobs$ s: linkLinkIT | \\
+   	   \begin{flushright}
+ categorias(s) = e.arbolCategorias $\wedge$ \\
+ links(s)= todosLosLinks(s.listaLinks) $\wedge_{L}$ \\
+(\paratodo l:link)def?(l, e.accesosXLink)\Rightarrow_{L} categoriaLink(s,l) = *((obtener(l,e.accesosXLink))).catDLink $\wedge$ \\
+fechaActual(s) = e.actual $\wedge$ \\
+(\paratodo l:link) l $\in$ links(e) \Rightarrow_{L} fechaUltimoAcceso(s,l) = ultimo((*((obtener(s,e.accesosXLink))).accesos).dia) $\wedge$ \\
+(\paratodo l:link)(\paratodo f:nat) l$\in$ links(e) $\wedge_{L}$ esReciente?(e,l,f) \Rightarrow_{L}\\ accesoRecienteDia(s,l,f) = cantidadPorDia(f,*((obtener(s,e.accesosXLink))).accesos)
+\end{flushright}
+	
+Auxiliares\\
+
+\tadOperacion{cantidadPorDia}{estrLLI, fecha, lista(acceso)}{nat}{esReciente?(e,prim(ls).link,f)}
+
+\tadAxioma{cantidadPorDia(e,f,ls)}{\IF\ f == (prim(ls)).dia THEN prim(ls).cantAccesos ELSE cantidadPorDia(f,fin(ls)) FI}
+
+\tadOperacion{todosLosLinks}{secu(datosLink)}{conj(link)}{}
+
+\tadAxioma{todosLosLinks(ls)}{\IF\ $\emptyset$?(ls) THEN $\emptyset$ ELSE Ag((prim(ls)).link,todosLosLinks(fin(ls))) FI}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.24)  31 OCT 2012 02:28
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.2)  31 OCT 2012 15:42
 entering extended mode
  %&-line parsing enabled.
 **tp.tex
@@ -52,8 +52,217 @@ Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks16
 \inpenc@posthook=\toks17
 
-(/usr/share/texmf-texlive/tex/latex/base/latin1.def
-File: latin1.def 2008/03/30 v1.1d Input encoding file
+(/usr/share/texmf-texlive/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+Now handling font encoding OML ...
+... no UTF-8 mapping file for font encoding OML
+Now handling font encoding T1 ...
+... processing UTF-8 mapping file for font encoding T1
+
+(/usr/share/texmf-texlive/tex/latex/base/t1enc.dfu
+File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AB (decimal 171)
+   defining Unicode char U+00BB (decimal 187)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C0 (decimal 192)
+   defining Unicode char U+00C1 (decimal 193)
+   defining Unicode char U+00C2 (decimal 194)
+   defining Unicode char U+00C3 (decimal 195)
+   defining Unicode char U+00C4 (decimal 196)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00C7 (decimal 199)
+   defining Unicode char U+00C8 (decimal 200)
+   defining Unicode char U+00C9 (decimal 201)
+   defining Unicode char U+00CA (decimal 202)
+   defining Unicode char U+00CB (decimal 203)
+   defining Unicode char U+00CC (decimal 204)
+   defining Unicode char U+00CD (decimal 205)
+   defining Unicode char U+00CE (decimal 206)
+   defining Unicode char U+00CF (decimal 207)
+   defining Unicode char U+00D0 (decimal 208)
+   defining Unicode char U+00D1 (decimal 209)
+   defining Unicode char U+00D2 (decimal 210)
+   defining Unicode char U+00D3 (decimal 211)
+   defining Unicode char U+00D4 (decimal 212)
+   defining Unicode char U+00D5 (decimal 213)
+   defining Unicode char U+00D6 (decimal 214)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00D9 (decimal 217)
+   defining Unicode char U+00DA (decimal 218)
+   defining Unicode char U+00DB (decimal 219)
+   defining Unicode char U+00DC (decimal 220)
+   defining Unicode char U+00DD (decimal 221)
+   defining Unicode char U+00DE (decimal 222)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E0 (decimal 224)
+   defining Unicode char U+00E1 (decimal 225)
+   defining Unicode char U+00E2 (decimal 226)
+   defining Unicode char U+00E3 (decimal 227)
+   defining Unicode char U+00E4 (decimal 228)
+   defining Unicode char U+00E5 (decimal 229)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00E7 (decimal 231)
+   defining Unicode char U+00E8 (decimal 232)
+   defining Unicode char U+00E9 (decimal 233)
+   defining Unicode char U+00EA (decimal 234)
+   defining Unicode char U+00EB (decimal 235)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F0 (decimal 240)
+   defining Unicode char U+00F1 (decimal 241)
+   defining Unicode char U+00F2 (decimal 242)
+   defining Unicode char U+00F3 (decimal 243)
+   defining Unicode char U+00F4 (decimal 244)
+   defining Unicode char U+00F5 (decimal 245)
+   defining Unicode char U+00F6 (decimal 246)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+00F9 (decimal 249)
+   defining Unicode char U+00FA (decimal 250)
+   defining Unicode char U+00FB (decimal 251)
+   defining Unicode char U+00FC (decimal 252)
+   defining Unicode char U+00FD (decimal 253)
+   defining Unicode char U+00FE (decimal 254)
+   defining Unicode char U+00FF (decimal 255)
+   defining Unicode char U+0102 (decimal 258)
+   defining Unicode char U+0103 (decimal 259)
+   defining Unicode char U+0104 (decimal 260)
+   defining Unicode char U+0105 (decimal 261)
+   defining Unicode char U+0106 (decimal 262)
+   defining Unicode char U+0107 (decimal 263)
+   defining Unicode char U+010C (decimal 268)
+   defining Unicode char U+010D (decimal 269)
+   defining Unicode char U+010E (decimal 270)
+   defining Unicode char U+010F (decimal 271)
+   defining Unicode char U+0110 (decimal 272)
+   defining Unicode char U+0111 (decimal 273)
+   defining Unicode char U+0118 (decimal 280)
+   defining Unicode char U+0119 (decimal 281)
+   defining Unicode char U+011A (decimal 282)
+   defining Unicode char U+011B (decimal 283)
+   defining Unicode char U+011E (decimal 286)
+   defining Unicode char U+011F (decimal 287)
+   defining Unicode char U+0130 (decimal 304)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0132 (decimal 306)
+   defining Unicode char U+0133 (decimal 307)
+   defining Unicode char U+0139 (decimal 313)
+   defining Unicode char U+013A (decimal 314)
+   defining Unicode char U+013D (decimal 317)
+   defining Unicode char U+013E (decimal 318)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0143 (decimal 323)
+   defining Unicode char U+0144 (decimal 324)
+   defining Unicode char U+0147 (decimal 327)
+   defining Unicode char U+0148 (decimal 328)
+   defining Unicode char U+014A (decimal 330)
+   defining Unicode char U+014B (decimal 331)
+   defining Unicode char U+0150 (decimal 336)
+   defining Unicode char U+0151 (decimal 337)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0154 (decimal 340)
+   defining Unicode char U+0155 (decimal 341)
+   defining Unicode char U+0158 (decimal 344)
+   defining Unicode char U+0159 (decimal 345)
+   defining Unicode char U+015A (decimal 346)
+   defining Unicode char U+015B (decimal 347)
+   defining Unicode char U+015E (decimal 350)
+   defining Unicode char U+015F (decimal 351)
+   defining Unicode char U+0160 (decimal 352)
+   defining Unicode char U+0161 (decimal 353)
+   defining Unicode char U+0162 (decimal 354)
+   defining Unicode char U+0163 (decimal 355)
+   defining Unicode char U+0164 (decimal 356)
+   defining Unicode char U+0165 (decimal 357)
+   defining Unicode char U+016E (decimal 366)
+   defining Unicode char U+016F (decimal 367)
+   defining Unicode char U+0170 (decimal 368)
+   defining Unicode char U+0171 (decimal 369)
+   defining Unicode char U+0178 (decimal 376)
+   defining Unicode char U+0179 (decimal 377)
+   defining Unicode char U+017A (decimal 378)
+   defining Unicode char U+017B (decimal 379)
+   defining Unicode char U+017C (decimal 380)
+   defining Unicode char U+017D (decimal 381)
+   defining Unicode char U+017E (decimal 382)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201A (decimal 8218)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+   defining Unicode char U+201E (decimal 8222)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+2039 (decimal 8249)
+   defining Unicode char U+203A (decimal 8250)
+   defining Unicode char U+2423 (decimal 9251)
+)
+Now handling font encoding OT1 ...
+... processing UTF-8 mapping file for font encoding OT1
+
+(/usr/share/texmf-texlive/tex/latex/base/ot1enc.dfu
+File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00B8 (decimal 184)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+)
+Now handling font encoding OMS ...
+... processing UTF-8 mapping file for font encoding OMS
+
+(/usr/share/texmf-texlive/tex/latex/base/omsenc.dfu
+File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+)
+Now handling font encoding OMX ...
+... no UTF-8 mapping file for font encoding OMX
+Now handling font encoding U ...
+... no UTF-8 mapping file for font encoding U
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+02C6 (decimal 710)
+   defining Unicode char U+02DC (decimal 732)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2026 (decimal 8230)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2423 (decimal 9251)
 ))
 (/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
@@ -86,37 +295,14 @@ Package babel Info: Making " an active character on input line 492.
 Package babel Info: Making . an active character on input line 585.
 Package babel Info: Making < an active character on input line 630.
 Package babel Info: Making > an active character on input line 630.
-)) (/usr/share/texmf-texlive/tex/latex/tools/indentfirst.sty
-Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
-)
-(/usr/share/texmf-texlive/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip43
-\f@ncyO@elh=\skip44
-\f@ncyO@erh=\skip45
-\f@ncyO@olh=\skip46
-\f@ncyO@orh=\skip47
-\f@ncyO@elf=\skip48
-\f@ncyO@erf=\skip49
-\f@ncyO@olf=\skip50
-\f@ncyO@orf=\skip51
-)
-(/usr/share/texmf-texlive/tex/latex/base/latexsym.sty
-Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
-\symlasy=\mathgroup4
-LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
-(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
-)
-(/usr/share/texmf-texlive/tex/latex/lastpage/lastpage.sty
-Package: lastpage 1994/06/25 v0.1b LaTeX2e package for refs to last page number
- (JPG)
-) (./aed2-symb.sty
+)) (./aed2-symb.sty
 Package: aed2-symb 2004/04/17 - Para componer simbolitos frecuentemente usados 
 en AED2
 
 Cargando package 'aed2-symb'
 (/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
-\@mathmargin=\skip52
+\@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
@@ -166,8 +352,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 \totwidth@=\dimen115
 \lineht@=\dimen116
 \@envbody=\toks22
-\multlinegap=\skip53
-\multlinetaggap=\skip54
+\multlinegap=\skip44
+\multlinetaggap=\skip45
 \mathdisplay@stack=\toks23
 LaTeX Info: Redefining \[ on input line 2666.
 LaTeX Info: Redefining \] on input line 2667.
@@ -177,8 +363,8 @@ Package: amssymb 2009/06/22 v3.00
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
-\symAMSa=\mathgroup5
-\symAMSb=\mathgroup6
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 ))
@@ -207,9 +393,9 @@ Package: aed2-itef 2010/03/16 - if-then-else-fi en lenguaje de TADs.
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
 Cargando package 'itef' (2010/03/16)
-\itefIndentacion=\skip55
-\itef@widthUnaLinea=\skip56
-\itef@linewidth=\skip57
+\itefIndentacion=\skip46
+\itef@widthUnaLinea=\skip47
+\itef@linewidth=\skip48
 ) (./aed2-tad.sty
 Package: aed2-tad 2011/04/04 - Para especificar TADs en formato AED2
  (/usr/share/texmf-texlive/tex/latex/tools/calc.sty
@@ -218,41 +404,85 @@ Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Bcount=\count108
 \calc@Adimen=\dimen117
 \calc@Bdimen=\dimen118
-\calc@Askip=\skip58
-\calc@Bskip=\skip59
+\calc@Askip=\skip49
+\calc@Bskip=\skip50
 LaTeX Info: Redefining \setlength on input line 76.
 LaTeX Info: Redefining \addtolength on input line 77.
 \calc@Ccount=\count109
-\calc@Cskip=\skip60
+\calc@Cskip=\skip51
 )
 (./aed2-tokenizer.sty
 Package: aed2-tokenizer 2010/03/12
 )
 Package aed2-tad Info: Cargando package 'tad' (04/04/2011) on input line 26.
-\tadMargen=\skip61
-\tadSubMargen=\skip62
-\tadAnchoEncabezados=\skip63
-\tadSeparacionTitulos=\skip64
-\tadSeparacionFunciones=\skip65
-\tadAnchoNombreFunciones=\skip66
-\tadAnchoTipoFunciones=\skip67
-\tadSeparacionAxiomas=\skip68
-\tadAnchoIzquierdaAxioma=\skip69
-\tad@oldparindent=\skip70
-\pbox@len=\skip71
-\tad@ifFitsElse@largo=\skip72
-\igualobs@pre=\skip73
-\igualobs@max=\skip74
-\igualobssimple@max=\skip75
+\tadMargen=\skip52
+\tadSubMargen=\skip53
+\tadAnchoEncabezados=\skip54
+\tadSeparacionTitulos=\skip55
+\tadSeparacionFunciones=\skip56
+\tadAnchoNombreFunciones=\skip57
+\tadAnchoTipoFunciones=\skip58
+\tadSeparacionAxiomas=\skip59
+\tadAnchoIzquierdaAxioma=\skip60
+\tad@oldparindent=\skip61
+\pbox@len=\skip62
+\tad@ifFitsElse@largo=\skip63
+\igualobs@pre=\skip64
+\igualobs@max=\skip65
+\igualobssimple@max=\skip66
 \@Signatura=\box28
-\tadOperacion@textwidth=\skip76
-\tadAxioma@lenEquiv=\skip77
-\tadAxioma@lenDerecha=\skip78
+\tadOperacion@textwidth=\skip67
+\tadAxioma@lenEquiv=\skip68
+\tadAxioma@lenDerecha=\skip69
+) (./newalgo.sty
+Package: newalgo 2005/09/20 Format code algorithms nicely
+\algstack=\box29
+\algtab=\box30
+\algline=\count110
+\alga=\toks28
+\algb=\toks29
+) (./interfaz.sty
+Package: interfaz 2010/10/31 v0.1 Para especificar interfaces en formato AED2
+
+Cargando package 'interfaz' v0.1 (31/10/2010)
 ) (./caratula.sty
 Package: caratula 2003/4/13 v0.1 Para componer caratulas de TPs del DC
 
 Cargando package 'caratula' v0.2 (21/4/2003)
-\intlist=\toks28
+\intlist=\toks30
+) (./algorithm.sty
+Package: algorithm 
+
+Document Style `algorithm' - floating environment
+(/usr/share/texmf-texlive/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count111
+\float@exts=\toks31
+\float@box=\box31
+\@float@everytoks=\toks32
+\@floatcapt=\box32
+)
+\@float@every@algorithm=\toks33
+\c@algorithm=\count112
+) (./algpseudocode.sty
+Package: algpseudocode 
+
+(./algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count113
+\c@ALG@rem=\count114
+\c@ALG@nested=\count115
+\ALG@tlm=\skip70
+\ALG@thistlm=\skip71
+\c@ALG@Lnr=\count116
+\c@ALG@blocknr=\count117
+\c@ALG@storecount=\count118
+\c@ALG@tmpcounter=\count119
+\ALG@tmplength=\skip72
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
 ) (/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
 
@@ -267,11 +497,13 @@ O)
 Package: xcolor-patch 2009/10/02 xcolor patch
 ))
 \@linkdim=\dimen119
-\Hy@linkcounter=\count110
-\Hy@pagecounter=\count111
+\Hy@linkcounter=\count120
+\Hy@pagecounter=\count121
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
 )
 (/usr/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
 Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
@@ -334,10 +566,10 @@ Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 )))
-\Fld@menulength=\count112
+\Fld@menulength=\count122
 \Field@Width=\dimen120
 \Fld@charsize=\dimen121
-\Field@toks=\toks29
+\Field@toks=\toks34
 Package hyperref Info: Hyper figures OFF on input line 4377.
 Package hyperref Info: Link nesting OFF on input line 4382.
 Package hyperref Info: Hyper index ON on input line 4385.
@@ -349,31 +581,31 @@ Package hyperref Info: PDF/A mode OFF on input line 4407.
 (/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
 )
-\Hy@abspage=\count113
-\c@Item=\count114
-\c@Hfootnote=\count115
+\Hy@abspage=\count123
+\c@Item=\count124
+\c@Hfootnote=\count125
 )
 *hyperref using default driver hpdftex*
 (/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
-\Fld@listcount=\count116
+\Fld@listcount=\count126
 ) (./tp.aux)
 \openout1 = `tp.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
 
 *geometry auto-detecting driver*
 *geometry detected driver: pdftex*
@@ -384,7 +616,7 @@ twocolumn: --
 twoside: --
 asymmetric: --
 h-parts: 42.67912pt, 512.14963pt, 42.67912pt
-v-parts: 42.67912pt, 759.6886pt, 42.67912pt
+v-parts: 56.9055pt, 731.23584pt, 56.9055pt
 hmarginratio: --
 vmarginratio: --
 lines: --
@@ -399,10 +631,10 @@ driver: pdftex
 \paperwidth  597.50787pt
 \paperheight 845.04684pt
 \textwidth  512.14963pt
-\textheight 759.6886pt
+\textheight 731.23584pt
 \oddsidemargin  -29.59087pt
 \evensidemargin -29.59087pt
-\topmargin  -66.59087pt
+\topmargin  -52.36449pt
 \headheight 12.0pt
 \headsep    25.0pt
 \footskip   30.0pt
@@ -426,53 +658,48 @@ Package color Info: Driver file: pdftex.def on input line 130.
 
 (/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
-\Gread@gobject=\count117
+\Gread@gobject=\count127
 
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count118
+\scratchcounter=\count128
 \scratchdimen=\dimen122
-\scratchbox=\box29
-\nofMPsegments=\count119
-\nofMParguments=\count120
-\everyMPshowfont=\toks30
-\MPscratchCnt=\count121
+\scratchbox=\box33
+\nofMPsegments=\count129
+\nofMParguments=\count130
+\everyMPshowfont=\toks35
+\MPscratchCnt=\count131
 \MPscratchDim=\dimen123
-\MPnumerator=\count122
-\everyMPtoPDFconversion=\toks31
+\MPnumerator=\count132
+\everyMPtoPDFconversion=\toks36
 )))
-Package hyperref Info: Link coloring ON on input line 24.
+Package hyperref Info: Link coloring ON on input line 35.
  (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count123
+\c@section@level=\count133
 )
-LaTeX Info: Redefining \ref on input line 24.
-LaTeX Info: Redefining \pageref on input line 24.
+LaTeX Info: Redefining \ref on input line 35.
+LaTeX Info: Redefining \pageref on input line 35.
  (./tp.out)
 (./tp.out)
 \@outlinefile=\write3
 \openout3 = `tp.out'.
 
-\AtBeginShipoutBox=\box30
-LaTeX Font Info:    Try loading font information for U+lasy on input line 26.
- (/usr/share/texmf-texlive/tex/latex/base/ulasy.fd
-File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-)
-LaTeX Font Info:    Try loading font information for U+msa on input line 26.
-
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+\AtBeginShipoutBox=\box34
+LaTeX Font Info:    Try loading font information for U+msa on input line 37.
+ (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 26.
+LaTeX Font Info:    Try loading font information for U+msb on input line 37.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 26.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 37.
 
 (/usr/share/texmf-texlive/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
@@ -480,92 +707,158 @@ File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
-LaTeX Warning: Command \^ invalid in math mode on input line 62.
+! Package inputenc Error: Unicode char \u8:éne not set up for use with LaTeX.
 
-Missing character: There is no Â in font cmr10!
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.42 \tadGeneros{$\bf{lli}$}
+                            
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
-LaTeX Warning: Command \^ invalid in math mode on input line 62.
 
-Missing character: There is no Â in font cmr10!
+! Package inputenc Error: Unicode char \u8:éne not set up for use with LaTeX.
 
-LaTeX Warning: Command \^ invalid in math mode on input line 62.
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.42 \tadGeneros{$\bf{lli}$}
+                            
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
-Missing character: There is no Â in font cmr10!
-Missing character: There is no Â in font cmr10!
-Missing character: There is no Â in font cmr10!
-Missing character: There is no Â in font cmr7!
-Missing character: There is no Â in font cmr7!
-Missing character: There is no Â in font cmr5!
-Missing character: There is no Â in font cmr5!
 
-Overfull \hbox (22.02238pt too wide) in paragraph at lines 69--69
+! Package inputenc Error: Unicode char \u8:ási not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.59 \tadObservadores
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Unicode char \u8:Â¬ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.73 ... links(s)) \wedge esta?(c,categorias(s))$}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Unicode char \u8:Â¬ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.73 ... links(s)) \wedge esta?(c,categorias(s))$}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Unicode char \u8:Â¬ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.73 ... links(s)) \wedge esta?(c,categorias(s))$}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (22.02238pt too wide) in paragraph at lines 80--80
 []\T1/cmr/m/n/10 linksOrdenadosPorAccesos 
  []
 
 
-Overfull \hbox (2.63823pt too wide) in paragraph at lines 74--74
+Overfull \hbox (2.63823pt too wide) in paragraph at lines 85--85
 []\T1/cmr/m/n/10 linksCategoriasOHijos 
  []
 
 
-Overfull \hbox (27.21556pt too wide) in paragraph at lines 75--75
+Overfull \hbox (27.21556pt too wide) in paragraph at lines 86--86
 []\T1/cmr/m/n/10 filtrarLinksCategoriaOHijos 
  []
 
 
-Overfull \hbox (27.04893pt too wide) in paragraph at lines 76--76
+Overfull \hbox (27.04893pt too wide) in paragraph at lines 87--87
 []\T1/cmr/m/n/10 diasRecientesParaCategoria 
  []
 
 
-LaTeX Warning: Command \^ invalid in math mode on input line 77.
+! Package inputenc Error: Unicode char \u8:Â¬ not set up for use with LaTeX.
 
-Missing character: There is no Â in font cmr10!
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.88 ... ls \subseteq linksCategoriasOHijos(s,c)$}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
-LaTeX Warning: Command \^ invalid in math mode on input line 77.
 
-Missing character: There is no Â in font cmr10!
+! Package inputenc Error: Unicode char \u8:Â¬ not set up for use with LaTeX.
 
-LaTeX Warning: Command \^ invalid in math mode on input line 77.
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.88 ... ls \subseteq linksCategoriasOHijos(s,c)$}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
-Missing character: There is no Â in font cmr10!
-Missing character: There is no Â in font cmr10!
-Missing character: There is no Â in font cmr10!
-Missing character: There is no Â in font cmr7!
-Missing character: There is no Â in font cmr7!
-Missing character: There is no Â in font cmr5!
-Missing character: There is no Â in font cmr5!
 
-Overfull \hbox (7.27599pt too wide) in paragraph at lines 78--78
+! Package inputenc Error: Unicode char \u8:Â¬ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.88 ... ls \subseteq linksCategoriasOHijos(s,c)$}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (7.27599pt too wide) in paragraph at lines 89--89
 []\T1/cmr/m/n/10 sumarAccesosRecientes 
  []
 
 
-Overfull \hbox (40.35124pt too wide) in paragraph at lines 79--79
+Overfull \hbox (40.35124pt too wide) in paragraph at lines 90--90
 []\T1/cmr/m/n/10 linksOrdenadosPorAccesosAux 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--84
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 89--90
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 93--94
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 97--98
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 100--101
 
  []
@@ -576,864 +869,1642 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--105
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--116
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--127
 []\T1/cmr/bx/n/10 if  \T1/cmr/m/n/10 ac-ce-sos-Re-cientes(s,c,dameUno(ls)) $\OM
 L/cmm/m/it/10 >$ \T1/cmr/m/n/10 ac-ce-sos-Re-
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 122--122
+Underfull \hbox (badness 10000) in paragraph at lines 133--133
 []\T1/cmr/m/n/10 diasRecientes(s, linkConUl-ti-moAc-ce-so(s, c, linksCat-e-go-r
 iaO-Hi-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--128
+Underfull \hbox (badness 10000) in paragraph at lines 139--139
 
  []
 
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 128.
+(hyperref)                than one, level fixed on input line 139.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 128.
+(hyperref)                removing `\\' on input line 139.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--133
+Underfull \hbox (badness 10000) in paragraph at lines 140--144
+
+ []
+
+(./linklinkit-prepost.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--7
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 135--141
+Underfull \hbox (badness 10000) in paragraph at lines 1--7
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 135--141
+Underfull \hbox (badness 10000) in paragraph at lines 9--15
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--149
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 143--149
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 150--156
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 150--156
+Underfull \hbox (badness 10000) in paragraph at lines 9--15
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 157--163
+Underfull \hbox (badness 10000) in paragraph at lines 16--22
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 157--163
+Underfull \hbox (badness 10000) in paragraph at lines 16--22
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--170
+Underfull \hbox (badness 10000) in paragraph at lines 23--29
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--170
+Underfull \hbox (badness 10000) in paragraph at lines 23--29
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 171--177
+Underfull \hbox (badness 10000) in paragraph at lines 30--36
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 171--177
+Underfull \hbox (badness 10000) in paragraph at lines 30--36
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--184
+Underfull \hbox (badness 10000) in paragraph at lines 37--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--184
+Underfull \hbox (badness 10000) in paragraph at lines 37--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--191
+Underfull \hbox (badness 10000) in paragraph at lines 43--49
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--191
+Underfull \hbox (badness 10000) in paragraph at lines 43--49
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--198
+Underfull \hbox (badness 10000) in paragraph at lines 50--55
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--198
+Underfull \hbox (badness 10000) in paragraph at lines 50--55
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 199--205
+Underfull \hbox (badness 10000) in paragraph at lines 56--61
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 199--205
+Underfull \hbox (badness 10000) in paragraph at lines 56--61
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 206--212
+Underfull \hbox (badness 10000) in paragraph at lines 62--67
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 206--212
+Underfull \hbox (badness 10000) in paragraph at lines 62--67
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 213--219
+Underfull \hbox (badness 10000) in paragraph at lines 68--73
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--219
+Underfull \hbox (badness 10000) in paragraph at lines 68--73
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 220--226
+Underfull \hbox (badness 10000) in paragraph at lines 74--79
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 220--226
+Underfull \hbox (badness 10000) in paragraph at lines 74--79
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--233
+Underfull \hbox (badness 10000) in paragraph at lines 80--85
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--233
+Underfull \hbox (badness 10000) in paragraph at lines 80--85
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--240
+Underfull \hbox (badness 10000) in paragraph at lines 86--91
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--240
+Underfull \hbox (badness 10000) in paragraph at lines 86--91
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 241--247
+Underfull \hbox (badness 10000) in paragraph at lines 92--97
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 241--247
+Underfull \hbox (badness 10000) in paragraph at lines 92--97
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 248--254
+Underfull \hbox (badness 10000) in paragraph at lines 99--104
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 248--254
+Underfull \hbox (badness 10000) in paragraph at lines 99--104
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 255--261
+Underfull \hbox (badness 10000) in paragraph at lines 106--111
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 255--261
+Underfull \hbox (badness 10000) in paragraph at lines 106--111
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--117
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--117
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 262--268
+Underfull \hbox (badness 10000) in paragraph at lines 118--123
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 262--268
+Underfull \hbox (badness 10000) in paragraph at lines 118--123
+
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.125 	\textbf{pre} $\equiv$ {ls $\igobs$ ls_
+                                             {0}}\\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+l.125 	\textbf{pre} $\equiv$ {ls $\igobs$ ls_{0}}
+                                                 \\
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.126 	\textbf{post} $\equiv
+                            $ {res $\igobs$ buscarMax(ls_{0}) }\\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.126 ...ost} $\equiv$ {res $\igobs$ buscarMax(ls_
+                                                  {0}) }\\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+l.126 ...\equiv$ {res $\igobs$ buscarMax(ls_{0}) }
+                                                  \\
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.129 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--129
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 269--275
+Underfull \hbox (badness 10000) in paragraph at lines 124--129
+
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.131 	\textbf{pre} $\equiv$ {ls $\igobs$ ls_
+                                             {0}}\\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+l.131 	\textbf{pre} $\equiv$ {ls $\igobs$ ls_{0}}
+                                                 \\
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.132 	\textbf{post} $\equiv
+                            $ {ls$\igobs$ estaOrdenada(ls_{0})}\\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.132 ...st} $\equiv$ {ls$\igobs$ estaOrdenada(ls_
+                                                  {0})}\\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+l.132 ...\equiv$ {ls$\igobs$ estaOrdenada(ls_{0})}
+                                                  \\
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.135 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--135
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 269--275
+Underfull \hbox (badness 10000) in paragraph at lines 130--135
 
  []
 
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 331--333
+) [7]
+Underfull \hbox (badness 10000) in paragraph at lines 203--205
 
  []
 
 
-Overfull \hbox (174.66347pt too wide) in paragraph at lines 344--346
+Overfull \hbox (174.66347pt too wide) in paragraph at lines 216--218
 \T1/cmr/m/n/10 (esta?((obtener(l,e.accesosXLink)),arrayCatLinks[id(c,e.arbolCat
 egorias)]) $\OMS/cmsy/m/n/10 $$ \T1/cmr/m/n/10 esPre-de-ce-sor(c,(*obtener(l,e.
 accesosXLink)).categoria,e.arbolCategorias))) 
  []
 
-
-Overfull \hbox (1.1778pt too wide) in paragraph at lines 349--350
-[]\T1/cmr/m/n/10 ($\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 i; i[]$\T1/cmr/m/n/10 : n
-at) i <long(e.listaLinks) $\OMS/cmsy/m/n/10 ^$ \T1/cmr/m/n/10 i' <long(e.listaL
-inks) $\OMS/cmsy/m/n/10 ! []$ \T1/cmr/m/n/10 e.listaLinks$[]$.link = e.listaLin
-ks$[]$.link $\OML/cmm/m/it/10 leftrightarrow$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 359--361
+(./linklinkit-abs.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--3
 
  []
 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.6 ...o l:link)def?(l, e.accesosXLink)\Rightarrow
+                                                  _{L} categoriaLink(s,l) = ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
-Underfull \hbox (badness 10000) in paragraph at lines 370--371
+! Missing $ inserted.
+<inserted text> 
+                $
+l.6 ...btener(l,e.accesosXLink))).catDLink $\wedge
+                                                  $ \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.8 ...ratodo l:link) l $\in$ links(e) \Rightarrow
+                                                  _{L} fechaUltimoAcceso(s,l...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.8 ...r(s,e.accesosXLink))).accesos).dia) $\wedge
+                                                  $ \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.9 ...$\wedge_{L}$ esReciente?(e,l,f) \Rightarrow
+                                                  _{L}\\ accesoRecienteDia(s...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.9 ...e_{L}$ esReciente?(e,l,f) \Rightarrow_{L}\\
+                                                   accesoRecienteDia(s,l,f) ...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.9 ...e_{L}$ esReciente?(e,l,f) \Rightarrow_{L}\\
+                                                   accesoRecienteDia(s,l,f) ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.9 ...e_{L}$ esReciente?(e,l,f) \Rightarrow_{L}\\
+                                                   accesoRecienteDia(s,l,f) ...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.9 ...e_{L}$ esReciente?(e,l,f) \Rightarrow_{L}\\
+                                                   accesoRecienteDia(s,l,f) ...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 374--374
-[]\T1/cmr/m/n/10 cantidadPorDia(f,ls)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 16--16
+[]\T1/cmr/m/n/10 cantidadPorDia(e,f,ls)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 378--378
-[]\T1/cmr/m/n/10 listaLinks(ls)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 20--20
+[]\T1/cmr/m/n/10 todosLosLinks(ls)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
-
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 382--382
+)
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 234--234
 []\T1/cmr/m/n/10 sinRepetidos(ls)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
-
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 386--386
+[8]
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 238--238
 []\T1/cmr/m/n/10 hayOtro(x,ls)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 390--390
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 242--242
 []\T1/cmr/m/n/10 fechasCorrectas(x,ls)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
-[8]
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 394--394
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 246--246
 []\T1/cmr/m/n/10 accesoOrdenadoNoRepetido(ls)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 398--398
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 250--250
 []\T1/cmr/m/n/10 cantidad(ls)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 408--411
+Underfull \hbox (badness 10000) in paragraph at lines 260--263
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 422--425
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 431--434
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 440--443
+Underfull \hbox (badness 10000) in paragraph at lines 274--277
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 449--457
+Underfull \hbox (badness 10000) in paragraph at lines 283--286
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 449--457
+Underfull \hbox (badness 10000) in paragraph at lines 292--295
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 449--457
+Underfull \hbox (badness 10000) in paragraph at lines 301--309
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 449--457
+Underfull \hbox (badness 10000) in paragraph at lines 301--309
 
  []
 
 
-LaTeX Warning: Command \^ invalid in math mode on input line 461.
-
-Missing character: There is no Â in font cmr10!
-
-Underfull \hbox (badness 10000) in paragraph at lines 466--469
+Underfull \hbox (badness 10000) in paragraph at lines 301--309
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 486--489
+Underfull \hbox (badness 10000) in paragraph at lines 301--309
+
+ []
+
+
+! Package inputenc Error: Unicode char \u8:Â¬ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.313   $\hspace*{6mm}$while($Â¬
+                                $esVacia?(accesos) $\wedge$ res = 0)$\vspace...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--321
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 505--508
+Underfull \hbox (badness 10000) in paragraph at lines 338--341
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 524--527
+Underfull \hbox (badness 10000) in paragraph at lines 357--360
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 533--536
+Underfull \hbox (badness 10000) in paragraph at lines 376--379
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 542--545
+Underfull \hbox (badness 10000) in paragraph at lines 385--388
 
  []
 
 
-LaTeX Warning: Command \^ invalid in math mode on input line 553.
-
-Missing character: There is no Â in font cmr10!
-
-Underfull \hbox (badness 10000) in paragraph at lines 565--568
+Underfull \hbox (badness 10000) in paragraph at lines 394--397
 
  []
+
+
+! Package inputenc Error: Unicode char \u8:Â¬ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.405 	$\hspace*{6mm}$\textbf{if} $Â¬
+                                     $iestaOrdenada?(s.arrayCantLinks[id]) $...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 584--587
+Underfull \hbox (badness 10000) in paragraph at lines 417--420
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 603--606
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 613--616
+Underfull \hbox (badness 10000) in paragraph at lines 436--439
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 622--625
+Underfull \hbox (badness 10000) in paragraph at lines 455--458
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--634
+Underfull \hbox (badness 10000) in paragraph at lines 465--468
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 643--646
+Underfull \hbox (badness 10000) in paragraph at lines 474--477
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 670--674
+Underfull \hbox (badness 10000) in paragraph at lines 483--486
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 684--687
+Underfull \hbox (badness 10000) in paragraph at lines 495--498
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 698--701
+Underfull \hbox (badness 10000) in paragraph at lines 522--526
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 536--539
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 550--553
 
  []
 
 [15]
-Overfull \hbox (145.11931pt too wide) in paragraph at lines 733--739
+Overfull \hbox (145.11931pt too wide) in paragraph at lines 585--591
 \T1/cmr/m/n/10 Aclaracion h es igual a la al-tura de la cat-e-go-ria c. \T1/cmr
 /bx/n/10 Or-den To-tal:\T1/cmr/m/n/10 O(|c|)+O(1)+O(|l|)+O(1)+O(1)+O(1)+O(h*(O(
 1)+O(1)))+O(1)=\T1/cmr/bx/n/10 O(|l|+|c|+h) 
  []
 
 [16]
-Overfull \hbox (162.24457pt too wide) in paragraph at lines 755--763
+Overfull \hbox (162.24457pt too wide) in paragraph at lines 607--615
 \T1/cmr/m/n/10 Aclaracion: n es igual a la can-ti-dad de el-e-men-tos de la lis
 ta. \T1/cmr/bx/n/10 Or-den To-tal:\T1/cmr/m/n/10 O(|c|)+O(1)+O(1)+O(n)+[n*(O(n)
 +O(1)+O(1))]+O(1)+O(1)=\T1/cmr/bx/n/10 O(|c|+n$[]$) 
  []
 
-
-Overfull \hbox (5.0424pt too wide) in paragraph at lines 771--777
+[17]
+Overfull \hbox (5.0424pt too wide) in paragraph at lines 623--629
 \T1/cmr/m/n/10 igual a la can-ti-dad de el-e-men-tos de la lista. \T1/cmr/bx/n/
 10 Or-den To-tal:\T1/cmr/m/n/10 O(1)+O(1)+O(1)+[n*(O(1)+O(1)+O(1)+O(1))]=\T1/cm
 r/bx/n/10 O(n) 
  []
 
-[17]
-Overfull \hbox (16.81067pt too wide) in paragraph at lines 792--796
+
+Overfull \hbox (16.81067pt too wide) in paragraph at lines 644--648
 \T1/cmr/m/n/10 Se crea un it-er-ador itLista de pun-tero a datosLink links el c
 ual se ini-cial-iza con ar-ray-CatLinks[id(s.arbolCategorias,c)],
  []
 
-
-LaTeX Warning: Command \^ invalid in math mode on input line 832.
-
-
-LaTeX Warning: Command \^ invalid in math mode on input line 832.
-
-Missing character: There is no Â in font cmr10!
-Missing character: There is no Â in font cmr10!
-
-LaTeX Warning: Command \^ invalid in math mode on input line 832.
-
-
-LaTeX Warning: Command \^ invalid in math mode on input line 832.
-
-Missing character: There is no Â in font cmr10!
-Missing character: There is no Â in font cmr10!
-
-LaTeX Warning: Command \^ invalid in math mode on input line 832.
-
-
-LaTeX Warning: Command \^ invalid in math mode on input line 832.
-
-Missing character: There is no Â in font cmr10!
-Missing character: There is no Â in font cmr10!
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 846--846
+
+! Package inputenc Error: Unicode char \u8:éne not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.668 \tadGeneros{acat}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Unicode char \u8:éne not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.668 \tadGeneros{acat}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Unicode char \u8:ási not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.673 \tadObservadores
+                      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Unicode char \u8:Â¬ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.684 ...wedge Â¬vacia?(h) \wedge Â¬esta?(h, ac)$}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Unicode char \u8:Â¬ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.684 ...wedge Â¬vacia?(h) \wedge Â¬esta?(h, ac)$}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Unicode char \u8:Â¬ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.684 ...wedge Â¬vacia?(h) \wedge Â¬esta?(h, ac)$}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Unicode char \u8:Â¬ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.684 ...wedge Â¬vacia?(h) \wedge Â¬esta?(h, ac)$}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Unicode char \u8:Â¬ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.684 ...wedge Â¬vacia?(h) \wedge Â¬esta?(h, ac)$}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Unicode char \u8:Â¬ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.684 ...wedge Â¬vacia?(h) \wedge Â¬esta?(h, ac)$}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 698--698
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 849--850
+Underfull \hbox (badness 10000) in paragraph at lines 701--702
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 852--853
+Underfull \hbox (badness 10000) in paragraph at lines 704--705
+
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 706--707
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 854--855
+Underfull \hbox (badness 10000) in paragraph at lines 709--710
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 857--858
+Underfull \hbox (badness 10000) in paragraph at lines 713--714
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 861--862
+Underfull \hbox (badness 10000) in paragraph at lines 715--716
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 863--864
+Underfull \hbox (badness 10000) in paragraph at lines 717--718
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 865--866
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 874--874
+Underfull \hbox (badness 10000) in paragraph at lines 726--726
 
  []
 
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 874.
+(hyperref)                than one, level fixed on input line 726.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 874.
+(hyperref)                removing `\\' on input line 726.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 875--879
-
- []
-
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 881--887
+Underfull \hbox (badness 10000) in paragraph at lines 727--731
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 888--894
+(./acat-prepost.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--6
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 888--894
+Underfull \hbox (badness 10000) in paragraph at lines 7--13
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 895--901
+Underfull \hbox (badness 10000) in paragraph at lines 7--13
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 895--901
+Underfull \hbox (badness 10000) in paragraph at lines 14--20
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 902--908
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 902--908
-
- []
-
-
-LaTeX Warning: Command \^ invalid in math mode on input line 910.
-
-Missing character: There is no Â in font cmr10!
-
-Underfull \hbox (badness 10000) in paragraph at lines 909--915
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 909--915
-
- []
-
-
-LaTeX Warning: Command \^ invalid in math mode on input line 917.
-
-Missing character: There is no Â in font cmr10!
-
-Underfull \hbox (badness 10000) in paragraph at lines 916--922
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 916--922
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 923--929
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 923--929
+Underfull \hbox (badness 10000) in paragraph at lines 14--20
 
  []
 
 [20]
-Underfull \hbox (badness 10000) in paragraph at lines 930--936
+Underfull \hbox (badness 10000) in paragraph at lines 21--27
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 930--936
+Underfull \hbox (badness 10000) in paragraph at lines 21--27
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 937--943
+! Package inputenc Error: Unicode char \u8:Â¬ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.29 	\textbf{Pre} $\equiv$ {$Â¬
+                                $vacia?(c)}\\
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--33
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 937--943
+Underfull \hbox (badness 10000) in paragraph at lines 28--33
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 944--950
+! Package inputenc Error: Unicode char \u8:Â¬ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.35 ...tbf{Pre} $\equiv$ {c $\in$ ac $\wedge$ $Â¬
+                                                  $vacia?(h) $\wedge$ ac${_0...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--39
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 944--950
+Underfull \hbox (badness 10000) in paragraph at lines 34--39
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 951--957
+Underfull \hbox (badness 10000) in paragraph at lines 40--46
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 951--957
-
- []
-
-[21]
-Underfull \hbox (badness 10000) in paragraph at lines 1020--1022
+Underfull \hbox (badness 10000) in paragraph at lines 40--46
 
  []
 
 
-Overfull \hbox (15.26358pt too wide) in paragraph at lines 1027--1028
-[]\T1/cmr/m/n/10 ($\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 x; y$\T1/cmr/m/n/10 : str
-ing) (def?(x,e.familia)) $\OMS/cmsy/m/n/10 $$ \T1/cmr/m/n/10 (x == e.raiz) $\OM
-S/cmsy/m/n/10 _$ \T1/cmr/m/n/10 (def?(y,e.familia)) $\OMS/cmsy/m/n/10 ^[]$ \T1/
-cmr/m/n/10 x $\OMS/cmsy/m/n/10 2$ \T1/cmr/m/n/10 hi-jos-De(*((obtener(y,e.famil
-ia))).hijos) 
- []
-
-
-Overfull \hbox (11.40265pt too wide) in paragraph at lines 1043--1044
-[]\T1/cmr/m/n/10 ($\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 x; y$\T1/cmr/m/n/10 : str
-ing) (def?(x,e.familia)) $\OMS/cmsy/m/n/10 ^$ \T1/cmr/m/n/10 (def?(y,e.familia)
-) $\OMS/cmsy/m/n/10 ) []$ \T1/cmr/m/n/10 (*(obten-er(x,e.familia))).id $\OMS/cm
-sy/m/n/10 6\OT1/cmr/m/n/10 =$ \T1/cmr/m/n/10 (*(obten-er(y,e.familia))).id 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1051--1053
+Underfull \hbox (badness 10000) in paragraph at lines 47--52
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1061--1062
+Underfull \hbox (badness 10000) in paragraph at lines 47--52
 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--58
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--58
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--66
+
+ []
+
+[21])
+Underfull \hbox (badness 10000) in paragraph at lines 67--734
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--734
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 796--798
+
+ []
+
+
+Overfull \hbox (8.17027pt too wide) in paragraph at lines 803--804
+[]\T1/cmr/m/n/10 ($\OMS/cmsy/m/n/10 8$\T1/cmr/m/n/10 stringx,y) (def?(x,e.famil
+ia)) $\OMS/cmsy/m/n/10 $$ \T1/cmr/m/n/10 (x == e.raiz) $\OMS/cmsy/m/n/10 _$ \T1
+/cmr/m/n/10 (def?(y,e.familia)) $\OMS/cmsy/m/n/10 ^[]$ \T1/cmr/m/n/10 x $\OMS/c
+msy/m/n/10 2$ \T1/cmr/m/n/10 hi-jos-De(*((obtener(y,e.familia))).hijos) 
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 1084--1087
+Overfull \hbox (4.30934pt too wide) in paragraph at lines 819--820
+[]\T1/cmr/m/n/10 ($\OMS/cmsy/m/n/10 8$\T1/cmr/m/n/10 stringx,y) (def?(x,e.famil
+ia)) $\OMS/cmsy/m/n/10 ^$ \T1/cmr/m/n/10 (def?(y,e.familia)) $\OMS/cmsy/m/n/10 
+) []$ \T1/cmr/m/n/10 (*(obten-er(x,e.familia))).id $\OMS/cmsy/m/n/10 6\OT1/cmr/
+m/n/10 =$ \T1/cmr/m/n/10 (*(obten-er(y,e.familia))).id 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 827--829
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1093--1096
+Underfull \hbox (badness 10000) in paragraph at lines 837--838
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1102--1105
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1111--1114
+Underfull \hbox (badness 10000) in paragraph at lines 860--863
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 1128--1131
+Underfull \hbox (badness 10000) in paragraph at lines 869--872
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1147--1150
+Underfull \hbox (badness 10000) in paragraph at lines 878--881
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1156--1159
+Underfull \hbox (badness 10000) in paragraph at lines 887--890
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1165--1168
+Underfull \hbox (badness 10000) in paragraph at lines 904--907
 
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 1184--1187
+Underfull \hbox (badness 10000) in paragraph at lines 923--926
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1193--1196
+Underfull \hbox (badness 10000) in paragraph at lines 932--935
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1202--1205
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1214
+Underfull \hbox (badness 10000) in paragraph at lines 941--944
 
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 1220--1222
-
- []
-
-[26] [27]
-Underfull \hbox (badness 10000) in paragraph at lines 1294--1296
+Underfull \hbox (badness 10000) in paragraph at lines 960--963
 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1307--1307
+Underfull \hbox (badness 10000) in paragraph at lines 969--972
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 978--981
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 987--990
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 996--998
+
+ []
+
+[26] [27] [28] (./dicctrie-all.tex
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 16.
+
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 18.
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 40--40
 []\T1/cmr/m/n/10 EncAEstrDTEnNMov(buscado,actual,n)| $\OMS/cmsy/m/n/10 ^^Q$| []
  
  []
 
 
-Underfull \hbox (badness 3471) in paragraph at lines 1311--1311
+Underfull \hbox (badness 3471) in paragraph at lines 44--44
 []\T1/cmr/m/n/10 ((*actual).Arreglo[n] = bus-ca-do) $\OMS/cmsy/m/n/10 _$ \T1/cm
 r/m/n/10 (Es-taEnElAr-regloAc-tu-al?
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1311--1311
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 44--44
 []\T1/cmr/m/n/10 EstaEnElArregloActual?(buscado,actual,n)| $\OMS/cmsy/m/n/10 ^^
 Q$| [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1315--1315
+Underfull \hbox (badness 10000) in paragraph at lines 48--48
 []\T1/cmr/m/n/10 EncAEstrDTEnNMov(buscado, (*ac-tu-al).Arreglo[i],n) $\OMS/cmsy
 /m/n/10 _$
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1315--1315
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 48--48
 []\T1/cmr/m/n/10 RecurrenciaConLosHijos(buscado,actual,n,i)| $\OMS/cmsy/m/n/10 
 ^^Q$| [] 
  []
 
-
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1319--1319
+[29]
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 52--52
 []\T1/cmr/m/n/10 SonTodosNullOLosHijosLoSon(e)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1322--1322
-[]\T1/cmr/m/n/10 Los27SonNull(e,i)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 55--55
+[]\T1/cmr/m/n/10 Los256SonNull(e,i)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
-[28]
-Underfull \hbox (badness 10000) in paragraph at lines 1326--1326
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--59
 []\T1/cmr/m/n/10 (((*e).Arreglo[i] = null) $\OMS/cmsy/m/n/10 _$ \T1/cmr/m/n/10 
 SonTo-dos-Nul-lOLosHi-josLo-Son((*e).Arreglo[i])) $\OMS/cmsy/m/n/10 ^$
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1326--1326
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 59--59
 []\T1/cmr/m/n/10 BuscarHijosNull(e,i)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1330--1331
-
+Overfull \hbox (15.0pt too wide) in paragraph at lines 63--67
+[]$[]$ 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1340--1340
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 72--72
 []\T1/cmr/m/n/10 estaDefinido?(c,e)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1343--1343
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 75--75
 []\T1/cmr/m/n/10 NodoDef?(c,n)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1346--1346
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 78--78
 []\T1/cmr/m/n/10 numero(char)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
-
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 1349--1349
+[30]
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 81--81
 []\T1/cmr/m/n/10 ObtenerS(c,n)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
  []
 
-[29] AED: lastpage setting LastPage [30] (./tp.aux) ) 
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 84--84
+[]\T1/cmr/m/n/10 EncAEstrDTEnNMov(buscado,actual,n)| $\OMS/cmsy/m/n/10 ^^Q$| []
+ 
+ []
+
+
+Underfull \hbox (badness 3471) in paragraph at lines 88--88
+[]\T1/cmr/m/n/10 ((*actual).Arreglo[n] = bus-ca-do) $\OMS/cmsy/m/n/10 _$ \T1/cm
+r/m/n/10 (Es-taEnElAr-regloAc-tu-al?
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 88--88
+[]\T1/cmr/m/n/10 EstaEnElArregloActual?(buscado,actual,n)| $\OMS/cmsy/m/n/10 ^^
+Q$| [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--92
+[]\T1/cmr/m/n/10 EncAEstrDTEnNMov(buscado, (*ac-tu-al).Arreglo[i],n) $\OMS/cmsy
+/m/n/10 _$
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 92--92
+[]\T1/cmr/m/n/10 RecurrenciaConLosHijos(buscado,actual,n,i)| $\OMS/cmsy/m/n/10 
+^^Q$| [] 
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 96--96
+[]\T1/cmr/m/n/10 SonTodosNullOLosHijosLoSon(e)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 99--99
+[]\T1/cmr/m/n/10 Los256SonNull(e,i)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--103
+[]\T1/cmr/m/n/10 (((*e).Arreglo[i] = null) $\OMS/cmsy/m/n/10 _$ \T1/cmr/m/n/10 
+SonTo-dos-Nul-lOLosHi-josLo-Son((*e).Arreglo[i])) $\OMS/cmsy/m/n/10 ^$
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 103--103
+[]\T1/cmr/m/n/10 BuscarHijosNull(e,i)| $\OMS/cmsy/m/n/10 ^^Q$| [] 
+ []
+
+) [31]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 1052.
+
+(./itlista-int.tex
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 19--19
+[]$[]$ 
+ []
+
+
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 25--25
+[]$[]$ 
+ []
+
+
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 31--31
+[]$[]$ 
+ []
+
+
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 37--37
+[]$[]$ 
+ []
+
+) (./itlista-rep.tex
+! Missing } inserted.
+<inserted text> 
+                }
+l.8 \hline
+          
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+)
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 23--1056
+[]$[]$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--1056
+
+ []
+
+(./itlista-alg.tex
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 2.
+
+! Undefined control sequence.
+l.6 \EndFunction
+                
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! Package algorithmicx Error: Some blocks are not closed!!!.
+
+See the algorithmicx package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.7 \end{algorithmic}
+                     
+This error message was generated by an \errmessage
+command, so I can't give any explicit help.
+Pretend that you're Hercule Poirot: Examine all clues,
+and deduce the truth by order and method.
+
+[32]
+! Missing \endcsname inserted.
+<to be read again> 
+                   \ALG@currentblock@0 
+l.15 \Function
+              {ihaysiguiente?}{\param{in}{e}{itLista(puntero($\alpha$))}}{$\...
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\ALG@makebeginrepeat ...\ALG@thisblock \endcsname 
+                                                  \relax \def \ALG@thisblock...
+l.15 \Function
+              {ihaysiguiente?}{\param{in}{e}{itLista(puntero($\alpha$))}}{$\...
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Undefined control sequence.
+l.17 \EndFunction
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! Package algorithmicx Error: Some blocks are not closed!!!.
+
+See the algorithmicx package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 \end{algorithmic}
+                      
+(That was another \errmessage.)
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \ALG@currentblock@0 
+l.27 \Function
+              {isiguiente}{\param{in}{e}{itLista(puntero($\alpha$))}}{$\righ...
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\ALG@makebeginrepeat ...\ALG@thisblock \endcsname 
+                                                  \relax \def \ALG@thisblock...
+l.27 \Function
+              {isiguiente}{\param{in}{e}{itLista(puntero($\alpha$))}}{$\righ...
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Undefined control sequence.
+l.29 \EndFunction
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! Package algorithmicx Error: Some blocks are not closed!!!.
+
+See the algorithmicx package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 \end{algorithmic}
+                      
+(That was another \errmessage.)
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \ALG@currentblock@0 
+l.38 \Function
+              {iavanzar}{\param{in/out}{e}{itLista(puntero($\alpha$))}}{}
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\ALG@makebeginrepeat ...\ALG@thisblock \endcsname 
+                                                  \relax \def \ALG@thisblock...
+l.38 \Function
+              {iavanzar}{\param{in/out}{e}{itLista(puntero($\alpha$))}}{}
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Undefined control sequence.
+l.40 \EndFunction
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! Package algorithmicx Error: Some blocks are not closed!!!.
+
+See the algorithmicx package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.41 \end{algorithmic}
+                      
+(That was another \errmessage.)
+
+) (./itlista-com.tex) [33]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 1063.
+
+(./itConj-int.tex
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 19--19
+[]$[]$ 
+ []
+
+
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 25--25
+[]$[]$ 
+ []
+
+
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 31--31
+[]$[]$ 
+ []
+
+
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 37--37
+[]$[]$ 
+ []
+
+) (./itConj-rep.tex
+! Missing } inserted.
+<inserted text> 
+                }
+l.8 \hline
+          
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+)
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 23--1067
+[]$[]$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--1067
+
+ []
+
+(./itConj-alg.tex
+! Missing \endcsname inserted.
+<to be read again> 
+                   \ALG@currentblock@0 
+l.4 \Function
+             {icrearit}{\param{in}{l}{estrL}}{$\ensuremath{\rightarrow}$ \pa...
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\ALG@makebeginrepeat ...\ALG@thisblock \endcsname 
+                                                  \relax \def \ALG@thisblock...
+l.4 \Function
+             {icrearit}{\param{in}{l}{estrL}}{$\ensuremath{\rightarrow}$ \pa...
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Undefined control sequence.
+l.6 \EndFunction
+                
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! Package algorithmicx Error: Some blocks are not closed!!!.
+
+See the algorithmicx package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.7 \end{algorithmic}
+                     
+(That was another \errmessage.)
+
+[34]
+! Missing \endcsname inserted.
+<to be read again> 
+                   \ALG@currentblock@0 
+l.15 \Function
+              {ihaysiguiente?}{\param{in}{e}{itLista(puntero($\alpha$))}}{$\...
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\ALG@makebeginrepeat ...\ALG@thisblock \endcsname 
+                                                  \relax \def \ALG@thisblock...
+l.15 \Function
+              {ihaysiguiente?}{\param{in}{e}{itLista(puntero($\alpha$))}}{$\...
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Undefined control sequence.
+l.17 \EndFunction
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! Package algorithmicx Error: Some blocks are not closed!!!.
+
+See the algorithmicx package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 \end{algorithmic}
+                      
+(That was another \errmessage.)
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \ALG@currentblock@0 
+l.27 \Function
+              {isiguiente}{\param{in}{e}{itLista(puntero($\alpha$))}}{$\righ...
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\ALG@makebeginrepeat ...\ALG@thisblock \endcsname 
+                                                  \relax \def \ALG@thisblock...
+l.27 \Function
+              {isiguiente}{\param{in}{e}{itLista(puntero($\alpha$))}}{$\righ...
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Undefined control sequence.
+l.29 \EndFunction
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! Package algorithmicx Error: Some blocks are not closed!!!.
+
+See the algorithmicx package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 \end{algorithmic}
+                      
+(That was another \errmessage.)
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \ALG@currentblock@0 
+l.38 \Function
+              {iavanzar}{\param{in/out}{e}{itLista(puntero($\alpha$))}}{}
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\ALG@makebeginrepeat ...\ALG@thisblock \endcsname 
+                                                  \relax \def \ALG@thisblock...
+l.38 \Function
+              {iavanzar}{\param{in/out}{e}{itLista(puntero($\alpha$))}}{}
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Undefined control sequence.
+l.40 \EndFunction
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! Package algorithmicx Error: Some blocks are not closed!!!.
+
+See the algorithmicx package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.41 \end{algorithmic}
+                      
+(That was another \errmessage.)
+
+) (./itConj-com.tex) [35] [36]
+
+! LaTeX Error: \begin{interfaz} on input line 1 ended by \end{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1084 \end{document}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+(./tp.aux) )
+(\end occurred inside a group at level 8)
+
+### simple group (level 8) entered at line 20 ({)
+### semi simple group (level 7) entered at line 1 (\begingroup)
+### simple group (level 6) entered at line 20 ({)
+### semi simple group (level 5) entered at line 1 (\begingroup)
+### simple group (level 4) entered at line 132 ({)
+### simple group (level 3) entered at line 131 ({)
+### simple group (level 2) entered at line 126 ({)
+### simple group (level 1) entered at line 125 ({)
+### bottom level 
 Here is how much of TeX's memory you used:
- 7002 strings out of 495061
- 95457 string characters out of 1182621
- 197198 words of memory out of 3000000
- 9893 multiletter control sequences out of 15000+50000
- 18985 words of font info for 45 fonts, out of 3000000 for 9000
+ 7824 strings out of 495061
+ 104774 string characters out of 1182622
+ 208404 words of memory out of 3000000
+ 10625 multiletter control sequences out of 15000+50000
+ 21431 words of font info for 47 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,13n,43p,1240b,417s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home/agustin/.texmf-var
-/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/agustin/.texmf-var/fonts/pk
-/ljfour/jknappen/ec/ecbx1200.600pk> </home/agustin/.texmf-var/fonts/pk/ljfour/j
-knappen/ec/ecti1000.600pk> </home/agustin/.texmf-var/fonts/pk/ljfour/jknappen/e
-c/eccc1000.600pk> </home/agustin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecxc144
-0.600pk> </home/agustin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> 
-</home/agustin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/ag
-ustin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/agustin/.te
-xmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/agustin/.texmf-var/f
-onts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/agustin/.texmf-var/fonts/pk/l
-jfour/jknappen/ec/ecbx1728.600pk></usr/share/texmf-texlive/fonts/type1/public/a
-msfonts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/
-texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texliv
-e/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1
-/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy
-7.pfb>
-Output written on tp.pdf (30 pages, 303378 bytes).
+ 38i,13n,40p,1240b,635s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </home/nlasso/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.
+600pk> </home/nlasso/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </h
+ome/nlasso/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/nlasso
+/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/nlasso/.texmf-va
+r/fonts/pk/ljfour/jknappen/ec/eccc1000.600pk> </home/nlasso/.texmf-var/fonts/pk
+/ljfour/jknappen/ec/ecxc1440.600pk> </home/nlasso/.texmf-var/fonts/pk/ljfour/jk
+nappen/ec/ectt1000.600pk> </home/nlasso/.texmf-var/fonts/pk/ljfour/jknappen/ec/
+ecrm1000.600pk> </home/nlasso/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.6
+00pk> </home/nlasso/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </ho
+me/nlasso/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/nlasso/
+.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texmf-texlive
+/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type
+1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/am
+sfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
+mmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
+sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texm
+f-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmsy7.pfb>
+Output written on tp.pdf (36 pages, 346419 bytes).
 PDF statistics:
- 772 PDF objects out of 1000 (max. 8388607)
- 137 named destinations out of 1000 (max. 500000)
- 169 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 959 PDF objects out of 1000 (max. 8388607)
+ 180 named destinations out of 1000 (max. 500000)
+ 337 words of extra memory for PDF output out of 10000 (max. 10000000)
 

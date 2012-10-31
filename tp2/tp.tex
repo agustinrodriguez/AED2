@@ -1,15 +1,26 @@
 \documentclass[10pt, a4paper]{article}
-\usepackage[paper=a4paper, left=1.5cm, right=1.5cm, bottom=1.5cm, top=1.5cm]{geometry}
-\usepackage[latin1]{inputenc}
+\usepackage[paper=a4paper, left=1.5cm, right=1.5cm, bottom=2cm, top=2cm]{geometry}
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
-\usepackage{indentfirst}
-\usepackage{fancyhdr}
-\usepackage{latexsym}
-\usepackage{lastpage}
-\usepackage{aed2-symb,aed2-itef,aed2-tad,caratula}
-\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
-\usepackage{calc}
+\usepackage{aed2-symb,aed2-itef,aed2-tad,aed2-tokenizer}
+\usepackage{newalgo}
+\usepackage{interfaz}
+\usepackage{caratula}
+\newcommand{\comment}[1]{}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+\usepackage[colorlinks,citecolor=black,filecolor=black,linkcolor=black,    urlcolor=black]{hyperref}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+\let\state\State
+\let\while\While
+\let\endwhile\EndWhile
+%\let\if\If
+\let\endif\EndIf
+%\let\else\Else
+\let\elseif\ElsIf
 
 \titulo{Trabajo Pr\'actico de Especificaci\'on}
 
@@ -132,146 +143,7 @@ THEN dameUno(ls) ELSE linkConMasAccesos(s,c,sinUno(ls)) FI} FI }
 		\textbf{g\'eneros}: lli\\
 
 \subsubsection{\Large Operaciones B\'asicas}
-	\textbf{categorias} (\textbf{in} s: lli) $\longrightarrow$ res: ac\\\\
-	\textbf{Pre} $\equiv$ {true}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ categorias(s)}\\
-	\textbf{Complejidad} : O($\#$categorias(s))\\
-	\textbf{Descripci\'{o}n} : Devuelve el arbol de categorias con todas las categorias del sistema\\
-	\textbf{Aliasing:}ALGO \\
-
-
-	\textbf{links} (\textbf{in} s: estrLLI) $\longrightarrow$ res: conj(link)\\\\
-	\textbf{Pre} $\equiv$ {true}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ links(s)}\\
-	\textbf{Complejidad} : O($\#$links(s))\\
-	\textbf{Descripci\'{o}n} : Devuelve todos los links del sistema\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{categoriaLink} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: categoria\\\\
-	\textbf{Pre} $\equiv$ {true}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ categoriaLink(s,l)}\\
-	\textbf{Complejidad} : O(cuanto seria esto? todos los links?)\\
-	\textbf{Descripci\'{o}n} : Devuelve la categoria del link ingresado\\
-	\textbf{Aliasing:}ALGO \\
-
-	\textbf{fechaActual} (\textbf{in} s: estrLLI) $\longrightarrow$ res: fecha\\\\
-	\textbf{Pre} $\equiv$ {true}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ fechaActual(s)}\\
-	\textbf{Complejidad} : O(1)\\
-	\textbf{Descripci\'{o}n} : Devuelve la fecha actual\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{fechaUltimoAcceso} (\textbf{in} s: estrLLI, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-	\textbf{Pre} $\equiv$ {l $\in$ links(s)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ fechaUltimoAcceso(s,l)}\\
-	\textbf{Complejidad} : O(1)\\
-	\textbf{Descripci\'{o}n} : Devuelve la fecha de ultimo acceso al link\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{accesosRecientesDia} (\textbf{in} s: lli, \textbf{in} l: link, \textbf{in} f: fecha) $\longrightarrow$ res: nat\\\\
-	\textbf{Pre} $\equiv$ {l $\in$ links(s)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ accesosRecientesDia(s,l,f)}\\
-	\textbf{Complejidad} : O($\#$accesosRecientesDia(s,l,f))\\
-	\textbf{Descripci\'{o}n} : Devuelve la cantidad de accesos a un link un cierto dia\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{inicar} (\textbf{in} ac: estrAC) $\longrightarrow$ res: lli\\\\
-	\textbf{Pre} $\equiv$ {true}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ iniciar(ac)}\\
-	\textbf{Complejidad} : O($\#$categorias(ac))\\
-	\textbf{Descripci\'{o}n} : crea un sistema dado un arbol ac de categorias\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{nuevoLink} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} c: categoria) \\\\
-	\textbf{Pre} $\equiv$ {c $\in$ categorias(s) $\wedge$ s${_0}$ $\igobs$ s}\\
-	\textbf{Post} $\equiv$ {s$\igobs$ nuevoLink(s${_0}$,l,c)}\\
-	\textbf{Complejidad} : O(|l|+|c|+h)\\
-	\textbf{Descripci\'{o}n} : Agregar un link al sistema\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{acceso} (\textbf{in/out} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) \\\\
-	\textbf{Pre} $\equiv$ {l $\in$ links(s) $\wedge$ f $\geq$ fechaActual(s) $\wedge$ s${_0}$ $\igobs$ s}\\
-	\textbf{Post} $\equiv$ {s$\igobs$ acceso(s${_0}$,l,f)}\\
-	\textbf{Complejidad} : O(|l|)\\
-	\textbf{Descripci\'{o}n} : Acceder a un link del sistema\\
-	\textbf{Aliasing:}ALGO \\
-		
-	\textbf{esReciente?} (\textbf{in} s: lli, \textbf{in} l: link , \textbf{in} f: fecha) $\longrightarrow$ res: bool\\\\
-	\textbf{Pre} $\equiv$ {l $\in$ links(s)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ esReciente?(s,l,f)}\\
-	\textbf{Complejidad} : O(y esto q es??)\\
-	\textbf{Descripci\'{o}n} : Chequea si el acceso fue reciente\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{accesosRecientes} (\textbf{in} s: lli, \textbf{in} c: categoria \textbf{in} l: link) $\longrightarrow$ res: nat\\\\
-	\textbf{Pre} $\equiv$ {c $\in$ categorias(s) $\wedge$ l $\in$ links(s)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ accesosRecientes(s,c,l)}\\
-	\textbf{Complejidad} : O(1)\\
-	\textbf{Descripci\'{o}n} : Devuelve la cantidad de accesos recientes del link ingresado\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{linksOrdenadosPorAccesos} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: secu(link)\\\\
-	\textbf{Pre} $\equiv$ {c $\in$ categorias(s)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ linksOrdenadosPorAccesos(s,c)}\\
-	\textbf{Complejidad} : O(n${^2}$)\\
-	\textbf{Descripci\'{o}n} : Devuelve la cantidad de accesos recientes del link ingresado\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{cantlinks} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: nat\\\\
-	\textbf{Pre} $\equiv$ {c $\in$ categorias(s)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ cantlinks(s,c)}\\
-	\textbf{Complejidad} : O(|c|)\\
-	\textbf{Descripci\'{o}n} : Devuelve la cantidad de links de la categoria c\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{menorReciente} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-	\textbf{Pre} $\equiv$ {l $\in$ links(s)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ menorReciente(s,l)}\\
-	\textbf{Complejidad} : O(no tengo idea)\\
-	\textbf{Descripci\'{o}n} : Devuelve la fecha menor mas reciente\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{diasRecientes} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-	\textbf{Pre} $\equiv$ {l $\in$ links(s)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ diasRecientes(s,l)}\\
-	\textbf{Complejidad} : O(1)\\
-	\textbf{Descripci\'{o}n} : Devuelve la fecha reciente del link\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{diasRecientesDesde} (\textbf{in} s: lli, \textbf{in} l: link) $\longrightarrow$ res: fecha\\\\
-	\textbf{Pre} $\equiv$ {l $\in$ links(s)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ diasRecientesDesde(s,l)}\\
-	\textbf{Complejidad} : O(1)\\
-	\textbf{Descripci\'{o}n} : Devuelve la fecha reciente del link\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{diasRecientesParestrACegorias} (\textbf{in} s: lli, \textbf{in} c: categoria) $\longrightarrow$ res: conj(fecha)\\\\
-	\textbf{Pre} $\equiv$ {c $\in$ categorias(s)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ diasRecientesParaCategorias(s,c)}\\
-	\textbf{Complejidad} : O(es la cantidad de accesos recientes esto??)\\
-	\textbf{Descripci\'{o}n} : Devuelve el conjunto de fechas recientes de la categoria c\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{linkConUltimoAcceso} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) ) $\longrightarrow$ res: link\\\\
-	\textbf{Pre} $\equiv$ {c $\in$ categorias(s) $\wedge$ esVacia??(ls) $\wedge$ ls $\subseteq$ linksCategoriasOHijos(s,c)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ linkConUltimoAcceso(s,c,ls)}\\
-	\textbf{Complejidad} : O($\#$ls??)\\
-	\textbf{Descripci\'{o}n} : Devuelve el link que se accedio por ultima vez del conjunto ls\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{sumarAccesosRecientes} (\textbf{in} s: lli, \textbf{in} l: link,\textbf{in} fs: conj(fecha) ) $\longrightarrow$ res: nat\\\\
-	\textbf{Pre} $\equiv$ {l $\in$ links(s)  $\wedge$ fs $\subseteq$ diasRecientes(s,l)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ sumarAccesosRecientes(s,l,fs)}\\
-	\textbf{Complejidad} : O(1?)\\
-	\textbf{Descripci\'{o}n} : Devuelve la suma de todos los accesos recientes del link l\\
-	\textbf{Aliasing:}ALGO \\
-
-	\textbf{linkConMasAccesos} (\textbf{in} s: lli, \textbf{in} c: categoria,\textbf{in} ls: conj(link) )$\longrightarrow$ res: link\\\\
-	\textbf{Pre} $\equiv$ {c $\in$ categorias(s)  $\wedge$ ls $\subseteq$ linksCategoriasOHijos(s,c)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ linksOrdenadosPorAccesosAux(s,c,ls)}\\
-	\textbf{Complejidad} : O(1?)\\
-	\textbf{Descripci\'{o}n} : Devuelve al link con mas accesos\\
-	\textbf{Aliasing:}ALGO \\
+\input{linklinkit-prepost}
 	
     \subsection{\huge Pautas de Implementaci\'{o}n}	
 
@@ -355,27 +227,7 @@ $\hspace*{10mm}$\textit{arrayCatLinks}:arreglo-dimen(linksFamilia) )\\\\
 \end{enumerate}
 
 \subsubsection{\Large Funci\'{o}n de Abstraccion}
-
-	    \textbf{Abs}: estrLLI e $\rightarrow$ linkLinkIT \\
-   	    Abs(e) $\igobs$ s: linkLinkIT | \\
-   	   \begin{flushright}
- categorias(s) = e.arbolCategorias $\wedge$ \\
- links(s)= todosLosLinks(s.listaLinks) $\wedge$ \\
-\paratodo{link}{l} categoriaLink(s,l) = *((obtener(l,e.accesosXLink))).catDLink $\wedge$ \\
-fechaActual(s) = e.actual $\wedge$ \\
-\paratodo{link}{l} l $\in$ links(l) $\wedge{_L}$ fechaUltimoAcceso(s,l) = ultimo((*((obtener(s,e.accesosXLink))).accesos).dia) $\wedge$ \\
-\paratodo{link}{l}\paratodo{nat}{f} accesoRecienteDia(s,l,f) = cantidadPorDia(f,*((obtener(s,e.accesosXLink))).accesos)
-\end{flushright}
-	
-Auxiliares\\
-
-\tadOperacion{cantidadPorDia}{fecha, lista(acceso)}{nat}{}
-
-\tadAxioma{cantidadPorDia(f,ls)}{\IF\ f == (prim(ls)).dia THEN cantAccesos ELSE cantidadPorDia(f,fin(ls)) FI}
-
-\tadOperacion{listaLinks}{secu(datosLink)}{conj(link)}{}
-
-\tadAxioma{listaLinks(ls)}{Ag((prim(ls)).link,fin(ls))}
+\input{linklinkit-abs}
 
 \tadOperacion{sinRepetidos}{secu($\alpha$)}{bool}{}
 
@@ -878,83 +730,7 @@ $\\$
 		\textbf{g\'eneros}: acat\\
 
 \subsubsection{\Large Operaciones B\'asicas}
-	\textbf{categorias} (\textbf{in} ac: acat) $\longrightarrow$ res: conj(categoria)\\
-	\textbf{Pre} $\equiv$ {true}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ categorias(ac)}\\
-	\textbf{Complejidad} : O($\#$categorias(ac))\\
-	\textbf{Descripci\'{o}n} : Devuelve el conjunto de categorias de un ac\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{raiz} (\textbf{in} ac: acat) $\longrightarrow$ res: categoria\\\\
-	\textbf{Pre} $\equiv$ {true}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ raiz(ac)}\\
-	\textbf{Complejidad} : O(1)\\
-	\textbf{Descripci\'{o}n} : Devuelve la raiz del arbol ac\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{padre} (\textbf{in} ac: estrAC, \textbf{in} h: categoria) $\longrightarrow$ res: categoria\\\\
-	\textbf{Pre} $\equiv$ {h $\in$ ac $\wedge$ raiz(ac) $\neq$ h}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ padre(ac,h)}\\
-	\textbf{Complejidad} : O(ni idea)\\
-	\textbf{Descripci\'{o}n} : Devuelve el padre de una categoria\\
-	\textbf{Aliasing:}ALGO \\
-		
-	\textbf{id} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\\\
-	\textbf{Pre} $\equiv$ {h $\in$ ac}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ id(ac,c)}\\
-	\textbf{Complejidad} : O(|c|)\\
-	\textbf{Descripci\'{o}n} : Devuelve el id de una categoria c en el arbol ac\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{nuevo} (\textbf{in} c: categoria) $\longrightarrow$ res:estrAC\\\\
-	\textbf{Pre} $\equiv$ {$¬$vacia?(c)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ nuevo(c)}\\
-	\textbf{Complejidad} : O(|c|)\\
-	\textbf{Descripci\'{o}n} : Crea un arbol\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{agregar} (\textbf{in/out} ac: estrAC,\textbf{in} c: categoria, \textbf{in} h: categoria )\\\\
-	\textbf{Pre} $\equiv$ {c $\in$ ac $\wedge$ $¬$vacia?(h) $\wedge$ ac${_0}$ $\igobs$ ac}\\
-	\textbf{Post} $\equiv$ {ac$\igobs$ agregar(ac${_0}$,c,h)}\\
-	\textbf{Complejidad} : O(|c|+|h|)\\
-	\textbf{Descripci\'{o}n} : Agrega una categoria hija a una padre\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{altura} (\textbf{in} ac: estrAC) $\longrightarrow$ res:nat\\\\
-	\textbf{Pre} $\equiv$ {true}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ altura(ac)}\\
-	\textbf{Complejidad} : O(|ac|)\\
-	\textbf{Descripci\'{o}n} : Devuelve la altura del arbol ac\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{esta?} (\textbf{in} c: categoria,\textbf{in} ac: estrAC) $\longrightarrow$ res:bool\\\\
-	\textbf{Pre} $\equiv$ {true}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ esta?(c,ac)}\\
-	\textbf{Complejidad} : O(|ac|)\\
-	\textbf{Descripci\'{o}n} : Devuelve si esta o no en el arbol la categoria c\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{esSubCategoria} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\\\
-	\textbf{Pre} $\equiv$ {esta?(c,ac) $\wedge$ esta?(h,ac)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ esSubCategoria(ac,c,h)}\\
-	\textbf{Complejidad} : O(no tengo idea)\\
-	\textbf{Descripci\'{o}n} : Devuelve si c es descendiente de h\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{alturaCategoria} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\\\
-	\textbf{Pre} $\equiv$ {esta?(c,ac)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ alturaCategoria(ac,c)}\\
-	\textbf{Complejidad} : O(no tengo idea)\\
-	\textbf{Descripci\'{o}n} : Devuelve la altura de la categoria c\\
-	\textbf{Aliasing:}ALGO \\
-	
-	\textbf{hijos} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\\\
-	\textbf{Pre} $\equiv$ {esta?(c,ac)}\\
-	\textbf{Post} $\equiv$ {res$\igobs$ hijos(ac,c)}\\
-	\textbf{Complejidad} : O(|c|)\\
-	\textbf{Descripci\'{o}n} : Devuelve el conjunto de categorias hijos de c\\
-	\textbf{Aliasing:}ALGO \\
-
+\input{acat-prepost}
     \subsection{\huge Pautas de Implementaci\'{o}n}	
 
         \subsubsection{\Large Estructura de Representaci\'{o}n} 
@@ -1266,91 +1042,34 @@ $\hspace*{6mm}$res $\leftarrow$ ac.raiz $\vspace*{-9mm}$\begin{flushright}//O(1)
     \end{enumerate}
 		
 
-
-\begin{center}
-\begin{tabular}{|l|} 
-\hline
-\\
-DiccTrie($\alpha$) \textbf{se representa con} estrDT, donde estrDT es Puntero(Nodo)\\
-\\
-\hspace*{6em}Nodo es tupla{{arreglo}{arreglo(Puntero(Nodo))[27]}, {significado}{Puntero($\alpha$)}}\\
-\\
-\hline
-\end{tabular}
-\end{center}
+\newpage
+\section{Modulo DiccTrie}
+\input{dicctrie-all}
 
 
-\subsubsection{Invariante de Representaci\'on}
-\paragraph{El Invariante Informalmente}
-\begin{enumerate}
-\item No hay repetidos en arreglo de Nodo salvo por Null. Todas las posiciones del arreglo están definidas.
-\item No se puede volver al Nodo actual siguiendo alguno de los punteros hijo del actual o de alguno de los hijos de estos.
-\item O bien el Nodo es una hoja, o todos sus punteros hijo no-nulos llevan a hojas siguiendo su recorrido.
-\end{enumerate}
+\newpage
+\section{Modulo itLista}
+\subsubsection{Interfaz}
+\input{itlista-int}
+\subsubsection{Representaci\'on}
+\input{itlista-rep}
+\subsubsection{Algoritmos}
+\input{itlista-alg}
+\subsubsection{Analisis de complejidades}
+\input{itlista-com}
 
-\paragraph{El Invariante Formalmente}
-\paragraph*{}
- 
-\textbf{Rep} : estrAC $\longrightarrow$ bool\\
-	        Rep(e) $\equiv$ true $\Longleftrightarrow$\\
-	
-\begin{enumerate}
-\item
-\item
-\item
-\end{enumerate}
+\newpage
+\section{Modulo itConj}
+\subsubsection{Interfaz}
+\input{itConj-int}
+\subsubsection{Representaci\'on}
+\input{itConj-rep}
+\subsubsection{Algoritmos}
+\input{itConj-alg}
+\subsubsection{Analisis de complejidades}
+\input{itConj-com}
 
-\paragraph{Funciones auxiliares}
-\paragraph*{}
-
-\hspace*{1em}\tadOperacion{EncAEstrDTEnNMov}{estrDT, estrDT, Nat}{Bool}{}
-\tadAxioma{EncAEstrDTEnNMov(buscado,actual,n)}{\IF (n = 0) THEN EstaEnElArregloActual?(buscado,actual,26) ELSE RecurrenciaConLosHijos(buscado,actual, n-1,26) FI}
-\vspace*{1em}
-
-\hspace*{1em}\tadOperacion{EstaEnElArregloActual?}{estrDT, estrDT, nat}{Bool}{}
-\tadAxioma{EstaEnElArregloActual?(buscado,actual,n)}{\IF (n=0) THEN ((*actual).Arreglo[0] = buscado) ELSE ((*actual).Arreglo[n] = buscado) $\lor$ (EstaEnElArregloActual? (buscado,actual,n-1)) FI}
-\vspace*{1em}
-
-\hspace*{1em}\tadOperacion{RecurrenciaConLosHijos}{estrDT, estrDT, nat, nat}{Bool}{}
-\tadAxioma{RecurrenciaConLosHijos(buscado,actual,n,i)}{\IF (i = 0) THEN EncAEstrDTEnNMov(buscado,(*actual).Arreglo[0],n) ELSE EncAEstrDTEnNMov(buscado, (*actual).Arreglo[i],n) $\lor$ (RecurrenciaConLosHijos(buscado,actual,n,i-1) FI}
-\vspace*{1em}
-
-\hspace*{1em}\tadOperacion{SonTodosNullOLosHijosLoSon}{estrDT}{Bool}{}
-\tadAxioma{SonTodosNullOLosHijosLoSon(e)}{Los27SonNull(e,26) $\lor$ BuscarHijosNull (e, 26)}
-
-\hspace*{1em}\tadOperacion{Los27SonNull}{estrDT, nat}{Bool}{}
-\tadAxioma{Los27SonNull(e,i)}{\IF (i = 0) THEN ((*e).Arreglo[0] = null) ELSE ((*e).Arreglo[i] = null) $\land$ Los27SonNull(e, i-1) FI}
-\vspace*{1em}
-
-\hspace*{1em}\tadOperacion{BuscarHijosNull}{estrDT, nat}{Bool}{}
-\tadAxioma{BuscarHijosNull(e,i)}{\IF (i = 0) THEN ((*e).Arreglo[0] = null) $\lor$ SonTodosNullOLosHijosLoSon((*e).Arreglo[0]) ELSE (((*e).Arreglo[i] = null) $\lor$ SonTodosNullOLosHijosLoSon((*e).Arreglo[i])) $\land$ BuscarHijosNull(e,i-1) FI}
-
-
-\subsubsection{Funci\'on de Abstracci\'on}
-\textbf{Abs}: estr e $\rightarrow$ diccT(c,$\alpha$) \\
-   	   \begin{flushright}
-{(\paratodo{c}{clave})def?(c,d) \igobs estaDefinido?(c,e)}{\yluego}
-%{(\paratodo{c}{clave})def?(c,d) \Rightarrow obtener(c,d) \igobs ObtenerS(c,*(e))}{}
-\end{flushright}
-
-\paragraph{Funciones auxiliares}
-\paragraph*{}
-
-\hspace*{1em}\tadOperacion{estaDefinido?}{string, estrDT}{bool}{}
-\tadAxioma{estaDefinido?(c,e)}{\IF (e==Null) THEN false ELSE NodoDef?(c,*(e)) FI}
-
-\hspace*{1em}\tadOperacion{NodoDef?}{string, Nodo}{bool}{}
-\tadAxioma{NodoDef?(c,n)}{\IF (vacia?(c)) THEN true ELSE {\IF (n.arreglo[numero(prim(c))] $\neq$ Null) THEN NodoDef?(fin(c),*(n.arreglo[numero(prim(c))]))ELSE false FI} FI}
-
-\hspace*{1em}\tadOperacion{numero}{char}{nat}{}
-\tadAxioma{numero(char)}{char - a}
-
-\hspace*{1em}\tadOperacion{ObtenerS}{string, Nodo}{$\alpha$}{}
-\tadAxioma{ObtenerS(c,n)}{\IF (vacia?(c)) THEN *(n.significado) ELSE ObtenerS(fin(c),*(n.arreglo[numero(prim(c))]))FI}
-
-
-
-
+\newpage
 \section{Renombres}
 \begin{tad}{\tadNombre{Categoria}} es String
 \end{tad}

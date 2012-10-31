@@ -1,0 +1,103 @@
+\begin{center}
+\begin{tabular}{|l|} 
+\hline
+\\
+DiccTrie($\alpha$) \textbf{se representa con} estrDT, donde estrDT es Puntero(Nodo)\\
+\\
+\hspace*{6em}Nodo es \tupla{\param{}{arreglo}{arreglo(Puntero(Nodo))[256]}, \param{}{significado}{Puntero($\alpha$)}}\\
+\\
+\hline
+\end{tabular}
+\end{center}
+
+\par La estructura es un puntero a Nodo en la cual cada nodo es una tupla entre un arreglo y un significado para el dicc. Cada posicion del arreglo representa una letra y su contenido es un puntero al nodo de la letra siguiente o a Null.
+
+
+\subsubsection{Invariante de Representaci\'on}
+\paragraph{El Invariante Informalmente}
+\begin{enumerate}
+\item No hay repetidos en arreglo de Nodo salvo por Null. Todas las posiciones del arreglo están definidas.
+\item No se puede volver al Nodo actual siguiendo alguno de los punteros hijo del actual o de alguno de los hijos de estos.
+\item O bien el Nodo es una hoja, o todos sus punteros hijo no-nulos llevan a hojas siguiendo su recorrido.
+\end{enumerate}
+
+\paragraph{El Invariante Formalmente}
+\paragraph*{}
+\begin{Rep}{estrDT}{e}
+\repfunc{(\forall\param{}{i,j}{nat}) 0 \leq i \leq 255  \land 0 \leq j \leq 255 \Rightarrow \\
+Definido?((*e).Arreglo,i) \land Definido?((*e).Arreglo,j) \land \\
+(i=j) \lor \\
+(i \neq j \land ((*e).Arreglo[i] = null \land (*e).Arreglo[j] = null \lor \\
+(*e).Arreglo[i] \neq (*e).Arreglo[j])}{\yluego}
+\repfunc{(\neg\exists\param{}{n}{nat}) EncAEstrDTEnNMov(e,e,n)}{\yluego}
+\repfunc{SonTodosNullOLosHijosLoSon(e)}{}
+\end{Rep}
+
+\paragraph{Funciones auxiliares}
+\paragraph*{}
+
+\hspace*{1em}\tadOperacion{EncAEstrDTEnNMov}{estrDT, estrDT, Nat}{Bool}{}
+\tadAxioma{EncAEstrDTEnNMov(buscado,actual,n)}{\IF (n = 0) THEN EstaEnElArregloActual?(buscado,actual,255) ELSE RecurrenciaConLosHijos(buscado,actual, n-1,255) FI}
+\vspace*{1em}
+
+\hspace*{1em}\tadOperacion{EstaEnElArregloActual?}{estrDT, estrDT, nat}{Bool}{}
+\tadAxioma{EstaEnElArregloActual?(buscado,actual,n)}{\IF (n=0) THEN ((*actual).Arreglo[0] = buscado) ELSE ((*actual).Arreglo[n] = buscado) $\lor$ (EstaEnElArregloActual? (buscado,actual,n-1)) FI}
+\vspace*{1em}
+
+\hspace*{1em}\tadOperacion{RecurrenciaConLosHijos}{estrDT, estrDT, nat, nat}{Bool}{}
+\tadAxioma{RecurrenciaConLosHijos(buscado,actual,n,i)}{\IF (i = 0) THEN EncAEstrDTEnNMov(buscado,(*actual).Arreglo[0],n) ELSE EncAEstrDTEnNMov(buscado, (*actual).Arreglo[i],n) $\lor$ (RecurrenciaConLosHijos(buscado,actual,n,i-1) FI}
+\vspace*{1em}
+
+\hspace*{1em}\tadOperacion{SonTodosNullOLosHijosLoSon}{estrDT}{Bool}{}
+\tadAxioma{SonTodosNullOLosHijosLoSon(e)}{Los256SonNull(e,255) $\lor$ BuscarHijosNull (e, 255)}
+
+\hspace*{1em}\tadOperacion{Los256SonNull}{estrDT, nat}{Bool}{}
+\tadAxioma{Los256SonNull(e,i)}{\IF (i = 0) THEN ((*e).Arreglo[0] = null) ELSE ((*e).Arreglo[i] = null) $\land$ Los256SonNull(e, i-1) FI}
+\vspace*{1em}
+
+\hspace*{1em}\tadOperacion{BuscarHijosNull}{estrDT, nat}{Bool}{}
+\tadAxioma{BuscarHijosNull(e,i)}{\IF (i = 0) THEN ((*e).Arreglo[0] = null) $\lor$ SonTodosNullOLosHijosLoSon((*e).Arreglo[0]) ELSE (((*e).Arreglo[i] = null) $\lor$ SonTodosNullOLosHijosLoSon((*e).Arreglo[i])) $\land$ BuscarHijosNull(e,i-1) FI}
+
+
+\subsubsection{Funci\'on de Abstracci\'on}
+\begin{ABS}{e}{estrDT}{d}{diccT(c,$\alpha$)}
+\absfunc{(\forall\param{}{c}{clave})def?(c,d) \igobs estaDefinido?(c,e)}{\yluego}
+\absfunc{(\forall\param{}{c}{clave})def?(c,d) \Rightarrow obtener(c,d) \igobs ObtenerS(c,*(e))}{}
+\end{ABS}
+
+\paragraph{Funciones auxiliares}
+\paragraph*{}
+
+\hspace*{1em}\tadOperacion{estaDefinido?}{string, estrDT}{bool}{}
+\tadAxioma{estaDefinido?(c,e)}{\IF (e==Null) THEN false ELSE NodoDef?(c,*(e)) FI}
+
+\hspace*{1em}\tadOperacion{NodoDef?}{string, Nodo}{bool}{}
+\tadAxioma{NodoDef?(c,n)}{\IF (vacia?(c)) THEN true ELSE {\IF (n.arreglo[numero(prim(c))] $\neq$ Null) THEN NodoDef?(fin(c),*(n.arreglo[numero(prim(c))]))ELSE false FI} FI}
+
+\hspace*{1em}\tadOperacion{numero}{char}{nat}{}
+\tadAxioma{numero(char)}{char - a}
+
+\hspace*{1em}\tadOperacion{ObtenerS}{string, Nodo}{$\alpha$}{}
+\tadAxioma{ObtenerS(c,n)}{\IF (vacia?(c)) THEN *(n.significado) ELSE ObtenerS(fin(c),*(n.arreglo[numero(prim(c))]))FI}
+
+\hspace*{1em}\tadOperacion{EncAEstrDTEnNMov}{estrDT, estrDT, Nat}{Bool}{}
+\tadAxioma{EncAEstrDTEnNMov(buscado,actual,n)}{\IF (n = 0) THEN EstaEnElArregloActual?(buscado,actual,255) ELSE RecurrenciaConLosHijos(buscado,actual, n-1,255) FI}
+\vspace*{1em}
+
+\hspace*{1em}\tadOperacion{EstaEnElArregloActual?}{estrDT, estrDT, nat}{Bool}{}
+\tadAxioma{EstaEnElArregloActual?(buscado,actual,n)}{\IF (n=0) THEN ((*actual).Arreglo[0] = buscado) ELSE ((*actual).Arreglo[n] = buscado) $\lor$ (EstaEnElArregloActual? (buscado,actual,n-1)) FI}
+\vspace*{1em}
+
+\hspace*{1em}\tadOperacion{RecurrenciaConLosHijos}{estrDT, estrDT, nat, nat}{Bool}{}
+\tadAxioma{RecurrenciaConLosHijos(buscado,actual,n,i)}{\IF (i = 0) THEN EncAEstrDTEnNMov(buscado,(*actual).Arreglo[0],n) ELSE EncAEstrDTEnNMov(buscado, (*actual).Arreglo[i],n) $\lor$ (RecurrenciaConLosHijos(buscado,actual,n,i-1) FI}
+\vspace*{1em}
+
+\hspace*{1em}\tadOperacion{SonTodosNullOLosHijosLoSon}{estrDT}{Bool}{}
+\tadAxioma{SonTodosNullOLosHijosLoSon(e)}{Los256SonNull(e,255) $\lor$ BuscarHijosNull (e, 255)}
+
+\hspace*{1em}\tadOperacion{Los256SonNull}{estrDT, nat}{Bool}{}
+\tadAxioma{Los256SonNull(e,i)}{\IF (i = 0) THEN ((*e).Arreglo[0] = null) ELSE ((*e).Arreglo[i] = null) $\land$ Los256SonNull(e, i-1) FI}
+\vspace*{1em}
+
+\hspace*{1em}\tadOperacion{BuscarHijosNull}{estrDT, nat}{Bool}{}
+\tadAxioma{BuscarHijosNull(e,i)}{\IF (i = 0) THEN ((*e).Arreglo[0] = null) $\lor$ SonTodosNullOLosHijosLoSon((*e).Arreglo[0]) ELSE (((*e).Arreglo[i] = null) $\lor$ SonTodosNullOLosHijosLoSon((*e).Arreglo[i])) $\land$ BuscarHijosNull(e,i-1) FI}

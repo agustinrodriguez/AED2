@@ -1,0 +1,71 @@
+	\textbf{categorias} (\textbf{in} ac: acat) $\longrightarrow$ res: conj(categoria)\\
+	\textbf{Pre} $\equiv$ {true}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ categorias(ac)}\\
+	\textbf{Complejidad} : O($\#$categorias(ac))\\
+	\textbf{Descripci\'{o}n} : Devuelve el conjunto de categorias de un ac\\
+	
+	\textbf{raiz} (\textbf{in} ac: acat) $\longrightarrow$ res: categoria\\\\
+	\textbf{Pre} $\equiv$ {true}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ raiz(ac)}\\
+	\textbf{Complejidad} : O(|c|)\\
+	\textbf{Descripci\'{o}n} : Devuelve la raiz del arbol ac\\
+	\textbf{Aliasing: }{res es modificable si y solo si ac es modificable.}\\
+	
+	\textbf{padre} (\textbf{in} ac: estrAC, \textbf{in} h: categoria) $\longrightarrow$ res: categoria\\\\
+	\textbf{Pre} $\equiv$ {h $\in$ ac $\wedge$ raiz(ac) $\neq$ h}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ padre(ac,h)}\\
+	\textbf{Complejidad} : O(|h|+|res|)\\
+	\textbf{Descripci\'{o}n} : Devuelve el padre de una categoria\\
+	\textbf{Aliasing: }{res es modificable si y solo si ac es modificable.}\\
+		
+	\textbf{id} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\\\
+	\textbf{Pre} $\equiv$ {h $\in$ ac}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ id(ac,c)}\\
+	\textbf{Complejidad} : O(|c|)\\
+	\textbf{Descripci\'{o}n} : Devuelve el id de una categoria c en el arbol ac\\
+	\textbf{Aliasing: }{res es modificable si y solo si ac es modificable.}\\
+	
+	\textbf{nuevo} (\textbf{in} c: categoria) $\longrightarrow$ res:estrAC\\\\
+	\textbf{Pre} $\equiv$ {$¬$vacia?(c)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ nuevo(c)}\\
+	\textbf{Complejidad} : O(|c|)\\
+	\textbf{Descripci\'{o}n} : Crea un arbol\\
+	
+	\textbf{agregar} (\textbf{in/out} ac: estrAC,\textbf{in} c: categoria, \textbf{in} h: categoria )\\\\
+	\textbf{Pre} $\equiv$ {c $\in$ ac $\wedge$ $¬$vacia?(h) $\wedge$ ac${_0}$ $\igobs$ ac}\\
+	\textbf{Post} $\equiv$ {ac$\igobs$ agregar(ac${_0}$,c,h)}\\
+	\textbf{Complejidad} : O(|c|+|h|)\\
+	\textbf{Descripci\'{o}n} : Agrega una categoria hija a una padre\\
+	
+	\textbf{altura} (\textbf{in} ac: estrAC) $\longrightarrow$ res:nat\\\\
+	\textbf{Pre} $\equiv$ {true}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ altura(ac)}\\
+	\textbf{Complejidad} : O(1)\\
+	\textbf{Descripci\'{o}n} : Devuelve la altura del arbol ac\\
+	\textbf{Aliasing: }{res es modificable si y solo si ac es modificable.}\\
+	
+	\textbf{esta?} (\textbf{in} c: categoria,\textbf{in} ac: estrAC) $\longrightarrow$ res:bool\\\\
+	\textbf{Pre} $\equiv$ {true}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ esta?(c,ac)}\\
+	\textbf{Complejidad} : O(|ac|)\\
+	\textbf{Descripci\'{o}n} : Devuelve si esta o no en el arbol la categoria c\\
+	
+	\textbf{esSubCategoria} (\textbf{in} ac: estrAC, \textbf{in} c: categoria,\textbf{in} h: categoria) $\longrightarrow$ res:bool\\\\
+	\textbf{Pre} $\equiv$ {esta?(c,ac) $\wedge$ esta?(h,ac)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ esSubCategoria(ac,c,h)}\\
+	\textbf{Complejidad} : O(|c|+|h|+*(h))\\
+	\textbf{Descripci\'{o}n} : Devuelve si c es descendiente de h\\
+
+	
+	\textbf{alturaCategoria} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:nat\\\\
+	\textbf{Pre} $\equiv$ {esta?(c,ac)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ alturaCategoria(ac,c)}\\
+	\textbf{Complejidad} : O(|c|)\\
+	\textbf{descripci\'{o}n} : Devuelve la altura de la categoria c\\
+	\textbf{Aliasing: }{res es modificable si y solo si ac es modificable.}\\
+	
+	\textbf{hijos} (\textbf{in} ac: estrAC, \textbf{in} c: categoria) $\longrightarrow$ res:conj(categoria)\\\\
+	\textbf{Pre} $\equiv$ {esta?(c,ac)}\\
+	\textbf{Post} $\equiv$ {res$\igobs$ hijos(ac,c)}\\
+	\textbf{Complejidad} : O(|c|)\\
+	\textbf{Descripci\'{o}n} : Devuelve el conjunto de categorias hijos de c\\
