@@ -1,0 +1,101 @@
+# depslib dependency file v1.0
+1352767581 source:/home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/ArbolCategorias.cpp
+	"ArbolCategorias.h"
+
+1352766413 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/ArbolCategorias.h
+	"aed2.h"
+	"DiccTrie.h"
+	"Tipos.h"
+
+1332201738 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/aed2.h
+	"aed2/TiposBasicos.h"
+	"aed2/Arreglo.h"
+	"aed2/Lista.h"
+	"aed2/Vector.h"
+	"aed2/Dicc.h"
+	"aed2/Conj.h"
+	"aed2/ConjAcotado.h"
+	"test/test.h"
+
+1332201738 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/aed2/TiposBasicos.h
+	<iostream>
+	<string>
+	<cassert>
+
+1332201738 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/aed2/Arreglo.h
+	"TiposBasicos.h"
+	"Arreglo.cpp"
+
+1332201738 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/aed2/Arreglo.cpp
+
+1332201738 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/aed2/Lista.h
+	<iostream>
+	"TiposBasicos.h"
+	"Lista.cpp"
+
+1332201738 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/aed2/Lista.cpp
+
+1332201738 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/aed2/Vector.h
+	"TiposBasicos.h"
+	"Arreglo.h"
+	"Vector.cpp"
+
+1332201738 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/aed2/Vector.cpp
+
+1332201738 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/aed2/Dicc.h
+	<ostream>
+	"Lista.h"
+	"Dicc.cpp"
+
+1332201738 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/aed2/Dicc.cpp
+
+1332201738 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/aed2/Conj.h
+	<iostream>
+	"Dicc.h"
+	"Conj.cpp"
+
+1332201738 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/aed2/Conj.cpp
+
+1332201738 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/aed2/ConjAcotado.h
+	<iostream>
+	"TiposBasicos.h"
+	"Arreglo.h"
+	"Conj.h"
+
+1332201738 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/test/test.h
+	"../aed2/TiposBasicos.h"
+	<algorithm>
+	<functional>
+	<list>
+	<map>
+	<ostream>
+	<sstream>
+
+1344228632 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/DiccTrie.h
+	"aed2.h"
+	<string>
+
+1350774945 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/Tipos.h
+	<iostream>
+
+1352737038 source:/home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/Driver.cpp
+	"Driver.h"
+	<iostream>
+	<sstream>
+
+1352751494 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/Driver.h
+	<stdlib.h>
+	"aed2.h"
+	"Tipos.h"
+	"ArbolCategorias.h"
+	"LinkLinkIt.h"
+
+1352812110 /home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/LinkLinkIt.h
+	"aed2.h"
+	"ArbolCategorias.h"
+	"DiccTrie.h"
+
+1352812122 source:/home/facundo/Facu/Facultad/AlgoII/2c2012/proytp3/LinkLinkIt.cpp
+	"LinkLinkIt.h"
+	"ArbolCategorias.h"
+
