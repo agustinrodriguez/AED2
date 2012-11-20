@@ -1,0 +1,88 @@
+\begin{center}
+\begin{tabular}{|l|} 
+\hline
+\\
+LinkLinkIt \textbf{se representa con} estrLLI, donde estrLLI es \tupla{\\
+\hspace*{6em}\param{}{arbolCategorias}{acat},\\
+\hspace*{6em}\param{}{actual}{Fecha},\\
+\hspace*{6em}\param{}{linkInfo}{diccTrie(Link,puntero(datosLink))},\\
+\hspace*{6em}\param{}{listaLink}{Lista(datosLink)},\\
+\hspace*{6em}\param{}{arrayCatLinks}{arreglo-dimen(linksFamilia)}}\\ \\
+
+\hspace*{6em}datosLink es \tupla{\\
+\hspace*{6em}\param{}{link}{Link},\\ 
+\hspace*{6em}\param{}{catDLink}{puntero(datosCat)},\\ 
+\hspace*{6em}\param{}{accesosRecientes}{Lista(acceso)},\\ 
+\hspace*{6em}\param{}{cantAaccesosRecientes}{nat}}\\ \\
+
+\hspace*{6em}acceso es \tupla{\\
+\hspace*{6em}\param{}{dia}{Fecha},\\
+\hspace*{6em}\param{}{cantAccesos}{nat}}\\ \\
+
+\hspace*{6em}linksFamilia es Lista(puntero(datosLink)) \\ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\par Las Reglas se representan con los países como posiciones en el vector, ignorando la posición “0”. En la posición que representa un país, se tiene una lista de países que este no puede ver. Se utiliza el módulo vector dado su costo amortizado de inserción de nuevos países, el cual corresponde con la complejidad pedida.
+\par También contamos con 2 estructuras auxiliares:
+\par MatrizRestricciones es una matriz cuadrada que tiene la relacion de todos los paises. MatrizRelaciones[a][b] indica si el pais "a" restringe al "b". Esto nos permite consultar por cualquier restricción en O(1)
+\par ArregloRelaciones es un arreglo con todos los países y contiene la lista de paises que puede ver y de lo que los pueden ver. Esto permite comprobar si existe algún hueco que incluye a un pais "p" en O($\#$puedenVerA(p) + $\#$puedeVer(p)).
+\par Estas estructuras son creadas únicamente cuando se llama a la función tieneAlgúnHueco? y luego descartadas.
+
+\subsubsection{Invariante de Representaci\'on}
+\paragraph{El Invariante Informalmente}
+\begin{enumerate}
+\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}' la '\textit{catDLink}' de la tupla apuntada en el significado debera existir en \textit{'arbolCategorias'}.
+\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}', todos los \textit{dia}' de la lista '\textit{accesosRecientes}' deberan ser menor o igual a \textit{actual}, estan ordenados,no hay dias repetidos y la longitud de la lista es menor o igual a 3.
+\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}' su significado deberá existir en '\textit{listaLinks}' y viceversa.
+\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}' su significado deberá aparecer en '\textit{arrayCantLinks}' en la posicion igual al id de '\textit{catDLink}' y en las posiciones de los predecesores de esa categoria y en ninguna otra.
+\item No hay 2 claves que existan en '\textit{accesosXLink}' y devuelvan el mismo significado.
+\item No existen '\textit{link}' repetidos en las tuplas de  '\textit{listaLinks}'.
+\item No hay elementos repetidos en ninguna lista '\textit{linksFamilia}'.
+\item Para todo '\textit{link}' que exista en '\textit{accesosXLink}', '\textit{cantAccesosRecientes}' es igual a la suma de '\textit{cantAccesos}' de cada elemento de la lista '\textit{accesosRecientes}'
+\end{enumerate}
+
+\paragraph{El Invariante Formalmente}
+\begin{Rep}{estrLLI}{lli}
+\repfunc{(\forall\param{}{l}{Link})(def?(l,lli.accesosXLink)) \Rightarrow_{L} \\ (*obtener(l,lli.accesosXLink)).catDLink \in todasLasCategorias(lli.arbolCategorias.categorias)}{\yluego}
+\repfunc{(\forall\param{}{l}{Link})(def?(l,lli.accesosXLink)) \Rightarrow_{L} \\ long((*obtener(l,lli.accesosXLink)).accesosRecientes) \leq 3 \land \\ 
+accesoOrdenadoNoRepetido((*obtener(l,lli.accesosXLink)).accesosRecientes) \yluego\\
+fechasCorrectas(lli.actual,((*obtener(l,lli.accesosXLink)).accesosRecientes))}{\yluego}
+\repfunc{Falta el rep 3-4 aca}{\yluego}
+\repfunc{(\forall\param{}{l}{Link}) (def?(l,lli.accesosXLink)) \Rightarrow_{L} \\ ((\forall\param{}{c}{Categoria}) c \in todasLasCategorias(lli.arbolCategorias.categorias) \Rightarrow_{L} \\
+(esta?((obtener(l,lli.accesosXLink)),arrayCatLinks[id(c,lli.arbolCategorias)]) \Leftrightarrow \\
+esPredecesor(c,(*obtener(l,lli.accesosXLink)).categoria,lli.arbolCategorias)))}{\yluego}
+\repfunc{(\forall\param{}{l,l'}{Link}) l \neq l' \land (def?(l,lli.accesosXLink)) \land (def?(l',lli.accesosXLink)) \Rightarrow_{L}\\
+(*obtener(l,lli.accesosXLink)) \neq (*obtener(l',lli.accesosXLink))}{\yluego}
+\repfunc{(\forall\param{i,i'}{nat}) i < long(lli.listaLinks) \land i' < long(lli.listaLinks) \Rightarrow_{L}\\
+lli.listaLinks_{i}.link = lli.listaLinks_{i'}.link \Leftrightarrow i = i'}{\yluego}
+\repfunc{(\forall\param{}{i}{nat}) i < tam(lli.arrayCatLinks) \Rightarrow_{L} sinRepetidos(linksFamilia_{i})}{\yluego}
+\repfunc{(\forall\param{}{l}{Link})(def?(l,lli.accesosXLink)) \Rightarrow_{L} \\
+(*obtener(l,lli.accesosXLink)).cantAccesosRecientes ==\\
+cantidadDeAccesos((*obtener(l,lli.accesosXLink)).accesosRecientes)}{}
+\end{Rep}
+
+\subsubsection{Funci\'on de Abstracci\'on}
+\begin{ABS}{e}{estrLLI}{lli}{linkLinkIt}
+\absfunc{categorias(lli) = categorias(e.arbolCategorias)}{$\land$}
+\absfunc{links(lli) = todosLosLinks(e.listaLinks)}{\yluego}
+\absfunc{(\forall\param{}{l}{Link})def?(l,e.linkInfo)\Rightarrow_{L}\\ categoriaLink(lli,l) = (*obtener(l,e.linkInfo))catDLink}{$\land$}
+\absfunc{fechaActual(lli)=e.actual}{$\land$}
+\absfunc{(\forall\param{}{l}{Link})l\in links(e)\Rightarrow_{L}\\ fechaUltimoAcceso(lli,l)=(ultimo((*obtener(l,e.linkInfo)).accesosRecientes)).dia}{$\land$}
+\absfunc{(\forall\param{}{l}{Link})(\forall\param{}{f}{Fecha})l\in links(lli) \yluego esReciente?(e,l,f)\Rightarrow_{L}\\
+accesosRecientesDia(lli,l,f) = \\cantidadPorDia(f,(*obtener(l,e.linkInfo)).accesosRecientes)}{}
+\end{ABS}
+
+\paragraph{Funciones auxiliares}
+\paragraph*{}
+
+%\hspace*{1em}\tadOperacion{Paises}{estrR}{conj(pais)}{}
+%\tadAxioma{Paises(e)}{PaisesAux(e,long(e)-1)}
+
+%\hspace*{1em}\tadOperacion{PaisesAux}{Pais, Nat}{conj(pais)}{}
+%\tadAxioma{PaisesAux(e,n)}{\IF (n==0) THEN $\emptyset$ ELSE Ag(n,PaisesAux(e,n-1)) FI}
+
+%\hspace*{1em}\tadOperacion{PuedeVer?}{estrR, pais, pais}{bool}{}
+%\tadAxioma{PuedeVer?(e,$p_1$,$p_2$)}{Esta?($p_2$,e[$p_1$])}

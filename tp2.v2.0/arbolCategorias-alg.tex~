@@ -1,0 +1,218 @@
+\begin{algorithm}[H]
+\caption{iDameCat}
+\begin{algorithmic}[1]
+\Function{idameCat}{\param{in}{dc}{datosCat}}{$\ensuremath{\rightarrow}$ \param{}{res}{Categoria}}
+\state res $\gets$ dc.categoria \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iDameId}
+\begin{algorithmic}[1]
+\Function{idameId}{\param{in}{dc}{datosCat}}{$\ensuremath{\rightarrow}$ \param{}{res}{nat}}
+\state res $\gets$ dc.id \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iDameAltura}
+\begin{algorithmic}[1]
+\Function{idameAltura}{\param{in}{dc}{datosCat}}{$\ensuremath{\rightarrow}$ \param{}{res}{Categoria}}
+\state res $\gets$ dc.altura \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iDameHijos}
+\begin{algorithmic}[1]
+\Function{idameHijos}{\param{in}{dc}{datosCat}}{$\ensuremath{\rightarrow}$ \param{}{res}{itConj(puntero(datosCat))}}
+\state res $\gets$ crearIt(dc.hijos) \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iDamePadre}
+\begin{algorithmic}[1]
+\Function{idamePadre}{\param{in}{dc}{datosCat}}{$\ensuremath{\rightarrow}$ \param{}{res}{puntero(datosCat)}}
+\state res $\gets$ dc.padre \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iObtenerAC}
+\begin{algorithmic}[1]
+\Function{iObtenerAC}{\param{in}{ac}{estrAC}, \param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{puntero(datosCat)}}
+\state res $\gets$ obtener(c,ac.familia) \hfill //O(|c|)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|c|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iCategoriasAC}
+\begin{algorithmic}[1]
+\Function{iCategoriasAC}{\param{in}{ac}{estrAC}}{$\ensuremath{\rightarrow}$ \param{}{res}{itLista(datosCat)}}
+\state res $\gets$ crearIt(ac.categorias) \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iRaizAC}
+\begin{algorithmic}[1]
+\Function{iRaiz}{\param{in}{ac}{estrAC}}{$\ensuremath{\rightarrow}$ \param{}{res}{Categoria}}
+\state res $\gets$ (*(ac.raiz)).categoria \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iIdAC}
+\begin{algorithmic}[1]
+\Function{iId}{\param{in}{ac}{estrAC}, \param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{nat}}
+\state res $\gets$ ((*obtener(c,ac.familia)).id \hfill //O(|c|)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|c|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iAlturaCatAC}
+\begin{algorithmic}[1]
+\Function{iAlturaCatAC}{\param{in}{ac}{estrAC}, \param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{nat}}
+\state res $\gets$ (*obtener(c,ac.familia)).altura \hfill //O(|c|)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|c|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iHijosAC}
+\begin{algorithmic}[1]
+\Function{iHijosAC}{\param{in}{ac}{estrAC}, \param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{itConj(puntero(datosCat))}}
+\state res $\gets$ crearIt((*obtener(c,ac.familia)).hijos) \hfill //O(|c|)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|c|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iPadreAC}
+\begin{algorithmic}[1]
+\Function{iPadreAC}{\param{in}{ac}{estrAC}, \param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{Categoria}}
+\state res $\gets$ (*(*obtener(c,ac.familia)).abuelo).categoria \hfill //O(|c|)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|c|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iAlturaAC}
+\begin{algorithmic}[1]
+\Function{iAlturaAC}{\param{in}{ac}{estrAC}}{$\ensuremath{\rightarrow}$ \param{}{res}{nat}}
+\state res $\gets$ ac.alturaMax \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iNuevoAC}
+\begin{algorithmic}[1]
+\Function{iNuevoAC}{\param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{estrAC}}
+\state res.cantidad $\gets$ 1 \hfill //O(1)
+\state datosCat tuplaA \hfill //O(1)
+\state tuplaA $\gets$ tupla(c,1,1,vacio(),Null) \hfill //O(|c|)
+\state puntero(datosCat) punt $\gets$ \&tuplaA \hfill //O(1)
+\state res.raiz $\gets$ punt \hfill //O(1)
+\state res.alturaMax $\gets$ 1 \hfill //O(1)
+\state definir(c, punt, res.familia) \hfill //O(|c|)
+\state agregarAtras(tuplaA, res.categorias) \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|c|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iAgregarAC}
+\begin{algorithmic}[1]
+\Function{iAgregarAC}{\param{in/out}{ac}{estrAC}, \param{in}{c}{Categoria}, \param{in}{h}{Categoria}}{}
+\state puntero(datosCat) puntPadre $\gets$ obtener(c,ac.familia) \hfill //O(|c|)
+\If{(*puntPadre).altura == ac.alturaMax} \hfill //O(1)
+\state ac.alturaMax++ \hfill //O(1)
+\endif
+\state datosCat tuplaA $\gets$ (h,ac.cantidad+1,(*puntPadre).altura+1,vacio(),puntPadre) \hfill //O(|h|)
+\state puntero(datosCat) punt $\gets$ \&tuplaA \hfill //O(1)
+\state Agregar((*puntPadre).hijos,punt) \hfill //O(1)
+\state definir(h,punt,ac.familia) \hfill //O(|h|)
+\state ac.cantidad++ \hfill //O(1)
+\state agregarAtras(tuplaA,ac.categorias) \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|c|+|h|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iEsta?}
+\begin{algorithmic}[1]
+\Function{iEsta?}{\param{in}{ac}{estrAC}, \param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{bool}}
+\state res $\gets$ def?(c,ac.familia) \hfill //O(|c|)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|c|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iEsSubCategoria}
+\begin{algorithmic}[1]
+\Function{iEsSubCategoria}{\param{in}{ac}{estrAC}, \param{in}{c}{Categoria}, \param{in}{h}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{bool}}
+\state res $\gets$ false \hfill //O(1)
+\If{h == c} \hfill //O(|h|)
+\state res $\gets$ true \hfill //O(1)
+\Else
+\If{h == raizAC(ac)} \hfill //O(|h|)
+\state res $\gets$ false \hfill //O(1)
+\Else
+\state puntero(datosCat) actual $\gets$ (*obtener(h,ac.familia)).padre \hfill //O(|h|)
+\while{res == false $\land$ actual $\neq$ NULL} \hfill //O(|c|*alturaAC(ac))
+\If{c == (*actual).categoria} \hfill //O(|c|)
+\state res $\gets$ true \hfill //O(1)
+\Else
+\state actual $\gets$ (*actual).padre \hfill //O(1)
+\endif
+\endwhile
+\endif
+\endif
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|h| + |c|*alturaAC(ac)}
+\end{algorithm}

@@ -1,0 +1,184 @@
+\begin{interfaz}{LinkLinkIt}
+\begin{iparamformales}{linkLinkIt}
+
+\comment{\funcion{Copiar}{\param{in}{m}{$\alpha$}}{$\alpha$}
+{true}
+{\igres m}
+{copy(m)}
+{}
+}
+
+\textbf{\large se explica con:} TAD linkLinkIt
+
+\end{iparamformales}
+
+\operacion{dameLink}{\param{in}{dl}{datosLink}}{Link}
+{true}
+{\igres \pi_{1}(dl)}
+{1}
+{El link se devuelve por referencia.}
+
+\operacion{dameCatDLink}{\param{in}{dl}{datosLink}}{puntero(datosCat)}
+{true}
+{\igres \pi_{2}(dl)}
+{1}
+{Ver Alis}
+
+\operacion{dameAccesos}{\param{in}{dl}{datosLink}}{itLista(acceso)}
+{true}
+{\igres crearIt(\pi_{3}(dl))}
+{1}
+{Ver Alias}
+
+\operacion{dameCantAccesos}{\param{in}{dl}{datosLink}}{nat}
+{true}
+{\igres \pi_{4}(dl)}
+{1}
+{No tiene}
+
+\operacion{dameDia}{\param{in}{a}{acceso}}{Fecha}
+{true}
+{\igres \pi_{1}(a)}
+{1}
+{No tiene}
+
+\operacion{dameCantA}{\param{in}{a}{acceso}}{nat}
+{true}
+{\igres \pi_{2}(a)}
+{1}
+{No tiene}
+
+\operacion{dameACatLLI}{\param{in}{lli}{linkLinkIt}}{acat}
+{true}
+{\igres lli.arbolCategorias}
+{1}
+{res es una referencia a lli.arbolCategorias}
+
+\operacion{categoriasLLI}{\param{in}{lli}{linkLinkIt}}{itLista(datosCat)}
+{true}
+{\igres categorias(lli.arbolCategorias)}
+{1}
+{Ver Alias}
+
+\operacion{fechaActual}{\param{in}{lli}{linkLinkIt}}{Fecha}
+{true}
+{\igres fechaActual(lli)}
+{1}
+{No tiene}
+
+\operacion{linksLLI}{\param{in}{lli}{linkLinkIt}}{itLista(datosLink)}
+{true}
+{\igres links(lli)}
+{1}
+{Ver Alias y ver post, como en categorias(acat)}
+
+\operacion{categoriaLink}{\param{in}{lli}{linkLinkIt}, \param{in}{l}{Link}}{Categoria}
+{l \in links(lli)}
+{\igres categoriaLink(lli,l)}
+{|l|}
+{La categoria se devuelve por referencia.}
+
+\operacion{iniciarLLI}{\param{in}{ac}{acat}}{linkLinkIt}
+{true}
+{\igres iniciar(ac)}
+{\#categorias(ac)}
+{VerAlias}
+
+\operacion{nuevoLinkLLI}{\param{in/out}{lli}{linkLinkIt}, \param{in}{l}{Link}, \param{in}{c}{Categoria}}{}
+{c\in categorias(lli) \land l\notin links(lli) \land \neg vacia?(l) \land lli_{0}=lli}
+{lli = nuevoLink(lli_{0},l,c)}
+{|l|+|c|+altura(lli.arbolCategorias)}
+{No hay alias ya que no devuelve nada.}
+
+
+\operacion{accederLLI}{\param{in/out}{lli}{linkLinkIt}, \param{in}{l}{Link}, \param{in}{f}{Fecha}}{}
+{l\in links(lli) \land f\geq fechaActual(lli) \land lli_{0}=lli}
+{lli = acceso(lli_{0},l,f)}
+{|l|}
+{No hay alias ya que no devuelve nada.}
+
+\operacion{cantLinks}{\param{in}{lli}{linkLinkIt}, \param{in}{c}{Categoria}}{nat}
+{c\in categorias(lli)}
+{\igres cantLinks(lli,c)}
+{|c|}
+{No tiene.}
+
+\operacion{linksOrdenadosPorAccesos}{\param{in}{lli}{linkLinkIt}, \param{in}{c}{Categoria}}{Secu(Link)}
+{c\in categorias(lli)}
+{\igres linksOrdenadosPorAccesos(lli,c)}
+{n${^2}$ ???(Que es n? corregir)}
+{VerAlias}
+
+\operacion{esReciente?}{\param{in}{lli}{linkLinkIt}, \param{in}{l}{Link}, \param{in}{f}{Fecha}}{bool}
+{l\in links(lli)}
+{\igres esReciente?(s,l,f)}
+{|l|}
+{VerAlias}
+
+\operaciond{accesosRecientes}{\param{in}{lli}{linkLinkIt}, \param{in}{c}{Categoria}, \param{in}{l}{Link}}{nat}
+{c\in categorias(lli) \land l\in links(lli)}
+{\igres accesosRecientes(lli,c,l)}
+{|c|+|l| ??}
+{No tiene.}
+
+\operacion{menorReciente}{\param{in}{lli}{linkLinkIt}, \param{in}{l}{Link}}{Fecha}
+{l\in links(lli)}
+{\igres menorReciente(lli,l)}
+{|l|}
+{No tiene.}
+
+\operacion{diasRecientes}{\param{in}{lli}{linkLinkIt}, \param{in}{l}{Link}}{Fecha}
+{l\in links(lli)}
+{\igres diasRecientes(lli,l)}
+{|l|}
+{No tiene.}
+
+\operacion{diasRecientesDesde}{\param{in}{lli}{linkLinkIt}, \param{in}{l}{Link}}{Fecha}
+{l\in links(lli)}
+{\igres diasRecientesDesde(lli,l)}
+{|l|}
+{No tiene.}
+
+\operacion{diasRecientesParaCategorias}{\param{in}{lli}{linkLinkIt}, \param{in}{c}{Categorias}}{Conj(Fecha)}
+{c\in categorias(lli)}
+{\igres diasRecientesParaCategorias(lli,c)}
+{|c|}
+{VerAlias}
+
+\operacion{linkConUltimoAcceso}{\param{in}{lli}{linkLinkIt}, \param{in}{c}{Categoria}, \param{in}{lc}{Conj(Link)}}{Link}
+{c\in categorias(lli)}
+{\igres linkConUltimoAcceso(lli,c,lc)}
+{Complejidad?}
+{VerAlias}
+
+\operacion{sumarAccesosRecientes}{\param{in}{lli}{linkLinkIt}, \param{in}{l}{Link}, \param{in}{fc}{Conj(Fecha)}}{nat}
+{l\in links(lli) \land fs\subseteq diasRecientes(lli,l)}
+{\igres sumarAccesosRecientes(lli,l,fs)}
+{|l|}
+{No tiene.}
+
+\operacion{buscarMax}{\param{in}{ls}{Lista(puntero(datosLink))}}{itLista(puntero(datosLink))}
+{ls\igobs ls_{0}}
+{\igres buscarMax(ls_{0})}
+{n????}
+{Alias?????}
+
+\operacion{estaOrdenada}{\param{in}{ls}{Lista(puntero(datosLink))}}{bool}
+{ls\igobs ls_{0}}
+{\igres estaOrdenada(ls_{0})}
+{n????}
+{Alias?????}
+
+\operacion{fechaUltimoAcceso}{\param{in}{lli}{linkLinkIt}, \param{in}{l}{Link}}{Fecha}
+{l \in links(lli)}
+{\igres fechaUltimoAcceso(lli,l)}
+{|l|}
+{No tiene}
+
+\operacion{accesosRecientesDia}{\param{in}{lli}{linkLinkIt}, \param{in}{l}{Link}, \param{in}{f}{Fecha}}{nat}
+{l \in links(lli)}
+{\igres accesosRecientesDia(lli,l,f)}
+{|l|}
+{No tiene}
+
+\end{interfaz}

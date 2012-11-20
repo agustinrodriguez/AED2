@@ -1,0 +1,79 @@
+\vspace*{1em}
+\begin{enumerate}
+
+\item\textbf{iVacías}
+\par Se crea 2 vectores vacío y se agrega atras uno de otro. Esto cuesta O(1).
+\par \textbf{Orden Total:} \textbf{O(1)}
+
+\item \textbf{iAgregarPaís}
+\par Se crea una Lista Vacía, lo cual tarda O(1), y se agrega esta lista al final del vector. Esta última operación cuesta O(1) amortizando los casos en los que el vector debe redimensionarse.
+\par\textbf{Orden Total:}O(1+1)amortizado = \textbf{O(1)amortizado}
+
+\item\textbf{iRestringirPaís}
+\par Se obtiene una lista de una coordenada del vector, lo cual cuesta O(1). En dicha lista, se agrega un país al final, lo cual cuesta copiar el elemento, pero como el elemento de tipo País es un renombre de Nat, la operación cuesta O(1).
+\par\textbf{Orden Total:} O(1)+O(1)=\textbf{O(1)}
+
+\item\textbf{iPaises}
+\par Se crea un conjunto vacío, lo cual tarda O(1). Se crean también dos variables Nat y se les asigna un valor, también en O(1) (obtener la longitud del vector tarda O(1)). Luego, se entra a un ciclo que itera una cantidad de veces igual a la cantidad de países. En este ciclo, se llama a AgregarRápido del conjunto, que tarda el costo de copiar el elemento, pero al ser un Nat, cuesta O(1). Luego se avanza el contador, lo cual cuesta O(1) por ser una operación con Nats. Al salir del ciclo, se devuelve el conjunto.
+\par\textbf{Orden Total:} O(1)+O(1)+ O(1+1)+O(CP*O(1+1)) = \textbf{O(CP)}
+
+\item\textbf{iPuedeVer?}
+\par Se obtiene una lista de una coordenada del vector, lo cual cuesta O(1), y se crea un iterador a ella, también en O(1). Se asigna "true" a res en O(1). Luego, se entra a un ciclo. Este ciclo itera hasta recorrer todos los países de la lista, o hasta encontrar el país buscado. En el peor caso, si están listados todos los países y el buscado es el último, el ciclo itera una cantidad de veces igual a la cantidad de países. en este ciclo, se llama a Siguiente del iterador, se hace una comparación de Nat, se asigna el valor de la comparación a res, y se avanza el iterador. Todas estas operaciones cuestan O(1).
+\par\textbf{Orden Total:} O(1+1)+O(1)+O(CP*(O(1+1+1)+O(1))) = \textbf{O(CP)}
+
+\item\textbf{inuevaMatriz}
+\par Se crean dos variables nat en O(1). Se le asigna 0 a una de estas variables, también en O(1). Se crea un arreglo de tamaño igual a la cantidad de países en O(CP) y se asigna este arreglo a res en O(1). Luego, se entra a un ciclo que itera un número de veces igual a la cantidad de países. En cada iteración, se crea un arreglo de tamaño cantidad países en O (CP) y se define este nuevo arreglo en la coordenada del areglo res en O(1). Luego, se asigna 0 a la segunda variable nat en O(1). Se entra a un ciclo interno que itera un número de veces igual a la cantidad de países, y en cada iteración asigna "False" a una coordenada del subarreglo en una coordenada del arreglo res en O(1). Luego se avanza el contador p2, y fuera de este ciclo, se avanza el contador p1.
+\par\textbf{Orden Total:} O(1)+O(1)+O(CP+1)+O(CP*O(CP+1)+O(1)+O(CP*O(1))+O(1))+O(1) = O(CP*CP+CP*CP) = O(2CP$^2$) = \textbf{O(CP$^2$)}
+
+\item\textbf{iRestringir}
+\par Se define ``true'' en una coordenada de un subarreglo de una coordenada de un arreglo. Definir tarda O(1).
+\par\textbf{Orden Total:} \textbf{O(1)}
+
+\item\textbf{iPuedeVerR}
+\par Se obtiene el valor booleano de una coordenada de un subarreglo de una coordenada de un arreglo. Esto tarda O(1). Luego, se aplica ``not'' a ese valor y se devuelve, también en O(1).
+\par\textbf{Orden Total:} \textbf{O(1)}
+
+\item\textbf{iRestringirLista}
+\par Se crea una variable de iterador de secuencia y se le asigna el iterador de la secuencia paísesQueLoRestringen, todo en O(1). Luego, se entra a un ciclo que itera una cantidad de veces igual a la cantidad de países de la secuencia paísesQueLoRestringen. En cada iteración, el ciclo llama a la función restringir, cuya complejidad es O(1), y ésta función llama a Avanzar del iterador de secuencia (O(1)) para obtener el país actual. Luego, se avanza el iterador.
+\par\textbf{Orden Total:} O(1)+O(1)+O(CP*(O(1+1)+O(1)) = \textbf{O(CP)}
+
+\item\textbf{iNuevo}
+\par Se crea un arreglo de tamaño cantidadPaíses en O(CP) y se asigna esto a res en O(1).  Se crea una variable nat y se le asigna 0 en O(1). Se entra a un ciclo que itera un número de veces igual a la cantidad de países. En cada iteración, se define en una coordenada del arreglo una tupla de 2 coordenadas (O(2) = O(1)) con dos nuevas secuencias vacías (O(1)) en cada una. Luego, se avanza el contador en O(1).
+\par\textbf{Orden Total:} O(CP+1)+O(1)+O(1)+O(CP*(O(1+1+1)+O(1))) = \textbf{O(CP)}
+
+\item\textbf{iRellenar}
+\par Se crean tres variables nat en O(1) y se asigna 0 a una de ellas, y la longitud del arreglo relaciones (obtenida en O(1)) a otra en O(1). Se entra a un ciclo que itera un número de veces igual a la cantidad de países. En el ciclo, se asigna 0 a la variable nat restante en O(1). Se entra a otro ciclo que también itera un número de veces igual a la cantidad de países. En este ciclo interno, hay un if cuya guarda llama a puedeVer (O(1)), y de ser verdadero, llama a AgregarAtrás de secuencia (O(Copiar un nat) = O(1)) obteniendo estas secuencias del arreglo relaciones en O(1). Luego, se avanza el contador $p_2$, y fuera de este ciclo, el contador $p_1$.
+\par\textbf{Orden Total:} O(1+1+1)+O(1)+O(1)+O(CP*(O(1)+O(CP*(O(1)+O(1+1)+O(1+1))+O(1))+O(1) = O(CP*CP) = \textbf{O(CP$^2$)}
+
+\item\textbf{iTieneHueco}
+\par Se crean dos variables nat en O(1). A una se le asigna 0 y a otra la longitud del arreglo de relaciones (obtenida en O(1)), ambas asignaciones costando O(1). Se crean dos variables iteradores de secuencia en O(1), y se asigna ``false'' a res en O(1). Luego, se entra a un ciclo que itera un número de veces igual a la cantidad de países. Se crean iteradores a las secuencias puedeVer y puedenVerA (en O(1)), obtenidas del arreglo relaciones en O(1). Se entra a un ciclo que itera un número de veces igual a la cantidad de países que hay en la secuencia puedenVer para ese país, y dentro de este ciclo se entra a otro que itera un número de veces igual a la cantidad de países en la secuencia puedenVerA para ese país. En este último ciclo, se entra a un if en cuya guarda se llama a PuedeVer (O(1)) obteniendo los países actuales de cada iterador en O(1), y al valor obtenido se le aplica ``not'' en O(1). Si es verdadero, se asigna ``true'' a res en O(1). Luego, se avanza el iterador. Fuera de este ciclo, se avanza el otro iterador, y finalmente se avanza el contador $p_1$.
+\par\textbf{Orden Total:} O(1+1)+O(1)+O(1+1)+O(1+1)+O(1)+O(CP*(O(1+1)+O(1+1) +\\
+O(\#PuedeVerpx*(O(\#PuedenVerApx*(O(1+1+1+1)+O(1)+O(1))))+O(1))+O(1)) =\\
+O (CP*\#PuedeVerpx*\#PuedenVerApx) =\\ 
+\textbf{O($\sum_{(px < longitud (relaciones))}$ \#relaciones[px].puedenVerA(px)*\#relaciones[px].puedeVer(px))}\\
+``Px'' es el país actualmente iterado en la sumatoria.
+
+\item\textbf{iTieneAlgunHueco?}
+\par Se crean dos variables nat en O(1) y se le asigna 0 a una de ellas en O(1), y a otra la longitud de las reglas (obtenida en O(1)) en O(1). Se llama a nuevaMatriz (O(CP$^2$)) y se asigna esta a una variable. Se entra a un ciclo que itera un número de veces igual a la cantidad de países en las reglas. En el ciclo se llama a restringirLista (O(CP)), obteniendo la lista de una coordenada de las reglas en O(1). En el peor caso, son todos los países del sistema. Luego, se avanza el contador. Se crea un nuevo arregloRelaciones (O(CP)) y se llama a rellenar O(CP$^2$) con ese arregloRelaciones. Finalmente, se asigna a res el resultado de tieneHueco (O($\sum_{(px < longitud (relaciones))}$  \#relaciones[px].puedenVerA(px)*\#relaciones[px].puedeVer(px))).
+\par\textbf{Orden Total:} O(1)+O(1)+O(1)+O(1+1)+O(CP$^2$)+O(CP*(O(CP)+O(1))+O(CP)+O(CP$^2$)+\\
+O($\sum_{(px < longitud (relaciones))}$ \#relaciones[px].puedenVerA(px)*\#relaciones[px].puedeVer(px)) = \\
+O(CP$^2$)+O(CP*CP)+O(CP)+O(CP$^2$)+\\
+O($\sum_{(px < longitud (relaciones))}$ \#relaciones[px].puedenVerA(px)*\#relaciones[px].puedeVer(px)) = \\
+O(3CP$^2$)+O(CP)+\\
+O($\sum_{(px < longitud (relaciones))}$ \#relaciones[px].puedenVerA(px)*\#relaciones[px].puedeVer(px)) =  \\
+O(CP$^2$+O($\sum_{(px<longitud(relaciones))}$ \#relaciones[px].puedenVerA(px)*\#relaciones[px].puedeVer(px)))\\
+Como la longitud de relaciones es igual a la cantidad de países en las Reglas, y los países que un país puede ver y los que pueden ver a un país son iguales a las funciones PuedeVer y PuedenVerA de las reglas, reemplazando se obtiene: \\
+\textbf{O(CP$^2$+$\sum_{(p \in paises(r))}$ \#puedenVerA(r,p)*\#puedeVer(r,p))}
+
+\item\textbf{iPuedenVerA}
+\par Se crea un conjunto vacío, lo cual tarda O(1). Se crean también dos variables Nat y se les asigna un valor, también en O(1) (obtener la longitud del vector tarda O(1)). Luego, se entra a un ciclo que itera una cantidad de veces igual a la cantidad de países. En este ciclo, se entra en la guarda de un If en la que se comparan dos nat (O(1)) y se llama a PuedeVer (O(CP)). De ser verdadera esta guarda, se llama a AgregarRápido del conjunto, que tarda el costo de copiar el elemento, pero al ser un Nat, cuesta O(1). Luego se avanza el contador, lo cual cuesta O(1) por ser una operación con Nats. Al salir del ciclo, se devuelve el conjunto.
+\par\textbf{Orden Total:} O(1)+O(1)+O(1+1)+O(CP*(O(1+CP)+O(1)+O(1))) = O(CP*CP) = \textbf{O(CP$^2$)}
+
+\item\textbf{iPuedeVer}
+\par Se crea un conjunto vacío, lo cual tarda O(1). Se crean también una variable Nat y se les asigna un valor, también en O(1). Se obtiene una lista de una coordenada, lo cual cuesta O(1), y se crea un iterador a ella, también en O(1). Luego, se entra a un ciclo. Esta ciclo itera hasta recorrer todos los países de la lista. En las guardas de los If del ciclo se hacen comparaciones de Nat, en las que obtener el siguiente del iterador cuesta O(1). Si la primer guarda es verdadera, se llama a AgregarRápido de un nat, lo que cuesta O(1), y se avanza el contador, también en O(1). Si la segunda guarda es verdadera, se avanza el contador en O(1). Si ambas guardas son falsas, se avanza el iterador, también en O(1). El peor caso ocurre cuando la lista tiena a todos los países del sistema. En este caso, se entra a la segunda y tercer guarda una vez por país (ej: el iterador inicia en 0, el contador inicia en 0, la segunda guarda hace avanzar el contador. El iterador sigue en 0, el contador está en 1, la segunda guarda avanza el iterador, etc.).
+\par\textbf{Orden Total:} O(1)+O(1)+O(1+1)+O(CP*(O(1+1)+O(1+1+1)+O(1))+CP*(O(1+1)+O(1+1+1)+O(1))) = O(CP+CP) = O(2CP) = \textbf{O(CP)}
+
+\end{enumerate}
+
+
+
