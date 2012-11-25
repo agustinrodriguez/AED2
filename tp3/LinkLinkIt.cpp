@@ -2,7 +2,7 @@
 #include "ArbolCategorias.h"
 
 LinkLinkIt::LinkLinkIt(ArbolCategorias arbolito){
-	
+
 }
 
 ArbolCategorias LinkLinkIt::categorias(){
@@ -11,7 +11,7 @@ ArbolCategorias LinkLinkIt::categorias(){
 }
 
 Conj<Link> LinkLinkIt::links(){
-	Conj<Link> links = Conj<Link>::Conj();
+	Conj<Link> links = Conj<Link>();
 	return links;
 }
 
@@ -68,7 +68,7 @@ Fecha LinkLinkIt::diasRecientesDesde(Link link){
 }
 
 Conj<Fecha> LinkLinkIt::diasRecientesParaCategoria(Categoria categoria){
-	Conj<Fecha> fechas = Conj<Fecha>::Conj();
+	Conj<Fecha> fechas = Conj<Fecha>();
 	return fechas;
 }
 

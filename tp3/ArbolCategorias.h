@@ -28,6 +28,7 @@ namespace aed2
 			int _altura;
 			Conj<DatosCat*> _hijos;
 			DatosCat* _abuelo;
+			DatosCat() {};
 		};
 
 		private:

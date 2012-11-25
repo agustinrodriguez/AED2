@@ -56,6 +56,6 @@ int ArbolCategorias::alturaCategoria(Categoria cat){
 }
 
 Conj<Categoria> ArbolCategorias::hijos(Categoria cat){
-	Conj<Categoria> res = Conj<Categoria>::Conj();
+	Conj<Categoria> res = Conj<Categoria>();
 	return res;
 }
