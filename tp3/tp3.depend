@@ -208,7 +208,7 @@
 1353897933 source:/home/guido/AED2/tp3/ArbolCategorias.cpp
 	"ArbolCategorias.h"
 
-1353899353 /home/guido/AED2/tp3/ArbolCategorias.h
+1353911516 /home/guido/AED2/tp3/ArbolCategorias.h
 	"aed2.h"
 	"DiccTrie.h"
 	"Tipos.h"
@@ -277,7 +277,7 @@
 	<ostream>
 	<sstream>
 
-1353897933 /home/guido/AED2/tp3/DiccTrie.h
+1353903804 /home/guido/AED2/tp3/DiccTrie.h
 	"aed2.h"
 	<string>
 
@@ -296,16 +296,16 @@
 	"ArbolCategorias.h"
 	"LinkLinkIt.h"
 
-1353901753 /home/guido/AED2/tp3/LinkLinkIt.h
+1353907074 /home/guido/AED2/tp3/LinkLinkIt.h
 	"aed2.h"
 	"ArbolCategorias.h"
 	"DiccTrie.h"
 
-1353897933 source:/home/guido/AED2/tp3/LinkLinkIt.cpp
+1353909948 source:/home/guido/AED2/tp3/LinkLinkIt.cpp
 	"LinkLinkIt.h"
 	"ArbolCategorias.h"
 
-1353897933 source:/home/guido/AED2/tp3/tests.cpp
+1353905133 source:/home/guido/AED2/tp3/tests.cpp
 	"Driver.h"
 	<stdarg.h>
 	<iostream>

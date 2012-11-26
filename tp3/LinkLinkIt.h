@@ -33,7 +33,7 @@ class Acceso{
                 void Avanzar();
                 void EliminarSiguiente();
                 void AgregarComoSiguiente(const Acceso& elem);
-
+                Acceso Ultimo();
                 bool operator==(const ItAcceso& otro) const;
             private:
                 Lista<Acceso>::Iterador _itLista;
@@ -68,7 +68,11 @@ class Acceso{
                 void Avanzar();
                 void EliminarSiguiente();
                 void AgregarComoSiguiente(const DatosLink& elem);
-
+                itLinks BuscarMax(Fecha f);
+                Fecha ultFecha();
+                int cantAccesosDesde(Fecha f);
+                bool estaOrdenada();
+                itLinks(const typename Lista<DatosLink>::Iterador& otro);
                 bool operator==(const itLinks& otro) const;
             private:
                 Lista<DatosLink>::Iterador _itLista;
@@ -85,13 +89,11 @@ class Acceso{
 		Categoria categoriaLink(Link link) const;
 		Fecha fechaUltimoAcceso(Link link);
 		int accesosRecientesDia(Link link, Fecha fecha);
-		LinkLinkIt iniciarLli(ArbolCategorias acat) const;
+		void iniciarLli(ArbolCategorias acat) const;
 		void nuevoLinkLli(Link link, Categoria categoria);
 		void accederLli(Link link, Fecha fecha);
 		int cantLinks(Categoria categoria);
 		itLinks linksOrdenadosPorAccesos(Categoria categoria) const;
-		bool esReciente(Link link, Fecha fecha);
-		int accesosRecientes(Link link);
 
         private:
 

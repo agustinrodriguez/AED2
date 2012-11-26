@@ -26,58 +26,60 @@ ArbolCategorias::~ArbolCategorias()
 
 }
 
-const Categoria& ArbolCategorias::dameCat(const DatosCat& dc) const
+const Categoria& ArbolCategorias::DatosCat::dameCat() const
 {
-    Categoria *res = new Categoria();
-    return *res;
+    return _categoria;
+
 }
 
-int ArbolCategorias::dameId(const DatosCat& dc) const
+int ArbolCategorias::DatosCat::dameId() const
 {
-    return 0;
+    return _id;
 }
 
-int ArbolCategorias::dameAltura(const DatosCat& dc) const
+int ArbolCategorias::DatosCat::dameAltura() const
 {
-    return 0;
+    return _altura;
 }
 
-ArbolCategorias::ItCategorias& ArbolCategorias::dameHijos(const DatosCat& dc) const
+ArbolCategorias::ItCategorias& ArbolCategorias::DatosCat::dameHijos() const
 {
     ItCategorias *res = new ItCategorias();
     return *res;
 }
-const ArbolCategorias::DatosCat& ArbolCategorias::damePadre(const DatosCat& dc) const
+const ArbolCategorias::DatosCat& ArbolCategorias::DatosCat::damePadre() const
 {
-    DatosCat *res = new DatosCat();
-    return *res;
+    return *_padre;
 }
 
 ArbolCategorias::DatosCat* ArbolCategorias::obtenerAC(const Categoria c) const
 {
+    // DatosCat hola = _familia.Obtener(c); MODIFICAR EL DICCIONARIO PARA Q EN VEZ DE T DEVUELVA DATOSCAT O DATOSLINK
     DatosCat *res = new DatosCat();
     return res;
 }
 
 ArbolCategorias::ItCategorias ArbolCategorias::categoriasAC() const
 {
-    ItCategorias *res = new ItCategorias();
-    return *res;
+    return _categorias;
 }
 
 const Categoria& ArbolCategorias::raizAC() const
 {
-    Categoria *res = new Categoria();
-    return *res;
+
+    return (*_raiz).dameCat();
 }
 
 int ArbolCategorias::idAC(const Categoria& c) const
 {
+
+    //return _familia.Obtener(c).dameId(); EL DICCIONARIO
     return 0;
 }
 
 int ArbolCategorias::alturaCatAC(const Categoria c) const
 {
+    //return (*_familia.Obtener(c)).dameAltura(); EL DICCIONARIO
     return 0;
 }
 
@@ -89,12 +91,13 @@ ArbolCategorias::ItCategorias& ArbolCategorias::hijosAC(const Categoria& c) cons
 
 Categoria ArbolCategorias::padreAC(const Categoria& c) const
 {
+    //return (*_familia.Obtener(c)).damePadre(); EL DICCIONARIO
     return "CategoriaDePrueba";
 }
 
 int ArbolCategorias::alturaAC() const
 {
-    return 0;
+    return _alturaMax;
 }
 
 void ArbolCategorias::agregarAC(const Categoria c, const Categoria cpadre)
@@ -104,7 +107,7 @@ void ArbolCategorias::agregarAC(const Categoria c, const Categoria cpadre)
 
 bool ArbolCategorias::esta(const Categoria c) const
 {
-    return false;
+    return _familia.Def(c);
 }
 
 bool ArbolCategorias::esSubCategoria(const Categoria c, const Categoria predecesor) const

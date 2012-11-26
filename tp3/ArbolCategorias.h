@@ -15,17 +15,6 @@ namespace aed2
 		~ArbolCategorias();
         class DatosCat;
         class itCategorias;
-        class DatosCat{
-            public:
-                DatosCat() {};
-                ~DatosCat() {};
-
-                Categoria _categoria;
-                int _id;
-                int _altura;
-                Conj<DatosCat*> _hijos;
-                DatosCat* _padre;
-        };
 
         class ItCategorias{
             public:
@@ -44,11 +33,24 @@ namespace aed2
                 // creo que es como una propiedad amiga, habria q ver como ellos lo hicieron
         };
 
-        const Categoria& dameCat(const DatosCat& dc) const;
-        int dameId(const DatosCat& dc) const;
-        int dameAltura(const DatosCat& dc) const;
-        ItCategorias& dameHijos(const DatosCat& dc) const;
-        const DatosCat& damePadre(const DatosCat& dc) const;
+        class DatosCat{
+            public:
+                DatosCat() {};
+                ~DatosCat() {};
+                const Categoria& dameCat() const;
+                int dameId() const;
+                int dameAltura() const;
+                ItCategorias&  dameHijos() const;
+                const DatosCat& damePadre() const;
+
+                //Deberias poner esto como privado, te modifique de lugar las operaciones porq sino no te deja usar la privda de la clase
+                Categoria _categoria;
+                int _id;
+                int _altura;
+                ItCategorias _hijos;
+                DatosCat* _padre;
+        };
+
 
         DatosCat* obtenerAC(const Categoria c) const;
 		ItCategorias categoriasAC() const;
@@ -68,7 +70,7 @@ namespace aed2
 		int _cantidad;
 		int _alturaMax;
 		DiccTrie<DatosCat*> _familia;
-		Lista<DatosCat> _categorias;
+		ItCategorias _categorias;
 	};
 }
 
