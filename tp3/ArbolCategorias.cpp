@@ -42,9 +42,9 @@ int ArbolCategorias::dameAltura(const DatosCat& dc) const
     return 0;
 }
 
-ArbolCategorias::DatosCat::ItDatosCat& ArbolCategorias::dameHijos(const DatosCat& dc) const
+ArbolCategorias::ItCategorias& ArbolCategorias::dameHijos(const DatosCat& dc) const
 {
-    DatosCat::ItDatosCat *res = new DatosCat::ItDatosCat();
+    ItCategorias *res = new ItCategorias();
     return *res;
 }
 const ArbolCategorias::DatosCat& ArbolCategorias::damePadre(const DatosCat& dc) const
@@ -59,9 +59,9 @@ ArbolCategorias::DatosCat* ArbolCategorias::obtenerAC(const Categoria c) const
     return res;
 }
 
-ArbolCategorias::DatosCat::ItDatosCat ArbolCategorias::categoriasAC() const
+ArbolCategorias::ItCategorias ArbolCategorias::categoriasAC() const
 {
-    DatosCat::ItDatosCat *res = new DatosCat::ItDatosCat();
+    ItCategorias *res = new ItCategorias();
     return *res;
 }
 
@@ -81,9 +81,9 @@ int ArbolCategorias::alturaCatAC(const Categoria c) const
     return 0;
 }
 
-ArbolCategorias::DatosCat::ItDatosCat& ArbolCategorias::hijosAC(const Categoria& c) const
+ArbolCategorias::ItCategorias& ArbolCategorias::hijosAC(const Categoria& c) const
 {
-    DatosCat::ItDatosCat *res = new DatosCat::ItDatosCat();
+    ItCategorias *res = new ItCategorias();
     return *res;
 }
 
@@ -112,7 +112,46 @@ bool ArbolCategorias::esSubCategoria(const Categoria c, const Categoria predeces
     return false;
 }
 
-ArbolCategorias::DatosCat::ItDatosCat::ItDatosCat()
+ArbolCategorias::ItCategorias::ItCategorias()
 {
 
+}
+
+ArbolCategorias::ItCategorias::~ItCategorias()
+{
+
+}
+
+bool ArbolCategorias::ItCategorias::HaySiguiente() const
+{
+    return _itLista.HaySiguiente();
+}
+
+Categoria& ArbolCategorias::ItCategorias::Siguiente() const
+{
+    // DatosCat *dc = _itLista.Siguiente();
+
+    Categoria *res = new Categoria();
+    return *res;
+}
+
+void ArbolCategorias::ItCategorias::Avanzar()
+{
+    _itLista.Avanzar();
+}
+
+void ArbolCategorias::ItCategorias::EliminarSiguiente()
+{
+    _itLista.EliminarSiguiente();
+}
+
+void ArbolCategorias::ItCategorias::AgregarComoSiguiente(const Categoria& elem)
+{
+//    _itLista.AgregarComoSiguiente(elem);
+}
+
+
+bool ArbolCategorias::ItCategorias::operator==(const ItCategorias& otro) const
+{
+    return false;
 }
