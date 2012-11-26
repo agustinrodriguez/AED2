@@ -54,14 +54,13 @@ LinkLinkIt::itLinks LinkLinkIt::linksLli() const{
 }
 
 Categoria LinkLinkIt::categoriaLink(Link link) const{
-	//return _linkInfo.Obtener(link)._catDLink; HAY QUE MODIFICAR EL .H DE DICCTRIE PARA Q DEVUELVA DATOSLINK O VER CMO HACER
-	return "categoriaEj";
+	return _linkInfo.Obtener(link)->dameCatDLink().dameCat();
+	//return "categoriaEj";
 }
 
 Fecha LinkLinkIt::fechaUltimoAcceso(Link link){
-	 //return _linkInfo.Obtener(link).dameAccesos().ultimo().dameDia(); HAY QUE CAMBIAR EL DICCIONARIO O VER COMO SE
-	 // HACE, SE PUEDE HACER UN CICLO POR LA LISTA DE LOS LINKS Y LISTO, IMPORTA LA COMPLEJIDAD ACA?
-	return 0;
+//	 return _linkInfo.Obtener(link)->dameAccesos().ultimo().dameDia();
+    return 0;
 }
 
 int LinkLinkIt::accesosRecientesDia(Link link, Fecha fecha){
@@ -95,14 +94,13 @@ void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
     *DatosLink puntLink = &nuevoLink;
     _linkInfo.Definir(link,puntLink);
     _listaLinks.AgregarComoSiguiente(nuevoLink);
-    while(¬(cat == NULL))
+    while(!(cat == NULL))
     {
         //aca iria lo de agregar el link en el arreglo
         cat = cat.damePadre();
     }
+*/
 
-    Tira que hay parasito ja, seguramente falta el new y tambien modificar el diccionario para el definir
-    */
 }
 
 void LinkLinkIt::accederLli(Link link, Fecha fecha){

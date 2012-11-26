@@ -54,9 +54,7 @@ const ArbolCategorias::DatosCat& ArbolCategorias::DatosCat::damePadre() const
 
 ArbolCategorias::DatosCat* ArbolCategorias::obtenerAC(const Categoria c) const
 {
-    // DatosCat hola = _familia.Obtener(c); MODIFICAR EL DICCIONARIO PARA Q EN VEZ DE T DEVUELVA DATOSCAT O DATOSLINK
-    DatosCat *res = new DatosCat();
-    return res;
+    return _familia.Obtener(c);
 }
 
 ArbolCategorias::ItCategorias ArbolCategorias::categoriasAC() const
@@ -73,26 +71,23 @@ const Categoria& ArbolCategorias::raizAC() const
 int ArbolCategorias::idAC(const Categoria& c) const
 {
 
-    //return _familia.Obtener(c).dameId(); EL DICCIONARIO
-    return 0;
+    return _familia.Obtener(c)->dameId();
 }
 
 int ArbolCategorias::alturaCatAC(const Categoria c) const
 {
-    //return (*_familia.Obtener(c)).dameAltura(); EL DICCIONARIO
-    return 0;
+    return _familia.Obtener(c)->dameAltura();
+
 }
 
 ArbolCategorias::ItCategorias& ArbolCategorias::hijosAC(const Categoria& c) const
 {
-    ItCategorias *res = new ItCategorias();
-    return *res;
+    return _familia.Obtener(c)->dameHijos();
 }
 
 Categoria ArbolCategorias::padreAC(const Categoria& c) const
 {
-    //return (*_familia.Obtener(c)).damePadre(); EL DICCIONARIO
-    return "CategoriaDePrueba";
+    return _familia.Obtener(c)->damePadre().dameCat();
 }
 
 int ArbolCategorias::alturaAC() const
