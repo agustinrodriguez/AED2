@@ -205,10 +205,10 @@
 	<iostream>
 	<sstream>
 
-1353951080 source:/home/guido/AED2/tp3/ArbolCategorias.cpp
+1353970871 source:/home/guido/AED2/tp3/ArbolCategorias.cpp
 	"ArbolCategorias.h"
 
-1353951053 /home/guido/AED2/tp3/ArbolCategorias.h
+1353970853 /home/guido/AED2/tp3/ArbolCategorias.h
 	"aed2.h"
 	"DiccTrie.h"
 	"Tipos.h"
@@ -296,12 +296,12 @@
 	"ArbolCategorias.h"
 	"LinkLinkIt.h"
 
-1353952431 /home/guido/AED2/tp3/LinkLinkIt.h
+1353963951 /home/guido/AED2/tp3/LinkLinkIt.h
 	"aed2.h"
 	"ArbolCategorias.h"
 	"DiccTrie.h"
 
-1353909948 source:/home/guido/AED2/tp3/LinkLinkIt.cpp
+1353966698 source:/home/guido/AED2/tp3/LinkLinkIt.cpp
 	"LinkLinkIt.h"
 	"ArbolCategorias.h"
 
