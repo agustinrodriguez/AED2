@@ -17,6 +17,9 @@ class Acceso{
                 ~Acceso() {};
                 Fecha dameDia();
                 int dameCantA();
+                void guardoAcceso(int a);
+                void guardoDia(int a);
+
         private:
 			Fecha _dia;
 			int _cantAccesos;
@@ -49,9 +52,13 @@ class Acceso{
             ArbolCategorias::DatosCat dameCatDLink();
             ItAcceso dameAccesos();
             int dameCantAccesos();
+            void nuevoLink(String l);
+            void nuevaCat(ArbolCategorias::DatosCat* c);
+            void nuevoAccesos(ItAcceso ita);
+            void nuevoCantAccesosRecientes(int car);
         private:
 			Link _link;
-			ArbolCategorias::DatosCat _catDLink;
+			ArbolCategorias::DatosCat* _catDLink;
 			ItAcceso _accesosRecientes;
 			int _cantAccesosRecientes;
 

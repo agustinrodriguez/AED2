@@ -52,6 +52,28 @@ const ArbolCategorias::DatosCat& ArbolCategorias::DatosCat::damePadre() const
     return *_padre;
 }
 
+void ArbolCategorias::DatosCat::agregarCat(String c){
+    this->_categoria = c;
+}
+
+void ArbolCategorias::DatosCat::agregarId(int i){
+    this->_id = i;
+}
+
+void ArbolCategorias::DatosCat::agregarHijos(ItCategorias h){
+    this->_hijos = h;
+}
+
+void ArbolCategorias::DatosCat::agregarPadre(DatosCat* p){
+    this->_padre = p;
+}
+
+void ArbolCategorias::DatosCat::agregarAltura(int a){
+    this->_altura = a;
+}
+
+
+
 ArbolCategorias::DatosCat* ArbolCategorias::obtenerAC(const Categoria c) const
 {
     return _familia.Obtener(c);

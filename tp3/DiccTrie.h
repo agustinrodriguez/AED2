@@ -3,7 +3,7 @@
 #include "aed2.h"
 #include <string>
 
-#define TAMANIO 26
+#define TAMANIO 255
 
 using namespace std;
 

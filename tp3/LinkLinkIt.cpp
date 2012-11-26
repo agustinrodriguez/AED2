@@ -16,7 +16,7 @@ Link LinkLinkIt::DatosLink::dameLink() const{
 
 
 ArbolCategorias::DatosCat LinkLinkIt::DatosLink::dameCatDLink(){
-    return _catDLink;
+    return *_catDLink;
 }
 
 LinkLinkIt::ItAcceso LinkLinkIt::DatosLink::dameAccesos(){
@@ -28,6 +28,24 @@ int LinkLinkIt::DatosLink::dameCantAccesos(){
     return _cantAccesosRecientes;
 }
 
+void LinkLinkIt::DatosLink::nuevoLink(String l){
+    this->_link = l;
+
+}
+
+void LinkLinkIt::DatosLink::nuevaCat(ArbolCategorias::DatosCat* c){
+    this->_catDLink = c;
+}
+
+void LinkLinkIt::DatosLink::nuevoAccesos(ItAcceso ita){
+    this->_accesosRecientes = ita;
+
+}
+
+void LinkLinkIt::DatosLink::nuevoCantAccesosRecientes(int car){
+    this->_cantAccesosRecientes = car;
+
+}
 
 Fecha LinkLinkIt::Acceso::dameDia(){
     return _dia;
@@ -35,6 +53,14 @@ Fecha LinkLinkIt::Acceso::dameDia(){
 
 int LinkLinkIt::Acceso::dameCantA(){
     return _cantAccesos;
+}
+
+void LinkLinkIt::Acceso::guardoAcceso(int a){
+    this->_cantAccesos = a;
+}
+
+void LinkLinkIt::Acceso::guardoDia(int a){
+    this->_dia = a;
 }
 
 ArbolCategorias LinkLinkIt::dameAcatLli() const{
@@ -55,7 +81,6 @@ LinkLinkIt::itLinks LinkLinkIt::linksLli() const{
 
 Categoria LinkLinkIt::categoriaLink(Link link) const{
 	return _linkInfo.Obtener(link)->dameCatDLink().dameCat();
-	//return "categoriaEj";
 }
 
 Fecha LinkLinkIt::fechaUltimoAcceso(Link link){
@@ -78,50 +103,59 @@ int LinkLinkIt::accesosRecientesDia(Link link, Fecha fecha){
 }
 
 void LinkLinkIt::iniciarLli(ArbolCategorias acat) const{
-/*   _actual = 1;
+   /*
+   _actual = 1;
    _acat = acat;
    int c = 1;
-   _listaLinks = _listaLinks();
+   itLinks itL; //CREAR UN ITERADOR VACIO COMO LO HACEMOOO
+   _listaLinks = itL;
    _linkInfo = _linkInfo();
-   COMO SE CREA EL ARREGLO ACA???
-   */
+   //COMO SE CREA EL ARREGLO ACA???
+    PROBLEMA CON EL CONST DE ACAT Y CON _ACTUAL DICE Q ES DE SOLO LECTURA
+    */
 }
 
 void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
-    /*ArbolCategorias::DatosCat* cat = this->dameAcatLli().obtenerAC(categoria);
-    Lista<Acceso> accesoDeNuevoLink = Lista<Acceso>();
-    DatosLink nuevoLink = <link,cat,accesoDeNuevoLink,0>;
-    *DatosLink puntLink = &nuevoLink;
-    _linkInfo.Definir(link,puntLink);
+    ArbolCategorias::DatosCat* cat = this->dameAcatLli().obtenerAC(categoria);
+    ItAcceso accesoDeNuevoLink;
+    DatosLink nuevoLink;
+    nuevoLink.nuevoLink(link);
+    nuevoLink.nuevaCat(cat);
+    nuevoLink.nuevoAccesos(accesoDeNuevoLink);
+    nuevoLink.nuevoCantAccesosRecientes(0);
+//    _linkInfo.Definir(link,&nuevoLink); VER EL DEFINIR
     _listaLinks.AgregarComoSiguiente(nuevoLink);
     while(!(cat == NULL))
     {
         //aca iria lo de agregar el link en el arreglo
-        cat = cat.damePadre();
+        *cat = cat->damePadre();
     }
-*/
 
 }
 
 void LinkLinkIt::accederLli(Link link, Fecha fecha){
-    /*if (_actual == fecha){
+    if (_actual == fecha){
         _actual = fecha;
     }
     DatosLink* puntLink = _linkInfo.Obtener(link);
-    if(fecha == (*puntLink).dameAccesos().Ultimo().dameDia())
+    if(fecha == puntLink->dameAccesos().Ultimo().dameDia())
     {
-        (*puntLink).dameAccesos().Ultimo()._cantAccesos++;
+        int a = puntLink->dameAccesos().Ultimo().dameCantA();
+        a++;
+        puntLink->dameAccesos().Ultimo().guardoAcceso(a);
     }
     else
     {
-        Acceso tuplaAcceso = <fecha, 1>
-        (*puntLink).dameAccesos().AgregarComoSiguiente(tuplaAcceso);
+        Acceso nuevoAcceso;
+        nuevoAcceso.guardoDia(fecha);
+        nuevoAcceso.guardoAcceso(1);
+        puntLink->dameAccesos().AgregarComoSiguiente(nuevoAcceso);
     }
-    (* puntLink)._cantAccesosRecientes++;
 
-    PARA ESTE FALTARIA ARMAR DOS OPERACIONES DE ACCESO QUE TE DEJE MODIFICAR CANTACCESOSRECIENTES Y CANTACCESOS YA QUE COMO
-    SON PRIVADAS TIRA ERROR
-    */
+    int b = puntLink->dameCantAccesos();
+    b++;
+    puntLink->nuevoCantAccesosRecientes(b);
+
 }
 
 

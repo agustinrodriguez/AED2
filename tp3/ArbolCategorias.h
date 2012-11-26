@@ -42,6 +42,11 @@ namespace aed2
                 int dameAltura() const;
                 ItCategorias&  dameHijos() const;
                 const DatosCat& damePadre() const;
+                void agregarCat(String c);
+                void agregarId(int i);
+                void agregarHijos(ItCategorias h);
+                void agregarPadre(DatosCat* p);
+                void agregarAltura(int a);
 
                 //Deberias poner esto como privado, te modifique de lugar las operaciones porq sino no te deja usar la privda de la clase
                 Categoria _categoria;
