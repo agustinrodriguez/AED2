@@ -170,6 +170,9 @@ void ArbolCategorias::ItCategorias::AgregarComoSiguiente(const Categoria& elem)
 //    _itLista.AgregarComoSiguiente(elem);
 }
 
+/*int ArbolCategorias::ItCategorias::tamaño() const{
+
+}*/
 
 bool ArbolCategorias::ItCategorias::operator==(const ItCategorias& otro) const
 {

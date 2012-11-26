@@ -106,13 +106,17 @@ void LinkLinkIt::iniciarLli(ArbolCategorias acat) const{
    /*
    _actual = 1;
    _acat = acat;
-   int c = 1;
-   itLinks itL; //CREAR UN ITERADOR VACIO COMO LO HACEMOOO
-   _listaLinks = itL;
-   _linkInfo = _linkInfo();
-   //COMO SE CREA EL ARREGLO ACA???
-    PROBLEMA CON EL CONST DE ACAT Y CON _ACTUAL DICE Q ES DE SOLO LECTURA
-    */
+   */
+//   int c = 1;
+     itLinks _listaLinks = itLinks();
+    DiccTrie<DatosLink*> _linkInfo = DiccTrie<DatosLink*>();
+   /*while(c <= acat.categoriasAC().tamaño())
+   {
+       itLinks itLl;
+       _arrayCatLinks.Definir(c,itLl);
+       c++
+   }*/
+
 }
 
 void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
@@ -123,7 +127,7 @@ void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
     nuevoLink.nuevaCat(cat);
     nuevoLink.nuevoAccesos(accesoDeNuevoLink);
     nuevoLink.nuevoCantAccesosRecientes(0);
-//    _linkInfo.Definir(link,&nuevoLink); VER EL DEFINIR
+//    _linkInfo.Definir(link*, nuevoLink*);
     _listaLinks.AgregarComoSiguiente(nuevoLink);
     while(!(cat == NULL))
     {
@@ -210,7 +214,7 @@ void LinkLinkIt::itLinks::EliminarSiguiente()
 
 void LinkLinkIt::itLinks::AgregarComoSiguiente(const DatosLink& elem)
 {
-//    _itLista.AgregarComoSiguiente(elem);
+
 }
 
 
