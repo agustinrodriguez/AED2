@@ -129,13 +129,12 @@ void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
     nuevoLink.nuevaCat(cat);
     nuevoLink.nuevoAccesos(accesoDeNuevoLink);
     nuevoLink.nuevoCantAccesosRecientes(0);
-//    _linkInfo.Definir(link*, nuevoLink*);
-    itLinks *itL = new itLinks(_listaLinks);
-    itL->AgregarComoSiguiente(nuevoLink);
+    DatosLink* puntLink = &nuevoLink;
+    _linkInfo.Definir(link,puntLink);
+    _listaLinks.AgregarAtras(nuevoLink);
     while(!(cat == NULL))
     {
-        itLinks itL;
-//        _arrayCatLinks.[cat->dameId()]
+        _arrayCatLinks[cat->dameId()].AgregarAtras(puntLink);
         *cat = cat->damePadre();
     }
 
@@ -172,8 +171,25 @@ int LinkLinkIt::cantLinks(Categoria categoria){
 }
 
 LinkLinkIt::itLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) const{
-    itLinks itL;
-    return itL;
+        /*
+        int id = this->dameAcatLli().idAC(categoria);
+        itLinks *itParaFecha = new itLinks(*(this->_arrayCatLinks[id])); El arreglo es punteros y el iterado sin
+        Fecha fecha = itParaFecha.ultFecha();
+        Lista<DatosLink*> listaOrdenada = Lista<DatosLink*>();
+        if (!(this->_arrayCatLinks[id].estaOrdenada?))
+        {
+            itLinks *itMax = new itLinks(this->_arrayCatLinks[id]);
+            while(!(this->_arrayCatLinks[id].esVacia()))
+            {
+                //itMax = itMax.BuscarMax(fecha); COPIAR ITERADOR
+                listaOrdenada.AgregarAtras(itMax.Siguiente());
+                itMax.EliminarSiguiente();
+            }
+            this->_arrayCatLinks[id] = listaOrdenada;
+        }
+       itLinks *res = new itLinks(this->_arrayCatLinks[id]);*/
+       itLinks res;
+       return res;
 }
 
 //////////////////////////////////////////
@@ -237,7 +253,7 @@ LinkLinkIt::itLinks LinkLinkIt::itLinks::BuscarMax(Fecha f){
     {
         if(this->cantAccesosDesde(f) > res.cantAccesosDesde(f))
         {
-            res = this;
+//            res = this; COMO COPIAR UN ITERADOR
         }
         this->Avanzar();
     }

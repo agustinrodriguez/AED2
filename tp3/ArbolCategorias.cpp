@@ -60,7 +60,12 @@ void ArbolCategorias::DatosCat::agregarId(int i){
     this->_id = i;
 }
 
-void ArbolCategorias::DatosCat::agregarHijos(Conj<DatosCat*> h){
+void ArbolCategorias::DatosCat::agregarHijo(ArbolCategorias::DatosCat* h){
+    this->_hijos.Agregar(h);
+}
+
+
+void ArbolCategorias::DatosCat::agregarHijos(Conj<ArbolCategorias::DatosCat*> h){
     this->_hijos = h;
 }
 
@@ -120,6 +125,23 @@ int ArbolCategorias::alturaAC() const
 
 void ArbolCategorias::agregarAC(const Categoria c, const Categoria cpadre)
 {
+    DatosCat* puntPadre = this->_familia.Obtener(cpadre);
+    if (puntPadre->dameAltura() == this->alturaAC())
+    {
+        this->_alturaMax++;
+    }
+    DatosCat tuplaA;
+    tuplaA.agregarCat(c);
+    tuplaA.agregarId(this->_cantidad + 1);
+    tuplaA.agregarAltura(puntPadre->dameAltura()+1);
+    Conj<DatosCat*> conj = Conj<DatosCat*>();
+    tuplaA.agregarHijos(conj);
+    tuplaA.agregarPadre(puntPadre);
+    DatosCat* punt = &tuplaA;
+    puntPadre->agregarHijo(punt);
+    this->_cantidad++;
+    this->_categorias.AgregarAtras(tuplaA);
+
 
 }
 
@@ -129,7 +151,39 @@ bool ArbolCategorias::esta(const Categoria c) const
 }
 
 bool ArbolCategorias::esSubCategoria(const Categoria c, const Categoria predecesor) const
-{
+{ /*
+    bool res = false;
+    if (predecesor == c)
+    {
+        res = true;
+    }
+    else
+    {
+        if(predecesor == this->raizAC())
+        {
+            res = false;
+        }
+        else
+        {
+            const DatosCat* actual = this->_familia().Obtener(predecesor);
+           const DatosCat* puntC = this->_familia.Obtener(c)->damePadre();
+            while((res == false && actual != NULL))
+            {
+                if(puntC == actual)
+                {
+                    res = true;
+                }
+                else
+                {
+                    actual = (*actual).damePadre();
+                }
+            }
+        }
+    }
+
+    YA ESTA HECHA EL PROBLEMA ESTA AL PASAR BIEN EL PUNTERO DEL DAMEPADRE
+    FIJATE COMO ES
+    return res;*/
     return false;
 }
 

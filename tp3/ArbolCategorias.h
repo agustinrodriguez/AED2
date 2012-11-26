@@ -57,6 +57,7 @@ namespace aed2
                 const DatosCat& damePadre() const;
                 void agregarCat(String c);
                 void agregarId(int i);
+                void agregarHijo(DatosCat* h);
                 void agregarHijos(Conj<DatosCat*> h);
                 void agregarPadre(DatosCat* p);
                 void agregarAltura(int a);
