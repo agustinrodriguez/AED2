@@ -1,26 +1,61 @@
 #include "LinkLinkIt.h"
 #include "ArbolCategorias.h"
 
+
 LinkLinkIt::LinkLinkIt(ArbolCategorias arbolito){
 
 }
 
-ArbolCategorias LinkLinkIt::categorias(){
-	ArbolCategorias ab = ArbolCategorias("CategoriaDePrueba");
-	return ab;
+LinkLinkIt::~LinkLinkIt(){
+
 }
 
-Conj<Link> LinkLinkIt::links(){
-	Conj<Link> links = Conj<Link>();
-	return links;
+Link LinkLinkIt::DatosLink::dameLink() const{
+    return _link;
 }
 
-Categoria LinkLinkIt::categoriaLink(Link link){
-	return "CategoriaDePrueba";
+
+ArbolCategorias::DatosCat LinkLinkIt::DatosLink::dameCatDLink(){
+    return _catDLink;
+}
+
+LinkLinkIt::ItAcceso LinkLinkIt::DatosLink::dameAccesos(){
+    return _accesosRecientes;
+}
+
+
+int LinkLinkIt::DatosLink::dameCantAccesos(){
+    return _cantAccesosRecientes;
+}
+
+
+Fecha LinkLinkIt::Acceso::dameDia(){
+    return _dia;
+}
+
+int LinkLinkIt::Acceso::dameCantA(){
+    return _cantAccesos;
+}
+
+ArbolCategorias LinkLinkIt::dameAcatLli() const{
+	return _acat;
+}
+
+ArbolCategorias::ItCategorias LinkLinkIt::categoriasLli(){
+    return _acat.categoriasAC();
 }
 
 Fecha LinkLinkIt::fechaActual(){
-	return 0;
+	return _actual;
+}
+
+LinkLinkIt::itLinks LinkLinkIt::linksLli() const{
+	return _listaLinks;
+}
+
+Categoria LinkLinkIt::categoriaLink(Link link) const{
+	//return (*(_linkInfo.Obtener(link)))._catDLink;
+	return "hola";
 }
 
 Fecha LinkLinkIt::fechaUltimoAcceso(Link link){
@@ -31,12 +66,26 @@ int LinkLinkIt::accesosRecientesDia(Link link, Fecha fecha){
 	return 0;
 }
 
-void LinkLinkIt::nuevoLink(Link link, Categoria categoria){
+LinkLinkIt LinkLinkIt::iniciarLli(ArbolCategorias acat) const{
+   return LinkLinkIt(acat);
+}
+
+void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
 
 }
 
-void LinkLinkIt::acceso(Link link, Fecha fecha){
+void LinkLinkIt::accederLli(Link link, Fecha fecha){
 
+}
+
+
+int LinkLinkIt::cantLinks(Categoria categoria){
+	return 0;
+}
+
+LinkLinkIt::itLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) const{
+    itLinks itL;
+    return itL;
 }
 
 bool LinkLinkIt::esReciente(Link link, Fecha fecha){
@@ -46,42 +95,94 @@ bool LinkLinkIt::esReciente(Link link, Fecha fecha){
 int LinkLinkIt::accesosRecientes(Link link){
 	return 0;
 }
+//////////////////////////////////////////
+//iteradores operaciones
+//////////////////////////////////////////
 
-//Lista<Link> LinkLinkIt::linksOrdenadosPorAccesos(){
-//
-//}
+/*LinkLinkIt::itLinks::~itLinks()
+    {
 
-int LinkLinkIt::cantLinks(Categoria categoria){
-	return 0;
+    }
+*/
+
+bool LinkLinkIt::itLinks::HaySiguiente() const
+{
+    return _itLista.HaySiguiente();
 }
 
-Fecha LinkLinkIt::menorReciente(Link link){
-	return 0;
+LinkLinkIt::DatosLink& LinkLinkIt::itLinks::Siguiente() const
+{
+    // DatosCat *dc = _itLista.Siguiente();
+
+    DatosLink *res = new DatosLink();
+    return *res;
 }
 
-Fecha LinkLinkIt::diasRecientes(Link link){
-	return 0;
+void LinkLinkIt::itLinks::Avanzar()
+{
+    _itLista.Avanzar();
 }
 
-Fecha LinkLinkIt::diasRecientesDesde(Link link){
-	return 0;
+void LinkLinkIt::itLinks::EliminarSiguiente()
+{
+    _itLista.EliminarSiguiente();
 }
 
-Conj<Fecha> LinkLinkIt::diasRecientesParaCategoria(Categoria categoria){
-	Conj<Fecha> fechas = Conj<Fecha>();
-	return fechas;
+void LinkLinkIt::itLinks::AgregarComoSiguiente(const DatosLink& elem)
+{
+//    _itLista.AgregarComoSiguiente(elem);
 }
 
-Link LinkLinkIt::linkConUltimoAcceso(Categoria categoria, Conj<Link> conjunto){
-	return "LinkDePrueba";
+
+bool LinkLinkIt::itLinks::operator==(const itLinks& otro) const
+{
+    return false;
 }
 
-int LinkLinkIt::sumarAccesosRecientes(Link link, Conj<Fecha> conjunto){
-	return 0;
+//iterador de acceso
+
+/*LinkLinkIt::itAcceso::itAcceso()
+{
+
+}
+*/
+
+/*LinkLinkIt::ItAcceso::~ItAcceso()
+{
+
+}
+*/
+
+bool LinkLinkIt::ItAcceso::HaySiguiente() const
+{
+    return false;
 }
 
-//buscarMax
+LinkLinkIt::Acceso& LinkLinkIt::ItAcceso::Siguiente() const
+{
+    Acceso *res = new Acceso();
+    return *res;
+}
 
-//bool LinkLinkIt::estaOrdenada(Lista<DatosLink*>){
-//	return true;
-//}
+void LinkLinkIt::ItAcceso::Avanzar()
+{
+    _itLista.Avanzar();
+}
+
+void LinkLinkIt::ItAcceso::EliminarSiguiente()
+{
+    _itLista.EliminarSiguiente();
+}
+
+void LinkLinkIt::ItAcceso::AgregarComoSiguiente(const Acceso& elem)
+{
+//    _itLista.AgregarComoSiguiente(elem);
+}
+
+
+bool LinkLinkIt::ItAcceso::operator==(const ItAcceso& otro) const
+{
+    return false;
+}
+
+

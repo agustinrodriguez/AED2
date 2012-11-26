@@ -13,7 +13,8 @@ namespace aed2
 		ArbolCategorias(const Categoria& raiz);
 		ArbolCategorias(const ArbolCategorias& arbol);
 		~ArbolCategorias();
-
+        class DatosCat;
+        class itCategorias;
         class DatosCat{
             public:
                 DatosCat() {};
