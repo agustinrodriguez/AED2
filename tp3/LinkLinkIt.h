@@ -29,8 +29,9 @@ class Acceso{
 	class ItAcceso
         {
         public:
-            ItAcceso() {};
-                ~ItAcceso() {};
+            ItAcceso();
+            ItAcceso(Lista<Acceso> ac) ;
+                ~ItAcceso() ;
                 bool HaySiguiente() const;
                 Acceso& Siguiente() const;
                 void Avanzar();
@@ -40,6 +41,7 @@ class Acceso{
                 bool operator==(const ItAcceso& otro) const;
             private:
                 Lista<Acceso>::Iterador _itLista;
+                int _tamanio;
         };
 
 
@@ -50,16 +52,16 @@ class Acceso{
             ~DatosLink() {};
             Link dameLink() const;
             ArbolCategorias::DatosCat dameCatDLink();
-            ItAcceso dameAccesos();
+            Lista<Acceso> dameAccesos();
             int dameCantAccesos();
             void nuevoLink(String l);
             void nuevaCat(ArbolCategorias::DatosCat* c);
-            void nuevoAccesos(ItAcceso ita);
+            void nuevoAccesos(Lista<Acceso> ita);
             void nuevoCantAccesosRecientes(int car);
         private:
 			Link _link;
 			ArbolCategorias::DatosCat* _catDLink;
-			ItAcceso _accesosRecientes;
+			Lista<Acceso> _accesosRecientes;
 			int _cantAccesosRecientes;
 
 			};
@@ -68,8 +70,9 @@ class Acceso{
         class itLinks
         {
         public:
-            itLinks() {};
-                ~itLinks() {};
+            itLinks();
+            itLinks(Lista<DatosLink> ldl);
+                ~itLinks();
                 bool HaySiguiente() const;
                 DatosLink& Siguiente() const;
                 void Avanzar();
@@ -79,10 +82,11 @@ class Acceso{
                 Fecha ultFecha();
                 int cantAccesosDesde(Fecha f);
                 bool estaOrdenada();
-                itLinks(const Lista<DatosLink>::Iterador& otro);
+                //itLinks(const Lista<DatosLink>::Iterador& otro);
                 bool operator==(const itLinks& otro) const;
             private:
                 Lista<DatosLink>::Iterador _itLista;
+                int _tamanio;
         };
 
         LinkLinkIt(ArbolCategorias arbolito);
@@ -107,8 +111,8 @@ class Acceso{
 		ArbolCategorias _acat;
 		Fecha _actual;
 		DiccTrie<DatosLink*> _linkInfo;
-		itLinks _listaLinks;
-		Arreglo<itLinks> _arrayCatLinks;
+		Lista<DatosLink*> _listaLinks;
+		Arreglo<Lista<DatosLink> > _arrayCatLinks;
 
 	};
 }

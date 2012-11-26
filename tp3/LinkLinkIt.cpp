@@ -19,7 +19,8 @@ ArbolCategorias::DatosCat LinkLinkIt::DatosLink::dameCatDLink(){
     return *_catDLink;
 }
 
-LinkLinkIt::ItAcceso LinkLinkIt::DatosLink::dameAccesos(){
+Lista<LinkLinkIt::Acceso> LinkLinkIt::DatosLink::dameAccesos(){
+
     return _accesosRecientes;
 }
 
@@ -37,7 +38,7 @@ void LinkLinkIt::DatosLink::nuevaCat(ArbolCategorias::DatosCat* c){
     this->_catDLink = c;
 }
 
-void LinkLinkIt::DatosLink::nuevoAccesos(ItAcceso ita){
+void LinkLinkIt::DatosLink::nuevoAccesos(Lista<Acceso> ita){
     this->_accesosRecientes = ita;
 
 }
@@ -76,7 +77,8 @@ Fecha LinkLinkIt::fechaActual(){
 }
 
 LinkLinkIt::itLinks LinkLinkIt::linksLli() const{
-	return _listaLinks;
+itLinks res = new itLinks(_listaLinks);
+ 	return res;
 }
 
 Categoria LinkLinkIt::categoriaLink(Link link) const{
@@ -89,7 +91,7 @@ Fecha LinkLinkIt::fechaUltimoAcceso(Link link){
 }
 
 int LinkLinkIt::accesosRecientesDia(Link link, Fecha fecha){
-	ItAcceso itA = ItAcceso(_linkInfo.Obtener(link)->dameAccesos()); //como se crea el iterador?
+	ItAcceso itA = ItAcceso(_linkInfo.Obtener(link)->dameAccesos());
 	int res;
 	while(itA.HaySiguiente())
 	{
@@ -105,31 +107,33 @@ int LinkLinkIt::accesosRecientesDia(Link link, Fecha fecha){
 void LinkLinkIt::iniciarLli(ArbolCategorias acat) {
    _actual = 1;
    _acat = acat;
-    int c = 1;
    itLinks _listaLinks = itLinks();
    DiccTrie<DatosLink*> _linkInfo = DiccTrie<DatosLink*>();
-   while(c <= acat.categoriasAC().tamanio())
+    Arreglo<itLinks> _arrayCatLinks = Arreglo<itLinks>((acat.categoriasAC().tamanio()));
+   while(acat.categoriasAC().HaySiguiente())
    {
-       itLinks itLl = itLinks();
-       _arrayCatLinks.Definir(c,itLl);
-       c++;
+       /*itLinks itL = itLinks();
+        _arrayCatLinks.Definir(acat.categoriasAC.HaySiguiente()->dameId,itL);
+        acat.categoriasAC().HaySiguiente
+      // c++;*/
    }
 
 }
 
 void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
     ArbolCategorias::DatosCat* cat = this->dameAcatLli().obtenerAC(categoria);
-    ItAcceso accesoDeNuevoLink;
+    Lista<Acceso> accesoDeNuevoLink;
     DatosLink nuevoLink;
     nuevoLink.nuevoLink(link);
     nuevoLink.nuevaCat(cat);
     nuevoLink.nuevoAccesos(accesoDeNuevoLink);
     nuevoLink.nuevoCantAccesosRecientes(0);
 //    _linkInfo.Definir(link*, nuevoLink*);
-    _listaLinks.AgregarComoSiguiente(nuevoLink);
+//    _listaLinks.AgregarComoSiguiente(nuevoLink);
     while(!(cat == NULL))
     {
-        //aca iria lo de agregar el link en el arreglo
+        itLinks itL;
+//        _arrayCatLinks.[cat->dameId()]
         *cat = cat->damePadre();
     }
 
@@ -151,7 +155,7 @@ void LinkLinkIt::accederLli(Link link, Fecha fecha){
         Acceso nuevoAcceso;
         nuevoAcceso.guardoDia(fecha);
         nuevoAcceso.guardoAcceso(1);
-        puntLink->dameAccesos().AgregarComoSiguiente(nuevoAcceso);
+//        puntLink->dameAccesos().AgregarComoSiguiente(nuevoAcceso);
     }
 
     int b = puntLink->dameCantAccesos();
@@ -163,11 +167,11 @@ void LinkLinkIt::accederLli(Link link, Fecha fecha){
 
 int LinkLinkIt::cantLinks(Categoria categoria){
     int i = 0;
-    while(_listaLinks.HaySiguiente())
+//    while(_listaLinks.HaySiguiente())
     {
 
         i++;
-        _listaLinks.Avanzar();
+//        _listaLinks.Avanzar();
     }
 	return i;
 }
@@ -181,11 +185,23 @@ LinkLinkIt::itLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) co
 //iteradores operaciones
 //////////////////////////////////////////
 
-/*LinkLinkIt::itLinks::~itLinks()
+LinkLinkIt::itLinks::itLinks(){
+
+}
+
+LinkLinkIt::itLinks::itLinks(Lista<DatosLink> ldl){
+       _itLista = ldl.CrearIt();
+        _tamanio = ldl.Longitud();
+
+
+}
+
+
+LinkLinkIt::itLinks::~itLinks()
     {
 
     }
-*/
+
 
 bool LinkLinkIt::itLinks::HaySiguiente() const
 {
@@ -194,10 +210,9 @@ bool LinkLinkIt::itLinks::HaySiguiente() const
 
 LinkLinkIt::DatosLink& LinkLinkIt::itLinks::Siguiente() const
 {
-    // DatosCat *dc = _itLista.Siguiente();
 
-    DatosLink *res = new DatosLink();
-    return *res;
+ return _itLista.Siguiente();
+
 }
 
 void LinkLinkIt::itLinks::Avanzar()
@@ -264,23 +279,27 @@ bool LinkLinkIt::itLinks::estaOrdenada(){
 }
 
 
-
-LinkLinkIt::itLinks::itLinks(const typename Lista<DatosLink>::Iterador& otro){
-
-}
 //iterador de acceso
 
-/*LinkLinkIt::itAcceso::itAcceso()
+LinkLinkIt::ItAcceso::ItAcceso()
 {
 
 }
-*/
 
-/*LinkLinkIt::ItAcceso::~ItAcceso()
+
+LinkLinkIt::ItAcceso::ItAcceso(Lista<Acceso> ac)
+{
+    _itLista = ac.CrearIt();
+    _tamanio = ac.Longitud();
+
+}
+
+
+LinkLinkIt::ItAcceso::~ItAcceso()
 {
 
 }
-*/
+
 
 bool LinkLinkIt::ItAcceso::HaySiguiente() const
 {
