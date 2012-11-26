@@ -89,7 +89,7 @@ Fecha LinkLinkIt::fechaUltimoAcceso(Link link){
 }
 
 int LinkLinkIt::accesosRecientesDia(Link link, Fecha fecha){
-	ItAcceso itA; //como se crea el iterador?
+	ItAcceso itA = ItAcceso(_linkInfo.Obtener(link)->dameAccesos()); //como se crea el iterador?
 	int res;
 	while(itA.HaySiguiente())
 	{
@@ -102,20 +102,18 @@ int LinkLinkIt::accesosRecientesDia(Link link, Fecha fecha){
 	return res;
 }
 
-void LinkLinkIt::iniciarLli(ArbolCategorias acat) const{
-   /*
+void LinkLinkIt::iniciarLli(ArbolCategorias acat) {
    _actual = 1;
    _acat = acat;
-   */
-//   int c = 1;
-     itLinks _listaLinks = itLinks();
-    DiccTrie<DatosLink*> _linkInfo = DiccTrie<DatosLink*>();
-   /*while(c <= acat.categoriasAC().tamaño())
+    int c = 1;
+   itLinks _listaLinks = itLinks();
+   DiccTrie<DatosLink*> _linkInfo = DiccTrie<DatosLink*>();
+   while(c <= acat.categoriasAC().tamanio())
    {
-       itLinks itLl;
+       itLinks itLl = itLinks();
        _arrayCatLinks.Definir(c,itLl);
-       c++
-   }*/
+       c++;
+   }
 
 }
 

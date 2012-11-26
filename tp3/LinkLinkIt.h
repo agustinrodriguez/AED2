@@ -79,7 +79,7 @@ class Acceso{
                 Fecha ultFecha();
                 int cantAccesosDesde(Fecha f);
                 bool estaOrdenada();
-                itLinks(const typename Lista<DatosLink>::Iterador& otro);
+                itLinks(const Lista<DatosLink>::Iterador& otro);
                 bool operator==(const itLinks& otro) const;
             private:
                 Lista<DatosLink>::Iterador _itLista;
@@ -96,7 +96,7 @@ class Acceso{
 		Categoria categoriaLink(Link link) const;
 		Fecha fechaUltimoAcceso(Link link);
 		int accesosRecientesDia(Link link, Fecha fecha);
-		void iniciarLli(ArbolCategorias acat) const;
+		void iniciarLli(ArbolCategorias acat);
 		void nuevoLinkLli(Link link, Categoria categoria);
 		void accederLli(Link link, Fecha fecha);
 		int cantLinks(Categoria categoria);

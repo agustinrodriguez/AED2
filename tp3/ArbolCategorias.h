@@ -25,7 +25,7 @@ namespace aed2
                 void Avanzar();
                 void EliminarSiguiente();
                 void AgregarComoSiguiente(const Categoria& elem);
-      //          int tamaño() const;
+                int tamanio() const;
                 bool operator==(const ItCategorias& otro) const;
             private:
                 Lista<DatosCat>::Iterador _itLista;
