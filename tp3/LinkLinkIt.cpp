@@ -86,8 +86,8 @@ Categoria LinkLinkIt::categoriaLink(Link link) const{
 }
 
 Fecha LinkLinkIt::fechaUltimoAcceso(Link link){
-//	 return _linkInfo.Obtener(link)->dameAccesos().ultimo().dameDia();
-    return 0;
+	return _linkInfo.Obtener(link)->dameAccesos().Ultimo().dameDia();
+
 }
 
 int LinkLinkIt::accesosRecientesDia(Link link, Fecha fecha){
@@ -107,15 +107,16 @@ int LinkLinkIt::accesosRecientesDia(Link link, Fecha fecha){
 void LinkLinkIt::iniciarLli(ArbolCategorias acat) {
    _actual = 1;
    _acat = acat;
-   itLinks _listaLinks = itLinks();
+   int c = 1;
    DiccTrie<DatosLink*> _linkInfo = DiccTrie<DatosLink*>();
-    Arreglo<itLinks> _arrayCatLinks = Arreglo<itLinks>((acat.categoriasAC().tamanio()));
-   while(acat.categoriasAC().HaySiguiente())
+    _arrayCatLinks = Arreglo<Lista<DatosLink*> >((acat.categoriasAC().tamanio()));
+    _listaLinks = Lista<DatosLink>();
+    _linkInfo = DiccTrie<DatosLink*>();
+    while(c <= acat.categoriasAC().tamanio())
    {
-       /*itLinks itL = itLinks();
-        _arrayCatLinks.Definir(acat.categoriasAC.HaySiguiente()->dameId,itL);
-        acat.categoriasAC().HaySiguiente
-      // c++;*/
+        Lista<DatosLink*> list = Lista<DatosLink*>();
+        _arrayCatLinks.Definir(c,list);
+        c++;
    }
 
 }
@@ -236,7 +237,7 @@ LinkLinkIt::itLinks LinkLinkIt::itLinks::BuscarMax(Fecha f){
     {
         if(this->cantAccesosDesde(f) > res.cantAccesosDesde(f))
         {
-            //res.itLinks(this); VER COMO SE COPIA EL ITERADOR
+            res = this;
         }
         this->Avanzar();
     }

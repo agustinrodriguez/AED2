@@ -112,7 +112,7 @@ class Acceso{
 		Fecha _actual;
 		DiccTrie<DatosLink*> _linkInfo;
 		Lista<DatosLink> _listaLinks;
-		Arreglo<Lista<DatosLink> > _arrayCatLinks;
+		Arreglo<Lista<DatosLink*> > _arrayCatLinks;
 
 	};
 }
