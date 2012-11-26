@@ -11,25 +11,45 @@ namespace aed2
 		public:
 		ArbolCategorias();
 		ArbolCategorias(const Categoria& raiz);
-		Conj<Categoria> categorias();
-		Categoria raiz();
-		Categoria padre(Categoria h);
-		int id(Categoria h);
-		void agregar(Categoria pagregar, Categoria padre);
-		int altura();
-		bool esta(Categoria cat);
-		bool esSubCategoria(Categoria buscado, Categoria predecesor);
-		int alturaCategoria(Categoria cat);
-		Conj<Categoria> hijos(Categoria cat);
+		ArbolCategorias(const ArbolCategorias& arbol);
+		~ArbolCategorias();
 
-		struct DatosCat{
-			string _categoria;
-			int _id;
-			int _altura;
-			Conj<DatosCat*> _hijos;
-			DatosCat* _abuelo;
-			DatosCat() {};
-		};
+        class DatosCat{
+            public:
+                DatosCat() {};
+                ~DatosCat() {};
+
+                class ItDatosCat{
+                    public:
+                        ItDatosCat();
+                        ~ItDatosCat();
+                    private:
+                };
+
+                Categoria _categoria;
+                int _id;
+                int _altura;
+                Conj<DatosCat*> _hijos;
+                DatosCat* _padre;
+        };
+
+        const Categoria& dameCat(const DatosCat& dc) const;
+        int dameId(const DatosCat& dc) const;
+        int dameAltura(const DatosCat& dc) const;
+        DatosCat::ItDatosCat& dameHijos(const DatosCat& dc) const;
+        const DatosCat& damePadre(const DatosCat& dc) const;
+
+        DatosCat* obtenerAC(const Categoria c) const;
+		DatosCat::ItDatosCat categoriasAC() const;
+		const Categoria& raizAC() const;
+		int idAC(const Categoria& c) const;
+        int alturaCatAC(const Categoria c) const;
+        DatosCat::ItDatosCat& hijosAC(const Categoria& c) const;
+        Categoria padreAC(const Categoria& c) const;
+        int alturaAC() const;
+        void agregarAC(const Categoria c, const Categoria cpadre);
+        bool esta(const Categoria c) const;
+		bool esSubCategoria(const Categoria c, const Categoria predecesor) const;
 
 		private:
 
@@ -38,7 +58,6 @@ namespace aed2
 		int _alturaMax;
 		DiccTrie<DatosCat*> _familia;
 		Lista<DatosCat> _categorias;
-
 	};
 }
 

@@ -1,11 +1,11 @@
 #include "ArbolCategorias.h"
 
-ArbolCategorias::ArbolCategorias(){
-	_cantidad = 0;
-	_alturaMax = 0;
+ArbolCategorias::ArbolCategorias()
+{
 }
 
-ArbolCategorias::ArbolCategorias(const Categoria& raiz){
+ArbolCategorias::ArbolCategorias(const Categoria& raiz)
+{
 	_cantidad = 1;
 	_alturaMax = 1;
 	DatosCat* dato = new DatosCat();
@@ -13,49 +13,106 @@ ArbolCategorias::ArbolCategorias(const Categoria& raiz){
 	dato->_categoria = raiz;
 	dato->_altura = 1;
 	//dato->_hijos = Conj<Categoria>::Conj();
-	dato->_abuelo = dato;
+	dato->_padre = NULL;
 }
 
-//Falta el constructor por copia, el constructor por defecto(tal vez) y el destructor
-
-Conj<Categoria> ArbolCategorias::categorias(){
-	Conj<Categoria> res;
-	return res;
-}
-
-Categoria ArbolCategorias::raiz(){
-	return "categoriaDePrueba";
-}
-
-Categoria ArbolCategorias::padre(Categoria h){
-	return "categoriaDePrueba";
-}
-
-int ArbolCategorias::id(Categoria h){
-	return 0;
-}
-
-void ArbolCategorias::agregar(Categoria pagregar, Categoria padre){
+ArbolCategorias::ArbolCategorias(const ArbolCategorias& arbol)
+{
 
 }
 
-int ArbolCategorias::altura(){
-	return 0;
+ArbolCategorias::~ArbolCategorias()
+{
+
 }
 
-bool ArbolCategorias::esta(Categoria cat){
-	return true;
+const Categoria& ArbolCategorias::dameCat(const DatosCat& dc) const
+{
+    Categoria *res = new Categoria();
+    return *res;
 }
 
-bool ArbolCategorias::esSubCategoria(Categoria buscado, Categoria predecesor){
-	return true;
+int ArbolCategorias::dameId(const DatosCat& dc) const
+{
+    return 0;
 }
 
-int ArbolCategorias::alturaCategoria(Categoria cat){
-	return 0;
+int ArbolCategorias::dameAltura(const DatosCat& dc) const
+{
+    return 0;
 }
 
-Conj<Categoria> ArbolCategorias::hijos(Categoria cat){
-	Conj<Categoria> res = Conj<Categoria>();
-	return res;
+ArbolCategorias::DatosCat::ItDatosCat& ArbolCategorias::dameHijos(const DatosCat& dc) const
+{
+    DatosCat::ItDatosCat *res = new DatosCat::ItDatosCat();
+    return *res;
+}
+const ArbolCategorias::DatosCat& ArbolCategorias::damePadre(const DatosCat& dc) const
+{
+    DatosCat *res = new DatosCat();
+    return *res;
+}
+
+ArbolCategorias::DatosCat* ArbolCategorias::obtenerAC(const Categoria c) const
+{
+    DatosCat *res = new DatosCat();
+    return res;
+}
+
+ArbolCategorias::DatosCat::ItDatosCat ArbolCategorias::categoriasAC() const
+{
+    DatosCat::ItDatosCat *res = new DatosCat::ItDatosCat();
+    return *res;
+}
+
+const Categoria& ArbolCategorias::raizAC() const
+{
+    Categoria *res = new Categoria();
+    return *res;
+}
+
+int ArbolCategorias::idAC(const Categoria& c) const
+{
+    return 0;
+}
+
+int ArbolCategorias::alturaCatAC(const Categoria c) const
+{
+    return 0;
+}
+
+ArbolCategorias::DatosCat::ItDatosCat& ArbolCategorias::hijosAC(const Categoria& c) const
+{
+    DatosCat::ItDatosCat *res = new DatosCat::ItDatosCat();
+    return *res;
+}
+
+Categoria ArbolCategorias::padreAC(const Categoria& c) const
+{
+    return "CategoriaDePrueba";
+}
+
+int ArbolCategorias::alturaAC() const
+{
+    return 0;
+}
+
+void ArbolCategorias::agregarAC(const Categoria c, const Categoria cpadre)
+{
+
+}
+
+bool ArbolCategorias::esta(const Categoria c) const
+{
+    return false;
+}
+
+bool ArbolCategorias::esSubCategoria(const Categoria c, const Categoria predecesor) const
+{
+    return false;
+}
+
+ArbolCategorias::DatosCat::ItDatosCat::ItDatosCat()
+{
+
 }
