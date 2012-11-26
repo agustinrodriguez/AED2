@@ -25,6 +25,7 @@ namespace aed2
                 Categoria Siguiente() const;
                 void Avanzar();
                 int tamanio() const;
+                bool operator==(const ItCategorias& otro) const;
             private:
                 Lista<DatosCat>::Iterador _itLista;
                 int _tamanio;
@@ -39,6 +40,7 @@ namespace aed2
                 Categoria Siguiente() const;
                 void Avanzar();
                 int tamanio() const;
+                bool operator==(const ItHijos& otro) const;
             private:
                 Conj<DatosCat*>::Iterador _itConj;
                 int _tamanio;
@@ -51,11 +53,11 @@ namespace aed2
                 const Categoria& dameCat() const;
                 int dameId() const;
                 int dameAltura() const;
-                ItCategorias&  dameHijos() const;
+                ItHijos&  dameHijos() const;
                 const DatosCat& damePadre() const;
                 void agregarCat(String c);
                 void agregarId(int i);
-                void agregarHijos(ItCategorias h);
+                void agregarHijos(Conj<DatosCat*> h);
                 void agregarPadre(DatosCat* p);
                 void agregarAltura(int a);
 
@@ -63,7 +65,7 @@ namespace aed2
                 Categoria _categoria;
                 int _id;
                 int _altura;
-                ItCategorias _hijos;
+                Conj<DatosCat*> _hijos;
                 DatosCat* _padre;
         };
 
@@ -73,7 +75,7 @@ namespace aed2
 		const Categoria& raizAC() const;
 		int idAC(const Categoria& c) const;
         int alturaCatAC(const Categoria c) const;
-        ItCategorias& hijosAC(const Categoria& c) const;
+        ItHijos& hijosAC(const Categoria& c) const;
         Categoria padreAC(const Categoria& c) const;
         int alturaAC() const;
         void agregarAC(const Categoria c, const Categoria cpadre);
@@ -86,7 +88,7 @@ namespace aed2
 		int _cantidad;
 		int _alturaMax;
 		DiccTrie<DatosCat*> _familia;
-		ItCategorias _categorias;
+		Lista<DatosCat> _categorias;
 	};
 }
 

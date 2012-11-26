@@ -42,9 +42,9 @@ int ArbolCategorias::DatosCat::dameAltura() const
     return _altura;
 }
 
-ArbolCategorias::ItCategorias& ArbolCategorias::DatosCat::dameHijos() const
+ArbolCategorias::ItHijos& ArbolCategorias::DatosCat::dameHijos() const
 {
-    ItCategorias *res = new ItCategorias();
+    ItHijos *res = new ItHijos();
     return *res;
 }
 const ArbolCategorias::DatosCat& ArbolCategorias::DatosCat::damePadre() const
@@ -60,7 +60,7 @@ void ArbolCategorias::DatosCat::agregarId(int i){
     this->_id = i;
 }
 
-void ArbolCategorias::DatosCat::agregarHijos(ItCategorias h){
+void ArbolCategorias::DatosCat::agregarHijos(Conj<DatosCat*> h){
     this->_hijos = h;
 }
 
@@ -81,7 +81,8 @@ ArbolCategorias::DatosCat* ArbolCategorias::obtenerAC(const Categoria c) const
 
 ArbolCategorias::ItCategorias ArbolCategorias::categoriasAC() const
 {
-    return _categorias;
+    ItCategorias itCat = ItCategorias(_categorias);
+    return itCat;
 }
 
 const Categoria& ArbolCategorias::raizAC() const
@@ -102,7 +103,7 @@ int ArbolCategorias::alturaCatAC(const Categoria c) const
 
 }
 
-ArbolCategorias::ItCategorias& ArbolCategorias::hijosAC(const Categoria& c) const
+ArbolCategorias::ItHijos& ArbolCategorias::hijosAC(const Categoria& c) const
 {
     return _familia.Obtener(c)->dameHijos();
 }
@@ -163,8 +164,14 @@ void ArbolCategorias::ItCategorias::Avanzar()
     _itLista.Avanzar();
 }
 
-int ArbolCategorias::ItCategorias::tamanio() const{
+int ArbolCategorias::ItCategorias::tamanio() const
+{
     return _tamanio;
+}
+
+bool ArbolCategorias::ItCategorias::operator==(const ItCategorias& otro) const
+{
+    return false;
 }
 
 ArbolCategorias::ItHijos::ItHijos()
@@ -198,6 +205,12 @@ void ArbolCategorias::ItHijos::Avanzar()
     _itConj.Avanzar();
 }
 
-int ArbolCategorias::ItHijos::tamanio() const{
+int ArbolCategorias::ItHijos::tamanio() const
+{
     return _tamanio;
+}
+
+bool ArbolCategorias::ItHijos::operator==(const ItHijos& otro) const
+{
+    return false;
 }
