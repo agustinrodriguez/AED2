@@ -137,6 +137,12 @@ ArbolCategorias::ItCategorias::ItCategorias()
 
 }
 
+ArbolCategorias::ItCategorias::ItCategorias(Lista<DatosCat> ldc)
+{
+    _itLista = ldc.CrearIt();
+    _tamanio = ldc.Longitud();
+}
+
 ArbolCategorias::ItCategorias::~ItCategorias()
 {
 
@@ -147,12 +153,9 @@ bool ArbolCategorias::ItCategorias::HaySiguiente() const
     return _itLista.HaySiguiente();
 }
 
-Categoria& ArbolCategorias::ItCategorias::Siguiente() const
+Categoria ArbolCategorias::ItCategorias::Siguiente() const
 {
-    // DatosCat *dc = _itLista.Siguiente();
-
-    Categoria *res = new Categoria();
-    return *res;
+    return _itLista.Siguiente().dameCat();
 }
 
 void ArbolCategorias::ItCategorias::Avanzar()
@@ -160,21 +163,41 @@ void ArbolCategorias::ItCategorias::Avanzar()
     _itLista.Avanzar();
 }
 
-void ArbolCategorias::ItCategorias::EliminarSiguiente()
-{
-    _itLista.EliminarSiguiente();
-}
-
-void ArbolCategorias::ItCategorias::AgregarComoSiguiente(const Categoria& elem)
-{
-//    _itLista.AgregarComoSiguiente(elem);
-}
-
 int ArbolCategorias::ItCategorias::tamanio() const{
-    return 0;
+    return _tamanio;
 }
 
-bool ArbolCategorias::ItCategorias::operator==(const ItCategorias& otro) const
+ArbolCategorias::ItHijos::ItHijos()
 {
-    return false;
+
+}
+
+ArbolCategorias::ItHijos::ItHijos(Conj<DatosCat*> cdc)
+{
+    _itConj = cdc.CrearIt();
+    _tamanio = cdc.Cardinal();
+}
+
+ArbolCategorias::ItHijos::~ItHijos()
+{
+
+}
+
+bool ArbolCategorias::ItHijos::HaySiguiente() const
+{
+    return _itConj.HaySiguiente();
+}
+
+Categoria ArbolCategorias::ItHijos::Siguiente() const
+{
+    return _itConj.Siguiente()->dameCat();
+}
+
+void ArbolCategorias::ItHijos::Avanzar()
+{
+    _itConj.Avanzar();
+}
+
+int ArbolCategorias::ItHijos::tamanio() const{
+    return _tamanio;
 }

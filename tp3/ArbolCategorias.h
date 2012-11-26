@@ -19,18 +19,29 @@ namespace aed2
         class ItCategorias{
             public:
                 ItCategorias();
+                ItCategorias(Lista<DatosCat> ldc);
                 ~ItCategorias();
                 bool HaySiguiente() const;
-                Categoria& Siguiente() const;
+                Categoria Siguiente() const;
                 void Avanzar();
-                void EliminarSiguiente();
-                void AgregarComoSiguiente(const Categoria& elem);
                 int tamanio() const;
-                bool operator==(const ItCategorias& otro) const;
             private:
                 Lista<DatosCat>::Iterador _itLista;
-                // deberia poder acceder a la misma propiedad categorias, de ArbolDeCategorias (que es lo q va a iterar)
-                // creo que es como una propiedad amiga, habria q ver como ellos lo hicieron
+                int _tamanio;
+        };
+
+        class ItHijos{
+            public:
+                ItHijos();
+                ItHijos(Conj<DatosCat*> cdc);
+                ~ItHijos();
+                bool HaySiguiente() const;
+                Categoria Siguiente() const;
+                void Avanzar();
+                int tamanio() const;
+            private:
+                Conj<DatosCat*>::Iterador _itConj;
+                int _tamanio;
         };
 
         class DatosCat{
