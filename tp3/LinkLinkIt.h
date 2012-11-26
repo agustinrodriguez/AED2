@@ -111,7 +111,7 @@ class Acceso{
 		ArbolCategorias _acat;
 		Fecha _actual;
 		DiccTrie<DatosLink*> _linkInfo;
-		Lista<DatosLink*> _listaLinks;
+		Lista<DatosLink> _listaLinks;
 		Arreglo<Lista<DatosLink> > _arrayCatLinks;
 
 	};

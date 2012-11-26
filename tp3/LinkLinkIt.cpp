@@ -77,8 +77,8 @@ Fecha LinkLinkIt::fechaActual(){
 }
 
 LinkLinkIt::itLinks LinkLinkIt::linksLli() const{
-itLinks res = new itLinks(_listaLinks);
- 	return res;
+itLinks *res = new itLinks(_listaLinks);
+ 	return *res;
 }
 
 Categoria LinkLinkIt::categoriaLink(Link link) const{
@@ -129,7 +129,8 @@ void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
     nuevoLink.nuevoAccesos(accesoDeNuevoLink);
     nuevoLink.nuevoCantAccesosRecientes(0);
 //    _linkInfo.Definir(link*, nuevoLink*);
-//    _listaLinks.AgregarComoSiguiente(nuevoLink);
+    itLinks *itL = new itLinks(_listaLinks);
+    itL->AgregarComoSiguiente(nuevoLink);
     while(!(cat == NULL))
     {
         itLinks itL;
@@ -155,7 +156,7 @@ void LinkLinkIt::accederLli(Link link, Fecha fecha){
         Acceso nuevoAcceso;
         nuevoAcceso.guardoDia(fecha);
         nuevoAcceso.guardoAcceso(1);
-//        puntLink->dameAccesos().AgregarComoSiguiente(nuevoAcceso);
+        puntLink->dameAccesos().AgregarAdelante(nuevoAcceso);
     }
 
     int b = puntLink->dameCantAccesos();
@@ -166,14 +167,7 @@ void LinkLinkIt::accederLli(Link link, Fecha fecha){
 
 
 int LinkLinkIt::cantLinks(Categoria categoria){
-    int i = 0;
-//    while(_listaLinks.HaySiguiente())
-    {
-
-        i++;
-//        _listaLinks.Avanzar();
-    }
-	return i;
+    	return _listaLinks.Longitud();
 }
 
 LinkLinkIt::itLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) const{
@@ -227,7 +221,7 @@ void LinkLinkIt::itLinks::EliminarSiguiente()
 
 void LinkLinkIt::itLinks::AgregarComoSiguiente(const DatosLink& elem)
 {
-
+    _itLista.AgregarComoSiguiente(elem);
 }
 
 
@@ -324,7 +318,7 @@ void LinkLinkIt::ItAcceso::EliminarSiguiente()
 
 void LinkLinkIt::ItAcceso::AgregarComoSiguiente(const Acceso& elem)
 {
-//    _itLista.AgregarComoSiguiente(elem);
+    _itLista.AgregarComoSiguiente(elem);
 }
 
 
