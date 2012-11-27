@@ -63,7 +63,7 @@ namespace aed2
                 void agregarPadre(DatosCat* p);
                 void agregarAltura(int a);
 
-                //Deberias poner esto como privado, te modifique de lugar las operaciones porq sino no te deja usar la privda de la clase
+            private:
                 Categoria _categoria;
                 int _id;
                 int _altura;
