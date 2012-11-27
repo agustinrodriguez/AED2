@@ -38,7 +38,8 @@ class Acceso{
                 void Avanzar();
                 void EliminarSiguiente();
                 void AgregarComoSiguiente(const Acceso& elem);
-                Acceso Ultimo();
+                int tamanio() const;
+                void copiarPos(ItAcceso otroIt);
                 bool operator==(const ItAcceso& otro) const;
             private:
                 Lista<Acceso>::Iterador _itLista;
@@ -72,7 +73,7 @@ class Acceso{
         class itLinks
         {
         public:
-            itLinks(itLinks& otroIt);
+            //itLinks(itLinks& otroIt);
             itLinks(Lista<DatosLink> ldl);
             itLinks();
                 ~itLinks();
@@ -81,12 +82,12 @@ class Acceso{
                 void Avanzar();
                 void EliminarSiguiente();
                 void AgregarComoSiguiente(const DatosLink& elem);
-                itLinks BuscarMax(Fecha f);
-                Fecha ultFecha();
-                int cantAccesosDesde(Fecha f);
-                bool estaOrdenada();
+                //itLinks BuscarMax(Fecha f);
+               // Fecha ultFecha();
+              //  int cantAccesosDesde(Fecha f);
+             //   bool estaOrdenada();
                 void copiarPos(itLinks otroIt);
-                //itLinks(const Lista<DatosLink>::Iterador& otro);
+                int tamanio() const;
                 bool operator==(const itLinks& otro) const;
             private:
                 Lista<DatosLink>::Iterador _itLista;
@@ -108,7 +109,7 @@ class Acceso{
                 Fecha ultFecha();
                 int cantAccesosDesde(Fecha f);
                 bool estaOrdenada();
-                int tamanio();
+                int tamanio() const;
                 void copiarPos(itPunLinks otroIt);
                 bool operator==(const itPunLinks& otro) const;
             private:

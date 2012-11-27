@@ -41,6 +41,7 @@ namespace aed2
                 Categoria Siguiente() const;
                 void Avanzar();
                 int tamanio() const;
+                void copiarPos(ItHijos otroIt);
                 bool operator==(const ItHijos& otro) const;
             private:
                 Conj<DatosCat*>::Iterador _itConj;

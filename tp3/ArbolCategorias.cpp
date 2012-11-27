@@ -22,10 +22,6 @@ ArbolCategorias::~ArbolCategorias()
 {
     //Destruyo puntero a datoscat de la raiz
     delete _raiz;
-    //A cero la cantidad;
-    _cantidad = 0;
-    //A cero la altura
-    _alturaMax = 0;
     //Destruyo el diccionario
     _familia.~DiccTrie();
     //Destruyo la lista
@@ -49,12 +45,6 @@ ArbolCategorias::DatosCat::DatosCat(const Categoria cat, int id, int altura, Con
 
 ArbolCategorias::DatosCat::~DatosCat()
 {
-    //A "" _categoria
-    _categoria = "";
-    //A 0 el id
-    _id = 0;
-    //A 0 la altura
-    _altura = 0;
     //destruyo el conjunto
     while(!(_hijos.EsVacio()))
     {
@@ -83,7 +73,7 @@ int ArbolCategorias::DatosCat::dameAltura() const
 
 ArbolCategorias::ItHijos& ArbolCategorias::DatosCat::dameHijos() const
 {
-    ItHijos *res = new ItHijos();
+    ItHijos *res = new ItHijos(_hijos);
     return *res;
 }
 ArbolCategorias::DatosCat* ArbolCategorias::DatosCat::damePadre() const
@@ -251,8 +241,6 @@ ArbolCategorias::ItCategorias::~ItCategorias()
     {
         _itLista.EliminarSiguiente();
     }
-    //A 0 el tamaño
-    _tamanio = 0;
 
 }
 
@@ -324,8 +312,6 @@ ArbolCategorias::ItHijos::~ItHijos()
         _itConj.EliminarSiguiente();
 
     }
-    //A 0 el tamanio
-    _tamanio = 0;
 
 }
 
@@ -349,7 +335,31 @@ int ArbolCategorias::ItHijos::tamanio() const
     return _tamanio;
 }
 
+void ArbolCategorias::ItHijos::copiarPos(ItHijos otroIt){
+
+}
+
 bool ArbolCategorias::ItHijos::operator==(const ItHijos& otro) const
 {
-    return false;
+    bool iguales = false;
+    if(tamanio() == otro.tamanio())
+    {
+        iguales = true;
+        ItHijos itThis;
+        ItHijos itOtro;
+        itThis.copiarPos(*this);
+        itOtro.copiarPos(otro);
+        while(itThis.HaySiguiente() && iguales)
+        {
+            iguales = itThis.Siguiente() == itOtro.Siguiente();
+            itThis.Avanzar();
+            itOtro.Avanzar();
+
+        }
+    }
+    else
+    {
+        iguales = false;
+    }
+    return iguales;
 }

@@ -73,32 +73,19 @@ void LinkLinkIt::DatosLink::nuevoCantAccesosRecientes(int car){
     _cantAccesosRecientes = car;
 }
 
-bool LinkLinkIt::DatosLink::operator==(DatosLink& otro) const{/*
-    bool link = dameLink() == otro.dameLink();
-    ArbolCategorias::DatosCat dcThis;
-    dcThis.copiarDc(dameCatDLink());
-    ArbolCategorias::DatosCat dcOtro;
-    dcOtro.copiarDc(dameCatDLink());
-    bool puntCat = dcThis.dameCatDLink() == dcOtro.dameCatDLink();
-    bool mismosAccesos = true;
-    Lista<Acceso> listaThis = Lista<Acceso>();
-    listaThis = dameAccesos();
-    bool cantAccesos = (this->dameCantAccesos() == otro.dameCantAccesos());
-    if(dameAccesos().Longitud() == otro.dameAccesos().Longitud()){
-        ItAcceso itThis = ItAcceso(listaThis);
-        ItAcceso itOtro = ItAcceso(otro.dameAccesos());
-        while(itThis.HaySiguiente() && mismosAccesos){
-            mismosAccesos = (itThis.Siguiente() == itOtro.Siguiente());
-            itThis.Avanzar();
-            itOtro.Avanzar();
+bool LinkLinkIt::DatosLink::operator==(DatosLink& otro) const{
+    bool res = true;
+    res = _link == otro.dameLink();
+    if (res) {
+        res = _accesosRecientes == otro.dameAccesos();
+        if (res) {
+            res = _cantAccesosRecientes == otro.dameCantAccesos();
+            if (res) {
+                res = *_catDLink == otro.dameCatDLink();
+            }
         }
-    }else{
-        mismosAccesos = false;
     }
-    return link && puntCat && mismosAccesos && cantAccesos;
-
-    //AHORA FUNCIONA PERO SIN CONST HAY Q VER DE CREAR UN CONSTRUCTOR DE DATOSCAT POR COPIA*/
-    return false;
+    return res;
 }
 
 LinkLinkIt::Acceso::Acceso(){
@@ -107,10 +94,6 @@ LinkLinkIt::Acceso::Acceso(){
 
 
 LinkLinkIt::Acceso::~Acceso(){
-    //A 0 el dia
-    _dia = 0;
-    //A 0 la cantidad
-    _cantAccesos = 0;
 
 }
 
@@ -275,13 +258,8 @@ LinkLinkIt::itLinks::itLinks(){
 LinkLinkIt::itLinks::itLinks(Lista<DatosLink> ldl){
        _itLista = ldl.CrearIt();
         _tamanio = ldl.Longitud();
-
-
 }
 
-LinkLinkIt::itLinks::itLinks(itLinks& otroIt){
-
-}
 LinkLinkIt::itLinks::~itLinks()
     {
         //Destruyo lista
@@ -289,9 +267,6 @@ LinkLinkIt::itLinks::~itLinks()
         {
             _itLista.EliminarSiguiente();
         }
-        //A 0 el tamanio
-        _tamanio = 0;
-
     }
 
 
@@ -302,9 +277,7 @@ bool LinkLinkIt::itLinks::HaySiguiente() const
 
 LinkLinkIt::DatosLink& LinkLinkIt::itLinks::Siguiente() const
 {
-
  return _itLista.Siguiente();
-
 }
 
 void LinkLinkIt::itLinks::Avanzar()
@@ -322,12 +295,35 @@ void LinkLinkIt::itLinks::AgregarComoSiguiente(const DatosLink& elem)
     _itLista.AgregarComoSiguiente(elem);
 }
 
+void LinkLinkIt::itLinks::copiarPos(itLinks otroIt){
+
+}
 
 bool LinkLinkIt::itLinks::operator==(const itLinks& otro) const
 {
-    return false;
-}
+    bool iguales = false;
+    if(tamanio() == otro.tamanio())
+    {
+        iguales = true;
+        itLinks itThis;
+        itLinks itOtro;
+        itThis.copiarPos(*this);
+        itOtro.copiarPos(otro);
+        while(itThis.HaySiguiente() && iguales)
+        {
+            iguales = itThis.Siguiente() == itOtro.Siguiente();
+            itThis.Avanzar();
+            itOtro.Avanzar();
 
+        }
+    }
+    else
+    {
+        iguales = false;
+    }
+    return iguales;
+}
+/*
 LinkLinkIt::itLinks LinkLinkIt::itLinks::BuscarMax(Fecha f){
     itLinks res;
     res.copiarPos(*this);
@@ -354,10 +350,6 @@ Fecha LinkLinkIt::itLinks::ultFecha(){
     return res;
 }
 
-void LinkLinkIt::itLinks::copiarPos(itLinks otroIt){
-
-}
-
 int LinkLinkIt::itLinks::cantAccesosDesde(Fecha f){
     ItAcceso itAcc;
     int res = 0;
@@ -374,6 +366,11 @@ int LinkLinkIt::itLinks::cantAccesosDesde(Fecha f){
 bool LinkLinkIt::itLinks::estaOrdenada(){
     return false;
 }
+*/
+int LinkLinkIt::itLinks::tamanio() const
+{
+    return _tamanio;
+}
 
 
 //iterador de acceso
@@ -388,7 +385,6 @@ LinkLinkIt::ItAcceso::ItAcceso(Lista<Acceso> ac)
 {
     _itLista = ac.CrearIt();
     _tamanio = ac.Longitud();
-
 }
 
 
@@ -399,20 +395,17 @@ LinkLinkIt::ItAcceso::~ItAcceso()
         {
             _itLista.EliminarSiguiente();
         }
-        //A 0 el tamanio
-        _tamanio = 0;
 }
 
 
 bool LinkLinkIt::ItAcceso::HaySiguiente() const
 {
-    return false;
+    return _itLista.HaySiguiente();
 }
 
 LinkLinkIt::Acceso& LinkLinkIt::ItAcceso::Siguiente() const
 {
-    Acceso *res = new Acceso();
-    return *res;
+    return _itLista.Siguiente();
 }
 
 void LinkLinkIt::ItAcceso::Avanzar()
@@ -433,13 +426,38 @@ void LinkLinkIt::ItAcceso::AgregarComoSiguiente(const Acceso& elem)
 
 bool LinkLinkIt::ItAcceso::operator==(const ItAcceso& otro) const
 {
-    return false;
+    bool iguales = false;
+    if(tamanio() == otro.tamanio())
+    {
+        iguales = true;
+        ItAcceso itThis;
+        ItAcceso itOtro;
+        itThis.copiarPos(*this);
+        itOtro.copiarPos(*this);
+        while(itThis.HaySiguiente() && iguales)
+        {
+            iguales = itThis.Siguiente() == itOtro.Siguiente();
+            itThis.Avanzar();
+            itOtro.Avanzar();
+
+        }
+    }
+    else
+    {
+        iguales = false;
+    }
+    return iguales;
 }
 
-LinkLinkIt::Acceso LinkLinkIt::ItAcceso::Ultimo(){
-    Acceso ac;
-    return ac;
+int LinkLinkIt::ItAcceso::tamanio() const
+{
+    return _tamanio;
 }
+
+void LinkLinkIt::ItAcceso::copiarPos(LinkLinkIt::ItAcceso otroIt){
+
+}
+
 
 LinkLinkIt::itPunLinks::itPunLinks(){
 
@@ -448,8 +466,6 @@ LinkLinkIt::itPunLinks::itPunLinks(){
 LinkLinkIt::itPunLinks::itPunLinks(Lista<DatosLink*> ldl){
        _itLista = ldl.CrearIt();
         _tamanio = ldl.Longitud();
-
-
 }
 
 
@@ -460,8 +476,6 @@ LinkLinkIt::itPunLinks::~itPunLinks()
         {
             _itLista.EliminarSiguiente();
         }
-        //A 0 el tamanio
-        _tamanio = 0;
     }
 
 
@@ -472,9 +486,7 @@ bool LinkLinkIt::itPunLinks::HaySiguiente() const
 
 LinkLinkIt::DatosLink* LinkLinkIt::itPunLinks::Siguiente() const
 {
-
  return _itLista.Siguiente();
-
 }
 
 void LinkLinkIt::itPunLinks::Avanzar()
@@ -531,7 +543,7 @@ bool LinkLinkIt::itPunLinks::estaOrdenada(){
     return false;
 }
 
-int LinkLinkIt::itPunLinks::tamanio(){
+int LinkLinkIt::itPunLinks::tamanio() const{
     return _tamanio;
 }
 
@@ -541,7 +553,27 @@ void LinkLinkIt::itPunLinks::copiarPos(itPunLinks otroIt){
 
 bool LinkLinkIt::itPunLinks::operator==(const itPunLinks& otro) const
 {
-    return false;
+    bool iguales = false;
+    if(tamanio() == otro.tamanio())
+    {
+        iguales = true;
+        itPunLinks itThis;
+        itPunLinks itOtro;
+        itThis.copiarPos(*this);
+        itOtro.copiarPos(*this);
+        while(itThis.HaySiguiente() && iguales)
+        {
+            iguales = itThis.Siguiente() == itOtro.Siguiente();
+            itThis.Avanzar();
+            itOtro.Avanzar();
+
+        }
+    }
+    else
+    {
+        iguales = false;
+    }
+    return iguales;
 }
 
 
