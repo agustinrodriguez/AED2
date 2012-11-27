@@ -15,8 +15,8 @@ class Acceso{
 		public:
                 Acceso();
                 ~Acceso() ;
-                Fecha dameDia();
-                int dameCantA();
+                Fecha dameDia() const;
+                int dameCantA() const;
                 void guardoAcceso(int a);
                 void guardoDia(int a);
                 bool operator==(const Acceso& otro) const;
@@ -32,6 +32,7 @@ class Acceso{
         public:
             ItAcceso();
             ItAcceso(Lista<Acceso> ac) ;
+            ItAcceso(const ItAcceso& otroIt);
                 ~ItAcceso() ;
                 bool HaySiguiente() const;
                 Acceso& Siguiente() const;
@@ -39,7 +40,8 @@ class Acceso{
                 void EliminarSiguiente();
                 void AgregarComoSiguiente(const Acceso& elem);
                 int tamanio() const;
-                void copiarPos(ItAcceso otroIt);
+                //void copiarPos(ItAcceso otroIt);
+                const Lista<Acceso>::Iterador dameIt() const;
                 bool operator==(const ItAcceso& otro) const;
             private:
                 Lista<Acceso>::Iterador _itLista;
@@ -77,6 +79,7 @@ class Acceso{
             itLinks(Lista<DatosLink> ldl);
             itLinks();
                 ~itLinks();
+                itLinks(const itLinks& otroIt);
                 bool HaySiguiente() const;
                 DatosLink& Siguiente() const;
                 void Avanzar();
@@ -86,8 +89,9 @@ class Acceso{
                // Fecha ultFecha();
               //  int cantAccesosDesde(Fecha f);
              //   bool estaOrdenada();
-                void copiarPos(itLinks otroIt);
+                //void copiarPos(itLinks otroIt);
                 int tamanio() const;
+                const Lista<DatosLink>::Iterador dameIt() const;
                 bool operator==(const itLinks& otro) const;
             private:
                 Lista<DatosLink>::Iterador _itLista;
@@ -100,6 +104,7 @@ class Acceso{
         public:
             itPunLinks();
             itPunLinks(Lista<DatosLink*> ldl);
+            itPunLinks(const itPunLinks& otroIt);
                 ~itPunLinks();
                 bool HaySiguiente() const;
                 DatosLink* Siguiente() const;
@@ -110,7 +115,8 @@ class Acceso{
                 int cantAccesosDesde(Fecha f);
                 bool estaOrdenada();
                 int tamanio() const;
-                void copiarPos(itPunLinks otroIt);
+                //void copiarPos(itPunLinks otroIt);
+                const Lista<DatosLink*>::Iterador dameIt() const;
                 bool operator==(const itPunLinks& otro) const;
             private:
                 Lista<DatosLink*>::Iterador _itLista;

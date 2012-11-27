@@ -234,6 +234,12 @@ ArbolCategorias::ItCategorias::ItCategorias(Lista<DatosCat> ldc)
     _tamanio = ldc.Longitud();
 }
 
+ArbolCategorias::ItCategorias::ItCategorias(const ItCategorias& otroIt){
+    _itLista = otroIt.dameIt();
+    _tamanio = otroIt.tamanio();
+
+}
+
 ArbolCategorias::ItCategorias::~ItCategorias()
 {
     //Destruyo la lista
@@ -263,21 +269,30 @@ int ArbolCategorias::ItCategorias::tamanio() const
 {
     return _tamanio;
 }
-
+/*
 void ArbolCategorias::ItCategorias::copiarPos(ItCategorias otroIt){
 
+}
+*/
+const Lista<ArbolCategorias::DatosCat>::Iterador ArbolCategorias::ItCategorias::dameIt() const{
+    return _itLista;
 }
 
 bool ArbolCategorias::ItCategorias::operator==(const ItCategorias& otro) const
 {
-    bool iguales = false;
-    if(tamanio() == otro.tamanio())
+    bool iguales = true;
+    iguales = _itLista == otro.dameIt();
+    if(iguales)
+    {
+        iguales = _tamanio == otro.tamanio();
+    }
+    /*if(tamanio() == otro.tamanio())
     {
         iguales = true;
         ItCategorias itThis;
         ItCategorias itOtro;
         itThis.copiarPos(*this);
-        itOtro.copiarPos(*this);
+        itOtro.copiarPos(otro);
         while(itThis.HaySiguiente() && iguales)
         {
             iguales = itThis.Siguiente() == itOtro.Siguiente();
@@ -289,13 +304,18 @@ bool ArbolCategorias::ItCategorias::operator==(const ItCategorias& otro) const
     else
     {
         iguales = false;
-    }
+    }*/
     return iguales;
 }
 
 ArbolCategorias::ItHijos::ItHijos()
 {
 
+}
+
+ArbolCategorias::ItHijos::ItHijos(const ArbolCategorias::ItHijos& otroIt){
+    _itConj= otroIt.dameIt();
+    _tamanio = otroIt.tamanio();
 }
 
 ArbolCategorias::ItHijos::ItHijos(Conj<DatosCat*> cdc)
@@ -334,13 +354,24 @@ int ArbolCategorias::ItHijos::tamanio() const
 {
     return _tamanio;
 }
-
+/*
 void ArbolCategorias::ItHijos::copiarPos(ItHijos otroIt){
 
+}
+*/
+const Conj<ArbolCategorias::DatosCat*>::Iterador ArbolCategorias::ItHijos::dameIt() const{
+    return _itConj;
 }
 
 bool ArbolCategorias::ItHijos::operator==(const ItHijos& otro) const
 {
+    bool iguales = true;
+    iguales = _itConj == otro.dameIt();
+    if(iguales)
+    {
+        iguales = _tamanio == otro.tamanio();
+    }
+    /*
     bool iguales = false;
     if(tamanio() == otro.tamanio())
     {
@@ -360,6 +391,6 @@ bool ArbolCategorias::ItHijos::operator==(const ItHijos& otro) const
     else
     {
         iguales = false;
-    }
+    }*/
     return iguales;
 }

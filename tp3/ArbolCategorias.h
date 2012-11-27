@@ -20,12 +20,14 @@ namespace aed2
             public:
                 ItCategorias();
                 ItCategorias(Lista<DatosCat> ldc);
+                ItCategorias(const ItCategorias& otroIt);
                 ~ItCategorias();
                 bool HaySiguiente() const;
                 Categoria Siguiente() const;
                 void Avanzar();
                 int tamanio() const;
-                void copiarPos(ItCategorias otroIt);
+                //void copiarPos(ItCategorias otroIt);
+                const Lista<DatosCat>::Iterador dameIt() const;
                 bool operator==(const ItCategorias& otro) const;
             private:
                 Lista<DatosCat>::Iterador _itLista;
@@ -36,12 +38,14 @@ namespace aed2
             public:
                 ItHijos();
                 ItHijos(Conj<DatosCat*> cdc);
+                ItHijos(const ItHijos& otroIt);
                 ~ItHijos();
                 bool HaySiguiente() const;
                 Categoria Siguiente() const;
                 void Avanzar();
                 int tamanio() const;
-                void copiarPos(ItHijos otroIt);
+                //void copiarPos(ItHijos otroIt);
+                const Conj<DatosCat*>::Iterador dameIt() const;
                 bool operator==(const ItHijos& otro) const;
             private:
                 Conj<DatosCat*>::Iterador _itConj;

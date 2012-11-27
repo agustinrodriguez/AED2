@@ -13,7 +13,7 @@ Lista<T>::Lista(const Lista<T>& otra) : primero(NULL), longitud(0)
 template <typename T>
 Lista<T>& Lista<T>::operator=(const Lista<T>& otra) {
     if(this != &otra) {
-        while(!EsVacia()) Fin();    
+        while(!EsVacia()) Fin();
         for(const_Iterador it = otra.CrearIt(); it.HaySiguiente(); it.Avanzar())
             this->AgregarAtras(it.Siguiente());
     }
@@ -62,14 +62,14 @@ T& Lista<T>::Ultimo()
 template <typename T>
 const T& Lista<T>::Ultimo() const
 {
-    assert(not EsVacia());    
+    assert(not EsVacia());
     return CrearItUlt().Anterior();
 }
 
 template <typename T>
 const T& Lista<T>::operator[](Nat i) const
 {
-    assert(i < longitud);    
+    assert(i < longitud);
     const_Iterador it = CrearIt();
     while(i > 0) {
         it.Avanzar();
@@ -82,7 +82,7 @@ const T& Lista<T>::operator[](Nat i) const
 template <typename T>
 T& Lista<T>::operator[](Nat i)
 {
-    assert(i < longitud);    
+    assert(i < longitud);
     Iterador it = CrearIt();
     while(i > 0)
     {
@@ -96,21 +96,21 @@ T& Lista<T>::operator[](Nat i)
 template <typename T>
 void Lista<T>::Fin()
 {
-    assert(not EsVacia());    
+    assert(not EsVacia());
     CrearIt().EliminarSiguiente();
 }
 
 template <typename T>
 void Lista<T>::Comienzo()
 {
-    assert(not EsVacia());    
+    assert(not EsVacia());
     CrearItUlt().EliminarAnterior();
 }
 
 template <typename T>
 typename Lista<T>::Iterador Lista<T>::AgregarAdelante(const T& dato)
 {
-    typename Lista<T>::Iterador res =  CrearIt(); 
+    typename Lista<T>::Iterador res =  CrearIt();
     res.AgregarComoSiguiente(dato);
     return res;
 }
@@ -261,7 +261,7 @@ void Lista<T>::Iterador::AgregarComoAnterior(const T& dato)
     //o no de la lista circular
     nuevo->anterior = sig == NULL ? nuevo : sig->anterior;
     nuevo->siguiente = sig == NULL ? nuevo : sig;
-    
+
     //reencadenamos los otros nodos (notar que no hay problema cuando nuevo
     //es el primer nodo creado de la lista)
     nuevo->anterior->siguiente = nuevo;
@@ -334,13 +334,13 @@ std::ostream& operator<<(std::ostream& os, const Lista<T>& lista)
 }
 
 template <typename T>
-bool operator==(const Lista<T>& l1, const Lista<T>& l2) 
+bool operator==(const Lista<T>& l1, const Lista<T>& l2)
 {
     typename Lista<T>::const_Iterador it1 = l1.CrearIt();
     typename Lista<T>::const_Iterador it2 = l2.CrearIt();
     while(it1.HaySiguiente() and it2.HaySiguiente() and it1.Siguiente() == it2.Siguiente()) {
         it1.Avanzar(); it2.Avanzar();
     }
-    return not it1.HaySiguiente() and not it2.haySiguiente();
+    return not it1.HaySiguiente() and not it2.HaySiguiente();
 }
 
