@@ -30,22 +30,20 @@ int LinkLinkIt::DatosLink::dameCantAccesos(){
 }
 
 void LinkLinkIt::DatosLink::nuevoLink(String l){
-    this->_link = l;
+    _link = l;
 
 }
 
 void LinkLinkIt::DatosLink::nuevaCat(ArbolCategorias::DatosCat* c){
-    this->_catDLink = c;
+    _catDLink = c;
 }
 
 void LinkLinkIt::DatosLink::nuevoAccesos(Lista<Acceso> ita){
-    this->_accesosRecientes = ita;
-
+    _accesosRecientes = ita;
 }
 
 void LinkLinkIt::DatosLink::nuevoCantAccesosRecientes(int car){
-    this->_cantAccesosRecientes = car;
-
+    _cantAccesosRecientes = car;
 }
 
 Fecha LinkLinkIt::Acceso::dameDia(){
@@ -57,11 +55,11 @@ int LinkLinkIt::Acceso::dameCantA(){
 }
 
 void LinkLinkIt::Acceso::guardoAcceso(int a){
-    this->_cantAccesos = a;
+    _cantAccesos = a;
 }
 
 void LinkLinkIt::Acceso::guardoDia(int a){
-    this->_dia = a;
+    _dia = a;
 }
 
 ArbolCategorias LinkLinkIt::dameAcatLli() const{
@@ -122,7 +120,7 @@ void LinkLinkIt::iniciarLli(ArbolCategorias acat) {
 }
 
 void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
-    ArbolCategorias::DatosCat* cat = this->dameAcatLli().obtenerAC(categoria);
+    ArbolCategorias::DatosCat* cat = dameAcatLli().obtenerAC(categoria);
     Lista<Acceso> accesoDeNuevoLink;
     DatosLink nuevoLink;
     nuevoLink.nuevoLink(link);
@@ -170,25 +168,25 @@ int LinkLinkIt::cantLinks(Categoria categoria){
     	return _listaLinks.Longitud();
 }
 
-LinkLinkIt::itPunLinks* LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
-        int id = this->dameAcatLli().idAC(categoria);
-        itPunLinks *itParaFecha = new itPunLinks(this->_arrayCatLinks[id]);
+LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
+        int id = dameAcatLli().idAC(categoria);
+        itPunLinks *itParaFecha = new itPunLinks(_arrayCatLinks[id]);
         Fecha fecha = itParaFecha->ultFecha();
         Lista<DatosLink*> listaOrdenada = Lista<DatosLink*>();
         if (!(itParaFecha->estaOrdenada()))
         {
-            itPunLinks *itMax = new itPunLinks(this->_arrayCatLinks[id]);
-            while(itMax->tamanio() != 0)
+            itPunLinks itMax = itPunLinks(_arrayCatLinks[id]);
+            while(itMax.tamanio() != 0)
             {
-                itMax = itMax->BuscarMax(fecha);
-                listaOrdenada.AgregarAtras(itMax->Siguiente());
-                itMax->EliminarSiguiente();
+                itMax = itMax.BuscarMax(fecha);
+                listaOrdenada.AgregarAtras(itMax.Siguiente());
+                itMax.EliminarSiguiente();
             }
             _arrayCatLinks.Definir(id,listaOrdenada);
 
         }
-       itPunLinks *res = new itPunLinks(this->_arrayCatLinks[id]);
-       return res;
+
+       return itPunLinks(_arrayCatLinks[id]);
        //LE SAQUE EL CONST YA QUE CON EL CONST NO PUEDO MODIFICAR _ARRAYCATLINKS HABRIA QUE HACER UNA OPERACION PARA PODER MOD
 }
 
@@ -251,25 +249,25 @@ bool LinkLinkIt::itLinks::operator==(const itLinks& otro) const
 
 LinkLinkIt::itLinks LinkLinkIt::itLinks::BuscarMax(Fecha f){
     itLinks res;
-    while(this->HaySiguiente())
+    while(HaySiguiente())
     {
-        if(this->cantAccesosDesde(f) > res.cantAccesosDesde(f))
+        if(cantAccesosDesde(f) > res.cantAccesosDesde(f))
         {
 //            res = this;
         }
-        this->Avanzar();
+        Avanzar();
     }
     return res;
 }
 
 Fecha LinkLinkIt::itLinks::ultFecha(){
-    int res = this->Siguiente().dameAccesos().Ultimo().dameDia();
-    while(this->HaySiguiente())
+    int res = Siguiente().dameAccesos().Ultimo().dameDia();
+    while(HaySiguiente())
     {
-        if(res < this->Siguiente().dameAccesos().Ultimo().dameDia()){
-            res = this->Siguiente().dameAccesos().Ultimo().dameDia();
+        if(res < Siguiente().dameAccesos().Ultimo().dameDia()){
+            res = Siguiente().dameAccesos().Ultimo().dameDia();
         }
-        this->Avanzar();
+        Avanzar();
     }
     return res;
 }
@@ -392,28 +390,28 @@ void LinkLinkIt::itPunLinks::EliminarSiguiente()
 }
 
 
-LinkLinkIt::itPunLinks* LinkLinkIt::itPunLinks::BuscarMax(Fecha f){
+LinkLinkIt::itPunLinks LinkLinkIt::itPunLinks::BuscarMax(Fecha f){
      Lista<DatosLink*> ldl = Lista<DatosLink*>();
-     itPunLinks *res = new itPunLinks(ldl);
-    while(this->HaySiguiente())
+     itPunLinks res = itPunLinks(ldl);
+    while(HaySiguiente())
     {
-        if(this->cantAccesosDesde(f) > res->cantAccesosDesde(f))
+        if(cantAccesosDesde(f) > res.cantAccesosDesde(f))
         {
 //            res = this; COMO COPIAR UN ITERADOR
         }
-        this->Avanzar();
+        Avanzar();
     }
     return res;
 }
 
 Fecha LinkLinkIt::itPunLinks::ultFecha(){
-    int res = this->Siguiente()->dameAccesos().Ultimo().dameDia();
-    while(this->HaySiguiente())
+    int res = Siguiente()->dameAccesos().Ultimo().dameDia();
+    while(HaySiguiente())
     {
-        if(res < this->Siguiente()->dameAccesos().Ultimo().dameDia()){
-            res = this->Siguiente()->dameAccesos().Ultimo().dameDia();
+        if(res < Siguiente()->dameAccesos().Ultimo().dameDia()){
+            res = Siguiente()->dameAccesos().Ultimo().dameDia();
         }
-        this->Avanzar();
+        Avanzar();
     }
     return res;
 }

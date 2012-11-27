@@ -70,28 +70,28 @@ ArbolCategorias::DatosCat* ArbolCategorias::DatosCat::damePadre() const
 }
 
 void ArbolCategorias::DatosCat::agregarCat(String c){
-    this->_categoria = c;
+    _categoria = c;
 }
 
 void ArbolCategorias::DatosCat::agregarId(int i){
-    this->_id = i;
+    _id = i;
 }
 
 void ArbolCategorias::DatosCat::agregarHijo(ArbolCategorias::DatosCat* h){
-    this->_hijos.Agregar(h);
+    _hijos.Agregar(h);
 }
 
 
 void ArbolCategorias::DatosCat::agregarHijos(Conj<ArbolCategorias::DatosCat*> h){
-    this->_hijos = h;
+    _hijos = h;
 }
 
 void ArbolCategorias::DatosCat::agregarPadre(DatosCat* p){
-    this->_padre = p;
+    _padre = p;
 }
 
 void ArbolCategorias::DatosCat::agregarAltura(int a){
-    this->_altura = a;
+    _altura = a;
 }
 
 
@@ -142,22 +142,22 @@ int ArbolCategorias::alturaAC() const
 
 void ArbolCategorias::agregarAC(const Categoria c, const Categoria cpadre)
 {
-    DatosCat* puntPadre = this->_familia.Obtener(cpadre);
-    if (puntPadre->dameAltura() == this->alturaAC())
+    DatosCat* puntPadre = _familia.Obtener(cpadre);
+    if (puntPadre->dameAltura() == alturaAC())
     {
-        this->_alturaMax++;
+        _alturaMax++;
     }
     DatosCat tuplaA;
     tuplaA.agregarCat(c);
-    tuplaA.agregarId(this->_cantidad + 1);
+    tuplaA.agregarId(_cantidad + 1);
     tuplaA.agregarAltura(puntPadre->dameAltura()+1);
     Conj<DatosCat*> conj = Conj<DatosCat*>();
     tuplaA.agregarHijos(conj);
     tuplaA.agregarPadre(puntPadre);
     DatosCat* punt = &tuplaA;
     puntPadre->agregarHijo(punt);
-    this->_cantidad++;
-    this->_categorias.AgregarAtras(tuplaA);
+    _cantidad++;
+    _categorias.AgregarAtras(tuplaA);
 
 
 }
@@ -176,7 +176,7 @@ bool ArbolCategorias::esSubCategoria(const Categoria c, const Categoria predeces
     }
     else
     {
-        if(predecesor == this->raizAC())
+        if(predecesor == raizAC())
         {
             res = false;
         }

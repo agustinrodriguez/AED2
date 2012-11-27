@@ -101,7 +101,7 @@ class Acceso{
                 DatosLink* Siguiente() const;
                 void Avanzar();
                 void EliminarSiguiente();
-                itPunLinks* BuscarMax(Fecha f);
+                itPunLinks BuscarMax(Fecha f);
                 Fecha ultFecha();
                 int cantAccesosDesde(Fecha f);
                 bool estaOrdenada();
@@ -128,7 +128,7 @@ class Acceso{
 		void nuevoLinkLli(Link link, Categoria categoria);
 		void accederLli(Link link, Fecha fecha);
 		int cantLinks(Categoria categoria);
-		itPunLinks* linksOrdenadosPorAccesos(Categoria categoria) ;
+		itPunLinks linksOrdenadosPorAccesos(Categoria categoria) ;
 
         private:
 
