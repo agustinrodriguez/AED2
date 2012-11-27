@@ -48,8 +48,9 @@ namespace aed2
 
         class DatosCat{
             public:
-                DatosCat() {};
-                ~DatosCat() {};
+                DatosCat();
+                DatosCat(const Categoria cat, int id, int altura, Conj<DatosCat*> hijos, DatosCat* padre);
+                ~DatosCat();
                 const Categoria& dameCat() const;
                 int dameId() const;
                 int dameAltura() const;

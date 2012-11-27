@@ -8,12 +8,9 @@ ArbolCategorias::ArbolCategorias(const Categoria& raiz)
 {
 	_cantidad = 1;
 	_alturaMax = 1;
-	DatosCat* dato = new DatosCat();
-	dato->_id = 1;
-	dato->_categoria = raiz;
-	dato->_altura = 1;
-	//dato->_hijos = Conj<Categoria>::Conj();
-	dato->_padre = NULL;
+	Conj<DatosCat*> hijos = Conj<DatosCat*>();
+	DatosCat* dato = new DatosCat(raiz, 1, 1, hijos, NULL);
+	_raiz = dato;
 }
 
 ArbolCategorias::ArbolCategorias(const ArbolCategorias& arbol)
@@ -25,6 +22,26 @@ ArbolCategorias::~ArbolCategorias()
 {
 
 }
+
+ArbolCategorias::DatosCat::DatosCat()
+{
+
+}
+
+ArbolCategorias::DatosCat::DatosCat(const Categoria cat, int id, int altura, Conj<DatosCat*> hijos, DatosCat* padre)
+{
+    _categoria = cat;
+    _id = id;
+    _altura = altura;
+    _hijos = hijos;
+    _padre = padre;
+}
+
+ArbolCategorias::DatosCat::~DatosCat()
+{
+
+}
+
 
 const Categoria& ArbolCategorias::DatosCat::dameCat() const
 {
