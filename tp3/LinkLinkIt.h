@@ -70,8 +70,9 @@ class Acceso{
         class itLinks
         {
         public:
-            itLinks();
+            itLinks(itLinks& otroIt);
             itLinks(Lista<DatosLink> ldl);
+            itLinks();
                 ~itLinks();
                 bool HaySiguiente() const;
                 DatosLink& Siguiente() const;
@@ -86,6 +87,29 @@ class Acceso{
                 bool operator==(const itLinks& otro) const;
             private:
                 Lista<DatosLink>::Iterador _itLista;
+                int _tamanio;
+        };
+
+//creacion de la clase iterador de puntero a datoslink
+        class itPunLinks
+        {
+        public:
+            itPunLinks();
+            itPunLinks(Lista<DatosLink*> ldl);
+                ~itPunLinks();
+                bool HaySiguiente() const;
+                DatosLink* Siguiente() const;
+                void Avanzar();
+                void EliminarSiguiente();
+                itPunLinks* BuscarMax(Fecha f);
+                Fecha ultFecha();
+                int cantAccesosDesde(Fecha f);
+                bool estaOrdenada();
+                int tamanio();
+
+                bool operator==(const itPunLinks& otro) const;
+            private:
+                Lista<DatosLink*>::Iterador _itLista;
                 int _tamanio;
         };
 
@@ -104,7 +128,7 @@ class Acceso{
 		void nuevoLinkLli(Link link, Categoria categoria);
 		void accederLli(Link link, Fecha fecha);
 		int cantLinks(Categoria categoria);
-		itLinks linksOrdenadosPorAccesos(Categoria categoria) const;
+		itPunLinks* linksOrdenadosPorAccesos(Categoria categoria) ;
 
         private:
 

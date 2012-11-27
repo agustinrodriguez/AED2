@@ -170,26 +170,26 @@ int LinkLinkIt::cantLinks(Categoria categoria){
     	return _listaLinks.Longitud();
 }
 
-LinkLinkIt::itLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) const{
-        /*
+LinkLinkIt::itPunLinks* LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
         int id = this->dameAcatLli().idAC(categoria);
-        itLinks *itParaFecha = new itLinks(*(this->_arrayCatLinks[id])); El arreglo es punteros y el iterado sin
-        Fecha fecha = itParaFecha.ultFecha();
+        itPunLinks *itParaFecha = new itPunLinks(this->_arrayCatLinks[id]);
+        Fecha fecha = itParaFecha->ultFecha();
         Lista<DatosLink*> listaOrdenada = Lista<DatosLink*>();
-        if (!(this->_arrayCatLinks[id].estaOrdenada?))
+        if (!(itParaFecha->estaOrdenada()))
         {
-            itLinks *itMax = new itLinks(this->_arrayCatLinks[id]);
-            while(!(this->_arrayCatLinks[id].esVacia()))
+            itPunLinks *itMax = new itPunLinks(this->_arrayCatLinks[id]);
+            while(itMax->tamanio() != 0)
             {
-                //itMax = itMax.BuscarMax(fecha); COPIAR ITERADOR
-                listaOrdenada.AgregarAtras(itMax.Siguiente());
-                itMax.EliminarSiguiente();
+                itMax = itMax->BuscarMax(fecha);
+                listaOrdenada.AgregarAtras(itMax->Siguiente());
+                itMax->EliminarSiguiente();
             }
-            this->_arrayCatLinks[id] = listaOrdenada;
+            _arrayCatLinks.Definir(id,listaOrdenada);
+
         }
-       itLinks *res = new itLinks(this->_arrayCatLinks[id]);*/
-       itLinks res;
+       itPunLinks *res = new itPunLinks(this->_arrayCatLinks[id]);
        return res;
+       //LE SAQUE EL CONST YA QUE CON EL CONST NO PUEDO MODIFICAR _ARRAYCATLINKS HABRIA QUE HACER UNA OPERACION PARA PODER MOD
 }
 
 //////////////////////////////////////////
@@ -207,7 +207,9 @@ LinkLinkIt::itLinks::itLinks(Lista<DatosLink> ldl){
 
 }
 
+LinkLinkIt::itLinks::itLinks(itLinks& otroIt){
 
+}
 LinkLinkIt::itLinks::~itLinks()
     {
 
@@ -253,7 +255,7 @@ LinkLinkIt::itLinks LinkLinkIt::itLinks::BuscarMax(Fecha f){
     {
         if(this->cantAccesosDesde(f) > res.cantAccesosDesde(f))
         {
-//            res = this; COMO COPIAR UN ITERADOR
+//            res = this;
         }
         this->Avanzar();
     }
@@ -347,6 +349,99 @@ bool LinkLinkIt::ItAcceso::operator==(const ItAcceso& otro) const
 LinkLinkIt::Acceso LinkLinkIt::ItAcceso::Ultimo(){
     Acceso ac;
     return ac;
+}
+
+LinkLinkIt::itPunLinks::itPunLinks(){
+
+}
+
+LinkLinkIt::itPunLinks::itPunLinks(Lista<DatosLink*> ldl){
+       _itLista = ldl.CrearIt();
+        _tamanio = ldl.Longitud();
+
+
+}
+
+
+LinkLinkIt::itPunLinks::~itPunLinks()
+    {
+
+    }
+
+
+bool LinkLinkIt::itPunLinks::HaySiguiente() const
+{
+    return _itLista.HaySiguiente();
+}
+
+LinkLinkIt::DatosLink* LinkLinkIt::itPunLinks::Siguiente() const
+{
+
+ return _itLista.Siguiente();
+
+}
+
+void LinkLinkIt::itPunLinks::Avanzar()
+{
+    _itLista.Avanzar();
+}
+
+void LinkLinkIt::itPunLinks::EliminarSiguiente()
+{
+    _itLista.EliminarSiguiente();
+}
+
+
+LinkLinkIt::itPunLinks* LinkLinkIt::itPunLinks::BuscarMax(Fecha f){
+     Lista<DatosLink*> ldl = Lista<DatosLink*>();
+     itPunLinks *res = new itPunLinks(ldl);
+    while(this->HaySiguiente())
+    {
+        if(this->cantAccesosDesde(f) > res->cantAccesosDesde(f))
+        {
+//            res = this; COMO COPIAR UN ITERADOR
+        }
+        this->Avanzar();
+    }
+    return res;
+}
+
+Fecha LinkLinkIt::itPunLinks::ultFecha(){
+    int res = this->Siguiente()->dameAccesos().Ultimo().dameDia();
+    while(this->HaySiguiente())
+    {
+        if(res < this->Siguiente()->dameAccesos().Ultimo().dameDia()){
+            res = this->Siguiente()->dameAccesos().Ultimo().dameDia();
+        }
+        this->Avanzar();
+    }
+    return res;
+}
+
+int LinkLinkIt::itPunLinks::cantAccesosDesde(Fecha f){
+    ItAcceso itAcc;
+    int res = 0;
+    while(itAcc.HaySiguiente())
+    {
+        if(itAcc.Siguiente().dameDia() == f)
+        {
+            res = res + itAcc.Siguiente().dameCantA();
+        }
+        itAcc.Avanzar();
+    }
+    return res;
+}
+bool LinkLinkIt::itPunLinks::estaOrdenada(){
+    return false;
+}
+
+int LinkLinkIt::itPunLinks::tamanio(){
+    return _tamanio;
+}
+
+bool LinkLinkIt::itPunLinks::operator==(const itPunLinks& otro) const
+{
+    return false;
 }
 
 
