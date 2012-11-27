@@ -20,6 +20,16 @@ ArbolCategorias::ArbolCategorias(const ArbolCategorias& arbol)
 
 ArbolCategorias::~ArbolCategorias()
 {
+    //Destruyo puntero a datoscat de la raiz
+    delete _raiz;
+    //A cero la cantidad;
+    _cantidad = 0;
+    //A cero la altura
+    _alturaMax = 0;
+    //Destruyo el diccionario
+    _familia.~DiccTrie();
+    //Destruyo la lista
+    _categorias.~Lista();
 
 }
 
@@ -39,7 +49,19 @@ ArbolCategorias::DatosCat::DatosCat(const Categoria cat, int id, int altura, Con
 
 ArbolCategorias::DatosCat::~DatosCat()
 {
-
+    //A "" _categoria
+    _categoria = "";
+    //A 0 el id
+    _id = 0;
+    //A 0 la altura
+    _altura = 0;
+    //destruyo el conjunto
+    while(!(_hijos.EsVacio()))
+    {
+        _hijos.Eliminar(_hijos.CrearIt().Siguiente());
+    }
+    //destruyo categoria padre
+    delete _padre;
 }
 
 
@@ -217,6 +239,13 @@ ArbolCategorias::ItCategorias::ItCategorias(Lista<DatosCat> ldc)
 
 ArbolCategorias::ItCategorias::~ItCategorias()
 {
+    //Destruyo la lista
+    while(_itLista.HaySiguiente())
+    {
+        _itLista.EliminarSiguiente();
+    }
+    //A 0 el tamaño
+    _tamanio = 0;
 
 }
 
@@ -258,6 +287,14 @@ ArbolCategorias::ItHijos::ItHijos(Conj<DatosCat*> cdc)
 
 ArbolCategorias::ItHijos::~ItHijos()
 {
+    //Destruyo el conjunto
+    while((_itConj.HaySiguiente()))
+    {
+        _itConj.EliminarSiguiente();
+
+    }
+    //A 0 el tamanio
+    _tamanio = 0;
 
 }
 

@@ -7,8 +7,35 @@ LinkLinkIt::LinkLinkIt(ArbolCategorias arbolito){
 }
 
 LinkLinkIt::~LinkLinkIt(){
+    //Destruyo acat
+    _acat.~ArbolCategorias();
+    //A 0 la fecha
+    _actual = 0;
+    //Destruyo el dicc
+    _linkInfo.~DiccTrie();
+    //Destruyo la lista
+    _listaLinks.~Lista();
+    //Destruyo el arreglo
+    _arrayCatLinks.~Arreglo();
 
 }
+
+LinkLinkIt::DatosLink::DatosLink(){
+
+}
+
+LinkLinkIt::DatosLink::~DatosLink(){
+    //Link a ""
+    _link = "";
+    //Destruyo catDlink
+    delete _catDLink;
+    //Destruyo lista de accesos
+    _accesosRecientes.~Lista();
+    //A 0 cantaccesos
+    _cantAccesosRecientes = 0;
+
+}
+
 
 Link LinkLinkIt::DatosLink::dameLink() const{
     return _link;
@@ -46,6 +73,20 @@ void LinkLinkIt::DatosLink::nuevoCantAccesosRecientes(int car){
     _cantAccesosRecientes = car;
 }
 
+LinkLinkIt::Acceso::Acceso(){
+
+}
+
+
+LinkLinkIt::Acceso::~Acceso(){
+    //A 0 el dia
+    _dia = 0;
+    //A 0 la cantidad
+    _cantAccesos = 0;
+
+}
+
+
 Fecha LinkLinkIt::Acceso::dameDia(){
     return _dia;
 }
@@ -73,6 +114,7 @@ ArbolCategorias::ItCategorias LinkLinkIt::categoriasLli(){
 Fecha LinkLinkIt::fechaActual(){
 	return _actual;
 }
+
 
 LinkLinkIt::itLinks LinkLinkIt::linksLli() const{
 itLinks *res = new itLinks(_listaLinks);
@@ -210,6 +252,13 @@ LinkLinkIt::itLinks::itLinks(itLinks& otroIt){
 }
 LinkLinkIt::itLinks::~itLinks()
     {
+        //Destruyo lista
+        while(_itLista.HaySiguiente())
+        {
+            _itLista.EliminarSiguiente();
+        }
+        //A 0 el tamanio
+        _tamanio = 0;
 
     }
 
@@ -249,11 +298,12 @@ bool LinkLinkIt::itLinks::operator==(const itLinks& otro) const
 
 LinkLinkIt::itLinks LinkLinkIt::itLinks::BuscarMax(Fecha f){
     itLinks res;
+    res.copiarPos(*this);
     while(HaySiguiente())
     {
         if(cantAccesosDesde(f) > res.cantAccesosDesde(f))
         {
-//            res = this;
+            res.copiarPos(*this);
         }
         Avanzar();
     }
@@ -270,6 +320,10 @@ Fecha LinkLinkIt::itLinks::ultFecha(){
         Avanzar();
     }
     return res;
+}
+
+void LinkLinkIt::itLinks::copiarPos(itLinks otroIt){
+
 }
 
 int LinkLinkIt::itLinks::cantAccesosDesde(Fecha f){
@@ -308,7 +362,13 @@ LinkLinkIt::ItAcceso::ItAcceso(Lista<Acceso> ac)
 
 LinkLinkIt::ItAcceso::~ItAcceso()
 {
-
+    //Destruyo lista
+        while(_itLista.HaySiguiente())
+        {
+            _itLista.EliminarSiguiente();
+        }
+        //A 0 el tamanio
+        _tamanio = 0;
 }
 
 
@@ -363,7 +423,13 @@ LinkLinkIt::itPunLinks::itPunLinks(Lista<DatosLink*> ldl){
 
 LinkLinkIt::itPunLinks::~itPunLinks()
     {
-
+        //Destruyo lista
+        while(_itLista.HaySiguiente())
+        {
+            _itLista.EliminarSiguiente();
+        }
+        //A 0 el tamanio
+        _tamanio = 0;
     }
 
 
@@ -391,13 +457,13 @@ void LinkLinkIt::itPunLinks::EliminarSiguiente()
 
 
 LinkLinkIt::itPunLinks LinkLinkIt::itPunLinks::BuscarMax(Fecha f){
-     Lista<DatosLink*> ldl = Lista<DatosLink*>();
-     itPunLinks res = itPunLinks(ldl);
+     itPunLinks res;
+     res.copiarPos(*this);
     while(HaySiguiente())
     {
         if(cantAccesosDesde(f) > res.cantAccesosDesde(f))
         {
-//            res = this; COMO COPIAR UN ITERADOR
+            res.copiarPos(*this);
         }
         Avanzar();
     }
@@ -435,6 +501,10 @@ bool LinkLinkIt::itPunLinks::estaOrdenada(){
 
 int LinkLinkIt::itPunLinks::tamanio(){
     return _tamanio;
+}
+
+void LinkLinkIt::itPunLinks::copiarPos(itPunLinks otroIt){
+
 }
 
 bool LinkLinkIt::itPunLinks::operator==(const itPunLinks& otro) const

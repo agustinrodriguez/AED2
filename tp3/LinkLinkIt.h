@@ -13,8 +13,8 @@ namespace aed2
 
 class Acceso{
 		public:
-                Acceso() {};
-                ~Acceso() {};
+                Acceso();
+                ~Acceso() ;
                 Fecha dameDia();
                 int dameCantA();
                 void guardoAcceso(int a);
@@ -48,8 +48,8 @@ class Acceso{
 
         class DatosLink{
 		public:
-            DatosLink() {};
-            ~DatosLink() {};
+            DatosLink();
+            ~DatosLink();
             Link dameLink() const;
             ArbolCategorias::DatosCat dameCatDLink();
             Lista<Acceso> dameAccesos();
@@ -83,6 +83,7 @@ class Acceso{
                 Fecha ultFecha();
                 int cantAccesosDesde(Fecha f);
                 bool estaOrdenada();
+                void copiarPos(itLinks otroIt);
                 //itLinks(const Lista<DatosLink>::Iterador& otro);
                 bool operator==(const itLinks& otro) const;
             private:
@@ -106,7 +107,7 @@ class Acceso{
                 int cantAccesosDesde(Fecha f);
                 bool estaOrdenada();
                 int tamanio();
-
+                void copiarPos(itPunLinks otroIt);
                 bool operator==(const itPunLinks& otro) const;
             private:
                 Lista<DatosLink*>::Iterador _itLista;
