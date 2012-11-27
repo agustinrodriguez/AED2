@@ -59,7 +59,7 @@ class Acceso{
             void nuevaCat(ArbolCategorias::DatosCat* c);
             void nuevoAccesos(Lista<Acceso> ita);
             void nuevoCantAccesosRecientes(int car);
-            bool operator==(DatosLink& otro);
+            bool operator==(DatosLink& otro) const;
         private:
 			Link _link;
 			ArbolCategorias::DatosCat* _catDLink;

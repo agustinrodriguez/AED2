@@ -116,9 +116,16 @@ void ArbolCategorias::DatosCat::agregarAltura(int a){
     _altura = a;
 }
 
-bool ArbolCategorias::DatosCat::operator==(const DatosCat& otro) const{
-    return false;
+void ArbolCategorias::DatosCat::copiarDc(ArbolCategorias::DatosCat otroDc){
 
+}
+bool ArbolCategorias::DatosCat::operator==(const DatosCat& otro) const{
+    bool altura = dameAltura() == otro.dameAltura();
+    bool cat = dameCat() == otro.dameCat();
+    bool id = dameId() == otro.dameId();
+    bool hijos = dameHijos() == otro.dameHijos();
+    bool padre = damePadre() == otro.damePadre();
+    return altura && cat && id && hijos && padre;
 }
 
 
@@ -223,11 +230,7 @@ bool ArbolCategorias::esSubCategoria(const Categoria c, const Categoria predeces
             }
         }
     }
-
-    //YA ESTA HECHA EL PROBLEMA ESTA AL PASAR BIEN EL PUNTERO DEL DAMEPADRE
-    //FIJATE COMO ES
     return res;
-    //return false;
 }
 
 ArbolCategorias::ItCategorias::ItCategorias()
@@ -273,9 +276,33 @@ int ArbolCategorias::ItCategorias::tamanio() const
     return _tamanio;
 }
 
+void ArbolCategorias::ItCategorias::copiarPos(ItCategorias otroIt){
+
+}
+
 bool ArbolCategorias::ItCategorias::operator==(const ItCategorias& otro) const
 {
-    return false;
+    bool iguales = false;
+    if(tamanio() == otro.tamanio())
+    {
+        iguales = true;
+        ItCategorias itThis;
+        ItCategorias itOtro;
+        itThis.copiarPos(*this);
+        itOtro.copiarPos(*this);
+        while(itThis.HaySiguiente() && iguales)
+        {
+            iguales = itThis.Siguiente() == itOtro.Siguiente();
+            itThis.Avanzar();
+            itOtro.Avanzar();
+
+        }
+    }
+    else
+    {
+        iguales = false;
+    }
+    return iguales;
 }
 
 ArbolCategorias::ItHijos::ItHijos()

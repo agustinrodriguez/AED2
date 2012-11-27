@@ -73,9 +73,13 @@ void LinkLinkIt::DatosLink::nuevoCantAccesosRecientes(int car){
     _cantAccesosRecientes = car;
 }
 
-bool LinkLinkIt::DatosLink::operator==(DatosLink& otro) {
+bool LinkLinkIt::DatosLink::operator==(DatosLink& otro) const{/*
     bool link = dameLink() == otro.dameLink();
-    bool puntCat = dameCatDLink() == otro.dameCatDLink();
+    ArbolCategorias::DatosCat dcThis;
+    dcThis.copiarDc(dameCatDLink());
+    ArbolCategorias::DatosCat dcOtro;
+    dcOtro.copiarDc(dameCatDLink());
+    bool puntCat = dcThis.dameCatDLink() == dcOtro.dameCatDLink();
     bool mismosAccesos = true;
     Lista<Acceso> listaThis = Lista<Acceso>();
     listaThis = dameAccesos();
@@ -93,7 +97,8 @@ bool LinkLinkIt::DatosLink::operator==(DatosLink& otro) {
     }
     return link && puntCat && mismosAccesos && cantAccesos;
 
-    //AHORA FUNCIONA PERO SIN CONST HAY Q VER DE CREAR UN CONSTRUCTOR DE DATOSCAT POR COPIA
+    //AHORA FUNCIONA PERO SIN CONST HAY Q VER DE CREAR UN CONSTRUCTOR DE DATOSCAT POR COPIA*/
+    return false;
 }
 
 LinkLinkIt::Acceso::Acceso(){

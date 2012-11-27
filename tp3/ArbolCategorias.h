@@ -25,6 +25,7 @@ namespace aed2
                 Categoria Siguiente() const;
                 void Avanzar();
                 int tamanio() const;
+                void copiarPos(ItCategorias otroIt);
                 bool operator==(const ItCategorias& otro) const;
             private:
                 Lista<DatosCat>::Iterador _itLista;
@@ -62,6 +63,7 @@ namespace aed2
                 void agregarHijos(Conj<DatosCat*> h);
                 void agregarPadre(DatosCat* p);
                 void agregarAltura(int a);
+                void copiarDc(DatosCat otroDc);
                 bool operator==(const DatosCat& otro) const;
 
             private:
