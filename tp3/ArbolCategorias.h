@@ -55,7 +55,7 @@ namespace aed2
                 int dameId() const;
                 int dameAltura() const;
                 ItHijos&  dameHijos() const;
-                const DatosCat& damePadre() const;
+                DatosCat* damePadre() const;
                 void agregarCat(String c);
                 void agregarId(int i);
                 void agregarHijo(DatosCat* h);

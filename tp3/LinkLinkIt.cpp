@@ -135,7 +135,7 @@ void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
     while(!(cat == NULL))
     {
         _arrayCatLinks[cat->dameId()].AgregarAtras(puntLink);
-        *cat = cat->damePadre();
+        cat = cat->damePadre();
     }
 
 }

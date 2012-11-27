@@ -64,9 +64,9 @@ ArbolCategorias::ItHijos& ArbolCategorias::DatosCat::dameHijos() const
     ItHijos *res = new ItHijos();
     return *res;
 }
-const ArbolCategorias::DatosCat& ArbolCategorias::DatosCat::damePadre() const
+ArbolCategorias::DatosCat* ArbolCategorias::DatosCat::damePadre() const
 {
-    return *_padre;
+    return _padre;
 }
 
 void ArbolCategorias::DatosCat::agregarCat(String c){
@@ -132,7 +132,7 @@ ArbolCategorias::ItHijos& ArbolCategorias::hijosAC(const Categoria& c) const
 
 Categoria ArbolCategorias::padreAC(const Categoria& c) const
 {
-    return _familia.Obtener(c)->damePadre().dameCat();
+    return _familia.Obtener(c)->damePadre()->dameCat();
 }
 
 int ArbolCategorias::alturaAC() const
@@ -168,7 +168,7 @@ bool ArbolCategorias::esta(const Categoria c) const
 }
 
 bool ArbolCategorias::esSubCategoria(const Categoria c, const Categoria predecesor) const
-{ /*
+{
     bool res = false;
     if (predecesor == c)
     {
@@ -182,26 +182,26 @@ bool ArbolCategorias::esSubCategoria(const Categoria c, const Categoria predeces
         }
         else
         {
-            const DatosCat* actual = this->_familia().Obtener(predecesor);
-           const DatosCat* puntC = this->_familia.Obtener(c)->damePadre();
+            DatosCat* actual = _familia.Obtener(predecesor);
+            DatosCat* puntC = _familia.Obtener(c)->damePadre();
             while((res == false && actual != NULL))
             {
-                if(puntC == actual)
+                if(puntC->dameId() == actual->dameId())
                 {
                     res = true;
                 }
                 else
                 {
-                    actual = (*actual).damePadre();
+                    actual = actual->damePadre();
                 }
             }
         }
     }
 
-    YA ESTA HECHA EL PROBLEMA ESTA AL PASAR BIEN EL PUNTERO DEL DAMEPADRE
-    FIJATE COMO ES
-    return res;*/
-    return false;
+    //YA ESTA HECHA EL PROBLEMA ESTA AL PASAR BIEN EL PUNTERO DEL DAMEPADRE
+    //FIJATE COMO ES
+    return res;
+    //return false;
 }
 
 ArbolCategorias::ItCategorias::ItCategorias()
