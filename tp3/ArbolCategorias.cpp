@@ -116,6 +116,10 @@ void ArbolCategorias::DatosCat::agregarAltura(int a){
     _altura = a;
 }
 
+bool ArbolCategorias::DatosCat::operator==(const DatosCat& otro) const{
+    return false;
+
+}
 
 
 ArbolCategorias::DatosCat* ArbolCategorias::obtenerAC(const Categoria c) const

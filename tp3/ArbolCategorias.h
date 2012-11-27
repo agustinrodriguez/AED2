@@ -62,6 +62,7 @@ namespace aed2
                 void agregarHijos(Conj<DatosCat*> h);
                 void agregarPadre(DatosCat* p);
                 void agregarAltura(int a);
+                bool operator==(const DatosCat& otro) const;
 
             private:
                 Categoria _categoria;

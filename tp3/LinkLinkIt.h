@@ -19,6 +19,7 @@ class Acceso{
                 int dameCantA();
                 void guardoAcceso(int a);
                 void guardoDia(int a);
+                bool operator==(const Acceso& otro) const;
 
         private:
 			Fecha _dia;
@@ -58,6 +59,7 @@ class Acceso{
             void nuevaCat(ArbolCategorias::DatosCat* c);
             void nuevoAccesos(Lista<Acceso> ita);
             void nuevoCantAccesosRecientes(int car);
+            bool operator==(DatosLink& otro);
         private:
 			Link _link;
 			ArbolCategorias::DatosCat* _catDLink;

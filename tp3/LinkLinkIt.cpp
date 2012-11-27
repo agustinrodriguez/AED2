@@ -73,6 +73,29 @@ void LinkLinkIt::DatosLink::nuevoCantAccesosRecientes(int car){
     _cantAccesosRecientes = car;
 }
 
+bool LinkLinkIt::DatosLink::operator==(DatosLink& otro) {
+    bool link = dameLink() == otro.dameLink();
+    bool puntCat = dameCatDLink() == otro.dameCatDLink();
+    bool mismosAccesos = true;
+    Lista<Acceso> listaThis = Lista<Acceso>();
+    listaThis = dameAccesos();
+    bool cantAccesos = (this->dameCantAccesos() == otro.dameCantAccesos());
+    if(dameAccesos().Longitud() == otro.dameAccesos().Longitud()){
+        ItAcceso itThis = ItAcceso(listaThis);
+        ItAcceso itOtro = ItAcceso(otro.dameAccesos());
+        while(itThis.HaySiguiente() && mismosAccesos){
+            mismosAccesos = (itThis.Siguiente() == itOtro.Siguiente());
+            itThis.Avanzar();
+            itOtro.Avanzar();
+        }
+    }else{
+        mismosAccesos = false;
+    }
+    return link && puntCat && mismosAccesos && cantAccesos;
+
+    //AHORA FUNCIONA PERO SIN CONST HAY Q VER DE CREAR UN CONSTRUCTOR DE DATOSCAT POR COPIA
+}
+
 LinkLinkIt::Acceso::Acceso(){
 
 }
@@ -101,6 +124,10 @@ void LinkLinkIt::Acceso::guardoAcceso(int a){
 
 void LinkLinkIt::Acceso::guardoDia(int a){
     _dia = a;
+}
+
+bool LinkLinkIt::Acceso::operator==(const LinkLinkIt::Acceso& otro) const{
+    return false;
 }
 
 ArbolCategorias LinkLinkIt::dameAcatLli() const{
