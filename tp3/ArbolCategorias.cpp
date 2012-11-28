@@ -50,12 +50,13 @@ ArbolCategorias::DatosCat::~DatosCat()
     //destruyo el conjunto
     while(!(_hijos.EsVacio()))
     {
-        _hijos.Eliminar(_hijos.CrearIt().Siguiente());
+        delete _hijos.CrearIt().Siguiente();
+        _hijos.CrearIt().Avanzar();
     }
     //destruyo categoria padre
     if(_padre != NULL)
     {
-        delete _padre;
+        _padre = NULL;
     }
 }
 

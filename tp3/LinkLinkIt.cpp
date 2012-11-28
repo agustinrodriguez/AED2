@@ -39,7 +39,7 @@ LinkLinkIt::DatosLink::~DatosLink(){
     //Destruyo catDlink
     if(_catDLink != NULL)
     {
-        delete _catDLink;
+        _catDLink = NULL;
     }
     //Destruyo lista de accesos
     _accesosRecientes.~Lista();
