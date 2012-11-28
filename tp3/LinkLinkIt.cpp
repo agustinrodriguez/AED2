@@ -105,6 +105,10 @@ LinkLinkIt::Acceso::Acceso(){
 
 }
 
+LinkLinkIt::Acceso::Acceso(Fecha f, int a){
+    _dia = f;
+    _cantAccesos = a;
+}
 LinkLinkIt::Acceso::~Acceso(){
 
 }

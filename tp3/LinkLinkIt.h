@@ -14,6 +14,7 @@ namespace aed2
 class Acceso{
 		public:
                 Acceso();
+                Acceso(Fecha f, int a);
                 ~Acceso() ;
                 Fecha dameDia() const;
                 int dameCantA() const;
