@@ -11,6 +11,8 @@ ArbolCategorias::ArbolCategorias(const Categoria& raiz)
 	Conj<DatosCat*> hijos = Conj<DatosCat*>();
 	DatosCat* dato = new DatosCat(raiz, 1, 1, hijos, NULL);
 	_raiz = dato;
+	_categorias = Lista<DatosCat>();
+	_categorias.AgregarAdelante(*dato);
 }
 
 ArbolCategorias::ArbolCategorias(const ArbolCategorias& arbol)
