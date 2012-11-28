@@ -53,7 +53,10 @@ ArbolCategorias::DatosCat::~DatosCat()
         _hijos.Eliminar(_hijos.CrearIt().Siguiente());
     }
     //destruyo categoria padre
-    delete _padre;
+    if(_padre != NULL)
+    {
+        delete _padre;
+    }
 }
 
 
