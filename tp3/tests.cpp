@@ -32,6 +32,6 @@ void mt_str_assert(string lhs, string rhs, int line) { if (lhs.compare(rhs) != 0
  */
 
 int main(void) {
-        cout << "andate passarella!!!";
+        cout << "sabemos donde vivis...";
 	return 0;
 }
