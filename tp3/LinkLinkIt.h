@@ -53,6 +53,7 @@ class Acceso{
         class DatosLink{
 		public:
             DatosLink();
+            DatosLink(Link l, ArbolCategorias::DatosCat* dc, Lista<Acceso> la, int i);
             ~DatosLink();
             Link dameLink() const;
             ArbolCategorias::DatosCat dameCatDLink();
@@ -123,7 +124,7 @@ class Acceso{
                 int _tamanio;
         };
 
-        LinkLinkIt(ArbolCategorias arbolito);
+        LinkLinkIt(ArbolCategorias acat);
         LinkLinkIt();
         ~LinkLinkIt();
 

@@ -2,7 +2,20 @@
 #include "ArbolCategorias.h"
 
 
-LinkLinkIt::LinkLinkIt(ArbolCategorias arbolito){
+LinkLinkIt::LinkLinkIt(ArbolCategorias acat){
+   _actual = 1;
+   _acat = acat;
+   int c = 1;
+   DiccTrie<DatosLink*> _linkInfo = DiccTrie<DatosLink*>();
+    _arrayCatLinks = Arreglo<Lista<DatosLink*> >((acat.categoriasAC().tamanio()));
+    _listaLinks = Lista<DatosLink>();
+    _linkInfo = DiccTrie<DatosLink*>();
+    while(c <= acat.categoriasAC().tamanio())
+   {
+        Lista<DatosLink*> list = Lista<DatosLink*>();
+        _arrayCatLinks.Definir(c,list);
+        c++;
+   }
 
 }
 
@@ -29,6 +42,13 @@ LinkLinkIt::DatosLink::~DatosLink(){
     _accesosRecientes.~Lista();
 }
 
+LinkLinkIt::DatosLink::DatosLink(Link l, ArbolCategorias::DatosCat* dc, Lista<Acceso> la, int i){
+    _link = l;
+    _catDLink = dc;
+    _accesosRecientes = la;
+    _cantAccesosRecientes = i;
+
+}
 
 Link LinkLinkIt::DatosLink::dameLink() const{
     return _link;
