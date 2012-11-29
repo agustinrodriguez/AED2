@@ -125,6 +125,7 @@ void datosLinkConDatos(){
     delete dl3;
     delete dl4;
     delete dl5;
+    delete ac;
 }
 
 void accesoTest(){
@@ -148,6 +149,11 @@ void accesoTest(){
     ASSERT_EQ(*a==*d,false);
     ASSERT_EQ(*a==*c,false);
     ASSERT_EQ(*a==*e,false);
+    delete a;
+    delete b;
+    delete c;
+    delete d;
+    delete e;
 }
 
 void accesoTestConConstr(){
@@ -161,7 +167,12 @@ void accesoTestConConstr(){
     ASSERT_EQ(*a==*d,false);
     ASSERT_EQ(*a==*c,false);
     ASSERT_EQ(*a==*e,false);
-}
+    delete a;
+    delete b;
+    delete c;
+    delete d;
+    delete e;
+    }
 void testLinkNuevo(){
     Categoria cat = "informacion";
     Categoria c2 = "InformacionAnimales";
