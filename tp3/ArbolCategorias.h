@@ -25,15 +25,9 @@ namespace aed2
                 bool HaySiguiente() const;
                 Categoria Siguiente() const;
                 void Avanzar();
-                int tamanio() const;
-                //void copiarPos(ItCategorias otroIt);
-                const Lista<DatosCat*>::Iterador dameIt() const;
-                const Lista<DatosCat*> dameLista() const;
                 bool operator==(const ItCategorias& otro) const;
             private:
                 Lista<DatosCat*>::Iterador _itLista;
-                Lista<DatosCat*> _lista;
-//                Nodo* _actual;
         };
 
         class ItHijos{
@@ -45,19 +39,15 @@ namespace aed2
                 bool HaySiguiente() const;
                 const Categoria& Siguiente() const;
                 void Avanzar();
-                int tamanio() const;
-                //void copiarPos(ItHijos otroIt);
-                const Conj<DatosCat*>::Iterador dameIt() const;
-                const Conj<DatosCat*> dameConjunto() const;
                 bool operator==(const ItHijos& otro) const;
             private:
                 Conj<DatosCat*>::Iterador _itConj;
-                Conj<DatosCat*> _conjunto;
         };
 
         class DatosCat{
             public:
                 DatosCat();
+                DatosCat(const DatosCat& otro);
                 DatosCat(const Categoria cat, int id, int altura, Conj<DatosCat*> hijos, DatosCat* padre);
                 ~DatosCat();
                 const Categoria& dameCat() const;
@@ -94,6 +84,7 @@ namespace aed2
         void agregarAC(const Categoria c, const Categoria cpadre);
         bool esta(const Categoria c) const;
 		bool esSubCategoria(const Categoria c, const Categoria predecesor) const;
+        const int dameCantidad() const;
 
 		private:
 

@@ -40,22 +40,20 @@ ArbolCategorias a = ArbolCategorias(raiz);
 ASSERT_EQ(a.alturaAC(), 1);
 ASSERT_EQ(a.obtenerAC(raiz)->dameId(),1);
 ASSERT_EQ(a.obtenerAC(raiz)->dameCat(),raiz);
-ASSERT_EQ(a.categoriasAC().tamanio(),1);
+ASSERT_EQ(a.dameCantidad(),1);
 ASSERT_EQ(a.alturaAC(),1);
 Categoria c1 = "cat1";
 Categoria c2 = "cat2";
 a.agregarAC(c1,raiz);
-ASSERT_EQ(a.hijosAC(raiz).tamanio(),1);
+ASSERT_EQ(a.dameCantidad(),2);
 ASSERT(a.esSubCategoria(raiz,raiz));
-
 ASSERT_STR_EQ(a.obtenerAC(c1)->damePadre()->dameCat(), raiz);
-
 ASSERT(a.esSubCategoria(raiz,c1));
 ASSERT(!(a.esta(c2)));
 ASSERT_EQ(a.alturaCatAC(c1),2);
 ASSERT_EQ(a.idAC(c1),2);
 ASSERT_EQ(a.alturaAC(),2);
-ASSERT_EQ(a.categoriasAC().tamanio(),2);
+ASSERT_EQ(a.dameCantidad(),2);
 }
 
 void arbolNuevoConRaizTieneHijoVacio(){
@@ -66,11 +64,10 @@ void arbolNuevoConRaizTieneHijoVacio(){
     ASSERT_EQ(a->alturaAC(),1);
     ASSERT_EQ(a->idAC(c),1);
     ASSERT_EQ(a->raizAC(),c);
-    ASSERT_EQ(a->categoriasAC().tamanio(),1);
+    ASSERT_EQ(a->dameCantidad(),1);
     ASSERT_EQ(a->esta(c),true);
     ASSERT_EQ(a->esta(d),false);
     a->agregarAC(d,c);
-    ASSERT_EQ(a->hijosAC(c).tamanio(),1);
     ASSERT_EQ(a->esta(c),true);
     ASSERT_EQ(a->esta(d),true);
     ASSERT_EQ(a->esSubCategoria(c,d),true);
@@ -190,39 +187,15 @@ void testLinkNuevo(){
     delete dl;
     delete lli;
 }
-void datosCatNuevo(){
-    ArbolCategorias::DatosCat* dc = new ArbolCategorias::DatosCat();
-    dc->agregarAltura(1);
-    dc->agregarCat("cat");
-    dc->agregarId(323);
-    dc->agregarPadre(NULL);
-    Conj<ArbolCategorias::DatosCat*> conj = Conj<ArbolCategorias::DatosCat*>();
-    dc->agregarHijos(conj);
-    ASSERT_EQ(dc->dameAltura(),1);
-    ASSERT_EQ(dc->dameCat() == "cat",true);
-    ASSERT_EQ(dc->dameHijos().tamanio(),0);
-    ASSERT_EQ(dc->damePadre() == NULL, true);
-    ArbolCategorias::DatosCat* dc1 = new ArbolCategorias::DatosCat("cat", 323, 1, conj, NULL);
-    ASSERT_EQ(dc1->dameAltura(),1);
-    ASSERT_EQ(dc1->dameCat() == "cat",true);
-    ASSERT_EQ(dc1->dameHijos().tamanio(),0);
-    ASSERT_EQ(dc1->damePadre() == NULL, true);
-    ArbolCategorias::DatosCat* dc2 = new ArbolCategorias::DatosCat("cat", 323, 1, conj, dc);
-    ASSERT_EQ(*dc == *dc1,true);
-    ASSERT_EQ(*dc == *dc2,false);
-    delete dc1;
-    delete dc2;
-    delete dc;
-}
 
 void LinkLinkItNuevo(){
-    /*Categoria cat = "cat";
+    Categoria cat = "cat";
     ArbolCategorias *acat = new ArbolCategorias(cat);
     LinkLinkIt *lli = new LinkLinkIt(*acat);
 
     //ASSERT_EQ(lli->dameAcatLli() == *acat,true); FALTA HACER OPERATOR DE ACAT
     lli->nuevoLinkLli("link","cat");
-    ASSERT_EQ(lli->categoriaLink("link"),"cat");
+  /*  ASSERT_EQ(lli->categoriaLink("link"),"cat");
     ASSERT_EQ(lli->cantLinks("cat"),1);
     ASSERT_EQ(lli->categoriasLli().tamanio(),1);
     lli->accederLli("link",120);
@@ -238,8 +211,7 @@ int main(void) {
         RUN_TEST(datosLinkConDatos);//ANDA VERIFICAR DELETE
         RUN_TEST(accesoTest);//ANDA
         RUN_TEST(accesoTestConConstr);//ANDA
-        RUN_TEST(datosCatNuevo);//ANDA VERIFICAR DELETE
-//        RUN_TEST(LinkLinkItNuevo); //TIRA MUCHOS NUMERITOS JA
+        RUN_TEST(LinkLinkItNuevo); //TIRA MUCHOS NUMERITOS JA
 //        RUN_TEST(testLinkNuevo);
 	return 0;
 

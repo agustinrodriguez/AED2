@@ -46,6 +46,14 @@ ArbolCategorias::DatosCat::DatosCat()
 
 }
 
+ArbolCategorias::DatosCat::DatosCat(const DatosCat& otro){
+    _categoria = otro._categoria;
+    _id = otro._id;
+    _altura = otro._altura;
+    _padre = otro._padre;
+    _hijos = otro._hijos;
+}
+
 ArbolCategorias::DatosCat::DatosCat(const Categoria cat, int id, int altura, Conj<DatosCat*> hijos, DatosCat* padre)
 {
     _categoria = cat;
@@ -86,38 +94,11 @@ ArbolCategorias::DatosCat* ArbolCategorias::DatosCat::damePadre() const
     return _padre;
 }
 
-void ArbolCategorias::DatosCat::agregarCat(String c){
-    _categoria = c;
-}
-
-void ArbolCategorias::DatosCat::agregarId(int i){
-    _id = i;
-}
-
-void ArbolCategorias::DatosCat::agregarHijo(ArbolCategorias::DatosCat* h){
+void ArbolCategorias::DatosCat::agregarHijo(DatosCat* h){
     _hijos.Agregar(h);
+
 }
 
-
-void ArbolCategorias::DatosCat::agregarHijos(Conj<ArbolCategorias::DatosCat*> h){
-    _hijos = h;
-}
-
-void ArbolCategorias::DatosCat::agregarPadre(DatosCat* p){
-    _padre = p;
-}
-
-void ArbolCategorias::DatosCat::agregarAltura(int a){
-    _altura = a;
-}
-
-void ArbolCategorias::DatosCat::copiarDc(ArbolCategorias::DatosCat otroDc){
-    _categoria = otroDc.dameCat();
-    _id = otroDc.dameId();
-    _altura = otroDc.dameAltura();
-    _padre = otroDc.damePadre();
-    _hijos = otroDc.dameHijos().dameConjunto();
-}
 bool ArbolCategorias::DatosCat::operator==(const DatosCat& otro) const{
     bool altura = dameAltura() == otro.dameAltura();
     bool cat = dameCat() == otro.dameCat();
@@ -225,6 +206,11 @@ bool ArbolCategorias::esSubCategoria(const Categoria c, const Categoria predeces
     return res;
 }
 
+const int ArbolCategorias::dameCantidad() const
+{
+    return _cantidad;
+}
+
 ArbolCategorias::ItCategorias::ItCategorias()
 {
 
@@ -232,19 +218,16 @@ ArbolCategorias::ItCategorias::ItCategorias()
 
 ArbolCategorias::ItCategorias::ItCategorias(Lista<DatosCat*> ldc)
 {
-    _lista = ldc;
-    _itLista = _lista.CrearIt();
+    _itLista = ldc.CrearIt();
 }
 
 ArbolCategorias::ItCategorias::ItCategorias(const ItCategorias& otroIt){
     _itLista = otroIt._itLista;
-    _lista = otroIt._lista;
-
 }
 
 ArbolCategorias::ItCategorias::~ItCategorias()
 {
-    _lista.~Lista();
+
 }
 
 bool ArbolCategorias::ItCategorias::HaySiguiente() const
@@ -262,33 +245,9 @@ void ArbolCategorias::ItCategorias::Avanzar()
     _itLista.Avanzar();
 }
 
-int ArbolCategorias::ItCategorias::tamanio() const
-{
-    return _lista.Longitud();
-}
-/*
-void ArbolCategorias::ItCategorias::copiarPos(ItCategorias otroIt){
-
-}
-*/
-const Lista<ArbolCategorias::DatosCat*>::Iterador ArbolCategorias::ItCategorias::dameIt() const{
-    return _itLista;
-}
-
-const Lista<ArbolCategorias::DatosCat*> ArbolCategorias::ItCategorias::dameLista() const
-{
-    return _lista;
-}
-
 bool ArbolCategorias::ItCategorias::operator==(const ItCategorias& otro) const
 {
-    bool iguales = true;
-    iguales = _itLista == otro.dameIt();
-    if(iguales)
-    {
-        iguales = _lista == otro.dameLista();
-    }
-    return iguales;
+    return _itLista == otro._itLista;
 }
 
 ArbolCategorias::ItHijos::ItHijos()
@@ -296,27 +255,18 @@ ArbolCategorias::ItHijos::ItHijos()
 
 }
 
-ArbolCategorias::ItHijos::ItHijos(const ArbolCategorias::ItHijos& otroIt){
-    _itConj= otroIt.dameIt();
-    _conjunto = otroIt.dameConjunto();
+ArbolCategorias::ItHijos::ItHijos(const ArbolCategorias::ItHijos& otroIt)
+{
+    _itConj= otroIt._itConj;
 }
 
 ArbolCategorias::ItHijos::ItHijos(Conj<DatosCat*> cdc)
 {
     _itConj = cdc.CrearIt();
-    _conjunto = cdc;
 }
 
 ArbolCategorias::ItHijos::~ItHijos()
 {
-    _conjunto.~Conj();
-    //Destruyo el conjunto
-    /*while((_itConj.HaySiguiente()))
-    {
-        delete _itConj.Siguiente();
-        _itConj.Avanzar();
-
-    }*/
 
 }
 
@@ -335,52 +285,7 @@ void ArbolCategorias::ItHijos::Avanzar()
     _itConj.Avanzar();
 }
 
-int ArbolCategorias::ItHijos::tamanio() const
-{
-    return _conjunto.Cardinal();
-}
-/*
-void ArbolCategorias::ItHijos::copiarPos(ItHijos otroIt){
-
-}
-*/
-const Conj<ArbolCategorias::DatosCat*>::Iterador ArbolCategorias::ItHijos::dameIt() const{
-    return _itConj;
-}
-
-const Conj<ArbolCategorias::DatosCat*> ArbolCategorias::ItHijos::dameConjunto() const
-{
-    return _conjunto;
-}
-
 bool ArbolCategorias::ItHijos::operator==(const ItHijos& otro) const
 {
-    bool iguales = true;
-    iguales = _itConj == otro.dameIt();
-    if(iguales)
-    {
-        iguales = _conjunto == otro.dameConjunto();
-    }
-    /*
-    bool iguales = false;
-    if(tamanio() == otro.tamanio())
-    {
-        iguales = true;
-        ItHijos itThis;
-        ItHijos itOtro;
-        itThis.copiarPos(*this);
-        itOtro.copiarPos(otro);
-        while(itThis.HaySiguiente() && iguales)
-        {
-            iguales = itThis.Siguiente() == itOtro.Siguiente();
-            itThis.Avanzar();
-            itOtro.Avanzar();
-
-        }
-    }
-    else
-    {
-        iguales = false;
-    }*/
-    return iguales;
+    return _itConj == otro._itConj;
 }

@@ -2,15 +2,16 @@
 #include "ArbolCategorias.h"
 
 
-LinkLinkIt::LinkLinkIt(ArbolCategorias acat){
+LinkLinkIt::LinkLinkIt(ArbolCategorias acat)
+{
    _actual = 1;
    _acat = acat;
    int c = 0;
    _linkInfo = DiccTrie<DatosLink*>();
-    _arrayCatLinks = Arreglo<Lista<DatosLink*> >((acat.categoriasAC().tamanio()));
+    _arrayCatLinks = Arreglo<Lista<DatosLink*> >(acat.dameCantidad());
     _listaLinks = Lista<DatosLink>();
     _linkInfo = DiccTrie<DatosLink*>();
-    while(c < acat.categoriasAC().tamanio())
+    while(c < acat.dameCantidad())
    {
         Lista<DatosLink*> list = Lista<DatosLink*>();
         _arrayCatLinks.Definir(c,list);
@@ -18,14 +19,8 @@ LinkLinkIt::LinkLinkIt(ArbolCategorias acat){
    }
 }
 
-LinkLinkIt::~LinkLinkIt(){
-    //Destruyo acat
-//    _acat.~ArbolCategorias();
-//    Destruyo el dicc
-//    _linkInfo.~DiccTrie();
-//    Destruyo la lista
-//    _listaLinks.~Lista();
-
+LinkLinkIt::~LinkLinkIt()
+{
 
 }
 
@@ -185,10 +180,10 @@ void LinkLinkIt::iniciarLli(ArbolCategorias acat) {
    _acat = acat;
    int c = 0;
    DiccTrie<DatosLink*> _linkInfo = DiccTrie<DatosLink*>();
-    _arrayCatLinks = Arreglo<Lista<DatosLink*> >((acat.categoriasAC().tamanio()));
+    _arrayCatLinks = Arreglo<Lista<DatosLink*> >(acat.dameCantidad());
     _listaLinks = Lista<DatosLink>();
     _linkInfo = DiccTrie<DatosLink*>();
-    while(c <= acat.categoriasAC().tamanio())
+    while(c <= acat.dameCantidad())
    {
         Lista<DatosLink*> list = Lista<DatosLink*>();
         _arrayCatLinks.Definir(c,list);
@@ -199,8 +194,7 @@ void LinkLinkIt::iniciarLli(ArbolCategorias acat) {
 
 void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
 
-    ArbolCategorias::DatosCat cat;
- 	cat.copiarDc(*dameAcatLli().obtenerAC(categoria));
+    ArbolCategorias::DatosCat cat = ArbolCategorias::DatosCat(*dameAcatLli().obtenerAC(categoria));
  	ArbolCategorias::DatosCat* puntCat = &cat;
  	Lista<Acceso> accesoDeNuevoLink = Lista<Acceso>();
  	DatosLink nuevoLink = DatosLink(link, puntCat, accesoDeNuevoLink, 0);
