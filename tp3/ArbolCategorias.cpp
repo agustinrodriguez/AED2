@@ -22,12 +22,15 @@ ArbolCategorias::ArbolCategorias(const Categoria& raiz)
 
 ArbolCategorias::~ArbolCategorias()
 {
-    //Destruyo puntero a datoscat de la raiz
-    delete _raiz;
     //Destruyo el diccionario
-    _familia.~DiccTrie();
+    //_familia.~DiccTrie();
     //Destruyo la lista
-    _categorias.~Lista();
+    //_categorias.~Lista();
+
+    while(!(_categorias.EsVacia())) {
+        delete _familia.Obtener(_categorias.Primero().dameCat());
+        _categorias.Fin();
+    }
 
 }
 
@@ -47,13 +50,7 @@ ArbolCategorias::DatosCat::DatosCat(const Categoria cat, int id, int altura, Con
 
 ArbolCategorias::DatosCat::~DatosCat()
 {
-    //destruyo el conjunto
-    _hijos.~Conj();
-    //destruyo categoria padre
-    if(_padre != NULL)
-    {
-        _padre = NULL;
-    }
+
 }
 
 

@@ -20,13 +20,12 @@ LinkLinkIt::LinkLinkIt(ArbolCategorias acat){
 
 LinkLinkIt::~LinkLinkIt(){
     //Destruyo acat
-    _acat.~ArbolCategorias();
-    //Destruyo el dicc
-    _linkInfo.~DiccTrie();
-    //Destruyo la lista
-    _listaLinks.~Lista();
-    //Destruyo el arreglo
-    _arrayCatLinks.~Arreglo();
+//    _acat.~ArbolCategorias();
+//    Destruyo el dicc
+//    _linkInfo.~DiccTrie();
+//    Destruyo la lista
+//    _listaLinks.~Lista();
+
 
 }
 
