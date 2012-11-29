@@ -53,7 +53,7 @@ LinkLinkIt::DatosLink::DatosLink(Link l, ArbolCategorias::DatosCat* dc, Lista<Ac
 
 }
 
-Link LinkLinkIt::DatosLink::dameLink() const{
+const Link& LinkLinkIt::DatosLink::dameLink() const{
     return _link;
 }
 

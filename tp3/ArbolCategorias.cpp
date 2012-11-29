@@ -319,7 +319,7 @@ bool ArbolCategorias::ItHijos::HaySiguiente() const
     return _itConj.HaySiguiente();
 }
 
-Categoria ArbolCategorias::ItHijos::Siguiente() const
+const Categoria& ArbolCategorias::ItHijos::Siguiente() const
 {
     return _itConj.Siguiente()->dameCat();
 }
