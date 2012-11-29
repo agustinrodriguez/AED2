@@ -51,7 +51,10 @@ ArbolCategorias::DatosCat::~DatosCat()
     //destruyo el conjunto
     _hijos.~Conj();
     //destruyo categoria padre
-    delete _padre;
+    if(_padre != NULL)
+    {
+        _padre = NULL;
+    }
 }
 
 
@@ -107,11 +110,6 @@ void ArbolCategorias::DatosCat::agregarAltura(int a){
 }
 
 void ArbolCategorias::DatosCat::copiarDc(ArbolCategorias::DatosCat otroDc){
-    _categoria = otroDc.dameCat();
-    _id = otroDc.dameId();
-    _altura = otroDc.dameAltura();
-    _padre = otroDc.damePadre();
-    _hijos = otroDc.dameHijos().dameConjunto();
 
 }
 bool ArbolCategorias::DatosCat::operator==(const DatosCat& otro) const{
@@ -321,7 +319,7 @@ bool ArbolCategorias::ItHijos::HaySiguiente() const
     return _itConj.HaySiguiente();
 }
 
-const Categoria& ArbolCategorias::ItHijos::Siguiente() const
+Categoria ArbolCategorias::ItHijos::Siguiente() const
 {
     return _itConj.Siguiente()->dameCat();
 }

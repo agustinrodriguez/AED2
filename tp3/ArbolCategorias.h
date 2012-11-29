@@ -43,7 +43,7 @@ namespace aed2
                 ItHijos(const ItHijos& otroIt);
                 ~ItHijos();
                 bool HaySiguiente() const;
-                const Categoria& Siguiente() const;
+                Categoria Siguiente() const;
                 void Avanzar();
                 int tamanio() const;
                 //void copiarPos(ItHijos otroIt);

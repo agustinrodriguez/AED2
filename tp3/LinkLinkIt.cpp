@@ -5,12 +5,12 @@
 LinkLinkIt::LinkLinkIt(ArbolCategorias acat){
    _actual = 1;
    _acat = acat;
-   int c = 0;
-  // DiccTrie<DatosLink*> _linkInfo = DiccTrie<DatosLink*>();
+   int c = 1;
+   DiccTrie<DatosLink*> _linkInfo = DiccTrie<DatosLink*>();
     _arrayCatLinks = Arreglo<Lista<DatosLink*> >((acat.categoriasAC().tamanio()));
     _listaLinks = Lista<DatosLink>();
-  //  _linkInfo = DiccTrie<DatosLink*>();
-    while(c < acat.categoriasAC().tamanio())
+    _linkInfo = DiccTrie<DatosLink*>();
+    while(c <= acat.categoriasAC().tamanio())
    {
         Lista<DatosLink*> list = Lista<DatosLink*>();
         _arrayCatLinks.Definir(c,list);
@@ -53,7 +53,7 @@ LinkLinkIt::DatosLink::DatosLink(Link l, ArbolCategorias::DatosCat* dc, Lista<Ac
 
 }
 
-const Link& LinkLinkIt::DatosLink::dameLink() const{
+Link LinkLinkIt::DatosLink::dameLink() const{
     return _link;
 }
 
@@ -187,7 +187,7 @@ int LinkLinkIt::accesosRecientesDia(Link link, Fecha fecha){
 void LinkLinkIt::iniciarLli(ArbolCategorias acat) {
    _actual = 1;
    _acat = acat;
-   int c = 1;
+   int c = 0;
    DiccTrie<DatosLink*> _linkInfo = DiccTrie<DatosLink*>();
     _arrayCatLinks = Arreglo<Lista<DatosLink*> >((acat.categoriasAC().tamanio()));
     _listaLinks = Lista<DatosLink>();
@@ -202,18 +202,20 @@ void LinkLinkIt::iniciarLli(ArbolCategorias acat) {
 }
 
 void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
-    ArbolCategorias::DatosCat cat;
-    cat.copiarDc(*dameAcatLli().obtenerAC(categoria));
-    ArbolCategorias::DatosCat* puntCat = &cat;
-    Lista<Acceso> accesoDeNuevoLink = Lista<Acceso>();
-    DatosLink nuevoLink = DatosLink(link, puntCat, accesoDeNuevoLink, 0);
+    ArbolCategorias::DatosCat* cat = dameAcatLli().obtenerAC(categoria);
+    Lista<Acceso> accesoDeNuevoLink;
+    DatosLink nuevoLink;
+    nuevoLink.nuevoLink(link);
+    nuevoLink.nuevaCat(cat);
+    nuevoLink.nuevoAccesos(accesoDeNuevoLink);
+    nuevoLink.nuevoCantAccesosRecientes(0);
     DatosLink* puntLink = &nuevoLink;
     _linkInfo.Definir(link,puntLink);
     _listaLinks.AgregarAtras(nuevoLink);
-    while(!(puntCat == NULL))
+    while(!(cat == NULL))
     {
-        _arrayCatLinks[puntCat->dameId()].AgregarAtras(puntLink);
-        puntCat = puntCat->damePadre();
+        _arrayCatLinks[cat->dameId()].AgregarAtras(puntLink);
+        cat = cat->damePadre();
     }
 
 }

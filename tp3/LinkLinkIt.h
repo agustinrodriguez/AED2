@@ -57,7 +57,7 @@ class Acceso{
             DatosLink();
             DatosLink(Link l, ArbolCategorias::DatosCat* dc, Lista<Acceso> la, int i);
             ~DatosLink();
-            const Link& dameLink() const;
+            Link dameLink() const;
             ArbolCategorias::DatosCat dameCatDLink();
             Lista<Acceso> dameAccesos();
             int dameCantAccesos();

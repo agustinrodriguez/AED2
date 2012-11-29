@@ -1,3 +1,4 @@
+/*
 #include "Driver.h"
 
 #include <iostream>
@@ -27,24 +28,23 @@ void Driver::nuevoArbol(const Categoria& raiz)
 
 void Driver::agregarCategoria(const Categoria& c, const Categoria& h)
 {
-    arbol->agregarAC(c,h);
+    arbol->agregarCategoria(c,h);
 }
 
 const Categoria& Driver::raiz()
 {
-    return arbol->raizAC();
+    return arbol->raiz();
 }
 
 int Driver::id(const Categoria& c)
 {
-    ArbolCategorias::DatosCat *dc = arbol->obtenerAC(c);
-    return dc->dameId();
+    return arbol->id(c);
 }
 
 int Driver::cantCategoriasHijas(const Categoria& c)
 {
     int i = 0;
-    ArbolCategorias::ItHijos it = arbol->hijosAC(c);
+    ArbolCategorias::IteradorCategoriasHijas it = arbol->categoriasHijas(c);
     while(it.HaySiguiente())
     {
         ++i;
@@ -56,7 +56,7 @@ int Driver::cantCategoriasHijas(const Categoria& c)
 const Categoria& Driver::obtenerIesimaCategoriaHija(const Categoria& c, int i)
 {
     int j = 0;
-    ArbolCategorias::ItHijos it = arbol->hijosAC(c);
+    ArbolCategorias::IteradorCategoriasHijas it = arbol->categoriasHijas(c);
     while(j < i)
     {
         ++j;
@@ -68,14 +68,14 @@ const Categoria& Driver::obtenerIesimaCategoriaHija(const Categoria& c, int i)
 void Driver::nuevoLink(const Link& l, const Categoria& c)
 {
     if (sistema == NULL)
-        sistema = new LinkLinkIt(*arbol);
+        sistema = new LinkLinkIt(arbol);
 
-    sistema->nuevoLinkLli(l,c);
+    sistema->nuevoLink(l,c);
 }
 
 void Driver::acceso(const Link& l, Fecha f)
 {
-    sistema->accesosRecientesDia(l, f);
+    sistema->acceso(l, f);
 }
 
 int Driver::cantLinks(const Categoria& c)
@@ -86,35 +86,36 @@ int Driver::cantLinks(const Categoria& c)
 const Link& Driver::obtenerIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i)
 {
     int j = 0;
-    LinkLinkIt::itPunLinks it = sistema->linksOrdenadosPorAccesos(c);
+    LinkLinkIt::IteradorLinksOrdenadosPorAcceso it = sistema->linksOrdenadosPorAccesos(c);
     while(j < i)
     {
         ++j;
         it.Avanzar();
     }
-    return it.Siguiente()->dameLink();
+    return it.SiguienteLink();
 }
 
 const Categoria& Driver::obtenerCategoriaIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i)
 {
     int j = 0;
-    LinkLinkIt::itPunLinks it = sistema->linksOrdenadosPorAccesos(c);
+    LinkLinkIt::IteradorLinksOrdenadosPorAcceso it = sistema->linksOrdenadosPorAccesos(c);
     while(j < i)
     {
         ++j;
         it.Avanzar();
     }
-    return it.Siguiente()->dameCatDLink().dameCat();
+    return it.SiguienteCategoria();
 }
 
 int Driver::obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i)
 {
     int j = 0;
-    LinkLinkIt::itPunLinks it = sistema->linksOrdenadosPorAccesos(c);
+    LinkLinkIt::IteradorLinksOrdenadosPorAcceso it = sistema->linksOrdenadosPorAccesos(c);
     while(j < i)
     {
         ++j;
         it.Avanzar();
     }
-    return it.Siguiente()->dameCantAccesos();
+    return it.SiguienteAccesosRecientes();
 }
+*/

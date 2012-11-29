@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1354153209 source:/home/guido/AED2/tp3/ArbolCategorias.cpp
+1354153208 source:/home/guido/AED2/tp3/ArbolCategorias.cpp
 	"ArbolCategorias.h"
 
-1354153209 /home/guido/AED2/tp3/ArbolCategorias.h
+1354153208 /home/guido/AED2/tp3/ArbolCategorias.h
 	"aed2.h"
 	"DiccTrie.h"
 	"Tipos.h"
@@ -71,7 +71,7 @@
 	<ostream>
 	<sstream>
 
-1354070035 /home/guido/AED2/tp3/DiccTrie.h
+1354070034 /home/guido/AED2/tp3/DiccTrie.h
 	"aed2.h"
 	<string>
 

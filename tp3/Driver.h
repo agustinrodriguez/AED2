@@ -27,16 +27,16 @@ public:
     /// Arbol de Categorias
 
     // Generadores
-    void nuevoArbol(const Categoria& raiz); // nuevo(raiz)
-    void agregarCategoria(const Categoria& c, const Categoria& h); // agregar(ac, c, h)
+    //void nuevoArbol(const Categoria& raiz); // nuevo(raiz)
+    //void agregarCategoria(const Categoria& c, const Categoria& h); // agregar(ac, c, h)
 
     // Algunos observadores
-    const Categoria& raiz();
-    int id(const Categoria& c);
+    //const Categoria& raiz();
+    //int id(const Categoria& c);
 
     // Iteracion de categorias hijas
-    int cantCategoriasHijas(const Categoria& c);
-    const Categoria& obtenerIesimaCategoriaHija(const Categoria& c, int i);
+    //int cantCategoriasHijas(const Categoria& c);
+    //const Categoria& obtenerIesimaCategoriaHija(const Categoria& c, int i);
 
     ///////////////////////////////////////////////////////////////
     /// LinkLinkIt
@@ -46,19 +46,20 @@ public:
      * usando el arbol de categorias armado con la misma instancia del Driver.
      * SE INDEFINE si nunca se llamo a nuevoArbol
     */
-    void nuevoLink(const Link& l, const Categoria& c);
-    void acceso(const Link& l, Fecha f);
+    //void nuevoLink(const Link& l, const Categoria& c);
+    //void acceso(const Link& l, Fecha f);
 
     // Iteracion de links ordenados por accesos
 
-    int cantLinks(const Categoria& c);
-    const Link& obtenerIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i);
-    const Categoria& obtenerCategoriaIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i);
-    int obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i);
+    //int cantLinks(const Categoria& c);
+    //const Link& obtenerIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i);
+    //const Categoria& obtenerCategoriaIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i);
+    //int obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i);
 
 private:
     ArbolCategorias* arbol;
     LinkLinkIt* sistema;
+
 };
 
 #endif /* DRIVER_H_ */
