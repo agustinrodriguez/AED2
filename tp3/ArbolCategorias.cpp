@@ -110,7 +110,11 @@ void ArbolCategorias::DatosCat::agregarAltura(int a){
 }
 
 void ArbolCategorias::DatosCat::copiarDc(ArbolCategorias::DatosCat otroDc){
-
+    _categoria = otroDc.dameCat();
+    _id = otroDc.dameId();
+    _altura = otroDc.dameAltura();
+    _padre = otroDc.damePadre();
+    _hijos = otroDc.dameHijos().dameConjunto();
 }
 bool ArbolCategorias::DatosCat::operator==(const DatosCat& otro) const{
     bool altura = dameAltura() == otro.dameAltura();

@@ -202,20 +202,19 @@ void LinkLinkIt::iniciarLli(ArbolCategorias acat) {
 }
 
 void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
-    ArbolCategorias::DatosCat* cat = dameAcatLli().obtenerAC(categoria);
-    Lista<Acceso> accesoDeNuevoLink;
-    DatosLink nuevoLink;
-    nuevoLink.nuevoLink(link);
-    nuevoLink.nuevaCat(cat);
-    nuevoLink.nuevoAccesos(accesoDeNuevoLink);
-    nuevoLink.nuevoCantAccesosRecientes(0);
+
+    ArbolCategorias::DatosCat cat;
+ 	cat.copiarDc(*dameAcatLli().obtenerAC(categoria));
+ 	ArbolCategorias::DatosCat* puntCat = &cat;
+ 	Lista<Acceso> accesoDeNuevoLink = Lista<Acceso>();
+ 	DatosLink nuevoLink = DatosLink(link, puntCat, accesoDeNuevoLink, 0);
     DatosLink* puntLink = &nuevoLink;
     _linkInfo.Definir(link,puntLink);
     _listaLinks.AgregarAtras(nuevoLink);
-    while(!(cat == NULL))
+    while(!(puntCat == NULL))
     {
-        _arrayCatLinks[cat->dameId()].AgregarAtras(puntLink);
-        cat = cat->damePadre();
+        _arrayCatLinks[puntCat->dameId()].AgregarAtras(puntLink);
+        puntCat = puntCat->damePadre();
     }
 
 }
