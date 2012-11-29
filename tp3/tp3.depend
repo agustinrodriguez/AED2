@@ -1,13 +1,13 @@
 # depslib dependency file v1.0
-1354166184 source:/home/guido/AED2/tp3/ArbolCategorias.cpp
+1354228247 source:/home/guido/AED2/tp3/ArbolCategorias.cpp
 	"ArbolCategorias.h"
 
-1354153208 /home/guido/AED2/tp3/ArbolCategorias.h
+1354228253 /home/guido/AED2/tp3/ArbolCategorias.h
 	"aed2.h"
 	"DiccTrie.h"
 	"Tipos.h"
 
-1353988830 /home/guido/AED2/tp3/aed2.h
+1354221431 /home/guido/AED2/tp3/aed2.h
 	"aed2/TiposBasicos.h"
 	"aed2/Arreglo.h"
 	"aed2/Lista.h"
@@ -17,52 +17,52 @@
 	"aed2/ConjAcotado.h"
 	"test/test.h"
 
-1353988830 /home/guido/AED2/tp3/aed2/TiposBasicos.h
+1354221431 /home/guido/AED2/tp3/aed2/TiposBasicos.h
 	<iostream>
 	<string>
 	<cassert>
 
-1353988830 /home/guido/AED2/tp3/aed2/Arreglo.h
+1354221431 /home/guido/AED2/tp3/aed2/Arreglo.h
 	"TiposBasicos.h"
 	"Arreglo.cpp"
 
-1353988830 /home/guido/AED2/tp3/aed2/Arreglo.cpp
+1354221431 /home/guido/AED2/tp3/aed2/Arreglo.cpp
 
-1353988830 /home/guido/AED2/tp3/aed2/Lista.h
+1354221431 /home/guido/AED2/tp3/aed2/Lista.h
 	<iostream>
 	"TiposBasicos.h"
 	"Lista.cpp"
 
-1354046394 /home/guido/AED2/tp3/aed2/Lista.cpp
+1354221431 /home/guido/AED2/tp3/aed2/Lista.cpp
 
-1353988830 /home/guido/AED2/tp3/aed2/Vector.h
+1354221431 /home/guido/AED2/tp3/aed2/Vector.h
 	"TiposBasicos.h"
 	"Arreglo.h"
 	"Vector.cpp"
 
-1353988830 /home/guido/AED2/tp3/aed2/Vector.cpp
+1354221431 /home/guido/AED2/tp3/aed2/Vector.cpp
 
-1353988830 /home/guido/AED2/tp3/aed2/Dicc.h
+1354221431 /home/guido/AED2/tp3/aed2/Dicc.h
 	<ostream>
 	"Lista.h"
 	"Dicc.cpp"
 
-1353988830 /home/guido/AED2/tp3/aed2/Dicc.cpp
+1354221431 /home/guido/AED2/tp3/aed2/Dicc.cpp
 
-1353988830 /home/guido/AED2/tp3/aed2/Conj.h
+1354221431 /home/guido/AED2/tp3/aed2/Conj.h
 	<iostream>
 	"Dicc.h"
 	"Conj.cpp"
 
-1353988830 /home/guido/AED2/tp3/aed2/Conj.cpp
+1354221431 /home/guido/AED2/tp3/aed2/Conj.cpp
 
-1353988830 /home/guido/AED2/tp3/aed2/ConjAcotado.h
+1354221431 /home/guido/AED2/tp3/aed2/ConjAcotado.h
 	<iostream>
 	"TiposBasicos.h"
 	"Arreglo.h"
 	"Conj.h"
 
-1353988830 /home/guido/AED2/tp3/test/test.h
+1354221431 /home/guido/AED2/tp3/test/test.h
 	"../aed2/TiposBasicos.h"
 	<algorithm>
 	<functional>
@@ -71,35 +71,35 @@
 	<ostream>
 	<sstream>
 
-1354070034 /home/guido/AED2/tp3/DiccTrie.h
+1354226884 /home/guido/AED2/tp3/DiccTrie.h
 	"aed2.h"
 	<string>
 
-1353988830 /home/guido/AED2/tp3/Tipos.h
+1354221431 /home/guido/AED2/tp3/Tipos.h
 	<iostream>
 
-1353988830 source:/home/guido/AED2/tp3/Driver.cpp
+1354221431 source:/home/guido/AED2/tp3/Driver.cpp
 	"Driver.h"
 	<iostream>
 	<sstream>
 
-1353988830 /home/guido/AED2/tp3/Driver.h
+1354221431 /home/guido/AED2/tp3/Driver.h
 	<stdlib.h>
 	"aed2.h"
 	"Tipos.h"
 	"ArbolCategorias.h"
 	"LinkLinkIt.h"
 
-1354152864 /home/guido/AED2/tp3/LinkLinkIt.h
+1354221431 /home/guido/AED2/tp3/LinkLinkIt.h
 	"aed2.h"
 	"ArbolCategorias.h"
 	"DiccTrie.h"
 
-1354166319 source:/home/guido/AED2/tp3/LinkLinkIt.cpp
+1354221431 source:/home/guido/AED2/tp3/LinkLinkIt.cpp
 	"LinkLinkIt.h"
 	"ArbolCategorias.h"
 
-1354153404 source:/home/guido/AED2/tp3/tests.cpp
+1354228332 source:/home/guido/AED2/tp3/tests.cpp
 	"Driver.h"
 	<stdarg.h>
 	"LinkLinkIt.h"

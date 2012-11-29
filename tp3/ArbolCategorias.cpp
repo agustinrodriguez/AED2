@@ -11,8 +11,8 @@ ArbolCategorias::ArbolCategorias(const Categoria& raiz)
 	Conj<DatosCat*> hijos = Conj<DatosCat*>();
 	DatosCat* dato = new DatosCat(raiz, 1, 1, hijos, NULL);
 	_raiz = dato;
-	_categorias = Lista<DatosCat>();
-	_categorias.AgregarAtras(*dato);
+	_categorias = Lista<DatosCat*>();
+	_categorias.AgregarAtras(dato);
 	_familia.Definir(raiz, dato);
 }
 /*ArbolCategorias::ArbolCategorias(const ArbolCategorias& arbol)
@@ -27,10 +27,17 @@ ArbolCategorias::~ArbolCategorias()
     //Destruyo la lista
     //_categorias.~Lista();
 
+    Lista<DatosCat*>::Iterador l = _categorias.CrearIt();
+
+    while (l.HaySiguiente()) {
+        delete l.Siguiente();
+        l.Avanzar();
+    }
+/*
     while(!(_categorias.EsVacia())) {
         delete _familia.Obtener(_categorias.Primero().dameCat());
         _categorias.Fin();
-    }
+    }*/
 
 }
 
@@ -70,10 +77,9 @@ int ArbolCategorias::DatosCat::dameAltura() const
     return _altura;
 }
 
-ArbolCategorias::ItHijos& ArbolCategorias::DatosCat::dameHijos() const
+ArbolCategorias::ItHijos ArbolCategorias::DatosCat::dameHijos() const
 {
-    ItHijos *res = new ItHijos(_hijos);
-    return *res;
+    return ItHijos(_hijos);
 }
 ArbolCategorias::DatosCat* ArbolCategorias::DatosCat::damePadre() const
 {
@@ -151,7 +157,7 @@ int ArbolCategorias::alturaCatAC(const Categoria c) const
 
 }
 
-ArbolCategorias::ItHijos& ArbolCategorias::hijosAC(const Categoria& c) const
+ArbolCategorias::ItHijos ArbolCategorias::hijosAC(const Categoria& c) const
 {
     return _familia.Obtener(c)->dameHijos();
 }
@@ -178,7 +184,7 @@ void ArbolCategorias::agregarAC(const Categoria c, const Categoria cpadre)
     DatosCat *tuplaA = new DatosCat(c, _cantidad, puntPadre->dameAltura()+1, hijos, puntPadre);
     puntPadre->agregarHijo(tuplaA);
     _familia.Definir(c, tuplaA);
-    _categorias.AgregarAtras(*tuplaA);
+    _categorias.AgregarAtras(tuplaA);
 }
 
 bool ArbolCategorias::esta(const Categoria c) const
@@ -224,15 +230,15 @@ ArbolCategorias::ItCategorias::ItCategorias()
 
 }
 
-ArbolCategorias::ItCategorias::ItCategorias(Lista<DatosCat> ldc)
+ArbolCategorias::ItCategorias::ItCategorias(Lista<DatosCat*> ldc)
 {
     _lista = ldc;
     _itLista = _lista.CrearIt();
 }
 
 ArbolCategorias::ItCategorias::ItCategorias(const ItCategorias& otroIt){
-    _itLista = otroIt.dameIt();
-    _lista = otroIt.dameLista();
+    _itLista = otroIt._itLista;
+    _lista = otroIt._lista;
 
 }
 
@@ -248,7 +254,7 @@ bool ArbolCategorias::ItCategorias::HaySiguiente() const
 
 Categoria ArbolCategorias::ItCategorias::Siguiente() const
 {
-    return _itLista.Siguiente().dameCat();
+    return _itLista.Siguiente()->dameCat();
 }
 
 void ArbolCategorias::ItCategorias::Avanzar()
@@ -265,11 +271,11 @@ void ArbolCategorias::ItCategorias::copiarPos(ItCategorias otroIt){
 
 }
 */
-const Lista<ArbolCategorias::DatosCat>::Iterador ArbolCategorias::ItCategorias::dameIt() const{
+const Lista<ArbolCategorias::DatosCat*>::Iterador ArbolCategorias::ItCategorias::dameIt() const{
     return _itLista;
 }
 
-const Lista<ArbolCategorias::DatosCat> ArbolCategorias::ItCategorias::dameLista() const
+const Lista<ArbolCategorias::DatosCat*> ArbolCategorias::ItCategorias::dameLista() const
 {
     return _lista;
 }

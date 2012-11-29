@@ -19,7 +19,7 @@ namespace aed2
         class ItCategorias{
             public:
                 ItCategorias();
-                ItCategorias(Lista<DatosCat> ldc);
+                ItCategorias(Lista<DatosCat*> ldc);
                 ItCategorias(const ItCategorias& otroIt);
                 ~ItCategorias();
                 bool HaySiguiente() const;
@@ -27,12 +27,12 @@ namespace aed2
                 void Avanzar();
                 int tamanio() const;
                 //void copiarPos(ItCategorias otroIt);
-                const Lista<DatosCat>::Iterador dameIt() const;
-                const Lista<DatosCat> dameLista() const;
+                const Lista<DatosCat*>::Iterador dameIt() const;
+                const Lista<DatosCat*> dameLista() const;
                 bool operator==(const ItCategorias& otro) const;
             private:
-                Lista<DatosCat>::Iterador _itLista;
-                Lista<DatosCat> _lista;
+                Lista<DatosCat*>::Iterador _itLista;
+                Lista<DatosCat*> _lista;
 //                Nodo* _actual;
         };
 
@@ -63,7 +63,7 @@ namespace aed2
                 const Categoria& dameCat() const;
                 int dameId() const;
                 int dameAltura() const;
-                ItHijos&  dameHijos() const;
+                ItHijos dameHijos() const;
                 DatosCat* damePadre() const;
                 void agregarCat(String c);
                 void agregarId(int i);
@@ -88,7 +88,7 @@ namespace aed2
 		const Categoria& raizAC() const;
 		int idAC(const Categoria& c) const;
         int alturaCatAC(const Categoria c) const;
-        ItHijos& hijosAC(const Categoria& c) const;
+        ItHijos hijosAC(const Categoria& c) const;
         Categoria padreAC(const Categoria& c) const;
         int alturaAC() const;
         void agregarAC(const Categoria c, const Categoria cpadre);
@@ -101,7 +101,7 @@ namespace aed2
 		int _cantidad;
 		int _alturaMax;
 		DiccTrie<DatosCat*> _familia;
-		Lista<DatosCat> _categorias;
+		Lista<DatosCat*> _categorias;
 	};
 }
 

@@ -36,27 +36,26 @@ void mt_str_assert(string lhs, string rhs, int line) { if (lhs.compare(rhs) != 0
 
 void arbolNuevoEsVacio(){
 Categoria raiz = "categoria1";
-ArbolCategorias *a = new ArbolCategorias(raiz);
-ASSERT_EQ(a->alturaAC(), 1);
-ASSERT_EQ(a->obtenerAC(raiz)->dameId(),1);
-ASSERT_EQ(a->obtenerAC(raiz)->dameCat(),raiz);
-ASSERT_EQ(a->categoriasAC().tamanio(),1);
-ASSERT_EQ(a->alturaAC(),1);
+ArbolCategorias a = ArbolCategorias(raiz);
+ASSERT_EQ(a.alturaAC(), 1);
+ASSERT_EQ(a.obtenerAC(raiz)->dameId(),1);
+ASSERT_EQ(a.obtenerAC(raiz)->dameCat(),raiz);
+ASSERT_EQ(a.categoriasAC().tamanio(),1);
+ASSERT_EQ(a.alturaAC(),1);
 Categoria c1 = "cat1";
 Categoria c2 = "cat2";
-a->agregarAC(c1,raiz);
-ASSERT_EQ(a->hijosAC(raiz).tamanio(),1);
-ASSERT(a->esSubCategoria(raiz,raiz));
+a.agregarAC(c1,raiz);
+ASSERT_EQ(a.hijosAC(raiz).tamanio(),1);
+ASSERT(a.esSubCategoria(raiz,raiz));
 
-ASSERT_STR_EQ(a->obtenerAC(c1)->damePadre()->dameCat(), raiz);
+ASSERT_STR_EQ(a.obtenerAC(c1)->damePadre()->dameCat(), raiz);
 
-ASSERT(a->esSubCategoria(raiz,c1));
-ASSERT(!(a->esta(c2)));
-ASSERT_EQ(a->alturaCatAC(c1),2);
-ASSERT_EQ(a->idAC(c1),2);
-ASSERT_EQ(a->alturaAC(),2);
-ASSERT_EQ(a->categoriasAC().tamanio(),2);
-delete a;
+ASSERT(a.esSubCategoria(raiz,c1));
+ASSERT(!(a.esta(c2)));
+ASSERT_EQ(a.alturaCatAC(c1),2);
+ASSERT_EQ(a.idAC(c1),2);
+ASSERT_EQ(a.alturaAC(),2);
+ASSERT_EQ(a.categoriasAC().tamanio(),2);
 }
 
 void arbolNuevoConRaizTieneHijoVacio(){
