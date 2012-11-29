@@ -5,12 +5,12 @@
 LinkLinkIt::LinkLinkIt(ArbolCategorias acat){
    _actual = 1;
    _acat = acat;
-   int c = 1;
-   DiccTrie<DatosLink*> _linkInfo = DiccTrie<DatosLink*>();
+   int c = 0;
+  // DiccTrie<DatosLink*> _linkInfo = DiccTrie<DatosLink*>();
     _arrayCatLinks = Arreglo<Lista<DatosLink*> >((acat.categoriasAC().tamanio()));
     _listaLinks = Lista<DatosLink>();
-    _linkInfo = DiccTrie<DatosLink*>();
-    while(c <= acat.categoriasAC().tamanio())
+  //  _linkInfo = DiccTrie<DatosLink*>();
+    while(c < acat.categoriasAC().tamanio())
    {
         Lista<DatosLink*> list = Lista<DatosLink*>();
         _arrayCatLinks.Definir(c,list);
