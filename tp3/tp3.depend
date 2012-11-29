@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1354147628 source:/home/guido/AED2/tp3/ArbolCategorias.cpp
+1354153209 source:/home/guido/AED2/tp3/ArbolCategorias.cpp
 	"ArbolCategorias.h"
 
-1354147161 /home/guido/AED2/tp3/ArbolCategorias.h
+1354153209 /home/guido/AED2/tp3/ArbolCategorias.h
 	"aed2.h"
 	"DiccTrie.h"
 	"Tipos.h"
@@ -90,16 +90,16 @@
 	"ArbolCategorias.h"
 	"LinkLinkIt.h"
 
-1354074319 /home/guido/AED2/tp3/LinkLinkIt.h
+1354152864 /home/guido/AED2/tp3/LinkLinkIt.h
 	"aed2.h"
 	"ArbolCategorias.h"
 	"DiccTrie.h"
 
-1354122110 source:/home/guido/AED2/tp3/LinkLinkIt.cpp
+1354152912 source:/home/guido/AED2/tp3/LinkLinkIt.cpp
 	"LinkLinkIt.h"
 	"ArbolCategorias.h"
 
-1354147355 source:/home/guido/AED2/tp3/tests.cpp
+1354153404 source:/home/guido/AED2/tp3/tests.cpp
 	"Driver.h"
 	<stdarg.h>
 	"LinkLinkIt.h"

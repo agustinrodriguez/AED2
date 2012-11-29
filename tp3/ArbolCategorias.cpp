@@ -16,10 +16,10 @@ ArbolCategorias::ArbolCategorias(const Categoria& raiz)
 	_familia.Definir(raiz, dato);
 }
 
-ArbolCategorias::ArbolCategorias(const ArbolCategorias& arbol)
+/*ArbolCategorias::ArbolCategorias(const ArbolCategorias& arbol)
 {
 
-}
+}*/
 
 ArbolCategorias::~ArbolCategorias()
 {

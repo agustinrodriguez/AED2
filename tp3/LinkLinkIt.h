@@ -43,10 +43,11 @@ class Acceso{
                 int tamanio() const;
                 //void copiarPos(ItAcceso otroIt);
                 const Lista<Acceso>::Iterador dameIt() const;
+                const Lista<Acceso> dameLista() const;
                 bool operator==(const ItAcceso& otro) const;
             private:
                 Lista<Acceso>::Iterador _itLista;
-                int _tamanio;
+                Lista<Acceso> _lista;
         };
 
 
@@ -77,7 +78,6 @@ class Acceso{
         class itLinks
         {
         public:
-            //itLinks(itLinks& otroIt);
             itLinks(Lista<DatosLink> ldl);
             itLinks();
                 ~itLinks();
@@ -87,17 +87,13 @@ class Acceso{
                 void Avanzar();
                 void EliminarSiguiente();
                 void AgregarComoSiguiente(const DatosLink& elem);
-                //itLinks BuscarMax(Fecha f);
-               // Fecha ultFecha();
-              //  int cantAccesosDesde(Fecha f);
-             //   bool estaOrdenada();
-                //void copiarPos(itLinks otroIt);
+                const Lista<DatosLink> dameLista() const;
                 int tamanio() const;
                 const Lista<DatosLink>::Iterador dameIt() const;
                 bool operator==(const itLinks& otro) const;
             private:
                 Lista<DatosLink>::Iterador _itLista;
-                int _tamanio;
+                Lista<DatosLink> _lista;
         };
 
 //creacion de la clase iterador de puntero a datoslink
@@ -118,11 +114,12 @@ class Acceso{
                 bool estaOrdenada();
                 int tamanio() const;
                 //void copiarPos(itPunLinks otroIt);
+                const Lista<DatosLink*> dameLista() const;
                 const Lista<DatosLink*>::Iterador dameIt() const;
                 bool operator==(const itPunLinks& otro) const;
             private:
                 Lista<DatosLink*>::Iterador _itLista;
-                int _tamanio;
+                Lista<DatosLink*> _lista;
         };
 
         LinkLinkIt(ArbolCategorias acat);

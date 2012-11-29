@@ -281,23 +281,21 @@ LinkLinkIt::itLinks::itLinks(){
 }
 
 LinkLinkIt::itLinks::itLinks(Lista<DatosLink> ldl){
+       Lista<DatosLink> ld = Lista<DatosLink>();
+       ld = ldl;
        _itLista = ldl.CrearIt();
-        _tamanio = ldl.Longitud();
+        _lista = ld;
 }
 
 LinkLinkIt::itLinks::itLinks(const itLinks& otroIt){
     _itLista = otroIt.dameIt();
-    _tamanio = otroIt.tamanio();
+    _lista = otroIt.dameLista();
 
 }
 
 LinkLinkIt::itLinks::~itLinks()
     {
-        //Destruyo lista
-        while(_itLista.HaySiguiente())
-        {
-            _itLista.EliminarSiguiente();
-        }
+        _lista.~Lista();
     }
 
 
@@ -325,91 +323,29 @@ void LinkLinkIt::itLinks::AgregarComoSiguiente(const DatosLink& elem)
 {
     _itLista.AgregarComoSiguiente(elem);
 }
-/*
-void LinkLinkIt::itLinks::copiarPos(itLinks otroIt){
 
-}
-*/
 bool LinkLinkIt::itLinks::operator==(const itLinks& otro) const
 {
     bool iguales = false;
     iguales = _itLista == otro.dameIt();
     if(iguales)
     {
-        iguales = _tamanio == otro.tamanio();
+//        iguales = _lista == otro.dameLista(); ME TIRA ERROR ACA
     }
-    /*if(tamanio() == otro.tamanio())
-    {
-        iguales = true;
-        itLinks itThis;
-        itLinks itOtro;
-        itThis.copiarPos(*this);
-        itOtro.copiarPos(otro);
-        while(itThis.HaySiguiente() && iguales)
-        {
-            iguales = itThis.Siguiente() == itOtro.Siguiente();
-            itThis.Avanzar();
-            itOtro.Avanzar();
-
-        }
-    }
-    else
-    {
-        iguales = false;
-    }*/
     return iguales;
 }
-/*
-LinkLinkIt::itLinks LinkLinkIt::itLinks::BuscarMax(Fecha f){
-    itLinks res;
-    res.copiarPos(*this);
-    while(HaySiguiente())
-    {
-        if(cantAccesosDesde(f) > res.cantAccesosDesde(f))
-        {
-            res.copiarPos(*this);
-        }
-        Avanzar();
-    }
-    return res;
-}
 
-Fecha LinkLinkIt::itLinks::ultFecha(){
-    int res = Siguiente().dameAccesos().Ultimo().dameDia();
-    while(HaySiguiente())
-    {
-        if(res < Siguiente().dameAccesos().Ultimo().dameDia()){
-            res = Siguiente().dameAccesos().Ultimo().dameDia();
-        }
-        Avanzar();
-    }
-    return res;
-}
-
-int LinkLinkIt::itLinks::cantAccesosDesde(Fecha f){
-    ItAcceso itAcc;
-    int res = 0;
-    while(itAcc.HaySiguiente())
-    {
-        if(itAcc.Siguiente().dameDia() == f)
-        {
-            res = res + itAcc.Siguiente().dameCantA();
-        }
-        itAcc.Avanzar();
-    }
-    return res;
-}
-bool LinkLinkIt::itLinks::estaOrdenada(){
-    return false;
-}
-*/
 int LinkLinkIt::itLinks::tamanio() const
 {
-    return _tamanio;
+    return _lista.Longitud();
 }
 
 const Lista<LinkLinkIt::DatosLink>::Iterador LinkLinkIt::itLinks::dameIt() const{
     return _itLista;
+}
+
+const Lista<LinkLinkIt::DatosLink> LinkLinkIt::itLinks::dameLista() const{
+    return _lista;
 }
 
 //iterador de acceso
@@ -422,15 +358,22 @@ LinkLinkIt::ItAcceso::ItAcceso()
 
 LinkLinkIt::ItAcceso::ItAcceso(Lista<Acceso> ac)
 {
+    Lista<Acceso> la = Lista<Acceso>();
+    la = ac;
     _itLista = ac.CrearIt();
-    _tamanio = ac.Longitud();
+    _lista = la;
+
 }
 
 
 LinkLinkIt::ItAcceso::ItAcceso(const LinkLinkIt::ItAcceso& otroIt){
     _itLista = otroIt.dameIt();
-    _tamanio = otroIt.tamanio();
+    _lista = otroIt.dameLista();
 
+}
+
+const Lista<LinkLinkIt::Acceso> LinkLinkIt::ItAcceso::dameLista() const{
+    return _lista;
 }
 
 LinkLinkIt::ItAcceso::~ItAcceso()
@@ -480,7 +423,7 @@ bool LinkLinkIt::ItAcceso::operator==(const ItAcceso& otro) const
     iguales = _itLista == otro.dameIt();
     if(iguales)
     {
-        iguales = _tamanio == otro.tamanio();
+        iguales = _lista == otro.dameLista();
     }
 /*    if(tamanio() == otro.tamanio())
     {
@@ -505,7 +448,7 @@ bool LinkLinkIt::ItAcceso::operator==(const ItAcceso& otro) const
 
 int LinkLinkIt::ItAcceso::tamanio() const
 {
-    return _tamanio;
+    return _lista.Longitud();
 }
 
 /*
@@ -520,22 +463,25 @@ LinkLinkIt::itPunLinks::itPunLinks(){
 
 LinkLinkIt::itPunLinks::itPunLinks(const itPunLinks& otroIt){
     _itLista = otroIt.dameIt();
-    _tamanio = otroIt.tamanio();
+    _lista = otroIt.dameLista();
 }
 
 LinkLinkIt::itPunLinks::itPunLinks(Lista<DatosLink*> ldl){
+       Lista<DatosLink*> ld = Lista<DatosLink*>();
+
        _itLista = ldl.CrearIt();
-        _tamanio = ldl.Longitud();
+        _lista = ld;
+}
+
+const Lista<LinkLinkIt::DatosLink*> LinkLinkIt::itPunLinks::dameLista() const{
+    return _lista;
 }
 
 
 LinkLinkIt::itPunLinks::~itPunLinks()
     {
         //Destruyo lista
-        while(_itLista.HaySiguiente())
-        {
-            _itLista.EliminarSiguiente();
-        }
+        _lista.~Lista();
     }
 
 
@@ -603,13 +549,9 @@ bool LinkLinkIt::itPunLinks::estaOrdenada(){
 }
 
 int LinkLinkIt::itPunLinks::tamanio() const{
-    return _tamanio;
+    return _lista.Longitud();
 }
-/*
-void LinkLinkIt::itPunLinks::copiarPos(itPunLinks otroIt){
 
-}
-*/
 const Lista<LinkLinkIt::DatosLink*>::Iterador LinkLinkIt::itPunLinks::dameIt() const{
     return _itLista;
 }
@@ -620,25 +562,8 @@ bool LinkLinkIt::itPunLinks::operator==(const itPunLinks& otro) const
     iguales = _itLista == otro.dameIt();
     if(iguales)
     {
-        iguales = _tamanio == otro.tamanio();
+        iguales = _lista == otro.dameLista();
     }
-    /*if(tamanio() == otro.tamanio())
-    {
-        iguales = true;
-        itPunLinks itThis = itPunLinks(*this);
-        itPunLinks itOtro = itPunLinks(otro);
-        while(itThis.HaySiguiente() && iguales)
-        {
-            iguales = itThis.Siguiente() == itOtro.Siguiente();
-            itThis.Avanzar();
-            itOtro.Avanzar();
-
-        }
-    }
-    else
-    {
-        iguales = false;
-    }*/
     return iguales;
 }
 
