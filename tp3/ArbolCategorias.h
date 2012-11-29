@@ -28,10 +28,12 @@ namespace aed2
                 int tamanio() const;
                 //void copiarPos(ItCategorias otroIt);
                 const Lista<DatosCat>::Iterador dameIt() const;
+                const Lista<DatosCat> dameLista() const;
                 bool operator==(const ItCategorias& otro) const;
             private:
                 Lista<DatosCat>::Iterador _itLista;
-                int _tamanio;
+                Lista<DatosCat> _lista;
+//                Nodo* _actual;
         };
 
         class ItHijos{
@@ -46,10 +48,11 @@ namespace aed2
                 int tamanio() const;
                 //void copiarPos(ItHijos otroIt);
                 const Conj<DatosCat*>::Iterador dameIt() const;
+                const Conj<DatosCat*> dameConjunto() const;
                 bool operator==(const ItHijos& otro) const;
             private:
                 Conj<DatosCat*>::Iterador _itConj;
-                int _tamanio;
+                Conj<DatosCat*> _conjunto;
         };
 
         class DatosCat{

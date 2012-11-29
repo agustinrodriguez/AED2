@@ -38,6 +38,25 @@ void arbolNuevoEsVacio(){
 Categoria raiz = "categoria1";
 ArbolCategorias *a = new ArbolCategorias(raiz);
 ASSERT_EQ(a->alturaAC(), 1);
+ASSERT_EQ(a->obtenerAC(raiz)->dameId(),1);
+ASSERT_EQ(a->obtenerAC(raiz)->dameCat(),raiz);
+ASSERT_EQ(a->categoriasAC().tamanio(),1);
+ASSERT_EQ(a->alturaAC(),1);
+Categoria c1 = "cat1";
+Categoria c2 = "cat2";
+a->agregarAC(c1,raiz);
+ASSERT_EQ(a->hijosAC(raiz).tamanio(),1);
+ASSERT(a->esSubCategoria(raiz,raiz));
+
+ASSERT_STR_EQ(a->obtenerAC(c1)->damePadre()->dameCat(), raiz);
+
+ASSERT(a->esSubCategoria(raiz,c1));
+ASSERT(!(a->esta(c2)));
+ASSERT_EQ(a->alturaCatAC(c1),2);
+ASSERT_EQ(a->idAC(c1),2);
+ASSERT_EQ(a->alturaAC(),2);
+ASSERT_EQ(a->categoriasAC().tamanio(),2);
+delete a;
 }
 
 void arbolNuevoConRaizTieneHijoVacio(){
@@ -188,12 +207,12 @@ void LinkLinkItNuevo(){
 
 int main(void) {
         RUN_TEST(arbolNuevoEsVacio);
-        //RUN_TEST(arbolNuevoConRaizTieneHijoVacio);
+        RUN_TEST(arbolNuevoConRaizTieneHijoVacio);
         RUN_TEST(datosLinkNuevoEsVacio); //ANDA VERIFICAR DELETE
         RUN_TEST(datosLinkConDatos);//ANDA VERIFICAR DELETE
         RUN_TEST(accesoTest);//ANDA
         RUN_TEST(accesoTestConConstr);//ANDA
         RUN_TEST(datosCatNuevo);//ANDA VERIFICAR DELETE
-        // RUN_TEST(LinkLinkItNuevo); TIRA MUCHOS NUMERITOS JA
+        //RUN_TEST(LinkLinkItNuevo); //TIRA MUCHOS NUMERITOS JA
 	return 0;
 }

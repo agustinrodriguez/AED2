@@ -12,7 +12,8 @@ ArbolCategorias::ArbolCategorias(const Categoria& raiz)
 	DatosCat* dato = new DatosCat(raiz, 1, 1, hijos, NULL);
 	_raiz = dato;
 	_categorias = Lista<DatosCat>();
-	_categorias.AgregarAdelante(*dato);
+	_categorias.AgregarAtras(*dato);
+	_familia.Definir(raiz, dato);
 }
 
 ArbolCategorias::ArbolCategorias(const ArbolCategorias& arbol)
@@ -50,8 +51,7 @@ ArbolCategorias::DatosCat::~DatosCat()
     //destruyo el conjunto
     while(!(_hijos.EsVacio()))
     {
-        delete _hijos.CrearIt().Siguiente();
-        _hijos.CrearIt().Avanzar();
+       _hijos.CrearIt().Siguiente() = NULL;
     }
     //destruyo categoria padre
     if(_padre != NULL)
@@ -176,19 +176,12 @@ void ArbolCategorias::agregarAC(const Categoria c, const Categoria cpadre)
     {
         _alturaMax++;
     }
-    DatosCat tuplaA;
-    tuplaA.agregarCat(c);
-    tuplaA.agregarId(_cantidad + 1);
-    tuplaA.agregarAltura(puntPadre->dameAltura()+1);
-    Conj<DatosCat*> conj = Conj<DatosCat*>();
-    tuplaA.agregarHijos(conj);
-    tuplaA.agregarPadre(puntPadre);
-    DatosCat* punt = &tuplaA;
-    puntPadre->agregarHijo(punt);
     _cantidad++;
-    _categorias.AgregarAtras(tuplaA);
-
-
+    Conj<DatosCat*> hijos = Conj<DatosCat*>();
+    DatosCat *tuplaA = new DatosCat(c, _cantidad, puntPadre->dameAltura()+1, hijos, puntPadre);
+    puntPadre->agregarHijo(tuplaA);
+    _familia.Definir(c, tuplaA);
+    _categorias.AgregarAtras(*tuplaA);
 }
 
 bool ArbolCategorias::esta(const Categoria c) const
@@ -211,8 +204,8 @@ bool ArbolCategorias::esSubCategoria(const Categoria c, const Categoria predeces
         }
         else
         {
-            DatosCat* actual = _familia.Obtener(predecesor);
-            DatosCat* puntC = _familia.Obtener(c)->damePadre();
+            DatosCat* actual = _familia.Obtener(predecesor)->damePadre();
+            DatosCat* puntC = _familia.Obtener(c);
             while((res == false && actual != NULL))
             {
                 if(puntC->dameId() == actual->dameId())
@@ -236,24 +229,19 @@ ArbolCategorias::ItCategorias::ItCategorias()
 
 ArbolCategorias::ItCategorias::ItCategorias(Lista<DatosCat> ldc)
 {
-    _itLista = ldc.CrearIt();
-    _tamanio = ldc.Longitud();
+    _lista = ldc;
+    _itLista = _lista.CrearIt();
 }
 
 ArbolCategorias::ItCategorias::ItCategorias(const ItCategorias& otroIt){
     _itLista = otroIt.dameIt();
-    _tamanio = otroIt.tamanio();
+    _lista = otroIt.dameLista();
 
 }
 
 ArbolCategorias::ItCategorias::~ItCategorias()
 {
-    //Destruyo la lista
-    while(_itLista.HaySiguiente())
-    {
-        _itLista.EliminarSiguiente();
-    }
-
+    _lista.~Lista();
 }
 
 bool ArbolCategorias::ItCategorias::HaySiguiente() const
@@ -273,7 +261,7 @@ void ArbolCategorias::ItCategorias::Avanzar()
 
 int ArbolCategorias::ItCategorias::tamanio() const
 {
-    return _tamanio;
+    return _lista.Longitud();
 }
 /*
 void ArbolCategorias::ItCategorias::copiarPos(ItCategorias otroIt){
@@ -284,33 +272,19 @@ const Lista<ArbolCategorias::DatosCat>::Iterador ArbolCategorias::ItCategorias::
     return _itLista;
 }
 
+const Lista<ArbolCategorias::DatosCat> ArbolCategorias::ItCategorias::dameLista() const
+{
+    return _lista;
+}
+
 bool ArbolCategorias::ItCategorias::operator==(const ItCategorias& otro) const
 {
     bool iguales = true;
     iguales = _itLista == otro.dameIt();
     if(iguales)
     {
-        iguales = _tamanio == otro.tamanio();
+        iguales = _lista == otro.dameLista();
     }
-    /*if(tamanio() == otro.tamanio())
-    {
-        iguales = true;
-        ItCategorias itThis;
-        ItCategorias itOtro;
-        itThis.copiarPos(*this);
-        itOtro.copiarPos(otro);
-        while(itThis.HaySiguiente() && iguales)
-        {
-            iguales = itThis.Siguiente() == itOtro.Siguiente();
-            itThis.Avanzar();
-            itOtro.Avanzar();
-
-        }
-    }
-    else
-    {
-        iguales = false;
-    }*/
     return iguales;
 }
 
@@ -321,23 +295,25 @@ ArbolCategorias::ItHijos::ItHijos()
 
 ArbolCategorias::ItHijos::ItHijos(const ArbolCategorias::ItHijos& otroIt){
     _itConj= otroIt.dameIt();
-    _tamanio = otroIt.tamanio();
+    _conjunto = otroIt.dameConjunto();
 }
 
 ArbolCategorias::ItHijos::ItHijos(Conj<DatosCat*> cdc)
 {
     _itConj = cdc.CrearIt();
-    _tamanio = cdc.Cardinal();
+    _conjunto = cdc;
 }
 
 ArbolCategorias::ItHijos::~ItHijos()
 {
+    _conjunto.~Conj();
     //Destruyo el conjunto
-    while((_itConj.HaySiguiente()))
+    /*while((_itConj.HaySiguiente()))
     {
-        _itConj.EliminarSiguiente();
+        delete _itConj.Siguiente();
+        _itConj.Avanzar();
 
-    }
+    }*/
 
 }
 
@@ -358,7 +334,7 @@ void ArbolCategorias::ItHijos::Avanzar()
 
 int ArbolCategorias::ItHijos::tamanio() const
 {
-    return _tamanio;
+    return _conjunto.Cardinal();
 }
 /*
 void ArbolCategorias::ItHijos::copiarPos(ItHijos otroIt){
@@ -369,13 +345,18 @@ const Conj<ArbolCategorias::DatosCat*>::Iterador ArbolCategorias::ItHijos::dameI
     return _itConj;
 }
 
+const Conj<ArbolCategorias::DatosCat*> ArbolCategorias::ItHijos::dameConjunto() const
+{
+    return _conjunto;
+}
+
 bool ArbolCategorias::ItHijos::operator==(const ItHijos& otro) const
 {
     bool iguales = true;
     iguales = _itConj == otro.dameIt();
     if(iguales)
     {
-        iguales = _tamanio == otro.tamanio();
+        iguales = _conjunto == otro.dameConjunto();
     }
     /*
     bool iguales = false;
