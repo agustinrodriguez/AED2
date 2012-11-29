@@ -49,10 +49,7 @@ ArbolCategorias::DatosCat::DatosCat(const Categoria cat, int id, int altura, Con
 ArbolCategorias::DatosCat::~DatosCat()
 {
     //destruyo el conjunto
-    while(!(_hijos.EsVacio()))
-    {
-       _hijos.CrearIt().Siguiente() = NULL;
-    }
+    _hijos.~Conj();
     //destruyo categoria padre
     if(_padre != NULL)
     {
