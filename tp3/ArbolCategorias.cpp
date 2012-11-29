@@ -15,7 +15,6 @@ ArbolCategorias::ArbolCategorias(const Categoria& raiz)
 	_categorias.AgregarAtras(*dato);
 	_familia.Definir(raiz, dato);
 }
-
 /*ArbolCategorias::ArbolCategorias(const ArbolCategorias& arbol)
 {
 

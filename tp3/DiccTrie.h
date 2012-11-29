@@ -30,7 +30,7 @@ class DiccTrie
 		}
 
 		~Nodo() {
-			for (int i = 0; i < TAMANIO; i++){
+			for (int i = 0; i < TAMANIO;i++){
 				if(elems[i] != NULL) {
 					delete elems[i];
 					elems[i] = NULL;

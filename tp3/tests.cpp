@@ -77,7 +77,6 @@ void arbolNuevoConRaizTieneHijoVacio(){
     ASSERT_EQ(a->esSubCategoria(c,d),true);
     delete a;
 }
-
 void datosLinkNuevoEsVacio(){
     LinkLinkIt::DatosLink* dl = new LinkLinkIt::DatosLink();
     ASSERT_EQ(dl->dameAccesos().Longitud(),0);
@@ -164,7 +163,27 @@ void accesoTestConConstr(){
     ASSERT_EQ(*a==*c,false);
     ASSERT_EQ(*a==*e,false);
 }
-
+void testLinkNuevo(){
+    Categoria cat = "informacion";
+    Categoria c2 = "InformacionAnimales";
+    ArbolCategorias acat = ArbolCategorias(cat);
+//    LinkLinkIt::Acceso* a = new LinkLinkIt::Acceso(3,7);
+    Lista<LinkLinkIt::Acceso> *listaAccesos = new Lista<LinkLinkIt::Acceso>();
+    String miLink = "test";
+    ArbolCategorias::DatosCat* dc = new ArbolCategorias::DatosCat();
+    dc->agregarAltura(1);
+    dc->agregarCat("cat");
+    dc->agregarId(323);
+    dc->agregarPadre(NULL);
+    Conj<ArbolCategorias::DatosCat*> conj = Conj<ArbolCategorias::DatosCat*>();
+    dc->agregarHijos(conj);
+    LinkLinkIt::DatosLink* dl = new LinkLinkIt::DatosLink(miLink,dc,*listaAccesos,3);
+    acat.agregarAC(c2,cat);
+    LinkLinkIt *lli = new LinkLinkIt(acat);
+    delete dc;
+    delete dl;
+    delete lli;
+}
 void datosCatNuevo(){
     ArbolCategorias::DatosCat* dc = new ArbolCategorias::DatosCat();
     dc->agregarAltura(1);
@@ -214,6 +233,8 @@ int main(void) {
         RUN_TEST(accesoTest);//ANDA
         RUN_TEST(accesoTestConConstr);//ANDA
         RUN_TEST(datosCatNuevo);//ANDA VERIFICAR DELETE
-        RUN_TEST(LinkLinkItNuevo); //TIRA MUCHOS NUMERITOS JA
+//        RUN_TEST(LinkLinkItNuevo); //TIRA MUCHOS NUMERITOS JA
+        RUN_TEST(testLinkNuevo);
 	return 0;
+
 }

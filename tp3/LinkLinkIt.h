@@ -28,8 +28,7 @@ class Acceso{
 
 	};
 
-	class ItAcceso
-        {
+	class ItAcceso{
         public:
             ItAcceso();
             ItAcceso(Lista<Acceso> ac) ;
@@ -66,6 +65,7 @@ class Acceso{
             void nuevoAccesos(Lista<Acceso> ita);
             void nuevoCantAccesosRecientes(int car);
             bool operator==(DatosLink& otro) const;
+
         private:
 			Link _link;
 			ArbolCategorias::DatosCat* _catDLink;
@@ -75,8 +75,7 @@ class Acceso{
 			};
 
 //creacion de la clase iterador de datoslink
-        class itLinks
-        {
+        class itLinks{
         public:
             itLinks(Lista<DatosLink> ldl);
             itLinks();
@@ -97,11 +96,11 @@ class Acceso{
         };
 
 //creacion de la clase iterador de puntero a datoslink
-        class itPunLinks
-        {
+        class itPunLinks{
         public:
             itPunLinks();
             itPunLinks(Lista<DatosLink*> ldl);
+
             itPunLinks(const itPunLinks& otroIt);
                 ~itPunLinks();
                 bool HaySiguiente() const;
