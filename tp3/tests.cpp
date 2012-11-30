@@ -190,11 +190,11 @@ void testLinkNuevo(){
 
 void LinkLinkItNuevo(){
     Categoria cat = "cat";
-    ArbolCategorias *acat = new ArbolCategorias(cat);
-    LinkLinkIt *lli = new LinkLinkIt(*acat);
+    ArbolCategorias acat = ArbolCategorias(cat);
+    LinkLinkIt lli = LinkLinkIt(acat);
 
     //ASSERT_EQ(lli->dameAcatLli() == *acat,true); FALTA HACER OPERATOR DE ACAT
-    lli->nuevoLinkLli("link","cat");
+    //lli.nuevoLinkLli("link","cat");
   /*  ASSERT_EQ(lli->categoriaLink("link"),"cat");
     ASSERT_EQ(lli->cantLinks("cat"),1);
     ASSERT_EQ(lli->categoriasLli().tamanio(),1);

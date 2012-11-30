@@ -55,12 +55,7 @@ namespace aed2
                 int dameAltura() const;
                 ItHijos dameHijos() const;
                 DatosCat* damePadre() const;
-                void agregarCat(String c);
-                void agregarId(int i);
                 void agregarHijo(DatosCat* h);
-                void agregarHijos(Conj<DatosCat*> h);
-                void agregarPadre(DatosCat* p);
-                void agregarAltura(int a);
                 void copiarDc(DatosCat otroDc);
                 bool operator==(const DatosCat& otro) const;
 

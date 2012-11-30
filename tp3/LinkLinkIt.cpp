@@ -4,19 +4,19 @@
 
 LinkLinkIt::LinkLinkIt(ArbolCategorias acat)
 {
-   _actual = 1;
-   _acat = acat;
-   int c = 0;
-   _linkInfo = DiccTrie<DatosLink*>();
+    _actual = 1;
+    _acat = acat;
+    _linkInfo = DiccTrie<DatosLink*>();
     _arrayCatLinks = Arreglo<Lista<DatosLink*> >(acat.dameCantidad());
     _listaLinks = Lista<DatosLink>();
     _linkInfo = DiccTrie<DatosLink*>();
-    while(c < acat.dameCantidad())
-   {
+
+    int c = 0;
+    while ( c < acat.dameCantidad() ) {
         Lista<DatosLink*> list = Lista<DatosLink*>();
         _arrayCatLinks.Definir(c,list);
         c++;
-   }
+    }
 }
 
 LinkLinkIt::~LinkLinkIt()
@@ -247,7 +247,7 @@ LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria)
         if (!(itParaFecha->estaOrdenada()))
         {
             itPunLinks itMax = itPunLinks(_arrayCatLinks[id]);
-            while(itMax.tamanio() != 0)
+            while(_arrayCatLinks[id].Longitud() != 0)
             {
                 itMax = itMax.BuscarMax(fecha);
                 listaOrdenada.AgregarAtras(itMax.Siguiente());
@@ -277,9 +277,7 @@ LinkLinkIt::itLinks::itLinks(Lista<DatosLink> ldl){
 }
 
 LinkLinkIt::itLinks::itLinks(const itLinks& otroIt){
-    _itLista = otroIt.dameIt();
-    _lista = otroIt.dameLista();
-
+    _itLista = otroIt._itLista;
 }
 
 LinkLinkIt::itLinks::~itLinks()
@@ -315,26 +313,7 @@ void LinkLinkIt::itLinks::AgregarComoSiguiente(const DatosLink& elem)
 
 bool LinkLinkIt::itLinks::operator==(const itLinks& otro) const
 {
-    bool iguales = false;
-    iguales = _itLista == otro.dameIt();
-    if(iguales)
-    {
-//        iguales = _lista == otro.dameLista(); ME TIRA ERROR ACA
-    }
-    return iguales;
-}
-
-int LinkLinkIt::itLinks::tamanio() const
-{
-    return _lista.Longitud();
-}
-
-const Lista<LinkLinkIt::DatosLink>::Iterador LinkLinkIt::itLinks::dameIt() const{
-    return _itLista;
-}
-
-const Lista<LinkLinkIt::DatosLink> LinkLinkIt::itLinks::dameLista() const{
-    return _lista;
+    return _itLista == otro._itLista;
 }
 
 //iterador de acceso
@@ -347,33 +326,23 @@ LinkLinkIt::ItAcceso::ItAcceso()
 
 LinkLinkIt::ItAcceso::ItAcceso(Lista<Acceso> ac)
 {
-    Lista<Acceso> la = Lista<Acceso>();
-    la = ac;
     _itLista = ac.CrearIt();
-    _lista = la;
-
 }
 
 
-LinkLinkIt::ItAcceso::ItAcceso(const LinkLinkIt::ItAcceso& otroIt){
-    _itLista = otroIt.dameIt();
-    _lista = otroIt.dameLista();
-
-}
-
-const Lista<LinkLinkIt::Acceso> LinkLinkIt::ItAcceso::dameLista() const{
-    return _lista;
+LinkLinkIt::ItAcceso::ItAcceso(const LinkLinkIt::ItAcceso& otroIt)
+{
+    _itLista = otroIt._itLista;
 }
 
 LinkLinkIt::ItAcceso::~ItAcceso()
 {
     //Destruyo lista
-        while(_itLista.HaySiguiente())
-        {
-            _itLista.EliminarSiguiente();
-        }
+    while(_itLista.HaySiguiente())
+    {
+        _itLista.EliminarSiguiente();
+    }
 }
-
 
 bool LinkLinkIt::ItAcceso::HaySiguiente() const
 {
@@ -383,11 +352,6 @@ bool LinkLinkIt::ItAcceso::HaySiguiente() const
 LinkLinkIt::Acceso& LinkLinkIt::ItAcceso::Siguiente() const
 {
     return _itLista.Siguiente();
-}
-
-const Lista<LinkLinkIt::Acceso>::Iterador LinkLinkIt::ItAcceso::dameIt() const{
-    return _itLista;
-
 }
 
 void LinkLinkIt::ItAcceso::Avanzar()
@@ -405,74 +369,28 @@ void LinkLinkIt::ItAcceso::AgregarComoSiguiente(const Acceso& elem)
     _itLista.AgregarComoSiguiente(elem);
 }
 
-
 bool LinkLinkIt::ItAcceso::operator==(const ItAcceso& otro) const
 {
-    bool iguales = false;
-    iguales = _itLista == otro.dameIt();
-    if(iguales)
-    {
-        iguales = _lista == otro.dameLista();
-    }
-/*    if(tamanio() == otro.tamanio())
-    {
-        iguales = true;
-        ItAcceso itThis;
-        ItAcceso itOtro;
-        itThis.copiarPos(*this);
-        itOtro.copiarPos(*this);
-        while(itThis.HaySiguiente() && iguales)
-        {
-            iguales = itThis.Siguiente() == itOtro.Siguiente();
-            itThis.Avanzar();
-            itOtro.Avanzar();
-        }
-    }
-    else
-    {
-        iguales = false;
-    }*/
-    return iguales;
+    return _itLista == otro._itLista;
 }
-
-int LinkLinkIt::ItAcceso::tamanio() const
-{
-    return _lista.Longitud();
-}
-
-/*
-void LinkLinkIt::ItAcceso::copiarPos(LinkLinkIt::ItAcceso otroIt){
-
-}
-*/
 
 LinkLinkIt::itPunLinks::itPunLinks(){
 
 }
 
 LinkLinkIt::itPunLinks::itPunLinks(const itPunLinks& otroIt){
-    _itLista = otroIt.dameIt();
-    _lista = otroIt.dameLista();
+    _itLista = otroIt._itLista;
 }
 
 LinkLinkIt::itPunLinks::itPunLinks(Lista<DatosLink*> ldl){
-       Lista<DatosLink*> ld = Lista<DatosLink*>();
-
-       _itLista = ldl.CrearIt();
-        _lista = ld;
+    _itLista = ldl.CrearIt();
 }
-
-const Lista<LinkLinkIt::DatosLink*> LinkLinkIt::itPunLinks::dameLista() const{
-    return _lista;
-}
-
 
 LinkLinkIt::itPunLinks::~itPunLinks()
-    {
-        //Destruyo lista
-        _lista.~Lista();
-    }
-
+{
+    //Destruyo lista
+    _lista.~Lista();
+}
 
 bool LinkLinkIt::itPunLinks::HaySiguiente() const
 {
@@ -537,23 +455,8 @@ bool LinkLinkIt::itPunLinks::estaOrdenada(){
     return false;
 }
 
-int LinkLinkIt::itPunLinks::tamanio() const{
-    return _lista.Longitud();
-}
-
-const Lista<LinkLinkIt::DatosLink*>::Iterador LinkLinkIt::itPunLinks::dameIt() const{
-    return _itLista;
-}
-
 bool LinkLinkIt::itPunLinks::operator==(const itPunLinks& otro) const
 {
-    bool iguales = false;
-    iguales = _itLista == otro.dameIt();
-    if(iguales)
-    {
-        iguales = _lista == otro.dameLista();
-    }
-    return iguales;
+    return _itLista == otro._itLista;
 }
-
 
