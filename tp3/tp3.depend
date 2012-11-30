@@ -294,7 +294,7 @@
 1353941908 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\tipos.h
 	<iostream>
 
-1354193434 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\arbolcategorias.h
+1354282702 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\arbolcategorias.h
 	"aed2.h"
 	"DiccTrie.h"
 	"Tipos.h"
@@ -308,11 +308,11 @@
 	"ArbolCategorias.h"
 	"DiccTrie.h"
 
-1354220413 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\linklinkit.cpp
+1354290566 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\linklinkit.cpp
 	"LinkLinkIt.h"
 	"ArbolCategorias.h"
 
-1354220518 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\tests.cpp
+1354291094 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\tests.cpp
 	"Driver.h"
 	<stdarg.h>
 	"LinkLinkIt.h"
@@ -320,6 +320,6 @@
 	<iostream>
 	<sstream>
 
-1354220304 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\arbolcategorias.cpp
+1354282702 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\arbolcategorias.cpp
 	"ArbolCategorias.h"
 

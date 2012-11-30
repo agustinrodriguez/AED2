@@ -2,24 +2,27 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="ArbolCategorias.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="5853" topLine="238" />
+		<Cursor position="3466" topLine="140" />
 	</File>
 	<File name="ArbolCategorias.h" open="1" top="0" tabpos="5">
-		<Cursor position="1121" topLine="9" />
+		<Cursor position="2924" topLine="57" />
+	</File>
+	<File name="DiccTrie.h" open="1" top="1" tabpos="14">
+		<Cursor position="398" topLine="17" />
 	</File>
 	<File name="Driver.cpp" open="1" top="0" tabpos="6">
 		<Cursor position="1930" topLine="80" />
 	</File>
 	<File name="LinkLinkIt.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="6967" topLine="265" />
+		<Cursor position="533" topLine="16" />
 	</File>
 	<File name="LinkLinkIt.h" open="1" top="0" tabpos="3">
-		<Cursor position="0" topLine="0" />
+		<Cursor position="1567" topLine="48" />
 	</File>
 	<File name="aed2.h" open="1" top="0" tabpos="7">
 		<Cursor position="316" topLine="0" />
 	</File>
-	<File name="tests.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="6270" topLine="162" />
+	<File name="tests.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="1949" topLine="33" />
 	</File>
 </CodeBlocks_layout_file>

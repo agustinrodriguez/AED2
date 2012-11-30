@@ -186,6 +186,7 @@ void testLinkNuevo(){
     delete dc;
     delete dl;
     delete lli;
+    delete listaAccesos;
 }
 
 void LinkLinkItNuevo(){
@@ -202,6 +203,8 @@ void LinkLinkItNuevo(){
     ASSERT_EQ(lli->fechaActual(),120);
     ASSERT_EQ(lli->fechaUltimoAcceso("link"),120);
     ASSERT_EQ(lli->accesosRecientesDia("link",122),1);*/
+    delete lli;
+    delete acat;
 }
 
 int main(void) {
