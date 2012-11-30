@@ -10,141 +10,123 @@ namespace aed2
 {
 	class LinkLinkIt{
 		public:
+            class Acceso{
+                public:
+                    Acceso();
+                    Acceso(Fecha f, int a);
+                    ~Acceso() ;
+                    Fecha dameDia() const;
+                    int dameCantA() const;
+                    void guardoAcceso(int a);
+                    void guardoDia(int a);
+                    bool operator==(const Acceso& otro) const;
 
-class Acceso{
-		public:
-                Acceso();
-                Acceso(Fecha f, int a);
-                ~Acceso() ;
-                Fecha dameDia() const;
-                int dameCantA() const;
-                void guardoAcceso(int a);
-                void guardoDia(int a);
-                bool operator==(const Acceso& otro) const;
+                private:
+                    Fecha _dia;
+                    int _cantAccesos;
 
-        private:
-			Fecha _dia;
-			int _cantAccesos;
+            };
 
-	};
+            class ItAcceso{
+                public:
+                    ItAcceso();
+                    ItAcceso(Lista<Acceso> ac) ;
+                    ItAcceso(const ItAcceso& otroIt);
+                        ~ItAcceso() ;
+                        bool HaySiguiente() const;
+                        Acceso& Siguiente() const;
+                        void Avanzar();
+                        void EliminarSiguiente();
+                        void AgregarComoSiguiente(const Acceso& elem);
+                        bool operator==(const ItAcceso& otro) const;
+                    private:
+                        Lista<Acceso>::Iterador _itLista;
+            };
 
-	class ItAcceso{
-        public:
-            ItAcceso();
-            ItAcceso(Lista<Acceso> ac) ;
-            ItAcceso(const ItAcceso& otroIt);
-                ~ItAcceso() ;
-                bool HaySiguiente() const;
-                Acceso& Siguiente() const;
-                void Avanzar();
-                void EliminarSiguiente();
-                void AgregarComoSiguiente(const Acceso& elem);
-                int tamanio() const;
-                //void copiarPos(ItAcceso otroIt);
-                const Lista<Acceso>::Iterador dameIt() const;
-                const Lista<Acceso> dameLista() const;
-                bool operator==(const ItAcceso& otro) const;
-            private:
-                Lista<Acceso>::Iterador _itLista;
-                Lista<Acceso> _lista;
-        };
+            class DatosLink {
+                public:
+                    DatosLink();
+                    DatosLink(Link l, ArbolCategorias::DatosCat* dc, Lista<Acceso> la, int i);
+                    ~DatosLink();
+                    const Link& dameLink() const;
+                    ArbolCategorias::DatosCat dameCatDLink();
+                    Lista<Acceso> dameAccesos();
+                    int dameCantAccesos();
+                    void nuevoLink(String l);
+                    void nuevaCat(ArbolCategorias::DatosCat* c);
+                    void nuevoAccesos(Lista<Acceso> ita);
+                    void nuevoCantAccesosRecientes(int car);
+                    bool operator==(DatosLink& otro) const;
 
+                private:
+                    Link _link;
+                    ArbolCategorias::DatosCat* _catDLink;
+                    Lista<Acceso> _accesosRecientes;
+                    int _cantAccesosRecientes;
+            };
 
+            //creacion de la clase iterador de datoslink
+            class itLinks {
+                public:
+                    itLinks(Lista<DatosLink> ldl);
+                    itLinks();
+                    ~itLinks();
+                    itLinks(const itLinks& otroIt);
+                    bool HaySiguiente() const;
+                    DatosLink& Siguiente() const;
+                    void Avanzar();
+                    void EliminarSiguiente();
+                    void AgregarComoSiguiente(const DatosLink& elem);
+                    bool operator==(const itLinks& otro) const;
+                private:
+                    Lista<DatosLink>::Iterador _itLista;
+                    Lista<DatosLink> _lista;
+            };
 
-        class DatosLink{
-		public:
-            DatosLink();
-            DatosLink(Link l, ArbolCategorias::DatosCat* dc, Lista<Acceso> la, int i);
-            ~DatosLink();
-            const Link& dameLink() const;
-            ArbolCategorias::DatosCat dameCatDLink();
-            Lista<Acceso> dameAccesos();
-            int dameCantAccesos();
-            void nuevoLink(String l);
-            void nuevaCat(ArbolCategorias::DatosCat* c);
-            void nuevoAccesos(Lista<Acceso> ita);
-            void nuevoCantAccesosRecientes(int car);
-            bool operator==(DatosLink& otro) const;
+            //creacion de la clase iterador de puntero a datoslink
+            class itPunLinks {
+                public:
+                    itPunLinks();
+                    itPunLinks(Lista<DatosLink*> ldl);
+                    itPunLinks(const itPunLinks& otroIt);
+                    ~itPunLinks();
+                    bool HaySiguiente() const;
+                    DatosLink* Siguiente() const;
+                    void Avanzar();
+                    void EliminarSiguiente();
+                    itPunLinks BuscarMax(Fecha f);
+                    Fecha ultFecha();
+                    int cantAccesosDesde(Fecha f);
+                    bool estaOrdenada();
+                    bool operator==(const itPunLinks& otro) const;
+                private:
+                    Lista<DatosLink*>::Iterador _itLista;
+                    Lista<DatosLink*> _lista;
+            };
 
-        private:
-			Link _link;
-			ArbolCategorias::DatosCat* _catDLink;
-			Lista<Acceso> _accesosRecientes;
-			int _cantAccesosRecientes;
+            LinkLinkIt(ArbolCategorias acat);
+            LinkLinkIt();
+            ~LinkLinkIt();
 
-			};
-
-//creacion de la clase iterador de datoslink
-        class itLinks{
-        public:
-            itLinks(Lista<DatosLink> ldl);
-            itLinks();
-                ~itLinks();
-                itLinks(const itLinks& otroIt);
-                bool HaySiguiente() const;
-                DatosLink& Siguiente() const;
-                void Avanzar();
-                void EliminarSiguiente();
-                void AgregarComoSiguiente(const DatosLink& elem);
-                const Lista<DatosLink> dameLista() const;
-                int tamanio() const;
-                const Lista<DatosLink>::Iterador dameIt() const;
-                bool operator==(const itLinks& otro) const;
-            private:
-                Lista<DatosLink>::Iterador _itLista;
-                Lista<DatosLink> _lista;
-        };
-
-//creacion de la clase iterador de puntero a datoslink
-        class itPunLinks{
-        public:
-            itPunLinks();
-            itPunLinks(Lista<DatosLink*> ldl);
-
-            itPunLinks(const itPunLinks& otroIt);
-                ~itPunLinks();
-                bool HaySiguiente() const;
-                DatosLink* Siguiente() const;
-                void Avanzar();
-                void EliminarSiguiente();
-                itPunLinks BuscarMax(Fecha f);
-                Fecha ultFecha();
-                int cantAccesosDesde(Fecha f);
-                bool estaOrdenada();
-                int tamanio() const;
-                //void copiarPos(itPunLinks otroIt);
-                const Lista<DatosLink*> dameLista() const;
-                const Lista<DatosLink*>::Iterador dameIt() const;
-                bool operator==(const itPunLinks& otro) const;
-            private:
-                Lista<DatosLink*>::Iterador _itLista;
-                Lista<DatosLink*> _lista;
-        };
-
-        LinkLinkIt(ArbolCategorias acat);
-        LinkLinkIt();
-        ~LinkLinkIt();
-
-        ArbolCategorias dameAcatLli() const;
-        ArbolCategorias::ItCategorias categoriasLli();
-		Fecha fechaActual();
-		itLinks linksLli() const;
-		Categoria categoriaLink(Link link) const;
-		Fecha fechaUltimoAcceso(Link link);
-		int accesosRecientesDia(Link link, Fecha fecha);
-		void iniciarLli(ArbolCategorias acat);
-		void nuevoLinkLli(Link link, Categoria categoria);
-		void accederLli(Link link, Fecha fecha);
-		int cantLinks(Categoria categoria);
-		itPunLinks linksOrdenadosPorAccesos(Categoria categoria) ;
+            ArbolCategorias dameAcatLli() const;
+            ArbolCategorias::ItCategorias categoriasLli();
+            Fecha fechaActual();
+            itLinks linksLli() const;
+            Categoria categoriaLink(Link link) const;
+            Fecha fechaUltimoAcceso(Link link);
+            int accesosRecientesDia(Link link, Fecha fecha);
+            void iniciarLli(ArbolCategorias acat);
+            void nuevoLinkLli(Link link, Categoria categoria);
+            void accederLli(Link link, Fecha fecha);
+            int cantLinks(Categoria categoria);
+            itPunLinks linksOrdenadosPorAccesos(Categoria categoria) ;
 
         private:
-
-		ArbolCategorias _acat;
-		Fecha _actual;
-		DiccTrie<DatosLink*> _linkInfo;
-		Lista<DatosLink> _listaLinks;
-		Arreglo<Lista<DatosLink*> > _arrayCatLinks;
+            ArbolCategorias _acat;
+            Fecha _actual;
+            DiccTrie<DatosLink*> _linkInfo;
+            Lista<DatosLink> _listaLinks;
+            Arreglo<Lista<DatosLink*> > _arrayCatLinks;
 
 	};
 }
