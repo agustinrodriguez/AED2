@@ -68,7 +68,7 @@ const Categoria& Driver::obtenerIesimaCategoriaHija(const Categoria& c, int i)
 void Driver::nuevoLink(const Link& l, const Categoria& c)
 {
     if (sistema == NULL)
-        sistema = new LinkLinkIt(*arbol);
+        sistema = new LinkLinkIt(arbol);
 
     sistema->nuevoLinkLli(l,c);
 }

@@ -54,6 +54,7 @@ namespace aed2
                     int dameCantAccesos();
                     void nuevoLink(String l);
                     void nuevaCat(ArbolCategorias::DatosCat* c);
+                    void agregarAcceso(Acceso acceso);
                     void nuevoAccesos(Lista<Acceso> ita);
                     void nuevoCantAccesosRecientes(int car);
                     bool operator==(DatosLink& otro) const;
@@ -104,7 +105,7 @@ namespace aed2
                     Lista<DatosLink*> _lista;
             };
 
-            LinkLinkIt(ArbolCategorias acat);
+            LinkLinkIt(ArbolCategorias *acat);
             LinkLinkIt();
             ~LinkLinkIt();
 
@@ -115,19 +116,18 @@ namespace aed2
             Categoria categoriaLink(Link link) const;
             Fecha fechaUltimoAcceso(Link link);
             int accesosRecientesDia(Link link, Fecha fecha);
-            void iniciarLli(ArbolCategorias acat);
+            void iniciarLli(ArbolCategorias *acat);
             void nuevoLinkLli(Link link, Categoria categoria);
             void accederLli(Link link, Fecha fecha);
             int cantLinks(Categoria categoria);
             itPunLinks linksOrdenadosPorAccesos(Categoria categoria) ;
 
         private:
-            ArbolCategorias _acat;
+            ArbolCategorias* _acat;
             Fecha _actual;
             DiccTrie<DatosLink*> _linkInfo;
             Lista<DatosLink> _listaLinks;
             Arreglo<Lista<DatosLink*> > _arrayCatLinks;
-
 	};
 }
 

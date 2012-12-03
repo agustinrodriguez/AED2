@@ -22,23 +22,12 @@ ArbolCategorias::ArbolCategorias(const Categoria& raiz)
 
 ArbolCategorias::~ArbolCategorias()
 {
-    //Destruyo el diccionario
-    //_familia.~DiccTrie();
-    //Destruyo la lista
-    //_categorias.~Lista();
-
     Lista<DatosCat*>::Iterador l = _categorias.CrearIt();
 
     while (l.HaySiguiente()) {
         delete l.Siguiente();
         l.Avanzar();
     }
-/*
-    while(!(_categorias.EsVacia())) {
-        delete _familia.Obtener(_categorias.Primero().dameCat());
-        _categorias.Fin();
-    }*/
-
 }
 
 ArbolCategorias::DatosCat::DatosCat()

@@ -173,7 +173,7 @@ void accesoTestConConstr(){
 void testLinkNuevo(){
     Categoria cat = "informacion";
     Categoria c2 = "InformacionAnimales";
-    ArbolCategorias acat = ArbolCategorias(cat);
+    ArbolCategorias *acat = new ArbolCategorias(cat);
 //    LinkLinkIt::Acceso* a = new LinkLinkIt::Acceso(3,7);
     Lista<LinkLinkIt::Acceso> *listaAccesos = new Lista<LinkLinkIt::Acceso>();
     String miLink = "test";
@@ -181,7 +181,7 @@ void testLinkNuevo(){
 //    ArbolCategorias::DatosCat* dc = new ArbolCategorias::DatosCat(cat,323,1,conj,NULL);
     ArbolCategorias::DatosCat* dc = new ArbolCategorias::DatosCat();
     LinkLinkIt::DatosLink* dl = new LinkLinkIt::DatosLink(miLink,dc,*listaAccesos,1);
-    acat.agregarAC(c2,cat);
+    acat->agregarAC(c2,cat);
     LinkLinkIt *lli = new LinkLinkIt(acat);
     delete dc;
     delete dl;
@@ -190,18 +190,21 @@ void testLinkNuevo(){
 
 void LinkLinkItNuevo(){
     Categoria cat = "cat";
-    ArbolCategorias acat = ArbolCategorias(cat);
+    ArbolCategorias *acat = new ArbolCategorias(cat);
     LinkLinkIt lli = LinkLinkIt(acat);
 
-    //ASSERT_EQ(lli->dameAcatLli() == *acat,true); FALTA HACER OPERATOR DE ACAT
-    //lli.nuevoLinkLli("link","cat");
-  /*  ASSERT_EQ(lli->categoriaLink("link"),"cat");
-    ASSERT_EQ(lli->cantLinks("cat"),1);
-    ASSERT_EQ(lli->categoriasLli().tamanio(),1);
-    lli->accederLli("link",120);
-    ASSERT_EQ(lli->fechaActual(),120);
-    ASSERT_EQ(lli->fechaUltimoAcceso("link"),120);
-    ASSERT_EQ(lli->accesosRecientesDia("link",122),1);*/
+
+//    ASSERT(lli.dameAcatLli() == *acat); ESTE TEST NO VA. NO ESTA EL OPERATOR == DE ACAT
+
+    lli.nuevoLinkLli("link", "cat");
+    ASSERT_EQ(lli.categoriaLink("link"), "cat");
+    ASSERT_EQ(lli.cantLinks("cat"), 1);
+    lli.accederLli("link", 120);
+    ASSERT_EQ(lli.fechaActual(), 120);
+    ASSERT_EQ(lli.fechaUltimoAcceso("link"), 120);
+//    ASSERT_EQ(lli.accesosRecientesDia("link", 122), 1); EL IT ACCESOS NO AVANZA. ITERADOR MALVADO, DEJAME AVANZARTE.
+
+    delete acat;
 }
 
 int main(void) {

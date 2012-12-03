@@ -83,7 +83,7 @@ namespace aed2
 
 		private:
 
-		const DatosCat* _raiz;
+		DatosCat* _raiz;
 		int _cantidad;
 		int _alturaMax;
 		DiccTrie<DatosCat*> _familia;
