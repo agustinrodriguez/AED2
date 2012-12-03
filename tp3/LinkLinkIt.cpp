@@ -2,26 +2,30 @@
 #include "ArbolCategorias.h"
 
 
-LinkLinkIt::LinkLinkIt(ArbolCategorias acat)
+LinkLinkIt::LinkLinkIt(ArbolCategorias* acat)
 {
     _actual = 1;
     _acat = acat;
-    _linkInfo = DiccTrie<DatosLink*>();
-    _arrayCatLinks = Arreglo<Lista<DatosLink*> >(acat.dameCantidad());
+//    _linkInfo = DiccTrie<DatosLink*>(); NO SE XQ ROMPE, PERO CREO QUE NO IMPORTA
+    _arrayCatLinks = Arreglo<Lista<DatosLink*> >(_acat->dameCantidad());
     _listaLinks = Lista<DatosLink>();
-    _linkInfo = DiccTrie<DatosLink*>();
 
     int c = 0;
-    while ( c < acat.dameCantidad() ) {
+    while ( c < _acat->dameCantidad() ) {
         Lista<DatosLink*> list = Lista<DatosLink*>();
-        _arrayCatLinks.Definir(c,list);
+        _arrayCatLinks.Definir(c, list);
         c++;
     }
 }
 
 LinkLinkIt::~LinkLinkIt()
 {
+    Lista<DatosLink>::Iterador l = _listaLinks.CrearIt();
 
+    while (l.HaySiguiente()) {
+        delete _linkInfo.Obtener(l.Siguiente().dameLink());
+        l.Avanzar();
+    }
 }
 
 LinkLinkIt::DatosLink::DatosLink(){
@@ -72,6 +76,11 @@ void LinkLinkIt::DatosLink::nuevoLink(String l){
 
 void LinkLinkIt::DatosLink::nuevaCat(ArbolCategorias::DatosCat* c){
     _catDLink = c;
+}
+
+void LinkLinkIt::DatosLink::agregarAcceso(Acceso acceso)
+{
+    _accesosRecientes.AgregarAtras(acceso);
 }
 
 void LinkLinkIt::DatosLink::nuevoAccesos(Lista<Acceso> ita){
@@ -135,11 +144,11 @@ bool LinkLinkIt::Acceso::operator==(const LinkLinkIt::Acceso& otro) const{
 }
 
 ArbolCategorias LinkLinkIt::dameAcatLli() const{
-	return _acat;
+	return *_acat;
 }
 
 ArbolCategorias::ItCategorias LinkLinkIt::categoriasLli(){
-    return _acat.categoriasAC();
+    return _acat->categoriasAC();
 }
 
 Fecha LinkLinkIt::fechaActual(){
@@ -147,27 +156,28 @@ Fecha LinkLinkIt::fechaActual(){
 }
 
 
-LinkLinkIt::itLinks LinkLinkIt::linksLli() const{
-itLinks res = itLinks(_listaLinks);
+LinkLinkIt::itLinks LinkLinkIt::linksLli() const
+{
+    itLinks res = itLinks(_listaLinks);
  	return res;
 }
 
-Categoria LinkLinkIt::categoriaLink(Link link) const{
+Categoria LinkLinkIt::categoriaLink(Link link) const
+{
 	return _linkInfo.Obtener(link)->dameCatDLink().dameCat();
 }
 
-Fecha LinkLinkIt::fechaUltimoAcceso(Link link){
+Fecha LinkLinkIt::fechaUltimoAcceso(Link link)
+{
 	return _linkInfo.Obtener(link)->dameAccesos().Ultimo().dameDia();
-
 }
 
-int LinkLinkIt::accesosRecientesDia(Link link, Fecha fecha){
+int LinkLinkIt::accesosRecientesDia(Link link, Fecha fecha)
+{
 	ItAcceso itA = ItAcceso(_linkInfo.Obtener(link)->dameAccesos());
-	int res;
-	while(itA.HaySiguiente())
-	{
-	    if(itA.Siguiente().dameDia() == fecha)
-	    {
+	int res = 0;
+	while (itA.HaySiguiente()) {
+	    if(itA.Siguiente().dameDia() == fecha) {
 	        res = itA.Siguiente().dameCantA();
 	    }
 	    itA.Avanzar();
@@ -175,18 +185,18 @@ int LinkLinkIt::accesosRecientesDia(Link link, Fecha fecha){
 	return res;
 }
 
-void LinkLinkIt::iniciarLli(ArbolCategorias acat) {
+void LinkLinkIt::iniciarLli(ArbolCategorias *acat) {
    _actual = 1;
    _acat = acat;
    int c = 0;
    DiccTrie<DatosLink*> _linkInfo = DiccTrie<DatosLink*>();
-    _arrayCatLinks = Arreglo<Lista<DatosLink*> >(acat.dameCantidad());
+    _arrayCatLinks = Arreglo<Lista<DatosLink*> >(_acat->dameCantidad());
     _listaLinks = Lista<DatosLink>();
     _linkInfo = DiccTrie<DatosLink*>();
-    while(c <= acat.dameCantidad())
+    while(c <= _acat->dameCantidad())
    {
         Lista<DatosLink*> list = Lista<DatosLink*>();
-        _arrayCatLinks.Definir(c,list);
+        _arrayCatLinks.Definir(c, list);
         c++;
    }
 
@@ -194,43 +204,47 @@ void LinkLinkIt::iniciarLli(ArbolCategorias acat) {
 
 void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
 
-    ArbolCategorias::DatosCat cat = ArbolCategorias::DatosCat(*dameAcatLli().obtenerAC(categoria));
- 	ArbolCategorias::DatosCat* puntCat = &cat;
+//    ArbolCategorias::DatosCat cat = ArbolCategorias::DatosCat(*dameAcatLli().obtenerAC(categoria));
+// 	ArbolCategorias::DatosCat* puntCat = &cat;
+// 	DatosLink nuevoLink = DatosLink(link, puntCat, accesoDeNuevoLink, 0);
+//    DatosLink* puntLink = &nuevoLink;
+
+    ArbolCategorias::DatosCat* puntCat = _acat->obtenerAC(categoria);
+
  	Lista<Acceso> accesoDeNuevoLink = Lista<Acceso>();
- 	DatosLink nuevoLink = DatosLink(link, puntCat, accesoDeNuevoLink, 0);
-    DatosLink* puntLink = &nuevoLink;
-    _linkInfo.Definir(link,puntLink);
-    _listaLinks.AgregarAtras(nuevoLink);
+    DatosLink* puntLink = new DatosLink(link, puntCat, accesoDeNuevoLink, 0);
+
+    _linkInfo.Definir(link, puntLink);
+    _listaLinks.AgregarAtras(*puntLink);
+
     while(!(puntCat == NULL))
     {
-        _arrayCatLinks[puntCat->dameId()].AgregarAtras(puntLink);
+        _arrayCatLinks[puntCat->dameId() - 1].AgregarAtras(puntLink);
         puntCat = puntCat->damePadre();
     }
 
 }
 
 void LinkLinkIt::accederLli(Link link, Fecha fecha){
-    if (_actual == fecha){
+    if (_actual != fecha) {
         _actual = fecha;
     }
     DatosLink* puntLink = _linkInfo.Obtener(link);
-    if(fecha == puntLink->dameAccesos().Ultimo().dameDia())
-    {
-        int a = puntLink->dameAccesos().Ultimo().dameCantA();
+    int a = 0;
+    if (!puntLink->dameAccesos().EsVacia() && fecha == puntLink->dameAccesos().Ultimo().dameDia()) {
+        a = puntLink->dameAccesos().Ultimo().dameCantA();
         a++;
-        puntLink->dameAccesos().Ultimo().guardoAcceso(a);
-    }
-    else
-    {
-        Acceso nuevoAcceso;
-        nuevoAcceso.guardoDia(fecha);
-        nuevoAcceso.guardoAcceso(1);
-        puntLink->dameAccesos().AgregarAdelante(nuevoAcceso);
+        Lista<Acceso> nuevosAccesos = puntLink->dameAccesos();
+        nuevosAccesos.Ultimo().guardoAcceso(a);
+        puntLink->nuevoAccesos(nuevosAccesos);
+//        puntLink->dameAccesos().Ultimo().guardoAcceso(a);
+    } else {
+        Acceso nuevoAcceso = Acceso(fecha, 1);
+        puntLink->agregarAcceso(nuevoAcceso);
+//        puntLink->dameAccesos().AgregarAtras(nuevoAcceso);
     }
 
-    int b = puntLink->dameCantAccesos();
-    b++;
-    puntLink->nuevoCantAccesosRecientes(b);
+    puntLink->nuevoCantAccesosRecientes(puntLink->dameCantAccesos() + 1);
 
 }
 
