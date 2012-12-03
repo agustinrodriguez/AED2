@@ -294,7 +294,7 @@
 1353941908 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\tipos.h
 	<iostream>
 
-1354282702 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\arbolcategorias.h
+1354304981 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\arbolcategorias.h
 	"aed2.h"
 	"DiccTrie.h"
 	"Tipos.h"
@@ -303,12 +303,12 @@
 	"aed2.h"
 	<string>
 
-1354194724 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\linklinkit.h
+1354304981 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\linklinkit.h
 	"aed2.h"
 	"ArbolCategorias.h"
 	"DiccTrie.h"
 
-1354290566 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\linklinkit.cpp
+1354304981 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\linklinkit.cpp
 	"LinkLinkIt.h"
 	"ArbolCategorias.h"
 
