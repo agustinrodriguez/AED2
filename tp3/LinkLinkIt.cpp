@@ -174,13 +174,10 @@ Fecha LinkLinkIt::fechaUltimoAcceso(Link link)
 
 int LinkLinkIt::accesosRecientesDia(Link link, Fecha fecha)
 {
-	ItAcceso itA = ItAcceso(_linkInfo.Obtener(link)->dameAccesos());
+    Lista<Acceso> la = _linkInfo.Obtener(link)->dameAccesos();
+	ItAcceso itA = ItAcceso(la);
 	int res = 0;
 	while (itA.HaySiguiente()) {
-//	    if(_linkInfo.Obtener(link)->dameAccesos().Ultimo().dameDia() == fecha){//esto lo cambie yooooo, no va, es solo una prueba que anduvo :)
-//            res = _linkInfo.Obtener(link)->dameAccesos().Ultimo().dameCantA();
-//            break;
-//	    }
 	    if(itA.Siguiente().dameDia() == fecha) {
 	        res = itA.Siguiente().dameCantA();
 	    }
@@ -208,13 +205,7 @@ void LinkLinkIt::iniciarLli(ArbolCategorias *acat) {
 
 void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
 
-//    ArbolCategorias::DatosCat cat = ArbolCategorias::DatosCat(*dameAcatLli().obtenerAC(categoria));
-// 	ArbolCategorias::DatosCat* puntCat = &cat;
-// 	DatosLink nuevoLink = DatosLink(link, puntCat, accesoDeNuevoLink, 0);
-//    DatosLink* puntLink = &nuevoLink;
-
     ArbolCategorias::DatosCat* puntCat = _acat->obtenerAC(categoria);
-
  	Lista<Acceso> accesoDeNuevoLink = Lista<Acceso>();
     DatosLink* puntLink = new DatosLink(link, puntCat, accesoDeNuevoLink, 0);
 

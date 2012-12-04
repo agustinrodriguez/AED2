@@ -80,6 +80,7 @@ namespace aed2
         bool esta(const Categoria c) const;
 		bool esSubCategoria(const Categoria c, const Categoria predecesor) const;
         const int dameCantidad() const;
+        bool operator==(const ArbolCategorias& acat) const;
 
 		private:
 

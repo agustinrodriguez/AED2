@@ -278,3 +278,23 @@ bool ArbolCategorias::ItHijos::operator==(const ItHijos& otro) const
 {
     return _itConj == otro._itConj;
 }
+bool ArbolCategorias::operator==(const ArbolCategorias& acat) const{
+    bool raiz = (*_raiz == *acat._raiz);
+    bool cantidad = (_cantidad == acat._cantidad);
+    bool altura = (_alturaMax == acat._alturaMax);
+    Lista<DatosCat*> listaCat1 = _categorias;
+    Lista<DatosCat*> listaCat2 = acat._categorias;
+    ItCategorias categorias1 = ItCategorias(listaCat1);
+    ItCategorias categorias2 = ItCategorias(listaCat2);
+    bool categorias = true;
+    bool mismoDicc = true;
+    while(categorias1.HaySiguiente() && categorias2.HaySiguiente() && categorias && mismoDicc){
+        categorias = (categorias1.Siguiente() == categorias2.Siguiente());
+        if(categorias){
+        mismoDicc = (acat._familia.Obtener(categorias2.Siguiente()) == _familia.Obtener(categorias1.Siguiente()));
+        }
+        categorias1.Avanzar();
+        categorias2.Avanzar();
+    }
+    return raiz && cantidad && altura && categorias && mismoDicc;
+}
