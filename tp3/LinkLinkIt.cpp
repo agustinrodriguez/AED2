@@ -174,7 +174,8 @@ Fecha LinkLinkIt::fechaUltimoAcceso(Link link)
 
 int LinkLinkIt::accesosRecientesDia(Link link, Fecha fecha)
 {
-	ItAcceso itA = ItAcceso(_linkInfo.Obtener(link)->dameAccesos());
+    Lista<Acceso> la = _linkInfo.Obtener(link)->dameAccesos();
+	ItAcceso itA = ItAcceso(la);
 	int res = 0;
 	while (itA.HaySiguiente()) {
 	    if(itA.Siguiente().dameDia() == fecha) {
@@ -338,13 +339,13 @@ LinkLinkIt::ItAcceso::ItAcceso()
 }
 
 
-LinkLinkIt::ItAcceso::ItAcceso(Lista<Acceso> ac)
+LinkLinkIt::ItAcceso::ItAcceso(Lista<Acceso> &ac)
 {
     _itLista = ac.CrearIt();
 }
 
 
-LinkLinkIt::ItAcceso::ItAcceso(const LinkLinkIt::ItAcceso& otroIt)
+LinkLinkIt::ItAcceso::ItAcceso(const LinkLinkIt::ItAcceso &otroIt)
 {
     _itLista = otroIt._itLista;
 }
