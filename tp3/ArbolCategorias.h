@@ -19,7 +19,7 @@ namespace aed2
         class ItCategorias{
             public:
                 ItCategorias();
-                ItCategorias(Lista<DatosCat*> ldc);
+                ItCategorias(Lista<DatosCat*>& ldc);
                 ItCategorias(const ItCategorias& otroIt);
                 ~ItCategorias();
                 bool HaySiguiente() const;
@@ -69,7 +69,7 @@ namespace aed2
 
 
         DatosCat* obtenerAC(const Categoria c) const;
-		ItCategorias categoriasAC() const;
+		ItCategorias categoriasAC();
 		const Categoria& raizAC() const;
 		int idAC(const Categoria& c) const;
         int alturaCatAC(const Categoria c) const;
