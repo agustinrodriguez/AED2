@@ -203,7 +203,7 @@ void LinkLinkItNuevo(){
     lli.accederLli("link", 120);
     ASSERT_EQ(lli.fechaActual(), 120);
     ASSERT_EQ(lli.fechaUltimoAcceso("link"), 120);
-//    ASSERT_EQ(lli.accesosRecientesDia("link", 122), 1); EL IT ACCESOS NO AVANZA. ITERADOR MALVADO, DEJAME AVANZARTE.
+    ASSERT_EQ(lli.accesosRecientesDia("link", 120), 1); //EL IT ACCESOS NO AVANZA. ITERADOR MALVADO, DEJAME AVANZARTE.
 
     delete acat;
 }
