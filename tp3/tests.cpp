@@ -193,10 +193,7 @@ void LinkLinkItNuevo(){
     Categoria cat = "cat";
     ArbolCategorias *acat = new ArbolCategorias(cat);
     LinkLinkIt lli = LinkLinkIt(acat);
-
-
 //    ASSERT(lli.dameAcatLli() == *acat); ESTE TEST NO VA. NO ESTA EL OPERATOR == DE ACAT
-
     lli.nuevoLinkLli("link", "cat");
     ASSERT_EQ(lli.categoriaLink("link"), "cat");
     ASSERT_EQ(lli.cantLinks("cat"), 1);

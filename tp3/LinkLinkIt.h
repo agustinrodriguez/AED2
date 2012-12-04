@@ -30,7 +30,7 @@ namespace aed2
             class ItAcceso{
                 public:
                     ItAcceso();
-                    ItAcceso(Lista<Acceso> ac) ;
+                    ItAcceso(Lista<Acceso> &ac) ;
                     ItAcceso(const ItAcceso& otroIt);
                         ~ItAcceso() ;
                         bool HaySiguiente() const;

@@ -253,7 +253,7 @@
 	"TiposBasicos.h"
 	"Lista.cpp"
 
-1354055580 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\aed2\lista.cpp
+1354598531 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\aed2\lista.cpp
 
 1353941908 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\aed2\vector.h
 	"TiposBasicos.h"
@@ -303,16 +303,16 @@
 	"aed2.h"
 	<string>
 
-1354574316 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\linklinkit.h
+1354650120 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\linklinkit.h
 	"aed2.h"
 	"ArbolCategorias.h"
 	"DiccTrie.h"
 
-1354574316 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\linklinkit.cpp
+1354598308 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\linklinkit.cpp
 	"LinkLinkIt.h"
 	"ArbolCategorias.h"
 
-1354574557 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\tests.cpp
+1354591423 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\tests.cpp
 	"Driver.h"
 	<stdarg.h>
 	"LinkLinkIt.h"

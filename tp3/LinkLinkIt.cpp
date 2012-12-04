@@ -177,6 +177,10 @@ int LinkLinkIt::accesosRecientesDia(Link link, Fecha fecha)
 	ItAcceso itA = ItAcceso(_linkInfo.Obtener(link)->dameAccesos());
 	int res = 0;
 	while (itA.HaySiguiente()) {
+//	    if(_linkInfo.Obtener(link)->dameAccesos().Ultimo().dameDia() == fecha){//esto lo cambie yooooo, no va, es solo una prueba que anduvo :)
+//            res = _linkInfo.Obtener(link)->dameAccesos().Ultimo().dameCantA();
+//            break;
+//	    }
 	    if(itA.Siguiente().dameDia() == fecha) {
 	        res = itA.Siguiente().dameCantA();
 	    }
@@ -338,7 +342,7 @@ LinkLinkIt::ItAcceso::ItAcceso()
 }
 
 
-LinkLinkIt::ItAcceso::ItAcceso(Lista<Acceso> ac)
+LinkLinkIt::ItAcceso::ItAcceso(Lista<Acceso> &ac)
 {
     _itLista = ac.CrearIt();
 }
