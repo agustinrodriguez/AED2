@@ -36,8 +36,6 @@ namespace aed2
                         bool HaySiguiente() const;
                         Acceso& Siguiente() const;
                         void Avanzar();
-                        void EliminarSiguiente();
-                        void AgregarComoSiguiente(const Acceso& elem);
                         bool operator==(const ItAcceso& otro) const;
                     private:
                         Lista<Acceso>::Iterador _itLista;
@@ -69,15 +67,13 @@ namespace aed2
             //creacion de la clase iterador de datoslink
             class itLinks {
                 public:
-                    itLinks(Lista<DatosLink> ldl);
+                    itLinks(Lista<DatosLink>& ldl);
                     itLinks();
                     ~itLinks();
                     itLinks(const itLinks& otroIt);
                     bool HaySiguiente() const;
                     DatosLink& Siguiente() const;
                     void Avanzar();
-                    void EliminarSiguiente();
-                    void AgregarComoSiguiente(const DatosLink& elem);
                     bool operator==(const itLinks& otro) const;
                 private:
                     Lista<DatosLink>::Iterador _itLista;
@@ -88,7 +84,7 @@ namespace aed2
             class itPunLinks {
                 public:
                     itPunLinks();
-                    itPunLinks(Lista<DatosLink*> ldl);
+                    itPunLinks(Lista<DatosLink*>& ldl);
                     itPunLinks(const itPunLinks& otroIt);
                     ~itPunLinks();
                     bool HaySiguiente() const;
@@ -102,7 +98,7 @@ namespace aed2
                     bool operator==(const itPunLinks& otro) const;
                 private:
                     Lista<DatosLink*>::Iterador _itLista;
-                    Lista<DatosLink*> _lista;
+
             };
 
             LinkLinkIt(ArbolCategorias *acat);
@@ -112,7 +108,7 @@ namespace aed2
             ArbolCategorias dameAcatLli() const;
             ArbolCategorias::ItCategorias categoriasLli();
             Fecha fechaActual();
-            itLinks linksLli() const;
+            itLinks linksLli();
             Categoria categoriaLink(Link link) const;
             Fecha fechaUltimoAcceso(Link link);
             int accesosRecientesDia(Link link, Fecha fecha);

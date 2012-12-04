@@ -74,7 +74,7 @@ int ArbolCategorias::DatosCat::dameAltura() const
     return _altura;
 }
 
-ArbolCategorias::ItHijos ArbolCategorias::DatosCat::dameHijos() const
+ArbolCategorias::ItHijos ArbolCategorias::DatosCat::dameHijos()
 {
     return ItHijos(_hijos);
 }
@@ -89,11 +89,11 @@ void ArbolCategorias::DatosCat::agregarHijo(DatosCat* h){
 }
 
 bool ArbolCategorias::DatosCat::operator==(const DatosCat& otro) const{
-    bool altura = dameAltura() == otro.dameAltura();
-    bool cat = dameCat() == otro.dameCat();
-    bool id = dameId() == otro.dameId();
-    bool hijos = dameHijos() == otro.dameHijos();
-    bool padre = damePadre() == otro.damePadre();
+    bool altura = _altura == otro._altura;
+    bool cat = _categoria == otro._categoria;
+    bool id = _id == otro._id;
+    bool hijos = _hijos == otro._hijos;
+    bool padre = _padre == otro._padre;
     return altura && cat && id && hijos && padre;
 }
 
@@ -127,7 +127,7 @@ int ArbolCategorias::alturaCatAC(const Categoria c) const
 
 }
 
-ArbolCategorias::ItHijos ArbolCategorias::hijosAC(const Categoria& c) const
+ArbolCategorias::ItHijos ArbolCategorias::hijosAC(const Categoria& c)
 {
     return _familia.Obtener(c)->dameHijos();
 }
@@ -244,12 +244,12 @@ ArbolCategorias::ItHijos::ItHijos()
 
 }
 
-ArbolCategorias::ItHijos::ItHijos(const ArbolCategorias::ItHijos& otroIt)
+ArbolCategorias::ItHijos::ItHijos(const ArbolCategorias::ItHijos &otroIt)
 {
     _itConj= otroIt._itConj;
 }
 
-ArbolCategorias::ItHijos::ItHijos(Conj<DatosCat*> cdc)
+ArbolCategorias::ItHijos::ItHijos(Conj<DatosCat*> &cdc)
 {
     _itConj = cdc.CrearIt();
 }

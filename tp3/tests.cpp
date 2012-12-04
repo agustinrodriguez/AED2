@@ -58,6 +58,7 @@ Categoria c3 = a.categoriasAC().Siguiente();
 ASSERT_EQ(a.categoriasAC().Siguiente() == "categoria1",true);
 ArbolCategorias::ItCategorias itA = ArbolCategorias::ItCategorias(a.categoriasAC());
 ASSERT(itA == a.categoriasAC());
+ASSERT(a.hijosAC(raiz).Siguiente() == c1);
 
 }
 
@@ -207,7 +208,7 @@ void LinkLinkItNuevo(){
     lli.accederLli("link", 120);
     ASSERT_EQ(lli.fechaActual(), 120);
     ASSERT_EQ(lli.fechaUltimoAcceso("link"), 120);
-//    ASSERT_EQ(lli.accesosRecientesDia("link", 122), 1); EL IT ACCESOS NO AVANZA. ITERADOR MALVADO, DEJAME AVANZARTE.
+    ASSERT_EQ(lli.accesosRecientesDia("link", 120), 1);
 
     delete acat;
 }
