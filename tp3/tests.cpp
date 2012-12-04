@@ -54,6 +54,11 @@ ASSERT_EQ(a.alturaCatAC(c1),2);
 ASSERT_EQ(a.idAC(c1),2);
 ASSERT_EQ(a.alturaAC(),2);
 ASSERT_EQ(a.dameCantidad(),2);
+Categoria c3 = a.categoriasAC().Siguiente();
+ASSERT_EQ(a.categoriasAC().Siguiente() == "categoria1",true);
+ArbolCategorias::ItCategorias itA = ArbolCategorias::ItCategorias(a.categoriasAC());
+ASSERT(itA == a.categoriasAC());
+
 }
 
 void arbolNuevoConRaizTieneHijoVacio(){

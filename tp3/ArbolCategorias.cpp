@@ -103,7 +103,7 @@ ArbolCategorias::DatosCat* ArbolCategorias::obtenerAC(const Categoria c) const
     return _familia.Obtener(c);
 }
 
-ArbolCategorias::ItCategorias ArbolCategorias::categoriasAC() const
+ArbolCategorias::ItCategorias ArbolCategorias::categoriasAC()
 {
     ItCategorias itCat = ItCategorias(_categorias);
     return itCat;
@@ -205,7 +205,7 @@ ArbolCategorias::ItCategorias::ItCategorias()
 
 }
 
-ArbolCategorias::ItCategorias::ItCategorias(Lista<DatosCat*> ldc)
+ArbolCategorias::ItCategorias::ItCategorias(Lista<DatosCat*>& ldc)
 {
     _itLista = ldc.CrearIt();
 }
