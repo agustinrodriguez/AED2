@@ -4,17 +4,17 @@
 	<File name="ArbolCategorias.cpp" open="1" top="0" tabpos="4">
 		<Cursor position="1066" topLine="22" />
 	</File>
-	<File name="ArbolCategorias.h" open="1" top="0" tabpos="5">
-		<Cursor position="1459" topLine="35" />
+	<File name="ArbolCategorias.h" open="1" top="1" tabpos="5">
+		<Cursor position="601" topLine="61" />
 	</File>
 	<File name="DiccTrie.h" open="1" top="0" tabpos="8">
-		<Cursor position="1982" topLine="81" />
+		<Cursor position="1982" topLine="80" />
 	</File>
 	<File name="Driver.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="1930" topLine="84" />
+		<Cursor position="1930" topLine="82" />
 	</File>
 	<File name="LinkLinkIt.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="6855" topLine="243" />
+		<Cursor position="10293" topLine="437" />
 	</File>
 	<File name="LinkLinkIt.h" open="1" top="0" tabpos="3">
 		<Cursor position="4746" topLine="95" />
@@ -22,7 +22,7 @@
 	<File name="aed2.h" open="1" top="0" tabpos="7">
 		<Cursor position="316" topLine="0" />
 	</File>
-	<File name="tests.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="8143" topLine="198" />
+	<File name="tests.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="9095" topLine="215" />
 	</File>
 </CodeBlocks_layout_file>

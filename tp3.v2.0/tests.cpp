@@ -264,15 +264,14 @@ void LLIGigante(){
 }
 
 int main(void) {
-        RUN_TEST(arbolNuevoEsVacio);
-        RUN_TEST(arbolNuevoConRaizTieneHijoVacio);
-      //  RUN_TEST(datosLinkNuevoEsVacio); //ANDA VERIFICAR DELETE
-      //  RUN_TEST(datosLinkConDatos);//ANDA VERIFICAR DELETE
-        RUN_TEST(accesoTest);//ANDA
-        RUN_TEST(accesoTestConConstr);//ANDA
-        RUN_TEST(LinkLinkItNuevo); //TIRA MUCHOS NUMERITOS JA
-        RUN_TEST(testLinkNuevo);
-        RUN_TEST(LLIGigante);
-
+    RUN_TEST(arbolNuevoEsVacio);
+    RUN_TEST(arbolNuevoConRaizTieneHijoVacio);
+  //  RUN_TEST(datosLinkNuevoEsVacio); //ANDA VERIFICAR DELETE
+  //  RUN_TEST(datosLinkConDatos);//ANDA VERIFICAR DELETE
+    RUN_TEST(accesoTest);//ANDA
+    RUN_TEST(accesoTestConConstr);//ANDA
+    RUN_TEST(LinkLinkItNuevo); //TIRA MUCHOS NUMERITOS JA
+    RUN_TEST(testLinkNuevo);
+    RUN_TEST(LLIGigante);
 	return 0;
 }

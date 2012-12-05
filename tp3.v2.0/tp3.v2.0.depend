@@ -1,0 +1,220 @@
+# depslib dependency file v1.0
+1354687505 source:/home/agustin/facu/aed2/tp3.v2.0/main.cpp
+	<iostream>
+
+1354686838 source:/home/agustin/facu/aed2/tp3.v2.0/ArbolCategorias.cpp
+	"ArbolCategorias.h"
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/ArbolCategorias.h
+	"aed2.h"
+	"DiccTrie.h"
+	"Tipos.h"
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/aed2.h
+	"aed2/TiposBasicos.h"
+	"aed2/Arreglo.h"
+	"aed2/Lista.h"
+	"aed2/Vector.h"
+	"aed2/Dicc.h"
+	"aed2/Conj.h"
+	"aed2/ConjAcotado.h"
+	"test/test.h"
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/aed2/TiposBasicos.h
+	<iostream>
+	<string>
+	<cassert>
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/aed2/Arreglo.h
+	"TiposBasicos.h"
+	"Arreglo.cpp"
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/aed2/Arreglo.cpp
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/aed2/Lista.h
+	<iostream>
+	"TiposBasicos.h"
+	"Lista.cpp"
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/aed2/Lista.cpp
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/aed2/Vector.h
+	"TiposBasicos.h"
+	"Arreglo.h"
+	"Vector.cpp"
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/aed2/Vector.cpp
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/aed2/Dicc.h
+	<ostream>
+	"Lista.h"
+	"Dicc.cpp"
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/aed2/Dicc.cpp
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/aed2/Conj.h
+	<iostream>
+	"Dicc.h"
+	"Conj.cpp"
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/aed2/Conj.cpp
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/aed2/ConjAcotado.h
+	<iostream>
+	"TiposBasicos.h"
+	"Arreglo.h"
+	"Conj.h"
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/test/test.h
+	"../aed2/TiposBasicos.h"
+	<algorithm>
+	<functional>
+	<list>
+	<map>
+	<ostream>
+	<sstream>
+
+1354686944 /home/agustin/facu/aed2/tp3.v2.0/DiccTrie.h
+	"aed2.h"
+	<string>
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/Tipos.h
+	<iostream>
+
+1354686838 source:/home/agustin/facu/aed2/tp3.v2.0/Driver.cpp
+	"Driver.h"
+	<iostream>
+	<sstream>
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/Driver.h
+	<stdlib.h>
+	"aed2.h"
+	"Tipos.h"
+	"ArbolCategorias.h"
+	"LinkLinkIt.h"
+
+1354686838 /home/agustin/facu/aed2/tp3.v2.0/LinkLinkIt.h
+	"aed2.h"
+	"ArbolCategorias.h"
+	"DiccTrie.h"
+
+1354686838 source:/home/agustin/facu/aed2/tp3.v2.0/LinkLinkIt.cpp
+	"LinkLinkIt.h"
+	"ArbolCategorias.h"
+
+1354687707 source:/home/agustin/facu/aed2/tp3.v2.0/tests.cpp
+	"Driver.h"
+	<stdarg.h>
+	"LinkLinkIt.h"
+	"ArbolCategorias.h"
+	<iostream>
+	<sstream>
+
+1354687974 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\driver.cpp
+	"Driver.h"
+	<iostream>
+	<sstream>
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\driver.h
+	<stdlib.h>
+	"aed2.h"
+	"Tipos.h"
+	"ArbolCategorias.h"
+	"LinkLinkIt.h"
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\aed2.h
+	"aed2/TiposBasicos.h"
+	"aed2/Arreglo.h"
+	"aed2/Lista.h"
+	"aed2/Vector.h"
+	"aed2/Dicc.h"
+	"aed2/Conj.h"
+	"aed2/ConjAcotado.h"
+	"test/test.h"
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\aed2\tiposbasicos.h
+	<iostream>
+	<string>
+	<cassert>
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\aed2\arreglo.h
+	"TiposBasicos.h"
+	"Arreglo.cpp"
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\aed2\arreglo.cpp
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\aed2\lista.h
+	<iostream>
+	"TiposBasicos.h"
+	"Lista.cpp"
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\aed2\lista.cpp
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\aed2\vector.h
+	"TiposBasicos.h"
+	"Arreglo.h"
+	"Vector.cpp"
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\aed2\vector.cpp
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\aed2\dicc.h
+	<ostream>
+	"Lista.h"
+	"Dicc.cpp"
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\aed2\dicc.cpp
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\aed2\conj.h
+	<iostream>
+	"Dicc.h"
+	"Conj.cpp"
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\aed2\conj.cpp
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\aed2\conjacotado.h
+	<iostream>
+	"TiposBasicos.h"
+	"Arreglo.h"
+	"Conj.h"
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\test\test.h
+	"../aed2/TiposBasicos.h"
+	<algorithm>
+	<functional>
+	<list>
+	<map>
+	<ostream>
+	<sstream>
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\tipos.h
+	<iostream>
+
+1354713972 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\arbolcategorias.h
+	"aed2.h"
+	"DiccTrie.h"
+	"Tipos.h"
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\dicctrie.h
+	"aed2.h"
+	<string>
+
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\linklinkit.h
+	"aed2.h"
+	"ArbolCategorias.h"
+	"DiccTrie.h"
+
+1354687974 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\linklinkit.cpp
+	"LinkLinkIt.h"
+	"ArbolCategorias.h"
+
+1354714172 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\tests.cpp
+	"Driver.h"
+	<stdarg.h>
+	"LinkLinkIt.h"
+	"ArbolCategorias.h"
+	<iostream>
+	<sstream>
+
+1354714030 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\arbolcategorias.cpp
+	"ArbolCategorias.h"
+

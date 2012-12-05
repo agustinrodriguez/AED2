@@ -299,7 +299,7 @@
 	"DiccTrie.h"
 	"Tipos.h"
 
-1354201634 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\dicctrie.h
+1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\dicctrie.h
 	"aed2.h"
 	<string>
 
@@ -312,7 +312,7 @@
 	"LinkLinkIt.h"
 	"ArbolCategorias.h"
 
-1354687751 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\tests.cpp
+1354688020 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\tests.cpp
 	"Driver.h"
 	<stdarg.h>
 	"LinkLinkIt.h"
