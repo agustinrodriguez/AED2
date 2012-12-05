@@ -110,7 +110,7 @@
 	<iostream>
 	<sstream>
 
-1354687974 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\driver.cpp
+1354717501 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\driver.cpp
 	"Driver.h"
 	<iostream>
 	<sstream>
@@ -198,16 +198,16 @@
 	"aed2.h"
 	<string>
 
-1354687974 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\linklinkit.h
+1354717866 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\linklinkit.h
 	"aed2.h"
 	"ArbolCategorias.h"
 	"DiccTrie.h"
 
-1354687974 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\linklinkit.cpp
+1354717938 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\linklinkit.cpp
 	"LinkLinkIt.h"
 	"ArbolCategorias.h"
 
-1354714172 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\tests.cpp
+1354718998 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\tests.cpp
 	"Driver.h"
 	<stdarg.h>
 	"LinkLinkIt.h"

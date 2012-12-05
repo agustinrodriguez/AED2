@@ -47,7 +47,7 @@ namespace aed2
                     DatosLink(Link l, Categoria cat, Lista<Acceso> la, int i);
                     ~DatosLink();
                     const Link& dameLink() const;
-                    Categoria dameCatDLink();
+                    const Categoria& dameCatDLink();
                     Lista<Acceso> dameAccesos();
                     int dameCantAccesos();
                     void nuevoLink(String l);

@@ -33,16 +33,11 @@ LinkLinkIt::DatosLink::DatosLink(){
 }
 
 LinkLinkIt::DatosLink::~DatosLink(){
-    //Destruyo catDlink
-    if(_catDLink != NULL)
-    {
-        _catDLink = NULL;
-    }
     //Destruyo lista de accesos
     _accesosRecientes.~Lista();
 }
 
-LinkLinkIt::DatosLink::DatosLink(Link l, ArbolCategorias::Categoria cat, Lista<Acceso> la, int i){
+LinkLinkIt::DatosLink::DatosLink(Link l,Categoria cat, Lista<Acceso> la, int i){
     _link = l;
     _catDLink = cat;
     _accesosRecientes = la;
@@ -55,7 +50,7 @@ const Link& LinkLinkIt::DatosLink::dameLink() const{
 }
 
 
-Categoria LinkLinkIt::DatosLink::dameCatDLink(){
+const Categoria& LinkLinkIt::DatosLink::dameCatDLink(){
     return _catDLink;
 }
 
@@ -75,7 +70,7 @@ void LinkLinkIt::DatosLink::nuevoLink(String l){
 }
 
 void LinkLinkIt::DatosLink::nuevaCat(Categoria cat){
-    _catDLink = c;
+    _catDLink = cat;
 }
 
 void LinkLinkIt::DatosLink::agregarAcceso(Acceso acceso)
@@ -99,7 +94,7 @@ bool LinkLinkIt::DatosLink::operator==(DatosLink& otro) const{
         if (res) {
             res = _cantAccesosRecientes == otro.dameCantAccesos();
             if (res) {
-                res = *_catDLink == otro.dameCatDLink();
+                res = _catDLink == otro.dameCatDLink();
             }
         }
     }
@@ -164,7 +159,7 @@ LinkLinkIt::itLinks LinkLinkIt::linksLli()
 
 Categoria LinkLinkIt::categoriaLink(Link link) const
 {
-	return _linkInfo.Obtener(link)->dameCatDLink().dameCat();
+	return _linkInfo.Obtener(link)->dameCatDLink();
 }
 
 Fecha LinkLinkIt::fechaUltimoAcceso(Link link)
@@ -204,18 +199,15 @@ void LinkLinkIt::iniciarLli(ArbolCategorias *acat) {
 }
 
 void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
-
-    ArbolCategorias::DatosCat* puntCat = _acat->obtenerAC(categoria);
  	Lista<Acceso> accesoDeNuevoLink = Lista<Acceso>();
-    DatosLink* puntLink = new DatosLink(link, puntCat, accesoDeNuevoLink, 0);
-
+    DatosLink* puntLink = new DatosLink(link, categoria, accesoDeNuevoLink, 0);
     _linkInfo.Definir(link, puntLink);
     _listaLinks.AgregarAtras(*puntLink);
-
-    while(!(puntCat == NULL))
+    ArbolCategorias::ItFamilia familia = _acat->CrearItFamilia(categoria);
+    while(familia.HaySiguiente())
     {
-        _arrayCatLinks[puntCat->dameId() - 1].AgregarAtras(puntLink);
-        puntCat = puntCat->damePadre();
+        _arrayCatLinks[familia.SiguienteId() - 1].AgregarAtras(puntLink);
+        familia.Avanzar();
     }
 
 }
@@ -470,7 +462,7 @@ bool LinkLinkIt::itPunLinks::estaOrdenada(Fecha fecha){
 }
 
 Categoria LinkLinkIt::itPunLinks::SiguienteCat() const{
-    return Siguiente()->dameCatDLink().dameCat();
+    return Siguiente()->dameCatDLink();
 }
 
 int LinkLinkIt::itPunLinks::SiguienteCantidadAccesosDelLink(){
