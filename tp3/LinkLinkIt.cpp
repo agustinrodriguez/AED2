@@ -238,11 +238,15 @@ void LinkLinkIt::accederLli(Link link, Fecha fecha){
         Lista<Acceso> nuevosAccesos = puntLink->dameAccesos();
         nuevosAccesos.Ultimo().guardoAcceso(a);
         puntLink->nuevoAccesos(nuevosAccesos);
-//        puntLink->dameAccesos().Ultimo().guardoAcceso(a);
     } else {
         Acceso nuevoAcceso = Acceso(fecha, 1);
         puntLink->agregarAcceso(nuevoAcceso);
-//        puntLink->dameAccesos().AgregarAtras(nuevoAcceso);
+    }
+    if (puntLink->dameAccesos().Longitud() == 4) {
+        puntLink->nuevoCantAccesosRecientes(puntLink->dameCantAccesos() - puntLink->dameAccesos().Primero().dameCantA());
+        Lista<Acceso> listaFin = puntLink->dameAccesos();
+        listaFin.Fin();
+        puntLink->nuevoAccesos(listaFin);
     }
 
     puntLink->nuevoCantAccesosRecientes(puntLink->dameCantAccesos() + 1);
@@ -256,24 +260,26 @@ int LinkLinkIt::cantLinks(Categoria categoria){
 
 LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
         int id = dameAcatLli().idAC(categoria);
-        itPunLinks *itParaFecha = new itPunLinks(_arrayCatLinks[id]);
-        Fecha fecha = itParaFecha->ultFecha();
+        itPunLinks itParaFecha = itPunLinks(_arrayCatLinks[id-1]);
+        Fecha fecha = itParaFecha.ultFecha();
         Lista<DatosLink*> listaOrdenada = Lista<DatosLink*>();
-        if (!(itParaFecha->estaOrdenada()))
+        itPunLinks itMax;
+
+        if (!(itParaFecha.estaOrdenada(fecha)))
         {
-            itPunLinks itMax = itPunLinks(_arrayCatLinks[id]);
-            while(_arrayCatLinks[id].Longitud() != 0)
+            while(_arrayCatLinks[id-1].Longitud() != 0)
             {
+                itMax = itPunLinks(_arrayCatLinks[id-1]);
                 itMax = itMax.BuscarMax(fecha);
                 listaOrdenada.AgregarAtras(itMax.Siguiente());
                 itMax.EliminarSiguiente();
             }
-            _arrayCatLinks.Definir(id,listaOrdenada);
+            _arrayCatLinks.Definir(id-1, listaOrdenada);
 
         }
 
-       return itPunLinks(_arrayCatLinks[id]);
-       //LE SAQUE EL CONST YA QUE CON EL CONST NO PUEDO MODIFICAR _ARRAYCATLINKS HABRIA QUE HACER UNA OPERACION PARA PODER MOD
+       return itPunLinks(_arrayCatLinks[id-1]);
+
 }
 
 //////////////////////////////////////////
@@ -303,9 +309,9 @@ bool LinkLinkIt::itLinks::HaySiguiente() const
     return _itLista.HaySiguiente();
 }
 
-LinkLinkIt::DatosLink& LinkLinkIt::itLinks::Siguiente() const
+Link LinkLinkIt::itLinks::Siguiente() const
 {
- return _itLista.Siguiente();
+    return _itLista.Siguiente().dameLink();
 }
 
 void LinkLinkIt::itLinks::Avanzar()
@@ -393,6 +399,11 @@ LinkLinkIt::DatosLink* LinkLinkIt::itPunLinks::Siguiente() const
  return _itLista.Siguiente();
 }
 
+Link LinkLinkIt::itPunLinks::SiguienteLink() const{
+
+    return _itLista.Siguiente()->dameLink();
+}
+
 void LinkLinkIt::itPunLinks::Avanzar()
 {
     _itLista.Avanzar();
@@ -418,10 +429,14 @@ LinkLinkIt::itPunLinks LinkLinkIt::itPunLinks::BuscarMax(Fecha f){
 }
 
 Fecha LinkLinkIt::itPunLinks::ultFecha(){
-    int res = Siguiente()->dameAccesos().Ultimo().dameDia();
+    int res = 0;
+    if (!Siguiente()->dameAccesos().EsVacia()) {
+        res = Siguiente()->dameAccesos().Ultimo().dameDia();
+    }
+
     while(HaySiguiente())
     {
-        if(res < Siguiente()->dameAccesos().Ultimo().dameDia()){
+        if(!Siguiente()->dameAccesos().EsVacia() && res < Siguiente()->dameAccesos().Ultimo().dameDia()){
             res = Siguiente()->dameAccesos().Ultimo().dameDia();
         }
         Avanzar();
@@ -430,7 +445,8 @@ Fecha LinkLinkIt::itPunLinks::ultFecha(){
 }
 
 int LinkLinkIt::itPunLinks::cantAccesosDesde(Fecha f){
-    ItAcceso itAcc;
+    Lista<Acceso> lA = Siguiente()->dameAccesos();
+    ItAcceso itAcc = ItAcceso(lA);
     int res = 0;
     while(itAcc.HaySiguiente())
     {
@@ -442,7 +458,15 @@ int LinkLinkIt::itPunLinks::cantAccesosDesde(Fecha f){
     }
     return res;
 }
-bool LinkLinkIt::itPunLinks::estaOrdenada(){
+bool LinkLinkIt::itPunLinks::estaOrdenada(Fecha fecha){
+   // bool res = true;
+    //int aux = 0;
+//
+//    while (haySiguiente()) {
+//        if (cantAccesosDesde()) {
+//
+//        }
+//    }
     return false;
 }
 

@@ -72,7 +72,7 @@ namespace aed2
                     ~itLinks();
                     itLinks(const itLinks& otroIt);
                     bool HaySiguiente() const;
-                    DatosLink& Siguiente() const;
+                    Link Siguiente() const;
                     void Avanzar();
                     bool operator==(const itLinks& otro) const;
                 private:
@@ -89,12 +89,13 @@ namespace aed2
                     ~itPunLinks();
                     bool HaySiguiente() const;
                     DatosLink* Siguiente() const;
+                    Link SiguienteLink() const;
                     void Avanzar();
                     void EliminarSiguiente();
                     itPunLinks BuscarMax(Fecha f);
                     Fecha ultFecha();
                     int cantAccesosDesde(Fecha f);
-                    bool estaOrdenada();
+                    bool estaOrdenada(Fecha f);
                     bool operator==(const itPunLinks& otro) const;
                 private:
                     Lista<DatosLink*>::Iterador _itLista;
