@@ -247,16 +247,17 @@ void LLIGigante(){
     acat->agregarAC("miniCat5", "miniCat4");
     ArbolCategorias *acat2 = new ArbolCategorias(cat);
     acat2->agregarAC("miniCat", cat);
-    acat2->agregarAC("miniCat3", cat);
     acat2->agregarAC("miniCat2", cat);
+    acat2->agregarAC("miniCat3", cat);
+
     acat2->agregarAC("miniCat4", "miniCat2");
     acat2->agregarAC("miniCat5", "miniCat4");
+    ASSERT(*acat == *acat2);
     LinkLinkIt lli = LinkLinkIt(acat);
     lli.nuevoLinkLli("link", "cat");
     ASSERT_EQ(lli.categoriaLink("link"), "cat");
     ASSERT_EQ(lli.cantLinks("cat"), 1);
     lli.accederLli("link", 120);
-    ASSERT((*acat == *acat2));
     ASSERT_EQ(lli.fechaActual(), 120);
     ASSERT_EQ(lli.fechaUltimoAcceso("link"), 120);
     ASSERT_EQ(lli.accesosRecientesDia("link", 120), 1);
