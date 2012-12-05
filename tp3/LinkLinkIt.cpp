@@ -156,7 +156,7 @@ Fecha LinkLinkIt::fechaActual(){
 }
 
 
-LinkLinkIt::itLinks LinkLinkIt::linksLli() const
+LinkLinkIt::itLinks LinkLinkIt::linksLli()
 {
     itLinks res = itLinks(_listaLinks);
  	return res;
@@ -278,11 +278,8 @@ LinkLinkIt::itLinks::itLinks(){
 
 }
 
-LinkLinkIt::itLinks::itLinks(Lista<DatosLink> ldl){
-       Lista<DatosLink> ld = Lista<DatosLink>();
-       ld = ldl;
-       _itLista = ldl.CrearIt();
-        _lista = ld;
+LinkLinkIt::itLinks::itLinks(Lista<DatosLink> &ldl){
+        _itLista = ldl.CrearIt();
 }
 
 LinkLinkIt::itLinks::itLinks(const itLinks& otroIt){
@@ -291,7 +288,7 @@ LinkLinkIt::itLinks::itLinks(const itLinks& otroIt){
 
 LinkLinkIt::itLinks::~itLinks()
     {
-        _lista.~Lista();
+
     }
 
 
@@ -308,16 +305,6 @@ LinkLinkIt::DatosLink& LinkLinkIt::itLinks::Siguiente() const
 void LinkLinkIt::itLinks::Avanzar()
 {
     _itLista.Avanzar();
-}
-
-void LinkLinkIt::itLinks::EliminarSiguiente()
-{
-    _itLista.EliminarSiguiente();
-}
-
-void LinkLinkIt::itLinks::AgregarComoSiguiente(const DatosLink& elem)
-{
-    _itLista.AgregarComoSiguiente(elem);
 }
 
 bool LinkLinkIt::itLinks::operator==(const itLinks& otro) const
@@ -339,7 +326,7 @@ LinkLinkIt::ItAcceso::ItAcceso(Lista<Acceso> &ac)
 }
 
 
-LinkLinkIt::ItAcceso::ItAcceso(const LinkLinkIt::ItAcceso& otroIt)
+LinkLinkIt::ItAcceso::ItAcceso(const LinkLinkIt::ItAcceso &otroIt)
 {
     _itLista = otroIt._itLista;
 }
@@ -368,16 +355,6 @@ void LinkLinkIt::ItAcceso::Avanzar()
     _itLista.Avanzar();
 }
 
-void LinkLinkIt::ItAcceso::EliminarSiguiente()
-{
-    _itLista.EliminarSiguiente();
-}
-
-void LinkLinkIt::ItAcceso::AgregarComoSiguiente(const Acceso& elem)
-{
-    _itLista.AgregarComoSiguiente(elem);
-}
-
 bool LinkLinkIt::ItAcceso::operator==(const ItAcceso& otro) const
 {
     return _itLista == otro._itLista;
@@ -387,18 +364,17 @@ LinkLinkIt::itPunLinks::itPunLinks(){
 
 }
 
-LinkLinkIt::itPunLinks::itPunLinks(const itPunLinks& otroIt){
+LinkLinkIt::itPunLinks::itPunLinks(const itPunLinks &otroIt){
     _itLista = otroIt._itLista;
 }
 
-LinkLinkIt::itPunLinks::itPunLinks(Lista<DatosLink*> ldl){
+LinkLinkIt::itPunLinks::itPunLinks(Lista<DatosLink*> &ldl){
     _itLista = ldl.CrearIt();
 }
 
 LinkLinkIt::itPunLinks::~itPunLinks()
 {
-    //Destruyo lista
-    _lista.~Lista();
+
 }
 
 bool LinkLinkIt::itPunLinks::HaySiguiente() const

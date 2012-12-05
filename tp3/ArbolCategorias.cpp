@@ -74,7 +74,7 @@ int ArbolCategorias::DatosCat::dameAltura() const
     return _altura;
 }
 
-ArbolCategorias::ItHijos ArbolCategorias::DatosCat::dameHijos() const
+ArbolCategorias::ItHijos ArbolCategorias::DatosCat::dameHijos()
 {
     return ItHijos(_hijos);
 }
@@ -89,14 +89,41 @@ void ArbolCategorias::DatosCat::agregarHijo(DatosCat* h){
 }
 
 bool ArbolCategorias::DatosCat::operator==(const DatosCat& otro) const{
-    bool altura = dameAltura() == otro.dameAltura();
-    bool cat = dameCat() == otro.dameCat();
-    bool id = dameId() == otro.dameId();
-    bool hijos = dameHijos() == otro.dameHijos();
-    bool padre = damePadre() == otro.damePadre();
+    bool altura = _altura == otro._altura;
+    bool cat = _categoria == otro._categoria;
+    bool id = _id == otro._id;
+    bool hijos = true;
+    bool padre = true;
+    Conj<DatosCat*> conj1 = _hijos;
+    Conj<DatosCat*> conj2 = otro._hijos;
+    ItHijos hijos1 = ItHijos(conj1);
+    ItHijos hijos2 = ItHijos(conj2);
+    while(hijos1.HaySiguiente() && hijos){
+        if(!(hijos2.definido(hijos1.Siguiente()))){
+            hijos = false;
+        }
+        hijos1.Avanzar();
+    }
+    if(_padre!=NULL && otro._padre!=NULL){
+        padre = _padre->dameCat() == otro._padre->dameCat();
+    }
+    else{
+        padre = _padre == NULL && otro._padre == NULL;
+    }
     return altura && cat && id && hijos && padre;
 }
 
+bool ArbolCategorias::ItHijos::definido(Categoria cat) const{
+    bool res = false;
+    ItHijos hijos = *this;
+    while(hijos.HaySiguiente() && !res){
+        if(hijos.Siguiente() == cat){
+            res = true;
+        }
+        hijos.Avanzar();
+    }
+    return res;
+}
 
 ArbolCategorias::DatosCat* ArbolCategorias::obtenerAC(const Categoria c) const
 {
@@ -127,7 +154,7 @@ int ArbolCategorias::alturaCatAC(const Categoria c) const
 
 }
 
-ArbolCategorias::ItHijos ArbolCategorias::hijosAC(const Categoria& c) const
+ArbolCategorias::ItHijos ArbolCategorias::hijosAC(const Categoria& c)
 {
     return _familia.Obtener(c)->dameHijos();
 }
@@ -244,12 +271,12 @@ ArbolCategorias::ItHijos::ItHijos()
 
 }
 
-ArbolCategorias::ItHijos::ItHijos(const ArbolCategorias::ItHijos& otroIt)
+ArbolCategorias::ItHijos::ItHijos(const ArbolCategorias::ItHijos &otroIt)
 {
     _itConj= otroIt._itConj;
 }
 
-ArbolCategorias::ItHijos::ItHijos(Conj<DatosCat*> cdc)
+ArbolCategorias::ItHijos::ItHijos(Conj<DatosCat*> &cdc)
 {
     _itConj = cdc.CrearIt();
 }
@@ -291,7 +318,7 @@ bool ArbolCategorias::operator==(const ArbolCategorias& acat) const{
     while(categorias1.HaySiguiente() && categorias2.HaySiguiente() && categorias && mismoDicc){
         categorias = (categorias1.Siguiente() == categorias2.Siguiente());
         if(categorias){
-        mismoDicc = (acat._familia.Obtener(categorias2.Siguiente()) == _familia.Obtener(categorias1.Siguiente()));
+        mismoDicc = (*acat._familia.Obtener(categorias2.Siguiente()) == *_familia.Obtener(categorias1.Siguiente()));
         }
         categorias1.Avanzar();
         categorias2.Avanzar();

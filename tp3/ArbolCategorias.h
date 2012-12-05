@@ -19,8 +19,8 @@ namespace aed2
         class ItCategorias{
             public:
                 ItCategorias();
-                ItCategorias(Lista<DatosCat*>& ldc);
-                ItCategorias(const ItCategorias& otroIt);
+                ItCategorias(Lista<DatosCat*> &ldc);
+                ItCategorias(const ItCategorias &otroIt);
                 ~ItCategorias();
                 bool HaySiguiente() const;
                 Categoria Siguiente() const;
@@ -33,15 +33,17 @@ namespace aed2
         class ItHijos{
             public:
                 ItHijos();
-                ItHijos(Conj<DatosCat*> cdc);
-                ItHijos(const ItHijos& otroIt);
+                ItHijos(Conj<DatosCat*> &cdc);
+                ItHijos(const ItHijos &otroIt);
                 ~ItHijos();
                 bool HaySiguiente() const;
                 const Categoria& Siguiente() const;
                 void Avanzar();
                 bool operator==(const ItHijos& otro) const;
+                bool definido(Categoria cat) const;
             private:
                 Conj<DatosCat*>::Iterador _itConj;
+
         };
 
         class DatosCat{
@@ -53,7 +55,7 @@ namespace aed2
                 const Categoria& dameCat() const;
                 int dameId() const;
                 int dameAltura() const;
-                ItHijos dameHijos() const;
+                ItHijos dameHijos();
                 DatosCat* damePadre() const;
                 void agregarHijo(DatosCat* h);
                 void copiarDc(DatosCat otroDc);
@@ -73,7 +75,7 @@ namespace aed2
 		const Categoria& raizAC() const;
 		int idAC(const Categoria& c) const;
         int alturaCatAC(const Categoria c) const;
-        ItHijos hijosAC(const Categoria& c) const;
+        ItHijos hijosAC(const Categoria& c);
         Categoria padreAC(const Categoria& c) const;
         int alturaAC() const;
         void agregarAC(const Categoria c, const Categoria cpadre);

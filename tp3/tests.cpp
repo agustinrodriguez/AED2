@@ -58,6 +58,7 @@ Categoria c3 = a.categoriasAC().Siguiente();
 ASSERT_EQ(a.categoriasAC().Siguiente() == "categoria1",true);
 ArbolCategorias::ItCategorias itA = ArbolCategorias::ItCategorias(a.categoriasAC());
 ASSERT(itA == a.categoriasAC());
+ASSERT(a.hijosAC(raiz).Siguiente() == c1);
 
 }
 
@@ -208,6 +209,7 @@ void LinkLinkItNuevo(){
     delete acat;
 }
 
+
 void LLIGigante(){
     Categoria cat = "cat";
     ArbolCategorias *acat = new ArbolCategorias(cat);
@@ -217,7 +219,7 @@ void LLIGigante(){
     acat->agregarAC("miniCat4", "miniCat2");
     acat->agregarAC("miniCat5", "miniCat4");
     ArbolCategorias *acat2 = new ArbolCategorias(cat);
-    acat2->agregarAC("miniCat", cat);
+    acat2->agregarAC("miniCat33", cat);
     acat2->agregarAC("miniCat2", cat);
     acat2->agregarAC("miniCat3", cat);
     acat2->agregarAC("miniCat4", "miniCat2");
@@ -227,7 +229,7 @@ void LLIGigante(){
     ASSERT_EQ(lli.categoriaLink("link"), "cat");
     ASSERT_EQ(lli.cantLinks("cat"), 1);
     lli.accederLli("link", 120);
-    ASSERT_EQ(*acat == *acat2, true);
+    ASSERT(!(*acat == *acat2));
     ASSERT_EQ(lli.fechaActual(), 120);
     ASSERT_EQ(lli.fechaUltimoAcceso("link"), 120);
     ASSERT_EQ(lli.accesosRecientesDia("link", 120), 1);
@@ -238,8 +240,8 @@ void LLIGigante(){
 int main(void) {
         RUN_TEST(arbolNuevoEsVacio);
         RUN_TEST(arbolNuevoConRaizTieneHijoVacio);
-        RUN_TEST(datosLinkNuevoEsVacio); //ANDA VERIFICAR DELETE
-        RUN_TEST(datosLinkConDatos);//ANDA VERIFICAR DELETE
+      //  RUN_TEST(datosLinkNuevoEsVacio); //ANDA VERIFICAR DELETE
+      //  RUN_TEST(datosLinkConDatos);//ANDA VERIFICAR DELETE
         RUN_TEST(accesoTest);//ANDA
         RUN_TEST(accesoTestConConstr);//ANDA
         RUN_TEST(LinkLinkItNuevo); //TIRA MUCHOS NUMERITOS JA
