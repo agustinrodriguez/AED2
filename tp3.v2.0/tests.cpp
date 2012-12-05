@@ -231,7 +231,9 @@ void LinkLinkItNuevo(){
     ASSERT_EQ(itP.SiguienteCantidadAccesosDelLink(),4);
     itP.Avanzar();
     ASSERT_EQ(itP.SiguienteLink() == "link",true);
-  //  delete acat;
+    LinkLinkIt::itPunLinks itP2 = LinkLinkIt::itPunLinks(lli.linksOrdenadosPorAccesos("cat"));
+    ASSERT_EQ(itP2.SiguienteLink() == "linkkk", true);
+    delete acat;
 }
 
 
@@ -277,16 +279,115 @@ void testAgregarLink(){
     delete acat;
 }
 
+void LLIGigante2(){
+    Categoria cat = "cat";
+    ArbolCategorias *acat = new ArbolCategorias(cat);
+    acat->agregarAC("miniCat", cat);
+    acat->agregarAC("miniCat2", cat);
+    acat->agregarAC("miniCat3", cat);
+    acat->agregarAC("miniCat4", "miniCat2");
+    acat->agregarAC("miniCat5", "miniCat4");
+    ArbolCategorias *acat2 = new ArbolCategorias(cat);
+    acat2->agregarAC("miniCat33", cat);
+    acat2->agregarAC("miniCat2", cat);
+    acat2->agregarAC("miniCat3", cat);
+    acat2->agregarAC("miniCat4", "miniCat2");
+    acat2->agregarAC("miniCat5", "miniCat4");
+    LinkLinkIt lli = LinkLinkIt(acat);
+    lli.nuevoLinkLli("link", "cat");
+    ASSERT_EQ(lli.categoriaLink("link"), "cat");
+    ASSERT_EQ(lli.cantLinks("cat"), 1);
+    lli.accederLli("link", 120);
+    ASSERT(!(*acat == *acat2));
+    ASSERT_EQ(lli.fechaActual(), 120);
+    ASSERT_EQ(lli.fechaUltimoAcceso("link"), 120);
+    ASSERT_EQ(lli.accesosRecientesDia("link", 120), 1);
+    lli.nuevoLinkLli("linkk", "miniCat5");
+    lli.nuevoLinkLli("linkk1", "miniCat5");
+    lli.nuevoLinkLli("linkk2", "miniCat5");
+    lli.accederLli("link", 122);
+    lli.accederLli("link", 122);
+    lli.accederLli("link", 122);
+    lli.accederLli("link", 122);
+    lli.accederLli("linkk2", 122);
+    lli.accederLli("linkk2", 122);
+    lli.accederLli("linkk2", 122);
+    lli.accederLli("linkk2", 122);
+    lli.accederLli("linkk2", 122);
+    lli.accederLli("linkk2", 122);
+    ASSERT_EQ(lli.fechaActual(), 122);
+    ASSERT_EQ(lli.fechaUltimoAcceso("link"), 122);
+    ASSERT_EQ(lli.accesosRecientesDia("link", 122), 4);
+    ASSERT_EQ(lli.cantLinks("cat"), 4);
+    ASSERT_EQ(lli.linksLli().Siguiente() == "link", true);
+    LinkLinkIt::itPunLinks itP = LinkLinkIt::itPunLinks(lli.linksOrdenadosPorAccesos("cat"));
+    Link l = itP.SiguienteLink();
+    ASSERT_EQ(itP.SiguienteLink() == "linkk2", true);
+    ASSERT_EQ(itP.SiguienteCantidadAccesosDelLink(),6);
+    itP.Avanzar();
+    ASSERT_EQ(itP.SiguienteLink() == "link",true);
+    itP.Avanzar();
+    ASSERT_EQ(itP.SiguienteLink() == "linkk",true);
+    ASSERT_EQ(itP.SiguienteCantidadAccesosDelLink() == 0,true);
+    itP.Avanzar();
+    ASSERT_EQ(itP.SiguienteLink() == "linkk1",true);
+    ASSERT_EQ(itP.SiguienteCantidadAccesosDelLink() == 0,true);
+    LinkLinkIt::itPunLinks itP2 = LinkLinkIt::itPunLinks(lli.linksOrdenadosPorAccesos("cat"));
+    ASSERT_EQ(itP2.SiguienteLink() == "linkk2", true);
+    ASSERT_EQ(lli.cantLinks("miniCat5"), 3);
+    ASSERT_EQ(lli.cantLinks("miniCat4"), 3);
+    lli.nuevoLinkLli("linkk5", "miniCat2");
+    ASSERT_EQ(lli.cantLinks("miniCat2"), 4);
+    ASSERT_EQ(lli.cantLinks("cat"), 5);
+    lli.accederLli("linkk5", 124);
+    lli.accederLli("linkk5", 124);
+    lli.accederLli("linkk5", 124);
+    lli.accederLli("linkk5", 124);
+    lli.accederLli("linkk5", 124);
+    lli.accederLli("linkk5", 124);
+    lli.accederLli("linkk5", 124);
+    lli.accederLli("linkk5", 124);
+    lli.accederLli("linkk2", 124);
+    LinkLinkIt::itPunLinks itP3 = LinkLinkIt::itPunLinks(lli.linksOrdenadosPorAccesos("cat"));
+    ASSERT_EQ(itP3.SiguienteLink() == "linkk5", true);
+    ASSERT_EQ(itP3.SiguienteCantidadAccesosDelLink() == 8, true);
+    itP3.Avanzar();
+    ASSERT_EQ(itP3.SiguienteLink() == "linkk2", true);
+    ASSERT_EQ(itP3.SiguienteCantidadAccesosDelLink() == 7, true);
+    LinkLinkIt::itLinks itL = LinkLinkIt::itLinks(lli.linksLli());
+    ASSERT_EQ(itL.Siguiente() == "link", true);
+    itL.Avanzar();
+    ASSERT_EQ(itL.Siguiente() == "linkk", true);
+    itL.Avanzar();
+    ASSERT_EQ(itL.Siguiente() == "linkk1", true);
+    itL.Avanzar();
+    ASSERT_EQ(itL.Siguiente() == "linkk2", true);
+    itL.Avanzar();
+    ASSERT_EQ(itL.Siguiente() == "linkk5", true);
+    ASSERT_EQ(lli.fechaActual() == 124, true);
+    ASSERT_EQ(lli.categoriaLink("linkk5") == "miniCat2", true);
+    ASSERT_EQ(lli.accesosRecientesDia("linkk5",123), 0);
+    ASSERT_EQ(lli.dameAcatLli().dameCantidad(),6);
+    ASSERT_EQ(lli.dameAcatLli().idAC("miniCat2"),3);
+    ASSERT_EQ(lli.dameAcatLli().alturaAC(),4);
+    ASSERT_EQ(lli.dameAcatLli().esta("mini"), false);
+    ASSERT_EQ(lli.dameAcatLli().esta("miniCat2"), true);
+    ASSERT_EQ(lli.dameAcatLli().esSubCategoria("cat","miniCat2"), true);
+    ASSERT_EQ(lli.dameAcatLli().esSubCategoria("miniCat2","miniCat2"), true);
+    ASSERT_EQ(lli.dameAcatLli().esSubCategoria("miniCat5","miniCat2"), false);
+    delete acat;
+    delete acat2;
+}
+
 int main(void) {
     RUN_TEST(arbolNuevoEsVacio);
     RUN_TEST(arbolNuevoConRaizTieneHijoVacio);
-  //  RUN_TEST(datosLinkNuevoEsVacio); //ANDA VERIFICAR DELETE
-  //  RUN_TEST(datosLinkConDatos);//ANDA VERIFICAR DELETE
-    RUN_TEST(accesoTest);//ANDA
-    RUN_TEST(accesoTestConConstr);//ANDA
-    RUN_TEST(LinkLinkItNuevo); //TIRA MUCHOS NUMERITOS JA
+    RUN_TEST(accesoTest);
+    RUN_TEST(accesoTestConConstr);
+    RUN_TEST(LinkLinkItNuevo);
     RUN_TEST(testLinkNuevo);
     RUN_TEST(LLIGigante);
+    RUN_TEST(LLIGigante2);
     RUN_TEST(testAgregarLink);
 	return 0;
 }

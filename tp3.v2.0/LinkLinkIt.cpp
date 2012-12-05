@@ -6,7 +6,6 @@ LinkLinkIt::LinkLinkIt(ArbolCategorias* acat)
 {
     _actual = 1;
     _acat = acat;
-//    _linkInfo = DiccTrie<DatosLink*>(); NO SE XQ ROMPE, PERO CREO QUE NO IMPORTA
     _arrayCatLinks = Arreglo<Lista<DatosLink*> >(_acat->dameCantidad());
     _listaLinks = Lista<DatosLink>();
 
@@ -138,7 +137,7 @@ bool LinkLinkIt::Acceso::operator==(const LinkLinkIt::Acceso& otro) const{
     return iguales;
 }
 
-ArbolCategorias LinkLinkIt::dameAcatLli() const{
+ArbolCategorias& LinkLinkIt::dameAcatLli() const{
 	return *_acat;
 }
 
@@ -241,7 +240,7 @@ void LinkLinkIt::accederLli(Link link, Fecha fecha){
 
 
 int LinkLinkIt::cantLinks(Categoria categoria){
-    	return _listaLinks.Longitud();
+    	return _arrayCatLinks[_acat->idAC(categoria)-1].Longitud();
 }
 
 LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
@@ -450,7 +449,8 @@ int LinkLinkIt::itPunLinks::cantAccesosDesde(Fecha f){
 }
 bool LinkLinkIt::itPunLinks::estaOrdenada(Fecha fecha){
     bool res = true;
-    int aux = 0;
+    int aux = cantAccesosDesde(fecha);
+    Avanzar();
     while (HaySiguiente()) {
         if (cantAccesosDesde(fecha) > aux) {
             res = false;
