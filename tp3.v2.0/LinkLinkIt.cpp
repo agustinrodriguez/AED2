@@ -476,29 +476,73 @@ bool LinkLinkIt::itPunLinks::operator==(const itPunLinks& otro) const
 
 bool LinkLinkIt::operator==(const LinkLinkIt& otro) const{
     bool res = true;
+    //ARBOL DISTINTO
     if(!(_acat == otro._acat)){
         res = false;
     }
-
+    //FECHA ACTUAL DISTINTA
     if(_actual != otro._actual){
         res = false;
     }
+    //LINK DISTINTOS
     Lista<DatosLink> links1 = _listaLinks;
     Lista<DatosLink> links2 = otro._listaLinks;
     itLinks itThis = itLinks(links1);
-    itLinks itOtro = itLinks(links2);
-
-    while (itThis.HaySiguiente() && itOtro.HaySiguiente()){
-        if(!((itThis.Siguiente()) == ((itOtro.Siguiente())))){
-            res = false;
+    bool salgo = false;
+    Fecha f;
+    if(links1.Longitud() == links2.Longitud())
+    {
+        while (itThis.HaySiguiente() && res){
+            itLinks itOtro = itLinks(links2);
+            salgo = false;
+            while(itOtro.HaySiguiente() && !salgo)
+            {
+                if(itThis.Siguiente() == itOtro.Siguiente())
+                {
+                    if(*_linkInfo.Obtener(itThis.Siguiente()) == *_linkInfo.Obtener(itOtro.Siguiente()) )
+                    {
+                        salgo = true;
+                    }
+                }
+                itOtro.Avanzar();
+            }
+            itThis.Avanzar();
         }
-        itThis.Avanzar();
-        itOtro.Avanzar();
     }
+    else
+    {
+        res = false;
+    }
+    //Mismo arreglo
+    if(_arrayCatLinks.Tamanho() == otro._arrayCatLinks.Tamanho())
+    {
+        Nat c = 0;
+        while(c < _arrayCatLinks.Tamanho() && res)
+        {
+            Lista<DatosLink*> ldl = _arrayCatLinks[c];
+            Lista<DatosLink*> ldlOtro = otro._arrayCatLinks[c];
+            itPunLinks itL = itPunLinks(ldl, f);
+            itPunLinks itLOtro = itPunLinks(ldlOtro, f);
+            while(itL.HaySiguiente() && itLOtro.HaySiguiente() && res)
+            {
+                if(!(*itL.Siguiente() == *itLOtro.Siguiente()))
+                {
+                    res = false;
+                }
+                itL.Avanzar();
+                itLOtro.Avanzar();
+            }
+            c++;
+        }
 
-    if (itThis.HaySiguiente() || itOtro.HaySiguiente()){
+    }
+    else
+    {
         res = false;
     }
 
+
     return res;
 }
+
+
