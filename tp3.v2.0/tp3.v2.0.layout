@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="ArbolCategorias.cpp" open="1" top="1" tabpos="3">
-		<Cursor position="578" topLine="20" />
+	<File name="ArbolCategorias.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="640" topLine="22" />
 	</File>
-	<File name="LinkLinkIt.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="6660" topLine="254" />
+	<File name="ArbolCategorias.h" open="1" top="0" tabpos="4">
+		<Cursor position="130" topLine="0" />
+	</File>
+	<File name="DiccTrie.h" open="1" top="0" tabpos="5">
+		<Cursor position="1725" topLine="92" />
+	</File>
+	<File name="LinkLinkIt.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="tests.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="8559" topLine="228" />
+		<Cursor position="0" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

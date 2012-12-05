@@ -240,7 +240,7 @@ void LinkLinkIt::accederLli(Link link, Fecha fecha){
 
 
 int LinkLinkIt::cantLinks(Categoria categoria){
-    	return _listaLinks.Longitud();
+    	return _arrayCatLinks[_acat->idAC(categoria)-1].Longitud();
 }
 
 LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
