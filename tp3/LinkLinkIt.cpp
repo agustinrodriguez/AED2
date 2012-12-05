@@ -254,16 +254,18 @@ int LinkLinkIt::cantLinks(Categoria categoria){
 
 LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
         int id = dameAcatLli().idAC(categoria);
-        itPunLinks itParaFecha = itPunLinks(_arrayCatLinks[id-1]);
+        Fecha n = 1;
+        itPunLinks itParaFecha = itPunLinks(_arrayCatLinks[id-1], n);
         Fecha fecha = itParaFecha.ultFecha();
+        itPunLinks itOrdSegunF = itPunLinks(_arrayCatLinks[id-1], fecha);
         Lista<DatosLink*> listaOrdenada = Lista<DatosLink*>();
         itPunLinks itMax;
 
-        if (!(itParaFecha.estaOrdenada(fecha)))
+        if (!(itOrdSegunF.estaOrdenada(fecha)))
         {
             while(_arrayCatLinks[id-1].Longitud() != 0)
             {
-                itMax = itPunLinks(_arrayCatLinks[id-1]);
+                itMax = itPunLinks(_arrayCatLinks[id-1], fecha);
                 itMax = itMax.BuscarMax(fecha);
                 listaOrdenada.AgregarAtras(itMax.Siguiente());
                 itMax.EliminarSiguiente();
@@ -272,7 +274,7 @@ LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria)
 
         }
 
-       return itPunLinks(_arrayCatLinks[id-1]);
+       return itPunLinks(_arrayCatLinks[id-1], fecha);
 
 }
 
@@ -374,8 +376,9 @@ LinkLinkIt::itPunLinks::itPunLinks(const itPunLinks &otroIt){
     _itLista = otroIt._itLista;
 }
 
-LinkLinkIt::itPunLinks::itPunLinks(Lista<DatosLink*> &ldl){
+LinkLinkIt::itPunLinks::itPunLinks(Lista<DatosLink*> &ldl, Fecha& f){
     _itLista = ldl.CrearIt();
+    _fecha = f;
 }
 
 LinkLinkIt::itPunLinks::~itPunLinks()
@@ -454,15 +457,24 @@ int LinkLinkIt::itPunLinks::cantAccesosDesde(Fecha f){
     return res;
 }
 bool LinkLinkIt::itPunLinks::estaOrdenada(Fecha fecha){
-   // bool res = true;
-    //int aux = 0;
-//
-//    while (haySiguiente()) {
-//        if (cantAccesosDesde()) {
-//
-//        }
-//    }
-    return false;
+    bool res = true;
+    int aux = 0;
+    while (HaySiguiente()) {
+        if (cantAccesosDesde(fecha) > aux) {
+            res = false;
+        }
+        aux = cantAccesosDesde(fecha);
+        Avanzar();
+    }
+    return res;
+}
+
+Categoria LinkLinkIt::itPunLinks::SiguienteCat() const{
+    return Siguiente()->dameCatDLink().dameCat();
+}
+
+int LinkLinkIt::itPunLinks::SiguienteCantidadAccesosDelLink(){
+        return cantAccesosDesde(_fecha);
 }
 
 bool LinkLinkIt::itPunLinks::operator==(const itPunLinks& otro) const
