@@ -444,7 +444,8 @@ int LinkLinkIt::itPunLinks::cantAccesosDesde(Fecha f){
     int res = 0;
     while(itAcc.HaySiguiente())
     {
-        if(itAcc.Siguiente().dameDia() == f)
+
+        if(itAcc.Siguiente().dameDia() <= f && itAcc.Siguiente().dameDia() >= f -2)
         {
             res = res + itAcc.Siguiente().dameCantA();
         }
