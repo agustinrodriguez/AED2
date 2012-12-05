@@ -122,6 +122,7 @@ namespace aed2
             void accederLli(Link link, Fecha fecha);
             int cantLinks(Categoria categoria);
             itPunLinks linksOrdenadosPorAccesos(Categoria categoria) ;
+            bool operator==(const LinkLinkIt& otro) const;
 
         private:
             ArbolCategorias* _acat;

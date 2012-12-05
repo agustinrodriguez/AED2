@@ -244,9 +244,9 @@ void LLIGigante(){
     acat->agregarAC("miniCat4", "miniCat2");
     acat->agregarAC("miniCat5", "miniCat4");
     ArbolCategorias *acat2 = new ArbolCategorias(cat);
-    acat2->agregarAC("miniCat33", cat);
-    acat2->agregarAC("miniCat2", cat);
+    acat2->agregarAC("miniCat", cat);
     acat2->agregarAC("miniCat3", cat);
+    acat2->agregarAC("miniCat2", cat);
     acat2->agregarAC("miniCat4", "miniCat2");
     acat2->agregarAC("miniCat5", "miniCat4");
     LinkLinkIt lli = LinkLinkIt(acat);
@@ -254,7 +254,7 @@ void LLIGigante(){
     ASSERT_EQ(lli.categoriaLink("link"), "cat");
     ASSERT_EQ(lli.cantLinks("cat"), 1);
     lli.accederLli("link", 120);
-    ASSERT(!(*acat == *acat2));
+    ASSERT((*acat == *acat2));
     ASSERT_EQ(lli.fechaActual(), 120);
     ASSERT_EQ(lli.fechaUltimoAcceso("link"), 120);
     ASSERT_EQ(lli.accesosRecientesDia("link", 120), 1);
@@ -268,7 +268,12 @@ void testAgregarLink(){
     acat->agregarAC("miniCat2","miniCat");
     LinkLinkIt lli = LinkLinkIt(acat);
     lli.nuevoLinkLli("miLink","miniCat2");
+    lli.nuevoLinkLli("minuevoLink",cat);
+    LinkLinkIt lli2 = LinkLinkIt(acat);
+    lli2.nuevoLinkLli("minuevoLink","cat");
+    lli2.nuevoLinkLli("miLink","miniCat2");
     ASSERT_EQ(lli.categoriaLink("miLink"),"miniCat2");
+    ASSERT(lli == lli2);
     delete acat;
 }
 

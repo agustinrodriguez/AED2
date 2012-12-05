@@ -474,3 +474,31 @@ bool LinkLinkIt::itPunLinks::operator==(const itPunLinks& otro) const
     return _itLista == otro._itLista;
 }
 
+bool LinkLinkIt::operator==(const LinkLinkIt& otro) const{
+    bool res = true;
+    if(!(_acat == otro._acat)){
+        res = false;
+    }
+
+    if(_actual != otro._actual){
+        res = false;
+    }
+    Lista<DatosLink> links1 = _listaLinks;
+    Lista<DatosLink> links2 = otro._listaLinks;
+    itLinks itThis = itLinks(links1);
+    itLinks itOtro = itLinks(links2);
+
+    while (itThis.HaySiguiente() && itOtro.HaySiguiente()){
+        if(!((itThis.Siguiente()) == ((itOtro.Siguiente())))){
+            res = false;
+        }
+        itThis.Avanzar();
+        itOtro.Avanzar();
+    }
+
+    if (itThis.HaySiguiente() || itOtro.HaySiguiente()){
+        res = false;
+    }
+
+    return res;
+}

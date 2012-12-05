@@ -198,16 +198,16 @@
 	"aed2.h"
 	<string>
 
-1354717866 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\linklinkit.h
+1354720651 c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\linklinkit.h
 	"aed2.h"
 	"ArbolCategorias.h"
 	"DiccTrie.h"
 
-1354717938 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\linklinkit.cpp
+1354720967 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\linklinkit.cpp
 	"LinkLinkIt.h"
 	"ArbolCategorias.h"
 
-1354718998 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\tests.cpp
+1354721099 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\tests.cpp
 	"Driver.h"
 	<stdarg.h>
 	"LinkLinkIt.h"
