@@ -310,20 +310,18 @@ bool ArbolCategorias::operator==(const ArbolCategorias& acat) const{
     bool cantidad = (_cantidad == acat._cantidad);
     bool altura = (_alturaMax == acat._alturaMax);
     Lista<DatosCat*> listaCat1 = _categorias;
+    Lista<DatosCat*> listaCat2 = acat._categorias;
     ItCategorias categorias1 = ItCategorias(listaCat1);
+    ItCategorias categorias2 = ItCategorias(listaCat2);
     bool categorias = true;
     bool mismoDicc = true;
-    while(categorias1.HaySiguiente() && categorias && mismoDicc){
-        Lista<DatosCat*> listaCat2 = acat._categorias;
-        ItCategorias categorias2 = ItCategorias(listaCat2);
-        while(categorias2.HaySiguiente()){
-            categorias = (categorias1.Siguiente() == categorias2.Siguiente());
-            if(categorias){
-                mismoDicc = (*acat._familia.Obtener(categorias2.Siguiente()) == *_familia.Obtener(categorias1.Siguiente()));
-            }
-            categorias2.Avanzar();
+    while(categorias1.HaySiguiente() && categorias2.HaySiguiente() && categorias && mismoDicc){
+        categorias = (categorias1.Siguiente() == categorias2.Siguiente());
+        if(categorias){
+        mismoDicc = (*acat._familia.Obtener(categorias2.Siguiente()) == *_familia.Obtener(categorias1.Siguiente()));
         }
         categorias1.Avanzar();
+        categorias2.Avanzar();
     }
     return raiz && cantidad && altura && categorias && mismoDicc;
 }

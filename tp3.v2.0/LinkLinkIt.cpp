@@ -541,7 +541,6 @@ bool LinkLinkIt::operator==(const LinkLinkIt& otro) const{
         res = false;
     }
 
-
     return res;
 }
 
