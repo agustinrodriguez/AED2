@@ -362,6 +362,14 @@ void LLIGigante2(){
     ASSERT_EQ(lli.fechaActual() == 124, true);
     ASSERT_EQ(lli.categoriaLink("linkk5") == "miniCat2", true);
     ASSERT_EQ(lli.accesosRecientesDia("linkk5",123), 0);
+    ASSERT_EQ(lli.dameAcatLli().dameCantidad(),6);
+    ASSERT_EQ(lli.dameAcatLli().idAC("miniCat2"),3);
+    ASSERT_EQ(lli.dameAcatLli().alturaAC(),4);
+    ASSERT_EQ(lli.dameAcatLli().esta("mini"), false);
+    ASSERT_EQ(lli.dameAcatLli().esta("miniCat2"), true);
+    ASSERT_EQ(lli.dameAcatLli().esSubCategoria("cat","miniCat2"), true);
+    ASSERT_EQ(lli.dameAcatLli().esSubCategoria("miniCat2","miniCat2"), true);
+    ASSERT_EQ(lli.dameAcatLli().esSubCategoria("miniCat5","miniCat2"), false);
     delete acat;
     delete acat2;
 }

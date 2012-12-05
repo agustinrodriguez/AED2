@@ -137,7 +137,7 @@ bool LinkLinkIt::Acceso::operator==(const LinkLinkIt::Acceso& otro) const{
     return iguales;
 }
 
-ArbolCategorias LinkLinkIt::dameAcatLli() const{
+ArbolCategorias& LinkLinkIt::dameAcatLli() const{
 	return *_acat;
 }
 
@@ -244,7 +244,7 @@ int LinkLinkIt::cantLinks(Categoria categoria){
 }
 
 LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
-        int id = _acat->idAC(categoria);
+        int id = dameAcatLli().idAC(categoria);
         Fecha n = 1;
         itPunLinks itParaFecha = itPunLinks(_arrayCatLinks[id-1], n);
         Fecha fecha = itParaFecha.ultFecha();
