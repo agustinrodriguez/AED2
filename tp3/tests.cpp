@@ -231,7 +231,7 @@ void LinkLinkItNuevo(){
     ASSERT_EQ(itP.SiguienteCantidadAccesosDelLink(),4);
     itP.Avanzar();
     ASSERT_EQ(itP.SiguienteLink() == "link",true);
-    //delete acat;
+    delete acat;
 }
 
 
