@@ -206,6 +206,29 @@ void LinkLinkItNuevo(){
     ASSERT_EQ(lli.fechaActual(), 120);
     ASSERT_EQ(lli.fechaUltimoAcceso("link"), 120);
     ASSERT_EQ(lli.accesosRecientesDia("link", 120), 1);
+        lli.nuevoLinkLli("linkkk", "cat");
+    ASSERT_EQ(lli.linksLli().Siguiente() == "link", true);
+    lli.accederLli("linkkk", 122);
+    lli.accederLli("linkkk", 122);
+    lli.accederLli("linkkk", 122);
+    lli.accederLli("linkkk", 122);
+    lli.accederLli("link", 123);
+    ASSERT_EQ(lli.fechaActual(), 123);
+    ASSERT_EQ(lli.accesosRecientesDia("link", 122), 0);
+    ASSERT_EQ(lli.accesosRecientesDia("linkkk", 122), 4);
+    ASSERT_EQ(lli.fechaUltimoAcceso("link"), 123);
+    ASSERT_EQ(lli.fechaUltimoAcceso("linkkk"), 122);
+    ASSERT_EQ(lli.accesosRecientesDia("link", 123), 1);
+    lli.nuevoLinkLli("link1", "cat");
+    lli.nuevoLinkLli("link2", "cat");
+    lli.nuevoLinkLli("link3", "cat");
+    ASSERT_EQ(lli.cantLinks("cat"),5);
+    LinkLinkIt::itLinks itL = LinkLinkIt::itLinks(lli.linksLli());
+    ASSERT(itL == lli.linksLli());
+    LinkLinkIt::itPunLinks itP = LinkLinkIt::itPunLinks(lli.linksOrdenadosPorAccesos("cat"));
+    Link l = itP.SiguienteLink();
+    cout << "      El link es:  " << l << "        ";
+    ASSERT_EQ(itP.SiguienteLink() == "linkkk", true);
     delete acat;
 }
 
