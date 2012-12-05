@@ -27,7 +27,7 @@ void Driver::nuevoArbol(const Categoria& raiz)
 
 void Driver::agregarCategoria(const Categoria& c, const Categoria& h)
 {
-    arbol->agregarAC(c,h);
+    arbol->agregarAC(h,c);
 }
 
 const Categoria& Driver::raiz()
@@ -75,7 +75,7 @@ void Driver::nuevoLink(const Link& l, const Categoria& c)
 
 void Driver::acceso(const Link& l, Fecha f)
 {
-    sistema->accesosRecientesDia(l, f);
+    sistema->accederLli(l, f);
 }
 
 int Driver::cantLinks(const Categoria& c)
@@ -110,11 +110,11 @@ const Categoria& Driver::obtenerCategoriaIesimoLinkOrdenadoPorAccesos(const Cate
 int Driver::obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i)
 {
     int j = 0;
-    LinkLinkIt::itPunLinks it = sistema->linksOrdenadosPorAccesos(c);
+    LinkLinkIt::itPunLinks it = LinkLinkIt::itPunLinks(sistema->linksOrdenadosPorAccesos(c));
     while(j < i)
     {
         ++j;
         it.Avanzar();
     }
-    return it.Siguiente()->dameCantAccesos();
+    return it.SiguienteCantidadAccesosDelLink();
 }
