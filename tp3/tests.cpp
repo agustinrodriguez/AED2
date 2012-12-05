@@ -228,6 +228,9 @@ void LinkLinkItNuevo(){
     LinkLinkIt::itPunLinks itP = LinkLinkIt::itPunLinks(lli.linksOrdenadosPorAccesos("cat"));
     Link l = itP.SiguienteLink();
     ASSERT_EQ(itP.SiguienteLink() == "linkkk", true);
+    ASSERT_EQ(itP.SiguienteCantidadAccesosDelLink(),4);
+    itP.Avanzar();
+    ASSERT_EQ(itP.SiguienteLink() == "link",true);
     //delete acat;
 }
 

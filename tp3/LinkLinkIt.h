@@ -84,12 +84,14 @@ namespace aed2
             class itPunLinks {
                 public:
                     itPunLinks();
-                    itPunLinks(Lista<DatosLink*>& ldl);
+                    itPunLinks(Lista<DatosLink*>& ldl, Fecha& f);
                     itPunLinks(const itPunLinks& otroIt);
                     ~itPunLinks();
                     bool HaySiguiente() const;
                     DatosLink* Siguiente() const;
                     Link SiguienteLink() const;
+                    Categoria SiguienteCat() const;
+                    int SiguienteCantidadAccesosDelLink();
                     void Avanzar();
                     void EliminarSiguiente();
                     itPunLinks BuscarMax(Fecha f);
@@ -99,6 +101,8 @@ namespace aed2
                     bool operator==(const itPunLinks& otro) const;
                 private:
                     Lista<DatosLink*>::Iterador _itLista;
+                    Fecha _fecha;
+                    Categoria _cat;
 
             };
 
