@@ -206,7 +206,7 @@ void LinkLinkItNuevo(){
     ASSERT_EQ(lli.fechaActual(), 120);
     ASSERT_EQ(lli.fechaUltimoAcceso("link"), 120);
     ASSERT_EQ(lli.accesosRecientesDia("link", 120), 1);
-        lli.nuevoLinkLli("linkkk", "cat");
+    lli.nuevoLinkLli("linkkk", "cat");
     ASSERT_EQ(lli.linksLli().Siguiente() == "link", true);
     lli.accederLli("linkkk", 122);
     lli.accederLli("linkkk", 122);

@@ -308,11 +308,11 @@
 	"ArbolCategorias.h"
 	"DiccTrie.h"
 
-1354659304 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\linklinkit.cpp
+1354666378 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\linklinkit.cpp
 	"LinkLinkIt.h"
 	"ArbolCategorias.h"
 
-1354665252 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\tests.cpp
+1354666502 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3\tests.cpp
 	"Driver.h"
 	<stdarg.h>
 	"LinkLinkIt.h"
