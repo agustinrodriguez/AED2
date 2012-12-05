@@ -389,15 +389,15 @@ void LLIGigante2(){
     delete acat2;
 }
 
-//int main(void) {
-//    RUN_TEST(arbolNuevoEsVacio);
-//    RUN_TEST(arbolNuevoConRaizTieneHijoVacio);
-//    RUN_TEST(accesoTest);
-//    RUN_TEST(accesoTestConConstr);
-//    RUN_TEST(LinkLinkItNuevo);
-//    RUN_TEST(testLinkNuevo);
-//    RUN_TEST(LLIGigante);
-//    RUN_TEST(LLIGigante2);
-//    RUN_TEST(testAgregarLink);
-//	return 0;
-//}
+int main(void) {
+    RUN_TEST(arbolNuevoEsVacio);
+    RUN_TEST(arbolNuevoConRaizTieneHijoVacio);
+    RUN_TEST(accesoTest);
+    RUN_TEST(accesoTestConConstr);
+    RUN_TEST(LinkLinkItNuevo);
+    RUN_TEST(testLinkNuevo);
+    RUN_TEST(LLIGigante);
+    RUN_TEST(LLIGigante2);
+    RUN_TEST(testAgregarLink);
+	return 0;
+}
