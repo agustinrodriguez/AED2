@@ -218,3 +218,111 @@
 1354714030 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\arbolcategorias.cpp
 	"ArbolCategorias.h"
 
+1354721656 source:/home/guido/AED2/tp3.v2.0/ArbolCategorias.cpp
+	"ArbolCategorias.h"
+
+1354719702 /home/guido/AED2/tp3.v2.0/ArbolCategorias.h
+	"aed2.h"
+	"DiccTrie.h"
+	"Tipos.h"
+
+1354719702 /home/guido/AED2/tp3.v2.0/aed2.h
+	"aed2/TiposBasicos.h"
+	"aed2/Arreglo.h"
+	"aed2/Lista.h"
+	"aed2/Vector.h"
+	"aed2/Dicc.h"
+	"aed2/Conj.h"
+	"aed2/ConjAcotado.h"
+	"test/test.h"
+
+1354719702 /home/guido/AED2/tp3.v2.0/aed2/TiposBasicos.h
+	<iostream>
+	<string>
+	<cassert>
+
+1354719702 /home/guido/AED2/tp3.v2.0/aed2/Arreglo.h
+	"TiposBasicos.h"
+	"Arreglo.cpp"
+
+1354719702 /home/guido/AED2/tp3.v2.0/aed2/Arreglo.cpp
+
+1354719702 /home/guido/AED2/tp3.v2.0/aed2/Lista.h
+	<iostream>
+	"TiposBasicos.h"
+	"Lista.cpp"
+
+1354719702 /home/guido/AED2/tp3.v2.0/aed2/Lista.cpp
+
+1354719702 /home/guido/AED2/tp3.v2.0/aed2/Vector.h
+	"TiposBasicos.h"
+	"Arreglo.h"
+	"Vector.cpp"
+
+1354719702 /home/guido/AED2/tp3.v2.0/aed2/Vector.cpp
+
+1354719702 /home/guido/AED2/tp3.v2.0/aed2/Dicc.h
+	<ostream>
+	"Lista.h"
+	"Dicc.cpp"
+
+1354719702 /home/guido/AED2/tp3.v2.0/aed2/Dicc.cpp
+
+1354719702 /home/guido/AED2/tp3.v2.0/aed2/Conj.h
+	<iostream>
+	"Dicc.h"
+	"Conj.cpp"
+
+1354719702 /home/guido/AED2/tp3.v2.0/aed2/Conj.cpp
+
+1354719702 /home/guido/AED2/tp3.v2.0/aed2/ConjAcotado.h
+	<iostream>
+	"TiposBasicos.h"
+	"Arreglo.h"
+	"Conj.h"
+
+1354719702 /home/guido/AED2/tp3.v2.0/test/test.h
+	"../aed2/TiposBasicos.h"
+	<algorithm>
+	<functional>
+	<list>
+	<map>
+	<ostream>
+	<sstream>
+
+1354719702 /home/guido/AED2/tp3.v2.0/DiccTrie.h
+	"aed2.h"
+	<string>
+
+1354719702 /home/guido/AED2/tp3.v2.0/Tipos.h
+	<iostream>
+
+1354719702 source:/home/guido/AED2/tp3.v2.0/Driver.cpp
+	"Driver.h"
+	<iostream>
+	<sstream>
+
+1354719702 /home/guido/AED2/tp3.v2.0/Driver.h
+	<stdlib.h>
+	"aed2.h"
+	"Tipos.h"
+	"ArbolCategorias.h"
+	"LinkLinkIt.h"
+
+1354719702 /home/guido/AED2/tp3.v2.0/LinkLinkIt.h
+	"aed2.h"
+	"ArbolCategorias.h"
+	"DiccTrie.h"
+
+1354722926 source:/home/guido/AED2/tp3.v2.0/LinkLinkIt.cpp
+	"LinkLinkIt.h"
+	"ArbolCategorias.h"
+
+1354722773 source:/home/guido/AED2/tp3.v2.0/tests.cpp
+	"Driver.h"
+	<stdarg.h>
+	"LinkLinkIt.h"
+	"ArbolCategorias.h"
+	<iostream>
+	<sstream>
+

@@ -231,7 +231,9 @@ void LinkLinkItNuevo(){
     ASSERT_EQ(itP.SiguienteCantidadAccesosDelLink(),4);
     itP.Avanzar();
     ASSERT_EQ(itP.SiguienteLink() == "link",true);
-  //  delete acat;
+    LinkLinkIt::itPunLinks itP2 = LinkLinkIt::itPunLinks(lli.linksOrdenadosPorAccesos("cat"));
+    ASSERT_EQ(itP2.SiguienteLink() == "linkkk", true);
+    delete acat;
 }
 
 
@@ -275,11 +277,9 @@ void testAgregarLink(){
 int main(void) {
     RUN_TEST(arbolNuevoEsVacio);
     RUN_TEST(arbolNuevoConRaizTieneHijoVacio);
-  //  RUN_TEST(datosLinkNuevoEsVacio); //ANDA VERIFICAR DELETE
-  //  RUN_TEST(datosLinkConDatos);//ANDA VERIFICAR DELETE
-    RUN_TEST(accesoTest);//ANDA
-    RUN_TEST(accesoTestConConstr);//ANDA
-    RUN_TEST(LinkLinkItNuevo); //TIRA MUCHOS NUMERITOS JA
+    RUN_TEST(accesoTest);
+    RUN_TEST(accesoTestConConstr);
+    RUN_TEST(LinkLinkItNuevo);
     RUN_TEST(testLinkNuevo);
     RUN_TEST(LLIGigante);
     RUN_TEST(testAgregarLink);

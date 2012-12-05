@@ -25,7 +25,7 @@ ArbolCategorias::~ArbolCategorias()
     Lista<DatosCat*>::Iterador l = _categorias.CrearIt();
 
     while (l.HaySiguiente()) {
-        delete l.Siguiente();
+            delete l.Siguiente();
         l.Avanzar();
     }
 }

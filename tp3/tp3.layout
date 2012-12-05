@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="ArbolCategorias.cpp" open="1" top="0" tabpos="4">
+	<File name="ArbolCategorias.cpp" open="1" top="0" tabpos="9">
 		<Cursor position="1066" topLine="22" />
 	</File>
-	<File name="ArbolCategorias.h" open="1" top="1" tabpos="5">
+	<File name="ArbolCategorias.h" open="1" top="0" tabpos="10">
 		<Cursor position="601" topLine="61" />
 	</File>
-	<File name="DiccTrie.h" open="1" top="0" tabpos="8">
-		<Cursor position="1982" topLine="80" />
+	<File name="DiccTrie.h" open="1" top="0" tabpos="13">
+		<Cursor position="1905" topLine="80" />
 	</File>
-	<File name="Driver.cpp" open="1" top="0" tabpos="6">
+	<File name="Driver.cpp" open="1" top="0" tabpos="11">
 		<Cursor position="1930" topLine="82" />
 	</File>
-	<File name="LinkLinkIt.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="10293" topLine="437" />
+	<File name="LinkLinkIt.cpp" open="1" top="1" tabpos="7">
+		<Cursor position="6071" topLine="248" />
 	</File>
-	<File name="LinkLinkIt.h" open="1" top="0" tabpos="3">
+	<File name="LinkLinkIt.h" open="1" top="0" tabpos="8">
 		<Cursor position="4746" topLine="95" />
 	</File>
-	<File name="aed2.h" open="1" top="0" tabpos="7">
-		<Cursor position="316" topLine="0" />
+	<File name="aed2.h" open="1" top="0" tabpos="12">
+		<Cursor position="304" topLine="0" />
 	</File>
-	<File name="tests.cpp" open="1" top="0" tabpos="1">
+	<File name="tests.cpp" open="1" top="0" tabpos="6">
 		<Cursor position="9095" topLine="215" />
 	</File>
 </CodeBlocks_layout_file>

@@ -6,7 +6,6 @@ LinkLinkIt::LinkLinkIt(ArbolCategorias* acat)
 {
     _actual = 1;
     _acat = acat;
-//    _linkInfo = DiccTrie<DatosLink*>(); NO SE XQ ROMPE, PERO CREO QUE NO IMPORTA
     _arrayCatLinks = Arreglo<Lista<DatosLink*> >(_acat->dameCantidad());
     _listaLinks = Lista<DatosLink>();
 
@@ -245,7 +244,7 @@ int LinkLinkIt::cantLinks(Categoria categoria){
 }
 
 LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
-        int id = dameAcatLli().idAC(categoria);
+        int id = _acat->idAC(categoria);
         Fecha n = 1;
         itPunLinks itParaFecha = itPunLinks(_arrayCatLinks[id-1], n);
         Fecha fecha = itParaFecha.ultFecha();
@@ -450,7 +449,8 @@ int LinkLinkIt::itPunLinks::cantAccesosDesde(Fecha f){
 }
 bool LinkLinkIt::itPunLinks::estaOrdenada(Fecha fecha){
     bool res = true;
-    int aux = 0;
+    int aux = cantAccesosDesde(fecha);
+    Avanzar();
     while (HaySiguiente()) {
         if (cantAccesosDesde(fecha) > aux) {
             res = false;
