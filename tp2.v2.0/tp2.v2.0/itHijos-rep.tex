@@ -1,0 +1,25 @@
+\begin{center}
+\begin{tabular}{|l|} 
+\hline
+\\
+itHijos se representa con itConj(puntero(datosCat))\\
+\\
+\hline
+\end{tabular}
+\end{center}
+
+\par itHijos es un iterador de conjunto. Sus complejidades nos alcanzan para iterar un\\ Conj(puntero(datosCat)).
+
+\subsubsection{Invariante de Representaci\'on}
+%\paragraph{El Invariante Informalmente}
+%\begin{enumerate}
+%\item Lo iterado por el iterador de mensajes recientes es válido.
+%\end{enumerate}
+
+\paragraph{El Invariante Formalmente}
+{\begin{changemargin}{0em}{4em}Rep : estrITh $\rightarrow$ boolean\par \end{changemargin}(\paratodo\param{}{it}{estrITH}) Rep(it) $\equiv$ true
+
+\subsubsection{Funci\'on de Abstracci\'on}
+\begin{ABS}{e}{estrITC}{it}{itBi($\alpha$)}
+\absfunc{anteriores(e.iterador) \igobs anteriores(it) \land \\ siguientes(e.iterador) \igobs siguientes(it)}{}
+\end{ABS}

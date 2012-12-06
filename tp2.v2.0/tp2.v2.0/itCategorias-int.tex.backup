@@ -1,0 +1,54 @@
+\begin{interfaz}{Iterador Categorias}
+\begin{iparamformales}{itCategorias}
+
+\comment{\funcion{Copiar}{\param{in}{m}{$\alpha$}}{$\alpha$}
+{true}
+{\igres m}
+{copy(m)}
+{}
+}
+
+\textbf{\large se explica con:} Iterador Bidireccional
+
+\end{iparamformales}
+
+\operacion{crearItCategotias}{\param{in}{l}{lista(datosCat)}}{itCategorias}
+{true}
+{\igres crearItBi(<>,elems(l))}
+{1}
+{No se pueden modificar los datosCat del iterador.}
+
+\operacion{haysiguiente?}{\param{in}{it}{itCategorias}{bool}
+{true}
+{\igres haySiguiente?(it)}
+{1}
+{No tiene.}
+
+\operacion{siguiente}{\param{in}{it}{itCategorias}}{Categoria}
+{haySiguiente?(it)}
+{\igres dameCat(siguiente(it))}
+{1}
+{res no es modificable}
+
+\operacion{siguienterecientes}{\param{in}{it}{itListaOrdRecientes}}{mensaje}
+{haySiguiente(it.iterador) \yluego mismaSemana?(creado(siguiente(it.iterador)), e.fecha)}
+{esAlias(res,siguiente(it))}
+{1}
+{res no es modificable}
+
+\operacion{avanzar}{\param{in/out}{it}{itListaOrd}}{}
+{it \igobs it_0 \land haySiguiente?(it)}
+{it \igobs avanzar(it_0)}
+{1}
+{no tiene}
+
+\operacion{avanzarRecientes}{\param{in/out}{it}{itListaOrdRecientes}}{}
+{it \igobs it_0 \land (haySiguiente(it.iterador) \yluego mismaSemana?(creado(siguiente(it.iterador)), e.fecha))}
+{it \igobs avanzar(it_0)}
+{1}
+{no tiene}
+
+\end{interfaz}
+
+
+

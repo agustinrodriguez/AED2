@@ -1,0 +1,48 @@
+\vspace*{1em}
+\begin{enumerate}
+
+\item\textbf{iCrearItLinks}
+\par Crea un itPuntLinks con la lista que se pasa como parametro y se la asigna a res, esto demora O(1).
+\par \textbf{Orden Total:} \textbf{O(1)}
+
+\item\textbf{iHaySiguiente?}
+\par Se llama a HaySiguiente del Iterador de Lista en O(1).
+\par \textbf{Orden Total:} \textbf{O(1)}
+
+\item\textbf{iSiguiente}
+\par Se llama a Siguiente del Iterador de Lista en O(1). A eso se le aplica la operacion dameLink que tambíen cuesta O(1) y se devuelve una referencia al link resultante.
+\par \textbf{Orden Total:} \textbf{O(1)}
+
+\item\textbf{iAvanzar}
+\par Se llama a Avanzar del Iterador de Lista en O(1).
+\par \textbf{Orden Total:} \textbf{O(1)}
+
+\item\textbf{iEliminarSiguiente}
+\par Se llama a eliminarSiguiente del Iterador de Lista en O(1).
+\par \textbf{Orden Total:} \textbf{O(1)}
+
+\item\textbf{iBuscarMax}
+\par Dado un itPuntLinks y una fecha, iteramos llamando cada vez a cantAccesosDesde para el iterador y la fecha. Cada vez nos cuesta O(1) y lo hacemos una vez para cada iteracion. En total nos cuesta O(longitud(siguientes(it))).
+\par En O(1) copiamos el iterador a res sólo si la llamada a cantAccesosDesde nos dio mayor a la que resultaba del anterior valor de res.
+\par finalmente avanzar el iterador nos cuesta O(1) tambien.
+\par \textbf{Orden Total:} \textbf{O(longitud(siguientes(it)))}
+
+\item\textbf{iUltFecha}
+\par Dado un itPuntLinks, iteramos pidiendo el día al acceso mas nuevo, para eso generamos un itAccesos a la ultima posicion de la lista de accesos en O(1). Luego pedimos la fecha de ese acceso tambien en O(1).
+\par Y evaluamos en O(1) si es mayor a la fecha que teniamos guardada en el resultado. Cambiandola en caso de ser necesario en O(1).
+\par Como lo hacemos para cada link de la primera lista, nos cuesta O(longitud(siguientes(it)))
+\par \textbf{Orden Total:} \textbf{O(longitud(siguientes(it)))}
+
+\item\textbf{iCantAccesosDesde}
+\par Dado un itPuntLinks y una fecha, obtengo en O(1) un itAccesos para la lista de accesos del siguiente del iterador.
+\par Luego voy iterando itAccesos y si la fecha es menor o igual a la pasada, sumo la cantidad de accesos para ese acceso, todo en O(1).
+\par Como la lista de accesos iterada tiene a lo sumo 3 elementos, podemos considerar que iterarla nos lleva tiempo costante, o sea O(1).
+\par \textbf{Orden Total:} \textbf{O(1)}
+
+\item\textbf{iEstaOrdenada?}
+\par Dado un itPuntLinks, iteramos pidiendo el día al acceso mas nuevo, para eso generamos un itAccesos a la ultima posicion de la lista de accesos en O(1). Luego pedimos la fecha de ese acceso tambien en O(1).
+\par Y evaluamos en O(1) si es mayor a la fecha que teniamos guardada en el resultado. Cambiandola en caso de ser necesario en O(1).
+\par Como lo hacemos para cada link de la primera lista, nos cuesta O(longitud(siguientes(it)))
+\par \textbf{Orden Total:} \textbf{O(longitud(siguientes(it)))}
+
+\end{enumerate}

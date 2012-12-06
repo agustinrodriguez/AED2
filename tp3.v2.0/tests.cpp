@@ -1,403 +1,338 @@
 #include "Driver.h"
-#include <stdarg.h>
-#include "LinkLinkIt.h"
-#include "ArbolCategorias.h"
+#include "aed2_tests.h"
 
-using namespace std;
-using namespace aed2;
-
-// auxiliares para tests
-#include <iostream>
-#include <sstream>
-void mt_assert(bool expr, string lhs, string rhs, int line) { if (!expr) {ostringstream os;os << "error en linea " << line << endl;os << "   se esperaba: " << rhs << endl;os << "     se obtuvo: " << lhs;throw os.str();} }
-void mt_str_assert(string lhs, string rhs, int line) { if (lhs.compare(rhs) != 0) { ostringstream os;os << "error en linea " << line << endl;os << "   se esperaba: " << rhs << endl;os << "     se obtuvo: " << lhs;throw os.str();} }
-#define RUN_TEST(test) {\
-	{bool ok = true;\
-	cout << #test << "..." << flush;\
-	try { test(); }\
-	catch (string& msg) { ok = false; cout << msg; } \
-	catch (...) { ok = false; cout << "error"; }\
-	if (ok) { cout << "ok"; }\
-	cout << endl << flush;\
-	}\
-}
-#define ASSERT_EQ(lhs, rhs) {{ostringstream lhss, rhss;lhss << (lhs);rhss << (rhs);mt_assert((lhs) == (rhs), lhss.str(), rhss.str(), __LINE__);}}
-#define ASSERT(expr) { mt_assert((expr), "false", "true", __LINE__); }
-#define ASSERT_STR_EQ(lhs, rhs) { mt_str_assert(string((lhs)), string((rhs)), __LINE__); }
-// fin auxiliares para tests
-
-/**
- * Permite construir una lista de strings de forma comoda.
- * l("lorem", "ipsum", NULL) equivale a la lista ["lorem", "ipsum"]
- * l(NULL) equivale a la lista vacia.
- *
- * siembre es necesario poner un NULL para indicar el final de la lista
- */
-
-void arbolNuevoEsVacio(){
-Categoria raiz = "categoria1";
-ArbolCategorias a = ArbolCategorias(raiz);
-ASSERT_EQ(a.alturaAC(), 1);
-ASSERT_EQ(a.obtenerAC(raiz)->dameId(),1);
-ASSERT_EQ(a.obtenerAC(raiz)->dameCat(),raiz);
-ASSERT_EQ(a.dameCantidad(),1);
-ASSERT_EQ(a.alturaAC(),1);
-Categoria c1 = "cat1";
-Categoria c2 = "cat2";
-a.agregarAC(c1,raiz);
-ASSERT_EQ(a.dameCantidad(),2);
-ASSERT(a.esSubCategoria(raiz,raiz));
-ASSERT_STR_EQ(a.obtenerAC(c1)->damePadre()->dameCat(), raiz);
-ASSERT(a.esSubCategoria(raiz,c1));
-ASSERT(!(a.esta(c2)));
-ASSERT_EQ(a.alturaCatAC(c1),2);
-ASSERT_EQ(a.idAC(c1),2);
-ASSERT_EQ(a.alturaAC(),2);
-ASSERT_EQ(a.dameCantidad(),2);
-Categoria c3 = a.categoriasAC().Siguiente();
-ASSERT_EQ(a.categoriasAC().Siguiente() == "categoria1",true);
-ArbolCategorias::ItCategorias itA = ArbolCategorias::ItCategorias(a.categoriasAC());
-ASSERT(itA == a.categoriasAC());
-ASSERT(a.hijosAC(raiz).Siguiente() == c1);
-
-}
-
-void arbolNuevoConRaizTieneHijoVacio(){
-    Categoria c,d;
-    c= "hola";
-    d= "chau";
-    ArbolCategorias *a = new ArbolCategorias(c);
-    ASSERT_EQ(a->alturaAC(),1);
-    ASSERT_EQ(a->idAC(c),1);
-    ASSERT_EQ(a->raizAC(),c);
-    ASSERT_EQ(a->dameCantidad(),1);
-    ASSERT_EQ(a->esta(c),true);
-    ASSERT_EQ(a->esta(d),false);
-    a->agregarAC(d,c);
-    ASSERT_EQ(a->esta(c),true);
-    ASSERT_EQ(a->esta(d),true);
-    ASSERT_EQ(a->esSubCategoria(c,d),true);
-    delete a;
-}
-//void datosLinkNuevoEsVacio(){
-//    LinkLinkIt::DatosLink* dl = new LinkLinkIt::DatosLink();
-//    ASSERT_EQ(dl->dameAccesos().Longitud(),0);
-//    String l = "link";
-//    dl->nuevoLink(l);
-//    int car = 0;
-//    dl->nuevoCantAccesosRecientes(car);
-//    Lista<LinkLinkIt::Acceso> ita = Lista<LinkLinkIt::Acceso>();
-//    dl->nuevoAccesos(ita);
-//    ArbolCategorias::DatosCat* dc = new ArbolCategorias::DatosCat();
-//    dl->nuevaCat(dc);
-//    ASSERT_EQ(dl->dameLink(),l);
-//    ASSERT_EQ(dl->dameAccesos().Longitud(),0);
-//    ASSERT_EQ(dl->dameCantAccesos(),car);
-//    ASSERT_EQ(dl->dameCatDLink() == *dc, true);
-//    delete dl;
-//    delete dc;
-//}
-
-//void datosLinkConDatos(){
-//    ArbolCategorias::DatosCat* dc = new ArbolCategorias::DatosCat();
-//    String l = "link";
-//    Lista<LinkLinkIt::Acceso> la = Lista<LinkLinkIt::Acceso>();
-//    LinkLinkIt::DatosLink* dl = new LinkLinkIt::DatosLink(l, dc, la, 0);
-//    ASSERT_EQ(dl->dameCatDLink() == * dc, true);
-//    ASSERT_EQ(dl->dameAccesos() == la, true);
-//    ASSERT_EQ(dl->dameCantAccesos(), 0);
-//    ASSERT_EQ(dl->dameLink(),l);
-//    LinkLinkIt::DatosLink* dl2 = new LinkLinkIt::DatosLink(l, dc, la, 0);
-//    LinkLinkIt::DatosLink* dl3 = new LinkLinkIt::DatosLink(l, dc, la, 3);
-//    Lista<LinkLinkIt::Acceso> lb = Lista<LinkLinkIt::Acceso>();
-//    LinkLinkIt::Acceso* ac = new LinkLinkIt::Acceso(3,4);
-//    lb.AgregarAtras(*ac);
-//    LinkLinkIt::DatosLink* dl4 = new LinkLinkIt::DatosLink(l, dc, lb, 0);
-//    ASSERT_EQ(*dl == *dl2,true);
-//    ASSERT_EQ(*dl == *dl3,false);
-//    ASSERT_EQ(*dl == *dl4,false);
-//    Categoria cat = "cat2";
-//    Conj<ArbolCategorias::DatosCat*> conj1 = Conj<ArbolCategorias::DatosCat*>();
-//    ArbolCategorias::DatosCat* dc2 = new ArbolCategorias::DatosCat(cat, 2, 3, conj1 , NULL);
-//    LinkLinkIt::DatosLink* dl5 = new LinkLinkIt::DatosLink(l, dc2, lb, 0);
-//    ASSERT_EQ(*dl == *dl5, false);
-//    delete dc;
-//    delete dc2;
-//    delete dl;
-//    delete dl2;
-//    delete dl3;
-//    delete dl4;
-//    delete dl5;
-//    delete ac;
-//}
-
-void accesoTest(){
-    LinkLinkIt::Acceso* a = new LinkLinkIt::Acceso();
-    LinkLinkIt::Acceso* b = new LinkLinkIt::Acceso();
-    LinkLinkIt::Acceso* c = new LinkLinkIt::Acceso();
-    LinkLinkIt::Acceso* d = new LinkLinkIt::Acceso();
-    LinkLinkIt::Acceso* e = new LinkLinkIt::Acceso();
-    a->guardoAcceso(2);
-    a->guardoDia(3);
-    b->guardoAcceso(2);
-    b->guardoDia(3);
-    c->guardoAcceso(2);
-    c->guardoDia(99);
-    d->guardoAcceso(24);
-    d->guardoDia(3);
-    e->guardoAcceso(23);
-    e->guardoDia(32);
-    ASSERT_EQ(*a==*b,true);
-    ASSERT_EQ(*a==*c,false);
-    ASSERT_EQ(*a==*d,false);
-    ASSERT_EQ(*a==*c,false);
-    ASSERT_EQ(*a==*e,false);
-    delete a;
-    delete b;
-    delete c;
-    delete d;
-    delete e;
-}
-
-void accesoTestConConstr(){
-    LinkLinkIt::Acceso* a = new LinkLinkIt::Acceso(2,3);
-    LinkLinkIt::Acceso* b = new LinkLinkIt::Acceso(2,3);
-    LinkLinkIt::Acceso* c = new LinkLinkIt::Acceso(2,99);
-    LinkLinkIt::Acceso* d = new LinkLinkIt::Acceso(24,3);
-    LinkLinkIt::Acceso* e = new LinkLinkIt::Acceso(23,32);
-    ASSERT_EQ(*a==*b,true);
-    ASSERT_EQ(*a==*c,false);
-    ASSERT_EQ(*a==*d,false);
-    ASSERT_EQ(*a==*c,false);
-    ASSERT_EQ(*a==*e,false);
-    delete a;
-    delete b;
-    delete c;
-    delete d;
-    delete e;
+// funcion auxiliar para mostrar accesos ordenados de la categoria
+void mostrarLinksOrdenados(Driver &d, const Categoria& cat)
+{
+    cout << "Links Ordenados: " << cat << endl;
+    int n = d.cantLinks(cat);
+    for(int i = 0; i < n; i++) {
+        cout << i << "\t"
+             << d.obtenerCategoriaIesimoLinkOrdenadoPorAccesos(cat, i) << "\t" 
+             << d.obtenerIesimoLinkOrdenadoPorAccesos(cat, i) << "\t" 
+             << d.obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos(cat, i) << endl;
     }
-void testLinkNuevo(){
-    Categoria cat = "informacion";
-    Categoria c2 = "InformacionAnimales";
-    ArbolCategorias *acat = new ArbolCategorias(cat);
-    LinkLinkIt::Acceso* a = new LinkLinkIt::Acceso(3,7);
-    Lista<LinkLinkIt::Acceso> *listaAccesos = new Lista<LinkLinkIt::Acceso>();
-    String miLink = "test";
-    Conj<ArbolCategorias::DatosCat*> conj = Conj<ArbolCategorias::DatosCat*>();
-    //ArbolCategorias::DatosCat* dc = new ArbolCategorias::DatosCat(cat,323,1,conj,NULL);
-    LinkLinkIt::DatosLink* dl = new LinkLinkIt::DatosLink(miLink,cat,*listaAccesos,1);
-    acat->agregarAC(c2,cat);
-    LinkLinkIt *lli = new LinkLinkIt(acat);
-    delete a;
-    delete dl;
-    delete lli;
-    delete listaAccesos;
-    delete acat;
 }
 
-void LinkLinkItNuevo(){
-    Categoria cat = "cat";
-    ArbolCategorias *acat = new ArbolCategorias(cat);
-    LinkLinkIt lli = LinkLinkIt(acat);
-    lli.nuevoLinkLli("link", "cat");
-    ASSERT_EQ(lli.categoriaLink("link"), "cat");
-    ASSERT_EQ(lli.cantLinks("cat"), 1);
-    lli.accederLli("link", 120);
-    ASSERT_EQ(lli.fechaActual(), 120);
-    ASSERT_EQ(lli.fechaUltimoAcceso("link"), 120);
-    ASSERT_EQ(lli.accesosRecientesDia("link", 120), 1);
-    lli.nuevoLinkLli("linkkk", "cat");
-    ASSERT_EQ(lli.linksLli().Siguiente() == "link", true);
-    lli.accederLli("linkkk", 122);
-    lli.accederLli("linkkk", 122);
-    lli.accederLli("linkkk", 122);
-    lli.accederLli("linkkk", 122);
-    lli.accederLli("link", 123);
-    ASSERT_EQ(lli.fechaActual(), 123);
-    ASSERT_EQ(lli.accesosRecientesDia("link", 122), 0);
-    ASSERT_EQ(lli.accesosRecientesDia("linkkk", 122), 4);
-    ASSERT_EQ(lli.fechaUltimoAcceso("link"), 123);
-    ASSERT_EQ(lli.fechaUltimoAcceso("linkkk"), 122);
-    ASSERT_EQ(lli.accesosRecientesDia("link", 123), 1);
-    lli.nuevoLinkLli("link1", "cat");
-    lli.nuevoLinkLli("link2", "cat");
-    lli.nuevoLinkLli("link3", "cat");
-    ASSERT_EQ(lli.cantLinks("cat"),5);
-    LinkLinkIt::itLinks itL = LinkLinkIt::itLinks(lli.linksLli());
-    ASSERT(itL == lli.linksLli());
-    LinkLinkIt::itPunLinks itP = LinkLinkIt::itPunLinks(lli.linksOrdenadosPorAccesos("cat"));
-    Link l = itP.SiguienteLink();
-    ASSERT_EQ(itP.SiguienteLink() == "linkkk", true);
-    ASSERT_EQ(itP.SiguienteCantidadAccesosDelLink(),4);
-    itP.Avanzar();
-    ASSERT_EQ(itP.SiguienteLink() == "link",true);
-    LinkLinkIt::itPunLinks itP2 = LinkLinkIt::itPunLinks(lli.linksOrdenadosPorAccesos("cat"));
-    ASSERT_EQ(itP2.SiguienteLink() == "linkkk", true);
-    delete acat;
+void armarArbol(Driver& d) {
+    /**
+     * cat1
+     *  |- cat2
+     *  |   |- cat4
+     *  |   \- cat5
+     *  |
+     *  \- cat3
+     *      \- cat6
+     */
+    d.nuevoArbol("cat1");
+    d.agregarCategoria("cat1","cat2");
+    d.agregarCategoria("cat1","cat3");
+    d.agregarCategoria("cat2","cat4");
+    d.agregarCategoria("cat2","cat5");
+    d.agregarCategoria("cat3","cat6");
 }
 
-
-void LLIGigante(){
-    Categoria cat = "cat";
-    ArbolCategorias *acat = new ArbolCategorias(cat);
-    acat->agregarAC("miniCat", cat);
-    acat->agregarAC("miniCat2", cat);
-    acat->agregarAC("miniCat3", cat);
-    acat->agregarAC("miniCat4", "miniCat2");
-    acat->agregarAC("miniCat5", "miniCat4");
-    ArbolCategorias *acat2 = new ArbolCategorias(cat);
-    acat2->agregarAC("miniCat", cat);
-    acat2->agregarAC("miniCat2", cat);
-    acat2->agregarAC("miniCat3", cat);
-
-    acat2->agregarAC("miniCat4", "miniCat2");
-    acat2->agregarAC("miniCat5", "miniCat4");
-    ASSERT(*acat == *acat2);
-    LinkLinkIt lli = LinkLinkIt(acat);
-    lli.nuevoLinkLli("link", "cat");
-    ASSERT_EQ(lli.categoriaLink("link"), "cat");
-    ASSERT_EQ(lli.cantLinks("cat"), 1);
-    lli.accederLli("link", 120);
-    ASSERT((*acat == *acat2));
-    ASSERT_EQ(lli.fechaActual(), 120);
-    ASSERT_EQ(lli.fechaUltimoAcceso("link"), 120);
-    ASSERT_EQ(lli.accesosRecientesDia("link", 120), 1);
-    delete acat;
-    delete acat2;
-}
-void testAgregarLink(){
-    Categoria cat = "cat";
-    ArbolCategorias *acat = new ArbolCategorias(cat);
-    acat->agregarAC("miniCat",cat);
-    acat->agregarAC("miniCat2","miniCat");
-    LinkLinkIt lli = LinkLinkIt(acat);
-    lli.nuevoLinkLli("miLink","miniCat2");
-    lli.nuevoLinkLli("minuevoLink","cat");
-    LinkLinkIt lli2 = LinkLinkIt(acat);
-    lli2.nuevoLinkLli("minuevoLink","cat");
-    lli2.nuevoLinkLli("miLink","miniCat2");
-    ASSERT_EQ(lli.categoriaLink("miLink"),"miniCat2");
-    ASSERT(!(lli == lli2));
-    lli.accederLli("miLink",120);
-    lli.accederLli("minuevoLink",120);
-    lli2.accederLli("miLink",120);
-    lli2.accederLli("minuevoLink",120);
-    lli.linksOrdenadosPorAccesos("cat");
-    lli2.linksOrdenadosPorAccesos("cat");
-    lli.linksOrdenadosPorAccesos("miniCat2");
-    lli2.linksOrdenadosPorAccesos("miniCat2");
-    delete acat;
+void testDriverCtor() {
+	Driver d;
 }
 
-void LLIGigante2(){
-    Categoria cat = "cat";
-    ArbolCategorias *acat = new ArbolCategorias(cat);
-    acat->agregarAC("miniCat", cat);
-    acat->agregarAC("miniCat2", cat);
-    acat->agregarAC("miniCat3", cat);
-    acat->agregarAC("miniCat4", "miniCat2");
-    acat->agregarAC("miniCat5", "miniCat4");
-    ArbolCategorias *acat2 = new ArbolCategorias(cat);
-    acat2->agregarAC("miniCat33", cat);
-    acat2->agregarAC("miniCat2", cat);
-    acat2->agregarAC("miniCat3", cat);
-    acat2->agregarAC("miniCat4", "miniCat2");
-    acat2->agregarAC("miniCat5", "miniCat4");
-    LinkLinkIt lli = LinkLinkIt(acat);
-    lli.nuevoLinkLli("link", "cat");
-    ASSERT_EQ(lli.categoriaLink("link"), "cat");
-    ASSERT_EQ(lli.cantLinks("cat"), 1);
-    lli.accederLli("link", 120);
-    ASSERT(!(*acat == *acat2));
-    ASSERT_EQ(lli.fechaActual(), 120);
-    ASSERT_EQ(lli.fechaUltimoAcceso("link"), 120);
-    ASSERT_EQ(lli.accesosRecientesDia("link", 120), 1);
-    lli.nuevoLinkLli("linkk", "miniCat5");
-    lli.nuevoLinkLli("linkk1", "miniCat5");
-    lli.nuevoLinkLli("linkk2", "miniCat5");
-    lli.accederLli("link", 122);
-    lli.accederLli("link", 122);
-    lli.accederLli("link", 122);
-    lli.accederLli("link", 122);
-    lli.accederLli("linkk2", 122);
-    lli.accederLli("linkk2", 122);
-    lli.accederLli("linkk2", 122);
-    lli.accederLli("linkk2", 122);
-    lli.accederLli("linkk2", 122);
-    lli.accederLli("linkk2", 122);
-    ASSERT_EQ(lli.fechaActual(), 122);
-    ASSERT_EQ(lli.fechaUltimoAcceso("link"), 122);
-    ASSERT_EQ(lli.accesosRecientesDia("link", 122), 4);
-    ASSERT_EQ(lli.cantLinks("cat"), 4);
-    ASSERT_EQ(lli.linksLli().Siguiente() == "link", true);
-    LinkLinkIt::itPunLinks itP = LinkLinkIt::itPunLinks(lli.linksOrdenadosPorAccesos("cat"));
-    Link l = itP.SiguienteLink();
-    ASSERT_EQ(itP.SiguienteLink() == "linkk2", true);
-    ASSERT_EQ(itP.SiguienteCantidadAccesosDelLink(),6);
-    itP.Avanzar();
-    ASSERT_EQ(itP.SiguienteLink() == "link",true);
-    itP.Avanzar();
-    ASSERT_EQ(itP.SiguienteLink() == "linkk",true);
-    ASSERT_EQ(itP.SiguienteCantidadAccesosDelLink() == 0,true);
-    itP.Avanzar();
-    ASSERT_EQ(itP.SiguienteLink() == "linkk1",true);
-    ASSERT_EQ(itP.SiguienteCantidadAccesosDelLink() == 0,true);
-    LinkLinkIt::itPunLinks itP2 = LinkLinkIt::itPunLinks(lli.linksOrdenadosPorAccesos("cat"));
-    ASSERT_EQ(itP2.SiguienteLink() == "linkk2", true);
-    ASSERT_EQ(lli.cantLinks("miniCat5"), 3);
-    ASSERT_EQ(lli.cantLinks("miniCat4"), 3);
-    lli.nuevoLinkLli("linkk5", "miniCat2");
-    ASSERT_EQ(lli.cantLinks("miniCat2"), 4);
-    ASSERT_EQ(lli.cantLinks("cat"), 5);
-    lli.accederLli("linkk5", 124);
-    lli.accederLli("linkk5", 124);
-    lli.accederLli("linkk5", 124);
-    lli.accederLli("linkk5", 124);
-    lli.accederLli("linkk5", 124);
-    lli.accederLli("linkk5", 124);
-    lli.accederLli("linkk5", 124);
-    lli.accederLli("linkk5", 124);
-    lli.accederLli("linkk2", 124);
-    LinkLinkIt::itPunLinks itP3 = LinkLinkIt::itPunLinks(lli.linksOrdenadosPorAccesos("cat"));
-    ASSERT_EQ(itP3.SiguienteLink() == "linkk5", true);
-    ASSERT_EQ(itP3.SiguienteCantidadAccesosDelLink() == 8, true);
-    itP3.Avanzar();
-    ASSERT_EQ(itP3.SiguienteLink() == "linkk2", true);
-    ASSERT_EQ(itP3.SiguienteCantidadAccesosDelLink() == 7, true);
-    LinkLinkIt::itLinks itL = LinkLinkIt::itLinks(lli.linksLli());
-    ASSERT_EQ(itL.Siguiente() == "link", true);
-    itL.Avanzar();
-    ASSERT_EQ(itL.Siguiente() == "linkk", true);
-    itL.Avanzar();
-    ASSERT_EQ(itL.Siguiente() == "linkk1", true);
-    itL.Avanzar();
-    ASSERT_EQ(itL.Siguiente() == "linkk2", true);
-    itL.Avanzar();
-    ASSERT_EQ(itL.Siguiente() == "linkk5", true);
-    ASSERT_EQ(lli.fechaActual() == 124, true);
-    ASSERT_EQ(lli.categoriaLink("linkk5") == "miniCat2", true);
-    ASSERT_EQ(lli.accesosRecientesDia("linkk5",123), 0);
-    ASSERT_EQ(lli.dameAcatLli().dameCantidad(),6);
-    ASSERT_EQ(lli.dameAcatLli().idAC("miniCat2"),3);
-    ASSERT_EQ(lli.dameAcatLli().alturaAC(),4);
-    ASSERT_EQ(lli.dameAcatLli().esta("mini"), false);
-    ASSERT_EQ(lli.dameAcatLli().esta("miniCat2"), true);
-    ASSERT_EQ(lli.dameAcatLli().esSubCategoria("cat","miniCat2"), true);
-    ASSERT_EQ(lli.dameAcatLli().esSubCategoria("miniCat2","miniCat2"), true);
-    ASSERT_EQ(lli.dameAcatLli().esSubCategoria("miniCat5","miniCat2"), false);
-    delete acat;
-    delete acat2;
+void testArbolRaiz() {
+	Driver d;
+    d.nuevoArbol("cat1");
+    ASSERT_EQ(d.cantCategoriasHijas("cat1"), 0);
+    ASSERT_EQ(d.raiz(), "cat1");
 }
 
+void testArbolConHijos() {
+	Driver d;
+    d.nuevoArbol("cat1");
+    d.agregarCategoria("cat1","cat2");
+    ASSERT_EQ(d.raiz(), "cat1");
+    ASSERT_EQ(d.cantCategoriasHijas("cat1"), 1);
+    ASSERT_EQ(d.obtenerIesimaCategoriaHija("cat1", 0), "cat2");
+}
+
+void testArbolConHijosQueRequiereCopia__OPCIONAL() {
+	Driver d;
+    String *c1 = new String("cat1");
+    String *c1p = new String("cat1");
+    String *c2 = new String("cat2");
+    d.nuevoArbol(*c1);
+    d.agregarCategoria(*c1p, *c2);
+    delete c1;
+    delete c1p;
+    delete c2;
+    ASSERT_EQ(d.raiz(), "cat1");
+    ASSERT_EQ(d.cantCategoriasHijas("cat1"), 1);
+    ASSERT_EQ(d.obtenerIesimaCategoriaHija("cat1", 0), "cat2");
+}
+
+void testArbolIDsConsecutivos()
+{
+    Driver d;
+    armarArbol(d);
+
+    ASSERT_EQ(d.id("cat1"),1);
+    ASSERT_EQ(d.id("cat2"),2);
+    ASSERT_EQ(d.id("cat3"),3);
+    ASSERT_EQ(d.id("cat4"),4);
+    ASSERT_EQ(d.id("cat5"),5);
+    ASSERT_EQ(d.id("cat6"),6);
+}
+
+void testArbolConVariasCategorias() {
+	Driver d;
+    /**
+     * cat1
+     *  |- cat2
+     *  \- cat3
+     *      \- cat4
+     */
+    d.nuevoArbol("cat1");
+    d.agregarCategoria("cat1","cat2");
+    d.agregarCategoria("cat1","cat3");
+    d.agregarCategoria("cat3","cat4");
+
+    ASSERT_EQ(d.cantCategoriasHijas("cat1"), 2);
+    ASSERT_EQ(d.cantCategoriasHijas("cat2"), 0);
+    ASSERT_EQ(d.cantCategoriasHijas("cat3"), 1);
+}
+
+void testArbolIteradorHijasConVariosElementos()
+{
+    Driver d;
+    armarArbol(d);
+
+    ASSERT(d.obtenerIesimaCategoriaHija("cat1",0) == "cat2" ||
+           d.obtenerIesimaCategoriaHija("cat1",0) == "cat3");
+    ASSERT(d.obtenerIesimaCategoriaHija("cat1",1) == "cat2" ||
+           d.obtenerIesimaCategoriaHija("cat1",1) == "cat3");
+    ASSERT(d.obtenerIesimaCategoriaHija("cat1",0) != d.obtenerIesimaCategoriaHija("cat1",1));
+
+}
+
+void agregarLinks(Driver& d) {
+    /** categoria {links propios sin hijos}
+     *
+     * cat1 {link_A, link_B}
+     *  |- cat2 {link_C}
+     *  |   |- cat4 {link_D}
+     *  |   \- cat5
+     *  |
+     *  \- cat3
+     *      \- cat6 {link_E}
+     */
+    d.nuevoLink("link_A", "cat1");
+    d.nuevoLink("link_B", "cat1");
+    d.nuevoLink("link_C", "cat2");
+    d.nuevoLink("link_D", "cat4");
+    d.nuevoLink("link_E", "cat6");
+}
+
+void accederLinks(Driver& d) {
+    /** categoria {links propios} : [links ordenados por acceso]
+     *
+     * cat1 {link_A, link_B} :      [link_A,link_C,link_B] ++ permutacion( [link_D, link_E] )
+     *  |- cat2 {link_C} :          [link_C, link_D]
+     *  |   |- cat4 {link_D} :      [link_D]
+     *  |   \- cat5 {} :            []
+     *  |
+     *  \- cat3 {} :                [link_E]
+     *      \- cat6 {link_E} :      [link_E]
+     */
+    d.acceso("link_A",1);
+    d.acceso("link_A",1);
+    d.acceso("link_A",1);
+    d.acceso("link_A",2);
+    d.acceso("link_B",2);
+    d.acceso("link_B",2);
+    d.acceso("link_C",3);
+    d.acceso("link_C",3);
+    d.acceso("link_C",3);
+}
+
+void testSistemaCuentaLinksEnCategoriasDescendientes() {
+	Driver d;
+    armarArbol(d);
+    agregarLinks(d);
+
+    ASSERT_EQ(d.cantLinks("cat1"), 5);
+    ASSERT_EQ(d.cantLinks("cat2"), 2);
+    ASSERT_EQ(d.cantLinks("cat3"), 1);
+}
+
+void testSistemaLosLinksEstanOrdenadosSegunEspecificacion() {
+	Driver d;
+    armarArbol(d);
+    agregarLinks(d);
+    accederLinks(d);
+
+    ASSERT_EQ(d.obtenerIesimoLinkOrdenadoPorAccesos("cat1",0), "link_A");
+    ASSERT_EQ(d.obtenerCategoriaIesimoLinkOrdenadoPorAccesos("cat1",0), "cat1");
+    ASSERT_EQ(d.obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos("cat1",0), 4);
+
+    ASSERT_EQ(d.obtenerIesimoLinkOrdenadoPorAccesos("cat1",1), "link_C");
+    ASSERT_EQ(d.obtenerCategoriaIesimoLinkOrdenadoPorAccesos("cat1",1), "cat2");
+    ASSERT_EQ(d.obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos("cat1",1), 3);
+
+    ASSERT_EQ(d.obtenerIesimoLinkOrdenadoPorAccesos("cat1",2), "link_B");
+    ASSERT_EQ(d.obtenerCategoriaIesimoLinkOrdenadoPorAccesos("cat1",2), "cat1");
+    ASSERT_EQ(d.obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos("cat1",2), 2);
+
+    ASSERT_EQ(d.obtenerIesimoLinkOrdenadoPorAccesos("cat2",0), "link_C");
+    ASSERT_EQ(d.obtenerCategoriaIesimoLinkOrdenadoPorAccesos("cat2",0), "cat2");
+    ASSERT_EQ(d.obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos("cat2",0), 3);
+}
+
+int indiceLinkOrdenado(Driver &d, const Categoria& cat, const Link& l)
+{
+    int n = d.cantLinks(cat);
+    for(int i = 0; i < n; i++) {
+        if (d.obtenerIesimoLinkOrdenadoPorAccesos(cat, i) == l)
+            return i;
+    }
+    ASSERT(false);
+    return -1;
+}
+
+void testSistemaLosLinksPierdenAccesosSegunVentana() {
+	Driver d;
+    armarArbol(d);
+    agregarLinks(d);
+    accederLinks(d);
+
+    // Corrimiento de ventana
+    d.acceso("link_C",4);
+    ASSERT_EQ(d.obtenerIesimoLinkOrdenadoPorAccesos("cat1", 0), "link_C");
+    ASSERT_EQ(d.obtenerCategoriaIesimoLinkOrdenadoPorAccesos("cat1",0), "cat2");
+    ASSERT_EQ(d.obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos("cat1",0), 4);
+    
+    int pos_link_A = indiceLinkOrdenado(d, "cat1", "link_A");
+    // por la ventana link A queda con 1 acceso y eso lo lleva al final
+    ASSERT_EQ(d.obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos("cat1", pos_link_A), 1);
+    ASSERT(pos_link_A == 2);
+
+    // Corrimiento de ventana
+    d.acceso("link_A",4);
+    d.acceso("link_A",4);
+    d.acceso("link_A",4);
+    d.acceso("link_A",4);
+    ASSERT_EQ(d.obtenerIesimoLinkOrdenadoPorAccesos("cat1",0), "link_A");
+    ASSERT_EQ(d.obtenerCategoriaIesimoLinkOrdenadoPorAccesos("cat1",0), "cat1");
+    ASSERT_EQ(d.obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos("cat1",0), 5);
+    // La cat2 no cambia
+    ASSERT_EQ(d.obtenerIesimoLinkOrdenadoPorAccesos("cat2",0), "link_C");
+    ASSERT_EQ(d.obtenerCategoriaIesimoLinkOrdenadoPorAccesos("cat2",0), "cat2");
+    ASSERT_EQ(d.obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos("cat2",0), 4);
+}
+
+void testSistemaLinksPuedenTenerDistintosAccesosYCambiarOrden()
+{
+    Driver d;
+    armarArbol(d);
+
+    /** categoria {links propios sin hijos}
+     *
+     * cat1 {link_C}
+     *  |- cat2 {link_A, link_B}
+     */
+    d.nuevoLink("link_A", "cat2");
+    d.nuevoLink("link_B", "cat2");
+    d.nuevoLink("link_C", "cat1");
+
+	//TODO  A 100  0  0  0
+	//      B      2
+	//      C         0  1
+    for(int i=0;i<100;i++) {
+        d.acceso("link_A", 1);
+    }
+    d.acceso("link_B", 2);
+    d.acceso("link_B", 2);
+	d.acceso("link_C", 4);
+	
+    ASSERT_EQ(d.cantLinks("cat1"), 3);
+    ASSERT_EQ(d.cantLinks("cat2"), 2);
+    
+	ASSERT_EQ(d.obtenerIesimoLinkOrdenadoPorAccesos("cat2",0), "link_A");
+    ASSERT_EQ(d.obtenerCategoriaIesimoLinkOrdenadoPorAccesos("cat2",0), "cat2");
+    ASSERT_EQ(d.obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos("cat2",0), 100);
+
+	ASSERT_EQ(d.obtenerIesimoLinkOrdenadoPorAccesos("cat2",1), "link_B");
+    ASSERT_EQ(d.obtenerCategoriaIesimoLinkOrdenadoPorAccesos("cat2",1), "cat2");
+    ASSERT_EQ(d.obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos("cat2",1), 2);
+ 
+    
+    ASSERT_EQ(d.obtenerIesimoLinkOrdenadoPorAccesos("cat1",0), "link_B");
+    ASSERT_EQ(d.obtenerCategoriaIesimoLinkOrdenadoPorAccesos("cat1",0), "cat2");
+    ASSERT_EQ(d.obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos("cat1",0), 2);
+
+    ASSERT_EQ(d.obtenerIesimoLinkOrdenadoPorAccesos("cat1",1), "link_C");
+    ASSERT_EQ(d.obtenerCategoriaIesimoLinkOrdenadoPorAccesos("cat1",1), "cat1");
+    ASSERT_EQ(d.obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos("cat1",1), 1);
+
+    ASSERT_EQ(d.obtenerIesimoLinkOrdenadoPorAccesos("cat1",2), "link_A");
+    ASSERT_EQ(d.obtenerCategoriaIesimoLinkOrdenadoPorAccesos("cat1",2), "cat2");
+    ASSERT_EQ(d.obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos("cat1",2), 0);
+}
+
+void testSistemaAndaPorCopia__OPCIONAL() {
+    Driver d;
+    String *c1 = new String("cat1");
+    String *c1p = new String("cat1");
+    String *c2 = new String("cat2");
+    d.nuevoArbol(*c1);
+    d.agregarCategoria(*c1p, *c2);
+    
+    delete c1;
+    delete c1p;
+    delete c2;
+    
+    String *lA = new String("link_A");
+    String *lAp = new String("link_A");
+    String *c2p = new String("cat2");
+    d.nuevoLink(*lA, *c2p);
+    delete lA;
+    delete c2p;
+    
+    d.acceso(*lAp, 1);
+    delete lAp;
+    
+    ASSERT_EQ(d.obtenerIesimoLinkOrdenadoPorAccesos("cat1",0), "link_A");
+    ASSERT_EQ(d.obtenerCategoriaIesimoLinkOrdenadoPorAccesos("cat1",0), "cat2");
+    ASSERT_EQ(d.obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos("cat1",0), 1);
+}
+
+void testSistemaCategoriasSinLinkTieneIterador()
+{
+    Driver d;
+    armarArbol(d);
+
+    d.nuevoLink("link_A", "cat4");
+    
+    ASSERT_EQ(d.cantLinks("cat1"), 1);
+    ASSERT_EQ(d.cantLinks("cat2"), 1);
+    ASSERT_EQ(d.cantLinks("cat3"), 0);
+    ASSERT_EQ(d.cantLinks("cat4"), 1);
+    ASSERT_EQ(d.cantLinks("cat5"), 0);
+    ASSERT_EQ(d.cantLinks("cat6"), 0);
+}
+
+//
 int main(void) {
-    RUN_TEST(arbolNuevoEsVacio);
-    RUN_TEST(arbolNuevoConRaizTieneHijoVacio);
-    RUN_TEST(accesoTest);
-    RUN_TEST(accesoTestConConstr);
-    RUN_TEST(LinkLinkItNuevo);
-    RUN_TEST(testLinkNuevo);
-    RUN_TEST(LLIGigante);
-    RUN_TEST(LLIGigante2);
-    RUN_TEST(testAgregarLink);
+    RUN_TEST(testDriverCtor);
+    RUN_TEST(testArbolRaiz);
+    RUN_TEST(testArbolConHijos);
+    RUN_TEST(testArbolIDsConsecutivos);
+    RUN_TEST(testArbolConVariasCategorias);
+    RUN_TEST(testArbolIteradorHijasConVariosElementos);
+    RUN_TEST(testSistemaCuentaLinksEnCategoriasDescendientes);
+    RUN_TEST(testSistemaLosLinksEstanOrdenadosSegunEspecificacion);
+    RUN_TEST(testSistemaLosLinksPierdenAccesosSegunVentana);
+    RUN_TEST(testSistemaLinksPuedenTenerDistintosAccesosYCambiarOrden);
+    RUN_TEST(testSistemaCategoriasSinLinkTieneIterador);
+    
+    RUN_TEST(testArbolConHijosQueRequiereCopia__OPCIONAL);
+    RUN_TEST(testSistemaAndaPorCopia__OPCIONAL);
+    
 	return 0;
 }

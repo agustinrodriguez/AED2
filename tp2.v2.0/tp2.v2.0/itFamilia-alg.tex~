@@ -1,0 +1,43 @@
+\begin{algorithm}[H]
+\caption{iCrearItAccesos}
+\begin{algorithmic}[1]
+\Function{icrearItAccesos}{\param{in}{l}{Lista(acceso)}}{$\ensuremath{\rightarrow}$ \param{}{res}{estrITA}}
+\State res $\gets$ crearIt(l) \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iHaySiguiente?}
+\begin{algorithmic}[1]
+\Function{ihaysiguiente?}{\param{in}{e}{estrITA}}{$\ensuremath{\rightarrow}$\param{}{res}{bool}}
+\state res $\gets$ haySiguiente(e)\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iSiguiente}
+\begin{algorithmic}[1]
+\Function{isiguiente}{\param{in}{e}{estrITA}}{$\rightarrow$ \param{}{res}{Acceso}}
+\state res $\gets$ siguiente(e)\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iAvanzar}
+\begin{algorithmic}[1]
+\Function{iavanzar}{\param{in/out}{e}{estrITA}}{}
+\state avanzar(e)\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}

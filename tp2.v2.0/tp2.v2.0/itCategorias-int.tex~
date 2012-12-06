@@ -1,0 +1,39 @@
+\begin{interfaz}{Iterador Categorias}
+\begin{iparamformales}{itCategorias}
+
+\comment{\funcion{Copiar}{\param{in}{m}{$\alpha$}}{$\alpha$}
+{true}
+{\igres m}
+{copy(m)}
+{}
+}
+
+\textbf{\large se explica con:} Iterador Bidireccional
+
+\end{iparamformales}
+
+\operacion{crearItCategotias}{\param{in}{l}{lista(datosCat)}}{itCategorias}
+{true}
+{\igres crearIt(l)}
+{1}
+{No debe modificarse ningún elemento iterado por res.}
+
+\operacion{haysiguiente?}{\param{in}{it}{itCategorias}}{bool}
+{true}
+{\igres haySiguiente?(it)}
+{1}
+{No tiene.}
+
+\operacion{siguiente}{\param{in}{it}{itCategorias}}{Categoria}
+{haySiguiente?(it)}
+{\igres \pi_{1}(siguiente(it))}
+{1}
+{res no es modificable.}
+
+\operacion{avanzar}{\param{in/out}{it}{itCategorias}}{}
+{it \igobs it_0 \land haySiguiente?(it)}
+{it \igobs avanzar(it_0)}
+{1}
+{No tiene.}
+
+\end{interfaz}

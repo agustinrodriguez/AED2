@@ -1,0 +1,45 @@
+\begin{interfaz}{Iterador Familia}
+\begin{iparamformales}{itFamilia}
+
+\comment{\funcion{Copiar}{\param{in}{m}{$\alpha$}}{$\alpha$}
+{true}
+{\igres m}
+{copy(m)}
+{}
+}
+
+\textbf{\large se explica con:} Iterador Bidireccional
+
+\end{iparamformales}
+
+\operacion{crearItFamilia}{\param{in}{l}{puntero(DatosCat)}}{itFamilia}
+{true}
+{\igres crearIt(l)}
+{1}
+{Los elementos iterados por res no deben ser modificados.}
+
+\operacion{haysiguiente?}{\param{in}{it}{itFamilia}}{bool}
+{true}
+{\igres haySiguiente?(it)}
+{1}
+{No tiene.}
+
+\operacion{siguienteCat}{\param{in}{it}{itFamilia}}{Categoria}
+{haySiguiente?(it)}
+{\igres siguiente(it)}
+{1}
+{la Categoria se pasa por referencia y no debe ser modificado.}
+
+\operacion{siguienteId}{\param{in}{it}{itFamilia}}{int}
+{haySiguiente?(it)}
+{\igres siguiente(it)}
+{1}
+{El ID se pasa por referencia y no debe ser modificado.}
+
+\operacion{avanzar}{\param{in/out}{it}{itFamilia}}{}
+{it \igobs it_0 \land haySiguiente?(it)}
+{it \igobs avanzar(it_0)}
+{1}
+{No tiene.}
+
+\end{interfaz}

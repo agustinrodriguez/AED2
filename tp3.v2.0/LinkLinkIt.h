@@ -77,7 +77,6 @@ namespace aed2
                     bool operator==(const itLinks& otro) const;
                 private:
                     Lista<DatosLink>::Iterador _itLista;
-                    Lista<DatosLink> _lista;
             };
 
             //creacion de la clase iterador de puntero a datoslink

@@ -1,0 +1,265 @@
+%\begin{algorithm}[H]
+%\caption{iDameLink}
+%\begin{algorithmic}[1]
+%\Function{idameLink}{\param{in}{dl}{datosLink}}{$\ensuremath{\rightarrow}$ \param{}{res}{Link}}
+%\state res $\gets$ dl.link \hfill //O(1)
+%\EndFunction 
+%\end{algorithmic}
+%\hrule
+%\complejidad{1}
+%\end{algorithm}
+
+%\begin{algorithm}[H]
+%\caption{iDameCatDLink}
+%\begin{algorithmic}[1]
+%\Function{iDameCatDLink}{\param{in}{dl}{datosLink}}{$\ensuremath{\rightarrow}$ \param{}{res}{puntero(datosCat)}}
+%\state res $\gets$ dl.catDLink \hfill //O(1)
+%\EndFunction 
+%\end{algorithmic}
+%\hrule
+%\complejidad{1}
+%\end{algorithm}
+
+%\begin{algorithm}[H]
+%\caption{iDameAccesos}
+%\begin{algorithmic}[1]
+%\Function{iDameAccesos}{\param{in}{dl}{datosLink}}{$\ensuremath{\rightarrow}$ \param{}{res}{itLista(acceso)}}
+%\state res $\gets$ crearIT(dl.accesosRecientes) \hfill //O(1)
+%\EndFunction 
+%\end{algorithmic}
+%\hrule
+%\complejidad{1}
+%\end{algorithm}
+
+%\begin{algorithm}[H]
+%\caption{iDameCantAccesos}
+%\begin{algorithmic}[1]
+%\Function{iDameCantAccesos}{\param{in}{dl}{datosLink}}{$\ensuremath{\rightarrow}$ \param{}{res}{nat}}
+%\state res $\gets$ dl.cantAccesosRecientes \hfill //O(1)
+%\EndFunction 
+%\end{algorithmic}
+%\hrule
+%\complejidad{1}
+%\end{algorithm}
+
+%\begin{algorithm}[H]
+%\caption{iDameDia}
+%\begin{algorithmic}[1]
+%\Function{iDameDia}{\param{in}{a}{acceso}}{$\ensuremath{\rightarrow}$ \param{}{res}{Fecha}}
+%\state res $\gets$ a.dia \hfill //O(1)
+%\EndFunction 
+%\end{algorithmic}
+%\hrule
+%\complejidad{1}
+%\end{algorithm}
+
+%\begin{algorithm}[H]
+%\caption{iDameCantA}
+%\begin{algorithmic}[1]
+%\Function{iDameCantA}{\param{in}{a}{acceso}}{$\ensuremath{\rightarrow}$ \param{}{res}{nat}}
+%\state res $\gets$ a.cantAccesos \hfill //O(1)
+%\EndFunction 
+%\end{algorithmic}
+%\hrule
+%\complejidad{1}
+%\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{idameACatLLI}
+\begin{algorithmic}[1]
+\Function{idameACatLLI}{\param{in}{lli}{estrLLI}}{$\ensuremath{\rightarrow}$ \param{}{res}{acat}}
+\state res $\gets$ lli.arbolCategorias \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{icategoriasLLI}
+\begin{algorithmic}[1]
+\Function{icategoriasLLI}{\param{in}{lli}{estrLLI}}{$\ensuremath{\rightarrow}$ \param{}{res}{itCategorias}}
+\state res $\gets$ categoriasAC(lli.arbolCategorias) \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iFechaActual}
+\begin{algorithmic}[1]
+\Function{ifechaActual}{\param{in}{lli}{estrLLI}}{$\ensuremath{\rightarrow}$ \param{}{res}{Fecha}}
+\state res $\gets$ lli.actual \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iLinksLLI}
+\begin{algorithmic}[1]
+\Function{ilinksLLI}{\param{in}{lli}{estrLLI}}{$\ensuremath{\rightarrow}$ \param{}{res}{itLinks}}
+\state res $\gets$ crearItLinks(lli.listaLinks) \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iCategoriaLink}
+\begin{algorithmic}[1]
+\Function{icategoriaLink}{\param{in}{lli}{estrLLI}, \param{in}{l}{Link}}{$\ensuremath{\rightarrow}$ \param{}{res}{Categoria}}
+\state res $\gets$ (*obtener(l,lli.linksInfo)).catDLink \hfill //O(|l|)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|l|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iFechaUltimoAcceso}
+\begin{algorithmic}[1]
+\Function{ifechaUltimoAcceso}{\param{in}{lli}{estrLLI}, \param{in}{l}{Link}}{$\ensuremath{\rightarrow}$ \param{}{res}{Fecha}}
+\state res $\gets$ (ultimo((*obtener(l,lli.linkInfo)).accesosRecientes)).dia \hfill //O(|l|)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|l|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iAccesosRecientesDia}
+\begin{algorithmic}[1]
+\Function{iaccesosRecientesDia}{\param{in}{lli}{linkLinkIt}, \param{in}{l}{Link}, \param{in}{f}{Fecha}}{$\ensuremath{\rightarrow}$ \param{}{res}{nat}}
+\state itAccesos accesos $\gets$ crearItAccesos((*obtener(l,lli.linkInfo)).accesosRecientes) \hfill //O(|l|)
+\while{haySiguiente(accesos)}\hfill //O(|accesos|) = O(1)
+\If{siguiente(accesos).dia == f} \hfill //O(1)
+\state res $\gets$ siguiente(accesos).cantAccesos \hfill //O(1)
+\endif
+\state avanzar(accesos) \hfill //O(1)
+\endwhile
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|l|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iIniciarLLI}
+\begin{algorithmic}[1]
+\Function{iiniciarLLI}{\param{in}{ac}{acat}}{$\ensuremath{\rightarrow}$ \param{}{res}{estrLLI}}
+\state res.actual $\gets$ 1 \hfill//O(1)
+\state res.arbolCategorias $\gets$ ac \hfill //O(1)
+\state nat c $\gets$ 0 \hfill //O(1)
+\state res.arrayCatLinks $\gets$ crearArreglo(longitud(siguientes(categoriasAC(ac)))) 
+\state\hfill //O(longitud(siguientes(categoriasAC(ac))))
+\state res.listaLinks $\gets$ vacia() \hfill //O(1)
+\state res.linksInfo $\gets$ vacio() \hfill //O(1)
+\while{c < dameCantidad(res.arbolCategorias)} 
+\state\hfill //O(dameCantidad(res.arbolCategorias)))
+\state linksFamilia llist $\gets$ vacia() \hfill //O(1)
+\state res.arrayCatLinks[c] $\gets$ llist \hfill //O(1)
+\state c++ \hfill //O(1)
+\endwhile
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{dameCantidad(res.arbolCategorias)}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iNuevoLink}
+\begin{algorithmic}[1]
+\Function{inuevoLink}{\param{in/out}{lli}{estrLLI}, \param{in}{l}{Link}, \param{in}{c}{Categoria}}{}
+\state itFamilia itF $\gets$ crearItFamilia(obtener(c,lli.arbolCategorias)) \hfill//O(|c|)
+\state Lista(acceso) accesoDeNuevoLink $\gets$ vacia() \hfill //O(1)
+\state datosLink nuevoLink $\gets$ <l,c,accesoDeNuevoLink,0> \hfill //O(|l|)
+\state puntero(datosLink) puntLink $\gets$ nuevoLink \hfill //O(1)
+\state definir(l,puntLink,lli.linkInfo) \hfill //O(|l|)
+\state agregarAtras(lli.listaLinks,nuevoLink) \hfill //O(1)
+\while{haySiguiente(itF)} \hfill //O(alturaAC(ac))
+\state agregarAtras(lli.arrayCatLinks[SiguienteId(itF)-1],puntLink) \hfill //O(1)
+\state Avanzar(itF) \hfill //O(1)
+\endwhile
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|c|+|l|+alturaAC(ac)}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iAccederLLI}
+\begin{algorithmic}[1]
+\Function{iaccederLLI}{\param{in/out}{lli}{estrLLI}, \param{in}{l}{Link}, \param{in}{f}{Fecha}}{}
+\If{lli.actual $\neq$ f} \hfill//O(1)
+\state lli.actual $\gets$ f \hfill //O(1)
+\endif
+\state puntero(datosLink) puntLink $\gets$ obtener(l,lli.linkInfo) \hfill//O(|l|)
+\If{ultimo((*puntLink).accesos).dia == f} \hfill//O(1)
+\state ultimo((*puntLink).accesos).cantAccesos ++ \hfill //O(1)
+\Else
+\state agregarAtras((*puntLink).accesos,<f,1>) \hfill //O(1)
+\endif
+\If{longitud((*puntLink).accesos) == 4} \hfill //O(1)
+\state (*puntLink).cantAccesosRecientes -= prim((*puntLink).accesos).cantAccesos \hfill //O(1)
+\state fin((*puntLink).accesos) \hfill //O(1)
+\endif
+\state (*puntLink).cantAccesosRecientes++ \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|l|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iCantLinks}
+\begin{algorithmic}[1]
+\Function{icantLinks}{\param{in}{lli}{estrLLI}, \param{}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{nat}}
+\state puntero(datosCat) cat $\gets$ obtener(c,lli.arbolCategorias) \hfill //O(|c|)
+\state res $\gets$ longitud(lli.arrayCatLinks[(*cat).id-1]) \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|c|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iLinksOrdenadosPorAccesos}
+\begin{algorithmic}[1]
+\Function{ilinksOrdenadosPorAccesos}{\param{in}{lli}{estrLLI},\param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \\ \hfill\param{}{res}{itPuntLinks}}
+\state nat id $\gets$ id(lli.arbolCategorias,c) \hfill//O(|c|)
+\state id $\gets$ id-1 \hfill //O(1)
+\state itLinks itParaFecha $\gets$ crearItPuntLins(lli.arrayCatLinks[id]) \hfill //O(1)
+\state Fecha fecha $\gets$ ultFecha(itParaFecha) \hfill //O(longitud(lli.arrayCatLinks[id]))
+\state Lista(puntero(datosLink)) listaOrdenada $\gets$ vacia() \hfill//O(1)
+\If{$\neg$estaOrdenada?(crearItPuntLins(lli.arrayCatLinks[id]),fecha)}
+\state\hfill //O(longitud(lli.arrayCatLinks[id]))
+\while{$\neg$vacia?(lli.arrayCatLinks[id])}
+\state itLinks itMax $\gets$ crearItPuntLins(lli.arrayCatLinks[id]) \hfill //O(1)
+\state itMax $\gets$ buscarMax(itMax,fecha) \hfill //O(longitud(lli.arrayCatLinks[id]))
+\state agregarAtras(listaOrdenada,siguiente(itMax)) \hfill //O(1)
+\state eliminarSiguiente(itMax) \hfill //O(1)
+\endwhile
+\state lli.arrayCatLinks[id] $\gets$ listaOrdenada \hfill //O(1)
+\endif
+\state res $\gets$ crearItPuntLins(lli.arrayCatLinks[id]) \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{$(longitud(lli.arrayCatLinks[id]))^2$ + |c|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iEsReciente}
+\begin{algorithmic}[1]
+\Function{iesReciente}{\param{in}{lli}{estrLLI}, \param{in}{l}{Link}, \param{in}{f}{Fecha}}{$\ensuremath{\rightarrow}$ \param{}{res}{bool}}
+\state res $\gets$ f $\geq$ (fechaUltimoAcceso(lli,l)-2) $\land$ f $\leq$ fechaUltimoAcceso(s,l) \hfill//O(|l)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|l|}
+\end{algorithm}
+

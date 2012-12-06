@@ -1,0 +1,89 @@
+\begin{algorithm}[H]
+\caption{iCrearItListaOrd}
+\begin{algorithmic}[1]
+\Function{icrearitlistaord}{\param{in}{l}{estrL}}{$\ensuremath{\rightarrow}$ \param{}{res}{estrITR}}
+\State res $\gets$ crearIt(l) \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iCrearItListaOrdRecientes}
+\begin{algorithmic}[1]
+\Function{icrearitlistaordrecientes}{\param{in}{l}{estrL}, \param{in}{f}{fecha}}{$\ensuremath{\rightarrow}$ \param{}{res}{estrITR}}
+\State res.iterador $\gets$ crearIt(l) \hfill //O(1)
+\state res.fecha $\gets$ f \hfill//O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iHaySiguiente?}
+\begin{algorithmic}[1]
+\Function{ihaysiguiente?}{\param{in}{e}{itLista(puntero(mensaje))}}{$\ensuremath{\rightarrow}$\param{}{res}{bool}}
+\state res $\gets$ haySiguiente(e)\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iHaySiguienteRecientes?}
+\begin{algorithmic}[1]
+\Function{ihaysiguienterecientes?}{\param{in}{e}{estrITR}}{$\ensuremath{\rightarrow}$\param{}{res}{bool}}
+\state res $\gets$ (haySiguieente(e.iterador) $\land$ mismaSemana?(creado(*sig(e.iterador)),e.fecha))\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iSiguiente}
+\begin{algorithmic}[1]
+\Function{isiguiente}{\param{in}{e}{itLista(puntero(mensaje))}}{$\rightarrow$ \param{}{res}{mensaje}}
+\state res $\gets$ *(siguiente(e))\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iSiguienteRecientes}
+\begin{algorithmic}[1]
+\Function{isiguienterecientes}{\param{in}{e}{estrITR}}{$\rightarrow$ \param{}{res}{mensaje}}
+\state res $\gets$ *(siguiente(e.iterador))\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iAvanzar}
+\begin{algorithmic}[1]
+\Function{iavanzar}{\param{in/out}{e}{itLista(puntero(mensaje))}}{}
+\state avanzar(e)\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iAvanzarRecientes}
+\begin{algorithmic}[1]
+\Function{iavanzarrecientes}{\param{in/out}{e}{estrITR}}{}
+\state avanzar(e.iterador)\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+

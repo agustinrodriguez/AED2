@@ -218,10 +218,10 @@
 1354740116 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\arbolcategorias.cpp
 	"ArbolCategorias.h"
 
-1354739354 source:/home/guido/AED2/tp3.v2.0/ArbolCategorias.cpp
+1354746374 source:/home/guido/AED2/tp3.v2.0/ArbolCategorias.cpp
 	"ArbolCategorias.h"
 
-1354719702 /home/guido/AED2/tp3.v2.0/ArbolCategorias.h
+1354746374 /home/guido/AED2/tp3.v2.0/ArbolCategorias.h
 	"aed2.h"
 	"DiccTrie.h"
 	"Tipos.h"
@@ -318,13 +318,9 @@
 	"LinkLinkIt.h"
 	"ArbolCategorias.h"
 
-1354742335 source:/home/guido/AED2/tp3.v2.0/tests.cpp
+1354129654 source:/home/guido/AED2/tp3.v2.0/tests.cpp
 	"Driver.h"
-	<stdarg.h>
-	"LinkLinkIt.h"
-	"ArbolCategorias.h"
-	<iostream>
-	<sstream>
+	"aed2_tests.h"
 
 1354740691 source:c:\users\nicolas.lasso\documents\facultad\algo2\bis\aed2\tp3.v2.0\tp3_doc.cpp
 	"Driver.h"

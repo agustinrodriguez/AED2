@@ -1,0 +1,117 @@
+\begin{interfaz}{ArbolCategorias}
+\begin{iparamformales}{acat}
+
+\comment{\funcion{Copiar}{\param{in}{m}{$\alpha$}}{$\alpha$}
+{true}
+{\igres m}
+{copy(m)}
+{}
+}
+
+\textbf{\large se explica con:} ArbolDeCategorias
+
+\end{iparamformales}
+
+\operacion{dameCat}{\param{in}{dc}{datosCat}}{Categoria}
+{true}
+{\igres \pi_{1}(dc)}
+{1}
+{La categoria se devuelve por referencia, no debe ser modificada.}
+
+\operacion{dameId}{\param{in}{dc}{datosCat}}{nat}
+{true}
+{\igres \pi_{2}(dc)}
+{1}
+{No tiene.}
+
+\operacion{dameAltura}{\param{in}{dc}{datosCat}}{nat}
+{true}
+{\igres \pi_{3}(dc)}
+{1}
+{No tiene.}
+
+\operacion{dameHijos}{\param{in}{dc}{datosCat}}{itHijos}
+{true}
+{\igres crearIt(\pi_{4}(dc))}
+{1}
+{No se deben modificar los elementos iterados por res.}
+
+\operacion{damePadre}{\param{in}{dc}{datosCat}}{puntero(datosCat)}
+{true}
+{\igres \pi_{5}(dc)}
+{1}
+{No debe modificarse nada de lo apuntado por res.}
+
+\operacion{obtenerAC}{\param{in}{ac}{acat}, \param{in}{c}{Categoria}}{puntero(datosCat)}
+{true}
+{\igres obtener(c,ac.familia)}
+{|c|}
+{Se puede modificar lo apuntado por res sólo si ac puede ser modificado.}
+
+\operacion{categoriasAC}{\param{in}{ac}{acat}}{itCategorias}
+{true}
+{\igres categorias(ac)}
+{1}
+{No se debe modificar nada de lo iterado por res.}
+
+\operacion{raizAC}{\param{in}{ac}{acat}}{Categoria}
+{true}
+{\igres raiz(ac)}
+{1}
+{El nombre de la categoría raiz se pasa por referencia, no debe ser modificado.}
+
+\operacion{idAC}{\param{in}{ac}{acat}, \param{in}{c}{Categoria}}{nat}
+{true}
+{\igres id(ac,c)}
+{|c|}
+{No tiene.}
+
+\operacion{alturaCatAC}{\param{in}{ac}{acat}, \param{in}{c}{Categoria}}{nat}
+{esta?(c,ac)}
+{\igres alturaCategoria(ac,c)}
+{|c|}
+{No tiene.}
+
+\operacion{hijosAC}{\param{in}{ac}{acat}, \param{in}{c}{Categoria}}{itHijos}
+{esta?(c,ac)}
+{\igres hijos(ac,c)}
+{|c|}
+{No se debe modificar nada de lo iterado por res.}
+
+\operacion{padreAC}{\param{in}{ac}{acat}, \param{in}{c}{Categoria}}{Categoria}
+{true}
+{\igres padre(ac,c)}
+{|c|}
+{El nombre de la categoría padre se pasa por referencia, no debe ser modificado.}
+
+\operacion{alturaAC}{\param{in}{ac}{acat}}{nat}
+{true}
+{\igres altura(ac)}
+{1}
+{No tiene.}
+
+\operacion{nuevoAC}{\param{in}{c}{Categoria}}{acat}
+{\neg vacia?(c)}
+{\igres nuevo(c)}
+{|c|}
+{No tiene.}
+
+\operacion{agregarAC}{\param{in/out}{ac}{acat}, \param{in}{c}{categoria}, \param{in}{h}{categoria}}{}
+{esta?(c,ac) \land \neg esta?(h,ac) \land \neg vacia?(h) \land ac_{0} \igobs ac}
+{ac \igobs agregar(ac_{0},c,h)}
+{|c|+|h|}
+{No hay alias ya que no devuelve nada.}
+
+\operacion{esta?}{\param{in}{c}{categoria}, \param{in}{ac}{acat}}{bool}
+{true}
+{\igres esta?(c,ac)}
+{|c|}
+{No tiene.}
+
+\operacion{esSubCategoria}{\param{in}{ac}{acat}, \param{in}{c}{categoria}, \param{in}{h}{categoria}}{bool}
+{esta?(c,ac) \land esta?(h,ac)}
+{\igres esSubCategoria(ac,c,h)}
+{ver Complejidad y revisar parametros con especificacion}
+{No tiene.}
+
+\end{interfaz}
