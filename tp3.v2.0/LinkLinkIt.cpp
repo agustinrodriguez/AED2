@@ -27,16 +27,16 @@ LinkLinkIt::~LinkLinkIt()
     }
 }
 
-DatosLink::DatosLink(){
+LinkLinkIt::DatosLink::DatosLink(){
 
 }
 
-DatosLink::~DatosLink(){
+LinkLinkIt::DatosLink::~DatosLink(){
     //Destruyo lista de accesos
     _accesosRecientes.~Lista();
 }
 
-DatosLink::DatosLink(Link l,Categoria cat, Lista<Acceso> la, int i){
+LinkLinkIt::DatosLink::DatosLink(Link l,Categoria cat, Lista<Acceso> la, int i){
     _link = l;
     _catDLink = cat;
     _accesosRecientes = la;
@@ -44,7 +44,7 @@ DatosLink::DatosLink(Link l,Categoria cat, Lista<Acceso> la, int i){
 
 }
 
-bool DatosLink::operator==(DatosLink& otro) const{
+bool LinkLinkIt::DatosLink::operator==(DatosLink& otro) const{
     bool res = true;
     res = _link == otro._link;
     if (res) {
@@ -59,19 +59,19 @@ bool DatosLink::operator==(DatosLink& otro) const{
     return res;
 }
 
-Acceso::Acceso(){
+LinkLinkIt::Acceso::Acceso(){
 
 }
 
-Acceso::Acceso(Fecha f, int a){
+LinkLinkIt::Acceso::Acceso(Fecha f, int a){
     _dia = f;
     _cantAccesos = a;
 }
-Acceso::~Acceso(){
+LinkLinkIt::Acceso::~Acceso(){
 
 }
 
-bool Acceso::operator==(const Acceso& otro) const{
+bool LinkLinkIt::Acceso::operator==(const Acceso& otro) const{
     bool iguales = true;
     iguales = _dia == otro._dia;
     if(iguales)
@@ -94,7 +94,7 @@ Fecha LinkLinkIt::fechaActual(){
 }
 
 
-itLinks LinkLinkIt::linksLli()
+LinkLinkIt::itLinks LinkLinkIt::linksLli()
 {
     return CrearItLinks();
 }
@@ -179,7 +179,7 @@ int LinkLinkIt::cantLinks(Categoria categoria){
     	return _arrayCatLinks[_acat->idAC(categoria)-1].Longitud();
 }
 
-itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
+LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
         int id = dameAcat().idAC(categoria);
         Fecha n = 1;
         itPunLinks itParaFecha = itPunLinks(_arrayCatLinks[id-1], n);
@@ -207,10 +207,11 @@ itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
 
 bool LinkLinkIt::esReciente(Link link, Fecha fecha){
 
-return fecha >= fechaUltimoAcceso(link)-2 && fecha <= fechaUltimoAcceso(link);
+    return fecha >= fechaUltimoAcceso(link)-2 && fecha <= fechaUltimoAcceso(link);
+
 }
 
-itLinks LinkLinkIt::CrearItLinks(){
+LinkLinkIt::itLinks LinkLinkIt::CrearItLinks(){
     return itLinks(_listaLinks);
 }
 
@@ -220,64 +221,64 @@ itLinks LinkLinkIt::CrearItLinks(){
 //iteradores operaciones
 //////////////////////////////////////////
 
-itLinks::itLinks(){
+LinkLinkIt::itLinks::itLinks(){
 
 }
 
-itLinks::itLinks(Lista<DatosLink>& ldl){
+LinkLinkIt::itLinks::itLinks(Lista<DatosLink>& ldl){
         _itLista = ldl.CrearIt();
 }
 
-itLinks::itLinks(const itLinks& otroIt){
+LinkLinkIt::itLinks::itLinks(const itLinks& otroIt){
     _itLista = otroIt._itLista;
 }
 
-itLinks::~itLinks()
+LinkLinkIt::itLinks::~itLinks()
     {
 
     }
 
 
-bool itLinks::HaySiguiente() const
+bool LinkLinkIt::itLinks::HaySiguiente() const
 {
     return _itLista.HaySiguiente();
 }
 
-Link itLinks::Siguiente() const
+Link LinkLinkIt::itLinks::Siguiente() const
 {
     return _itLista.Siguiente()._link;
 }
 
-void itLinks::Avanzar()
+void LinkLinkIt::itLinks::Avanzar()
 {
     _itLista.Avanzar();
 }
 
-bool itLinks::operator==(const itLinks& otro) const
+bool LinkLinkIt::itLinks::operator==(const itLinks& otro) const
 {
     return _itLista == otro._itLista;
 }
 
 //iterador de acceso
 
-ItAcceso::ItAcceso()
+LinkLinkIt::ItAcceso::ItAcceso()
 {
 
 }
 
 
-ItAcceso::ItAcceso(Lista<Acceso> &ac)
+LinkLinkIt::ItAcceso::ItAcceso(Lista<Acceso> &ac)
 {
     _itLista = ac.CrearIt();
 }
 
 
-ItAcceso::ItAcceso(const ItAcceso &otroIt)
+LinkLinkIt::ItAcceso::ItAcceso(const ItAcceso &otroIt)
 {
     _itLista = otroIt._itLista;
 }
 
-ItAcceso::~ItAcceso()
+LinkLinkIt::ItAcceso::~ItAcceso()
 {
     //Destruyo lista
     while(_itLista.HaySiguiente())
@@ -286,71 +287,71 @@ ItAcceso::~ItAcceso()
     }
 }
 
-bool ItAcceso::HaySiguiente() const
+bool LinkLinkIt::ItAcceso::HaySiguiente() const
 {
     return _itLista.HaySiguiente();
 }
 
-Acceso& ItAcceso::Siguiente() const
+LinkLinkIt::Acceso& LinkLinkIt::ItAcceso::Siguiente() const
 {
     return _itLista.Siguiente();
 }
 
-void ItAcceso::Avanzar()
+void LinkLinkIt::ItAcceso::Avanzar()
 {
     _itLista.Avanzar();
 }
 
-bool ItAcceso::operator==(const ItAcceso& otro) const
+bool LinkLinkIt::ItAcceso::operator==(const ItAcceso& otro) const
 {
     return _itLista == otro._itLista;
 }
 
-itPunLinks::itPunLinks(){
+LinkLinkIt::itPunLinks::itPunLinks(){
 
 }
 
-itPunLinks::itPunLinks(const itPunLinks &otroIt){
+LinkLinkIt::itPunLinks::itPunLinks(const itPunLinks &otroIt){
     _itLista = otroIt._itLista;
 }
 
-itPunLinks::itPunLinks(Lista<DatosLink*> &ldl, Fecha& f){
+LinkLinkIt::itPunLinks::itPunLinks(Lista<DatosLink*> &ldl, Fecha& f){
     _itLista = ldl.CrearIt();
     _fecha = f;
 }
 
-itPunLinks::~itPunLinks()
+LinkLinkIt::itPunLinks::~itPunLinks()
 {
 
 }
 
-bool itPunLinks::HaySiguiente() const
+bool LinkLinkIt::itPunLinks::HaySiguiente() const
 {
     return _itLista.HaySiguiente();
 }
 
-DatosLink* itPunLinks::Siguiente() const
+LinkLinkIt::DatosLink* LinkLinkIt::itPunLinks::Siguiente() const
 {
  return _itLista.Siguiente();
 }
 
-Link& itPunLinks::SiguienteLink() const{
+Link& LinkLinkIt::itPunLinks::SiguienteLink() const{
 
     return _itLista.Siguiente()->_link;
 }
 
-void itPunLinks::Avanzar()
+void LinkLinkIt::itPunLinks::Avanzar()
 {
     _itLista.Avanzar();
 }
 
-void itPunLinks::EliminarSiguiente()
+void LinkLinkIt::itPunLinks::EliminarSiguiente()
 {
     _itLista.EliminarSiguiente();
 }
 
 
-itPunLinks itPunLinks::BuscarMax(Fecha f){
+LinkLinkIt::itPunLinks LinkLinkIt::itPunLinks::BuscarMax(Fecha f){
      itPunLinks res = itPunLinks(*this);
     while(HaySiguiente())
     {
@@ -363,7 +364,7 @@ itPunLinks itPunLinks::BuscarMax(Fecha f){
     return res;
 }
 
-Fecha itPunLinks::ultFecha(){
+Fecha LinkLinkIt::itPunLinks::ultFecha(){
     int res = 0;
     if (!Siguiente()->_accesosRecientes.EsVacia()) {
         res = Siguiente()->_accesosRecientes.Ultimo()._dia;
@@ -379,7 +380,7 @@ Fecha itPunLinks::ultFecha(){
     return res;
 }
 
-int itPunLinks::cantAccesosDesde(Fecha f){
+int LinkLinkIt::itPunLinks::cantAccesosDesde(Fecha f){
     Lista<Acceso> lA = Siguiente()->_accesosRecientes;
     ItAcceso itAcc = ItAcceso(lA);
     int res = 0;
@@ -394,7 +395,7 @@ int itPunLinks::cantAccesosDesde(Fecha f){
     }
     return res;
 }
-bool itPunLinks::estaOrdenada(Fecha fecha){
+bool LinkLinkIt::itPunLinks::estaOrdenada(Fecha fecha){
     bool res = true;
     int aux = cantAccesosDesde(fecha);
     Avanzar();
@@ -408,15 +409,15 @@ bool itPunLinks::estaOrdenada(Fecha fecha){
     return res;
 }
 
-Categoria& itPunLinks::SiguienteCat() const{
+Categoria& LinkLinkIt::itPunLinks::SiguienteCat() const{
     return Siguiente()->_catDLink;
 }
 
-int itPunLinks::SiguienteCantidadAccesosDelLink(){
+int LinkLinkIt::itPunLinks::SiguienteCantidadAccesosDelLink(){
         return cantAccesosDesde(_fecha);
 }
 
-bool itPunLinks::operator==(const itPunLinks& otro) const
+bool LinkLinkIt::itPunLinks::operator==(const itPunLinks& otro) const
 {
     return _itLista == otro._itLista;
 }

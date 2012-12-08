@@ -85,7 +85,7 @@ int Driver::cantLinks(const Categoria& c)
 const Link& Driver::obtenerIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i)
 {
     int j = 0;
-    itPunLinks it = sistema->linksOrdenadosPorAccesos(c);
+    LinkLinkIt::itPunLinks it = sistema->linksOrdenadosPorAccesos(c);
     while(j < i)
     {
         ++j;
@@ -97,7 +97,7 @@ const Link& Driver::obtenerIesimoLinkOrdenadoPorAccesos(const Categoria& c, int 
 const Categoria& Driver::obtenerCategoriaIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i)
 {
     int j = 0;
-    itPunLinks it = sistema->linksOrdenadosPorAccesos(c);
+    LinkLinkIt::itPunLinks it = sistema->linksOrdenadosPorAccesos(c);
     while(j < i)
     {
         ++j;
@@ -109,7 +109,7 @@ const Categoria& Driver::obtenerCategoriaIesimoLinkOrdenadoPorAccesos(const Cate
 int Driver::obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i)
 {
     int j = 0;
-    itPunLinks it = itPunLinks(sistema->linksOrdenadosPorAccesos(c));
+    LinkLinkIt::itPunLinks it = LinkLinkIt::itPunLinks(sistema->linksOrdenadosPorAccesos(c));
     while(j < i)
     {
         ++j;

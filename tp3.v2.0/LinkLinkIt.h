@@ -8,8 +8,14 @@
 
 namespace aed2
 {
+    class LinkLinkIt{
+            private:
+
     class Acceso{
                 public:
+                    friend class ItAcceso;
+                    friend class DatosLink;
+                    friend class LinkLinkIt;
                     ~Acceso() ;
                     bool operator==(const Acceso& otro) const;
                 private:
@@ -17,16 +23,14 @@ namespace aed2
                     int _cantAccesos;
                     Acceso();
                     Acceso(Fecha f, int a);
-                    friend class LinkLinkIt;
-                    friend class itLinks;
-                    friend class itPunLinks;
-                    friend class ItAcceso;
 
             };
 
             class ItAcceso{
                 public:
-                        ~ItAcceso() ;
+                        ~ItAcceso();
+                        friend class Acceso;
+                        friend class LinkLinkIt;
                     private:
                         Lista<Acceso>::Iterador _itLista;
                         ItAcceso();
@@ -36,9 +40,6 @@ namespace aed2
                         Acceso& Siguiente() const;
                         void Avanzar();
                         bool operator==(const ItAcceso& otro) const;
-                        friend class LinkLinkIt;
-                        friend class itLinks;
-                        friend class itPunLinks;
 
             };
 
@@ -46,10 +47,11 @@ namespace aed2
     class DatosLink
     {
                     public:
-                    friend class LinkLinkIt;
-                    friend class itLinks;
-                    friend class itPunLinks;
                     ~DatosLink();
+                    friend class LinkLinkIt;
+                    friend class ItAcceso;
+                    friend class Acceso;
+
                     private:
                     Link _link;
                     Categoria  _catDLink;
@@ -63,6 +65,16 @@ namespace aed2
                     bool operator==(DatosLink& otro) const;
             };
 
+                //VARIABLES PRIVADAS DE LLI
+
+            ArbolCategorias* _acat;
+            Fecha _actual;
+            DiccTrie<DatosLink*> _linkInfo;
+            Lista<DatosLink> _listaLinks;
+            Arreglo<Lista<DatosLink*> > _arrayCatLinks;
+
+            public:
+
                 class itLinks {
                 public:
                     itLinks(Lista<DatosLink>& ldl);
@@ -73,7 +85,7 @@ namespace aed2
                     Link Siguiente() const;
                     void Avanzar();
                     bool operator==(const itLinks& otro) const;
-                    friend class LinkLinkIt;
+
                 private:
                     Lista<DatosLink>::Iterador _itLista;
             };
@@ -97,7 +109,7 @@ namespace aed2
                     int cantAccesosDesde(Fecha f);
                     bool estaOrdenada(Fecha f);
                     bool operator==(const itPunLinks& otro) const;
-                    friend class LinkLinkIt;
+
                 private:
                     Lista<DatosLink*>::Iterador _itLista;
                     Fecha _fecha;
@@ -106,8 +118,9 @@ namespace aed2
 
             };
 
-	class LinkLinkIt{
-		public:
+
+
+
             //creacion de la clase iterador de datoslink
             LinkLinkIt(ArbolCategorias *acat);
             LinkLinkIt();
@@ -129,14 +142,6 @@ namespace aed2
             bool operator==(const LinkLinkIt& otro) const;
             itLinks CrearItLinks();
             // itPunLinks CrearItPunLinks(int id); ME TIRA ERROR EN EL ORDENADA DE LOS TEST DE ELLOS
-            private:
-            ArbolCategorias* _acat;
-            Fecha _actual;
-            DiccTrie<DatosLink*> _linkInfo;
-            Lista<DatosLink> _listaLinks;
-            Arreglo<Lista<DatosLink*> > _arrayCatLinks;
-
-
 
 	};
 }
