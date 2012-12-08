@@ -124,7 +124,6 @@ namespace aed2
             int cantLinks(Categoria categoria);
             itPunLinks linksOrdenadosPorAccesos(Categoria categoria) ;
             bool esReciente(Link link, Fecha fecha);
-            itPunLinks CrearItPunLinks(int id, Fecha f);
             bool operator==(const LinkLinkIt& otro) const;
 	};
 }

@@ -183,9 +183,9 @@ int LinkLinkIt::cantLinks(Categoria categoria){
 LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
         int id = dameAcat().idAC(categoria);
         Fecha f = 1;
-        itPunLinks itParaFecha = CrearItPunLinks(id, f);
+        itPunLinks itParaFecha = itPunLinks(_arrayCatLinks[id-1], f);
         Fecha fecha = itParaFecha.ultFecha();
-        itPunLinks itOrdSegunF = CrearItPunLinks(id, fecha);
+        itPunLinks itOrdSegunF = itPunLinks(_arrayCatLinks[id-1], fecha);
         Lista<DatosLink*> listaOrdenada = Lista<DatosLink*>();
         itPunLinks itMax;
 
@@ -193,7 +193,7 @@ LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria)
         {
             while(_arrayCatLinks[id-1].Longitud() > 0)
             {
-                itMax = CrearItPunLinks(id, fecha);
+                itMax = itPunLinks(_arrayCatLinks[id-1], fecha);
                 itMax = itMax.BuscarMax(fecha);
                 listaOrdenada.AgregarAtras(itMax.Siguiente());
                 itMax.EliminarSiguiente();
@@ -323,13 +323,6 @@ LinkLinkIt::itPunLinks::itPunLinks(Lista<DatosLink*> &ldl, Fecha& f){
 LinkLinkIt::itPunLinks::~itPunLinks()
 {
 
-}
-
-LinkLinkIt::itPunLinks LinkLinkIt::CrearItPunLinks(int id, Fecha f){
-    itPunLinks itP;
-    itP._itLista = _arrayCatLinks[id-1].CrearIt();
-    itP._fecha = f;
-    return itP;
 }
 
 bool LinkLinkIt::itPunLinks::HaySiguiente() const
