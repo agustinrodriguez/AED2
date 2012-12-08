@@ -85,7 +85,7 @@ ArbolCategorias& LinkLinkIt::dameAcat() const{
 	return *_acat;
 }
 
-ItCategorias LinkLinkIt::categoriasLli(){
+ArbolCategorias::ItCategorias LinkLinkIt::categoriasLli(){
     return _acat->categoriasAC();
 }
 

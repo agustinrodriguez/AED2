@@ -128,7 +128,7 @@ namespace aed2
             ~LinkLinkIt();
 
             ArbolCategorias& dameAcat() const;
-            ItCategorias categoriasLli();
+            ArbolCategorias::ItCategorias categoriasLli();
             Fecha fechaActual();
             itLinks linksLli();
             Categoria categoriaLink(Link link) const;
