@@ -8,64 +8,62 @@
 
 namespace aed2
 {
-	class LinkLinkIt{
-		public:
-            class Acceso{
+    class Acceso{
                 public:
-                    Acceso();
-                    Acceso(Fecha f, int a);
                     ~Acceso() ;
-                    Fecha dameDia() const;
-                    int dameCantA() const;
-                    void guardoAcceso(int a);
-                    void guardoDia(int a);
                     bool operator==(const Acceso& otro) const;
-
                 private:
                     Fecha _dia;
                     int _cantAccesos;
+                    Acceso();
+                    Acceso(Fecha f, int a);
+                    friend class LinkLinkIt;
+                    friend class itLinks;
+                    friend class itPunLinks;
+                    friend class ItAcceso;
 
             };
 
             class ItAcceso{
                 public:
-                    ItAcceso();
-                    ItAcceso(Lista<Acceso> &ac) ;
-                    ItAcceso(const ItAcceso &otroIt);
                         ~ItAcceso() ;
+                    private:
+                        Lista<Acceso>::Iterador _itLista;
+                        ItAcceso();
+                        ItAcceso(Lista<Acceso> &ac) ;
+                        ItAcceso(const ItAcceso &otroIt);
                         bool HaySiguiente() const;
                         Acceso& Siguiente() const;
                         void Avanzar();
                         bool operator==(const ItAcceso& otro) const;
-                    private:
-                        Lista<Acceso>::Iterador _itLista;
+                        friend class LinkLinkIt;
+                        friend class itLinks;
+                        friend class itPunLinks;
+
             };
 
-            class DatosLink {
-                public:
-                    DatosLink();
-                    DatosLink(Link l, Categoria cat, Lista<Acceso> la, int i);
-                    ~DatosLink();
-                    const Link& dameLink() const;
-                    const Categoria& dameCatDLink();
-                    Lista<Acceso> dameAccesos();
-                    int dameCantAccesos();
-                    void nuevoLink(String l);
-                    void nuevaCat(Categoria cat);
-                    void agregarAcceso(Acceso acceso);
-                    void nuevoAccesos(Lista<Acceso> ita);
-                    void nuevoCantAccesosRecientes(int car);
-                    bool operator==(DatosLink& otro) const;
 
-                private:
+    class DatosLink
+    {
+                    public:
+                    friend class LinkLinkIt;
+                    friend class itLinks;
+                    friend class itPunLinks;
+                    ~DatosLink();
+                    private:
                     Link _link;
                     Categoria  _catDLink;
                     Lista<Acceso> _accesosRecientes;
                     int _cantAccesosRecientes;
+                    DatosLink();
+                    DatosLink(Link l, Categoria cat, Lista<Acceso> la, int i);
+                    void agregarAcceso(Acceso acceso);
+                    void nuevoAccesos(Lista<Acceso> ita);
+                    void nuevoCantAccesosRecientes(int car);
+                    bool operator==(DatosLink& otro) const;
             };
 
-            //creacion de la clase iterador de datoslink
-            class itLinks {
+                class itLinks {
                 public:
                     itLinks(Lista<DatosLink>& ldl);
                     itLinks();
@@ -75,6 +73,7 @@ namespace aed2
                     Link Siguiente() const;
                     void Avanzar();
                     bool operator==(const itLinks& otro) const;
+                    friend class LinkLinkIt;
                 private:
                     Lista<DatosLink>::Iterador _itLista;
             };
@@ -88,8 +87,8 @@ namespace aed2
                     ~itPunLinks();
                     bool HaySiguiente() const;
                     DatosLink* Siguiente() const;
-                    Link SiguienteLink() const;
-                    Categoria SiguienteCat() const;
+                    Link& SiguienteLink() const;
+                    Categoria& SiguienteCat() const;
                     int SiguienteCantidadAccesosDelLink();
                     void Avanzar();
                     void EliminarSiguiente();
@@ -98,19 +97,24 @@ namespace aed2
                     int cantAccesosDesde(Fecha f);
                     bool estaOrdenada(Fecha f);
                     bool operator==(const itPunLinks& otro) const;
+                    friend class LinkLinkIt;
                 private:
                     Lista<DatosLink*>::Iterador _itLista;
                     Fecha _fecha;
                     Categoria _cat;
 
+
             };
 
+	class LinkLinkIt{
+		public:
+            //creacion de la clase iterador de datoslink
             LinkLinkIt(ArbolCategorias *acat);
             LinkLinkIt();
             ~LinkLinkIt();
 
-            ArbolCategorias& dameAcatLli() const;
-            ArbolCategorias::ItCategorias categoriasLli();
+            ArbolCategorias& dameAcat() const;
+            ItCategorias categoriasLli();
             Fecha fechaActual();
             itLinks linksLli();
             Categoria categoriaLink(Link link) const;
@@ -121,14 +125,19 @@ namespace aed2
             void accederLli(Link link, Fecha fecha);
             int cantLinks(Categoria categoria);
             itPunLinks linksOrdenadosPorAccesos(Categoria categoria) ;
+            bool esReciente(Link link, Fecha fecha);
             bool operator==(const LinkLinkIt& otro) const;
-
-        private:
+            itLinks CrearItLinks();
+            // itPunLinks CrearItPunLinks(int id); ME TIRA ERROR EN EL ORDENADA DE LOS TEST DE ELLOS
+            private:
             ArbolCategorias* _acat;
             Fecha _actual;
             DiccTrie<DatosLink*> _linkInfo;
             Lista<DatosLink> _listaLinks;
             Arreglo<Lista<DatosLink*> > _arrayCatLinks;
+
+
+
 	};
 }
 

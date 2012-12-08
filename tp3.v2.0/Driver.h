@@ -55,7 +55,6 @@ public:
     const Link& obtenerIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i);
     const Categoria& obtenerCategoriaIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i);
     int obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i);
-
 private:
     ArbolCategorias* arbol;
     LinkLinkIt* sistema;

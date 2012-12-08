@@ -12,8 +12,8 @@
   <line>Command: bin/Debug/tp3 </line>
 </preamble>
 
-<pid>3165</pid>
-<ppid>2900</ppid>
+<pid>5155</pid>
+<ppid>2928</ppid>
 <tool>memcheck</tool>
 
 <args>
@@ -32,13 +32,13 @@
 
 <status>
   <state>RUNNING</state>
-  <time>00:00:00:00.125 </time>
+  <time>00:00:00:00.068 </time>
 </status>
 
 
 <status>
   <state>FINISHED</state>
-  <time>00:00:00:01.987 </time>
+  <time>00:00:00:01.523 </time>
 </status>
 
 <errorcounts>

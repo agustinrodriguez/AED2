@@ -7,15 +7,71 @@
 
 namespace aed2
 {
+            class DatosCat{
+            public:
+                 ~DatosCat();
+                 friend class ArbolCategorias;
+                 friend class ItCategorias;
+                 friend class ItFamilia;
+                 friend class ItHijos;
+                 friend class Driver;
+            private:
+                Categoria _categoria;
+                int _id;
+                int _altura;
+                Conj<DatosCat*> _hijos;
+                DatosCat* _padre;
+                DatosCat();
+                DatosCat(const DatosCat& otro);
+                DatosCat(const Categoria cat, int id, int altura, Conj<DatosCat*> hijos, DatosCat* padre);
+                void copiarDc(DatosCat otroDc);
+                bool operator==(const DatosCat& otro) const;
+
+        };
+
+        class ItCategorias{
+            public:
+                ~ItCategorias();
+                bool HaySiguiente() const;
+                Categoria Siguiente() const;
+                void Avanzar();
+                friend class ArbolCategorias;
+                friend class LinkLinkIt;
+
+            private:
+                Lista<DatosCat*>::Iterador _itLista;
+                ItCategorias();
+                ItCategorias(Lista<DatosCat*> &ldc);
+                ItCategorias(const ItCategorias &otroIt);
+                bool operator==(const ItCategorias& otro) const;
+
+        };
+
+        class ItHijos{
+            public:
+                ~ItHijos();
+                ItHijos();
+                ItHijos(Conj<DatosCat*> &cdc);
+                ItHijos(const ItHijos &otroIt);
+                bool HaySiguiente() const;
+                const Categoria& Siguiente() const;
+                void Avanzar();
+                friend class DatosCat;
+                friend class ArbolCategorias;
+            private:
+                Conj<DatosCat*>::Iterador _itConj;
+                bool operator==(const ItHijos& otro) const;
+                bool definido(Categoria cat) const;
+
+        };
+
+
 	class ArbolCategorias{
 		public:
 		ArbolCategorias();
 		ArbolCategorias(const Categoria& raiz);
-		/*ArbolCategorias(const ArbolCategorias& arbol);*/
 		~ArbolCategorias();
-        class DatosCat;
-        class itCategorias;
-        class itFamilia;
+
 
         class ItFamilia{
             public:
@@ -27,59 +83,6 @@ namespace aed2
 
             private:
             DatosCat* _elDatoC;
-        };
-
-        class ItCategorias{
-            public:
-                ItCategorias();
-                ItCategorias(Lista<DatosCat*> &ldc);
-                ItCategorias(const ItCategorias &otroIt);
-                ~ItCategorias();
-                bool HaySiguiente() const;
-                Categoria Siguiente() const;
-                void Avanzar();
-                bool operator==(const ItCategorias& otro) const;
-            private:
-                Lista<DatosCat*>::Iterador _itLista;
-        };
-
-        class ItHijos{
-            public:
-                ItHijos();
-                ItHijos(Conj<DatosCat*> &cdc);
-                ItHijos(const ItHijos &otroIt);
-                ~ItHijos();
-                bool HaySiguiente() const;
-                const Categoria& Siguiente() const;
-                void Avanzar();
-                bool operator==(const ItHijos& otro) const;
-                bool definido(Categoria cat) const;
-            private:
-                Conj<DatosCat*>::Iterador _itConj;
-
-        };
-
-        class DatosCat{
-            public:
-                DatosCat();
-                DatosCat(const DatosCat& otro);
-                DatosCat(const Categoria cat, int id, int altura, Conj<DatosCat*> hijos, DatosCat* padre);
-                ~DatosCat();
-                const Categoria& dameCat() const;
-                int dameId() const;
-                int dameAltura() const;
-                ItHijos dameHijos();
-                DatosCat* damePadre() const;
-                void agregarHijo(DatosCat* h);
-                void copiarDc(DatosCat otroDc);
-                bool operator==(const DatosCat& otro) const;
-
-            private:
-                Categoria _categoria;
-                int _id;
-                int _altura;
-                Conj<DatosCat*> _hijos;
-                DatosCat* _padre;
         };
 
 
@@ -97,7 +100,8 @@ namespace aed2
         const int dameCantidad() const;
         bool operator==(const ArbolCategorias& acat) const;
         ItFamilia CrearItFamilia(const Categoria &c);
-
+        ItCategorias CrearItCategorias();
+        ItHijos CrearItHijos(const Categoria &c);
 		private:
 
 		DatosCat* _raiz;
