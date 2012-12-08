@@ -1,0 +1,68 @@
+\begin{center}
+\begin{tabular}{|l|} 
+\hline
+\\
+ArbolCategorias \textbf{se representa con} estrAC, donde estrAC es \tupla{\\
+\hspace*{6em}\param{}{raiz}{puntero(datosCat)},\\\hspace*{6em}\param{}{cantidad}{nat},\\
+\hspace*{6em}\param{}{alturaMax}{nat},\\
+\hspace*{6em}\param{}{familia}{diccTrie(Categoria, puntero(datosCat))},\\
+\hspace*{6em}\param{}{categorias}{Lista(datosCat)}}\\ \\
+
+\hspace*{6em}datosCat es \tupla{\\
+\hspace*{6em}\param{}{categoria}{Categoria},\\ 
+\hspace*{6em}\param{}{id}{nat},\\ 
+\hspace*{6em}\param{}{altura}{nat},\\ 
+\hspace*{6em}\param{}{hijos}{Conj(puntero(datosCat))},\\
+\hspace*{6em}\param{}{abuelo}{puntero(datosCat)}}\\ \\ 
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection{Invariante de Representaci\'on}
+\paragraph{El Invariante Informalmente}
+\begin{enumerate}
+\item Para cada '\textit{padre} obtener el significado devolvera un puntero(datosCat) donde '\textit{categoria}' es igual a la clave
+\item Para toda clave '\textit{padre}' que exista en '\textit{familia}' debera ser o raiz o pertenecer a algun conjunto de punteros de '\textit{hijos}' de alguna clave '\textit{padre}'
+\item Todos los elementos de '\textit{hijos} de una clave '\textit{padre}', cada uno de estos hijos tendran como '\textit{abuelo}' a ese '\textit{padre}' cuando sean clave.
+\item '\textit{cantidad}' sera igual a la longitud de la lista '\textit{categorias}'.
+\item Cuando la clave es igual a '\textit{raiz}' la '\textit{altura} es 1.
+\item La '\textit{altura}' del puntero a datosCat de cada clave es menor o igual a '\textit{alturaMax}'.
+\item Existe una clave en la cual, la '\textit{altura}' del significado de esta es igual a '\textit{alturaMax}'.
+\item Los '\textit{hijos}' de una clave tienen '\textit{altura}' igual a 1 + '\textit{altura} de la clave.
+\item Todos los '\textit{id}' de significado de cada clave deberan ser menor o igual a '\textit{cant}'.
+\item No hay '\textit{id}' repetidos en el '\textit{familia}.
+\item Todos los '\textit{id}' son consecutivos.
+
+\end{enumerate}
+
+\paragraph{El Invariante Formalmente}
+\begin{Rep}{estrAC}{ac}
+\repfunc{(\forall\param{}{x}{string}) (def?(x,e.familia)) \Leftrightarrow (*obtener(x,e.familia)).categoria = x}{\yluego}
+\repfunc{(\forall\param{}{x,y}{string}) (def?(x,e.familia)) \Leftrightarrow (x == e.raiz) \vee (def?(y,e.familia)) \yluego \\ x \in hijosDe(*((obtener(y,e.familia))).hijos)}{\yluego}
+\repfunc{(\forall\param{}{x,y}{string}) (def?(x,e.familia)) \land (def?(y,e.familia)) \Rightarrow_{L} y \in *((obtener(x,e.familia)) ).hijos \Leftrightarrow \\ (*(*(obtener(y,e.familia))).abuelo).categoria = x}{\yluego}
+\repfunc{e.cantidad  = longitud(e.categorias)}{\yluego}
+\repfunc{(\forall\param{}{x}{string}) (def?(x,e.familia)) \land x = e.raiz \Rightarrow_{L} \\ (*(obtener(x,e.familia))).altura = 1}{\yluego}
+\repfunc{(\forall\param{}{x}{string}) (def?(x,e.familia)) \Rightarrow_{L} (*obtener(x,e.familia)).altura \leq e.alturaMax}{\yluego}
+\repfunc{(\exists\param{}{x}{string}) (def?(x,e.familia)) \yluego *((obtener(x,e.familia)) ).altura = e.alturaMax}{\yluego}
+\repfunc{(\forall\param{}{x,y}{string}) (def?(x,e.familia)) \wedge (def?(y,e.familia)) \yluego \\ y \in hijosDe((*(obtener(x,e.familia))).hijos) \Rightarrow \\ (*(obtener(y,e.familia))).altura = 1 + (*(obtener(x,e.familia))).altura}{\yluego}
+\repfunc{(\forall\param{}{x}{string}) (def?(x,e.familia)) \Rightarrow_{L} (*(obtener(x,e.familia))).id \leq e.cant}{\yluego}
+\repfunc{(\forall\param{x,y}{string}) (def?(x,e.familia)) \land (def?(y,e.familia)) \Rightarrow_{L} \\ (*(obtener(x,e.familia))).id \neq (*(obtener(y,e.familia))).id}{\yluego}
+\repfunc{(\forall\param{x}{string}) (def?(x,e.familia)) (\exists\param{}{y}{string}) (def?(y,e.familia)) \Leftrightarrow \\ (*(obtener(y,e.familia))).id \leq e.cantidad \land (*(obtener(x,e.familia))).id < e.cantidad \yluego \\(*(obtener(y,e.familia))).id = 1 + (*(obtener(x,e.familia))).id}{}
+\end{Rep}
+\newpage
+
+\subsubsection{Funci\'on de Abstracci\'on}
+\begin{ABS}{e}{estrAC}{ac}{acat}
+\absfunc{categorias(ac) \igobs todasLasCategorias(e.categorias)}{\yluego}
+\absfunc{raiz(ac) \igobs (*e.raiz).categoria}{\yluego}
+\absfunc{(\forall\param{}{c}{Categoria})esta?(c,ac) \land c\neq raiz(ac) \Rightarrow_{L} \\
+padre(ac,c) = (*(*(obtener(c,e.familia))).abuelo).categoria}{\yluego}
+\absfunc{(\forall\param{}{c}{Categoria})esta?(c,ac) \Rightarrow_{L} id(ac,c) = (*(obtener(c,e.familia))).id}{}
+\end{ABS}
+
+\paragraph{Funciones auxiliares}
+\paragraph*{}
+
+\tadOperacion{todasLasCategorias}{secu(datosCat)}{conj(categoria)}{}
+
+\tadAxioma{todasLasCategorias}{Ag((prim(cs)).categoria,fin(cs))}

@@ -1,0 +1,25 @@
+\begin{center}
+\begin{tabular}{|l|} 
+\hline
+\\
+itLinks se representa con itLista(datosLink)\\
+\\
+\hline
+\end{tabular}
+\end{center}
+
+\par itLinks es un iterador de lista común. Sus complejidades nos alcanzan para iterar una Lista(datosLink).
+
+\subsubsection{Invariante de Representaci\'on}
+%\paragraph{El Invariante Informalmente}
+%\begin{enumerate}
+%\item Lo iterado por el iterador de mensajes recientes es válido.
+%\end{enumerate}
+
+\paragraph{El Invariante Formalmente}
+{\begin{changemargin}{0em}{4em}Rep : estrITL $\rightarrow$ boolean\par \end{changemargin}(\paratodo\param{}{it}{estrITL}) Rep(it) $\equiv$ true
+
+\subsubsection{Funci\'on de Abstracci\'on}
+\begin{ABS}{e}{estrITL}{it}{itBi($\alpha$)}
+\absfunc{anteriores(e.iterador) \igobs anteriores(it) \land \\ siguientes(e.iterador) \igobs siguientes(it)}{}
+\end{ABS}

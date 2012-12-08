@@ -1,0 +1,134 @@
+\begin{algorithm}[H]
+\caption{iCrearItPuntLinks}
+\begin{algorithmic}[1]
+\Function{icrearItLinks}{\param{in}{l}{Lista(puntero(datosLink))}}{$\ensuremath{\rightarrow}$ \param{}{res}{estrITPL}}
+\State res $\gets$ crearIt(l) \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iHaySiguiente?}
+\begin{algorithmic}[1]
+\Function{ihaysiguiente?}{\param{in}{e}{estrITPL}}{$\ensuremath{\rightarrow}$\param{}{res}{bool}}
+\state res $\gets$ haySiguiente(e)\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iSiguiente}
+\begin{algorithmic}[1]
+\Function{isiguiente}{\param{in}{e}{estrITPL}}{$\rightarrow$ \param{}{res}{Link}}
+\state res $\gets$ siguiente(e)\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iSiguienteLink}
+\begin{algorithmic}[1]
+\Function{isiguienteLink}{\param{in}{e}{estrITPL}}{$\rightarrow$ \param{}{res}{Link}}
+\state res $\gets$ dameLink(*siguiente(e))\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iAvanzar}
+\begin{algorithmic}[1]
+\Function{iavanzar}{\param{in/out}{e}{estrITPL}}{}
+\state avanzar(e)\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iEliminarSiguiente}
+\begin{algorithmic}[1]
+\Function{ieliminarSiguiente}{\param{in/out}{e}{estrITPL}}{}
+\state eliminarSiguiente(e)\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iBuscarMax}
+\begin{algorithmic}[1]
+\Function{ibuscarMax}{\param{in}{it}{estrITPL}, \param{in}{f}{Fecha}}{$\ensuremath{\rightarrow}$ \param{}{res}{itPuntLinks}}
+\state res $\gets$ it \hfill //O(1)
+\while{haySiguiente(it)} \hfill //O(longitud(siguientes(it)))
+\If{cantAccesosDesde(it,f) > cantAccesosDesde(res,f)} \hfill //O(1)
+\state res $\gets$ it \hfill //O(1)
+\endif
+\state avanzar(it) \hfill //O(1)
+\endwhile
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{longitud(siguientes(it))}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iUltFecha}
+\begin{algorithmic}[1]
+\Function{iultFecha}{\param{in}{it}{itPuntLinks}}{$\ensuremath{\rightarrow}$ \param{}{res}{Fecha}}
+\state res $\gets$ dameDia(siguiente(dameAccesosUlt(*siguiente(it)))) \hfill //O(1)
+\While{haySiguiente(it)} \hfill //O(longitud(siguientes(it)))
+\If{dameDia(siguiente(dameAccesosUlt(*siguiente(it)))) > res} \hfill //O(1)
+\state res $\gets$ dameDia(siguiente(dameAccesosUlt(*siguiente(it)))) \hfill //O(1)
+\endif
+\state avanzar(it) \hfill //O(1)
+\endwhile
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{longitud(siguientes(it))}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iCantAccesosDesde}
+\begin{algorithmic}[1]
+\Function{icantAccesosDesde}{\param{in}{it}{itPuntLinks}, \param{in}{f}{Fecha}}{$\ensuremath{\rightarrow}$ \param{}{res}{nat}}
+\state itAccesos itAcc $\gets$ dameAccesos(*siguiente(it)) \hfill //O(1)
+\state res $\gets$ 0 \hfill //O(1)
+\While{haySiguiente(itAcc)} \hfill //O(1)
+\If{dameDia(siguiente(itAcc)) $\leq$ f} \hfill //O(1)
+\state res $\gets$ res + dameCantA(siguiente(it)) \hfill //O(1)
+\endif
+\state avanzar(itAcc) \hfill //O(1)
+\endwhile
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iBuscarMax}
+\begin{algorithmic}[1]
+\Function{ibuscarMax}{\param{in}{it}{itPuntLinks}}{$\ensuremath{\rightarrow}$ \param{}{res}{itPuntLinks}}
+\state res $\gets$ dameDia(siguiente(dameAccesosUlt(*siguiente(it)))) \hfill //O(1)
+\While{haySiguiente(it)} \hfill //O(longitud(siguientes(it)))
+\If{dameDia(siguiente(dameAccesosUlt(*siguiente(it)))) > res} \hfill //O(1)
+\state res $\gets$ dameDia(siguiente(dameAccesosUlt(*siguiente(it)))) \hfill //O(1)
+\endif
+\state avanzar(it) \hfill //O(1)
+\endwhile
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{longitud(siguientes(it))}
+\end{algorithm}

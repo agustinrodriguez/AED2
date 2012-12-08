@@ -1,0 +1,25 @@
+\begin{center}
+\begin{tabular}{|l|} 
+\hline
+\\
+itFamilia se representa con puntero(DatosCat)\\
+\\
+\hline
+\end{tabular}
+\end{center}
+
+\par itFamilia es un iterador de puntero a datoscat que al hacer siguiente va al puntero datoscat padre. Al manejarse con punteros sus complejidades son O(1).
+
+\subsubsection{Invariante de Representaci\'on}
+%\paragraph{El Invariante Informalmente}
+%\begin{enumerate}
+%\item Lo iterado por el iterador de mensajes recientes es válido.
+%\end{enumerate}
+
+\paragraph{El Invariante Formalmente}
+{\begin{changemargin}{0em}{4em}Rep : estrITF $\rightarrow$ boolean\par \end{changemargin}(\paratodo\param{}{it}{estrITF}} Rep(it) $\equiv$ true
+
+%\subsubsection{Funci\'on de Abstracci\'on}
+%\begin{ABS}{e}{estrITA}{it}{itBi($\alpha$)}
+%\absfunc{anteriores(e.iterador) \igobs anteriores(it) \land \\ siguientes(e.iterador) \igobs siguientes(it)}{}
+%\end{ABS}

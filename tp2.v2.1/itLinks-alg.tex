@@ -1,0 +1,43 @@
+\begin{algorithm}[H]
+\caption{iCrearItLinks}
+\begin{algorithmic}[1]
+\Function{icrearItLinks}{\param{in}{l}{lli}}{$\ensuremath{\rightarrow}$ \param{}{res}{estrITL}}
+\State res $\gets$ crearIt(lli.listaLink) \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iHaySiguiente?}
+\begin{algorithmic}[1]
+\Function{ihaysiguiente?}{\param{in}{e}{estrITL}}{$\ensuremath{\rightarrow}$\param{}{res}{bool}}
+\state res $\gets$ haySiguiente(e)\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iSiguiente}
+\begin{algorithmic}[1]
+\Function{isiguiente}{\param{in}{e}{estrITL}}{$\rightarrow$ \param{}{res}{Link}}
+\state res $\gets$ (siguiente(e)).link \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iAvanzar}
+\begin{algorithmic}[1]
+\Function{iavanzar}{\param{in/out}{e}{estrITL}}{}
+\state avanzar(e)\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}

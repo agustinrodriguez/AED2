@@ -1,0 +1,39 @@
+\begin{interfaz}{Iterador Links}
+\begin{iparamformales}{itLinks}
+
+\comment{\funcion{Copiar}{\param{in}{m}{$\alpha$}}{$\alpha$}
+{true}
+{\igres m}
+{copy(m)}
+{}
+}
+
+\textbf{\large se explica con:} Iterador Bidireccional
+
+\end{iparamformales}
+
+\operacion{crearItLinks}{\param{in}{l}{estrLLI}}{itLinks}
+{true}
+{\igres crearIt(l)}
+{1}
+{No se deben modificar los elementos iterados por res.}
+
+\operacion{haysiguiente?}{\param{in}{it}{itLinks}}{bool}
+{true}
+{\igres haySiguiente?(it)}
+{1}
+{No tiene.}
+
+\operacion{siguiente}{\param{in}{it}{itLinks}}{Link}
+{haySiguiente?(it)}
+{\igres \pi_{1}(siguiente(it))}
+{1}
+{El link se pasa por referencia, no debe ser modificado.}
+
+\operacion{avanzar}{\param{in/out}{it}{itLinks}}{}
+{it \igobs it_0 \land haySiguiente?(it)}
+{it \igobs avanzar(it_0)}
+{1}
+{No tiene.}
+
+\end{interfaz}

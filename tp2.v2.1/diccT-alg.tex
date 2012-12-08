@@ -1,0 +1,123 @@
+\begin{algorithm}[H]
+\caption{iVacio}
+\begin{algorithmic}[1]
+\Function{ivacio}{}{$\ensuremath{\rightarrow}$ \param{}{res}{estrDT}}
+\State var \param{}{n}{Puntero(Nodo)}\hfill //O(1)
+\State n $\gets$ Null\hfill //O(1)
+\State res $\gets$ n\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iDefinir}
+\begin{algorithmic}[1]
+\Function{idefinir}{\param{in}{c}{string}, \param{in}{s}{$\alpha$}, \param{in/out}{e}{estrDT}}{}
+\If{(e = Null)}\hfill //O(1)
+\state var \param{}{n}{Nodo}\hfill //O(1)
+\state n $\gets$ iNuevoNodo\hfill //O(1)
+\state e $\gets$ \&(n)\hfill //O(1)
+\EndIf
+\State var \param{}{n_1}{Nodo}\hfill //O(1)
+\State $n_1$ $\gets$ *(e)\hfill //O(1)
+\state var \param{}{i}{nat}\hfill //O(1)
+\state i $\gets$ 0\hfill //O(1)
+\While{(i < |c|)}\hfill //O(|c|)
+\If{($n_1$.arreglo[iNumero(c[i])] = Null)}\hfill //O(1)
+\State var \param{}{n_2}{Nodo}\hfill //O(1)
+\state $n_2$ $\gets$ iNuevoNodo\hfill //O(1)
+\state $n_1$.arreglo[iNumero(c[i])] $\gets$ \&($n_2$)\hfill //O(1) 
+\EndIf
+\state $n_1$ $\gets$ *($n_1$.arreglo[iNumero(c[i])])\hfill //O(1)
+\state i++\hfill //O(1)
+\EndWhile
+\state $n_1$.significado $\gets$ s\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|c|}
+\end{algorithm}
+
+
+\begin{algorithm}[H]
+\caption{iNuevoNodo}
+\begin{algorithmic}[1]
+\Function{inuevonodo}{}{$\ensuremath{\rightarrow}$ \param{}{res}{Nodo}}
+\State var \param{}{n}{Nodo}\hfill //O(1)
+\State n.significado $\gets$ Null\hfill //O(1)
+\For {(\param{}{i}{nat}$\gets$0; i< 256; i++)}\hfill //O(256*1)
+\State n.arreglo[i] $\gets$ Null\hfill //O(1)
+\EndFor
+\State res $\gets$ n\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+
+\begin{algorithm}[H]
+\caption{iNumero}
+\begin{algorithmic}[1]
+\Function{inumero}{\param{}{c_1}{char}}{$\ensuremath{\rightarrow}$ \param{}{res}{nat}}
+\state var \param{}{c_2}{char}\hfill //O(1)
+\state $c_2$ $\gets$ a\hfill //O(1)
+\State res $\gets$ ($c_1$ - $c_2$)  \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\par \textbf{Nota:} Se le resta el char ``a'' para que al tomar la representación ASCII de los char evaluen como ``a=0'', ``b=1'', ``c=2'', etc. 
+\end{algorithm}
+
+
+\begin{algorithm}[H]
+\caption{iDef?}
+\begin{algorithmic}[1]
+\Function{idef?}{\param{in}{c}{string}, \param{in}{e}{estr}}{$\ensuremath{\rightarrow}$ \param{}{res}{bool}}
+\If{(e $\neq$ Null)}\hfill //O(1)
+\state var \param{}{n}{Nodo}\hfill //O(1)
+\state n $\gets$ *(e)\hfill //O(1)
+\state var \param{}{i}{nat}\hfill //O(1)
+\state var i $\gets$ 0\hfill //O(1)
+\state res $\gets$ true\hfill //O(1)
+\while{(i < |c|)}\hfill //O(|c|)
+\If {(n.arreglo[numero(c[i])] $\neq$ Null)}\hfill //O(1)
+\State n $\gets$ *(n.arreglo[numero(c[i]))]\hfill //O(1)
+\Else
+\State res $\gets$ false\hfill //O(1)
+\state i $\gets$ long(c)\hfill //O(1)
+\EndIf 
+\state i++\hfill //O(1)
+\endwhile
+\Else
+\state res $\gets$ false\hfill //O(1)
+\EndIf
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|c|}
+\end{algorithm}
+
+
+\begin{algorithm}[H]
+\caption{iObtener}
+\begin{algorithmic}[1]
+\Function{iobtener}{\param{in}{c}{string}, \param{in}{e}{estr}}{$\ensuremath{\rightarrow}$ \param{}{res}{$\alpha$}}
+\state var \param{}{n}{Nodo}\hfill //O(1)
+\state n $\gets$ *(e)\hfill //O(1)
+\state var \param{}{i}{nat}\hfill //O(1)
+\state var i $\gets$ 0\hfill //O(1)
+\while{(i < |c|)}\hfill //O(|c|)
+\State n $\gets$ *(n.arreglo[numero(c[i]))]\hfill //O(1)
+\state i++\hfill //O(1)
+\endwhile
+\state res $\gets$ n.significado\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|c|}
+\end{algorithm}
+

@@ -1,0 +1,30 @@
+\vspace*{1em}
+\begin{enumerate}
+
+\item\textbf{iVacio}
+\par Se crea la variable p de tipo Puntero a Nodo en O(1), luego se le asigna ``Null'' en O(1) y finalmente se le asigna a res. 
+\par \textbf{Orden Total:} O(1)+O(1)+O(1)=\textbf{O(1)}
+
+\item\textbf{iDefinir}
+\par Se evalua si no nada definido y se crea un nuevo Nodo en caso afirmativo, luego se le asigna el puntero a este Nodo a la estrDT. Esto se logra en O(1).
+Posteriormente se crean algunas variables y se le asignan valores en O(1) y se hace un loop con la longitud del string en O(|string|*O(operaciones dentro del loop)). En el loop se hace un if para evaluar si ya esta definida esa letra y en caso negativo se crea un nuevo nodo y se asigna el puntero a ese nodo. Todo esto se hace en O(1). Luego se asigna al nodo el nodo al cual este apunta en la posición de la letra evaluada y se incrementa el contador del loop. Esto se hace en O(1). Finalmente se asigna al ultimo nodo iterado el significado 
+\par \textbf{Orden Total:} O(1+1+1+1)+O(1+1+1+1)+O(|string|*(O(1+1+1+1+)+O(1+1))+O(1) =\\
+O(1)+O(|string|)+O(1) = \textbf{O(|string|)}
+
+\item\textbf{iNuevoNodo}
+\par Se crea una variable de tipo Nodo y se le asigna ``Null'' en O(1). Luego se realiza un For iterando entre 0 y 256 y asignandole a cada posicion del Nodo ``Null'' en O(1) dando un total para el For de O(256). Finalmente se asigna el nodo a res en O(1).
+\par \textbf{Orden Total:} O(1+1)+O(256*(O(1)))+O(1)=\textbf{O(1)}
+
+\item\textbf{iNumero}
+\par Se crea una variable char y se le asigna un valor en O(1). Luego se asigna a res la resta de 2 chars en O(1). Como res es un nat se asigna el número que representan dichos char.
+\par \textbf{Orden Total:} O(1)+O(1)+O(1)=\textbf{O(1)}
+
+\item\textbf{iDef?}
+\par Se evalua si hay algo definido en O(1). En caso afirmativo se crean variables y se le asignan valor en O(1) y luego se realiza un loop iterando la longitud del string en O(|string|*(operaciones dentro del loop)). Dentro del loop se evalua si esta definido el char correspondiente a la iteración en y se le asigna al nodo el nodo apuntado en la posición iterada en O(1), caso contrario se asigna ``false'' a res en O(1). Finalmente incrementa el iterador en O(1).
+\par \textbf{Orden Total:} O(1)+O(1+1+1+1+1)+O(|string|*(O(1+1)+O(1))=\textbf{O(|string|)}
+
+\item\textbf{iObtener}
+\par Se crean variables y se les asigna valor en O(1). Luego se realiza un loop iterando la longitud del string en O(|string|*O(operaciones dentro del loop)). Dentro del loop se asigna al nodo el nodo apuntado en la posición iterada y avanza el iterador en O(1). Finalmente se asigna a res el significado en el ultimo nodo asignado en O(1).
+\par \textbf{Orden Total:} O(1+1+1+1)+O(|string|*O(1+1))+O(1)=\textbf{O(|string|)}
+
+\end{enumerate}

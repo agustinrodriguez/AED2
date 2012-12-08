@@ -1,0 +1,57 @@
+\begin{interfaz}{Iterador Puntero a DatosLink}
+\begin{iparamformales}{itPuntLinks}
+
+\comment{\funcion{Copiar}{\param{in}{m}{$\alpha$}}{$\alpha$}
+{true}
+{\igres m}
+{copy(m)}
+{}
+}
+
+\textbf{\large se explica con:} Iterador Bidireccional
+
+\end{iparamformales}
+
+\operacion{crearItPuntLinks}{\param{in}{l}{lista(puntero(datosLink))}}{itPuntLinks}
+{true}
+{\igres crearIt(l)}
+{1}
+{No se deben modificar los elementos iterados por res.}
+
+\operacion{haysiguiente?}{\param{in}{it}{itPuntLinks}}{bool}
+{true}
+{\igres haySiguiente?(it)}
+{1}
+{No tiene.}
+
+\operacion{siguiente}{\param{in}{it}{itPuntLinks}}{puntero(datosLink)}
+{haySiguiente?(it)}
+{\igres (siguiente(it))}
+{1}
+{Se pasa un puntero a datosLink}
+
+\operacion{siguienteLink}{\param{in}{it}{itPuntLinks}}{Link}
+{haySiguiente?(it)}
+{\igres \pi_{1}(*siguiente(it))}
+{1}
+{El link se pasa por referencia, no debe ser modificado.}
+
+\operacion{avanzar}{\param{in/out}{it}{itLinks}}{}
+{it \igobs it_0 \land haySiguiente?(it)}
+{it \igobs avanzar(it_0)}
+{1}
+{No tiene.}
+
+\operacion{eliminarSiguiente}{\param{in/out}{it}{itPuntLinks}}{}
+{it \igobs it_0 \land haySiguiente?(it)}
+{it \igobs eliminarSiguiente(it_0)}
+{1}
+{No tiene.}
+
+\operacion{ultFecha}{\param{in}{it}{itPuntLinks}}{Fecha}
+{ver}
+{ver}
+{1}
+{No tiene.}
+
+\end{interfaz}

@@ -1,0 +1,39 @@
+\begin{interfaz}{diccT(s)}
+\begin{iparamformales}{diccTrie($\alpha$)}
+
+\comment{\funcion{Copiar}{\param{in}{m}{$\alpha$}}{$\alpha$}
+{true}
+{\igres m}
+{copy(m)}
+{}
+}
+\textbf{\large usa:} bool, puntero, arreglo($\alpha$), conj($\alpha$) \par
+\textbf{\large se explica con:} Diccionario(string,$\alpha$)
+
+\end{iparamformales}
+
+\operacion{vacio}{}{diccTrie(c,s)}
+{true}
+{\igres vacio()}
+{1}
+{No tiene}
+
+\operacion{definir}{\param{in}{c}{string}, \param{in}{s}{significado}, \param{in/out}{d}{diccTrie(s)}}{}
+{d \igobs d_0}
+{d \igobs definir(c,s,d_0) \land alias(significado(d,c),s)}
+{|c|}
+{Se genera alias con s en el significado de c. Si se modifica s, se modifica el significado de c.}
+
+\operacion{def?}{\param{in}{c}{string}, \param{in}{d}{diccTrie(s)}}{bool}
+{true}
+{\igres def?(c,d)}
+{|c|}
+{No tiene}
+
+\operacion{obtener}{\param{in}{c}{string}, \param{in}{d}{diccTrie(s)}}{significado}
+{def?(c,d)}
+{\igres obtener(c,d) \land esAlias(res,significado(d,c)}
+{|c|}
+{res es modificable.}
+
+\end{interfaz}

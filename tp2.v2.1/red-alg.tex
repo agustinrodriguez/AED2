@@ -1,0 +1,341 @@
+\begin{algorithm}[H]
+\caption{iNuevaRed}
+\begin{algorithmic}[1]
+\Function{inuevared}{\param{in}{r}{Reglas}}{$\ensuremath{\rightarrow}$ \param{}{res}{estrR}}
+\state var \param{}{i,j,cantidadPaises}{Nat}\hfill//O(1)
+\state i $\gets$ 1 \hfill//O(1)
+\state cantidadPaises $\gets$ $\#$(paises(r)) \hfill//O(cantidadPaises)
+\state res.reglas $\gets$ crearArreglo(cantidadPaises) \hfill//O(cantidadPaises)
+\while{(i < cantidadPaises)} \hfill//O((cantidadPaises)$^2$)
+\state j $\gets$ 1 \hfill//O(1)
+\state res.reglas[i] $\gets$ crearArreglo(cantidadPaises) \hfill//O(cantidadPaises)
+\while{(j < cantidadPaises)} \hfill//O(cantidadPaises)
+\state res.reglas[i][j] $\gets$ puedeVer(r, i, j) \hfill//O(1)
+\state j++ \hfill//O(1)
+\endwhile
+\state i++ \hfill//O(1)
+\endwhile
+\state res.pReglas $\gets$ puntero(r) \hfill//O(1)
+\state res.usuarios $\gets$ vacío() \hfill//O(1)
+\state res.mensajes $\gets$ vacías() \hfill//O(1)
+\state res.trieTag $\gets$ vacío() \hfill//O(1)
+\state res.tagPorFecha $\gets$ vacía() \hfill//O(1)
+\state res.conjUsuario $\gets$ $\emptyset$ \hfill//O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{(cantidadPaises)$^2$}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iRegistrar}
+\begin{algorithmic}[1]
+\Function{iregistrar}{\param{in/out}{r}{estr}, \param{in}{u}{usuario}, \param{in}{p}{pais}}{}
+\state var \param{}{diccRelacionados}{diccTrie(usuario,<bool, bool>)}\hfill //O(1)
+\state var \param{}{mPublicados}{listaOrdMensaje}\hfill //O(1)
+\state var \param{}{mVisibles}{listaOrdMensaje}\hfill //O(1)
+\state var \param{}{amigos}{Lista(<usuario, puntero(tuplaUsuario)>)}\hfill //O(1)
+\state var \param{}{nuevaTupla}{tupla}\hfill //O(1)
+\state diccRelacionados $\gets$ vacio()\hfill //O(1)
+\state mPublicados $\gets$ vacias()\hfill //O(1)
+\state mVisibles $\gets$ vacias()\hfill //O(1)
+\state amigos $\gets$ vacias()\hfill //O(1)
+\state var \param{}{itAux}{itConj(usuario)}\hfill //O(1)
+\state itAux $\gets$ crearIt(r.conjUsuario)\hfill //O(1)
+\while{(haySiguiente(itAux))} \hfill //O(|u| * \#(r.conjUsuarios))
+\state definir(siguiente(itAux), <false, false>, diccRelacionados) \hfill //O(|u|)
+\state avanzar(it) \hfill //O(1)
+\endwhile
+\state nuevaTupla $\gets$ <diccRelacionados, p, mPublicados, mVisibles, amigos>\hfill //O(1)
+\state definir(u, nuevaTupla, r.usuarios) \hfill//O(|u|)
+\state var \param{}{it}{itConj(usuario)} \hfill //O(1)
+\state it $\gets$ crearIt(usuarios(r)) \hfill //O(1)
+\while{(haySiguiente(it))} \hfill //O(|u| * \#(r.conjUsuarios))
+\state definir(u, <false, false>, obtener(siguiente(it), r.usuarios).relacionados) \hfill //O(|u|)
+\state siguiente(it) \hfill //O(1)
+\endwhile
+\state agregar(u, r.conjUsuarios) \hfill //O(|u|))
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|u| * \#(r.conjUsuarios)}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iPublicar}
+\begin{algorithmic}[1]
+\Function{ipublicar}{\param{in/out}{r}{estr}, \param{in}{m}{mensaje}}{}
+\state insertar(r.mensajes, m) \hfill//O(1)
+\state insertar(obtener(autor(m), r.usuarios).mensajesPublicados, m) \hfill//O(|autor(m)|)
+
+\state var \param{}{itAmigos}{itLista(<Usuario, puntero(tuplaUsuario)>)} \hfill//O(1)
+\state itAmigos $\gets$ crearIt(obtener(autor(m), r.usuarios).amigos) \hfill//O(|autor(m)|)
+\state var \param{}{pais}{Pais} \hfill//O(1)
+\state pais $\gets$ obtener(autor(m), r.usuarios).pais  \hfill//O(|autor(m)|)
+\while{(haySiguiente?(itAmigos))} \hfill//O(\#amigos(r, autor(m)))
+\If{(puedePublicar(r, pais, siguiente(itAmigos).pais))} \hfill//O(1)
+\state insertar(actual(itAmigos).mensajesVisibles, m) \hfill//O(1)
+\endif
+\state avanzar(itAmigos) \hfill//O(1)
+\endwhile
+
+\state var \param{}{itFecha}{itLista(<fecha, lista(Tag)>)} \hfill//O(1)
+\If{(esVacía(r.tagPorFecha) $\lor$ primero(r.tagPorFecha).fecha $\neq$ fecha(m))} \hfill//O(1) 
+\state itFecha $\gets$ agregarAdelante(r.tagPorFecha, <fecha(m), vacía())> \hfill//O(1)
+\Else
+\state itFecha $\gets$ crearIt(r.tagPorFecha) \hfill//O(1)
+\endif
+\state var \param{}{itT}{itLista(Tag)} \hfill//O(1)
+\state itT $\gets$ crearItLista(tags(m)) \hfill//O(1)
+\while{(haySiguiente?(itT))} \hfill//O($\sum_{(t \in tags(m))}$|t|)
+\state agregarAdelante(siguiente(itFecha).tags, actual(itT)) \hfill//O(1)
+\If{(def?(actual(itT), r.trieTag))} \hfill//O(|actual(itT)|)
+\If{(prim(obtener(actual(itT),r.trieTag)).fecha = fecha(m))}\hfill//O(|actual(itT|)
+\state agregarAdelante(<prim(obtener(actual(itT),r.trieTag)).repeticiones + 1, fecha(m)>, fin(obtener(actual(itT), r.trieTag))) \hfill//O(|actual(itT)|)
+\Else
+\state agregarAdelante(<1,fecha(m)>,obtener(actual(itT),r.trieTag))\hfill//O(|actual(itT)|)
+\endif
+\Else
+\state var \param{}{nueva}{lista(<Nat, Fecha>)} \hfill//O(1)
+\state nueva $\gets$ vacía() \hfill//O(1)
+\state agregarAdelante(<1, fecha(m)>, nueva()) \hfill//O(1)
+\state definir(actual(itT), nueva, r.trieTag) \hfill//O(|actual(itT)|)
+\endif
+\state siguiente(itT) \hfill//O(1)
+\endwhile
+
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|autor(m)| + \#amigos(r, autor(m)) + $\sum_{(t \in tags(m))}$ |t|}
+\end{algorithm}
+
+
+\begin{algorithm}[H]
+\caption{iPuedePublicar}
+\begin{algorithmic}[1]
+\Function{ipuedepublicar}{\param{in}{r}{estr}, \param{in}{publicador}{pais}, \param{in}{receptor}{pais}}{$\rightarrow$ \param{}{res}{bool}}
+\state res $\gets$ r.reglas[receptor][publicador]\hfill//O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+
+\begin{algorithm}[H]
+\caption{iQuererSerAmigos}
+\begin{algorithmic}[1]
+\Function{iquererseramigos}{\param{in}{r}{estr}, \param{in}{u_1}{usuario}, \param{in}{u_2}{usuario}}{}
+\state var \param{}{tu_1, tu_2}{tuplaUsuario} \hfill//O(1)
+\state var \param{}{p_1,p_2}{pais}\hfill//O(1)
+\state $tu_1$ $\gets$ obtener($u_1$, r.usuarios) \hfill//O(|$u_1$|)
+\state $tu_2$ $\gets$ obtener($u_2$, r.usuarios) \hfill//O(|$u_2$|)
+\state $p_1$ $\gets$ pais(r,$u_1$)\hfill//O(|$u_1$|)
+\state $p_2$ $\gets$ pais(r,$u_2$)\hfill//O(|$u_2$|)
+\state definir($tu_1$.relacionados, $u_2$, <true, false>) \hfill//O(|$u_2$|)
+\If{(quiereSerAmigo(r, $u_2$, $u_1$))} \hfill//O(|$u_1$|+|$u_2$|)
+\state definir($tu_1$.relacionados, $u_2$, <false, true>) \hfill//O(|$u_2$|)
+\state definir($tu_2$.relacionados, $u_1$, <false, true>) \hfill//O(|$u_1$|)
+\If{(puedePublicar(r, $p_1$, $p_2$))} \hfill//O(1)
+\state $tu_2$.mensajesVisibles $\gets$ insertarVarios($tu_2$.mensajesVisibles, $tu_1$.mensajesPublicados)\hfill//O(\#publicados(r, $u_1$)+\#mensajesVisibles(r,$u_2$))
+\endif
+\If{(puedePublicar(r, $p_2$, $p_1$))} \hfill//O(1)
+\state $tu_1$.mensajesVisibles $\gets$ insertarVarios($tu_1$.mensajesVisibles, $tu_2$.mensajesPublicados)\hfill//O(\#publicados(r, $u_2$)+\#mensajesVisibles(r,$u_1$))
+\endif
+\endif
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|u1| + |u2| + \#publicados(r,$u_1$) + \#mensajesVisibles(r,$u_2$) + \#publicados(r,$u_2$) + \#mensajesVisibles(r,$u_1$)}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iReglas}
+\begin{algorithmic}[1]
+\Function{ireglas}{\param{in}{r}{estr}}{$\rightarrow$ \param{}{res}{Reglas}}
+\State res $\gets$ *(r.pReglas)\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iUsuarios}
+\begin{algorithmic}[1]
+\Function{iusuarios}{\param{in}{r}{estr}}{$\rightarrow$ \param{}{res}{itConj(usuario)}}
+\state res $\gets$ crearIt(r.conjUsuario)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iPais}
+\begin{algorithmic}[1]
+\Function{ipais}{\param{in}{r}{estr}, \param{in}{u}{usuario}}{$\rightarrow$ \param{}{res}{país}}
+\state res $\gets$ obtener(u,r.usuarios).pais \hfill//O(|u|)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|u|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iMensajes}
+\begin{algorithmic}[1]
+\Function{imensajes}{\param{in}{r}{estr}}{$\rightarrow$ \param{}{res}{lista(mensaje)}}
+\state res $\gets$ elems(r.mensajes)\hfill//O(\#elems(r.mensajes) * copy(mensaje))
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{\#elems(r.mensajes) * copy(mensaje)}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iSonAmigos?}
+\begin{algorithmic}[1]
+\Function{isonamigos?}{\param{in}{r}{estr}, \param{in}{u_1}{usuario}, \param{in}{u_2}{usuario}}{$\rightarrow$ \param{}{res}{bool}}
+%\state var \param{}{relaciones}{diccTrie(usuario,<bool, bool>)}\hfill//O(1)
+%\state relaciones $\gets$ obtener($u_1$, r.usuarios).relacionados \hfill//O(|$u_1$|)
+%\If{(def?($u_2$, relaciones))}\hfill//O(|$u_2$|)
+%\state res $\gets$ obtener($u_2$, relaciones).sonAmigos\hfill//O(|$u_2$|)
+%\If{(def?($u_2$, (obtener($u_1$, r.usuarios).relacionados)))}\hfill//O(|$u_1$| + |$u_2$|)
+\state res $\gets$ obtener($u_2$, (obtener($u_1$, r.usuarios).relacionados)).sonAmigos\hfill//O(|$u_1$| + |$u_2$|)
+%\Else
+%\state res $\gets$ false\hfill//O(1)
+%\endif
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|$u_1$| + |$u_2$|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iQuiereSerAmigo?}
+\begin{algorithmic}[1]
+\Function{iquierseramigo?}{\param{in}{r}{estr}, \param{in}{u_1}{usuario}, \param{in}{u_2}{usuario}}{$\rightarrow$ \param{}{res}{bool}}
+%\state var \param{}{relaciones}{diccTrie(usuario,<bool, bool>)}\hfill//O(1)
+%\state relaciones $\gets$ obtener($u_1$, r.usuarios).relacionados \hfill//O(|$u_1$|)
+%\If{(def?($u_2$, relaciones))}\hfill//O(|$u_2$|)
+%\state res $\gets$ obtener($u_2$, relaciones).solicito\hfill//O(|$u_2$|)
+%\If{(def?($u_2$, (obtener($u_1$, r.usuarios).relacionados)))}\hfill//O(|$u_1$| + |$u_2$|)
+\state res $\gets$ obtener($u_2$, (obtener($u_1$, r.usuarios).relacionados)).solicito\hfill//O(|$u_1$| + |$u_2$|)
+%\Else
+%\state res $\gets$ false\hfill//O(1)
+%\endif
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|$u_1$| + |$u_2$|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iUltimaFecha}
+\begin{algorithmic}[1]
+\Function{iultimafecha}{\param{in}{r}{estr}}{$\rightarrow$ \param{}{res}{fecha}}
+\state var \param{}{it}{itLista(mensaje)} \hfill//O(1)
+\state it $\gets$ crearIt(r.mensajes) \hfill//O(1)
+\state res $\gets$ fechaActual(it) \hfill//O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iMensajesVisibles}
+\begin{algorithmic}[1]
+\Function{imensajesvisibles}{\param{in}{r}{estr}, \param{in}{u}{usuario}}{$\rightarrow$ \param{}{res}{itLista(mensaje)}}
+\state res $\gets$ crearIt(obtener(u, r.usuarios).mensajesVisibles)\hfill//O(|u|)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|u|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iMensajesVisiblesRecientes}
+\begin{algorithmic}[1]
+\Function{imensajesvisiblesrecientes}{\param{in}{r}{estr}, \param{in}{u}{usuario}}{$\rightarrow$ \param{}{res}{itLista(mensaje)}}
+\state res $\gets$ crearItListaOrdRecientes(obtener(u, r.usuarios).mensajesVisibles)\hfill//O(|u|)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|u|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iTagsRecientes}
+\begin{algorithmic}[1]
+\Function{itagsrecientes}{\param{in}{r}{estr}}{$\rightarrow$ \param{}{res}{itSLocal(tag)}}
+\state var \param{}{it}{itLista(<fecha, lista(tag)>)}\hfill//O(1)
+\state var \param{}{sinRepetidos}{lista(tag)}\hfill//O(1)
+\state it $\gets$ crearIt(r.tagsPorFecha) \hfill//O(1)
+\state var \param{}{fechaActual}{fecha} \hfill//O(1)
+\state fechaActual $\gets$ ultimaFecha(r) \hfill//O(1)
+
+\while{(haySiguiente?(it) \& (fechaActual - siguiente(it).fecha < 7))} \hfill//O(long(r.tagsPorFecha))
+\state var \param{}{itTags}{itLista(tag)}\hfill//O(1)
+\state itTag $\gets$ crearIt(siguiente(it).tags) \hfill//O(1)
+\while{(haySiguiente?(itTags))} \hfill//O($\sum_{(i,long(r.tagsPorFecha))}$ long(r.tagsPorFecha[i].tags))
+\If{($\neg$ está?(siguiente(itTags), sinRepetidos))} \hfill//O($\sum_{(t \in sinRepetidos)}$(|t|+|actual(itTags)|))
+\state agregarAtrás(siguiente(itTags), sinRepetidos) \hfill//O(|siguiente(itTags)|)
+\endif %\hfill//O($\sum_{(t \in sinRepetidos)}$(|siguiente(itTags)|))
+\state avanzar(itTags) \hfill//O(1)
+\endwhile %\hfill//O()
+\state avanzar(it) \hfill//O(1)
+\endwhile %\hfill//O()
+
+\state res = crearItSLocal(sinRepetidos) \hfill//O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{(|actual(it).tags|) * ($\sum_{(t \in sinRepetidos)}$(|t|+|actual(itTags)|))+$\sum_{(i,long(r.tagsPorFecha))}$ copy([r.tagsPorFecha])}
+\end{algorithm}
+
+%\begin{algorithm}[H]
+%\caption{iFechaActual}
+%\begin{algorithmic}[1]
+%\Function{ifechaactual}{\param{in}{r}{estr}}{$\rightarrow$ \param{}{res}{fecha}}
+%\state var \param{}{it}{itLista(mensaje)} \hfill//O(1)
+%\state it $\gets$ crearIt(r.mensajes) \hfill//O(1)
+%\state res $\gets$ fechaActual(it) \hfill//O(1)
+%\EndFunction 
+%\end{algorithmic}
+%\hrule
+%\complejidad{1}
+%\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iRepeticionesRecientesDeTags}
+\begin{algorithmic}[1]
+\Function{irepeticionesrecientesdetags}{\param{in}{r}{estr}, \param{in}{t}{tag}}{$\rightarrow$ \param{}{res}{Nat}}
+\state res $\gets$ 0 \hfill//O(1)
+\If{(def?(t, r.trieTag))} \hfill//O(|t|)
+\state var \param{}{it}{itLista(<fecha, nat>)} \hfill//O(1)
+\state it $\gets$ crearIt(obtener(t, r.trieTag)) \hfill//O(|t|)
+\while{(haySiguiente?(it) \& fechaActual(r) - actual(it).fecha < 7)} \hfill//O(1)
+\state res $\gets$ res + siguiente(it).repeticiones \hfill//O(1)
+\state avanzar(it) \hfill//O(1)
+\endwhile
+\endif
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|t|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iPublicados}
+\begin{algorithmic}[1]
+\Function{ipublicados}{\param{in}{r}{estr}, \param{in}{u}{usuario}}{$\rightarrow$ \param{}{res}{itLista(mensaje)}}
+\state res $\gets$ crearIt(obtener(u,r.usuarios).mensajesPublicados) \hfill//O(|u|)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|u|}
+\end{algorithm}
+

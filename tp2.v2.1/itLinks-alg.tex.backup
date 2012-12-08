@@ -1,0 +1,95 @@
+\begin{algorithm}[H]
+\caption{iCrearItLinks}
+\begin{algorithmic}[1]
+\Function{icrearItLinks}{\param{in}{l}{Lista(datosLink)}}{$\ensuremath{\rightarrow}$ \param{}{res}{estrITL}}
+\State res $\gets$ crearIt(l) \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iHaySiguiente?}
+\begin{algorithmic}[1]
+\Function{ihaysiguiente?}{\param{in}{e}{estrITL}}{$\ensuremath{\rightarrow}$\param{}{res}{bool}}
+\state res $\gets$ haySiguiente(e)\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iSiguiente}
+\begin{algorithmic}[1]
+\Function{isiguiente}{\param{in}{e}{estrITL}}{$\rightarrow$ \param{}{res}{Link}}
+\state res $\gets$ dameLink(siguiente(e))\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iAvanzar}
+\begin{algorithmic}[1]
+\Function{iavanzar}{\param{in/out}{e}{estrITL}}{}
+\state avanzar(e)\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iBuscarMax}
+\begin{algorithmic}[1]
+\Function{ibuscarMax}{\param{in}{it}{itLinks}, \param{in}{f}{Fecha}}{$\ensuremath{\rightarrow}$ \param{}{res}{itLinks}}
+\state res $\gets$ it \hfill //O(1)
+\while{haySiguiente(it)} \hfill //O(longitud(siguientes(it)))
+\If{cantAccesosDesde(it,f) > cantAccesosDesde(res,f)} \hfill //O(1)
+\state res $\gets$ it \hfill //O(1)
+\endif
+\state avanzar(it) \hfill //O(1)
+\endwhile
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{longitud(siguientes(it))}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iUltFecha}
+\begin{algorithmic}[1]
+\Function{iultFecha}{\param{in}{it}{itLinks}}{$\ensuremath{\rightarrow}$ \param{}{res}{Fecha}}
+\state res $\gets$ dameDia(siguiente(dameAccesosUlt(siguiente(it)))) \hfill //O(1)
+\While{haySiguiente(it)} \hfill //O(longitud(siguientes(it)))
+\If{dameDia(siguiente(dameAccesosUlt(siguiente(it)))) > res} \hfill //O(1)
+\state res $\gets$ dameDia(siguiente(dameAccesosUlt(siguiente(it)))) \hfill //O(1)
+\endif
+\state avanzar(it) \hfill //O(1)
+\endwhile
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{longitud(siguientes(it))}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iCantAccesosDesde}
+\begin{algorithmic}[1]
+\Function{icantAccesosDesde}{\param{in}{it}{itLinks}, \param{in}{f}{Fecha}}{$\ensuremath{\rightarrow}$ \param{}{res}{nat}}
+\state itAccesos itAcc $\gets$ dameAccesos(siguiente(it)) \hfill //O(1)
+\state res $\gets$ 0 \hfill //O(1)
+\While{haySiguiente(itAcc)} \hfill //O(1)
+\If{dameDia(siguiente(itAcc)) $\leq$ f} \hfill //O(1)
+\state res $\gets$ res + dameCantA(siguiente(it)) \hfill //O(1)
+\endif
+\state avanzar(itAcc) \hfill //O(1)
+\endwhile
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}

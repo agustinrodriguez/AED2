@@ -1,0 +1,45 @@
+\begin{interfaz}{Iterador Links}
+\begin{iparamformales}{itLinks}
+
+\comment{\funcion{Copiar}{\param{in}{m}{$\alpha$}}{$\alpha$}
+{true}
+{\igres m}
+{copy(m)}
+{}
+}
+
+\textbf{\large se explica con:} Iterador Bidireccional
+
+\end{iparamformales}
+
+\operacion{crearItLinks}{\param{in}{l}{lista(datosLink)}}{itLinks}
+{true}
+{\igres crearItBi(<>,elems(l))}
+{1}
+{Ver Aliasing}
+
+\operacion{haysiguiente?}{\param{in}{it}{itLinks}}{bool}
+{true}
+{\igres haySiguiente?(it)}
+{1}
+{No tiene.}
+
+\operacion{siguiente}{\param{in}{it}{itLinks}}{Categoria}
+{haySiguiente?(it)}
+{\igres \pi_{1}(siguiente(it))}
+{1}
+{res no es modificable.}
+
+\operacion{avanzar}{\param{in/out}{it}{itLinks}}{}
+{it \igobs it_0 \land haySiguiente?(it)}
+{it \igobs avanzar(it_0)}
+{1}
+{No tiene.}
+
+\operacion{buscarMax}{\param{in}{it}{itLinks}, \param{in}{f}{Fecha}}{itLinks}
+{ls\igobs ls_{0}}
+{\igres buscarMax(ls_{0})}
+{n????}
+{Alias?????}
+
+\end{interfaz}

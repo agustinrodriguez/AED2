@@ -1,0 +1,81 @@
+\begin{interfaz}{ArbolCategorias}
+\begin{iparamformales}{acat}
+
+\comment{\funcion{Copiar}{\param{in}{m}{$\alpha$}}{$\alpha$}
+{true}
+{\igres m}
+{copy(m)}
+{}
+}
+
+\textbf{\large se explica con:} ArbolDeCategorias
+
+\end{iparamformales}
+
+\operacion{categorias}{\param{in}{ac}{acat}}{Conj(categoria)}
+{true}
+{\igres categorias(ac)}
+{\#categorias(ac)}
+{Ver alias}
+
+\operacion{raiz}{\param{in}{ac}{acat}}{categoria}
+{true}
+{\igres raiz(ac)}
+{1}
+{El nombre de la categoría raiz se pasa por referencia.}
+
+\operacion{padre}{\param{in}{ac}{acat}, \param{in}{c}{categoria}}{categoria}
+{true}
+{\igres padre(ac,h)}
+{|c|}
+{El nombre de la categoría padre se pasa por referencia.}
+
+\operacion{id}{\param{in}{ac}{acat}, \param{in}{c}{categoria}}{nat}
+{true}
+{\igres id(ac,c)}
+{1}
+{No tiene.}
+
+\operacion{nuevo}{\param{in}{c}{categoria}}{acat}
+{vacia?(c)}
+{\igres nuevo(c)}
+{|c|}
+{Ver Alias}
+
+\operacion{agregar}{\param{in/out}{ac}{acat}, \param{in}{c}{categoria}, \param{in}{h}{categoria}}{}
+{esta?(c,ac) \land esta?(h,ac) \land ac_{0} = ac}
+{ac = agregar(ac_{0},c,h)}
+{|c|+|h|}
+{verAlias}
+
+\operacion{altura}{\param{in}{ac}{acat}}{nat}
+{true}
+{\igres altura(ac)}
+{1}
+{No tiene.}
+
+\operacion{esta?}{\param{in}{c}{categoria}, \param{in}{ac}{acat}}{bool}
+{true}
+{\igres esta?(c,ac)}
+{|c|}
+{No tiene.}
+
+\operacion{esSubCategoria}{\param{in}{ac}{acat}, \param{in}{c}{categoria}, \param{in}{h}{categoria}}{bool}
+{esta?(c,ac) \land esta?(h,ac)}
+{\igres esSubCategoria(ac,c,h)}
+{ver Complejidad y revisar parametros con especificacion}
+{No tiene.}
+
+\operacion{alturaCategoria}{\param{in}{ac}{acat}, \param{in}{c}{categoria}}{nat}
+{esta?(c,ac)}
+{\igres alturaCategoria(ac,c)}
+{|c|}
+{No tiene.}
+
+\operacion{hijos}{\param{in}{ac}{acat}, \param{in}{c}{categoria}}{Conj(categoria)}
+{esta?(c,ac)}
+{\igres hijos(ac,c)}
+{|c|}
+{Ver Alias}
+
+\end{interfaz}

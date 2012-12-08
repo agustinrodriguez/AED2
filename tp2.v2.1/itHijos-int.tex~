@@ -1,0 +1,39 @@
+\begin{interfaz}{Iterador Hijos}
+\begin{iparamformales}{itHijos}
+
+\comment{\funcion{Copiar}{\param{in}{m}{$\alpha$}}{$\alpha$}
+{true}
+{\igres m}
+{copy(m)}
+{}
+}
+
+\textbf{\large se explica con:} Iterador Bidireccional
+
+\end{iparamformales}
+
+\operacion{crearItHijos}{\param{in}{l}{Conj(puntero(datosCat))}}{itHijos}
+{true}
+{\igres crearIt(l)}
+{1}
+{No se pueden modificar los datosCat del iterador.}
+
+\operacion{haysiguiente?}{\param{in}{it}{itHijos}}{bool}
+{true}
+{\igres haySiguiente?(it)}
+{1}
+{No tiene.}
+
+\operacion{siguiente}{\param{in}{it}{itHijos}}{Categoria}
+{haySiguiente?(it)}
+{\igres \pi_{1}(*siguiente(it))}
+{1}
+{res no es modificable.}
+
+\operacion{avanzar}{\param{in/out}{it}{itHijos}}{}
+{it \igobs it_0 \land haySiguiente?(it)}
+{it \igobs avanzar(it_0)}
+{1}
+{No tiene.}
+
+\end{interfaz}

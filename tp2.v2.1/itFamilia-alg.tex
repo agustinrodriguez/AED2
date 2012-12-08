@@ -1,0 +1,55 @@
+\begin{algorithm}[H]
+\caption{iCrearItFamilia}
+\begin{algorithmic}[1]
+\Function{icrearItFamilia}{\param{in}{ac}{estrAC},\param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{estrITA}}
+\State res $\gets$ obtener(ac.familia,c) \hfill //O(|c|)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|c|}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iHaySiguiente?}
+\begin{algorithmic}[1]
+\Function{ihaysiguiente?}{\param{in}{e}{estrITF}}{$\ensuremath{\rightarrow}$\param{}{res}{bool}}
+\state res $\gets$ e $\neq$ NULL \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iSiguienteCat}
+\begin{algorithmic}[1]
+\Function{isiguiente}{\param{in}{e}{estrITF}}{$\rightarrow$ \param{}{res}{Categoria}}
+\state res $\gets$ (*e).categoria\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+
+\begin{algorithm}[H]
+\caption{iSiguienteId}
+\begin{algorithmic}[1]
+\Function{isiguiente}{\param{in}{e}{estrITF}}{$\rightarrow$ \param{}{res}{int}}
+\state res $\gets$ (*e).id \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iAvanzar}
+\begin{algorithmic}[1]
+\Function{iavanzar}{\param{in/out}{e}{estrITF}}{}
+\state e $\gets$ (*e).padre \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}

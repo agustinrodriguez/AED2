@@ -1,0 +1,96 @@
+\begin{center}
+\begin{tabular}{|l|} 
+\hline
+\\
+LinkLinkIt \textbf{se representa con} estrLLI, donde estrLLI es \tupla{\\
+\hspace*{6em}\param{}{arbolCategorias}{acat},\\
+\hspace*{6em}\param{}{actual}{Fecha},\\
+\hspace*{6em}\param{}{linkInfo}{diccTrie(Link,puntero(datosLink))},\\
+\hspace*{6em}\param{}{listaLink}{Lista(datosLink)},\\
+\hspace*{6em}\param{}{arrayCatLinks}{arreglo-dimen(linksFamilia)}}\\ \\
+
+\hspace*{6em}datosLink es \tupla{\\
+\hspace*{6em}\param{}{link}{Link},\\ 
+\hspace*{6em}\param{}{catDLink}{Categoria},\\ 
+\hspace*{6em}\param{}{accesosRecientes}{Lista(acceso)},\\ 
+\hspace*{6em}\param{}{cantAaccesosRecientes}{nat}}\\ \\
+
+\hspace*{6em}acceso es \tupla{\\
+\hspace*{6em}\param{}{dia}{Fecha},\\
+\hspace*{6em}\param{}{cantAccesos}{nat}}\\ \\
+
+\hspace*{6em}linksFamilia es Lista(puntero(datosLink)) \\ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\par Un linkLinkIt guarda en su estructura el arbol de categorias con el que fue creado. La fecha actual, para poder accederla en O(1).
+\par Tiene también una lista de datosLink(\textit{listaLink}), que guarda un datosLink para cada Link con sus datos: nombre(\textit{link}), una referencia al nombre de su categoría relacionada(\textit{carDLink}) para accederla en O(1),la cantidad de accesos recientes(\textit{cantAccesosRecientes}) y su lista de accesos recientes, es decir sus ultimos tres días(\textit{accesosRecientes}).
+\par En el diccTrie \textit{linkInfo}, tomando como claves los nombres de los links, guardamos un puntero al datoLink correspondiente de \textit{listaLink}, para poder acceder a esos datos en O(longitud del link).
+\par \textit{arrayCatLink} guarda en cada posición, la lista de links relacionados para la categoria cuyo id es esa posicion+1 (Incluye a los links de las categorias hijas.).
+
+\subsubsection{Invariante de Representaci\'on}
+\paragraph{El Invariante Informalmente}
+\begin{enumerate}
+\item Para todo '\textit{link}' que exista en '\textit{linkInfo}' la '\textit{catDLink}' de la tupla apuntada en el significado debera existir en \textit{'arbolCategorias'}.
+\item Para todo '\textit{link}' que exista en '\textit{linkInfo}', todos los \textit{dia}' de la lista '\textit{accesosRecientes}' deberan ser menor o igual a \textit{actual}, estan ordenados,no hay dias repetidos y la longitud de la lista es menor o igual a 3.
+\item Para todo '\textit{link}' que exista en '\textit{linkInfo}' su significado deberá existir en '\textit{listaLinks}' y viceversa.
+\item Para todo '\textit{link}' que exista en '\textit{linkInfo}' su significado deberá aparecer en '\textit{arrayCatLinks}' en la posicion igual al id de '\textit{catDLink}' y en las posiciones de los predecesores de esa categoria y en ninguna otra.
+\item No hay 2 claves que existan en '\textit{linkInfo}' y devuelvan el mismo significado.
+\item No existen '\textit{link}' repetidos en las tuplas de  '\textit{listaLinks}'.
+\item No hay elementos repetidos en ninguna lista '\textit{linksFamilia}'.
+\item Para todo '\textit{link}' que exista en '\textit{linkInfo}', '\textit{cantAccesosRecientes}' es igual a la suma de '\textit{cantAccesos}' de cada elemento de la lista '\textit{accesosRecientes}'
+\end{enumerate}
+
+\paragraph{El Invariante Formalmente}
+\begin{Rep}{estrLLI}{lli}
+\repfunc{(\forall\param{}{l}{Link})(def?(l,lli.linkInfo)) \Rightarrow_{L} \\ (*obtener(l,lli.linkInfo)).catDLink \in todasLasCategorias(lli.arbolCategorias.categorias)}{\yluego}
+\repfunc{(\forall\param{}{l}{Link})(def?(l,lli.linkInfo)) \Rightarrow_{L} \\ long((*obtener(l,lli.linkInfo)).accesosRecientes) \leq 3 \land \\ 
+accesoOrdenadoNoRepetido((*obtener(l,lli.linkInfo)).accesosRecientes) \yluego\\
+fechasCorrectas(lli.actual,((*obtener(l,lli.linkInfo)).accesosRecientes))}{\yluego}
+\repfunc{(\forall\param{}{l}{Link})(def?(l,e.linkInfo) \Leftrightarrow\\ (((\exists\param{}{d}{datosLink})esta?(d,e.listaLinks)\land d.link==l)\yluego d==obtener(l,e.linkInfo)))}{\yluego}
+\repfunc{(\forall\param{}{l}{Link}) (def?(l,lli.linkInfo)) \Rightarrow_{L} \\ ((\forall\param{}{c}{Categoria}) c \in todasLasCategorias(lli.arbolCategorias.categorias) \Rightarrow_{L} \\
+(esta?((obtener(l,lli.linkInfo)),arrayCatLinks[id(c,lli.arbolCategorias)]) \Leftrightarrow \\
+esSubCategoria(lli.arbolCategorias,c,(*obtener(l,lli.linkInfo)).categoria)))}{\yluego}
+\repfunc{(\forall\param{}{l,l'}{Link}) l \neq l' \land (def?(l,lli.linkInfo)) \land (def?(l',lli.linkInfo)) \Rightarrow_{L}\\
+(*obtener(l,lli.linkInfo)) \neq (*obtener(l',lli.linkInfo))}{\yluego}
+\repfunc{(\forall\param{}{i,i'}{nat}) i < long(lli.listaLinks) \land i' < long(lli.listaLinks) \Rightarrow_{L}\\
+lli.listaLinks_{i}.link = lli.listaLinks_{i'}.link \Leftrightarrow i = i'}{\yluego}
+\repfunc{(\forall\param{}{i}{nat}) i < tam(lli.arrayCatLinks) \Rightarrow_{L} sinRepetidos(arrayCatLinks[i])}{\yluego}
+\repfunc{(\forall\param{}{l}{Link})(def?(l,lli.linkInfo)) \Rightarrow_{L} \\
+(*obtener(l,lli.linkInfo)).cantAccesosRecientes ==\\
+cantidadDeAccesos((*obtener(l,lli.linkInfo)).accesosRecientes)}{}
+\end{Rep}
+
+\subsubsection{Funci\'on de Abstracci\'on}
+\begin{ABS}{e}{estrLLI}{lli}{linkLinkIt}
+\absfunc{categorias(lli) = categorias(e.arbolCategorias)}{$\land$}
+\absfunc{links(lli) = todosLosLinks(e.listaLinks)}{\yluego}
+\absfunc{(\forall\param{}{l}{Link})def?(l,e.linkInfo)\Rightarrow_{L}\\ categoriaLink(lli,l) = (*obtener(l,e.linkInfo))catDLink}{$\land$}
+\absfunc{fechaActual(lli)=e.actual}{$\land$}
+\absfunc{(\forall\param{}{l}{Link})l\in links(e)\Rightarrow_{L}\\ fechaUltimoAcceso(lli,l)=(ultimo((*obtener(l,e.linkInfo)).accesosRecientes)).dia}{$\land$}
+\absfunc{(\forall\param{}{l}{Link})(\forall\param{}{f}{Fecha})l\in links(lli) \yluego esReciente?(e,l,f)\Rightarrow_{L}\\
+accesosRecientesDia(lli,l,f) = \\cantidadPorDia(f,(*obtener(l,e.linkInfo)).accesosRecientes)}{}
+\end{ABS}
+
+\paragraph{Funciones auxiliares}
+\paragraph*{}
+
+\hspace*{1em}\tadOperacion{cantidadPorDia}{estrLLI, Fecha, Lista(acceso)}{nat}{}
+\tadAxioma{cantidadPorDia(e,f,ls)}{\IF f==prim(ls).dia THEN prim(ls).cantAccesos ELSE cantidadPorDia(e,f,fin(ls)) FI}
+
+\hspace*{1em}\tadOperacion{todosLosLinks}{secu(datosLink)}{conj(Link)}{}
+\tadAxioma{todosLosLinks(s)}{\IF $\emptyset$?(s) THEN $\emptyset$ ELSE Ag(prim(s).link,todosLosLinks(fin(s))) FI}
+
+\hspace*{1em}\tadOperacion{sinRepetidos}{secu($\alpha$)}{bool}{}
+\tadAxioma{sinRepetidos(ls)}{\IF vacia?(ls) THEN true ELSE {\IF esta?(prim(ls),fin(ls)) THEN false ELSE sinRepetidos(fin(ls)) FI} FI}
+
+\hspace*{1em}\tadOperacion{fechasCorrectas}{fecha, secu(acceso)}{bool}{}
+\tadAxioma{sinRepetidos(f,ls)}{\IF vacia?(ls) THEN true ELSE {\IF prim(ls).dia > f THEN false ELSE fechasCorrectas(f,fin(ls)) FI} FI}
+
+\hspace*{1em}\tadOperacion{accesoOrdenadoNoRepetido}{secu(acceso)}{bool}{}
+\tadAxioma{sinRepetidos(ls)}{\IF long(ls)$\leq$ 1 THEN true ELSE {\IF prim(ls).dia$\geq$ prim(fin(ls)).dia THEN false ELSE accesoOrdenadoNoRepetido(fin(ls)) FI} FI}
+
+\hspace*{1em}\tadOperacion{cantidadDeAccesos}{secu(acceso)}{nat}{}
+\tadAxioma{cantidadDeAccesos(ls)}{\IF vacia?(ls) THEN 0 ELSE prim(ls).cantAccesos + cantidadDeAccesos(fin(ls)) FI}

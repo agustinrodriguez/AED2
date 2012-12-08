@@ -1,0 +1,132 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[paper=a4paper, left=1.5cm, right=1.5cm, bottom=2cm, top=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{aed2-symb,aed2-itef,aed2-tad,aed2-tokenizer}
+\usepackage{newalgo}
+\usepackage{interfaz}
+\usepackage{caratula}
+\newcommand{\comment}[1]{}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+\usepackage[colorlinks,citecolor=black,filecolor=black,linkcolor=black,    urlcolor=black]{hyperref}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+\let\state\State
+\let\while\While
+\let\endwhile\EndWhile
+%\let\if\If
+\let\endif\EndIf
+%\let\else\Else
+\let\elseif\ElsIf
+
+
+\titulo{Trabajo Pr\'actico Diseño}
+%%\fecha{02 / 11 / 2011}
+\materia{Algoritmos y Estructura de Datos II}
+\grupo{Grupo 1}
+\integrante{Bálsamo, Facundo}{874/10}{facundobalsamo@gmail.com}
+\integrante{Lasso, Nicolás}{763/10}{lasso.nico@gmail.com}
+\integrante{Rodriguez, Agustín}{120/10}{agustinrodriguez90@hotmail.com}
+\integrante{Tripodi, Guido}{843/10}{guido.tripodi@hotmail.com}
+
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Módulo ArbolCategorias} 
+\subsection{Interfaz}
+\input{arbolCategorias-int}
+\subsection{Representaci\'on}
+\input{arbolCategorias-rep}
+\subsection{Algoritmos}
+\input{arbolCategorias-alg}
+\subsection{Analisis de complejidades}
+\input{arbolCategorias-com}
+
+\subsection{Iterador de Categorias} 
+\subsubsection{Interfaz}
+\input{itCategorias-int}
+\subsubsection{Representaci\'on}
+\input{itCategorias-rep}
+\subsubsection{Algoritmos}
+\input{itCategorias-alg}
+\subsubsection{Analisis de complejidades}
+\input{itCategorias-com}
+
+\subsection{Iterador de Familia} 
+\subsubsection{Interfaz}
+\input{itFamilia-int}
+\subsubsection{Representaci\'on}
+\input{itFamilia-rep}
+\subsubsection{Algoritmos}
+\input{itFamilia-alg}
+\subsubsection{Analisis de complejidades}
+\input{itFamilia-com}
+ 
+\subsection{Iterador de Hijos} 
+\subsubsection{Interfaz}
+\input{itHijos-int}
+\subsubsection{Representaci\'on}
+\input{itHijos-rep}
+\subsubsection{Algoritmos}
+\input{itHijos-alg}
+\subsubsection{Analisis de complejidades}
+\input{itHijos-com}
+\newpage 
+\section{M\'odulo LinkLinkIt} 
+\subsection{Interfaz}
+\input{linklinkit-int}
+\subsection{Representaci\'on}
+\input{linklinkit-rep}
+\subsection{Algoritmos}
+\input{linklinkit-alg}
+\subsection{Analisis de complejidades}
+\input{linklinkit-com}
+
+\subsection{Iterador de Links} 
+\subsubsection{Interfaz}
+\input{itLinks-int}
+\subsubsection{Representaci\'on}
+\input{itLinks-rep}
+\subsubsection{Algoritmos}
+\input{itLinks-alg}
+\subsubsection{Analisis de complejidades}
+\input{itLinks-com}
+ 
+\subsection{Iterador de Punteros a DatosLink} 
+%\subsubsection{Interfaz}
+%\input{itPuntLinks-int}
+\subsubsection{Representaci\'on}
+\input{itPuntLinks-rep}
+\subsubsection{Algoritmos}
+\input{itPuntLinks-alg}
+\subsubsection{Analisis de complejidades}
+\input{itPuntLinks-com}
+ 
+\subsection{Iterador de Accesos} 
+%\subsubsection{Interfaz}
+%\input{itAccesos-int}
+\subsubsection{Representaci\'on}
+\input{itAccesos-rep}
+\subsubsection{Algoritmos}
+\input{itAccesos-alg}
+\subsubsection{Analisis de complejidades}
+\input{itAccesos-com}
+\newpage 
+\section{M\'odulo diccTrie(clave,significado)}
+\subsection{Interfaz}
+\input{diccT-int}
+\subsection{Representaci\'on}
+\input{diccT-rep}
+\subsection{Algoritmos}
+\input{diccT-alg}
+\subsection{Analisis de complejidades}
+\input{diccT-com}
+\newpage
+\end{document}

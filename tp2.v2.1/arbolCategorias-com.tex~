@@ -1,0 +1,86 @@
+\vspace*{1em}
+\begin{enumerate}
+
+%\item \textbf{iDameCat}
+%\par Se devuelve una referencia a la Categoria del datosCat en O(1).
+%\par \textbf{Orden Total:} \textbf{O(1)}
+
+%\item\textbf{iDameId}
+%\par Se devuelve el id del datosCat en O(1).
+%\par \textbf{Orden Total:} \textbf{O(1)}
+
+%\item\textbf{iDameAltura}
+%\par Se devuelve la altura del datosCat en O(1).
+%\par \textbf{Orden Total:} \textbf{O(1)}
+
+%\item\textbf{iDameHijos}
+%\par Se devuelve un iterador al conjunto \textbf{hijos} del datosCat en O(1).
+%\par \textbf{Orden Total:} \textbf{O(1)}
+
+%\item\textbf{iDamePadre}
+%\par Se devuelve el puntero al \textbf{padre} del datosCat en O(1).
+%\par \textbf{Orden Total:} \textbf{O(1)}
+
+%\item\textbf{iObtener}
+%\par Dado una categoria c, se devuelve un puntero al datosCat correspondiente para esa categoría en O(|c|).
+%\par \textbf{Orden Total:} \textbf{O(|c|)}
+
+\item\textbf{iCategoriasAC}
+\par Se devuelve un iterador de la lista \textbf{categorias} del arbol de categorias en O(1). El iterador muestra sólo los nombres de las categorías.
+\par \textbf{Orden Total:} \textbf{O(1)}
+
+\item\textbf{iRaiz}
+\par Se devuelve una referencia al nombre de la categoria raiz del arbol de categorias en O(1).
+\par \textbf{Orden Total:} \textbf{O(1)}
+
+\item\textbf{idameCantidad}
+\par Se devuelve en O(1) el natural almacenado en el campo cantidad del arbol de.
+\par \textbf{Orden Total:} \textbf{O(1)}
+
+\item\textbf{iIdAC}
+\par Dada la categoria c, se obtiene en O(|c|) el datosCat de dicha categoría y en O(1) se devuelve el id que tiene el datosCat obtenido.
+\par \textbf{Orden Total:} \textbf{O(|c|)}
+
+\item\textbf{iAlturaCatAC}
+\par Dada la categoria c, se obtiene en O(|c|) el datosCat de dicha categoría y en O(1) se devuelve la altura que tiene el datosCat obtenido.
+\par \textbf{Orden Total:} \textbf{O(|c|)}
+
+\item\textbf{iHijosAC}
+\par Dada la categoria c, se obtiene en O(|c|) el datosCat de dicha categoría y en O(1) se devuelve un iterador al conjunto \textbf{hijos} del datosCat obtenido.
+\par \textbf{Orden Total:} \textbf{O(|c|)}
+
+\item\textbf{iPadreAC}
+\par Dada la categoria c, se obtiene en O(|c|) el datosCat de dicha categoría y en O(1) se devuelve por referencia en O(1) el nombre de la categoria del puntero \textbf{padre} que tiene el datosCat obtenido.
+\par \textbf{Orden Total:} \textbf{O(|c|)}
+
+\item\textbf{iAlturaAC}
+\par Devuelve en O(1) la \textbf{alturaMax} del arbol de categorias.
+\par \textbf{Orden Total:} \textbf{O(1)}
+
+\item\textbf{iNuevoAC}
+\par A res.cantidad le asignamos 1, que tarda O(1). Creamos una nueva variable tuplaA, que es datosCat. Esto tarda O(1).
+\par Creamos la variable punt, que es un puntero a datosCat y le asignamos la referencia de tuplaA. Y esto tarda O(1). A tuplaA le asignamos una nueva tupla datosCat, que en uno de sus componentes es el string c, y copiarse tarda O(|c|). Los demas componentes de la tupla tardan en copiarse O(1).
+\par A res.raiz le asignamos punt, y tarda O(1). A res.alturaMax le asignamos 1, y tarda O(1). A res.familia le asignamos el diccTrie que nos da la operacion definir, a la cual le pasamos como clave el string c. Entonces definir tarda O(|c|).
+\par A res.categorias le asignamos la lista que nos da la operacion AgregarAtras, que tarda O(1).
+\par \textbf{Orden Total:} O(1)+O(1)+O(1)+O(|c|)+O(1)+O(1)+O(|c|)+O(1) =\textbf{O(|c|)}
+
+\item\textbf{iAgregarAC}
+\par Obtenemos un puntero de datosCat de la categoria c usando la operacion obtener del diccTrie ac.familia, y lo asginamos a la variable puntPadre. Esto tarda O(|c|).
+\par Comparamos la altura de la tupla que apunta puntPadre con ac.alturaMax, y esto tarda O(1). En caso que valga la guarda del if hacemos una suma y una asignacion, que cuesta O(1).
+\par Luego creamos y asignamos una tupla de datosCat tuplaA, que se le asigna una tupla con valores que tardan O(1) en copiarse, excepto por la categoria h que es string. Entonces la asignacion y creacion de esa tupla tarda O(|h|).
+\par Creamos la variable punt que es un puntero a datosCat, y le asignamos la referencia de tuplaA. Esto tarda O(1). Agregamos al conjunto de punteros hijos que apunta puntPadre, el puntero punt, que tarda O(1). Definimos la clave h, con el significado punt al diccTrie ac.familia. Esto tarda O(|h|).
+\par Incrementamos ac.cantidad, tardando O(1). Finalmente agregamos atras tuplaA a la lista ac.categorias. Esto tarda O(1)
+\par \textbf{Orden Total:} O(|c|)+O(1)+O(1)+O(|h|)+O(1)+O(1)+O(|h|)+O(1)+O(1)=\textbf{O(|c| + |h|)}
+
+\item\textbf{iEsta?}
+\par Para ver si una categoria c esta en nuestro arbolCategorias, vemos si esta definida la clave c en el diccTrie ac.familia. Y esto tarda O(|c|).
+\par \textbf{Orden Total:} \textbf{O(|c|)}
+
+\item\textbf{iEsSubCategoria}
+\par Le asignamos a res un valor booleano igual a false, demorando O(1). Comparamos las dos categorias si son iguales o no. Demorando O(|h|). En caso afirmativo cambiamos el valor de res por true, demorando O(1).
+\par En caso negativo, consultamos si h es igual a raizAC(ac) demorando O(|h|), en caso positivo le asignamos a res el valor false, tardando O(1). En caso negativo: creamos un puntero a datosCat denominado actual al cual le asignamos la tupla obtenida por la operacion obtener del diccTrie pasandole la categoria h y pidiendo padre de la tupla obtenida por esta operacion, esto demora O(|h|). Creamos un puntero a datosCat denominado puntC al cual le asignamos la tupla obtenida por la operacion obtener del diccTrie pasandole la categoria c y pidiendo padre de la tupla obtenida por esta operacion, esto demora O(|c|). Luego, se ingresa a un ciclo con la condicion de que res sea igual a false y actual distinto de NULL. Se compara puntC con actual. En caso afirmativo se asigna a res el valor true, demorando O(1), en caso negativo, se modifica actual asignandole el puntero a padre de la tupla a la que estaba apuntando anteriormente. Luego de realizar alturaAC(ac) iteraciones se sale del ciclo.
+\par \textbf{Orden Total:}
+\par O(1)+O(|h|)+O(1)+O(|h|)+O(1)+O(|h|)+O(|c|)+(alturaAC(ac)*(O(1)+O(1)+O(1)))=
+\par \textbf{O(|h|+|c|+alturaAC(ac))}
+
+\end{enumerate}

@@ -85,12 +85,10 @@ namespace aed2
             class itPunLinks {
                 public:
                     itPunLinks();
-                    itPunLinks(Lista<DatosLink*>& ldl);
+                    itPunLinks(Lista<DatosLink*>& ldl, Fecha& f);
                     itPunLinks(const itPunLinks& otroIt);
-                    itPunLinks CrearItPunLinks(LinkLinkIt& lli, int id);
                     ~itPunLinks();
                     bool HaySiguiente() const;
-                    DatosLink* Siguiente() const;
                     Link& SiguienteLink() const;
                     Categoria& SiguienteCat() const;
                     int SiguienteCantidadAccesosDelLink();
@@ -101,11 +99,11 @@ namespace aed2
                     int cantAccesosDesde(Fecha f);
                     bool estaOrdenada(Fecha f);
                     bool operator==(const itPunLinks& otro) const;
-
+                    friend class LinkLinkIt;
                 private:
                     Lista<DatosLink*>::Iterador _itLista;
                     Fecha _fecha;
-                    Categoria _cat;
+                    DatosLink* Siguiente() const;
             };
 
             //creacion de la clase iterador de datoslink
@@ -126,6 +124,7 @@ namespace aed2
             int cantLinks(Categoria categoria);
             itPunLinks linksOrdenadosPorAccesos(Categoria categoria) ;
             bool esReciente(Link link, Fecha fecha);
+            itPunLinks CrearItPunLinks(int id, Fecha f);
             bool operator==(const LinkLinkIt& otro) const;
 	};
 }
