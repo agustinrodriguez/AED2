@@ -207,7 +207,7 @@ itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
 
 bool LinkLinkIt::esReciente(Link link, Fecha fecha){
 
-return false;
+return fecha >= fechaUltimoAcceso(link)-2 && fecha <= fechaUltimoAcceso(link);
 }
 
 itLinks LinkLinkIt::CrearItLinks(){
