@@ -96,7 +96,8 @@ Fecha LinkLinkIt::fechaActual(){
 
 LinkLinkIt::itLinks LinkLinkIt::linksLli()
 {
-    return itLinks(_listaLinks);
+    itLinks itL;
+    return itL.crearItLinks(*this);
 }
 
 Categoria LinkLinkIt::categoriaLink(Link link) const
@@ -181,10 +182,11 @@ int LinkLinkIt::cantLinks(Categoria categoria){
 
 LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
         int id = dameAcat().idAC(categoria);
-        Fecha n = 1;
-        itPunLinks itParaFecha = itPunLinks(_arrayCatLinks[id-1], n);
+        itPunLinks itParaFecha;
+        itParaFecha.CrearItPunLinks(*this,id);
         Fecha fecha = itParaFecha.ultFecha();
-        itPunLinks itOrdSegunF = itPunLinks(_arrayCatLinks[id-1], fecha);
+        itPunLinks itOrdSegunF;
+        itOrdSegunF.CrearItPunLinks(*this,id);
         Lista<DatosLink*> listaOrdenada = Lista<DatosLink*>();
         itPunLinks itMax;
 
@@ -192,7 +194,7 @@ LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria)
         {
             while(_arrayCatLinks[id-1].Longitud() > 0)
             {
-                itMax = itPunLinks(_arrayCatLinks[id-1], fecha);
+                itMax.CrearItPunLinks(*this,id);
                 itMax = itMax.BuscarMax(fecha);
                 listaOrdenada.AgregarAtras(itMax.Siguiente());
                 itMax.EliminarSiguiente();
@@ -201,7 +203,8 @@ LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria)
 
         }
 
-       return itPunLinks(_arrayCatLinks[id-1], fecha);
+        itPunLinks final;
+       return final.CrearItPunLinks(*this,id);
 
 }
 
@@ -314,14 +317,18 @@ LinkLinkIt::itPunLinks::itPunLinks(const itPunLinks &otroIt){
     _itLista = otroIt._itLista;
 }
 
-LinkLinkIt::itPunLinks::itPunLinks(Lista<DatosLink*> &ldl, Fecha& f){
+LinkLinkIt::itPunLinks::itPunLinks(Lista<DatosLink*> &ldl){
     _itLista = ldl.CrearIt();
-    _fecha = f;
+    _fecha = ultFecha();
 }
 
 LinkLinkIt::itPunLinks::~itPunLinks()
 {
 
+}
+
+LinkLinkIt::itPunLinks LinkLinkIt::itPunLinks::CrearItPunLinks(LinkLinkIt& lli, int id){
+    return itPunLinks(lli._arrayCatLinks[id-1]);
 }
 
 bool LinkLinkIt::itPunLinks::HaySiguiente() const
@@ -436,7 +443,6 @@ bool LinkLinkIt::operator==(const LinkLinkIt& otro) const{
     Lista<DatosLink> links2 = otro._listaLinks;
     itLinks itThis = itLinks(links1);
     bool salgo = false;
-    Fecha f;
     if(links1.Longitud() == links2.Longitud())
     {
         while (itThis.HaySiguiente() && res){
@@ -468,8 +474,8 @@ bool LinkLinkIt::operator==(const LinkLinkIt& otro) const{
         {
             Lista<DatosLink*> ldl = _arrayCatLinks[c];
             Lista<DatosLink*> ldlOtro = otro._arrayCatLinks[c];
-            itPunLinks itL = itPunLinks(ldl, f);
-            itPunLinks itLOtro = itPunLinks(ldlOtro, f);
+            itPunLinks itL = itPunLinks(ldl);
+            itPunLinks itLOtro = itPunLinks(ldlOtro);
             while(itL.HaySiguiente() && itLOtro.HaySiguiente() && res)
             {
                 if(!(*itL.Siguiente() == *itLOtro.Siguiente()))
