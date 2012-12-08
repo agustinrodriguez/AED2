@@ -292,7 +292,7 @@ bool ArbolCategorias::operator==(const ArbolCategorias& acat) const{
 }
 
 ItCategorias ArbolCategorias::CrearItCategorias(){
-    return ItCategorias(categoriasAC());
+    return ItCategorias(_categorias);
 
 }
 

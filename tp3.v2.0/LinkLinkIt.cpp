@@ -96,7 +96,7 @@ Fecha LinkLinkIt::fechaActual(){
 
 LinkLinkIt::itLinks LinkLinkIt::linksLli()
 {
-    return CrearItLinks();
+    return itLinks(_listaLinks);
 }
 
 Categoria LinkLinkIt::categoriaLink(Link link) const
@@ -211,12 +211,6 @@ bool LinkLinkIt::esReciente(Link link, Fecha fecha){
 
 }
 
-LinkLinkIt::itLinks LinkLinkIt::CrearItLinks(){
-    return itLinks(_listaLinks);
-}
-
-
-
 //////////////////////////////////////////
 //iteradores operaciones
 //////////////////////////////////////////
@@ -231,6 +225,11 @@ LinkLinkIt::itLinks::itLinks(Lista<DatosLink>& ldl){
 
 LinkLinkIt::itLinks::itLinks(const itLinks& otroIt){
     _itLista = otroIt._itLista;
+}
+
+LinkLinkIt::itLinks LinkLinkIt::itLinks::crearItLinks(LinkLinkIt lli) const{
+    return itLinks(lli._listaLinks);
+
 }
 
 LinkLinkIt::itLinks::~itLinks()
