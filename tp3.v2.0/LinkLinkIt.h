@@ -95,8 +95,9 @@ namespace aed2
             class itPunLinks {
                 public:
                     itPunLinks();
-                    itPunLinks(Lista<DatosLink*>& ldl, Fecha& f);
+                    itPunLinks(Lista<DatosLink*>& ldl);
                     itPunLinks(const itPunLinks& otroIt);
+                    itPunLinks CrearItPunLinks(LinkLinkIt& lli, int id);
                     ~itPunLinks();
                     bool HaySiguiente() const;
                     DatosLink* Siguiente() const;
@@ -141,7 +142,6 @@ namespace aed2
             itPunLinks linksOrdenadosPorAccesos(Categoria categoria) ;
             bool esReciente(Link link, Fecha fecha);
             bool operator==(const LinkLinkIt& otro) const;
-            // itPunLinks CrearItPunLinks(int id); ME TIRA ERROR EN EL ORDENADA DE LOS TEST DE ELLOS
 
 	};
 }
