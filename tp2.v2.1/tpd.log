@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.15)  8 DEC 2012 18:26
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.15)  8 DEC 2012 19:14
 entering extended mode
  %&-line parsing enabled.
 **tpd.tex
@@ -803,18 +803,17 @@ Overfull \hbox (11.74713pt too wide) in paragraph at lines 37--37
 []$[]$ 
  []
 
-) (./itCategorias-rep.tex)
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 23--57
+) (./itCategorias-rep.tex [13])
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 30--57
 []$[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--57
+Underfull \hbox (badness 10000) in paragraph at lines 30--57
 
  []
 
-[13] (./itCategorias-alg.tex) (./itCategorias-com.tex [14])
-(./itFamilia-int.tex
+(./itCategorias-alg.tex) (./itCategorias-com.tex [14]) (./itFamilia-int.tex
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 19--19
 []$[]$ 
  []
@@ -839,13 +838,13 @@ Overfull \hbox (11.74713pt too wide) in paragraph at lines 43--43
 []$[]$ 
  []
 
-) (./itFamilia-rep.tex [15]) (./itFamilia-alg.tex) (./itFamilia-com.tex
-[16]) (./itHijos-int.tex
+[15]) (./itFamilia-rep.tex) (./itFamilia-alg.tex [16]) (./itFamilia-com.tex)
+(./itHijos-int.tex
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 19--19
 []$[]$ 
  []
 
-
+[17]
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 25--25
 []$[]$ 
  []
@@ -855,22 +854,22 @@ Overfull \hbox (11.74713pt too wide) in paragraph at lines 31--31
 []$[]$ 
  []
 
-[17]
+
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 37--37
 []$[]$ 
  []
 
 ) (./itHijos-rep.tex)
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 23--77
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 30--77
 []$[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--77
+Underfull \hbox (badness 10000) in paragraph at lines 30--77
 
  []
 
-(./itHijos-alg.tex [18]) (./itHijos-com.tex) [19] (./linklinkit-int.tex
+[18] (./itHijos-alg.tex) (./itHijos-com.tex [19]) [20] (./linklinkit-int.tex
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 19--19
 []$[]$ 
  []
@@ -905,7 +904,7 @@ Overfull \hbox (11.74713pt too wide) in paragraph at lines 55--55
 []$[]$ 
  []
 
-[20]
+[21]
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 61--61
 []$[]$ 
  []
@@ -930,7 +929,7 @@ Overfull \hbox (11.74713pt too wide) in paragraph at lines 86--86
 []$[]$ 
  []
 
-) (./linklinkit-rep.tex [21] [22]
+) (./linklinkit-rep.tex [22] [23]
 Overfull \hbox (10.96pt too wide) in paragraph at lines 48--48
 \OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 ^^C\OML/cmm/m/it/12 obtener\OT1/cmr/m/n/12 (\
 OML/cmm/m/it/12 l; lli:linkInfo\OT1/cmr/m/n/12 ))\OML/cmm/m/it/12 :catDLink \OM
@@ -952,7 +951,7 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 67--76
 []$[]$ 
  []
 
-[23]
+[24]
 Overfull \hbox (17.6248pt too wide) in paragraph at lines 81--81
 []\T1/cmr/m/n/12 cantidadPorDia(e,f,ls)| $\OMS/cmsy/m/n/12 ^^Q$| [] 
  []
@@ -982,13 +981,13 @@ Overfull \hbox (17.6248pt too wide) in paragraph at lines 96--96
 []\T1/cmr/m/n/12 cantidadDeAccesos(ls)| $\OMS/cmsy/m/n/12 ^^Q$| [] 
  []
 
-) (./linklinkit-alg.tex [24] [25] [26] [27]) (./linklinkit-com.tex [28]
+) (./linklinkit-alg.tex [25] [26] [27] [28]) (./linklinkit-com.tex [29]
 Overfull \hbox (14.3671pt too wide) in paragraph at lines 70--71
 []\T1/cmr/bx/n/12 Orden To-tal:\T1/cmr/m/n/12 O(|c|)+O(1)+O(|l|)+O(1)+O(1)+O(1)
 +O(h*(O(1)+O(1)))+O(1)=\T1/cmr/bx/n/12 O(|l|+|c|+h) 
  []
 
-[29]) (./itLinks-int.tex
+[30]) (./itLinks-int.tex
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 19--19
 []$[]$ 
  []
@@ -1008,23 +1007,23 @@ Overfull \hbox (11.74713pt too wide) in paragraph at lines 37--37
 []$[]$ 
  []
 
-[30]) (./itLinks-rep.tex
-Overfull \hbox (20.7515pt too wide) in paragraph at lines 11--12
+[31]) (./itLinks-rep.tex
+Overfull \hbox (20.7515pt too wide) in paragraph at lines 16--17
 []\T1/cmr/m/n/12 itLinks es un it-er-ador de lista común. Sus com-ple-ji-dades 
 nos al-can-zan para it-er-ar una Lista(datosLink). 
  []
 
 )
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 23--97
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 28--97
 []$[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--97
+Underfull \hbox (badness 10000) in paragraph at lines 28--97
 
  []
 
-(./itLinks-alg.tex) [31] (./itLinks-com.tex) (./itPuntLinks-int.tex
+(./itLinks-alg.tex [32]) (./itLinks-com.tex) (./itPuntLinks-int.tex
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 19--19
 []$[]$ 
  []
@@ -1034,12 +1033,12 @@ Overfull \hbox (11.74713pt too wide) in paragraph at lines 25--25
 []$[]$ 
  []
 
-
+[33]
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 37--37
 []$[]$ 
  []
 
-[32]
+
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 43--43
 []$[]$ 
  []
@@ -1059,34 +1058,34 @@ Overfull \hbox (11.74713pt too wide) in paragraph at lines 61--61
 []$[]$ 
  []
 
-) (./itPuntLinks-rep.tex)
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 23--107
+) (./itPuntLinks-rep.tex [34])
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 28--107
 []$[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--107
+Underfull \hbox (badness 10000) in paragraph at lines 28--107
 
  []
 
-[33] (./itPuntLinks-alg.tex [34]) [35] (./itPuntLinks-com.tex [36])
+(./itPuntLinks-alg.tex [35] [36]) (./itPuntLinks-com.tex [37] [38])
 (./itAccesos-rep.tex
-Overfull \hbox (13.31166pt too wide) in paragraph at lines 11--12
+Overfull \hbox (13.31166pt too wide) in paragraph at lines 15--16
 []\T1/cmr/m/n/12 itAccesos es un it-er-ador de lista común. Sus com-ple-ji-dade
 s nos al-can-zan para it-er-ar una Lista(acceso). 
  []
 
 )
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 23--117
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 27--117
 []$[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--117
+Underfull \hbox (badness 10000) in paragraph at lines 27--117
 
  []
 
-[37] (./itAccesos-alg.tex) (./itAccesos-com.tex [38]) [39] (./diccT-int.tex
+(./itAccesos-alg.tex [39]) (./itAccesos-com.tex) [40] (./diccT-int.tex
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 19--19
 []$[]$ 
  []
@@ -1111,7 +1110,7 @@ Overfull \hbox (17.46834pt too wide) in paragraph at lines 2--11
  [] 
  []
 
-[40]
+[41]
 Overfull \hbox (17.6248pt too wide) in paragraph at lines 39--39
 []\T1/cmr/m/n/12 EncAEstrDTEnNMov(buscado,actual,n)| $\OMS/cmsy/m/n/12 ^^Q$| []
  
@@ -1149,7 +1148,7 @@ Overfull \hbox (17.6248pt too wide) in paragraph at lines 47--47
 ^^Q$| [] 
  []
 
-[41]
+[42]
 Overfull \hbox (17.6248pt too wide) in paragraph at lines 51--51
 []\T1/cmr/m/n/12 SonTodosNullOLosHijosLoSon(e)| $\OMS/cmsy/m/n/12 ^^Q$| [] 
  []
@@ -1185,7 +1184,7 @@ Overfull \hbox (17.6248pt too wide) in paragraph at lines 74--74
 []\T1/cmr/m/n/12 NodoDef?(c,n)| $\OMS/cmsy/m/n/12 ^^Q$| [] 
  []
 
-[42]
+[43]
 Overfull \hbox (17.6248pt too wide) in paragraph at lines 77--77
 []\T1/cmr/m/n/12 numero(char)| $\OMS/cmsy/m/n/12 ^^Q$| [] 
  []
@@ -1195,18 +1194,18 @@ Overfull \hbox (17.6248pt too wide) in paragraph at lines 80--80
 []\T1/cmr/m/n/12 ObtenerS(c,n)| $\OMS/cmsy/m/n/12 ^^Q$| [] 
  []
 
-) (./diccT-alg.tex [43] [44]) (./diccT-com.tex [45]) [46] (./tpd.aux) )
+) (./diccT-alg.tex [44] [45]) (./diccT-com.tex [46]) [47] (./tpd.aux) )
 (\end occurred inside a group at level 5)
 
-### simple group (level 5) entered at line 20 ({)
-### simple group (level 4) entered at line 20 ({)
-### simple group (level 3) entered at line 20 ({)
-### simple group (level 2) entered at line 20 ({)
-### simple group (level 1) entered at line 20 ({)
+### simple group (level 5) entered at line 24 ({)
+### simple group (level 4) entered at line 25 ({)
+### simple group (level 3) entered at line 25 ({)
+### simple group (level 2) entered at line 27 ({)
+### simple group (level 1) entered at line 27 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 8131 strings out of 495061
- 109282 string characters out of 1182620
+ 8134 strings out of 495061
+ 109305 string characters out of 1182620
  198449 words of memory out of 3000000
  10719 multiletter control sequences out of 15000+50000
  26436 words of font info for 69 fonts, out of 3000000 for 9000
@@ -1228,9 +1227,9 @@ nts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.p
 fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sh
 are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-te
 xlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on tpd.pdf (46 pages, 395959 bytes).
+Output written on tpd.pdf (47 pages, 398511 bytes).
 PDF statistics:
- 1321 PDF objects out of 1440 (max. 8388607)
- 314 named destinations out of 1000 (max. 500000)
+ 1327 PDF objects out of 1440 (max. 8388607)
+ 317 named destinations out of 1000 (max. 500000)
  617 words of extra memory for PDF output out of 10000 (max. 10000000)
 
