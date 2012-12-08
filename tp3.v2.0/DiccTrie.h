@@ -40,7 +40,6 @@ class DiccTrie
 	};
 
 	Nodo* raiz;
-	Nat numero(char c) const;
 };
 
 
@@ -61,7 +60,7 @@ void DiccTrie<T>::Definir(const String& c, T& s){
 	Nodo* temp;
 	string::const_iterator it = c.begin();
 	while(it < c.end()){
-		int i = numero(*it);
+		int i = (int)(*it);
 		temp = nodo->elems[i];
 		if(temp == NULL){
 			temp = new Nodo;
@@ -75,24 +74,12 @@ void DiccTrie<T>::Definir(const String& c, T& s){
 }
 
 template<class T>
-Nat DiccTrie<T>::numero(char c) const{
-	int eq = (int) c;
-//	if(eq > 96){
-//		return eq - 97;
-//	}
-//	else{
-//		return eq - 65;
-//	}
-    return eq;
-}
-
-template<class T>
 bool DiccTrie<T>::Def(const String& c) const{
 	bool res = true;
 	Nodo* nodo =raiz;
 	string::const_iterator it = c.begin();
 	while((it < c.end()) && (res == true)){
-		int i = numero(*it);
+		int i = (int)(*it);
 		res = (nodo->elems[i] != NULL);
 		nodo = nodo->elems[i];
 		it++;
@@ -104,11 +91,11 @@ bool DiccTrie<T>::Def(const String& c) const{
 }
 
 template<class T>
-T& DiccTrie<T>::Obtener(const String& c) const{
+T& DiccTrie<T>::Obtener(const String& c) const {
 		Nodo* nodo = raiz;
 		string::const_iterator it = c.begin();
 		while(it < c.end()){
-			int i = numero(*it);
+			int i = (int)(*it);
 			nodo = nodo->elems[i];
 			it++;
 		}

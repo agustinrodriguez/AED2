@@ -183,10 +183,10 @@ int LinkLinkIt::cantLinks(Categoria categoria){
 LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
         int id = dameAcat().idAC(categoria);
         itPunLinks itParaFecha;
-        itParaFecha.CrearItPunLinks(*this,id);
+        itParaFecha.CrearItPunLinks(*this, id);
         Fecha fecha = itParaFecha.ultFecha();
         itPunLinks itOrdSegunF;
-        itOrdSegunF.CrearItPunLinks(*this,id);
+        itOrdSegunF.CrearItPunLinks(*this, id);
         Lista<DatosLink*> listaOrdenada = Lista<DatosLink*>();
         itPunLinks itMax;
 
