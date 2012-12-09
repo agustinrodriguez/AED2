@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.15)  8 DEC 2012 20:21
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.15)  8 DEC 2012 21:13
 entering extended mode
  %&-line parsing enabled.
 **tpd.tex
@@ -1186,7 +1186,7 @@ Overfull \hbox (17.6248pt too wide) in paragraph at lines 74--74
 
 [43]
 Overfull \hbox (17.6248pt too wide) in paragraph at lines 77--77
-[]\T1/cmr/m/n/12 numero(char)| $\OMS/cmsy/m/n/12 ^^Q$| [] 
+[]\T1/cmr/m/n/12 ord(char)| $\OMS/cmsy/m/n/12 ^^Q$| [] 
  []
 
 
@@ -1194,7 +1194,7 @@ Overfull \hbox (17.6248pt too wide) in paragraph at lines 80--80
 []\T1/cmr/m/n/12 ObtenerS(c,n)| $\OMS/cmsy/m/n/12 ^^Q$| [] 
  []
 
-) (./diccT-alg.tex [44] [45]) (./diccT-com.tex [46]) [47] (./tpd.aux) )
+) (./diccT-alg.tex [44]) (./diccT-com.tex [45]) [46] (./tpd.aux) )
 (\end occurred inside a group at level 5)
 
 ### simple group (level 5) entered at line 24 ({)
@@ -1204,13 +1204,13 @@ Overfull \hbox (17.6248pt too wide) in paragraph at lines 80--80
 ### simple group (level 1) entered at line 27 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 8134 strings out of 495061
- 109305 string characters out of 1182620
+ 8131 strings out of 495061
+ 109278 string characters out of 1182620
  198449 words of memory out of 3000000
  10719 multiletter control sequences out of 15000+50000
  26436 words of font info for 69 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,11n,38p,1037b,724s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,11n,38p,1037b,726s stack positions out of 5000i,500n,10000p,200000b,50000s
  </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.6
 00pk> </home/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </hom
 e/guido/.texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1200.600pk> </home/guido/.te
@@ -1227,9 +1227,9 @@ nts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.p
 fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sh
 are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-te
 xlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on tpd.pdf (47 pages, 398515 bytes).
+Output written on tpd.pdf (46 pages, 396505 bytes).
 PDF statistics:
- 1327 PDF objects out of 1440 (max. 8388607)
- 317 named destinations out of 1000 (max. 500000)
+ 1321 PDF objects out of 1440 (max. 8388607)
+ 314 named destinations out of 1000 (max. 500000)
  617 words of extra memory for PDF output out of 10000 (max. 10000000)
 

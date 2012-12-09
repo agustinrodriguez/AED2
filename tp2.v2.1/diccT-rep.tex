@@ -71,12 +71,12 @@ Definido?((*e).Arreglo,i) \land Definido?((*e).Arreglo,j) \land \\
 \tadAxioma{estaDefinido?(c,e)}{\IF (e==Null) THEN false ELSE NodoDef?(c,*(e)) FI}
 
 \hspace*{1em}\tadOperacion{NodoDef?}{string, Nodo}{bool}{}
-\tadAxioma{NodoDef?(c,n)}{\IF (vacia?(c)) THEN true ELSE {\IF (n.arreglo[numero(prim(c))] $\neq$ Null) THEN NodoDef?(fin(c),*(n.arreglo[numero(prim(c))]))ELSE false FI} FI}
+\tadAxioma{NodoDef?(c,n)}{\IF (vacia?(c)) THEN true ELSE {\IF (n.arreglo[ord(prim(c))] $\neq$ Null) THEN NodoDef?(fin(c),*(n.arreglo[ord(prim(c))]))ELSE false FI} FI}
 
-\hspace*{1em}\tadOperacion{numero}{char}{nat}{}
-\tadAxioma{numero(char)}{char - a}
+\hspace*{1em}\tadOperacion{ord}{char}{nat}{}
+\tadAxioma{ord(char)}{char - a}
 
 \hspace*{1em}\tadOperacion{ObtenerS}{string, Nodo}{$\alpha$}{}
-\tadAxioma{ObtenerS(c,n)}{\IF (vacia?(c)) THEN *(n.significado) ELSE ObtenerS(fin(c),*(n.arreglo[numero(prim(c))]))FI}
+\tadAxioma{ObtenerS(c,n)}{\IF (vacia?(c)) THEN *(n.significado) ELSE ObtenerS(fin(c),*(n.arreglo[ord(prim(c))]))FI}
 
 
