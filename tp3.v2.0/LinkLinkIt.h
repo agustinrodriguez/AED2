@@ -4,7 +4,6 @@
 #include "aed2.h"
 #include "ArbolCategorias.h"
 #include "DiccTrie.h"
-//#include "datosLink.cpp"
 
 namespace aed2
 {

@@ -26,9 +26,9 @@ LinkLinkIt \textbf{se representa con} estrLLI, donde estrLLI es \tupla{\\
 \end{center}
 
 \par Un linkLinkIt guarda en su estructura el arbol de categorias con el que fue creado. La fecha actual, para poder accederla en O(1).
-\par Tiene también una lista de datosLink(\textit{listaLink}), que guarda un datosLink para cada Link con sus datos: nombre(\textit{link}), una referencia al nombre de su categoría relacionada(\textit{carDLink}) para accederla en O(1),la cantidad de accesos recientes(\textit{cantAccesosRecientes}) y su lista de accesos recientes, es decir sus ultimos tres días(\textit{accesosRecientes}).
+\par Tiene también una lista de datosLink(\textit{listaLink}), que guarda un datosLink para cada Link con sus datos: nombre(\textit{link}), una referencia al nombre de su categoría relacionada(\textit{catDLink}) para accederla en O(1),la cantidad de accesos recientes(\textit{cantAccesosRecientes}) y su lista de accesos recientes, es decir sus ultimos tres días(\textit{accesosRecientes}).
 \par En el diccTrie \textit{linkInfo}, tomando como claves los nombres de los links, guardamos un puntero al datoLink correspondiente de \textit{listaLink}, para poder acceder a esos datos en O(longitud del link).
-\par \textit{arrayCatLink} guarda en cada posición, la lista de links relacionados para la categoria cuyo id es esa posicion+1 (Incluye a los links de las categorias hijas.).
+\par En el arreglo \textit{arrayCatLink} se guarda en cada posición, la lista de links relacionados para la categoria cuyo id es esa posicion-1 (Incluye a los links de las categorias hijas.).
 
 \subsubsection{Invariante de Representaci\'on}
 \paragraph{El Invariante Informalmente}
@@ -51,8 +51,8 @@ accesoOrdenadoNoRepetido((*obtener(l,lli.linkInfo)).accesosRecientes) \yluego\\
 fechasCorrectas(lli.actual,((*obtener(l,lli.linkInfo)).accesosRecientes))}{\yluego}
 \repfunc{(\forall\param{}{l}{Link})(def?(l,e.linkInfo) \Leftrightarrow\\ (((\exists\param{}{d}{datosLink})esta?(d,e.listaLinks)\land d.link==l)\yluego d==obtener(l,e.linkInfo)))}{\yluego}
 \repfunc{(\forall\param{}{l}{Link}) (def?(l,lli.linkInfo)) \Rightarrow_{L} \\ ((\forall\param{}{c}{Categoria}) c \in todasLasCategorias(lli.arbolCategorias.categorias) \Rightarrow_{L} \\
-(esta?((obtener(l,lli.linkInfo)),arrayCatLinks[id(c,lli.arbolCategorias)]) \Leftrightarrow \\
-esSubCategoria(lli.arbolCategorias,c,(*obtener(l,lli.linkInfo)).categoria)))}{\yluego}
+(esta?((obtener(l,lli.linkInfo)),arrayCatLinks[idAC(lli.arbolCategorias,c)]) \Leftrightarrow \\
+esSubCategoria(lli.arbolCategorias,c,(*obtener(l,lli.linkInfo)).catDLink)))}{\yluego}
 \repfunc{(\forall\param{}{l,l'}{Link}) l \neq l' \land (def?(l,lli.linkInfo)) \land (def?(l',lli.linkInfo)) \Rightarrow_{L}\\
 (*obtener(l,lli.linkInfo)) \neq (*obtener(l',lli.linkInfo))}{\yluego}
 \repfunc{(\forall\param{}{i,i'}{nat}) i < long(lli.listaLinks) \land i' < long(lli.listaLinks) \Rightarrow_{L}\\

@@ -104,7 +104,6 @@ const Categoria& ArbolCategorias::raizAC() const
 
 int ArbolCategorias::idAC(const Categoria& c) const
 {
-
     return _familia.Obtener(c)->_id;
 }
 

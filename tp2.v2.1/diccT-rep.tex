@@ -32,6 +32,12 @@ Definido?((*e).Arreglo,i) \land Definido?((*e).Arreglo,j) \land \\
 \repfunc{SonTodosNullOLosHijosLoSon(e)}{}
 \end{Rep}
 
+\subsubsection{Funci\'on de Abstracci\'on}
+\begin{ABS}{e}{estrDT}{d}{diccT(c,$\alpha$)}
+\absfunc{(\forall\param{}{c}{clave})def?(c,d) \igobs estaDefinido?(c,e)}{\yluego}
+\absfunc{(\forall\param{}{h}{clave})def?(h,d) \Rightarrow obtener(h,d) \igobs ObtenerS(h,*(e))}{}
+\end{ABS}
+
 \paragraph{Funciones auxiliares}
 \paragraph*{}
 
@@ -56,16 +62,6 @@ Definido?((*e).Arreglo,i) \land Definido?((*e).Arreglo,j) \land \\
 
 \hspace*{1em}\tadOperacion{BuscarHijosNull}{estrDT, nat}{Bool}{}
 \tadAxioma{BuscarHijosNull(e,i)}{\IF (i = 0) THEN ((*e).Arreglo[0] = null) $\lor$ SonTodosNullOLosHijosLoSon((*e).Arreglo[0]) ELSE (((*e).Arreglo[i] = null) $\lor$ SonTodosNullOLosHijosLoSon((*e).Arreglo[i])) $\land$ BuscarHijosNull(e,i-1) FI}
-
-
-\subsubsection{Funci\'on de Abstracci\'on}
-\begin{ABS}{e}{estrDT}{d}{diccT(c,$\alpha$)}
-\absfunc{(\forall\param{}{c}{clave})def?(c,d) \igobs estaDefinido?(c,e)}{\yluego}
-\absfunc{(\forall\param{}{c}{clave})def?(c,d) \Rightarrow obtener(c,d) \igobs ObtenerS(c,*(e))}{}
-\end{ABS}
-
-\paragraph{Funciones auxiliares}
-\paragraph*{}
 
 \hspace*{1em}\tadOperacion{estaDefinido?}{string, estrDT}{bool}{}
 \tadAxioma{estaDefinido?(c,e)}{\IF (e==Null) THEN false ELSE NodoDef?(c,*(e)) FI}
