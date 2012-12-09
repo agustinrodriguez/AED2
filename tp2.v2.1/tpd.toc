@@ -52,7 +52,7 @@
 \contentsline {subsubsection}{\numberline {2.5.6}Analisis de complejidades}{33}{subsubsection.2.5.6}
 \contentsline {subsection}{\numberline {2.6}Iterador de Punteros a DatosLink}{33}{subsection.2.6}
 \contentsline {subsubsection}{\numberline {2.6.1}Interfaz}{33}{subsubsection.2.6.1}
-\contentsline {subsubsection}{\numberline {2.6.2}Representaci\'on}{34}{subsubsection.2.6.2}
+\contentsline {subsubsection}{\numberline {2.6.2}Representaci\'on}{35}{subsubsection.2.6.2}
 \contentsline {subsubsection}{\numberline {2.6.3}Invariante de Representaci\'on}{35}{subsubsection.2.6.3}
 \contentsline {paragraph}{\numberline {2.6.3.1}El Invariante Formalmente}{35}{paragraph.2.6.3.1}
 \contentsline {subsubsection}{\numberline {2.6.4}Funci\'on de Abstracci\'on}{35}{subsubsection.2.6.4}
@@ -63,7 +63,7 @@
 \contentsline {subsubsection}{\numberline {2.7.2}Invariante de Representaci\'on}{39}{subsubsection.2.7.2}
 \contentsline {paragraph}{\numberline {2.7.2.1}El Invariante Formalmente}{39}{paragraph.2.7.2.1}
 \contentsline {subsubsection}{\numberline {2.7.3}Funci\'on de Abstracci\'on}{39}{subsubsection.2.7.3}
-\contentsline {subsubsection}{\numberline {2.7.4}Algoritmos}{39}{subsubsection.2.7.4}
+\contentsline {subsubsection}{\numberline {2.7.4}Algoritmos}{40}{subsubsection.2.7.4}
 \contentsline {subsubsection}{\numberline {2.7.5}Analisis de complejidades}{40}{subsubsection.2.7.5}
 \contentsline {section}{\numberline {3}M\'odulo diccTrie(clave,significado)}{41}{section.3}
 \contentsline {subsection}{\numberline {3.1}Interfaz}{41}{subsection.3.1}

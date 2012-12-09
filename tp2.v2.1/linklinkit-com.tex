@@ -86,7 +86,8 @@
 \par El ciclo se realiza mientras la lista l no esté vacia. Por lo que vamos a hacer n veces lo siguiente: Generamos un itPunLinks a la lista l en O(1), llamamos a la funcion buscarMax que nos cuesta O(n) y nos deja un iterador apuntando al link con mas accesos recientes para esa categoria. Agregamos ese puntero a la listaOrdenada en O(1) y lo eliminamos de la lista vieja con eliminarSiguiente en O(1).
 \par El ciclo nos cuesta en total O(n)*(O(n) + 3*O(1))=O($n^2$)
 \par Finalmente, en O(1) le pasamos a la posicion de arrayCatLinks una referencia a la nueva listaOrdenada.
-\par\textbf{Orden Total:} \textbf{O(|c| + $n^2$)}
+\par n es $(longitud(lli.arrayCatLinks[id]))$
+\par\textbf{Orden Total:} \textbf{O(|c| + $(longitud(lli.arrayCatLinks[id]))^2$)}
 
 \item\textbf{iEsReciente}
 \par Dado un link l y una fecha f, llamamos a la funcion fechaUltimoAcceso para ese link en O(|l|) y vemos que f este en el rango [fechaUltimoAcceso,fechaUltimoAcceso-2].
