@@ -73,9 +73,6 @@ Definido?((*e).Arreglo,i) \land Definido?((*e).Arreglo,j) \land \\
 \hspace*{1em}\tadOperacion{NodoDef?}{string, Nodo}{bool}{}
 \tadAxioma{NodoDef?(c,n)}{\IF (vacia?(c)) THEN true ELSE {\IF (n.arreglo[ord(prim(c))] $\neq$ Null) THEN NodoDef?(fin(c),*(n.arreglo[ord(prim(c))]))ELSE false FI} FI}
 
-\hspace*{1em}\tadOperacion{ord}{char}{nat}{}
-\tadAxioma{ord(char)}{char - a}
-
 \hspace*{1em}\tadOperacion{ObtenerS}{string, Nodo}{$\alpha$}{}
 \tadAxioma{ObtenerS(c,n)}{\IF (vacia?(c)) THEN *(n.significado) ELSE ObtenerS(fin(c),*(n.arreglo[ord(prim(c))]))FI}
 
