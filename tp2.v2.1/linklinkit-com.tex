@@ -29,7 +29,7 @@
 %\par Se devuelve cantAccesos de la tupla acceso pasada como parametro, esto demora O(1).
 %\par\textbf{Orden Total:} \textbf{O(1)}
 
-\item\textbf{iDameACatLLI}
+\item\textbf{iDameACat}
 \par Se devuelve por referencia el arbol del sistema pasado como parametro, esto demora O(1).
 \par\textbf{Orden Total:} \textbf{O(1)}
 
@@ -92,6 +92,17 @@
 \item\textbf{iEsReciente}
 \par Dado un link l y una fecha f, llamamos a la funcion fechaUltimoAcceso para ese link en O(|l|) y vemos que f este en el rango [fechaUltimoAcceso,fechaUltimoAcceso-2].
 \par\textbf{Orden Total:} \textbf{O(|l|)}
+
+\item\textbf{iaccesosRecientes}
+\par Se crea la variable f de tipo Fecha y se le asigna el valor 1. Luego se crea un iterador itPunLinks, itP, usando el método crearItPuntLinks al cual
+le pasamos un LinkLInkIt, lli, el id de la categoría c que nos pasan como parametro y por ultimo la fecha, todo en O(|c|). También creamos una
+variable f1 de tipo Fecha a la cual le asignamos la ultima fecha usando el metodo ultFecha(itP) que nos la da en 
+O(longitud (lli.arrayCatLinks[idAC(lli.dameAcat,c)-1])). Luego creamos otro itPuntLinks, itP1, esta vez usando la fecha f1 en O(|c|).
+Luego ingresamos el While cuya guarda es HaySiguiente(itP1) que verífica si podemos acceder al siguiente() de itP1. Y por cada vuelta del while:
+-Si el LInk de actual de itP1 es igual al Link l que nos pasan por parametro, asignamos a res la cantidad de accesos recientes 
+desde la Fecha de itP1 O(1).
+-Luego avanzamos itP1.
+\par\textbf{OrdenTotal:} \textbf{O(longitud(lli.arrayCatLinks[idAC(lli.dameAcat,c)-1] + |c|)}
 
 \end{enumerate}
 
