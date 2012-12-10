@@ -42,20 +42,20 @@
 \contentsline {paragraph}{\numberline {2.2.2.1}Funciones auxiliares}{25}{paragraph.2.2.2.1}
 \contentsline {subsection}{\numberline {2.3}Algoritmos}{25}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Analisis de complejidades}{29}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Iterador de Links}{31}{subsection.2.5}
-\contentsline {subsubsection}{\numberline {2.5.1}Interfaz}{31}{subsubsection.2.5.1}
-\contentsline {subsubsection}{\numberline {2.5.2}Representaci\'on}{32}{subsubsection.2.5.2}
-\contentsline {subsubsection}{\numberline {2.5.3}Invariante de Representaci\'on}{32}{subsubsection.2.5.3}
-\contentsline {paragraph}{\numberline {2.5.3.1}El Invariante Formalmente}{32}{paragraph.2.5.3.1}
+\contentsline {subsection}{\numberline {2.5}Iterador de Links}{32}{subsection.2.5}
+\contentsline {subsubsection}{\numberline {2.5.1}Interfaz}{32}{subsubsection.2.5.1}
+\contentsline {subsubsection}{\numberline {2.5.2}Representaci\'on}{33}{subsubsection.2.5.2}
+\contentsline {subsubsection}{\numberline {2.5.3}Invariante de Representaci\'on}{33}{subsubsection.2.5.3}
+\contentsline {paragraph}{\numberline {2.5.3.1}El Invariante Formalmente}{33}{paragraph.2.5.3.1}
 \contentsline {subsubsection}{\numberline {2.5.4}Funci\'on de Abstracci\'on}{33}{subsubsection.2.5.4}
 \contentsline {subsubsection}{\numberline {2.5.5}Algoritmos}{33}{subsubsection.2.5.5}
-\contentsline {subsubsection}{\numberline {2.5.6}Analisis de complejidades}{33}{subsubsection.2.5.6}
+\contentsline {subsubsection}{\numberline {2.5.6}Analisis de complejidades}{34}{subsubsection.2.5.6}
 \contentsline {subsection}{\numberline {2.6}Iterador de Punteros a DatosLink}{34}{subsection.2.6}
 \contentsline {subsubsection}{\numberline {2.6.1}Interfaz}{34}{subsubsection.2.6.1}
 \contentsline {subsubsection}{\numberline {2.6.2}Representaci\'on}{35}{subsubsection.2.6.2}
-\contentsline {subsubsection}{\numberline {2.6.3}Invariante de Representaci\'on}{35}{subsubsection.2.6.3}
-\contentsline {paragraph}{\numberline {2.6.3.1}El Invariante Informalmente}{35}{paragraph.2.6.3.1}
-\contentsline {paragraph}{\numberline {2.6.3.2}El Invariante Formalmente}{35}{paragraph.2.6.3.2}
+\contentsline {subsubsection}{\numberline {2.6.3}Invariante de Representaci\'on}{36}{subsubsection.2.6.3}
+\contentsline {paragraph}{\numberline {2.6.3.1}El Invariante Informalmente}{36}{paragraph.2.6.3.1}
+\contentsline {paragraph}{\numberline {2.6.3.2}El Invariante Formalmente}{36}{paragraph.2.6.3.2}
 \contentsline {subsubsection}{\numberline {2.6.4}Funci\'on de Abstracci\'on}{36}{subsubsection.2.6.4}
 \contentsline {paragraph}{\numberline {2.6.4.1}Funciones auxiliares}{36}{paragraph.2.6.4.1}
 \contentsline {subsubsection}{\numberline {2.6.5}Algoritmos}{36}{subsubsection.2.6.5}
@@ -65,7 +65,7 @@
 \contentsline {subsubsection}{\numberline {2.7.2}Invariante de Representaci\'on}{40}{subsubsection.2.7.2}
 \contentsline {paragraph}{\numberline {2.7.2.1}El Invariante Formalmente}{40}{paragraph.2.7.2.1}
 \contentsline {subsubsection}{\numberline {2.7.3}Funci\'on de Abstracci\'on}{40}{subsubsection.2.7.3}
-\contentsline {subsubsection}{\numberline {2.7.4}Algoritmos}{40}{subsubsection.2.7.4}
+\contentsline {subsubsection}{\numberline {2.7.4}Algoritmos}{41}{subsubsection.2.7.4}
 \contentsline {subsubsection}{\numberline {2.7.5}Analisis de complejidades}{41}{subsubsection.2.7.5}
 \contentsline {section}{\numberline {3}M\'odulo diccTrie(clave,significado)}{42}{section.3}
 \contentsline {subsection}{\numberline {3.1}Interfaz}{42}{subsection.3.1}

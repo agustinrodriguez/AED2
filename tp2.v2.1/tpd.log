@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.15)  10 DEC 2012 00:23
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.15)  10 DEC 2012 00:50
 entering extended mode
  %&-line parsing enabled.
 **tpd.tex
@@ -998,12 +998,12 @@ Overfull \hbox (14.3671pt too wide) in paragraph at lines 70--71
 +O(h*(O(1)+O(1)))+O(1)=\T1/cmr/bx/n/12 O(|l|+|c|+h) 
  []
 
-[30]) (./itLinks-int.tex
+[30] [31]) (./itLinks-int.tex
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 19--19
 []$[]$ 
  []
 
-[31]
+
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 25--25
 []$[]$ 
  []
@@ -1018,7 +1018,7 @@ Overfull \hbox (11.74713pt too wide) in paragraph at lines 37--37
 []$[]$ 
  []
 
-) (./itLinks-rep.tex
+) (./itLinks-rep.tex [32]
 Overfull \hbox (20.7515pt too wide) in paragraph at lines 16--17
 []\T1/cmr/m/n/12 itLinks es un it-er-ador de lista común. Sus com-ple-ji-dades 
 nos al-can-zan para it-er-ar una Lista(datosLink). 
@@ -1034,7 +1034,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--96
 
  []
 
-[32] (./itLinks-alg.tex) (./itLinks-com.tex [33]) (./itPuntLinks-int.tex
+(./itLinks-alg.tex) [33] (./itLinks-com.tex) (./itPuntLinks-int.tex
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 19--19
 []$[]$ 
  []
@@ -1049,7 +1049,7 @@ Overfull \hbox (11.74713pt too wide) in paragraph at lines 37--37
 []$[]$ 
  []
 
-
+[34]
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 43--43
 []$[]$ 
  []
@@ -1064,170 +1064,23 @@ Overfull \hbox (11.74713pt too wide) in paragraph at lines 55--55
 []$[]$ 
  []
 
-[34]
+
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 61--61
 []$[]$ 
  []
 
-) (./itPuntLinks-rep.tex
-! Missing $ inserted.
-<inserted text> 
-                $
-l.24 \item _
-            fecha debe ser igual al maximo de todas las fechas de los links ...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! LaTeX Error: Command \end{enumerate} invalid in math mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.25 \end{enumerate}
-                    
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.25 \end{enumerate}
-                    
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.25 \end{enumerate}
-                    
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.25 \end{enumerate}
-                    
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-
+) (./itPuntLinks-rep.tex [35]
 Overfull \hbox (17.62482pt too wide) in paragraph at lines 33--36
 []$[]$ 
  []
 
-[35]
+
 Overfull \hbox (17.6248pt too wide) in paragraph at lines 41--41
 []\T1/cmr/m/n/12 todasLasFechas(it)| $\OMS/cmsy/m/n/12 ^^Q$| [] 
  []
 
-) (./itPuntLinks-alg.tex [36]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.61 \state res $\gets$ cantAccesosDesde(e._
-                                            fecha)\hfill //O(1)
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! LaTeX Error: Command \item invalid in math mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.62 \EndFunction
-                 
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.62 \EndFunction
-                 
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.62 \EndFunction
-                 
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Command \end{list} invalid in math mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.63 \end{algorithmic}
-                      
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.63 \end{algorithmic}
-                      
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.63 \end{algorithmic}
-                      
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.63 \end{algorithmic}
-                      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-[37]) (./itPuntLinks-com.tex [38] [39]) (./itAccesos-rep.tex
+) (./itPuntLinks-alg.tex [36] [37]) (./itPuntLinks-com.tex [38] [39])
+(./itAccesos-rep.tex
 Overfull \hbox (13.31166pt too wide) in paragraph at lines 15--16
 []\T1/cmr/m/n/12 itAccesos es un it-er-ador de lista común. Sus com-ple-ji-dade
 s nos al-can-zan para it-er-ar una Lista(acceso). 
@@ -1363,9 +1216,9 @@ Overfull \hbox (17.6248pt too wide) in paragraph at lines 73--73
 ### bottom level 
 Here is how much of TeX's memory you used:
  8138 strings out of 495061
- 109367 string characters out of 1182620
+ 109357 string characters out of 1182620
  198449 words of memory out of 3000000
- 10721 multiletter control sequences out of 15000+50000
+ 10720 multiletter control sequences out of 15000+50000
  26436 words of font info for 69 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,11n,38p,1037b,716s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1385,9 +1238,9 @@ nts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.p
 fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sh
 are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-te
 xlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on tpd.pdf (47 pages, 400299 bytes).
+Output written on tpd.pdf (47 pages, 402921 bytes).
 PDF statistics:
- 1335 PDF objects out of 1440 (max. 8388607)
- 319 named destinations out of 1000 (max. 500000)
+ 1342 PDF objects out of 1440 (max. 8388607)
+ 320 named destinations out of 1000 (max. 500000)
  625 words of extra memory for PDF output out of 10000 (max. 10000000)
 
