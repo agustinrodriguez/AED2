@@ -53,8 +53,10 @@
 \BOOKMARK [3][-]{subsubsection.2.6.1}{Interfaz}{subsection.2.6}
 \BOOKMARK [3][-]{subsubsection.2.6.2}{Representaci\363n}{subsection.2.6}
 \BOOKMARK [3][-]{subsubsection.2.6.3}{Invariante de Representaci\363n}{subsection.2.6}
-\BOOKMARK [4][-]{paragraph.2.6.3.1}{El Invariante Formalmente}{subsubsection.2.6.3}
+\BOOKMARK [4][-]{paragraph.2.6.3.1}{El Invariante Informalmente}{subsubsection.2.6.3}
+\BOOKMARK [4][-]{paragraph.2.6.3.2}{El Invariante Formalmente}{subsubsection.2.6.3}
 \BOOKMARK [3][-]{subsubsection.2.6.4}{Funci\363n de Abstracci\363n}{subsection.2.6}
+\BOOKMARK [4][-]{paragraph.2.6.4.1}{Funciones auxiliares}{subsubsection.2.6.4}
 \BOOKMARK [3][-]{subsubsection.2.6.5}{Algoritmos}{subsection.2.6}
 \BOOKMARK [3][-]{subsubsection.2.6.6}{Analisis de complejidades}{subsection.2.6}
 \BOOKMARK [2][-]{subsection.2.7}{Iterador de Accesos}{section.2}

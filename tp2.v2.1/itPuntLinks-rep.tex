@@ -2,31 +2,40 @@
 \begin{tabular}{|l|} 
 \hline
 \\
-itPuntLinks se representa con itLista(puntero(datosLink))\\
+itPuntLinks \textbf{se representa con} estrITPL, donde estrITPL es \tupla{\\
+\hspace*{6em}\param{}{_itLista}{itLista(Puntero(datosLink))},\\
+\hspace*{6em}\param{}{_fecha}{Fecha}}\\ \\
 \\
 \hspace*{6em}datosLink es \tupla{\\
 \hspace*{6em}\param{}{link}{Link},\\ 
 \hspace*{6em}\param{}{catDLink}{Categoria},\\ 
 \hspace*{6em}\param{}{accesosRecientes}{Lista(acceso)},\\ 
 \hspace*{6em}\param{}{cantAaccesosRecientes}{nat}}\\ \\
-\hspace*{6em}\param{}{fecha}{Fecha}
 \\\\
 \hline
 \end{tabular}
 \end{center}
 
-\par itPuntLinks es un iterador de lista común. Sus complejidades nos alcanzan para iterar una Lista(puntero(datosLink)).
+\par itPuntLinks es un iterador de lista común. Sus complejidades nos alcanzan para iterar una Lista(puntero(datosLink)). Ademas Guarda una fecha que es la última fecha de la categoria que esta iterando.
 
 \subsubsection{Invariante de Representaci\'on}
-%\paragraph{El Invariante Informalmente}
-%\begin{enumerate}
-%\item Lo iterado por el iterador de mensajes recientes es válido.
-%\end{enumerate}
+\paragraph{El Invariante Informalmente}
+\begin{enumerate}
+\item _fecha debe ser igual al maximo de todas las fechas de los links recorridos o es 0.
+\end{enumerate}
 
 \paragraph{El Invariante Formalmente}
-{\begin{changemargin}{0em}{4em}Rep : estrITPL $\rightarrow$ boolean\par \end{changemargin}(\paratodo\param{}{it}{estrITPL}) Rep(it) $\equiv$ true
+\begin{Rep}{estrITPL}{it}
+\repfunc{_fecha == max(todasLasFechas(it)) \vee _fecha == 0}{}
+\end{Rep}
 
 \subsubsection{Funci\'on de Abstracci\'on}
 \begin{ABS}{e}{estrITPL}{it}{itBi($\alpha$)}
 \absfunc{anteriores(e.iterador) \igobs anteriores(it) \land \\ siguientes(e.iterador) \igobs siguientes(it)}{}
 \end{ABS}
+
+\paragraph{Funciones auxiliares}
+\paragraph*{}
+
+\hspace*{1em}\tadOperacion{todasLasFechas}{estrITPL}{Conj(Fecha)}{}
+\tadAxioma{todasLasFechas(it)}{\IF !haySiguiente?(it) THEN 0 ELSE Ag(ultimo(siguiente(it).accesos).dia, todasLasFechas(avanzar(it))) FI}

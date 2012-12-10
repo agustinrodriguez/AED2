@@ -252,3 +252,22 @@
 \complejidad{|l|}
 \end{algorithm}
 
+\begin{algorithm}[H]
+\caption{iaccesosRecientes}
+\begin{algorithmic}[1]
+\Function{iaccesosRecientes}{\param{in}{lli}{estrLLI}, \param{in}{l}{Link}, \param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{nat}}
+\state Fecha f $\gets$ 1 \hfill//O(1)
+\state itPuntLinks itP $\gets$ crearItPuntLinks(lli,idAC(lli.dameAcat,c),f)\hfill//O(1)
+\state Fecha f1 $\gets$ ultFecha(itP) \hfill //O(longitud(lli.arrayCatLinks[idAC(lli.dameAcat,c)-1]))
+\state itPuntLinks itP1 $\gets$ crearItPuntLinks(lli,idAC(lli.dameAcat,c),f1)\hfill//O(1)
+\while{haySiguiente(itP1)}
+\If{SiguienteLink(itP1) == l}
+\state res $\gets$ SiguienteCantidadAccesosDelLink(itP1)\hfill//O(1)
+\endif
+\state avanzar(itP) \hfill//O(1)
+\endwhile
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{longitud(lli.arrayCatLinks[idAC(lli.dameAcat,c)-1]}
+\end{algorithm}
