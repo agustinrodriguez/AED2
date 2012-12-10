@@ -212,6 +212,23 @@ bool LinkLinkIt::esReciente(Link link, Fecha fecha){
 
 }
 
+int LinkLinkIt::accesosRecientes(Link l, Categoria c)
+{
+    int res = 0;
+    int idCat = _acat->idAC(c);
+    Fecha f = 1;
+    itPunLinks itP = itPunLinks(_arrayCatLinks[idCat-1], f);
+    Fecha f1 = itP.ultFecha();
+    itPunLinks itP1 = itPunLinks(_arrayCatLinks[idCat-1], f1);
+    while (itP1.HaySiguiente()) {
+        if (itP1.SiguienteLink() == l) {
+            res = itP1.SiguienteCantidadAccesosDelLink();
+        }
+        itP1.Avanzar();
+    }
+    return res;
+}
+
 //////////////////////////////////////////
 //iteradores operaciones
 //////////////////////////////////////////

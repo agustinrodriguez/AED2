@@ -123,6 +123,7 @@ namespace aed2
             int cantLinks(Categoria categoria);
             itPunLinks linksOrdenadosPorAccesos(Categoria categoria) ;
             bool esReciente(Link link, Fecha fecha);
+            int accesosRecientes(Link l, Categoria c);
             bool operator==(const LinkLinkIt& otro) const;
 	};
 }
