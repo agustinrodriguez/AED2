@@ -61,7 +61,7 @@ Definido?((*e).Arreglo,i) \land Definido?((*e).Arreglo,j) \land \\
 \vspace*{1em}
 
 \hspace*{1em}\tadOperacion{BuscarHijosNull}{estrDT, nat}{Bool}{}
-\tadAxioma{BuscarHijosNull(e,i)}{\IF (i = 0) THEN ((*e).Arreglo[0] = null) $\lor$ SonTodosNullOLosHijosLoSon((*e).Arreglo[0]) ELSE (((*e).Arreglo[i] = null) $\lor$ SonTodosNullOLosHijosLoSon((*e).Arreglo[i])) $\land$ BuscarHijosNull(e,i-1) FI}
+\tadAxioma{BuscarHijosNull(e,i)}{\IF (i = 0) THEN ((*e).Arreglo[0] = null) $\lor{_L}$ SonTodosNullOLosHijosLoSon((*e).Arreglo[0]) ELSE (((*e).Arreglo[i] = null) $\lor{_L}$ SonTodosNullOLosHijosLoSon((*e).Arreglo[i])) $\land$ BuscarHijosNull(e,i-1) FI}
 
 \hspace*{1em}\tadOperacion{estaDefinido?}{string, estrDT}{bool}{}
 \tadAxioma{estaDefinido?(c,e)}{\IF (e==Null) THEN false ELSE NodoDef?(c,*(e)) FI}
