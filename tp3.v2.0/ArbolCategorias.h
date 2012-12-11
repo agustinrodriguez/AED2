@@ -16,7 +16,7 @@ namespace aed2
                     DatosCat(const DatosCat& otro);
                     DatosCat(const Categoria cat, int id, int altura, Conj<DatosCat*> hijos, DatosCat* padre);
                     void copiarDc(DatosCat otroDc);
-                    bool operator==(const DatosCat& otro) const;
+                    //bool operator==(const DatosCat& otro) const;
                 private:
                     Categoria _categoria;
                     int _id;
@@ -43,7 +43,7 @@ namespace aed2
                 void Avanzar();
                 const Categoria& SiguienteCat() const;
                 int SiguienteId() const;
-
+                friend class ArbolCategorias;
                 private:
                 DatosCat* _elDatoC;
             };
@@ -51,17 +51,16 @@ namespace aed2
             class ItCategorias{
                 public:
                     ~ItCategorias();
+                    ItCategorias();
+                    ItCategorias(ArbolCategorias& arb);
+                    ItCategorias(const ItCategorias &otroIt);
                     bool HaySiguiente() const;
                     Categoria Siguiente() const;
                     void Avanzar();
                     friend class ArbolCategorias;
-                    friend class LinkLinkIt;
 
                 private:
                     Lista<DatosCat*>::Iterador _itLista;
-                    ItCategorias();
-                    ItCategorias(Lista<DatosCat*> &ldc);
-                    ItCategorias(const ItCategorias &otroIt);
                     bool operator==(const ItCategorias& otro) const;
 
             };
@@ -70,7 +69,7 @@ namespace aed2
                 public:
                     ~ItHijos();
                     ItHijos();
-                    ItHijos(Conj<DatosCat*> &cdc);
+                    ItHijos(ArbolCategorias& arb, Categoria c);
                     ItHijos(const ItHijos &otroIt);
                     bool HaySiguiente() const;
                     const Categoria& Siguiente() const;
@@ -94,13 +93,10 @@ namespace aed2
             void agregarAC(const Categoria c, const Categoria cpadre);
             bool esta(const Categoria c) const;
             bool esSubCategoria(const Categoria c, const Categoria predecesor) const;
-            const int dameCantidad() const;
+            const int dameCantidad();
             bool operator==(const ArbolCategorias& acat) const;
-            ItFamilia CrearItFamilia(const Categoria &c);
-            ItCategorias CrearItCategorias();
-            ItHijos CrearItHijos(const Categoria &c);
-
-	};
+            ItFamilia Familia(const Categoria &c);
+            };
 }
 
 #endif /* ARBOLCATEGORAS_H_ */

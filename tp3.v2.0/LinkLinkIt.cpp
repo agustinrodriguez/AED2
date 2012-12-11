@@ -146,7 +146,7 @@ void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
     DatosLink* puntLink = new DatosLink(link, categoria, accesoDeNuevoLink, 0);
     _linkInfo.Definir(link, puntLink);
     _listaLinks.AgregarAtras(*puntLink);
-    ArbolCategorias::ItFamilia familia = _acat->CrearItFamilia(categoria);
+    ArbolCategorias::ItFamilia familia = _acat->Familia(categoria);
     while(familia.HaySiguiente())
     {
         _arrayCatLinks[familia.SiguienteId() - 1].AgregarAtras(puntLink);
