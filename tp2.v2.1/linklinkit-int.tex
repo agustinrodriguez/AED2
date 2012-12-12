@@ -26,7 +26,7 @@
 
 \operacion{links}{\param{in}{lli}{linkLinkIt}}{itLinks}
 {true}
-{\igres links(lli)}
+{\igres crearItUni(links(lli))}
 {1}
 {No deben modificarse los elementos iterados por res.}
 
@@ -75,8 +75,8 @@
 
 \operacion{linksOrdenadosPorAccesos}{\param{in}{lli}{linkLinkIt}, \param{in}{c}{Categoria}}{itPuntLinks}
 {c\in categorias(lli)}
-{\igres linksOrdenadosPorAccesos(lli,c)}
-{$(longitud(lli.arrayCatLinks[id]))^2$ + |c|}
+{\igres crearItUni(linksOrdenadosPorAccesos(lli,c))}
+{$cantLinks(lli,c)^2$ + |c|}
 {Se devuelve un iterador a los links relacionados con esa categoría. No debe ser modificado.}
 
 \operacion{esReciente?}{\param{in}{lli}{linkLinkIt}, \param{in}{l}{Link}, \param{in}{f}{Fecha}}{bool}
@@ -88,7 +88,7 @@
 \operacion{accesosRecientes}{\param{in}{lli}{linkLinkIt}, \param{in}{l}{Link}, \param{in}{c}{Categoria}}{nat}
 {c\in categorias(lli) \land l\in links(lli) \land esSubCategoria(lli.dameACat,c,categoriaLink(lli,l))}
 {\igres accesosRecientes(lli,l,c)}
-{longitud(lli.arrayCatLinks[idAC(lli.dameAcat,c)-1]}
+{cantLinks(lli,c)+ |c|}
 {No tiene.}
 
 %\operaciond{accesosRecientes}{\param{in}{lli}{linkLinkIt}, \param{in}{c}{Categoria}, \param{in}{l}{Link}}{nat}
