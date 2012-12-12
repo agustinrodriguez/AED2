@@ -47,12 +47,12 @@ ArbolCategorias \textbf{se representa con} estrAC, donde estrAC es \tupla{\\
 \repfunc{(\forall\param{}{c_{1}}{Categoria}) (def?(c_{1},e.familia)) \Leftrightarrow ((c_{1} == e.raiz) \vee \\
 ((\exists\param{}{c_{2}}{Categoria})(def?(c_{2},e.familia)) \yluego c_{1} \in (*obtener(c_{2},e.familia)).hijos))}{\yluego}
 \repfunc{(\forall\param{}{c}{Categoria})(def?(c,e.familia) \Leftrightarrow\\ (((\exists\param{}{d}{datosCat})esta?(d,e.categorias)\land d.categoria==c)\yluego d==obtener(c,e.familia)))}{\yluego}
-\repfunc{(\forall\param{}{c_{1},c_{2}}{string}) (def?(c_{1},e.familia)) \land (def?(c_{2},e.familia)) \Rightarrow_{L} \\ c_{2} \in *((obtener(c_{1},e.familia)) ).hijos \Leftrightarrow \\ (*(*(obtener(c_{2},e.familia))).padre).categoria = c_{1}}{\yluego}
+\repfunc{(\forall\param{}{c_{1},c_{2}}{Categoria}) (def?(c_{1},e.familia)) \land (def?(c_{2},e.familia)) \Rightarrow_{L} \\ c_{2} \in *((obtener(c_{1},e.familia)) ).hijos \Leftrightarrow \\ (*(*(obtener(c_{2},e.familia))).padre).categoria = c_{1}}{\yluego}
 \repfunc{e.cantidad  = longitud(e.categorias)}{\yluego}
 \repfunc{(\forall\param{}{c}{categoria}) (def?(c,e.familia)) \land c = e.raiz \Rightarrow_{L} \\ (*(obtener(c,e.familia))).altura = 1 \land (*(obtener(c,e.familia))).id = 1}{\yluego}
 \repfunc{(\forall\param{}{c}{Categoria}) (def?(c,e.familia)) \Rightarrow_{L} (*obtener(c,e.familia)).altura \leq e.alturaMax}{\yluego}
 \repfunc{(\exists\param{}{c}{Categoria}) (def?(c,e.familia)) \yluego *((obtener(c,e.familia)) ).altura = e.alturaMax}{\yluego}
-\repfunc{(\forall\param{}{c_{1},c_{2}}{string}) (def?(c_{1},e.familia)) \wedge (def?(c_{2},e.familia)) \yluego \\
+\repfunc{(\forall\param{}{c_{1},c_{2}}{Categoria}) (def?(c_{1},e.familia)) \wedge (def?(c_{2},e.familia)) \yluego \\
 ((\exists\param{}{d}{datosCat})d\in (*(obtener(c_{1},e.familia))).hijos \land d.categoria == c_{2}) \Rightarrow_{L} \\
 (*(obtener(c_{2},e.familia))).altura = 1 + (*(obtener(c_{1},e.familia))).altura}{\yluego}
 \repfunc{(\forall\param{}{c}{Categoria}) (def?(c,e.familia)) \Rightarrow_{L} (*(obtener(c,e.familia))).id \leq e.cant}{\yluego}
@@ -76,3 +76,11 @@ padre(ac,c) = (*(*(obtener(c,e.familia))).padre).categoria}{\yluego}
 \hspace*{1em}
 \tadOperacion{todasLasCategorias}{secu(datosCat)}{conj(categoria)}{}
 \tadAxioma{todasLasCategorias(cs)}{\IF vacia?(cs) THEN $\emptyset$ ELSE Ag((prim(cs)).categoria,todasLasCategorias(fin(cs))) FI}
+
+\hspace*{1em}
+\tadOperacion{predecesores}{arbolCategorias ac, Categoria c}{Conj(categoria)}{c $\in$ categorias(ac)}
+\tadAxioma{predecesores(ac,c)}{predecesoresAux(ac,categorias(ac),c)}
+
+\hspace*{1em}
+\tadOperacion{predecesoresAux}{arbolCategorias ac, Conj(Categoria) cc, Categoria c}{Conj(categoria)}{c $\in$ categorias(ac) $\land$ cc $\subseteq$ categorias(ac)}
+\tadAxioma{predecesoresAux(ac,cc,c)}{\IF $\emptyset$? cc THEN $\emptyset$ ELSE {\IF esSubCategoria(ac,dameUno(cc),c) THEN Ag(dameUno(cc),predecesoresAux(ac,sinUno(cc),c)) ELSE predecesoresAux(ac,sinUno(cc),c) FI} FI}

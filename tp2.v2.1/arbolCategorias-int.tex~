@@ -54,6 +54,12 @@
 {1}
 {No tiene.}
 
+\operacion{predecesores}{\param{in}{ac}{acat}, \param{in}{c}{Categoria}}{itFamilia}
+{true}
+{\igres predecesores(ac,c)}
+{|c|}
+{No tiene.}
+
 \operacion{nuevoAC}{\param{in}{c}{Categoria}}{acat}
 {\neg vacia?(c)}
 {\igres nuevo(c)}
@@ -75,7 +81,7 @@
 \operacion{esSubCategoria}{\param{in}{ac}{acat}, \param{in}{c}{categoria}, \param{in}{h}{categoria}}{bool}
 {esta?(c,ac) \land esta?(h,ac)}
 {\igres esSubCategoria(ac,c,h)}
-{ver Complejidad y revisar parametros con especificacion}
+{|h|+|c|+alturaAC(ac)}
 {No tiene.}
 
 \end{interfaz}

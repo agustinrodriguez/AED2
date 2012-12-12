@@ -4,6 +4,11 @@
 \\
 itLinks se representa con itLista(datosLink)\\
 \\
+\hspace*{6em}datosLink es \tupla{\\
+\hspace*{6em}\param{}{link}{Link},\\ 
+\hspace*{6em}\param{}{catDLink}{Categoria},\\ 
+\hspace*{6em}\param{}{accesosRecientes}{Lista(acceso)},\\ 
+\hspace*{6em}\param{}{cantAaccesosRecientes}{nat}}\\ \\
 \hline
 \end{tabular}
 \end{center}
@@ -17,9 +22,9 @@ itLinks se representa con itLista(datosLink)\\
 %\end{enumerate}
 
 \paragraph{El Invariante Formalmente}
-{\begin{changemargin}{0em}{4em}Rep : estrITC $\rightarrow$ boolean\par \end{changemargin}(\paratodo\param{}{it}{estrITC}) Rep(it) $\equiv$ true
+{\begin{changemargin}{0em}{4em}Rep : estrITL $\rightarrow$ boolean\par \end{changemargin}(\paratodo\param{}{it}{estrITL}) Rep(it) $\equiv$ true
 
 \subsubsection{Funci\'on de Abstracci\'on}
-\begin{ABS}{e}{estrITC}{it}{itBi($\alpha$)}
+\begin{ABS}{e}{estrITL}{it}{itUni(Link)}
 \absfunc{anteriores(e.iterador) \igobs anteriores(it) \land \\ siguientes(e.iterador) \igobs siguientes(it)}{}
 \end{ABS}

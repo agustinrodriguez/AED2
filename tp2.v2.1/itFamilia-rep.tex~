@@ -2,8 +2,16 @@
 \begin{tabular}{|l|} 
 \hline
 \\
-itFamilia se representa con puntero(DatosCat)\\
-\\
+itFamilia se representa con puntero(DatosCat)\\\\
+
+\hspace*{6em}datosCat es \tupla{\\
+\hspace*{6em}\param{}{categoria}{Categoria},\\ 
+\hspace*{6em}\param{}{id}{nat},\\ 
+\hspace*{6em}\param{}{altura}{nat},\\ 
+\hspace*{6em}\param{}{hijos}{Conj(puntero(datosCat))},\\
+\hspace*{6em}\param{}{padre}{puntero(datosCat)}}\\ \\ 
+
+
 \hline
 \end{tabular}
 \end{center}
@@ -17,9 +25,9 @@ itFamilia se representa con puntero(DatosCat)\\
 %\end{enumerate}
 
 \paragraph{El Invariante Formalmente}
-{\begin{changemargin}{0em}{4em}Rep : estrITF $\rightarrow$ boolean\par \end{changemargin}(\paratodo\param{}{it}{estrITF}} Rep(it) $\equiv$ true
+{\begin{changemargin}{0em}{4em}Rep : estrITF $\rightarrow$ boolean\par \end{changemargin}(\paratodo\param{}{it}{estrITF})} Rep(it) $\equiv$ true
 
-%\subsubsection{Funci\'on de Abstracci\'on}
-%\begin{ABS}{e}{estrITA}{it}{itBi($\alpha$)}
-%\absfunc{anteriores(e.iterador) \igobs anteriores(it) \land \\ siguientes(e.iterador) \igobs siguientes(it)}{}
-%\end{ABS}
+\subsubsection{Funci\'on de Abstracci\'on}
+\begin{ABS}{e}{estrITF}{it}{itUni(Categoria)}
+\absfunc{anteriores(e.iterador) \igobs anteriores(it) \land \\ siguientes(e.iterador) \igobs siguientes(it)}{}
+\end{ABS}

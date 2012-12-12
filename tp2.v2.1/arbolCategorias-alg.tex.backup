@@ -53,22 +53,22 @@
 %\complejidad{1}
 %\end{algorithm}
 
-\begin{algorithm}[H]
-\caption{iObtenerAC}
-\begin{algorithmic}[1]
-\Function{iObtenerAC}{\param{in}{ac}{estrAC}, \param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{puntero(datosCat)}}
-\state res $\gets$ obtener(c,ac.familia) \hfill //O(|c|)
-\EndFunction 
-\end{algorithmic}
-\hrule
-\complejidad{|c|}
-\end{algorithm}
+%\begin{algorithm}[H]
+%\caption{iObtenerAC}
+%\begin{algorithmic}[1]
+%\Function{iObtenerAC}{\param{in}{ac}{estrAC}, \param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{puntero(datosCat)}}
+%\state res $\gets$ obtener(c,ac.familia) \hfill //O(|c|)
+%\EndFunction 
+%\end{algorithmic}
+%\hrule
+%\complejidad{|c|}
+%\end{algorithm}
 
 \begin{algorithm}[H]
 \caption{iCategoriasAC}
 \begin{algorithmic}[1]
 \Function{iCategoriasAC}{\param{in}{ac}{estrAC}}{$\ensuremath{\rightarrow}$ \param{}{res}{itCategorias}}
-\state res $\gets$ crearItCategorias(ac.categorias) \hfill //O(1)
+\state res $\gets$ crearItCategorias(ac) \hfill //O(1)
 \EndFunction 
 \end{algorithmic}
 \hrule
@@ -80,6 +80,17 @@
 \begin{algorithmic}[1]
 \Function{iRaiz}{\param{in}{ac}{estrAC}}{$\ensuremath{\rightarrow}$ \param{}{res}{Categoria}}
 \state res $\gets$ (*(ac.raiz)).categoria \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iDameCantidad}
+\begin{algorithmic}[1]
+\Function{iDameCantidad}{\param{in}{ac}{estrAC}}{$\ensuremath{\rightarrow}$ \param{}{res}{nat}}
+\state res $\gets$ ac.cantidad \hfill //O(1)
 \EndFunction 
 \end{algorithmic}
 \hrule
@@ -112,7 +123,7 @@
 \caption{iHijosAC}
 \begin{algorithmic}[1]
 \Function{iHijosAC}{\param{in}{ac}{estrAC}, \param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{itHijos}}
-\state res $\gets$ crearItHijos((*obtener(c,ac.familia)).hijos) \hfill //O(|c|)
+\state res $\gets$ crearItHijos(ac,c) \hfill //O(|c|)
 \EndFunction 
 \end{algorithmic}
 \hrule

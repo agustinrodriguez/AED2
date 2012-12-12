@@ -24,7 +24,6 @@
 
 
 \titulo{Trabajo Pr\'actico Diseño}
-%%\fecha{02 / 11 / 2011}
 \materia{Algoritmos y Estructura de Datos II}
 \grupo{Grupo 1}
 \integrante{Bálsamo, Facundo}{874/10}{facundobalsamo@gmail.com}
@@ -100,8 +99,8 @@
 \input{itLinks-com}
  
 \subsection{Iterador de Punteros a DatosLink} 
-%\subsubsection{Interfaz}
-%\input{itPuntLinks-int}
+\subsubsection{Interfaz}
+\input{itPuntLinks-int}
 \subsubsection{Representaci\'on}
 \input{itPuntLinks-rep}
 \subsubsection{Algoritmos}

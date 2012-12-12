@@ -25,6 +25,6 @@ itLinks se representa con itLista(datosLink)\\
 {\begin{changemargin}{0em}{4em}Rep : estrITL $\rightarrow$ boolean\par \end{changemargin}(\paratodo\param{}{it}{estrITL}) Rep(it) $\equiv$ true
 
 \subsubsection{Funci\'on de Abstracci\'on}
-\begin{ABS}{e}{estrITL}{it}{itUni(Link)}
-\absfunc{siguientes(e.iterador) \igobs siguientes(it)}{}
+\begin{ABS}{e}{estrITL}{it}{itBi($\alpha$)}
+\absfunc{anteriores(e.iterador) \igobs anteriores(it) \land \\ siguientes(e.iterador) \igobs siguientes(it)}{}
 \end{ABS}

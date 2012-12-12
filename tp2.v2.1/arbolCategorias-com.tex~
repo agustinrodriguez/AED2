@@ -34,7 +34,7 @@
 \par \textbf{Orden Total:} \textbf{O(1)}
 
 \item\textbf{idameCantidad}
-\par Se devuelve en O(1) el natural almacenado en el campo cantidad del arbol de.
+\par Se devuelve en O(1) el natural almacenado en el campo cantidad del arbol de categorias.
 \par \textbf{Orden Total:} \textbf{O(1)}
 
 \item\textbf{iIdAC}
@@ -56,6 +56,10 @@
 \item\textbf{iAlturaAC}
 \par Devuelve en O(1) la \textbf{alturaMax} del arbol de categorias.
 \par \textbf{Orden Total:} \textbf{O(1)}
+
+\item\textbf{iPredecesores}
+\par Devuelve un iterador a los predecesores de la categoría, incluyendola, en O(|c|) que es lo que le cuesta conseguir el iterador.
+\par \textbf{Orden Total:} \textbf{O(|c|)}
 
 \item\textbf{iNuevoAC}
 \par A res.cantidad le asignamos 1, que tarda O(1). Creamos una nueva variable tuplaA, que es datosCat. Esto tarda O(1).

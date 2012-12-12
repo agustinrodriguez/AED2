@@ -8,7 +8,7 @@
 {}
 }
 
-\textbf{\large se explica con:} Iterador Unidireccional Modificble de tupla<Link,Categoria,Nat>
+\textbf{\large se explica con:} Iterador Bidireccional
 
 \end{iparamformales}
 
@@ -26,7 +26,7 @@
 
 \operacion{siguiente}{\param{in}{it}{itPuntLinks}}{tupla<\param{}{l}{Link},\param{}{c}{Categoria},\param{}{cant}{Nat}>}
 {haySiguiente?(it)}
-{\igres siguiente(it)}
+{\igres <(*siguiente(it)).link,(*siguiente(it)).catDLink,(*siguiente(it)).>}
 {1}
 {La tupla contiene referencias al Link y a la Categoria.}
 

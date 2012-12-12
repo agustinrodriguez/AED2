@@ -8,15 +8,9 @@
 {}
 }
 
-\textbf{\large se explica con:} Iterador Bidireccional
+\textbf{\large se explica con:} Iterador Unidireccional de tupla<Link,Categoria,Nat>
 
 \end{iparamformales}
-
-\operacion{crearItPuntLinks}{\param{in}{l}{lista(puntero(datosLink))}}{itPuntLinks}
-{true}
-{\igres crearIt(l)}
-{1}
-{No se deben modificar los elementos iterados por res.}
 
 \operacion{haysiguiente?}{\param{in}{it}{itPuntLinks}}{bool}
 {true}
@@ -24,17 +18,35 @@
 {1}
 {No tiene.}
 
-\operacion{siguiente}{\param{in}{it}{itPuntLinks}}{puntero(datosLink)}
-{haySiguiente?(it)}
-{\igres (siguiente(it))}
-{1}
-{Se pasa un puntero a datosLink}
+%\operacion{siguiente}{\param{in}{it}{itPuntLinks}}{puntero(datosLink)}
+%{haySiguiente?(it)}
+%{\igres (siguiente(it))}
+%{1}
+%{Se pasa un puntero a datosLink}
 
-\operacion{siguienteLink}{\param{in}{it}{itPuntLinks}}{Link}
+\operacion{siguiente}{\param{in}{it}{itPuntLinks}}{tupla<\param{}{l}{Link},\param{}{c}{Categoria},\param{}{cant}{Nat}>}
 {haySiguiente?(it)}
-{\igres \pi_{1}(*siguiente(it))}
+{\igres siguiente(it)}
 {1}
-{El link se pasa por referencia, no debe ser modificado.}
+{La tupla contiene referencias al Link y a la Categoria.}
+
+%\operacion{siguienteLink}{\param{in}{it}{itPuntLinks}}{Link}
+%{haySiguiente?(it)}
+%{\igres (*siguiente(it)).link}
+%{1}
+%{El link se pasa por referencia, no debe ser modificado.}
+
+%\operacion{siguienteCat}{\param{in}{it}{itPuntLinks}}{Categoria}
+%{haySiguiente?(it)}
+%{\igres (*siguiente(it)).categoria}
+%{1}
+%{La categoria se pasa por referencia, no debe ser modificada.}
+
+%\operacion{siguienteCantAccesosDelLink}{\param{in}{it}{itPuntLinks}}{nat}
+%{haySiguiente?(it)}
+%{\igres (*siguiente(it)).cantAccesos}
+%{1}
+%{No tiene}
 
 \operacion{avanzar}{\param{in/out}{it}{itPuntLinks}}{}
 {it \igobs it_0 \land haySiguiente?(it)}

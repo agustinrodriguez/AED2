@@ -2,13 +2,20 @@
 \begin{tabular}{|l|} 
 \hline
 \\
-itHijos se representa con itConj(puntero(datosCat))\\
-\\
+itHijos se representa con itConj(puntero(datosCat))\\\\
+
+\hspace*{6em}datosCat es \tupla{\\
+\hspace*{6em}\param{}{categoria}{Categoria},\\ 
+\hspace*{6em}\param{}{id}{nat},\\ 
+\hspace*{6em}\param{}{altura}{nat},\\ 
+\hspace*{6em}\param{}{hijos}{Conj(puntero(datosCat))},\\
+\hspace*{6em}\param{}{padre}{puntero(datosCat)}}\\ \\ 
+
 \hline
 \end{tabular}
 \end{center}
 
-\par itHijos es un iterador de conjunto común. Sus complejidades nos alcanzan para iterar un\\ Conj(puntero(datosCat)).
+\par itHijos es un iterador de conjunto. Sus complejidades nos alcanzan para iterar un\\ Conj(puntero(datosCat)).
 
 \subsubsection{Invariante de Representaci\'on}
 %\paragraph{El Invariante Informalmente}
@@ -20,6 +27,6 @@ itHijos se representa con itConj(puntero(datosCat))\\
 {\begin{changemargin}{0em}{4em}Rep : estrITh $\rightarrow$ boolean\par \end{changemargin}(\paratodo\param{}{it}{estrITH}) Rep(it) $\equiv$ true
 
 \subsubsection{Funci\'on de Abstracci\'on}
-\begin{ABS}{e}{estrITC}{it}{itBi($\alpha$)}
+\begin{ABS}{e}{estrITC}{it}{itUni(Categoria)}
 \absfunc{anteriores(e.iterador) \igobs anteriores(it) \land \\ siguientes(e.iterador) \igobs siguientes(it)}{}
 \end{ABS}

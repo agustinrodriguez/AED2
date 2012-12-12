@@ -8,15 +8,9 @@
 {}
 }
 
-\textbf{\large se explica con:} Iterador Bidireccional
+\textbf{\large se explica con:} Iterador Unidireccional de Link
 
 \end{iparamformales}
-
-\operacion{crearItLinks}{\param{in}{l}{estrLLI}}{itLinks}
-{true}
-{\igres crearIt(l)}
-{1}
-{No se deben modificar los elementos iterados por res.}
 
 \operacion{haysiguiente?}{\param{in}{it}{itLinks}}{bool}
 {true}
@@ -26,7 +20,7 @@
 
 \operacion{siguiente}{\param{in}{it}{itLinks}}{Link}
 {haySiguiente?(it)}
-{\igres \pi_{1}(siguiente(it))}
+{\igres siguiente(it)}
 {1}
 {El link se pasa por referencia, no debe ser modificado.}
 

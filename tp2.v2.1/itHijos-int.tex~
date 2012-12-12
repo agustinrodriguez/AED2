@@ -1,5 +1,5 @@
 \begin{interfaz}{Iterador Hijos}
-\begin{iparamformales}{itHijos}
+\begin{iparamformales}{itUni(Categoria)}
 
 \comment{\funcion{Copiar}{\param{in}{m}{$\alpha$}}{$\alpha$}
 {true}
@@ -8,15 +8,9 @@
 {}
 }
 
-\textbf{\large se explica con:} Iterador Bidireccional
+\textbf{\large se explica con:} Iterador Unidireccional de Categoria
 
 \end{iparamformales}
-
-\operacion{crearItHijos}{\param{in}{l}{Conj(puntero(datosCat))}}{itHijos}
-{true}
-{\igres crearIt(l)}
-{1}
-{No se pueden modificar los datosCat del iterador.}
 
 \operacion{haysiguiente?}{\param{in}{it}{itHijos}}{bool}
 {true}
@@ -26,7 +20,7 @@
 
 \operacion{siguiente}{\param{in}{it}{itHijos}}{Categoria}
 {haySiguiente?(it)}
-{\igres \pi_{1}(*siguiente(it))}
+{\igres siguiente(it)}
 {1}
 {res no es modificable.}
 

@@ -8,37 +8,31 @@
 {}
 }
 
-%\textbf{\large se explica con:} Iterador Bidireccional
+\textbf{\large se explica con:} Iterador Unidireccional de tupla<Categoria,Nat>
 
 \end{iparamformales}
 
-\operacion{crearItFamilia}{\param{in}{ac}{estrAC},\param{in}{c}{Categoria}}{itFamilia}
-{true}
-{\igres obtener(ac,c)}
-{|c|}
-{Los elementos iterados por res no deben ser modificados.}
-
 \operacion{haysiguiente?}{\param{in}{it}{itFamilia}}{bool}
 {true}
-{\igres (it \neq NULL)}
+{\igres haySiguiente?(it))}
 {1}
 {No tiene.}
 
 \operacion{siguienteCat}{\param{in}{it}{itFamilia}}{Categoria}
 {haySiguiente?(it)}
-{\igres (*it).catgoria}
+{\igres \pi_{1}(siguiente(it))}
 {1}
 {la Categoria se pasa por referencia y no debe ser modificado.}
 
 \operacion{siguienteId}{\param{in}{it}{itFamilia}}{int}
 {haySiguiente?(it)}
-{\igres (*it).id}
+{\igres \pi_{2}(siguiente(it))}
 {1}
 {El ID se pasa por referencia y no debe ser modificado.}
 
 \operacion{avanzar}{\param{in/out}{it}{itFamilia}}{}
 {it \igobs it_0 \land haySiguiente?(it)}
-{it \igobs (*it_0).padre}
+{it \igobs avanzar(it)}
 {1}
 {No tiene.}
 

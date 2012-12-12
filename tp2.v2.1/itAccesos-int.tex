@@ -1,5 +1,5 @@
 \begin{interfaz}{Iterador Acceso}
-\begin{iparamformales}{itAcceso}
+\begin{iparamformales}{itAccesos}
 
 \comment{\funcion{Copiar}{\param{in}{m}{$\alpha$}}{$\alpha$}
 {true}
@@ -8,32 +8,8 @@
 {}
 }
 
-\textbf{\large se explica con:} Iterador Bidireccional
+\textbf{\large se explica con:} Iterador Unidireccional de tupla<Fecha,Nat>
 
 \end{iparamformales}
-
-\operacion{crearItAccesos}{\param{in}{l}{lista(acceso)}}{itAcceso}
-{true}
-{\igres crearIt(l)}
-{1}
-{Los elementos iterados por res no deben ser modificados.}
-
-\operacion{haysiguiente?}{\param{in}{it}{itAccesos}}{bool}
-{true}
-{\igres haySiguiente?(it)}
-{1}
-{No tiene.}
-
-\operacion{siguiente}{\param{in}{it}{itAccesos}}{Acceso}
-{haySiguiente?(it)}
-{\igres siguiente(it)}
-{1}
-{el Acceso se pasa por referencia y no debe ser modificado.}
-
-\operacion{avanzar}{\param{in/out}{it}{itAccesos}}{}
-{it \igobs it_0 \land haySiguiente?(it)}
-{it \igobs avanzar(it_0)}
-{1}
-{No tiene.}
 
 \end{interfaz}

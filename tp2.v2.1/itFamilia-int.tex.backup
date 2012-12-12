@@ -8,37 +8,31 @@
 {}
 }
 
-%\textbf{\large se explica con:} Iterador Bidireccional
+\textbf{\large se explica con:} Iterador Unidireccional de Categoria
 
 \end{iparamformales}
 
-\operacion{crearItFamilia}{\param{in}{ac}{estrAC},\param{in}{c}{Categoria}}{itFamilia}
-{true}
-{\igres}
-{|c|}
-{Los elementos iterados por res no deben ser modificados.}
-
 \operacion{haysiguiente?}{\param{in}{it}{itFamilia}}{bool}
 {true}
-{\igres haySiguiente?(it)}
+{\igres haySiguiente?(it))}
 {1}
 {No tiene.}
 
 \operacion{siguienteCat}{\param{in}{it}{itFamilia}}{Categoria}
 {haySiguiente?(it)}
-{\igres siguiente(it)}
+{\igres (*it).catgoria}
 {1}
 {la Categoria se pasa por referencia y no debe ser modificado.}
 
 \operacion{siguienteId}{\param{in}{it}{itFamilia}}{int}
 {haySiguiente?(it)}
-{\igres siguiente(it)}
+{\igres (*it).id}
 {1}
 {El ID se pasa por referencia y no debe ser modificado.}
 
 \operacion{avanzar}{\param{in/out}{it}{itFamilia}}{}
 {it \igobs it_0 \land haySiguiente?(it)}
-{it \igobs avanzar(it_0)}
+{it \igobs (*it_0).padre}
 {1}
 {No tiene.}
 

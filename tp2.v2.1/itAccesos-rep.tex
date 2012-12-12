@@ -2,7 +2,7 @@
 \begin{tabular}{|l|} 
 \hline
 \\
-itAccesos se representa con itLista(acceso)\\
+itAccesos se representa con itLista(tupla<Fecha,Nat>)\\
 \\
 \hspace*{6em}acceso es \tupla{\\
 \hspace*{6em}\param{}{dia}{Fecha},\\
@@ -24,6 +24,6 @@ itAccesos se representa con itLista(acceso)\\
 {\begin{changemargin}{0em}{4em}Rep : estrITA $\rightarrow$ boolean\par \end{changemargin}(\paratodo\param{}{it}{estrITA}) Rep(it) $\equiv$ true
 
 \subsubsection{Funci\'on de Abstracci\'on}
-\begin{ABS}{e}{estrITA}{it}{itBi($\alpha$)}
-\absfunc{anteriores(e.iterador) \igobs anteriores(it) \land \\ siguientes(e.iterador) \igobs siguientes(it)}{}
+\begin{ABS}{e}{estrITA}{it}{itUni(tupla<Fecha,Nat>)}
+\absfunc{siguientes(e.iterador) \igobs siguientes(it)}{}
 \end{ABS}

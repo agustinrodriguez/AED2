@@ -27,7 +27,7 @@ itFamilia se representa con puntero(DatosCat)\\\\
 \paragraph{El Invariante Formalmente}
 {\begin{changemargin}{0em}{4em}Rep : estrITF $\rightarrow$ boolean\par \end{changemargin}(\paratodo\param{}{it}{estrITF})} Rep(it) $\equiv$ true
 
-%\subsubsection{Funci\'on de Abstracci\'on}
-%\begin{ABS}{e}{estrITA}{it}{itBi($\alpha$)}
-%\absfunc{anteriores(e.iterador) \igobs anteriores(it) \land \\ siguientes(e.iterador) \igobs siguientes(it)}{}
-%\end{ABS}
+\subsubsection{Funci\'on de Abstracci\'on}
+\begin{ABS}{e}{estrITF}{it}{itUni(Categoria)}
+\absfunc{siguientes(e.iterador) \igobs siguientes(it)}{}
+\end{ABS}

@@ -87,6 +87,17 @@
 \end{algorithm}
 
 \begin{algorithm}[H]
+\caption{iDameCantidad}
+\begin{algorithmic}[1]
+\Function{iDameCantidad}{\param{in}{ac}{estrAC}}{$\ensuremath{\rightarrow}$ \param{}{res}{nat}}
+\state res $\gets$ ac.cantidad \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
 \caption{iIdAC}
 \begin{algorithmic}[1]
 \Function{iId}{\param{in}{ac}{estrAC}, \param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{nat}}
@@ -139,6 +150,17 @@
 \end{algorithmic}
 \hrule
 \complejidad{1}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iPredecesores}
+\begin{algorithmic}[1]
+\Function{iPredecesores}{\param{in}{ac}{estrAC}, \param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{itFamilia}}
+\state res $\gets$ crearItFamilia \hfill //O(|c|)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|c|}
 \end{algorithm}
 
 \begin{algorithm}[H]

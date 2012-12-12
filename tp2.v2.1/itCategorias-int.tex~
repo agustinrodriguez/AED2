@@ -1,5 +1,5 @@
 \begin{interfaz}{Iterador Categorias}
-\begin{iparamformales}{itCategorias}
+\begin{iparamformales}{itUni(Categoria)}
 
 \comment{\funcion{Copiar}{\param{in}{m}{$\alpha$}}{$\alpha$}
 {true}
@@ -8,15 +8,9 @@
 {}
 }
 
-\textbf{\large se explica con:} Iterador Bidireccional
+\textbf{\large se explica con:} Iterador Unidireccional de Categoria
 
 \end{iparamformales}
-
-\operacion{crearItCategotias}{\param{in}{ac}{acat}}{itCategorias}
-{true}
-{\igres crearIt(ac.categorias)}
-{1}
-{No debe modificarse ningún elemento iterado por res.}
 
 \operacion{haysiguiente?}{\param{in}{it}{itCategorias}}{bool}
 {true}
@@ -26,13 +20,13 @@
 
 \operacion{siguiente}{\param{in}{it}{itCategorias}}{Categoria}
 {haySiguiente?(it)}
-{\igres \pi_{1}(siguiente(it))}
+{\igres siguiente(it)}
 {1}
 {La categoría se pasa por referencia, no debe ser modificada.}
 
 \operacion{avanzar}{\param{in/out}{it}{itCategorias}}{}
 {it \igobs it_0 \land haySiguiente?(it)}
-{it \igobs avanzar(it_0)}
+{it \igobs avanzar(it)}
 {1}
 {No tiene.}
 

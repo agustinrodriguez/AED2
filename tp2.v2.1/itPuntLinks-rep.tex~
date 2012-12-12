@@ -31,7 +31,7 @@ itPuntLinks \textbf{se representa con} estrITPL, donde estrITPL es \tupla{\\
 
 \subsubsection{Funci\'on de Abstracci\'on}
 \begin{ABS}{e}{estrITPL}{it}{itUni(tupla<Link,Categoria,Nat>)}
-\absfunc{siguientes(e.iterador) \igobs siguientes(it)}{}
+\absfunc{anteriores(e.iterador) \igobs anteriores(it) \land \\ siguientes(e.iterador) \igobs siguientes(it)}{}
 \end{ABS}
 
 \paragraph{Funciones auxiliares}

@@ -153,6 +153,17 @@
 \end{algorithm}
 
 \begin{algorithm}[H]
+\caption{iPredecesores}
+\begin{algorithmic}[1]
+\Function{iPredecesores}{\param{in}{ac}{estrAC}, \param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{itFamilia}}
+\state res $\gets$ crearItFamilia(ac,c) \hfill //O(|c|)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{|c|}
+\end{algorithm}
+
+\begin{algorithm}[H]
 \caption{iNuevoAC}
 \begin{algorithmic}[1]
 \Function{iNuevoAC}{\param{in}{c}{Categoria}}{$\ensuremath{\rightarrow}$ \param{}{res}{estrAC}}
