@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="ArbolCategorias.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="1558" topLine="60" />
+	<File name="ArbolCategorias.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="1410" topLine="61" />
 	</File>
-	<File name="ArbolCategorias.h" open="1" top="0" tabpos="1">
+	<File name="ArbolCategorias.h" open="0" top="0" tabpos="1">
 		<Cursor position="2295" topLine="65" />
 	</File>
 	<File name="DiccTrie.h" open="0" top="0" tabpos="0">
 		<Cursor position="1271" topLine="103" />
 	</File>
-	<File name="Driver.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="1594" topLine="72" />
+	<File name="Driver.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="2012" topLine="98" />
 	</File>
-	<File name="LinkLinkIt.cpp" open="1" top="1" tabpos="2">
-		<Cursor position="3774" topLine="155" />
+	<File name="LinkLinkIt.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="9793" topLine="425" />
 	</File>
-	<File name="LinkLinkIt.h" open="0" top="0" tabpos="1">
-		<Cursor position="3335" topLine="87" />
+	<File name="LinkLinkIt.h" open="1" top="1" tabpos="1">
+		<Cursor position="2943" topLine="83" />
 	</File>
-	<File name="tests.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="7537" topLine="252" />
+	<File name="tests.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="4540" topLine="164" />
 	</File>
 </CodeBlocks_layout_file>

@@ -91,7 +91,7 @@ const Link& Driver::obtenerIesimoLinkOrdenadoPorAccesos(const Categoria& c, int 
         ++j;
         it.Avanzar();
     }
-    return it.SiguienteLink();
+    return it.Siguiente()._link;
 }
 
 const Categoria& Driver::obtenerCategoriaIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i)
@@ -103,7 +103,7 @@ const Categoria& Driver::obtenerCategoriaIesimoLinkOrdenadoPorAccesos(const Cate
         ++j;
         it.Avanzar();
     }
-    return it.SiguienteCat();
+    return it.Siguiente()._cat;
 }
 
 int Driver::obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i)
@@ -115,5 +115,5 @@ int Driver::obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos(const Categoria& 
         ++j;
         it.Avanzar();
     }
-    return it.SiguienteCantidadAccesosDelLink();
+    return it.Siguiente()._cantAccesos;
 }
