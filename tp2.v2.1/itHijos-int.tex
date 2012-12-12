@@ -14,18 +14,18 @@
 
 \operacion{haysiguiente?}{\param{in}{it}{itHijos}}{bool}
 {true}
-{\igres haySiguiente?(it)}
+{\igres HayMas?(it)}
 {1}
 {No tiene.}
 
 \operacion{siguiente}{\param{in}{it}{itHijos}}{Categoria}
-{haySiguiente?(it)}
-{\igres siguiente(it)}
+{HayMas?(it)}
+{\igres Actual(it)}
 {1}
 {res no es modificable.}
 
 \operacion{avanzar}{\param{in/out}{it}{itHijos}}{}
-{it \igobs it_0 \land haySiguiente?(it)}
+{it \igobs it_0 \land HayMas?(it)}
 {it \igobs avanzar(it_0)}
 {1}
 {No tiene.}

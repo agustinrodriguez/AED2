@@ -12,26 +12,26 @@
 
 \end{iparamformales}
 
-\operacion{haysiguiente?}{\param{in}{it}{itFamilia}}{bool}
+\operacion{haySiguiente?}{\param{in}{it}{itFamilia}}{bool}
 {true}
-{\igres haySiguiente?(it))}
+{\igres HayMas?(it))}
 {1}
 {No tiene.}
 
 \operacion{siguienteCat}{\param{in}{it}{itFamilia}}{Categoria}
-{haySiguiente?(it)}
-{\igres \pi_{1}(siguiente(it))}
+{HayMas?(it)}
+{\igres \pi_{1}(Actual(it))}
 {1}
 {la Categoria se pasa por referencia y no debe ser modificado.}
 
 \operacion{siguienteId}{\param{in}{it}{itFamilia}}{int}
-{haySiguiente?(it)}
-{\igres \pi_{2}(siguiente(it))}
+{HayMas?(it)}
+{\igres \pi_{2}(Actual(it))}
 {1}
 {El ID se pasa por referencia y no debe ser modificado.}
 
 \operacion{avanzar}{\param{in/out}{it}{itFamilia}}{}
-{it \igobs it_0 \land haySiguiente?(it)}
+{it \igobs it_0 \land HayMas?(it)}
 {it \igobs avanzar(it)}
 {1}
 {No tiene.}

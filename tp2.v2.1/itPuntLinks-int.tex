@@ -14,7 +14,7 @@
 
 \operacion{haysiguiente?}{\param{in}{it}{itPuntLinks}}{bool}
 {true}
-{\igres haySiguiente?(it)}
+{\igres HayMas?(it)}
 {1}
 {No tiene.}
 
@@ -25,8 +25,8 @@
 %{Se pasa un puntero a datosLink}
 
 \operacion{siguiente}{\param{in}{it}{itPuntLinks}}{tupla<\param{}{l}{Link},\param{}{c}{Categoria},\param{}{cant}{Nat}>}
-{haySiguiente?(it)}
-{\igres siguiente(it)}
+{HayMas?(it)}
+{\igres Actual(it)}
 {1}
 {La tupla contiene referencias al Link y a la Categoria.}
 
@@ -49,14 +49,14 @@
 %{No tiene}
 
 \operacion{avanzar}{\param{in/out}{it}{itPuntLinks}}{}
-{it \igobs it_0 \land haySiguiente?(it)}
+{it \igobs it_0 \land HayMas?(it)}
 {it \igobs avanzar(it_0)}
 {1}
 {No tiene.}
 
 \operacion{eliminarSiguiente}{\param{in/out}{it}{itPuntLinks}}{}
-{it \igobs it_0 \land haySiguiente?(it)}
-{it \igobs eliminarSiguiente(it_0)}
+{it \igobs it_0 \land HayMas?(it)}
+{it \igobs Eliminar(it_0)}
 {1}
 {No tiene.}
 
