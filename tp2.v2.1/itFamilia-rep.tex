@@ -29,5 +29,12 @@ itFamilia se representa con puntero(DatosCat)\\\\
 
 \subsubsection{Funci\'on de Abstracci\'on}
 \begin{ABS}{e}{estrITF}{it}{itUni(Categoria)}
-\absfunc{siguientes(e) \igobs siguientes(it)}{}
+\absfunc{siguientePadres(e) \igobs siguientes(it)}{}
 \end{ABS}
+
+\paragraph{Funciones auxiliares}
+\paragraph*{}
+
+\hspace*{1em}
+\tadOperacion{siguientePadres}{estrITF e}{secu(tupla<Categoria, nat>)}{}
+\tadAxioma{siguientePadres(e)}{\IF (*e).padre == NULL THEN <(*e).padre.categoria, (*e).padre.id> $\bullet$ $\emptyset$ ELSE <(*e).padre.categoria, (e*).padre.id> $\bullet$ siguientePadres((*e).padre) FI}

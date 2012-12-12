@@ -23,8 +23,9 @@
 \contentsline {subsubsection}{\numberline {1.6.3}Invariante de Representaci\'on}{16}{subsubsection.1.6.3}
 \contentsline {paragraph}{\numberline {1.6.3.1}El Invariante Formalmente}{16}{paragraph.1.6.3.1}
 \contentsline {subsubsection}{\numberline {1.6.4}Funci\'on de Abstracci\'on}{17}{subsubsection.1.6.4}
+\contentsline {paragraph}{\numberline {1.6.4.1}Funciones auxiliares}{17}{paragraph.1.6.4.1}
 \contentsline {subsubsection}{\numberline {1.6.5}Algoritmos}{17}{subsubsection.1.6.5}
-\contentsline {subsubsection}{\numberline {1.6.6}Analisis de complejidades}{17}{subsubsection.1.6.6}
+\contentsline {subsubsection}{\numberline {1.6.6}Analisis de complejidades}{18}{subsubsection.1.6.6}
 \contentsline {subsection}{\numberline {1.7}Iterador de Hijos}{18}{subsection.1.7}
 \contentsline {subsubsection}{\numberline {1.7.1}Interfaz}{18}{subsubsection.1.7.1}
 \contentsline {subsubsection}{\numberline {1.7.2}Representaci\'on}{19}{subsubsection.1.7.2}
