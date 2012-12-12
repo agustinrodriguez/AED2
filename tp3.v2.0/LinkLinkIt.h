@@ -66,7 +66,7 @@ namespace aed2
         public:
             class itLinks {
                 public:
-                    itLinks(Lista<DatosLink>& ldl);
+                    itLinks(LinkLinkIt& lli);
                     itLinks();
                     ~itLinks();
                     itLinks(const itLinks& otroIt);
@@ -84,7 +84,7 @@ namespace aed2
             class itPunLinks {
                 public:
                     itPunLinks();
-                    itPunLinks(Lista<DatosLink*>& ldl, Fecha& f);
+                    itPunLinks(LinkLinkIt& lli,int id, Fecha& f);
                     itPunLinks(const itPunLinks& otroIt);
                     ~itPunLinks();
                     bool HaySiguiente() const;
@@ -102,7 +102,7 @@ namespace aed2
                 private:
                     Lista<DatosLink*>::Iterador _itLista;
                     Fecha _fecha;
-                    DatosLink* Siguiente() const;
+                    DatosLink* SiguienteDL() const;
             };
 
             //creacion de la clase iterador de datoslink
