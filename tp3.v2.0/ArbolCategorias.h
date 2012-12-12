@@ -93,9 +93,9 @@ namespace aed2
             void agregarAC(const Categoria c, const Categoria cpadre);
             bool esta(const Categoria c) const;
             bool esSubCategoria(const Categoria c, const Categoria predecesor) const;
-            const int dameCantidad();
+            int dameCantidad();
             bool operator==(const ArbolCategorias& acat) const;
-            ItFamilia Familia(const Categoria &c);
+            ItFamilia Predecesores(const Categoria &c);
             };
 }
 

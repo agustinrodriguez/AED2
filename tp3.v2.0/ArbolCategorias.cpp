@@ -156,7 +156,7 @@ bool ArbolCategorias::esSubCategoria(const Categoria c, const Categoria predeces
     return res;
 }
 
-const int ArbolCategorias::dameCantidad()
+int ArbolCategorias::dameCantidad()
 {
     return _cantidad;
 }
@@ -261,7 +261,7 @@ bool ArbolCategorias::ItHijos::operator==(const ItHijos& otro) const
 /************************
 ++++++++ItFamilia++++++++
 ************************/
-ArbolCategorias::ItFamilia ArbolCategorias::Familia(const Categoria &c){
+ArbolCategorias::ItFamilia ArbolCategorias::Predecesores(const Categoria &c){
 
     return ItFamilia(_familia.Obtener(c));
 }

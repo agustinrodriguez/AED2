@@ -55,7 +55,7 @@ namespace aed2
                     friend class LinkLinkIt;
             };
 
-                //VARIABLES PRIVADAS DE LLI
+            //VARIABLES PRIVADAS DE LLI
 
             ArbolCategorias* _acat;
             Fecha _actual;
@@ -80,35 +80,24 @@ namespace aed2
                     Lista<DatosLink>::Iterador _itLista;
             };
 
-            //creacion de la clase iterador de puntero a datoslink
-            class itPunLinks {
+            class itPuntLinks {
                 public:
 
-                     struct datosOrdenados{
-                            Categoria& _cat;
-                            Link& _link;
-                            int _cantAccesos;
-                            datosOrdenados(){
-                                _link = "";
-                                _cat = "";
-                                _cantAccesos = 0;
-
-                            };
-                    };
-
-                    itPunLinks();
-                    itPunLinks(LinkLinkIt& lli,int id, Fecha& f);
-                    itPunLinks(const itPunLinks& otroIt);
-                    ~itPunLinks();
+                    itPuntLinks();
+                    itPuntLinks(LinkLinkIt& lli,int id, Fecha& f);
+                    itPuntLinks(const itPuntLinks& otroIt);
+                    ~itPuntLinks();
                     bool HaySiguiente() const;
-                    datosOrdenados Siguiente();
+                    Link& SiguienteLink();
+                    Categoria& SiguienteCategoria();
+                    int SiguienteCantAccesos();
                     void Avanzar();
                     void EliminarSiguiente();
-                    itPunLinks BuscarMax(Fecha f);
+                    itPuntLinks BuscarMax(Fecha f);
                     Fecha ultFecha();
                     int cantAccesosDesde(Fecha f);
                     bool estaOrdenada(Fecha f);
-                    bool operator==(const itPunLinks& otro) const;
+                    bool operator==(const itPuntLinks& otro) const;
                     friend class LinkLinkIt;
 
                 private:
@@ -117,7 +106,6 @@ namespace aed2
                     DatosLink* SiguienteDL() const;
             };
 
-            //creacion de la clase iterador de datoslink
             LinkLinkIt(ArbolCategorias *acat);
             LinkLinkIt();
             ~LinkLinkIt();
@@ -133,7 +121,7 @@ namespace aed2
             void nuevoLinkLli(Link link, Categoria categoria);
             void accederLli(Link link, Fecha fecha);
             int cantLinks(Categoria categoria);
-            itPunLinks linksOrdenadosPorAccesos(Categoria categoria) ;
+            itPuntLinks linksOrdenadosPorAccesos(Categoria categoria) ;
             bool esReciente(Link link, Fecha fecha);
             int accesosRecientes(Link l, Categoria c);
             bool operator==(const LinkLinkIt& otro) const;

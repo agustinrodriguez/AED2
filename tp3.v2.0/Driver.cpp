@@ -85,35 +85,35 @@ int Driver::cantLinks(const Categoria& c)
 const Link& Driver::obtenerIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i)
 {
     int j = 0;
-    LinkLinkIt::itPunLinks it = sistema->linksOrdenadosPorAccesos(c);
+    LinkLinkIt::itPuntLinks it = sistema->linksOrdenadosPorAccesos(c);
     while(j < i)
     {
         ++j;
         it.Avanzar();
     }
-    return it.Siguiente()._link;
+    return it.SiguienteLink();
 }
 
 const Categoria& Driver::obtenerCategoriaIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i)
 {
     int j = 0;
-    LinkLinkIt::itPunLinks it = sistema->linksOrdenadosPorAccesos(c);
+    LinkLinkIt::itPuntLinks it = sistema->linksOrdenadosPorAccesos(c);
     while(j < i)
     {
         ++j;
         it.Avanzar();
     }
-    return it.Siguiente()._cat;
+    return it.SiguienteCategoria();
 }
 
 int Driver::obtenerCantidadAccesosIesimoLinkOrdenadoPorAccesos(const Categoria& c, int i)
 {
     int j = 0;
-    LinkLinkIt::itPunLinks it = LinkLinkIt::itPunLinks(sistema->linksOrdenadosPorAccesos(c));
+    LinkLinkIt::itPuntLinks it = LinkLinkIt::itPuntLinks(sistema->linksOrdenadosPorAccesos(c));
     while(j < i)
     {
         ++j;
         it.Avanzar();
     }
-    return it.Siguiente()._cantAccesos;
+    return it.SiguienteCantAccesos();
 }

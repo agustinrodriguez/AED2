@@ -145,7 +145,7 @@ void LinkLinkIt::nuevoLinkLli(Link link, Categoria categoria){
     DatosLink* puntLink = new DatosLink(link, categoria, accesoDeNuevoLink, 0);
     _linkInfo.Definir(link, puntLink);
     _listaLinks.AgregarAtras(*puntLink);
-    ArbolCategorias::ItFamilia familia = _acat->Familia(categoria);
+    ArbolCategorias::ItFamilia familia = _acat->Predecesores(categoria);
     while(familia.HaySiguiente())
     {
         _arrayCatLinks[familia.SiguienteId() - 1].AgregarAtras(puntLink);
@@ -179,20 +179,20 @@ int LinkLinkIt::cantLinks(Categoria categoria){
     	return _arrayCatLinks[_acat->idAC(categoria)-1].Longitud();
 }
 
-LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
+LinkLinkIt::itPuntLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
         int id = dameAcat().idAC(categoria);
         Fecha f = 1;
-        itPunLinks itParaFecha = itPunLinks(*this,id, f);
+        itPuntLinks itParaFecha = itPuntLinks(*this,id, f);
         Fecha fecha = itParaFecha.ultFecha();
-        itPunLinks itOrdSegunF = itPunLinks(*this,id, fecha);
+        itPuntLinks itOrdSegunF = itPuntLinks(*this,id, fecha);
         Lista<DatosLink*> listaOrdenada = Lista<DatosLink*>();
-        itPunLinks itMax;
+        itPuntLinks itMax;
 
         if (!(itOrdSegunF.estaOrdenada(fecha)))
         {
             while(_arrayCatLinks[id-1].Longitud() > 0)
             {
-                itMax = itPunLinks(*this,id,fecha);
+                itMax = itPuntLinks(*this,id,fecha);
                 itMax = itMax.BuscarMax(fecha);
                 listaOrdenada.AgregarAtras(itMax.SiguienteDL());
                 itMax.EliminarSiguiente();
@@ -201,7 +201,7 @@ LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria)
 
         }
 
-        return itPunLinks(*this,id,fecha);
+        return itPuntLinks(*this,id,fecha);
 
 }
 
@@ -216,12 +216,12 @@ int LinkLinkIt::accesosRecientes(Link l, Categoria c)
     int res = 0;
     int idCat = _acat->idAC(c);
     Fecha f = 1;
-    itPunLinks itP = itPunLinks(*this,idCat, f);
+    itPuntLinks itP = itPuntLinks(*this,idCat, f);
     Fecha f1 = itP.ultFecha();
-    itPunLinks itP1 = itPunLinks(*this,idCat, f1);
+    itPuntLinks itP1 = itPuntLinks(*this,idCat, f1);
     while (itP1.HaySiguiente()) {
-        if (itP1.Siguiente()._link == l) {
-            res = itP1.Siguiente()._cantAccesos;
+        if (itP1.SiguienteLink() == l) {
+            res = itP1.SiguienteCantAccesos();
         }
         itP1.Avanzar();
     }
@@ -319,67 +319,71 @@ bool LinkLinkIt::ItAcceso::operator==(const ItAcceso& otro) const
     return _itLista == otro._itLista;
 }
 
-LinkLinkIt::itPunLinks::itPunLinks(){
+LinkLinkIt::itPuntLinks::itPuntLinks(){
 
 }
 
-LinkLinkIt::itPunLinks::itPunLinks(const itPunLinks &otroIt){
+LinkLinkIt::itPuntLinks::itPuntLinks(const itPuntLinks &otroIt){
     _itLista = otroIt._itLista;
 }
 
-LinkLinkIt::itPunLinks::itPunLinks(LinkLinkIt& lli, int id, Fecha& f){
+LinkLinkIt::itPuntLinks::itPuntLinks(LinkLinkIt& lli, int id, Fecha& f){
     _itLista = lli._arrayCatLinks[id-1].CrearIt();
     _fecha = f;
 }
 
-LinkLinkIt::itPunLinks::~itPunLinks()
+LinkLinkIt::itPuntLinks::~itPuntLinks()
 {
 
 }
 
-bool LinkLinkIt::itPunLinks::HaySiguiente() const
+bool LinkLinkIt::itPuntLinks::HaySiguiente() const
 {
     return _itLista.HaySiguiente();
 }
 
-LinkLinkIt::itPunLinks::datosOrdenados LinkLinkIt::itPunLinks::Siguiente()
-
-{
-    datosOrdenados dlOrd = datosOrdenados(SiguienteDL()->_link, SiguienteDL()->_catDLink, cantAccesosDesde(_fecha));
-   return dlOrd;
+Link& LinkLinkIt::itPuntLinks::SiguienteLink() {
+    return SiguienteDL()->_link;
 }
 
+Categoria& LinkLinkIt::itPuntLinks::SiguienteCategoria() {
+    return SiguienteDL()->_catDLink;
+}
 
-LinkLinkIt::DatosLink* LinkLinkIt::itPunLinks::SiguienteDL() const
+int LinkLinkIt::itPuntLinks::SiguienteCantAccesos() {
+    return cantAccesosDesde(_fecha);
+}
+
+LinkLinkIt::DatosLink* LinkLinkIt::itPuntLinks::SiguienteDL() const
 {
     return _itLista.Siguiente();
 }
 
-void LinkLinkIt::itPunLinks::Avanzar()
+void LinkLinkIt::itPuntLinks::Avanzar()
 {
     _itLista.Avanzar();
 }
 
-void LinkLinkIt::itPunLinks::EliminarSiguiente()
+void LinkLinkIt::itPuntLinks::EliminarSiguiente()
 {
     _itLista.EliminarSiguiente();
 }
 
 
-LinkLinkIt::itPunLinks LinkLinkIt::itPunLinks::BuscarMax(Fecha f){
-     itPunLinks res = itPunLinks(*this);
+LinkLinkIt::itPuntLinks LinkLinkIt::itPuntLinks::BuscarMax(Fecha f){
+     itPuntLinks res = itPuntLinks(*this);
     while(HaySiguiente())
     {
         if(cantAccesosDesde(f) > res.cantAccesosDesde(f))
         {
-            res = itPunLinks(*this);
+            res = itPuntLinks(*this);
         }
         Avanzar();
     }
     return res;
 }
 
-Fecha LinkLinkIt::itPunLinks::ultFecha(){
+Fecha LinkLinkIt::itPuntLinks::ultFecha(){
     int res = 0;
     if (!SiguienteDL()->_accesosRecientes.EsVacia()) {
         res = SiguienteDL()->_accesosRecientes.Ultimo()._dia;
@@ -395,7 +399,7 @@ Fecha LinkLinkIt::itPunLinks::ultFecha(){
     return res;
 }
 
-int LinkLinkIt::itPunLinks::cantAccesosDesde(Fecha f){
+int LinkLinkIt::itPuntLinks::cantAccesosDesde(Fecha f){
     Lista<Acceso> lA = SiguienteDL()->_accesosRecientes;
     ItAcceso itAcc = ItAcceso(lA);
     int res = 0;
@@ -410,7 +414,7 @@ int LinkLinkIt::itPunLinks::cantAccesosDesde(Fecha f){
     }
     return res;
 }
-bool LinkLinkIt::itPunLinks::estaOrdenada(Fecha fecha){
+bool LinkLinkIt::itPuntLinks::estaOrdenada(Fecha fecha){
     bool res = true;
     int aux = cantAccesosDesde(fecha);
     Avanzar();
@@ -425,7 +429,7 @@ bool LinkLinkIt::itPunLinks::estaOrdenada(Fecha fecha){
 }
 
 
-bool LinkLinkIt::itPunLinks::operator==(const itPunLinks& otro) const
+bool LinkLinkIt::itPuntLinks::operator==(const itPuntLinks& otro) const
 {
     return _itLista == otro._itLista;
 }
@@ -477,8 +481,8 @@ bool LinkLinkIt::itPunLinks::operator==(const itPunLinks& otro) const
 //        {
 //            Lista<DatosLink*> ldl = _arrayCatLinks[c];
 //            Lista<DatosLink*> ldlOtro = otro._arrayCatLinks[c];
-//            itPunLinks itL = itPunLinks(ldl, f);
-//            itPunLinks itLOtro = itPunLinks(ldlOtro, f);
+//            itPuntLinks itL = itPuntLinks(ldl, f);
+//            itPuntLinks itLOtro = itPuntLinks(ldlOtro, f);
 //            while(itL.HaySiguiente() && itLOtro.HaySiguiente() && res)
 //            {
 //                if(!(*itL.Siguiente() == *itLOtro.Siguiente()))
