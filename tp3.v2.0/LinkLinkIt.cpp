@@ -96,7 +96,8 @@ Fecha LinkLinkIt::fechaActual(){
 
 LinkLinkIt::itLinks LinkLinkIt::linksLli()
 {
-    return itLinks(*this);
+    itLinks itL;
+    return itL.crearItLinks(*this);
 }
 
 Categoria LinkLinkIt::categoriaLink(Link link) const
@@ -182,9 +183,9 @@ int LinkLinkIt::cantLinks(Categoria categoria){
 LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria) {
         int id = dameAcat().idAC(categoria);
         Fecha f = 1;
-        itPunLinks itParaFecha = itPunLinks(*this,id,f);
+        itPunLinks itParaFecha = itPunLinks(_arrayCatLinks[id-1], f);
         Fecha fecha = itParaFecha.ultFecha();
-        itPunLinks itOrdSegunF = itPunLinks(*this,id,f);
+        itPunLinks itOrdSegunF = itPunLinks(_arrayCatLinks[id-1], fecha);
         Lista<DatosLink*> listaOrdenada = Lista<DatosLink*>();
         itPunLinks itMax;
 
@@ -192,7 +193,7 @@ LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria)
         {
             while(_arrayCatLinks[id-1].Longitud() > 0)
             {
-                itMax = itPunLinks(*this,id,f);
+                itMax = itPunLinks(_arrayCatLinks[id-1], fecha);
                 itMax = itMax.BuscarMax(fecha);
                 listaOrdenada.AgregarAtras(itMax.Siguiente());
                 itMax.EliminarSiguiente();
@@ -201,7 +202,7 @@ LinkLinkIt::itPunLinks LinkLinkIt::linksOrdenadosPorAccesos(Categoria categoria)
 
         }
 
-        return itPunLinks(*this,id,f);
+        return itPunLinks(_arrayCatLinks[id-1],fecha);
 
 }
 
@@ -216,9 +217,9 @@ int LinkLinkIt::accesosRecientes(Link l, Categoria c)
     int res = 0;
     int idCat = _acat->idAC(c);
     Fecha f = 1;
-    itPunLinks itP = itPunLinks(*this,idCat,f);
+    itPunLinks itP = itPunLinks(_arrayCatLinks[idCat-1], f);
     Fecha f1 = itP.ultFecha();
-    itPunLinks itP1 = itPunLinks(*this,idCat,f1);
+    itPunLinks itP1 = itPunLinks(_arrayCatLinks[idCat-1], f1);
     while (itP1.HaySiguiente()) {
         if (itP1.SiguienteLink() == l) {
             res = itP1.SiguienteCantidadAccesosDelLink();
@@ -236,12 +237,17 @@ LinkLinkIt::itLinks::itLinks(){
 
 }
 
-LinkLinkIt::itLinks::itLinks(LinkLinkIt& lli){
-        _itLista = lli._listaLinks.CrearIt();
+LinkLinkIt::itLinks::itLinks(Lista<DatosLink>& ldl){
+        _itLista = ldl.CrearIt();
 }
 
 LinkLinkIt::itLinks::itLinks(const itLinks& otroIt){
     _itLista = otroIt._itLista;
+}
+
+LinkLinkIt::itLinks LinkLinkIt::itLinks::crearItLinks(LinkLinkIt lli) const{
+    return itLinks(lli._listaLinks);
+
 }
 
 LinkLinkIt::itLinks::~itLinks()
@@ -326,8 +332,8 @@ LinkLinkIt::itPunLinks::itPunLinks(const itPunLinks &otroIt){
     _itLista = otroIt._itLista;
 }
 
-LinkLinkIt::itPunLinks::itPunLinks(LinkLinkIt& lli,int id,Fecha f){
-    _itLista = lli._arrayCatLinks[id-1].CrearIt();
+LinkLinkIt::itPunLinks::itPunLinks(Lista<DatosLink*> &ldl, Fecha& f){
+    _itLista = ldl.CrearIt();
     _fecha = f;
 }
 
@@ -433,74 +439,74 @@ bool LinkLinkIt::itPunLinks::operator==(const itPunLinks& otro) const
     return _itLista == otro._itLista;
 }
 
-//bool LinkLinkIt::operator==(const LinkLinkIt& otro) const{
-//    bool res = true;
-//    //ARBOL DISTINTO
-//    if(!(_acat == otro._acat)){
-//        res = false;
-//    }
-//    //FECHA ACTUAL DISTINTA
-//    if(_actual != otro._actual){
-//        res = false;
-//    }
-//    //LINK DISTINTOS
-//    Lista<DatosLink> links1 = _listaLinks;
-//    Lista<DatosLink> links2 = otro._listaLinks;
-//    itLinks itThis = itLinks(*this);
-//    bool salgo = false;
-//    if(links1.Longitud() == links2.Longitud())
-//    {
-//        while (itThis.HaySiguiente() && res){
-//            itLinks itOtro = itLinks(links2);
-//            salgo = false;
-//            while(itOtro.HaySiguiente() && !salgo)
-//            {
-//                if(itThis.Siguiente() == itOtro.Siguiente())
-//                {
-//                    if(*_linkInfo.Obtener(itThis.Siguiente()) == *_linkInfo.Obtener(itOtro.Siguiente()) )
-//                    {
-//                        salgo = true;
-//                    }
-//                }
-//                itOtro.Avanzar();
-//            }
-//            itThis.Avanzar();
-//        }
-//    }
-//    else
-//    {
-//        res = false;
-//    }
-//    //Mismo arreglo
-//    Fecha f =1;
-//    if(_arrayCatLinks.Tamanho() == otro._arrayCatLinks.Tamanho())
-//    {
-//        Nat c = 0;
-//        while(c < _arrayCatLinks.Tamanho() && res)
-//        {
-//            Lista<DatosLink*> ldl = _arrayCatLinks[c];
-//            Lista<DatosLink*> ldlOtro = otro._arrayCatLinks[c];
-//            itPunLinks itL = itPunLinks(ldl, f);
-//            itPunLinks itLOtro = itPunLinks(ldlOtro, f);
-//            while(itL.HaySiguiente() && itLOtro.HaySiguiente() && res)
-//            {
-//                if(!(*itL.Siguiente() == *itLOtro.Siguiente()))
-//                {
-//                    res = false;
-//                }
-//                itL.Avanzar();
-//                itLOtro.Avanzar();
-//            }
-//            c++;
-//        }
-//
-//    }
-//    else
-//    {
-//        res = false;
-//    }
-//
-//    return res;
-//}
-//
-//
+bool LinkLinkIt::operator==(const LinkLinkIt& otro) const{
+    bool res = true;
+    //ARBOL DISTINTO
+    if(!(_acat == otro._acat)){
+        res = false;
+    }
+    //FECHA ACTUAL DISTINTA
+    if(_actual != otro._actual){
+        res = false;
+    }
+    //LINK DISTINTOS
+    Lista<DatosLink> links1 = _listaLinks;
+    Lista<DatosLink> links2 = otro._listaLinks;
+    itLinks itThis = itLinks(links1);
+    bool salgo = false;
+    if(links1.Longitud() == links2.Longitud())
+    {
+        while (itThis.HaySiguiente() && res){
+            itLinks itOtro = itLinks(links2);
+            salgo = false;
+            while(itOtro.HaySiguiente() && !salgo)
+            {
+                if(itThis.Siguiente() == itOtro.Siguiente())
+                {
+                    if(*_linkInfo.Obtener(itThis.Siguiente()) == *_linkInfo.Obtener(itOtro.Siguiente()) )
+                    {
+                        salgo = true;
+                    }
+                }
+                itOtro.Avanzar();
+            }
+            itThis.Avanzar();
+        }
+    }
+    else
+    {
+        res = false;
+    }
+    //Mismo arreglo
+    Fecha f =1;
+    if(_arrayCatLinks.Tamanho() == otro._arrayCatLinks.Tamanho())
+    {
+        Nat c = 0;
+        while(c < _arrayCatLinks.Tamanho() && res)
+        {
+            Lista<DatosLink*> ldl = _arrayCatLinks[c];
+            Lista<DatosLink*> ldlOtro = otro._arrayCatLinks[c];
+            itPunLinks itL = itPunLinks(ldl, f);
+            itPunLinks itLOtro = itPunLinks(ldlOtro, f);
+            while(itL.HaySiguiente() && itLOtro.HaySiguiente() && res)
+            {
+                if(!(*itL.Siguiente() == *itLOtro.Siguiente()))
+                {
+                    res = false;
+                }
+                itL.Avanzar();
+                itLOtro.Avanzar();
+            }
+            c++;
+        }
+
+    }
+    else
+    {
+        res = false;
+    }
+
+    return res;
+}
+
+

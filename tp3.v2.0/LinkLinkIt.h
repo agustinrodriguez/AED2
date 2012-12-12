@@ -66,7 +66,7 @@ namespace aed2
         public:
             class itLinks {
                 public:
-                    itLinks(LinkLinkIt& lli);
+                    itLinks(Lista<DatosLink>& ldl);
                     itLinks();
                     ~itLinks();
                     itLinks(const itLinks& otroIt);
@@ -84,7 +84,7 @@ namespace aed2
             class itPunLinks {
                 public:
                     itPunLinks();
-                    itPunLinks(LinkLinkIt& lli,int id,Fecha f);
+                    itPunLinks(Lista<DatosLink*>& ldl, Fecha& f);
                     itPunLinks(const itPunLinks& otroIt);
                     ~itPunLinks();
                     bool HaySiguiente() const;
