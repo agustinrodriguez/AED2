@@ -83,14 +83,25 @@ namespace aed2
             //creacion de la clase iterador de puntero a datoslink
             class itPunLinks {
                 public:
+
+                     struct datosOrdenados{
+                            Categoria& _cat;
+                            Link& _link;
+                            int _cantAccesos;
+                            datosOrdenados(){
+                                _link = "";
+                                _cat = "";
+                                _cantAccesos = 0;
+
+                            };
+                    };
+
                     itPunLinks();
                     itPunLinks(LinkLinkIt& lli,int id, Fecha& f);
                     itPunLinks(const itPunLinks& otroIt);
                     ~itPunLinks();
                     bool HaySiguiente() const;
-                    Link& SiguienteLink() const;
-                    Categoria& SiguienteCat() const;
-                    int SiguienteCantidadAccesosDelLink();
+                    datosOrdenados Siguiente();
                     void Avanzar();
                     void EliminarSiguiente();
                     itPunLinks BuscarMax(Fecha f);
@@ -99,6 +110,7 @@ namespace aed2
                     bool estaOrdenada(Fecha f);
                     bool operator==(const itPunLinks& otro) const;
                     friend class LinkLinkIt;
+
                 private:
                     Lista<DatosLink*>::Iterador _itLista;
                     Fecha _fecha;

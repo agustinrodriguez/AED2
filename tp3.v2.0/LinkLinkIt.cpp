@@ -220,8 +220,8 @@ int LinkLinkIt::accesosRecientes(Link l, Categoria c)
     Fecha f1 = itP.ultFecha();
     itPunLinks itP1 = itPunLinks(*this,idCat, f1);
     while (itP1.HaySiguiente()) {
-        if (itP1.SiguienteLink() == l) {
-            res = itP1.SiguienteCantidadAccesosDelLink();
+        if (itP1.Siguiente()._link == l) {
+            res = itP1.Siguiente()._cantAccesos;
         }
         itP1.Avanzar();
     }
@@ -342,14 +342,17 @@ bool LinkLinkIt::itPunLinks::HaySiguiente() const
     return _itLista.HaySiguiente();
 }
 
-LinkLinkIt::DatosLink* LinkLinkIt::itPunLinks::SiguienteDL() const
+LinkLinkIt::itPunLinks::datosOrdenados LinkLinkIt::itPunLinks::Siguiente()
+
 {
- return _itLista.Siguiente();
+    datosOrdenados dlOrd = datosOrdenados(SiguienteDL()->_link, SiguienteDL()->_catDLink, cantAccesosDesde(_fecha));
+   return dlOrd;
 }
 
-Link& LinkLinkIt::itPunLinks::SiguienteLink() const{
 
-    return _itLista.Siguiente()->_link;
+LinkLinkIt::DatosLink* LinkLinkIt::itPunLinks::SiguienteDL() const
+{
+    return _itLista.Siguiente();
 }
 
 void LinkLinkIt::itPunLinks::Avanzar()
@@ -421,13 +424,6 @@ bool LinkLinkIt::itPunLinks::estaOrdenada(Fecha fecha){
     return res;
 }
 
-Categoria& LinkLinkIt::itPunLinks::SiguienteCat() const{
-    return SiguienteDL()->_catDLink;
-}
-
-int LinkLinkIt::itPunLinks::SiguienteCantidadAccesosDelLink(){
-        return cantAccesosDesde(_fecha);
-}
 
 bool LinkLinkIt::itPunLinks::operator==(const itPunLinks& otro) const
 {
