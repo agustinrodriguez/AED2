@@ -54,31 +54,6 @@ ArbolCategorias::DatosCat::~DatosCat()
 
 }
 
-//bool ArbolCategorias::DatosCat::operator==(const DatosCat& otro) const{
-//    bool altura = _altura == otro._altura;
-//    bool cat = _categoria == otro._categoria;
-//    bool id = _id == otro._id;
-//    bool hijos = true;
-//    bool padre = true;
-//    Conj<DatosCat*> conj1 = _hijos;
-//    Conj<DatosCat*> conj2 = otro._hijos;
-//    ItHijos hijos1 = ItHijos(conj1);
-//    ItHijos hijos2 = ItHijos(conj2);
-//    while(hijos1.HaySiguiente() && hijos){
-//        if(!(hijos2.definido(hijos1.Siguiente()))){
-//            hijos = false;
-//        }
-//        hijos1.Avanzar();
-//    }
-//    if(_padre!=NULL && otro._padre!=NULL){
-//        padre = _padre->_categoria == otro._padre->_categoria;
-//    }
-//    else{
-//        padre = _padre == NULL && otro._padre == NULL;
-//    }
-//    return altura && cat && id && hijos && padre;
-//}
-
 bool ArbolCategorias::ItHijos::definido(Categoria cat) const{
     bool res = false;
     ItHijos hijos = *this;
