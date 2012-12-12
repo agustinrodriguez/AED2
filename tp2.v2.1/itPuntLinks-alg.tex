@@ -21,50 +21,62 @@
 \complejidad{1}
 \end{algorithm}
 
+%\begin{algorithm}[H]
+%\caption{iSiguiente}
+%\begin{algorithmic}[1]
+%\Function{isiguiente}{\param{in}{e}{estrITPL}}{$\rightarrow$ \param{}{res}%{tupla<Link,Categoria,Nat>}}
+%\state res $\gets$ <(*siguiente(e)).link,(*siguiente(e)).catDLink,cantAccesosDesde(e,%$\_$fecha)>\hfill //O(1)
+%\EndFunction 
+%\end{algorithmic}
+%\hrule
+%\complejidad{1}
+%\end{algorithm}
+
 \begin{algorithm}[H]
 \caption{iSiguiente}
 \begin{algorithmic}[1]
-\Function{isiguiente}{\param{in}{e}{estrITPL}}{$\rightarrow$ \param{}{res}{tupla<Link,Categoria,Nat>}}
-\state res $\gets$ <(*siguiente(e)).link,(*siguiente(e)).catDLink,cantAccesosDesde(e,$\_$fecha)>\hfill //O(1)
+\Function{isiguiente}{\param{in}{e}{estrITPL}}{$\rightarrow$ \param{}{res}{puntero(DatosLink)}}
+\state res $\gets$ (siguiente(e)) \hfill //O(1)
 \EndFunction 
 \end{algorithmic}
 \hrule
 \complejidad{1}
 \end{algorithm}
 
-%\begin{algorithm}[H]
-%\caption{iSiguienteLink}
-%\begin{algorithmic}[1]
-%\Function{isiguienteLink}{\param{in}{e}{estrITPL}}{$\rightarrow$ \param{}{res}{Link}}
-%\state res $\gets$ (*siguiente(e)).link\hfill //O(1)
-%\EndFunction 
-%\end{algorithmic}
-%\hrule
-%\complejidad{1}
-%\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{iSiguienteLink}
+\begin{algorithmic}[1]
+\Function{isiguienteLink}{\param{in}{e}{estrITPL}}{$\rightarrow$ \param{}{res}{Link}}
+\state res $\gets$ (*siguiente(e)).link\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
 
 
-%\begin{algorithm}[H]
-%\caption{iSiguienteCat}
-%\begin{algorithmic}[1]
-%\Function{isiguienteCat}{\param{in}{e}{estrITPL}}{$\rightarrow$ \param{}{res}{Categoria}}
-%\state res $\gets$ (*siguiente(e)).catDLink \hfill //O(1)
-%\EndFunction 
-%\end{algorithmic}
-%\hrule
-%\complejidad{1}
-%\end{algorithm}
+\begin{algorithm}[H]
+\caption{iSiguienteCat}
+\begin{algorithmic}[1]
+\Function{isiguienteCat}{\param{in}{e}{estrITPL}}{$\rightarrow$ \param{}{res}{Categoria}}
+\state res $\gets$ (*siguiente(e)).catDLink \hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
 
-%\begin{algorithm}[H]
-%\caption{iSiguienteCantidadAccesosDelLink}
-%\begin{algorithmic}[1]
-%\Function{iSiguienteCantidadAccesosDelLink}{\param{in}{e}{estrITPL}}{$\rightarrow$ \param{}{res}{int}}
-%\state res $\gets$ cantAccesosDesde(e.$\_$fecha)\hfill //O(1)
-%\EndFunction 
-%\end{algorithmic}
-%\hrule
-%\complejidad{1}
-%\end{algorithm}
+\begin{algorithm}[H]
+\caption{iSiguienteCantidadAccesosDelLink}
+\begin{algorithmic}[1]
+\Function{iSiguienteCantidadAccesosDelLink}{\param{in}{e}{estrITPL}}{$\rightarrow$ \param{}{res}{int}}
+\state res $\gets$ cantAccesosDesde(e.$\_$fecha)\hfill //O(1)
+\EndFunction 
+\end{algorithmic}
+\hrule
+\complejidad{1}
+\end{algorithm}
 
 \begin{algorithm}[H]
 \caption{iAvanzar}

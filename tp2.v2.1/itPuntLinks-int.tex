@@ -24,29 +24,29 @@
 %{1}
 %{Se pasa un puntero a datosLink}
 
-\operacion{siguiente}{\param{in}{it}{itPuntLinks}}{tupla<\param{}{l}{Link},\param{}{c}{Categoria},\param{}{cant}{Nat}>}
+%\operacion{siguiente}{\param{in}{it}{itPuntLinks}}{tupla<\param{}{l}{Link},\param{}{c}{Categoria},%\param{}{cant}{Nat}>}
+%{HayMas?(it)}
+%{\igres Actual(it)}
+%{1}
+%{La tupla contiene referencias al Link y a la Categoria.}
+
+\operacion{siguienteLink}{\param{in}{it}{itPuntLinks}}{Link}
 {HayMas?(it)}
-{\igres Actual(it)}
+{\igres \pi_1(Actual(it))}
 {1}
-{La tupla contiene referencias al Link y a la Categoria.}
+{El link se pasa por referencia, no debe ser modificado.}
 
-%\operacion{siguienteLink}{\param{in}{it}{itPuntLinks}}{Link}
-%{haySiguiente?(it)}
-%{\igres (*siguiente(it)).link}
-%{1}
-%{El link se pasa por referencia, no debe ser modificado.}
+\operacion{siguienteCat}{\param{in}{it}{itPuntLinks}}{Categoria}
+{HayMas?(it)}
+{\igres \pi_2(Actual(it))}
+{1}
+{La categoria se pasa por referencia, no debe ser modificada.}
 
-%\operacion{siguienteCat}{\param{in}{it}{itPuntLinks}}{Categoria}
-%{haySiguiente?(it)}
-%{\igres (*siguiente(it)).categoria}
-%{1}
-%{La categoria se pasa por referencia, no debe ser modificada.}
-
-%\operacion{siguienteCantAccesosDelLink}{\param{in}{it}{itPuntLinks}}{nat}
-%{haySiguiente?(it)}
-%{\igres (*siguiente(it)).cantAccesos}
-%{1}
-%{No tiene}
+\operacion{siguienteCantAccesosDelLink}{\param{in}{it}{itPuntLinks}}{nat}
+{HayMas?(it)}
+{\igres \pi_3(Actual(it))}
+{1}
+{No tiene}
 
 \operacion{avanzar}{\param{in/out}{it}{itPuntLinks}}{}
 {it \igobs it_0 \land HayMas?(it)}

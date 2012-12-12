@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.15)  12 DEC 2012 14:39
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.15)  12 DEC 2012 15:31
 entering extended mode
  %&-line parsing enabled.
 **tpd.tex
@@ -1043,10 +1043,18 @@ Overfull \hbox (11.74713pt too wide) in paragraph at lines 19--19
 []$[]$ 
  []
 
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 31.
 
-Overfull \hbox (11.74713pt too wide) in paragraph at lines 31--31
+Overfull \hbox (11.74713pt too wide) in paragraph at lines 37--37
+[]$[]$ 
+ []
+
+
+Overfull \hbox (11.74713pt too wide) in paragraph at lines 43--43
+[]$[]$ 
+ []
+
+
+Overfull \hbox (11.74713pt too wide) in paragraph at lines 49--49
 []$[]$ 
  []
 
@@ -1055,23 +1063,28 @@ Overfull \hbox (11.74713pt too wide) in paragraph at lines 55--55
 []$[]$ 
  []
 
-
+[34]
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 61--61
 []$[]$ 
  []
 
-) (./itPuntLinks-rep.tex [34]
+) (./itPuntLinks-rep.tex
 Overfull \hbox (17.62482pt too wide) in paragraph at lines 33--36
 []$[]$ 
  []
 
-
+[35]
 Overfull \hbox (17.6248pt too wide) in paragraph at lines 41--41
 []\T1/cmr/m/n/12 todasLasFechas(it)| $\OMS/cmsy/m/n/12 ^^Q$| [] 
  []
 
-) (./itPuntLinks-alg.tex [35] [36]) (./itPuntLinks-com.tex [37] [38])
-(./itAccesos-int.tex) (./itAccesos-rep.tex
+) (./itPuntLinks-alg.tex [36] [37]) (./itPuntLinks-com.tex
+Overfull \hbox (2.35068pt too wide) in paragraph at lines 17--18
+[]\T1/cmr/m/n/12 Se lla-ma a Sigu-iente en O(1). Se de-vuelve una ref-er-en-cia
+ del el-e-men-to Link de la tu-pla DatosLink. 
+ []
+
+[38] [39]) (./itAccesos-int.tex) (./itAccesos-rep.tex
 Overfull \hbox (13.31166pt too wide) in paragraph at lines 15--16
 []\T1/cmr/m/n/12 itAccesos es un it-er-ador de lista común. Sus com-ple-ji-dade
 s nos al-can-zan para it-er-ar una Lista(acceso). 
@@ -1087,7 +1100,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--116
 
  []
 
-(./itAccesos-alg.tex [39]) (./itAccesos-com.tex) [40] (./diccT-int.tex
+(./itAccesos-alg.tex [40]) (./itAccesos-com.tex) [41] (./diccT-int.tex
 Overfull \hbox (11.74713pt too wide) in paragraph at lines 19--19
 []$[]$ 
  []
@@ -1112,7 +1125,7 @@ Overfull \hbox (17.46834pt too wide) in paragraph at lines 2--11
  [] 
  []
 
-[41]
+[42]
 Overfull \hbox (17.62482pt too wide) in paragraph at lines 36--40
 []$[]$ 
  []
@@ -1129,7 +1142,7 @@ Overfull \hbox (17.6248pt too wide) in paragraph at lines 49--49
 Q$| [] 
  []
 
-[42]
+[43]
 Overfull \hbox (27.52412pt too wide) in paragraph at lines 53--53
 []\T1/cmr/m/n/12 EncAEstrDTEnNMov(buscado,(*actual).Arreglo[0],n) 
  []
@@ -1197,7 +1210,7 @@ Overfull \hbox (17.6248pt too wide) in paragraph at lines 73--73
 []\T1/cmr/m/n/12 ObtenerS(c,n)| $\OMS/cmsy/m/n/12 ^^Q$| [] 
  []
 
-) (./diccT-alg.tex [43] [44]) (./diccT-com.tex [45]) [46] (./tpd.aux) )
+) (./diccT-alg.tex [44] [45]) (./diccT-com.tex [46]) [47] (./tpd.aux) )
 (\end occurred inside a group at level 4)
 
 ### simple group (level 4) entered at line 24 ({)
@@ -1206,10 +1219,10 @@ Overfull \hbox (17.6248pt too wide) in paragraph at lines 73--73
 ### simple group (level 1) entered at line 27 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 8157 strings out of 495061
- 109657 string characters out of 1182620
+ 8160 strings out of 495061
+ 109650 string characters out of 1182620
  198449 words of memory out of 3000000
- 10734 multiletter control sequences out of 15000+50000
+ 10730 multiletter control sequences out of 15000+50000
  27390 words of font info for 73 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,13n,38p,1037b,715s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1229,9 +1242,9 @@ nts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.p
 fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sh
 are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-te
 xlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on tpd.pdf (46 pages, 403949 bytes).
+Output written on tpd.pdf (47 pages, 405626 bytes).
 PDF statistics:
- 1350 PDF objects out of 1440 (max. 8388607)
- 319 named destinations out of 1000 (max. 500000)
+ 1358 PDF objects out of 1440 (max. 8388607)
+ 326 named destinations out of 1000 (max. 500000)
  641 words of extra memory for PDF output out of 10000 (max. 10000000)
 
